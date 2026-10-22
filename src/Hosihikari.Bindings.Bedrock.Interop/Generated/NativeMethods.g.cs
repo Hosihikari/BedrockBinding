@@ -857,12 +857,14 @@ public static unsafe class NativeMethods
         public delegate* unmanaged[Cdecl]<void*, void*, void*, bool, void**, nuint, byte> hs_method_c92c6777;
         public delegate* unmanaged[Cdecl]<void*, void*, bool, void*> hs_method_976d9ad7;
         public delegate* unmanaged[Cdecl]<void*, void*, bool, void**, nuint, void> hs_method_e6dd453f;
+        public delegate* unmanaged[Cdecl]<void*, void*, void*, global::Hosihikari.Bindings.Abi.ArrayView> hs_method_e7e80000;
         public delegate* unmanaged[Cdecl]<void*, void*, void*> hs_method_72069b73;
         public delegate* unmanaged[Cdecl]<void*, int, void*, global::Hosihikari.Bindings.Abi.ArrayView> hs_method_d7c689df;
         public delegate* unmanaged[Cdecl]<void*, void*, bool, void**, nuint, void> hs_method_cbca976b;
         public delegate* unmanaged[Cdecl]<void*, void*, void*, byte> hs_method_9df15e55;
         public delegate* unmanaged[Cdecl]<void*, void*, bool, void*, void**, nuint, bool, void*> hs_method_9114ec4e;
         public delegate* unmanaged[Cdecl]<void*, void*, bool, void*, void**, nuint, void**, nuint, bool, void> hs_method_3bd88fcf;
+        public delegate* unmanaged[Cdecl]<void*, void*, void*, bool, bool, global::Hosihikari.Bindings.Abi.ArrayView> hs_method_ca8eece7;
         public delegate* unmanaged[Cdecl]<void*, int, void*, bool, void*> hs_method_d70b9775;
         public delegate* unmanaged[Cdecl]<void*, void*, void*, int, void*> hs_method_42963a3d;
         public delegate* unmanaged[Cdecl]<void*, void*, byte> hs_method_0174f0f2;

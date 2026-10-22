@@ -858,12 +858,14 @@ struct HosihikariBindingTableV1 {
     bool (*hs_method_c92c6777)(void*, void*, void*, bool, void* const*, std::size_t);
     void* (*hs_method_976d9ad7)(void*, void*, bool);
     void (*hs_method_e6dd453f)(void*, void*, bool, void* const*, std::size_t);
+    HosihikariArrayView (*hs_method_e7e80000)(void*, void*, void*);
     void* (*hs_method_72069b73)(void*, void*);
     HosihikariArrayView (*hs_method_d7c689df)(void*, std::int32_t, void*);
     void (*hs_method_cbca976b)(void*, void*, bool, void* const*, std::size_t);
     bool (*hs_method_9df15e55)(void*, void*, void*);
     void* (*hs_method_9114ec4e)(void*, void*, bool, void*, void* const*, std::size_t, bool);
     void (*hs_method_3bd88fcf)(void*, void*, bool, void*, void* const*, std::size_t, void* const*, std::size_t, bool);
+    HosihikariArrayView (*hs_method_ca8eece7)(void*, void*, void*, bool, bool);
     void* (*hs_method_d70b9775)(void*, std::int32_t, void*, bool);
     void* (*hs_method_42963a3d)(void*, void*, void*, std::int32_t);
     bool (*hs_method_0174f0f2)(void*, void*);

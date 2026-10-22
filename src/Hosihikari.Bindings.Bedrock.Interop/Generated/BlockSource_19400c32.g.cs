@@ -244,12 +244,19 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint fetchActors_34130af8(nint actorId, nint bb) =>
+    public nint fetchActors(nint actorId, nint bb) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::span<gsl::not_null<Actor*>,-1>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint fetchActors_e7e80000(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::span<gsl::not_null<Actor*>,-1>' requires --link-carrier or --virtual-dispatch.");
+    public nint[] fetchActors(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.AABB arg1)
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_e7e80000((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
+        if (__hs_view.Size > 0)
+        {
+            new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
+        }
+        return __hs_result;
+    }
 
     public nint fetchBlockEntities(global::Hosihikari.Bindings.Bedrock.Interop.AABB arg0)
     {
@@ -282,33 +289,33 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_9df15e55((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::span<BlockDataFetchResult<Block> const,-1>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'BlockDataFetchResult<Block> const' is not supported.", false)]
     public nint fetchBlocksInBox_e2d115f7(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::span<BlockDataFetchResult<Block> const,-1>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'BlockDataFetchResult<Block> const' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint fetchBlocksInBox_64ebdc56(nint box, nint predicate) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::span<BlockDataFetchResult<Block> const,-1>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'BlockDataFetchResult<Block> const' is not supported.", false)]
     public nint fetchBlocksInBoxSorted_70703ca4(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::span<BlockDataFetchResult<Block> const,-1>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'BlockDataFetchResult<Block> const' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint fetchBlocksInBoxSorted_84303ef6(nint box, nint predicate) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::span<BlockDataFetchResult<Block> const,-1>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'BlockDataFetchResult<Block> const' is not supported.", false)]
     public nint fetchBlocksInCylinder_c6c3504b(nint arg0, uint arg1, uint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::span<BlockDataFetchResult<Block> const,-1>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'BlockDataFetchResult<Block> const' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint fetchBlocksInCylinder_0936efe6(nint centerPos, uint radius, uint height, nint predicate) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::span<BlockDataFetchResult<Block> const,-1>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'BlockDataFetchResult<Block> const' is not supported.", false)]
     public nint fetchBlocksInCylinderSorted_b1c58302(nint arg0, uint arg1, uint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::span<BlockDataFetchResult<Block> const,-1>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'BlockDataFetchResult<Block> const' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint fetchBlocksInCylinderSorted_846fae67(nint centerPos, uint radius, uint height, nint predicate) =>
@@ -374,17 +381,24 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
     public nint fetchEntities_da130cfb(nint ignoredEntities, nint bb, bool useHitbox, bool arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::span<gsl::not_null<Actor*>,-1>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint fetchEntities_ca8eece7(nint arg0, nint arg1, bool arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::span<gsl::not_null<Actor*>,-1>' requires --link-carrier or --virtual-dispatch.");
+    public nint[] fetchEntities(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, global::Hosihikari.Bindings.Bedrock.Interop.AABB arg1, bool arg2, bool arg3)
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_ca8eece7((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, arg2, arg3);
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
+        if (__hs_view.Size > 0)
+        {
+            new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
+        }
+        return __hs_result;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::span<gsl::not_null<Actor*>,-1>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public nint fetchEntities_fcca690e(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::span<gsl::not_null<Actor*>,-1>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::span<gsl::not_null<Actor*>,-1>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::span<gsl::not_null<Actor const*>,-1>' is not a known bindable declaration.", false)]
     public nint fetchEntities_943a9e10(nint arg0, nint arg1, bool arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::span<gsl::not_null<Actor*>,-1>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::span<gsl::not_null<Actor const*>,-1>' is not a known bindable declaration.");
 
     public nint fetchEntities2(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.AABB arg1, bool arg2)
     {

@@ -20344,6 +20344,31 @@ catch (...)
     return;
 }
 
+static HosihikariArrayView hs_method_e7e80000(void* hs_self, void* arg0, void* arg1) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{114751136}, "_ZN11BlockSource11fetchActorsERK25ActorDefinitionIdentifierRK4AABB");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariArrayView{nullptr, 0};
+    }
+    alignas(8) unsigned char hs_spanStorage[sizeof(HosihikariArrayView)];
+    using HsFn = void (*)(void*, void*, void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(static_cast<void*>(hs_spanStorage), hs_self, arg0, arg1);
+    return *reinterpret_cast<HosihikariArrayView*>(hs_spanStorage);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
+}
+
 static void* hs_method_72069b73(void* hs_self, void* arg0) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{114756208}, "_ZN11BlockSource18fetchBlockEntitiesERK4AABB");
@@ -20497,6 +20522,32 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariArrayView hs_method_ca8eece7(void* hs_self, void* arg0, void* arg1, bool arg2, bool arg3) try
+{
+    auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+    auto const hs_target = hs_vtable[30];
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariArrayView{nullptr, 0};
+    }
+    alignas(8) unsigned char hs_spanStorage[sizeof(HosihikariArrayView)];
+    using HsFn = void (*)(void*, void*, void*, void*, bool, bool);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(static_cast<void*>(hs_spanStorage), hs_self, arg0, arg1, arg2, arg3);
+    return *reinterpret_cast<HosihikariArrayView*>(hs_spanStorage);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
 }
 
 static void* hs_method_d70b9775(void* hs_self, std::int32_t arg0, void* arg1, bool arg2) try
@@ -35435,12 +35486,14 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_c92c6777,
     &hs_method_976d9ad7,
     &hs_method_e6dd453f,
+    &hs_method_e7e80000,
     &hs_method_72069b73,
     &hs_method_d7c689df,
     &hs_method_cbca976b,
     &hs_method_9df15e55,
     &hs_method_9114ec4e,
     &hs_method_3bd88fcf,
+    &hs_method_ca8eece7,
     &hs_method_d70b9775,
     &hs_method_42963a3d,
     &hs_method_0174f0f2,
