@@ -532,9 +532,11 @@ public sealed unsafe partial class AppPlatform
         return NativeMethods.TablePtr->hs_method_8174b750((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::unique_ptr<SecureStorage,std::default_delete<SecureStorage>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getSecureStorage() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unique_ptr<SecureStorage,std::default_delete<SecureStorage>>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.SecureStorage? getSecureStorage()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_69a76eaa((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.SecureStorage((nint)__hs_handle) : null;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'SecureStorageKey' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getSecureStorageKey(nint arg0) =>

@@ -111,9 +111,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_ec0437be((void*)_handle, (void*)arg0);
     }
 
-    public nint addParticle(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, int arg3, nint arg4, bool arg5)
+    public nint addParticle(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg4, bool arg5)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_bf4987bd((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle, arg3, (void*)arg4, arg5);
+        return (nint)NativeMethods.TablePtr->hs_method_bf4987bd((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle, arg3, (void*)(arg4?.Handle ?? 0), arg5);
     }
 
     public void addParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, nint arg2)
@@ -160,9 +160,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_aca4d805((void*)_handle, (void*)arg0.Handle, arg1, arg2);
     }
 
-    public void broadcastLevelEvent(short arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.UserEntityIdentifierComponent? arg2)
+    public void broadcastLevelEvent(short arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.UserEntityIdentifierComponent? arg2)
     {
-        NativeMethods.TablePtr->hs_method_81903c31((void*)_handle, arg0, (void*)arg1, (void*)(arg2?.Handle ?? 0));
+        NativeMethods.TablePtr->hs_method_81903c31((void*)_handle, arg0, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0));
     }
 
     public void broadcastLevelEvent(short arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, int arg2, global::Hosihikari.Bindings.Bedrock.Interop.UserEntityIdentifierComponent? arg3)
@@ -323,13 +323,17 @@ public sealed unsafe partial class Level : global::System.IDisposable
     public nint fetchStrictEntity(nint arg0, bool arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'StrictEntityContext' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::unique_ptr<Path,std::default_delete<Path>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint findPath(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unique_ptr<Path,std::default_delete<Path>>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Path? findPath(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, nint arg2)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_d6965efe((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Path((nint)__hs_handle) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::unique_ptr<Path,std::default_delete<Path>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint findPath(nint arg0, int arg1, int arg2, int arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unique_ptr<Path,std::default_delete<Path>>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Path? findPath(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1, int arg2, int arg3, nint arg4)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_2cd80089((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3, (void*)arg4);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Path((nint)__hs_handle) : null;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public nint findPlayer_afae3e40(nint arg0) =>
@@ -886,14 +890,14 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_49f538d3((void*)_handle, (void*)arg0.Handle);
     }
 
-    public nint getMapSavedData_7e79291e(nint arg0)
+    public nint getMapSavedData_7e79291e(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_7e79291e((void*)_handle, (void*)arg0);
+        return (nint)NativeMethods.TablePtr->hs_method_7e79291e((void*)_handle, (void*)arg0.Handle);
     }
 
-    public nint getMapSavedData_58ac1940(nint arg0)
+    public nint getMapSavedData_58ac1940(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_58ac1940((void*)_handle, (void*)arg0);
+        return (nint)NativeMethods.TablePtr->hs_method_58ac1940((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Mob? getMob(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0)
@@ -1454,9 +1458,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_e838647e((void*)_handle);
     }
 
-    public void handleLevelEvent(short arg0, nint arg1)
+    public void handleLevelEvent(short arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1)
     {
-        NativeMethods.TablePtr->hs_method_4b28fa63((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_4b28fa63((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public void handleLevelEvent(short arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, int arg2)
@@ -2151,6 +2155,7 @@ public sealed unsafe partial class Level : global::System.IDisposable
     {
         return NativeMethods.TablePtr->hs_method_7fcc69a3((void*)_handle) != 0;
     }
+
 
 
     public void Dispose()

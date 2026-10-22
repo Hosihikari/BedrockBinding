@@ -1,8 +1,8 @@
 {
     "generator":  "Hosihikari.Bindings.Generator 0.3.0 (IR 1.5.1)",
     "irVersion":  "1.5.1",
-    "irManifestSha256":  "sha256:514fc6517b1b5dbe85a3a12ab4292c87e8b89e6538a7f4ac56e32d49eaf1acf1",
-    "coverageManifestSha256":  "sha256:a4317e186b7c799c86fd331f8d0063f8a48a4ace017e086d054d5e17b02ad283",
+    "irManifestSha256":  "sha256:7f47db9ab9154d8971f72e2a8e9b4c99c9e2b3cb25732380381a2d09f849e178",
+    "coverageManifestSha256":  "sha256:e35d638ba46398f058e754c784c1db2f577325e0f44ab02bf0ea5cae66a89a20",
     "carrier":  "BDS 1.21.3.01",
     "carrierPdbSha256":  "sha256:2a41b42f252915a48e3e227e030948ef9f6d12c78fe593f55c0455bf6948aca4",
     "carrierExeSha256":  "sha256:ccfe036a98d0ec31ede995605c8c5c0df213ff1339c1520dce54b84d719e91d2",
@@ -15,5 +15,5 @@
     "mode":  "symbol-dispatch",
     "targetModule":  "bedrock_server",
     "tableVersion":  1,
-    "functions":  1421
+    "functions":  1447
 }

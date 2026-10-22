@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class LevelData
+public sealed unsafe partial class LevelData : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,5 +35,23 @@ public sealed partial class LevelData
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public static LevelData Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_e0444808((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class ItemDescriptor
+public sealed unsafe partial class ItemDescriptor : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,5 +35,23 @@ public sealed partial class ItemDescriptor
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public static ItemDescriptor Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_17989c4a((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

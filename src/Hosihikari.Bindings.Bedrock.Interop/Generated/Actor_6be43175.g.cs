@@ -1336,9 +1336,11 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_3f65b34c((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::unique_ptr<CompoundTag,std::default_delete<CompoundTag>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getPersistingTradeOffers() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unique_ptr<CompoundTag,std::default_delete<CompoundTag>>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? getPersistingTradeOffers()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_d2133880((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
+    }
 
     public int getPersistingTradeRiches()
     {
@@ -2321,17 +2323,17 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_2bc55b96((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
     }
 
-    public bool load(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg1)
+    public bool load(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg1)
     {
-        return NativeMethods.TablePtr->hs_method_1571fcaa((void*)_handle, (void*)arg0, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->hs_method_1571fcaa((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
-    public void loadEntityFlags(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg1)
+    public void loadEntityFlags(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg1)
     {
-        NativeMethods.TablePtr->hs_method_325c0e79((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->hs_method_325c0e79((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public void loadLinks(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorLink[] arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
+    public void loadLinks(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorLink[] arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
     {
         var __hs_vectorItems1 = arg1;
         var __hs_vectorHandles1 = new nint[__hs_vectorItems1?.Length ?? 0];
@@ -2342,7 +2344,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         fixed (nint* __hs_vectorHandleData1 = __hs_vectorHandles1)
         {
             var __hs_vectorData1 = (void**)__hs_vectorHandleData1;
-            NativeMethods.TablePtr->hs_method_e84527ee((void*)_handle, (void*)arg0, (void*)arg2.Handle, __hs_vectorData1, (nuint)(arg1?.Length ?? 0));
+            NativeMethods.TablePtr->hs_method_e84527ee((void*)_handle, (void*)arg0.Handle, (void*)arg2.Handle, __hs_vectorData1, (nuint)(arg1?.Length ?? 0));
         }
     }
 
@@ -2637,27 +2639,29 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_0bb06080((void*)_handle, arg0);
     }
 
-    public bool save(nint arg0)
+    public bool save(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {
-        return NativeMethods.TablePtr->hs_method_5b32b771((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_5b32b771((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    public void saveEntityFlags(nint arg0)
+    public void saveEntityFlags(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {
-        NativeMethods.TablePtr->hs_method_67d3b917((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_67d3b917((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::unique_ptr<ListTag,std::default_delete<ListTag>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint saveLinks() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unique_ptr<ListTag,std::default_delete<ListTag>>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ListTag? saveLinks()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_d2d93993((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ListTag((nint)__hs_handle) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<CompoundTag,std::default_delete<CompoundTag>>' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void savePersistingTrade(nint arg0, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<CompoundTag,std::default_delete<CompoundTag>>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void saveWithoutId(nint arg0)
+    public void saveWithoutId(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {
-        NativeMethods.TablePtr->hs_method_34cc0b12((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_34cc0b12((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -2708,9 +2712,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_00fedc65((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void setActorRendererId(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public void setArmor(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1)
     {
@@ -3331,18 +3335,18 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_45f0d74a((void*)_handle, (void*)arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::unique_ptr<AddActorBasePacket,std::default_delete<AddActorBasePacket>>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'AddActorBasePacket' is not a known bindable declaration.", false)]
     public nint tryCreateAddActorPacket() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unique_ptr<AddActorBasePacket,std::default_delete<AddActorBasePacket>>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'AddActorBasePacket' is not a known bindable declaration.");
 
     public nint tryGetEquippableSlotAllowedItems(int arg0)
     {
         return (nint)NativeMethods.TablePtr->hs_method_705628f9((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint tryGetEquippableSlotForItem(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Actor? tryGetFromComponent_7080ca4d(nint arg0, bool arg1)
     {
@@ -3442,6 +3446,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
     {
         NativeMethods.TablePtr->hs_method_768e1faf((void*)_handle);
     }
+
 
 
     public void Dispose()

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class DataLoadHelper
+public sealed unsafe partial class DataLoadHelper : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,5 +35,19 @@ public sealed partial class DataLoadHelper
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_b1d15eb7((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }
