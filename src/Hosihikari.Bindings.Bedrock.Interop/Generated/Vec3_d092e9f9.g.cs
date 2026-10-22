@@ -37,88 +37,64 @@ public sealed unsafe partial class Vec3 : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field has no byte-aligned offset.", false)]
-    public static nint HALF
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 HALF
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_get_ef462023(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field has no byte-aligned offset.", false)]
-    public static nint MAX
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 MAX
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_get_bc304959(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field has no byte-aligned offset.", false)]
-    public static nint MIN
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 MIN
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_get_b2539e44(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field has no byte-aligned offset.", false)]
-    public static nint NEG_UNIT_X
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 NEG_UNIT_X
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_get_fb332c9d(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field has no byte-aligned offset.", false)]
-    public static nint NEG_UNIT_Y
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 NEG_UNIT_Y
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_get_9e7d4490(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field has no byte-aligned offset.", false)]
-    public static nint NEG_UNIT_Z
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 NEG_UNIT_Z
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_get_55006bcd(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field has no byte-aligned offset.", false)]
-    public static nint ONE
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 ONE
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_get_d58fa3ed(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field has no byte-aligned offset.", false)]
-    public static nint TWO
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 TWO
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_get_209c17be(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field has no byte-aligned offset.", false)]
-    public static nint UNIT_X
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 UNIT_X
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_get_0569c682(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field has no byte-aligned offset.", false)]
-    public static nint UNIT_Y
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 UNIT_Y
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_get_c15dabd3(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field has no byte-aligned offset.", false)]
-    public static nint UNIT_Z
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 UNIT_Z
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_get_9d23ab32(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field has no byte-aligned offset.", false)]
-    public static nint ZERO
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 ZERO
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_get_8f507bf0(), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 abs()

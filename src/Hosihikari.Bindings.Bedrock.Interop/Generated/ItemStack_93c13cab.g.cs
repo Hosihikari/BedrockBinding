@@ -37,11 +37,9 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field has no byte-aligned offset.", false)]
-    public static nint EMPTY_ITEM
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ItemStack EMPTY_ITEM
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->hs_get_f80ce7c3(), false);
     }
 
     public static ItemStack Create()

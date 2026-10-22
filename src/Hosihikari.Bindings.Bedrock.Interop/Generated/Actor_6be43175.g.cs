@@ -67,25 +67,19 @@ public sealed unsafe partial class Actor : global::System.IDisposable
     public static Actor Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field has no byte-aligned offset.", false)]
-    public static nint DAMAGE_NEARBY_MOBS_DURATION
+    public static int DAMAGE_NEARBY_MOBS_DURATION
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
+        get => NativeMethods.TablePtr->hs_get_482f6fce();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field has no byte-aligned offset.", false)]
-    public static nint DEFAULT_MAX_DISTANCE_OPTIMIZATION
+    public static float DEFAULT_MAX_DISTANCE_OPTIMIZATION
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
+        get => NativeMethods.TablePtr->hs_get_d676d819();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field has no byte-aligned offset.", false)]
-    public static nint DEFAULT_MAX_TICK_DELAY_OPTIMIZATION
+    public static ulong DEFAULT_MAX_TICK_DELAY_OPTIMIZATION
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
+        get => NativeMethods.TablePtr->hs_get_3cec3a26();
     }
 
     public static void _moveRelative(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, float arg1, float arg2, float arg3, float arg4, float arg5)

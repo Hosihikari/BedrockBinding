@@ -37,11 +37,13 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field has no byte-aligned offset.", false)]
-    public static nint IS_SLEEPING_POSSIBLE
+    public static string IS_SLEEPING_POSSIBLE
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_9528211f();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
@@ -56,18 +58,22 @@ public sealed unsafe partial class Level : global::System.IDisposable
     public static Level Create(nint arg0, nint arg1, nint arg2, bool arg3, nint arg4, nint arg5, nint arg6, nint arg7, nint arg8, nint arg9, nint arg10, nint arg11, nint arg12, nint arg13, bool arg14, bool arg15, nint arg16, nint arg17) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<LevelStorage>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field has no byte-aligned offset.", false)]
-    public static nint OVERWORLD_PLAYER_COUNT_TAG
+    public static string OVERWORLD_PLAYER_COUNT_TAG
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_c553a919();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field has no byte-aligned offset.", false)]
-    public static nint SLEEPING_PLAYER_COUNT_TAG
+    public static string SLEEPING_PLAYER_COUNT_TAG
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field has no byte-aligned offset.");
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_db3f9767();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
     }
 
     public void _destroyEffect(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1, int arg2)
