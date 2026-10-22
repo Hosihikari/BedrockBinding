@@ -214,6 +214,7 @@ struct HosihikariBindingTableV1 {
     void* (*hs_method_744af5ea)(void*);
     void* (*hs_method_65db9639)(void*);
     std::int32_t (*hs_method_44e42c0e)(void*);
+    void* (*hs_method_61351cc8)(void*);
     std::int32_t (*hs_method_021d9b9d)(void*, void*);
     float (*hs_method_3f65b34c)(void*, void*);
     std::int32_t (*hs_method_49db3968)(void*);
@@ -1125,6 +1126,7 @@ struct HosihikariBindingTableV1 {
     void* (*hs_method_ec1a428d)(void*);
     void* (*hs_method_dcd6f8ce)(void*);
     void* (*hs_method_e587a91a)(void*);
+    void* (*hs_method_fe15c33f)(void*);
     void* (*hs_method_8194d47e)(void*);
     void* (*hs_method_e8298612)(void*);
     std::int32_t (*hs_method_a8d6ab16)(void*);

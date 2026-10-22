@@ -5097,6 +5097,32 @@ catch (...)
     return 0;
 }
 
+static void* hs_method_61351cc8(void* hs_self) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{110261120}, "_ZNK5Actor10getOwnerIdEv");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    using HsFn = std::uint64_t (*)(void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    auto hs_value = hs_fn(hs_self);
+    auto* const hs_record = static_cast<void*>(::operator new(static_cast<std::size_t>(8), std::align_val_t(8)));
+    std::memcpy(hs_record, &hs_value, static_cast<std::size_t>(8));
+    return hs_record;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static std::int32_t hs_method_021d9b9d(void* hs_self, void* arg0) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{110315824}, "_ZNK5Actor17getPassengerIndexERKS_");
@@ -26605,6 +26631,33 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_method_fe15c33f(void* hs_self) try
+{
+    auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+    auto const hs_target = hs_vtable[68];
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    using HsFn = std::uint64_t (*)(void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    auto hs_value = hs_fn(hs_self);
+    auto* const hs_record = static_cast<void*>(::operator new(static_cast<std::size_t>(8), std::align_val_t(8)));
+    std::memcpy(hs_record, &hs_value, static_cast<std::size_t>(8));
+    return hs_record;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void* hs_method_8194d47e(void* hs_self) try
 {
     auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
@@ -34171,6 +34224,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_744af5ea,
     &hs_method_65db9639,
     &hs_method_44e42c0e,
+    &hs_method_61351cc8,
     &hs_method_021d9b9d,
     &hs_method_3f65b34c,
     &hs_method_49db3968,
@@ -35082,6 +35136,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_ec1a428d,
     &hs_method_dcd6f8ce,
     &hs_method_e587a91a,
+    &hs_method_fe15c33f,
     &hs_method_8194d47e,
     &hs_method_e8298612,
     &hs_method_a8d6ab16,

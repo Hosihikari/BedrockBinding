@@ -588,9 +588,10 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_e587a91a((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Tick const' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getCurrentServerTick() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Tick const' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Tick getCurrentServerTick()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Tick((nint)NativeMethods.TablePtr->hs_method_fe15c33f((void*)_handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Tick getCurrentTick()
     {

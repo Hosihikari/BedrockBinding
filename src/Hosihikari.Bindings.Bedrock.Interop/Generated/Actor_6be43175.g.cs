@@ -1321,9 +1321,10 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_44e42c0e((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorUniqueID const' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getOwnerId() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorUniqueID const' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID getOwnerId()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->hs_method_61351cc8((void*)_handle));
+    }
 
     public int getPassengerIndex(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {
