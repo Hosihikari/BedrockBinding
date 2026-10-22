@@ -70,13 +70,17 @@ public sealed unsafe partial class ServerInstance
         return NativeMethods.TablePtr->hs_method_d66ba14c((void*)arg0.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::NonOwnerPointer<CDNConfig>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getCDNConfig() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::NonOwnerPointer<CDNConfig>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getCDNConfig()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_e5cc6273((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::NonOwnerPointer<Editor::IEditorManager>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getEditorManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::NonOwnerPointer<Editor::IEditorManager>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getEditorManager()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_d3fc9f41((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public nint getScriptManager()
     {
@@ -92,9 +96,11 @@ public sealed unsafe partial class ServerInstance
     public nint getServerItemRegistry() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemRegistryRef' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::NonOwnerPointer<ServerTextSettings>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getServerTextSettings() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::NonOwnerPointer<ServerTextSettings>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getServerTextSettings()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_a006de23((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'LevelSettings' is not a known bindable declaration.", false)]
     public bool initializeServer_84c95d47(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7, nint arg8, int arg9, bool arg10, nint arg11, bool arg12, nint arg13, nint arg14, nint arg15, nint arg16, nint arg17, nint arg18, nint arg19, nint arg20, nint arg21, nint arg22, nint arg23, nint arg24, nint arg25, nint arg26, nint arg27, nint arg28, nint arg29, nint arg30, nint arg31, nint arg32, nint arg33, bool arg34, nint arg35, nint arg36, bool arg37, bool arg38, bool arg39, nint arg40, nint arg41, nint arg42, bool arg43, float arg44, nint arg45, nint arg46, nint arg47, nint arg48, nint arg49, nint arg50, nint arg51) =>

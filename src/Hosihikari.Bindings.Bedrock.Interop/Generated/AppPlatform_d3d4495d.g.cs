@@ -330,9 +330,9 @@ public sealed unsafe partial class AppPlatform
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::not_null<Bedrock::NonOwnerPointer<IFileAccess>>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ResourceFileSystem' is not a known bindable declaration.", false)]
     public nint getFileAccess(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::not_null<Bedrock::NonOwnerPointer<IFileAccess>>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ResourceFileSystem' is not a known bindable declaration.");
 
     public int getFocusState()
     {

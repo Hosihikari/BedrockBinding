@@ -398,13 +398,17 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_30f419ff((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::NonOwnerPointer<ActorAnimationControllerGroup>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getActorAnimationControllerGroup() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::NonOwnerPointer<ActorAnimationControllerGroup>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getActorAnimationControllerGroup()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_cb480cab((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::not_null<Bedrock::NonOwnerPointer<ActorAnimationGroup>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getActorAnimationGroup() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::not_null<Bedrock::NonOwnerPointer<ActorAnimationGroup>>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getActorAnimationGroup()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_7712e6e9((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public nint getActorEventCoordinator()
     {
@@ -426,9 +430,11 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_3906d66d((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::not_null<StackRefResult<ActorManager>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getActorManager_c45b4a93() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::not_null<StackRefResult<ActorManager>>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getActorManager_c45b4a93()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_c45b4a93((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public nint getActorPropertyGroup()
     {
@@ -536,9 +542,11 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::not_null<Bedrock::NonOwnerPointer<BossEventSubscriptionManager>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getBossEventSubscriptionManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::not_null<Bedrock::NonOwnerPointer<BossEventSubscriptionManager>>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getBossEventSubscriptionManager()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_1066be37((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public nint getCameraPresets_489c8082()
     {
@@ -619,9 +627,11 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_76d38653((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'WeakRef<Dimension>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getDimension(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'WeakRef<Dimension>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getDimension(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0)
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_1b8f1775((void*)_handle, (void*)arg0.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'DimensionConversionData' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getDimensionConversionData() =>
@@ -671,22 +681,28 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_260f696b((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'StackRefResult<EntityRegistry const>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getEntityRegistry_4ef4cb62() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'StackRefResult<EntityRegistry const>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getEntityRegistry_4ef4cb62()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_4ef4cb62((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'StackRefResult<EntityRegistry>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getEntityRegistry_581647fe() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'StackRefResult<EntityRegistry>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getEntityRegistry_581647fe()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_581647fe((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public nint getEntitySystems()
     {
         return (nint)NativeMethods.TablePtr->hs_method_3bc74ce9((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::not_null<StackRefResult<EventCoordinatorManager>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getEventCoordinatorManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::not_null<StackRefResult<EventCoordinatorManager>>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getEventCoordinatorManager()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_cf5ead8c((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public nint getEventing()
     {
@@ -802,9 +818,11 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.LevelData((nint)NativeMethods.TablePtr->hs_method_e61bc0cc((void*)_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'WeakRef<EntityContext>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getLevelEntity() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'WeakRef<EntityContext>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getLevelEntity()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_40950928((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public nint getLevelEventCoordinator()
     {
@@ -826,9 +844,11 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64((nint)NativeMethods.TablePtr->hs_method_a3ae3b8b((void*)_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::not_null<Bedrock::NonOwnerPointer<LevelSoundManager>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getLevelSoundManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::not_null<Bedrock::NonOwnerPointer<LevelSoundManager>>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getLevelSoundManager()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_07c36d61((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public nint getLevelStorage_50933f07()
     {
@@ -886,9 +906,11 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_8b47f8bb((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::NonOwnerPointer<NetEventCallback>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getNetEventCallback() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::NonOwnerPointer<NetEventCallback>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getNetEventCallback()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_6b9af41f((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public int getNetherScale()
     {
@@ -915,22 +937,28 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_daf46051((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'WeakRef<Dimension>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getOrCreateDimension(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'WeakRef<Dimension>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getOrCreateDimension(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0)
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_4dcafb0d((void*)_handle, (void*)arg0.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public nint getPacketSender()
     {
         return (nint)NativeMethods.TablePtr->hs_method_a6500655((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'StackRefResult<PauseManager const>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getPauseManager_a161a9b1() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'StackRefResult<PauseManager const>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getPauseManager_a161a9b1()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_a161a9b1((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'StackRefResult<PauseManager>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getPauseManager_f1f39641() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'StackRefResult<PauseManager>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getPauseManager_f1f39641()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_f1f39641((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public nint getPhotoStorage()
     {
@@ -1273,9 +1301,11 @@ public sealed unsafe partial class Level : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::not_null<Bedrock::NonOwnerPointer<SoundPlayerInterface>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getSoundPlayer() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::not_null<Bedrock::NonOwnerPointer<SoundPlayerInterface>>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getSoundPlayer()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_307d1ea8((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public nint getSpawner()
     {
@@ -1287,13 +1317,17 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_8bc5603f((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>> const' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getStructureManager_69910a30() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>> const' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getStructureManager_69910a30()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_69910a30((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getStructureManager_a007ebf8() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getStructureManager_a007ebf8()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_a007ebf8((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public nint getSubChunkRequestManager()
     {
@@ -1379,9 +1413,11 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::NonOwnerPointer<IUnknownBlockTypeRegistry>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getUnknownBlockTypeRegistry() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::NonOwnerPointer<IUnknownBlockTypeRegistry>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getUnknownBlockTypeRegistry()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_fdc64f1f((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public int getUserCount()
     {
@@ -1739,13 +1775,13 @@ public sealed unsafe partial class Level : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_6632a1dc((void*)_handle, (void*)arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'OwnerPtr<EntityContext>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
     public nint removeActorAndTakeEntity(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'OwnerPtr<EntityContext>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'OwnerPtr<EntityContext>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
     public nint removeActorFromWorldAndTakeEntity(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'OwnerPtr<EntityContext>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public void removeBlockSourceFromValidityTracking(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource? arg0)
     {
@@ -1756,13 +1792,15 @@ public sealed unsafe partial class Level : global::System.IDisposable
     public void removeDisplayEntity(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'OwnerPtr<EntityContext>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint removeEntity_2e67472d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'OwnerPtr<EntityContext>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? removeEntity(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_2e67472d((void*)_handle, (void*)arg0.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'OwnerPtr<EntityContext>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint removeEntity_64e42956(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'OwnerPtr<EntityContext>' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public nint removeEntity(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public void removeListener(nint arg0)
     {
@@ -2049,9 +2087,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_6d0fc16b((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'OwnerPtr<EntityContext>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
     public nint takeEntity(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'OwnerPtr<EntityContext>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public void takePicture(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg2, nint arg3)
     {

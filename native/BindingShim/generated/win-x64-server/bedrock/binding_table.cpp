@@ -135,6 +135,15 @@ HosihikariSharedHandle hs_make_shared_handle(std::shared_ptr<T> value)
 }
 
 template <class T>
+HosihikariSharedHandle hs_make_non_owner_handle(std::shared_ptr<T> value)
+{
+    if (!value) { return HosihikariSharedHandle{nullptr, nullptr, nullptr}; }
+    void* target = *reinterpret_cast<void**>(value.get());
+    auto* holder = new hs_shared_holder<T>(std::move(value));
+    return HosihikariSharedHandle{holder, target, &hs_release_shared_holder<T>};
+}
+
+template <class T>
 std::shared_ptr<T> hs_shared_from_handle(HosihikariSharedHandle handle)
 {
     if (handle.holder == nullptr) { return {}; }
@@ -3272,6 +3281,35 @@ catch (...)
     return HosihikariStringView{nullptr, 0};
 }
 
+static HosihikariSharedHandle hs_method_6be13426(void* hs_self) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{26943840}, "?getEntityRegistry@Actor@@QEAA?AV?$StackRefResult@VEntityRegistry@@@@XZ");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::shared_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage));
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_result = hs_make_shared_handle<void>(std::move(hs_shared));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
 static void* hs_method_810a89e6(void* hs_self) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{26943872}, "?getEntityTerrainInterlockData@Actor@@QEAAAEAVActorTerrainInterlockData@@XZ");
@@ -5983,6 +6021,36 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariSharedHandle hs_method_8aa828da(void* hs_self) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{1496880}, "?getWeakEntity@Actor@@QEBA?BV?$WeakRef@VEntityContext@@@@XZ");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::weak_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage));
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_locked = hs_shared.lock();
+    auto hs_result = hs_make_shared_handle<void>(std::move(hs_locked));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
 }
 
 static float hs_method_5e18e0f3(void* hs_self) try
@@ -21392,6 +21460,37 @@ catch (...)
     return 0;
 }
 
+static HosihikariSharedHandle hs_method_d9692e38(void* hs_self) try
+{
+    auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+    auto const hs_target = hs_vtable[28];
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::weak_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage));
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_locked = hs_shared.lock();
+    auto hs_result = hs_make_shared_handle<void>(std::move(hs_locked));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
 static void* hs_method_a8398729(void* hs_self, void* arg0) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{28386960}, "?getWritableChunk@BlockSource@@QEAAPEAVLevelChunk@@AEBVChunkPos@@@Z");
@@ -25369,6 +25468,64 @@ catch (...)
     return 0;
 }
 
+static HosihikariSharedHandle hs_method_cb480cab(void* hs_self) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{28040944}, "?getActorAnimationControllerGroup@Level@@UEBA?AV?$NonOwnerPointer@VActorAnimationControllerGroup@@@Bedrock@@XZ");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::shared_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage));
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_result = hs_make_non_owner_handle<void>(std::move(hs_shared));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
+static HosihikariSharedHandle hs_method_7712e6e9(void* hs_self) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{28041136}, "?getActorAnimationGroup@Level@@UEBA?AV?$not_null@V?$NonOwnerPointer@VActorAnimationGroup@@@Bedrock@@@gsl@@XZ");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::shared_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage));
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_result = hs_make_non_owner_handle<void>(std::move(hs_shared));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
 static void* hs_method_58dbeef6(void* hs_self) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{28041328}, "?getActorEventCoordinator@Level@@UEAAAEAVActorEventCoordinator@@XZ");
@@ -25459,6 +25616,35 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariSharedHandle hs_method_c45b4a93(void* hs_self) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{28041504}, "?getActorManager@Level@@QEAA?AV?$not_null@V?$StackRefResult@VActorManager@@@@@gsl@@XZ");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::shared_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage));
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_result = hs_make_shared_handle<void>(std::move(hs_shared));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
 }
 
 static void* hs_method_6eda0faf(void* hs_self) try
@@ -25951,6 +26137,35 @@ catch (...)
     return HosihikariSharedHandle{nullptr, nullptr, nullptr};
 }
 
+static HosihikariSharedHandle hs_method_1066be37(void* hs_self) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{28042384}, "?getBossEventSubscriptionManager@Level@@UEAA?AV?$not_null@V?$NonOwnerPointer@VBossEventSubscriptionManager@@@Bedrock@@@gsl@@XZ");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::shared_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage));
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_result = hs_make_non_owner_handle<void>(std::move(hs_shared));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
 static void* hs_method_489c8082(void* hs_self) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{28042576}, "?getCameraPresets@Level@@UEBAAEBVCameraPresets@@XZ");
@@ -26296,6 +26511,36 @@ catch (...)
     return 0;
 }
 
+static HosihikariSharedHandle hs_method_1b8f1775(void* hs_self, void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{28043184}, "?getDimension@Level@@UEBA?AV?$WeakRef@VDimension@@@@V?$AutomaticID@VDimension@@H@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::weak_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*, std::uint32_t);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage), *reinterpret_cast<std::uint32_t const*>(arg0));
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_locked = hs_shared.lock();
+    auto hs_result = hs_make_shared_handle<void>(std::move(hs_locked));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
 static void* hs_method_149b717e(void* hs_self) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{28043376}, "?getDimensionFactory@Level@@UEBAAEBV?$OwnerPtrFactory@VDimension@@AEAVILevel@@AEAVScheduler@@@@XZ");
@@ -26480,6 +26725,64 @@ catch (...)
     return nullptr;
 }
 
+static HosihikariSharedHandle hs_method_4ef4cb62(void* hs_self) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{28043728}, "?getEntityRegistry@Level@@UEBA?AV?$StackRefResult@$$CBVEntityRegistry@@@@XZ");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::shared_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage));
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_result = hs_make_shared_handle<void>(std::move(hs_shared));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
+static HosihikariSharedHandle hs_method_581647fe(void* hs_self) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{28043536}, "?getEntityRegistry@Level@@UEAA?AV?$StackRefResult@VEntityRegistry@@@@XZ");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::shared_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage));
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_result = hs_make_shared_handle<void>(std::move(hs_shared));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
 static void* hs_method_3bc74ce9(void* hs_self) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{28044048}, "?getEntitySystems@Level@@UEAAAEAVEntitySystems@@XZ");
@@ -26501,6 +26804,35 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariSharedHandle hs_method_cf5ead8c(void* hs_self) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{28044080}, "?getEventCoordinatorManager@Level@@QEAA?AV?$not_null@V?$StackRefResult@VEventCoordinatorManager@@@@@gsl@@XZ");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::shared_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage));
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_result = hs_make_shared_handle<void>(std::move(hs_shared));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
 }
 
 static void* hs_method_d543238f(void* hs_self) try
@@ -26991,6 +27323,36 @@ catch (...)
     return nullptr;
 }
 
+static HosihikariSharedHandle hs_method_40950928(void* hs_self) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{13213472}, "?getLevelEntity@Level@@UEAA?AV?$WeakRef@VEntityContext@@@@XZ");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::weak_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage));
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_locked = hs_shared.lock();
+    auto hs_result = hs_make_shared_handle<void>(std::move(hs_locked));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
 static void* hs_method_925fa94b(void* hs_self) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{28045168}, "?getLevelEventCoordinator@Level@@UEAAAEAVLevelEventCoordinator@@XZ");
@@ -27067,6 +27429,35 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariSharedHandle hs_method_07c36d61(void* hs_self) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{28045424}, "?getLevelSoundManager@Level@@UEAA?AV?$not_null@V?$NonOwnerPointer@VLevelSoundManager@@@Bedrock@@@gsl@@XZ");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::shared_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage));
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_result = hs_make_non_owner_handle<void>(std::move(hs_shared));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
 }
 
 static void* hs_method_50933f07(void* hs_self) try
@@ -27322,6 +27713,35 @@ catch (...)
     return false;
 }
 
+static HosihikariSharedHandle hs_method_6b9af41f(void* hs_self) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{28047600}, "?getNetEventCallback@Level@@UEBA?AV?$NonOwnerPointer@VNetEventCallback@@@Bedrock@@XZ");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::shared_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage));
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_result = hs_make_non_owner_handle<void>(std::move(hs_shared));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
 static std::int32_t hs_method_06525d0e(void* hs_self) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{28047664}, "?getNetherScale@Level@@UEBAHXZ");
@@ -27443,6 +27863,36 @@ catch (...)
     return 0;
 }
 
+static HosihikariSharedHandle hs_method_4dcafb0d(void* hs_self, void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{28047920}, "?getOrCreateDimension@Level@@UEAA?AV?$WeakRef@VDimension@@@@V?$AutomaticID@VDimension@@H@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::weak_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*, std::uint32_t);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage), *reinterpret_cast<std::uint32_t const*>(arg0));
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_locked = hs_shared.lock();
+    auto hs_result = hs_make_shared_handle<void>(std::move(hs_locked));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
 static void* hs_method_a6500655(void* hs_self) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{28047968}, "?getPacketSender@Level@@UEBAPEAVPacketSender@@XZ");
@@ -27464,6 +27914,64 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariSharedHandle hs_method_a161a9b1(void* hs_self) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{28047984}, "?getPauseManager@Level@@UEBA?AV?$StackRefResult@$$CBVPauseManager@@@@XZ");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::shared_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage));
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_result = hs_make_shared_handle<void>(std::move(hs_shared));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
+static HosihikariSharedHandle hs_method_f1f39641(void* hs_self) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{28047984}, "?getPauseManager@Level@@UEAA?AV?$StackRefResult@VPauseManager@@@@XZ");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::shared_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage));
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_result = hs_make_shared_handle<void>(std::move(hs_shared));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
 }
 
 static void* hs_method_97ce72ac(void* hs_self) try
@@ -28474,6 +28982,35 @@ catch (...)
     return HosihikariArrayView{nullptr, 0};
 }
 
+static HosihikariSharedHandle hs_method_307d1ea8(void* hs_self) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{28050304}, "?getSoundPlayer@Level@@UEBA?AV?$not_null@V?$NonOwnerPointer@VSoundPlayerInterface@@@Bedrock@@@gsl@@XZ");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::shared_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage));
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_result = hs_make_non_owner_handle<void>(std::move(hs_shared));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
 static void* hs_method_d3fbd336(void* hs_self) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{28050384}, "?getSpawner@Level@@UEBAAEAVSpawner@@XZ");
@@ -28518,6 +29055,64 @@ catch (...)
 {
     setLastError("unknown native exception");
     return 0.0f;
+}
+
+static HosihikariSharedHandle hs_method_69910a30(void* hs_self) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{28050848}, "?getStructureManager@Level@@UEBA?BV?$not_null@V?$NonOwnerPointer@VStructureManager@@@Bedrock@@@gsl@@XZ");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::shared_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage));
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_result = hs_make_non_owner_handle<void>(std::move(hs_shared));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
+static HosihikariSharedHandle hs_method_a007ebf8(void* hs_self) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{28050752}, "?getStructureManager@Level@@UEAA?AV?$not_null@V?$NonOwnerPointer@VStructureManager@@@Bedrock@@@gsl@@XZ");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::shared_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage));
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_result = hs_make_non_owner_handle<void>(std::move(hs_shared));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
 }
 
 static void* hs_method_287ec4cb(void* hs_self) try
@@ -28902,6 +29497,35 @@ static HosihikariSharedHandle hs_method_b5c9b109(void* hs_self) try
     auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
     auto hs_locked = hs_shared.lock();
     auto hs_result = hs_make_shared_handle<void>(std::move(hs_locked));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
+static HosihikariSharedHandle hs_method_fdc64f1f(void* hs_self) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{28051216}, "?getUnknownBlockTypeRegistry@Level@@UEAA?AV?$NonOwnerPointer@VIUnknownBlockTypeRegistry@@@Bedrock@@XZ");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::shared_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage));
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_result = hs_make_non_owner_handle<void>(std::move(hs_shared));
     hs_shared.~HsTypedResult();
     return hs_result;
 }
@@ -30095,6 +30719,35 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariSharedHandle hs_method_2e67472d(void* hs_self, void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{28071824}, "?removeEntity@Level@@UEAA?AV?$OwnerPtr@VEntityContext@@@@AEAVActor@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::shared_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage), arg0);
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_result = hs_make_shared_handle<void>(std::move(hs_shared));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
 }
 
 static void hs_method_d66cf706(void* hs_self, void* arg0) try
@@ -31456,6 +32109,64 @@ catch (...)
     return false;
 }
 
+static HosihikariSharedHandle hs_method_e5cc6273(void* hs_self) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{13206896}, "?getCDNConfig@ServerInstance@@QEBA?AV?$NonOwnerPointer@VCDNConfig@@@Bedrock@@XZ");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::shared_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage));
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_result = hs_make_non_owner_handle<void>(std::move(hs_shared));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
+static HosihikariSharedHandle hs_method_d3fc9f41(void* hs_self) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{13207968}, "?getEditorManager@ServerInstance@@QEBA?AV?$NonOwnerPointer@VIEditorManager@Editor@@@Bedrock@@XZ");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::shared_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage));
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_result = hs_make_non_owner_handle<void>(std::move(hs_shared));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
 static void* hs_method_d708b141(void* hs_self) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{4561232}, "?getScriptManager@ServerInstance@@QEAAPEAVServerScriptManager@@XZ");
@@ -31500,6 +32211,35 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariSharedHandle hs_method_a006de23(void* hs_self) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{13222624}, "?getServerTextSettings@ServerInstance@@QEBA?AV?$NonOwnerPointer@VServerTextSettings@@@Bedrock@@XZ");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+    }
+    using HsTypedResult = std::shared_ptr<void>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
+    hs_fn(hs_self, static_cast<void*>(hs_typedStorage));
+    auto& hs_shared = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_result = hs_make_non_owner_handle<void>(std::move(hs_shared));
+    hs_shared.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
 }
 
 static bool hs_method_101ae5c4(void* hs_self) try
@@ -32879,6 +33619,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_5cfb5aba,
     &hs_method_de9948a3,
     &hs_method_17214283,
+    &hs_method_6be13426,
     &hs_method_810a89e6,
     &hs_method_c70e93a1,
     &hs_method_607780f2,
@@ -32990,6 +33731,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_d2954def,
     &hs_method_b6082c8c,
     &hs_method_f214d53a,
+    &hs_method_8aa828da,
     &hs_method_5e18e0f3,
     &hs_method_26a4d6f9,
     &hs_method_8eda9c13,
@@ -33648,6 +34390,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_5fda1253,
     &hs_method_43cc7713,
     &hs_method_ff6ae668,
+    &hs_method_d9692e38,
     &hs_method_a8398729,
     &hs_method_c638211f,
     &hs_method_d63cc1bb,
@@ -33822,10 +34565,13 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_51c5a480,
     &hs_method_4bdbfad0,
     &hs_method_30f419ff,
+    &hs_method_cb480cab,
+    &hs_method_7712e6e9,
     &hs_method_58dbeef6,
     &hs_method_e40d9119,
     &hs_method_e09dcab1,
     &hs_method_3906d66d,
+    &hs_method_c45b4a93,
     &hs_method_6eda0faf,
     &hs_method_02455754,
     &hs_method_a645a5df,
@@ -33847,6 +34593,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_f0d60fdb,
     &hs_method_58592259,
     &hs_method_0b1f4638,
+    &hs_method_1066be37,
     &hs_method_489c8082,
     &hs_method_f3362771,
     &hs_method_b9df0f4b,
@@ -33862,6 +34609,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_82126d2a,
     &hs_method_37908c69,
     &hs_method_76d38653,
+    &hs_method_1b8f1775,
     &hs_method_149b717e,
     &hs_method_9ae91fd9,
     &hs_method_7cdd0715,
@@ -33870,7 +34618,10 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_e404a658,
     &hs_method_d3cb7fa6,
     &hs_method_260f696b,
+    &hs_method_4ef4cb62,
+    &hs_method_581647fe,
     &hs_method_3bc74ce9,
+    &hs_method_cf5ead8c,
     &hs_method_d543238f,
     &hs_method_75e56536,
     &hs_method_3e813b29,
@@ -33892,9 +34643,11 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_7625c0a0,
     &hs_method_c2b8edbb,
     &hs_method_e61bc0cc,
+    &hs_method_40950928,
     &hs_method_925fa94b,
     &hs_method_691cc412,
     &hs_method_a3ae3b8b,
+    &hs_method_07c36d61,
     &hs_method_50933f07,
     &hs_method_a7a34daf,
     &hs_method_913adc8b,
@@ -33906,12 +34659,16 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_58ac1940,
     &hs_method_eaf8be1b,
     &hs_method_8b47f8bb,
+    &hs_method_6b9af41f,
     &hs_method_06525d0e,
     &hs_method_d0c3aa8b,
     &hs_method_579274cf,
     &hs_method_d7f3059f,
     &hs_method_daf46051,
+    &hs_method_4dcafb0d,
     &hs_method_a6500655,
+    &hs_method_a161a9b1,
+    &hs_method_f1f39641,
     &hs_method_97ce72ac,
     &hs_method_621fdecb,
     &hs_method_84f07e65,
@@ -33954,8 +34711,11 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_c1072b21,
     &hs_method_f9a27d91,
     &hs_method_b4ee00aa,
+    &hs_method_307d1ea8,
     &hs_method_d3fbd336,
     &hs_method_8bc5603f,
+    &hs_method_69910a30,
+    &hs_method_a007ebf8,
     &hs_method_287ec4cb,
     &hs_method_5be500f4,
     &hs_method_d796fb7e,
@@ -33972,6 +34732,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_59ddccb2,
     &hs_method_0841eb03,
     &hs_method_b5c9b109,
+    &hs_method_fdc64f1f,
     &hs_method_ec12bded,
     &hs_method_246eea58,
     &hs_method_c6092ac2,
@@ -34023,6 +34784,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_4f250a18,
     &hs_method_6632a1dc,
     &hs_method_f7447948,
+    &hs_method_2e67472d,
     &hs_method_d66cf706,
     &hs_method_00fd202d,
     &hs_method_92fa8f00,
@@ -34082,8 +34844,11 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_6ad46b93,
     &hs_method_b5a043a5,
     &hs_method_d66ba14c,
+    &hs_method_e5cc6273,
+    &hs_method_d3fc9f41,
     &hs_method_d708b141,
     &hs_method_9f421042,
+    &hs_method_a006de23,
     &hs_method_101ae5c4,
     &hs_method_c35a967d,
     &hs_method_a99ace1c,

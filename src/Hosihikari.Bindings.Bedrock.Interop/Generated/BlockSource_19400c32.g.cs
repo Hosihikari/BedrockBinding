@@ -672,9 +672,11 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_ff6ae668((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'WeakRef<BlockSource>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getWeakRef() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'WeakRef<BlockSource>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getWeakRef()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_d9692e38((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public nint getWritableChunk(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg0)
     {

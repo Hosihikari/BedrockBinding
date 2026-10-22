@@ -903,9 +903,11 @@ public sealed unsafe partial class Actor : global::System.IDisposable
     public nint getEntityLocNameString_886bdd03() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'StackRefResult<EntityRegistry>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getEntityRegistry() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'StackRefResult<EntityRegistry>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getEntityRegistry()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_6be13426((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public nint getEntityTerrainInterlockData()
     {
@@ -1551,9 +1553,11 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_f214d53a((void*)_handle, arg0));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'WeakRef<EntityContext> const' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getWeakEntity() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'WeakRef<EntityContext> const' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getWeakEntity()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_8aa828da((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public float getYHeadRot()
     {
