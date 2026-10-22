@@ -89,7 +89,7 @@ public sealed unsafe partial class ChunkPos : global::System.IDisposable
 
     public bool isWithinBounds(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1)
     {
-        return NativeMethods.TablePtr->hs_method_a5d15abc((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->hs_method_a5d15abc((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 toBlockSpaceVec3(float arg0)

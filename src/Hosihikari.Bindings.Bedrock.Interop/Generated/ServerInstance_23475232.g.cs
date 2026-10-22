@@ -62,12 +62,12 @@ public sealed unsafe partial class ServerInstance
 
     public bool enableItemStackNetManager()
     {
-        return NativeMethods.TablePtr->hs_method_b5a043a5((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_b5a043a5((void*)_handle) != 0;
     }
 
     public static bool forceOffClientChunkGeneration(global::Hosihikari.Bindings.Bedrock.Interop.LevelData arg0)
     {
-        return NativeMethods.TablePtr->hs_method_d66ba14c((void*)arg0.Handle);
+        return NativeMethods.TablePtr->hs_method_d66ba14c((void*)arg0.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::NonOwnerPointer<CDNConfig>' requires --link-carrier or --virtual-dispatch.", false)]
@@ -102,7 +102,7 @@ public sealed unsafe partial class ServerInstance
 
     public bool isRealmsStoriesEnabled()
     {
-        return NativeMethods.TablePtr->hs_method_101ae5c4((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_101ae5c4((void*)_handle) != 0;
     }
 
     public void leaveGameSync()

@@ -211,12 +211,12 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
 
     public bool hasItemStackNetId()
     {
-        return NativeMethods.TablePtr->hs_method_e8e83943((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_e8e83943((void*)_handle) != 0;
     }
 
     public bool inventoryTick(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, int arg2, bool arg3)
     {
-        return NativeMethods.TablePtr->hs_method_dfbab32a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3);
+        return NativeMethods.TablePtr->hs_method_dfbab32a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
@@ -228,12 +228,12 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
 
     public bool matchesAndNetIdVariantMatches(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
     {
-        return NativeMethods.TablePtr->hs_method_c1c60790((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->hs_method_c1c60790((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool matchesNetIdVariant(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
     {
-        return NativeMethods.TablePtr->hs_method_aa70e90e((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->hs_method_aa70e90e((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -285,7 +285,7 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
 
     public bool sameItemAndAuxAndBlockData(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
     {
-        return NativeMethods.TablePtr->hs_method_9821a35f((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->hs_method_9821a35f((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public void serverInitNetId()

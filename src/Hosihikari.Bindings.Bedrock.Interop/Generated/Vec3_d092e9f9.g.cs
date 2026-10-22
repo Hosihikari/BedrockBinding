@@ -163,12 +163,12 @@ public sealed unsafe partial class Vec3 : global::System.IDisposable
 
     public bool isNan()
     {
-        return NativeMethods.TablePtr->hs_method_f6794748((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_f6794748((void*)_handle) != 0;
     }
 
     public bool isNear(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, float arg1)
     {
-        return NativeMethods.TablePtr->hs_method_8276bb87((void*)_handle, (void*)arg0.Handle, arg1);
+        return NativeMethods.TablePtr->hs_method_8276bb87((void*)_handle, (void*)arg0.Handle, arg1) != 0;
     }
 
     public float length()

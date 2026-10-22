@@ -58,22 +58,22 @@ public sealed unsafe partial class AppPlatform
 
     public bool allowBetaXblSignIn()
     {
-        return NativeMethods.TablePtr->hs_method_3d8488aa((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_3d8488aa((void*)_handle) != 0;
     }
 
     public bool allowContentLogWriteToDisk()
     {
-        return NativeMethods.TablePtr->hs_method_99660a0d((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_99660a0d((void*)_handle) != 0;
     }
 
     public bool allowsResourcePackDevelopment()
     {
-        return NativeMethods.TablePtr->hs_method_c4cbc0ff((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_c4cbc0ff((void*)_handle) != 0;
     }
 
     public bool areThreadsFrozen()
     {
-        return NativeMethods.TablePtr->hs_method_3b00cd45((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_3b00cd45((void*)_handle) != 0;
     }
 
     public void buyGame()
@@ -101,23 +101,23 @@ public sealed unsafe partial class AppPlatform
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_480ae40e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->hs_method_480ae40e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
     public bool canManageLegacyData()
     {
-        return NativeMethods.TablePtr->hs_method_f41dee6a((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_f41dee6a((void*)_handle) != 0;
     }
 
     public bool canMigrateWorldData()
     {
-        return NativeMethods.TablePtr->hs_method_e3570776((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_e3570776((void*)_handle) != 0;
     }
 
     public bool canSwapVRMode(bool arg0)
     {
-        return NativeMethods.TablePtr->hs_method_4ad21303((void*)_handle, arg0);
+        return NativeMethods.TablePtr->hs_method_4ad21303((void*)_handle, arg0) != 0;
     }
 
     public int checkLicense()
@@ -145,18 +145,20 @@ public sealed unsafe partial class AppPlatform
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_ebe16daf((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->hs_method_ebe16daf((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
     public bool copyAssetFile(nint arg0, nint arg1)
     {
-        return NativeMethods.TablePtr->hs_method_9a24db66((void*)_handle, (void*)arg0, (void*)arg1);
+        return NativeMethods.TablePtr->hs_method_9a24db66((void*)_handle, (void*)arg0, (void*)arg1) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint copyImportFileToTempFolder(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.");
+    public string copyImportFileToTempFolder(nint arg0)
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_df6c0cb5((void*)_handle, (void*)arg0);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::FileAccessType' is not a known bindable declaration.", false)]
     public nint createLoggingStorageArea(nint arg0, nint arg1) =>
@@ -178,7 +180,7 @@ public sealed unsafe partial class AppPlatform
 
     public bool doesLANRequireMultiplayerRestrictions()
     {
-        return NativeMethods.TablePtr->hs_method_835f8f9a((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_835f8f9a((void*)_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -200,9 +202,11 @@ public sealed unsafe partial class AppPlatform
         return (nint)NativeMethods.TablePtr->hs_method_6edd25e0((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getAssetFileFullPath(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.");
+    public string getAssetFileFullPath(nint arg0)
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_26d11506((void*)_handle, (void*)arg0);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     public string[] getBroadcastAddresses()
     {
@@ -225,13 +229,17 @@ public sealed unsafe partial class AppPlatform
         return NativeMethods.TablePtr->hs_method_70891d6b((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getCacheStoragePath() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.");
+    public string getCacheStoragePath()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_7b04ecc3((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getCatalogSearchScratchPath() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.");
+    public string getCatalogSearchScratchPath()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_c2c1c55b((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     public string getClientUpdateUrl()
     {
@@ -239,9 +247,11 @@ public sealed unsafe partial class AppPlatform
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getCurrentStoragePath() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.");
+    public string getCurrentStoragePath()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_99fe2a60((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     public int getDefaultInputMode()
     {
@@ -346,30 +356,38 @@ public sealed unsafe partial class AppPlatform
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getInternalPackStoragePath() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.");
+    public string getInternalPackStoragePath()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_cbb5d125((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getInternalStoragePath() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.");
+    public string getInternalStoragePath()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_ca6263c1((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     public bool getIsRunningInAppCenter()
     {
-        return NativeMethods.TablePtr->hs_method_18705296((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_18705296((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getLevelInfoCachePath() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.");
+    public string getLevelInfoCachePath()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_1d4a2361((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
     public nint getLevelSaveInterval() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getLoggingPath() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.");
+    public string getLoggingPath()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_49747bcc((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     public ulong getLowPhysicalMemoryThreshold()
     {
@@ -431,13 +449,17 @@ public sealed unsafe partial class AppPlatform
         return NativeMethods.TablePtr->hs_method_0c6a2a28((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getOnDiskPackScratchPath() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.");
+    public string getOnDiskPackScratchPath()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_010fcb2a((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getOnDiskScratchPath() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.");
+    public string getOnDiskScratchPath()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_ed3657da((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'OperationMode' is not supported.", false)]
     public nint getOperationMode() =>
@@ -458,9 +480,11 @@ public sealed unsafe partial class AppPlatform
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getPackagedShaderCachePath() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.");
+    public string getPackagedShaderCachePath()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_b3058b9a((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     public nint getPlatformRuntimeInformation()
     {
@@ -475,12 +499,12 @@ public sealed unsafe partial class AppPlatform
 
     public bool getPlatformTTSEnabled()
     {
-        return NativeMethods.TablePtr->hs_method_d8e0f07e((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_d8e0f07e((void*)_handle) != 0;
     }
 
     public bool getPlatformTTSExists()
     {
-        return NativeMethods.TablePtr->hs_method_9f6aa4c3((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_9f6aa4c3((void*)_handle) != 0;
     }
 
     public int getPlatformType()
@@ -492,9 +516,11 @@ public sealed unsafe partial class AppPlatform
     public nint getRenderSurfaceParameters() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<HWND__*,std::monostate>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getScratchPath() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.");
+    public string getScratchPath()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_31888e3e((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     public int getScreenHeight()
     {
@@ -514,13 +540,17 @@ public sealed unsafe partial class AppPlatform
     public nint getSecureStorageKey(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'SecureStorageKey' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getSettingsPath() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.");
+    public string getSettingsPath()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_233a5038((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getShaderCachePath() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.");
+    public string getShaderCachePath()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_7cf53c08((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     public float getStoreNetworkFailureTimeout()
     {
@@ -559,17 +589,23 @@ public sealed unsafe partial class AppPlatform
         return NativeMethods.TablePtr->hs_method_f9ecf2f7((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getUserStorageRootPath() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.");
+    public string getUserStorageRootPath()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_0d38106b((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getUserdataPath() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.");
+    public string getUserdataPath()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_e8a8b85c((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getUserdataPathForLevels() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.");
+    public string getUserdataPathForLevels()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_5f2271b5((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     public int getVRControllerType()
     {
@@ -588,42 +624,42 @@ public sealed unsafe partial class AppPlatform
 
     public bool hasAssetFile(nint arg0)
     {
-        return NativeMethods.TablePtr->hs_method_db6fe80b((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_db6fe80b((void*)_handle, (void*)arg0) != 0;
     }
 
     public bool hasBuyButtonWhenInvalidLicense()
     {
-        return NativeMethods.TablePtr->hs_method_663f7e1d((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_663f7e1d((void*)_handle) != 0;
     }
 
     public bool hasFastAlphaTest()
     {
-        return NativeMethods.TablePtr->hs_method_17591078((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_17591078((void*)_handle) != 0;
     }
 
     public bool hasIDEProfiler()
     {
-        return NativeMethods.TablePtr->hs_method_520ca19d((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_520ca19d((void*)_handle) != 0;
     }
 
     public bool hasJournalingFilesystem()
     {
-        return NativeMethods.TablePtr->hs_method_e852f7f4((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_e852f7f4((void*)_handle) != 0;
     }
 
     public bool hasMulticastReceivePermission()
     {
-        return NativeMethods.TablePtr->hs_method_bcb630fa((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_bcb630fa((void*)_handle) != 0;
     }
 
     public bool hasPlatformSpecificInvites()
     {
-        return NativeMethods.TablePtr->hs_method_c5a220cd((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_c5a220cd((void*)_handle) != 0;
     }
 
     public bool hasSeparatedStorageAreasForContentAcquisition()
     {
-        return NativeMethods.TablePtr->hs_method_baf2fe2b((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_baf2fe2b((void*)_handle) != 0;
     }
 
     public void hideSplashScreen()
@@ -633,7 +669,7 @@ public sealed unsafe partial class AppPlatform
 
     public bool importAsFlatFile()
     {
-        return NativeMethods.TablePtr->hs_method_a1350d10((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_a1350d10((void*)_handle) != 0;
     }
 
     public void initAppPlatformNetworkSettings()
@@ -663,139 +699,139 @@ public sealed unsafe partial class AppPlatform
 
     public bool isAutoCompactionEnabled()
     {
-        return NativeMethods.TablePtr->hs_method_fabcaf1a((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_fabcaf1a((void*)_handle) != 0;
     }
 
     public bool isCentennial()
     {
-        return NativeMethods.TablePtr->hs_method_0b2d632a((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_0b2d632a((void*)_handle) != 0;
     }
 
     public bool isContentAutoUpdateAllowed()
     {
-        return NativeMethods.TablePtr->hs_method_f1733720((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_f1733720((void*)_handle) != 0;
     }
 
     public bool isCrossPlatformToggleVisible()
     {
-        return NativeMethods.TablePtr->hs_method_0de9f606((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_0de9f606((void*)_handle) != 0;
     }
 
     public bool isDisplayInitialized()
     {
-        return NativeMethods.TablePtr->hs_method_113c95ec((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_113c95ec((void*)_handle) != 0;
     }
 
     public bool isDownloadAndImportBlocking()
     {
-        return NativeMethods.TablePtr->hs_method_e316e44f((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_e316e44f((void*)_handle) != 0;
     }
 
     public bool isDownloadBuffered()
     {
-        return NativeMethods.TablePtr->hs_method_50b61ca5((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_50b61ca5((void*)_handle) != 0;
     }
 
     public bool isEduMode()
     {
-        return NativeMethods.TablePtr->hs_method_dcf933d1((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_dcf933d1((void*)_handle) != 0;
     }
 
     public bool isFireTV()
     {
-        return NativeMethods.TablePtr->hs_method_fa84d91b((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_fa84d91b((void*)_handle) != 0;
     }
 
     public bool isInternetAvailable()
     {
-        return NativeMethods.TablePtr->hs_method_b0216e7c((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_b0216e7c((void*)_handle) != 0;
     }
 
     public bool isJoinableViaExternalServers()
     {
-        return NativeMethods.TablePtr->hs_method_0c809945((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_0c809945((void*)_handle) != 0;
     }
 
     public bool isLANAllowed()
     {
-        return NativeMethods.TablePtr->hs_method_0319e69a((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_0319e69a((void*)_handle) != 0;
     }
 
     public bool isLANAvailable()
     {
-        return NativeMethods.TablePtr->hs_method_18094258((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_18094258((void*)_handle) != 0;
     }
 
     public bool isLowMemoryDevice()
     {
-        return NativeMethods.TablePtr->hs_method_3e24fd3e((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_3e24fd3e((void*)_handle) != 0;
     }
 
     public bool isLowPhysicalMemoryDevice()
     {
-        return NativeMethods.TablePtr->hs_method_fc0fdb3a((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_fc0fdb3a((void*)_handle) != 0;
     }
 
     public bool isNetworkAllowed()
     {
-        return NativeMethods.TablePtr->hs_method_5950bfcb((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_5950bfcb((void*)_handle) != 0;
     }
 
     public bool isNetworkAvailable()
     {
-        return NativeMethods.TablePtr->hs_method_cbaea9bc((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_cbaea9bc((void*)_handle) != 0;
     }
 
     public bool isNetworkEnabled(bool arg0)
     {
-        return NativeMethods.TablePtr->hs_method_b4d4363c((void*)_handle, arg0);
+        return NativeMethods.TablePtr->hs_method_b4d4363c((void*)_handle, arg0) != 0;
     }
 
     public bool isNetworkThrottled()
     {
-        return NativeMethods.TablePtr->hs_method_8c3c0f8e((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_8c3c0f8e((void*)_handle) != 0;
     }
 
     public bool? isOnWifiConnectionTelemetryValue()
     {
         var __hs_hasValue = false;
         var __hs_value = NativeMethods.TablePtr->hs_method_396420c8((void*)_handle, &__hs_hasValue);
-        return __hs_hasValue ? __hs_value : (bool?)null;
+        return __hs_hasValue ? __hs_value != 0 : (bool?)null;
     }
 
     public bool isQuitCapable()
     {
-        return NativeMethods.TablePtr->hs_method_886879e0((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_886879e0((void*)_handle) != 0;
     }
 
     public bool isRealmsEnabled()
     {
-        return NativeMethods.TablePtr->hs_method_93c0510c((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_93c0510c((void*)_handle) != 0;
     }
 
     public bool isTelemetryAllowed()
     {
-        return NativeMethods.TablePtr->hs_method_b8ed05d5((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_b8ed05d5((void*)_handle) != 0;
     }
 
     public bool isTerminating()
     {
-        return NativeMethods.TablePtr->hs_method_b2fe21f6((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_b2fe21f6((void*)_handle) != 0;
     }
 
     public bool isTrialWorldsTransferToFullGameAllowed()
     {
-        return NativeMethods.TablePtr->hs_method_a0d0d0b9((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_a0d0d0b9((void*)_handle) != 0;
     }
 
     public bool isWebviewSupported()
     {
-        return NativeMethods.TablePtr->hs_method_dc372098((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_dc372098((void*)_handle) != 0;
     }
 
     public bool isWin10Arm()
     {
-        return NativeMethods.TablePtr->hs_method_75152b6f((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_75152b6f((void*)_handle) != 0;
     }
 
     public void launchLegacyVersion()
@@ -838,22 +874,22 @@ public sealed unsafe partial class AppPlatform
 
     public bool minimizeBackgroundDownloads()
     {
-        return NativeMethods.TablePtr->hs_method_868793a1((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_868793a1((void*)_handle) != 0;
     }
 
     public bool multiplayerRequiresPremiumAccess()
     {
-        return NativeMethods.TablePtr->hs_method_7fef6ee8((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_7fef6ee8((void*)_handle) != 0;
     }
 
     public bool multiplayerRequiresUGCEnabled()
     {
-        return NativeMethods.TablePtr->hs_method_928a8991((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_928a8991((void*)_handle) != 0;
     }
 
     public bool notifyControllerConnectionStateChange()
     {
-        return NativeMethods.TablePtr->hs_method_fe6c7761((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_fe6c7761((void*)_handle) != 0;
     }
 
     public void notifyNetworkConfigurationChanged()
@@ -883,7 +919,7 @@ public sealed unsafe partial class AppPlatform
 
     public bool platformRequiresControllerApplet()
     {
-        return NativeMethods.TablePtr->hs_method_60df0686((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_60df0686((void*)_handle) != 0;
     }
 
     public string readAssetFile(nint arg0)
@@ -930,7 +966,7 @@ public sealed unsafe partial class AppPlatform
 
     public bool reloadRenderResourcesOnResume()
     {
-        return NativeMethods.TablePtr->hs_method_5d8d76c8((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_5d8d76c8((void*)_handle) != 0;
     }
 
     public void removeListener(global::Hosihikari.Bindings.Bedrock.Interop.AppPlatformListener? arg0)
@@ -965,22 +1001,22 @@ public sealed unsafe partial class AppPlatform
 
     public bool requireControllerAtStartup()
     {
-        return NativeMethods.TablePtr->hs_method_964a29d7((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_964a29d7((void*)_handle) != 0;
     }
 
     public bool requiresAutoSaveIconExplanationPopup()
     {
-        return NativeMethods.TablePtr->hs_method_bc5c6b31((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_bc5c6b31((void*)_handle) != 0;
     }
 
     public bool requiresLiveGoldForMultiplayer()
     {
-        return NativeMethods.TablePtr->hs_method_d663cb86((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_d663cb86((void*)_handle) != 0;
     }
 
     public bool requiresXboxLiveSigninToPlay()
     {
-        return NativeMethods.TablePtr->hs_method_db4c7b71((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_db4c7b71((void*)_handle) != 0;
     }
 
     public void restartApp(bool arg0)
@@ -990,12 +1026,12 @@ public sealed unsafe partial class AppPlatform
 
     public bool restartRequested()
     {
-        return NativeMethods.TablePtr->hs_method_c0ce3271((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_c0ce3271((void*)_handle) != 0;
     }
 
     public bool saveTreatmentPacksAsZips()
     {
-        return NativeMethods.TablePtr->hs_method_441c70eb((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_441c70eb((void*)_handle) != 0;
     }
 
     public void setARVRPlatform(int arg0)
@@ -1135,17 +1171,17 @@ public sealed unsafe partial class AppPlatform
 
     public bool shouldPauseDownloadsWhenEnterGame()
     {
-        return NativeMethods.TablePtr->hs_method_984c5802((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_984c5802((void*)_handle) != 0;
     }
 
     public bool shouldRegisterForXboxLiveNotifications()
     {
-        return NativeMethods.TablePtr->hs_method_650588a4((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_650588a4((void*)_handle) != 0;
     }
 
     public bool shouldRemoveGraphicsDeviceOnAppTermination()
     {
-        return NativeMethods.TablePtr->hs_method_259ac741((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_259ac741((void*)_handle) != 0;
     }
 
     public void showDialog(int arg0)
@@ -1212,57 +1248,57 @@ public sealed unsafe partial class AppPlatform
 
     public bool supportsAutoSaveOnDBCompaction()
     {
-        return NativeMethods.TablePtr->hs_method_88a787a1((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_88a787a1((void*)_handle) != 0;
     }
 
     public bool supportsClientUpdate()
     {
-        return NativeMethods.TablePtr->hs_method_56f4773f((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_56f4773f((void*)_handle) != 0;
     }
 
     public bool supportsDayOneExperience()
     {
-        return NativeMethods.TablePtr->hs_method_515929d2((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_515929d2((void*)_handle) != 0;
     }
 
     public bool supportsFliteTTS()
     {
-        return NativeMethods.TablePtr->hs_method_2d7ab36c((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_2d7ab36c((void*)_handle) != 0;
     }
 
     public bool supportsInPackageRecursion()
     {
-        return NativeMethods.TablePtr->hs_method_67dace77((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_67dace77((void*)_handle) != 0;
     }
 
     public bool supportsLaunchingLegacyVersion()
     {
-        return NativeMethods.TablePtr->hs_method_8ae84425((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_8ae84425((void*)_handle) != 0;
     }
 
     public bool supportsLegacySinglePremiumCacheDirectory()
     {
-        return NativeMethods.TablePtr->hs_method_592dcd69((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_592dcd69((void*)_handle) != 0;
     }
 
     public bool supportsVRModeSwap()
     {
-        return NativeMethods.TablePtr->hs_method_2f4a5147((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_2f4a5147((void*)_handle) != 0;
     }
 
     public bool supportsVibration()
     {
-        return NativeMethods.TablePtr->hs_method_a10146e1((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_a10146e1((void*)_handle) != 0;
     }
 
     public bool supportsWorldShare()
     {
-        return NativeMethods.TablePtr->hs_method_c227d665((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_c227d665((void*)_handle) != 0;
     }
 
     public bool supportsXboxLiveAchievements()
     {
-        return NativeMethods.TablePtr->hs_method_b11ac22d((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_b11ac22d((void*)_handle) != 0;
     }
 
     public void teardown()
@@ -1295,32 +1331,32 @@ public sealed unsafe partial class AppPlatform
 
     public bool useAppPlatformForTelemetryIPAddress()
     {
-        return NativeMethods.TablePtr->hs_method_1ebdae45((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_1ebdae45((void*)_handle) != 0;
     }
 
     public bool useNativeStoreForRealmsPurchase()
     {
-        return NativeMethods.TablePtr->hs_method_1f103dce((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_1f103dce((void*)_handle) != 0;
     }
 
     public bool usePlatformProfilePicturesOnly()
     {
-        return NativeMethods.TablePtr->hs_method_eae5f3c1((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_eae5f3c1((void*)_handle) != 0;
     }
 
     public bool useXboxControlHelpers()
     {
-        return NativeMethods.TablePtr->hs_method_62f5be88((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_62f5be88((void*)_handle) != 0;
     }
 
     public bool usesAsyncOptionSaving()
     {
-        return NativeMethods.TablePtr->hs_method_a7e9febf((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_a7e9febf((void*)_handle) != 0;
     }
 
     public bool usesHDRBrightness()
     {
-        return NativeMethods.TablePtr->hs_method_456709c8((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_456709c8((void*)_handle) != 0;
     }
 
     public void vibrate(int arg0)

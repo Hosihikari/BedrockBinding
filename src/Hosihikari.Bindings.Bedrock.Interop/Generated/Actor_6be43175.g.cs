@@ -110,7 +110,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool add(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
     {
-        return NativeMethods.TablePtr->hs_method_18ea892b((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->hs_method_18ea892b((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public void addCategory(nint arg0)
@@ -170,7 +170,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_bb69d97a((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->hs_method_bb69d97a((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
@@ -186,7 +186,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool attack(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, nint arg1)
     {
-        return NativeMethods.TablePtr->hs_method_7d3e8e14((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        return NativeMethods.TablePtr->hs_method_7d3e8e14((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
     }
 
     public void baseTick()
@@ -242,117 +242,117 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool canAddPassenger(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {
-        return NativeMethods.TablePtr->hs_method_90284819((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->hs_method_90284819((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool canAttack(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, bool arg1)
     {
-        return NativeMethods.TablePtr->hs_method_3fc3ed8c((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1);
+        return NativeMethods.TablePtr->hs_method_3fc3ed8c((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1) != 0;
     }
 
     public bool canBeAffected(uint arg0)
     {
-        return NativeMethods.TablePtr->hs_method_484fda27((void*)_handle, arg0);
+        return NativeMethods.TablePtr->hs_method_484fda27((void*)_handle, arg0) != 0;
     }
 
     public bool canBeAffectedByArrow(global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance arg0)
     {
-        return NativeMethods.TablePtr->hs_method_f7570b70((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->hs_method_f7570b70((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool canBePulledIntoVehicle()
     {
-        return NativeMethods.TablePtr->hs_method_f8763eb9((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_f8763eb9((void*)_handle) != 0;
     }
 
     public bool canBeginOrContinueClimbingLadder()
     {
-        return NativeMethods.TablePtr->hs_method_b21391ca((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_b21391ca((void*)_handle) != 0;
     }
 
     public bool canChangeDimensionsUsingPortal()
     {
-        return NativeMethods.TablePtr->hs_method_7b33a8b0((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_7b33a8b0((void*)_handle) != 0;
     }
 
     public bool canCurrentlySwim()
     {
-        return NativeMethods.TablePtr->hs_method_25f1bab0((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_25f1bab0((void*)_handle) != 0;
     }
 
     public bool canDestroyBlock(nint arg0)
     {
-        return NativeMethods.TablePtr->hs_method_8fd02361((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_8fd02361((void*)_handle, (void*)arg0) != 0;
     }
 
     public bool canDisableShield()
     {
-        return NativeMethods.TablePtr->hs_method_fac4b441((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_fac4b441((void*)_handle) != 0;
     }
 
     public bool canFly()
     {
-        return NativeMethods.TablePtr->hs_method_a8a9e210((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_a8a9e210((void*)_handle) != 0;
     }
 
     public bool canFreeze()
     {
-        return NativeMethods.TablePtr->hs_method_926d8e27((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_926d8e27((void*)_handle) != 0;
     }
 
     public bool canInteractWithOtherEntitiesInGame()
     {
-        return NativeMethods.TablePtr->hs_method_ddd84317((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_ddd84317((void*)_handle) != 0;
     }
 
     public bool canMate(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {
-        return NativeMethods.TablePtr->hs_method_db396308((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->hs_method_db396308((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool canObstructSpawningAndBlockPlacement()
     {
-        return NativeMethods.TablePtr->hs_method_f5a40e28((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_f5a40e28((void*)_handle) != 0;
     }
 
     public bool canPickupItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
     {
-        return NativeMethods.TablePtr->hs_method_d0f4fb7e((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->hs_method_d0f4fb7e((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool canPowerJump()
     {
-        return NativeMethods.TablePtr->hs_method_b20e9dd5((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_b20e9dd5((void*)_handle) != 0;
     }
 
     public bool canReceiveMobEffectsFromGameplay()
     {
-        return NativeMethods.TablePtr->hs_method_397af56c((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_397af56c((void*)_handle) != 0;
     }
 
     public bool canSee(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {
-        return NativeMethods.TablePtr->hs_method_91435c7d((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->hs_method_91435c7d((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool canSee(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
     {
-        return NativeMethods.TablePtr->hs_method_177343ef((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->hs_method_177343ef((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool canSeeDaylight()
     {
-        return NativeMethods.TablePtr->hs_method_48f78ec0((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_48f78ec0((void*)_handle) != 0;
     }
 
     public bool canShowNameTag()
     {
-        return NativeMethods.TablePtr->hs_method_1f3354cf((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_1f3354cf((void*)_handle) != 0;
     }
 
     public bool canSynchronizeNewEntity()
     {
-        return NativeMethods.TablePtr->hs_method_db8fc79d((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_db8fc79d((void*)_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ActorDamageSource' is not a known bindable declaration.", false)]
@@ -395,12 +395,12 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool closerThan(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, float arg1)
     {
-        return NativeMethods.TablePtr->hs_method_bf5a1240((void*)_handle, (void*)arg0.Handle, arg1);
+        return NativeMethods.TablePtr->hs_method_bf5a1240((void*)_handle, (void*)arg0.Handle, arg1) != 0;
     }
 
     public bool closerThan(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, float arg1, float arg2)
     {
-        return NativeMethods.TablePtr->hs_method_f804d222((void*)_handle, (void*)arg0.Handle, arg1, arg2);
+        return NativeMethods.TablePtr->hs_method_f804d222((void*)_handle, (void*)arg0.Handle, arg1, arg2) != 0;
     }
 
     public void consumeItem(nint arg0, int arg1)
@@ -410,7 +410,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool consumeTotem()
     {
-        return NativeMethods.TablePtr->hs_method_885772a4((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_885772a4((void*)_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'UpdateEquipPacket' requires --link-carrier or --virtual-dispatch.", false)]
@@ -473,7 +473,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool doFireHurt(int arg0)
     {
-        return NativeMethods.TablePtr->hs_method_6cabef77((void*)_handle, arg0);
+        return NativeMethods.TablePtr->hs_method_6cabef77((void*)_handle, arg0) != 0;
     }
 
     public void doWaterSplashEffect()
@@ -483,7 +483,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool drop(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, bool arg1)
     {
-        return NativeMethods.TablePtr->hs_method_87b220d5((void*)_handle, (void*)arg0.Handle, arg1);
+        return NativeMethods.TablePtr->hs_method_87b220d5((void*)_handle, (void*)arg0.Handle, arg1) != 0;
     }
 
     public void dropLeash(bool arg0, bool arg1)
@@ -557,7 +557,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_6f33468a((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1);
+            return NativeMethods.TablePtr->hs_method_6f33468a((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1) != 0;
         }
     }
 
@@ -721,7 +721,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool getCanPickupItems()
     {
-        return NativeMethods.TablePtr->hs_method_9c636531((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_9c636531((void*)_handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ItemStack getCarriedItem()
@@ -746,7 +746,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool getChainedDamageEffects()
     {
-        return NativeMethods.TablePtr->hs_method_9b633acf((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_9b633acf((void*)_handle) != 0;
     }
 
     public int getChestSlots()
@@ -756,7 +756,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool getCollidableMob()
     {
-        return NativeMethods.TablePtr->hs_method_87160343((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_87160343((void*)_handle) != 0;
     }
 
     public int getColor()
@@ -786,7 +786,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool getDamageNearbyMobs()
     {
-        return NativeMethods.TablePtr->hs_method_5c25808a((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_5c25808a((void*)_handle) != 0;
     }
 
     public int getDeathTime()
@@ -991,7 +991,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool getFirstAvailableSeatPos(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
     {
-        return NativeMethods.TablePtr->hs_method_e591e898((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->hs_method_e591e898((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Actor? getFirstPassenger()
@@ -1046,7 +1046,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2)
     {
-        return NativeMethods.TablePtr->hs_method_9645d77f((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle);
+        return NativeMethods.TablePtr->hs_method_9645d77f((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle) != 0;
     }
 
     public float getInterpolatedBodyRot(float arg0)
@@ -1101,7 +1101,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool getIsExperienceDropEnabled()
     {
-        return NativeMethods.TablePtr->hs_method_9ebc4cad((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_9ebc4cad((void*)_handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_? getLastDeathDimension()
@@ -1439,7 +1439,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool getStatusFlag(int arg0)
     {
-        return NativeMethods.TablePtr->hs_method_1b4a4b6c((void*)_handle, arg0);
+        return NativeMethods.TablePtr->hs_method_1b4a4b6c((void*)_handle, arg0) != 0;
     }
 
     public int getStrength()
@@ -1491,7 +1491,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool getTradeInterest()
     {
-        return NativeMethods.TablePtr->hs_method_9c8c581c((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_9c8c581c((void*)_handle) != 0;
     }
 
     public nint getTradeOffers()
@@ -1590,22 +1590,22 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool hasAnyEffects()
     {
-        return NativeMethods.TablePtr->hs_method_72f82836((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_72f82836((void*)_handle) != 0;
     }
 
     public bool hasBeenHurtByMobInLastTicks(int arg0)
     {
-        return NativeMethods.TablePtr->hs_method_7225f50d((void*)_handle, arg0);
+        return NativeMethods.TablePtr->hs_method_7225f50d((void*)_handle, arg0) != 0;
     }
 
     public bool hasCategory(uint arg0)
     {
-        return NativeMethods.TablePtr->hs_method_e2b8e285((void*)_handle, arg0);
+        return NativeMethods.TablePtr->hs_method_e2b8e285((void*)_handle, arg0) != 0;
     }
 
     public bool hasComponent(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
     {
-        return NativeMethods.TablePtr->hs_method_075eb550((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->hs_method_075eb550((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -1627,68 +1627,68 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_87e1f3a5((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->hs_method_87e1f3a5((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
     public bool hasDiedBefore()
     {
-        return NativeMethods.TablePtr->hs_method_8005d722((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_8005d722((void*)_handle) != 0;
     }
 
     public bool hasDimension()
     {
-        return NativeMethods.TablePtr->hs_method_df14584f((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_df14584f((void*)_handle) != 0;
     }
 
     public bool hasEffect(global::Hosihikari.Bindings.Bedrock.Interop.MobEffect arg0)
     {
-        return NativeMethods.TablePtr->hs_method_f681ced1((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->hs_method_f681ced1((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool hasFamily(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
     {
-        return NativeMethods.TablePtr->hs_method_7ebb0c34((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->hs_method_7ebb0c34((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool hasFishingHook()
     {
-        return NativeMethods.TablePtr->hs_method_7ba69c1e((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_7ba69c1e((void*)_handle) != 0;
     }
 
     public bool hasLevel()
     {
-        return NativeMethods.TablePtr->hs_method_b0db211d((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_b0db211d((void*)_handle) != 0;
     }
 
     public bool hasPassenger()
     {
-        return NativeMethods.TablePtr->hs_method_7e1fdf05((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_7e1fdf05((void*)_handle) != 0;
     }
 
     public bool hasPersistingTrade()
     {
-        return NativeMethods.TablePtr->hs_method_005f6a94((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_005f6a94((void*)_handle) != 0;
     }
 
     public bool hasPlayerPassenger()
     {
-        return NativeMethods.TablePtr->hs_method_bd0affeb((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_bd0affeb((void*)_handle) != 0;
     }
 
     public bool hasPriorityAmmunition()
     {
-        return NativeMethods.TablePtr->hs_method_cb8278fc((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_cb8278fc((void*)_handle) != 0;
     }
 
     public bool hasRuntimeID()
     {
-        return NativeMethods.TablePtr->hs_method_8d61d3c8((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_8d61d3c8((void*)_handle) != 0;
     }
 
     public bool hasSaddle()
     {
-        return NativeMethods.TablePtr->hs_method_25b51d1d((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_25b51d1d((void*)_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -1710,33 +1710,33 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_f87ddc80((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->hs_method_f87ddc80((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
     public bool hasTags()
     {
-        return NativeMethods.TablePtr->hs_method_6912cec6((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_6912cec6((void*)_handle) != 0;
     }
 
     public bool hasTeleported()
     {
-        return NativeMethods.TablePtr->hs_method_7a7ae7c3((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_7a7ae7c3((void*)_handle) != 0;
     }
 
     public bool hasTotemEquipped()
     {
-        return NativeMethods.TablePtr->hs_method_e5ad89cc((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_e5ad89cc((void*)_handle) != 0;
     }
 
     public bool hasType(int arg0)
     {
-        return NativeMethods.TablePtr->hs_method_10a28ed6((void*)_handle, arg0);
+        return NativeMethods.TablePtr->hs_method_10a28ed6((void*)_handle, arg0) != 0;
     }
 
     public bool hasUniqueID()
     {
-        return NativeMethods.TablePtr->hs_method_a1555e56((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_a1555e56((void*)_handle) != 0;
     }
 
     public void heal(int arg0)
@@ -1751,7 +1751,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool hurt(nint arg0, float arg1, bool arg2, bool arg3)
     {
-        return NativeMethods.TablePtr->hs_method_e087ff4f((void*)_handle, (void*)arg0, arg1, arg2, arg3);
+        return NativeMethods.TablePtr->hs_method_e087ff4f((void*)_handle, (void*)arg0, arg1, arg2, arg3) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -1760,12 +1760,12 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool inCaravan()
     {
-        return NativeMethods.TablePtr->hs_method_7347323d((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_7347323d((void*)_handle) != 0;
     }
 
     public bool inDownwardFlowingLiquid()
     {
-        return NativeMethods.TablePtr->hs_method_b5c1812e((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_b5c1812e((void*)_handle) != 0;
     }
 
     public void initActorProperties()
@@ -1785,172 +1785,172 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool intersects(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
     {
-        return NativeMethods.TablePtr->hs_method_e863d92a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->hs_method_e863d92a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     public bool isActorLocationInMaterial(int arg0, uint arg1)
     {
-        return NativeMethods.TablePtr->hs_method_8ed1aff9((void*)_handle, arg0, arg1);
+        return NativeMethods.TablePtr->hs_method_8ed1aff9((void*)_handle, arg0, arg1) != 0;
     }
 
     public bool isAdventure()
     {
-        return NativeMethods.TablePtr->hs_method_46e2901b((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_46e2901b((void*)_handle) != 0;
     }
 
     public bool isAffectedByWaterBottle()
     {
-        return NativeMethods.TablePtr->hs_method_ff6f5094((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_ff6f5094((void*)_handle) != 0;
     }
 
     public bool isAlive()
     {
-        return NativeMethods.TablePtr->hs_method_134d7b4f((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_134d7b4f((void*)_handle) != 0;
     }
 
     public bool isAngry()
     {
-        return NativeMethods.TablePtr->hs_method_8867081c((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_8867081c((void*)_handle) != 0;
     }
 
     public bool isAttackableGamemode()
     {
-        return NativeMethods.TablePtr->hs_method_a966386d((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_a966386d((void*)_handle) != 0;
     }
 
     public bool isAutonomous()
     {
-        return NativeMethods.TablePtr->hs_method_962d810a((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_962d810a((void*)_handle) != 0;
     }
 
     public bool isBaby()
     {
-        return NativeMethods.TablePtr->hs_method_0f356fa8((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_0f356fa8((void*)_handle) != 0;
     }
 
     public bool isBlocking()
     {
-        return NativeMethods.TablePtr->hs_method_169611f4((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_169611f4((void*)_handle) != 0;
     }
 
     public bool isBodyRotationBlocked()
     {
-        return NativeMethods.TablePtr->hs_method_2bfb7fbd((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_2bfb7fbd((void*)_handle) != 0;
     }
 
     public bool isBreakingObstruction()
     {
-        return NativeMethods.TablePtr->hs_method_7295ff3f((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_7295ff3f((void*)_handle) != 0;
     }
 
     public bool isBribed()
     {
-        return NativeMethods.TablePtr->hs_method_bddcd274((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_bddcd274((void*)_handle) != 0;
     }
 
     public bool isCharged()
     {
-        return NativeMethods.TablePtr->hs_method_21d6bf65((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_21d6bf65((void*)_handle) != 0;
     }
 
     public bool isChested()
     {
-        return NativeMethods.TablePtr->hs_method_721cac3c((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_721cac3c((void*)_handle) != 0;
     }
 
     public bool isClientSide()
     {
-        return NativeMethods.TablePtr->hs_method_06947a7c((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_06947a7c((void*)_handle) != 0;
     }
 
     public bool isClimbing()
     {
-        return NativeMethods.TablePtr->hs_method_85fb7dd0((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_85fb7dd0((void*)_handle) != 0;
     }
 
     public bool isControlledByLocalInstance()
     {
-        return NativeMethods.TablePtr->hs_method_d2d62c15((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_d2d62c15((void*)_handle) != 0;
     }
 
     public bool isCreative()
     {
-        return NativeMethods.TablePtr->hs_method_b5e0412e((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_b5e0412e((void*)_handle) != 0;
     }
 
     public bool isDamageBlocked(nint arg0)
     {
-        return NativeMethods.TablePtr->hs_method_8ed55046((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_8ed55046((void*)_handle, (void*)arg0) != 0;
     }
 
     public bool isDancing()
     {
-        return NativeMethods.TablePtr->hs_method_44c01666((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_44c01666((void*)_handle) != 0;
     }
 
     public bool isDead()
     {
-        return NativeMethods.TablePtr->hs_method_d3dc6257((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_d3dc6257((void*)_handle) != 0;
     }
 
     public bool isDoorBreaker()
     {
-        return NativeMethods.TablePtr->hs_method_54884322((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_54884322((void*)_handle) != 0;
     }
 
     public bool isDoorOpener()
     {
-        return NativeMethods.TablePtr->hs_method_420d36a6((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_420d36a6((void*)_handle) != 0;
     }
 
     public bool isEnchanted()
     {
-        return NativeMethods.TablePtr->hs_method_2423cac7((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_2423cac7((void*)_handle) != 0;
     }
 
     public bool isFireImmune()
     {
-        return NativeMethods.TablePtr->hs_method_0d79d72a((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_0d79d72a((void*)_handle) != 0;
     }
 
     public bool isGlobal()
     {
-        return NativeMethods.TablePtr->hs_method_a5a27884((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_a5a27884((void*)_handle) != 0;
     }
 
     public bool isIgnited()
     {
-        return NativeMethods.TablePtr->hs_method_4d25cf48((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_4d25cf48((void*)_handle) != 0;
     }
 
     public bool isImmersedInWater()
     {
-        return NativeMethods.TablePtr->hs_method_f901afe6((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_f901afe6((void*)_handle) != 0;
     }
 
     public bool isImmobile()
     {
-        return NativeMethods.TablePtr->hs_method_a4bd2117((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_a4bd2117((void*)_handle) != 0;
     }
 
     public static bool isImmobile(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0)
     {
-        return NativeMethods.TablePtr->hs_method_62e07e8b((void*)arg0.Handle);
+        return NativeMethods.TablePtr->hs_method_62e07e8b((void*)arg0.Handle) != 0;
     }
 
     public bool isInClouds()
     {
-        return NativeMethods.TablePtr->hs_method_c8c59069((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_c8c59069((void*)_handle) != 0;
     }
 
     public bool isInContactWithWater()
     {
-        return NativeMethods.TablePtr->hs_method_4f2bbaa5((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_4f2bbaa5((void*)_handle) != 0;
     }
 
     public bool isInLava()
     {
-        return NativeMethods.TablePtr->hs_method_e9dc8cfc((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_e9dc8cfc((void*)_handle) != 0;
     }
 
     public static bool isInLiquid(uint arg0, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.AABB arg2, global::Hosihikari.Bindings.Bedrock.Interop.AABB[] arg3)
@@ -1964,118 +1964,118 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         fixed (nint* __hs_vectorHandleData3 = __hs_vectorHandles3)
         {
             var __hs_vectorData3 = (void**)__hs_vectorHandleData3;
-            return NativeMethods.TablePtr->hs_method_152567ba(arg0, (void*)arg1.Handle, (void*)arg2.Handle, __hs_vectorData3, (nuint)(arg3?.Length ?? 0));
+            return NativeMethods.TablePtr->hs_method_152567ba(arg0, (void*)arg1.Handle, (void*)arg2.Handle, __hs_vectorData3, (nuint)(arg3?.Length ?? 0)) != 0;
         }
     }
 
     public bool isInLove()
     {
-        return NativeMethods.TablePtr->hs_method_3edb74b9((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_3edb74b9((void*)_handle) != 0;
     }
 
     public bool isInPrecipitation()
     {
-        return NativeMethods.TablePtr->hs_method_e84ecf9b((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_e84ecf9b((void*)_handle) != 0;
     }
 
     public bool isInRain()
     {
-        return NativeMethods.TablePtr->hs_method_b39c8550((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_b39c8550((void*)_handle) != 0;
     }
 
     public bool isInScaffolding()
     {
-        return NativeMethods.TablePtr->hs_method_adb34aac((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_adb34aac((void*)_handle) != 0;
     }
 
     public bool isInSnow()
     {
-        return NativeMethods.TablePtr->hs_method_fc5f64a3((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_fc5f64a3((void*)_handle) != 0;
     }
 
     public bool isInThunderstorm()
     {
-        return NativeMethods.TablePtr->hs_method_49a2c852((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_49a2c852((void*)_handle) != 0;
     }
 
     public bool isInWall()
     {
-        return NativeMethods.TablePtr->hs_method_bda486d1((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_bda486d1((void*)_handle) != 0;
     }
 
     public bool isInWater()
     {
-        return NativeMethods.TablePtr->hs_method_4b2870c5((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_4b2870c5((void*)_handle) != 0;
     }
 
     public bool isInWaterOrRain()
     {
-        return NativeMethods.TablePtr->hs_method_de4a1bcf((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_de4a1bcf((void*)_handle) != 0;
     }
 
     public bool isInWorld()
     {
-        return NativeMethods.TablePtr->hs_method_948b1171((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_948b1171((void*)_handle) != 0;
     }
 
     public bool isInsidePortal()
     {
-        return NativeMethods.TablePtr->hs_method_a46629a0((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_a46629a0((void*)_handle) != 0;
     }
 
     public bool isInvertedHealAndHarm()
     {
-        return NativeMethods.TablePtr->hs_method_7768d19e((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_7768d19e((void*)_handle) != 0;
     }
 
     public bool isInvisible()
     {
-        return NativeMethods.TablePtr->hs_method_39f91973((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_39f91973((void*)_handle) != 0;
     }
 
     public bool isInvulnerableTo(nint arg0)
     {
-        return NativeMethods.TablePtr->hs_method_8126a088((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_8126a088((void*)_handle, (void*)arg0) != 0;
     }
 
     public bool isJumping()
     {
-        return NativeMethods.TablePtr->hs_method_94043173((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_94043173((void*)_handle) != 0;
     }
 
     public bool isLayingDown()
     {
-        return NativeMethods.TablePtr->hs_method_f7070198((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_f7070198((void*)_handle) != 0;
     }
 
     public bool isLeashed()
     {
-        return NativeMethods.TablePtr->hs_method_9e8ef859((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_9e8ef859((void*)_handle) != 0;
     }
 
     public bool isLocalPlayer()
     {
-        return NativeMethods.TablePtr->hs_method_5a3959ce((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_5a3959ce((void*)_handle) != 0;
     }
 
     public bool isMovedToLimbo()
     {
-        return NativeMethods.TablePtr->hs_method_c82afc27((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_c82afc27((void*)_handle) != 0;
     }
 
     public bool isMovedToUnloadedChunk()
     {
-        return NativeMethods.TablePtr->hs_method_174bb94c((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_174bb94c((void*)_handle) != 0;
     }
 
     public bool isMoving()
     {
-        return NativeMethods.TablePtr->hs_method_51f9ee62((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_51f9ee62((void*)_handle) != 0;
     }
 
     public bool isOnFire()
     {
-        return NativeMethods.TablePtr->hs_method_0bd5d061((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_0bd5d061((void*)_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -2084,97 +2084,97 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool isOnHotBlock()
     {
-        return NativeMethods.TablePtr->hs_method_d243b0be((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_d243b0be((void*)_handle) != 0;
     }
 
     public bool isOrphan()
     {
-        return NativeMethods.TablePtr->hs_method_4faffb46((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_4faffb46((void*)_handle) != 0;
     }
 
     public bool isOutOfControl()
     {
-        return NativeMethods.TablePtr->hs_method_af6d4367((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_af6d4367((void*)_handle) != 0;
     }
 
     public bool isOverScaffolding()
     {
-        return NativeMethods.TablePtr->hs_method_80e73fee((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_80e73fee((void*)_handle) != 0;
     }
 
     public bool isOverWater()
     {
-        return NativeMethods.TablePtr->hs_method_9911d361((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_9911d361((void*)_handle) != 0;
     }
 
     public bool isPacified()
     {
-        return NativeMethods.TablePtr->hs_method_b95ea4ca((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_b95ea4ca((void*)_handle) != 0;
     }
 
     public bool isPassenger(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {
-        return NativeMethods.TablePtr->hs_method_c12c1822((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->hs_method_c12c1822((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool isPersistent()
     {
-        return NativeMethods.TablePtr->hs_method_3d8e48b8((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_3d8e48b8((void*)_handle) != 0;
     }
 
     public bool isPlayer()
     {
-        return NativeMethods.TablePtr->hs_method_44c22411((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_44c22411((void*)_handle) != 0;
     }
 
     public bool isPlayingDead()
     {
-        return NativeMethods.TablePtr->hs_method_b585bc70((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_b585bc70((void*)_handle) != 0;
     }
 
     public bool isPowered()
     {
-        return NativeMethods.TablePtr->hs_method_a4ad34ea((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_a4ad34ea((void*)_handle) != 0;
     }
 
     public bool isRemotePlayer()
     {
-        return NativeMethods.TablePtr->hs_method_539a6632((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_539a6632((void*)_handle) != 0;
     }
 
     public bool isRemoved()
     {
-        return NativeMethods.TablePtr->hs_method_6665b286((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_6665b286((void*)_handle) != 0;
     }
 
     public bool isResting()
     {
-        return NativeMethods.TablePtr->hs_method_797bc297((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_797bc297((void*)_handle) != 0;
     }
 
     public bool isRiding()
     {
-        return NativeMethods.TablePtr->hs_method_78a82667((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_78a82667((void*)_handle) != 0;
     }
 
     public bool isRiding(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0)
     {
-        return NativeMethods.TablePtr->hs_method_655b7bd2((void*)_handle, (void*)(arg0?.Handle ?? 0));
+        return NativeMethods.TablePtr->hs_method_655b7bd2((void*)_handle, (void*)(arg0?.Handle ?? 0)) != 0;
     }
 
     public bool isSheared()
     {
-        return NativeMethods.TablePtr->hs_method_0ee2921f((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_0ee2921f((void*)_handle) != 0;
     }
 
     public bool isSilent()
     {
-        return NativeMethods.TablePtr->hs_method_a5e7ba9f((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_a5e7ba9f((void*)_handle) != 0;
     }
 
     public bool isSilentObserver()
     {
-        return NativeMethods.TablePtr->hs_method_a40d11c9((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_a40d11c9((void*)_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -2183,112 +2183,112 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool isSitting()
     {
-        return NativeMethods.TablePtr->hs_method_c2a4576c((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_c2a4576c((void*)_handle) != 0;
     }
 
     public bool isSleeping()
     {
-        return NativeMethods.TablePtr->hs_method_fe412777((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_fe412777((void*)_handle) != 0;
     }
 
     public bool isSneaking()
     {
-        return NativeMethods.TablePtr->hs_method_d4ae387b((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_d4ae387b((void*)_handle) != 0;
     }
 
     public bool isSpectator()
     {
-        return NativeMethods.TablePtr->hs_method_8a1b527e((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_8a1b527e((void*)_handle) != 0;
     }
 
     public bool isStanding()
     {
-        return NativeMethods.TablePtr->hs_method_aedec67d((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_aedec67d((void*)_handle) != 0;
     }
 
     public bool isSurfaceMob()
     {
-        return NativeMethods.TablePtr->hs_method_7fa32770((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_7fa32770((void*)_handle) != 0;
     }
 
     public bool isSurvival()
     {
-        return NativeMethods.TablePtr->hs_method_3d3f05c5((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_3d3f05c5((void*)_handle) != 0;
     }
 
     public bool isSwimmer()
     {
-        return NativeMethods.TablePtr->hs_method_7aceec37((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_7aceec37((void*)_handle) != 0;
     }
 
     public bool isSwimming()
     {
-        return NativeMethods.TablePtr->hs_method_f7692877((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_f7692877((void*)_handle) != 0;
     }
 
     public bool isTame()
     {
-        return NativeMethods.TablePtr->hs_method_62634fdc((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_62634fdc((void*)_handle) != 0;
     }
 
     public bool isTargetable()
     {
-        return NativeMethods.TablePtr->hs_method_817e0342((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_817e0342((void*)_handle) != 0;
     }
 
     public bool isTickingEntity()
     {
-        return NativeMethods.TablePtr->hs_method_f36e1b5e((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_f36e1b5e((void*)_handle) != 0;
     }
 
     public bool isTouchingDamageBlock()
     {
-        return NativeMethods.TablePtr->hs_method_2d32f9ef((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_2d32f9ef((void*)_handle) != 0;
     }
 
     public bool isTrading()
     {
-        return NativeMethods.TablePtr->hs_method_d4f46943((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_d4f46943((void*)_handle) != 0;
     }
 
     public bool isTrusting()
     {
-        return NativeMethods.TablePtr->hs_method_6c1d5c16((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_6c1d5c16((void*)_handle) != 0;
     }
 
     public bool isType(int arg0)
     {
-        return NativeMethods.TablePtr->hs_method_b5733d55((void*)_handle, arg0);
+        return NativeMethods.TablePtr->hs_method_b5733d55((void*)_handle, arg0) != 0;
     }
 
     public bool isUnderLiquid(uint arg0)
     {
-        return NativeMethods.TablePtr->hs_method_0f1d529a((void*)_handle, arg0);
+        return NativeMethods.TablePtr->hs_method_0f1d529a((void*)_handle, arg0) != 0;
     }
 
     public bool isUseNewTradeScreen()
     {
-        return NativeMethods.TablePtr->hs_method_c1c648dc((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_c1c648dc((void*)_handle) != 0;
     }
 
     public bool isValidTarget(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0)
     {
-        return NativeMethods.TablePtr->hs_method_ae32010a((void*)_handle, (void*)(arg0?.Handle ?? 0));
+        return NativeMethods.TablePtr->hs_method_ae32010a((void*)_handle, (void*)(arg0?.Handle ?? 0)) != 0;
     }
 
     public bool isWalker()
     {
-        return NativeMethods.TablePtr->hs_method_164ac762((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_164ac762((void*)_handle) != 0;
     }
 
     public bool isWearingLeatherArmor()
     {
-        return NativeMethods.TablePtr->hs_method_bffd29f4((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_bffd29f4((void*)_handle) != 0;
     }
 
     public bool isWorldBuilder()
     {
-        return NativeMethods.TablePtr->hs_method_48dcf866((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_48dcf866((void*)_handle) != 0;
     }
 
     public void kill()
@@ -2318,7 +2318,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool load(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg1)
     {
-        return NativeMethods.TablePtr->hs_method_1571fcaa((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->hs_method_1571fcaa((void*)_handle, (void*)arg0, (void*)arg1.Handle) != 0;
     }
 
     public void loadEntityFlags(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg1)
@@ -2378,7 +2378,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool onClimbableBlock()
     {
-        return NativeMethods.TablePtr->hs_method_36e5c5a0((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_36e5c5a0((void*)_handle) != 0;
     }
 
     public void onEffectRemoved(global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance arg0)
@@ -2510,7 +2510,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool pullInEntity(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {
-        return NativeMethods.TablePtr->hs_method_550baed7((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->hs_method_550baed7((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ActionEvent' is not a known bindable declaration.", false)]
@@ -2618,7 +2618,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_cf64f4b5((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->hs_method_cf64f4b5((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
@@ -2634,7 +2634,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool save(nint arg0)
     {
-        return NativeMethods.TablePtr->hs_method_5b32b771((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_5b32b771((void*)_handle, (void*)arg0) != 0;
     }
 
     public void saveEntityFlags(nint arg0)
@@ -3207,27 +3207,27 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool shouldDropDeathLoot()
     {
-        return NativeMethods.TablePtr->hs_method_2b4d8056((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_2b4d8056((void*)_handle) != 0;
     }
 
     public bool shouldOrphan(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
     {
-        return NativeMethods.TablePtr->hs_method_153fcba3((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->hs_method_153fcba3((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool shouldRender()
     {
-        return NativeMethods.TablePtr->hs_method_d9f44ccc((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_d9f44ccc((void*)_handle) != 0;
     }
 
     public bool shouldTick()
     {
-        return NativeMethods.TablePtr->hs_method_1522d088((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_1522d088((void*)_handle) != 0;
     }
 
     public bool shouldUpdateEffects()
     {
-        return NativeMethods.TablePtr->hs_method_b6c7597b((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_b6c7597b((void*)_handle) != 0;
     }
 
     public nint spawnAtLocation(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, float arg1)
@@ -3247,7 +3247,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool startRiding(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {
-        return NativeMethods.TablePtr->hs_method_6a31da6c((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->hs_method_6a31da6c((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public void startSpinAttack()
@@ -3314,7 +3314,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool tick(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
     {
-        return NativeMethods.TablePtr->hs_method_fef28c8a((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->hs_method_fef28c8a((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -3375,7 +3375,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool tryTeleportTo(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, bool arg1, bool arg2, int arg3, int arg4)
     {
-        return NativeMethods.TablePtr->hs_method_396762ab((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3, arg4);
+        return NativeMethods.TablePtr->hs_method_396762ab((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3, arg4) != 0;
     }
 
     public void updateAnimationComponentOnServer()
@@ -3415,22 +3415,22 @@ public sealed unsafe partial class Actor : global::System.IDisposable
 
     public bool useSaddle(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player? arg1)
     {
-        return NativeMethods.TablePtr->hs_method_4c7bc2be((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
+        return NativeMethods.TablePtr->hs_method_4c7bc2be((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0)) != 0;
     }
 
     public bool wasHurt()
     {
-        return NativeMethods.TablePtr->hs_method_6c36a064((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_6c36a064((void*)_handle) != 0;
     }
 
     public bool wasLastHitByPlayer()
     {
-        return NativeMethods.TablePtr->hs_method_00c32dd6((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_00c32dd6((void*)_handle) != 0;
     }
 
     public bool wasLoadedFromNBTThisFrame()
     {
-        return NativeMethods.TablePtr->hs_method_f1b92359((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_f1b92359((void*)_handle) != 0;
     }
 
     public void wobble()

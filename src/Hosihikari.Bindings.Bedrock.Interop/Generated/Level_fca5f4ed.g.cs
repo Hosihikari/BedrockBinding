@@ -152,7 +152,7 @@ public sealed unsafe partial class Level : global::System.IDisposable
 
     public bool blockNetworkIdsAreHashes()
     {
-        return NativeMethods.TablePtr->hs_method_4ffc97b5((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_4ffc97b5((void*)_handle) != 0;
     }
 
     public void broadcastActorEvent(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, byte arg1, int arg2)
@@ -197,17 +197,17 @@ public sealed unsafe partial class Level : global::System.IDisposable
 
     public bool canChangeDimension(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1)
     {
-        return NativeMethods.TablePtr->hs_method_eae410e3((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->hs_method_eae410e3((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     public bool canUseSkin(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg1, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg2, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg3)
     {
-        return NativeMethods.TablePtr->hs_method_526173e8((void*)_handle, (void*)arg0, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
+        return NativeMethods.TablePtr->hs_method_526173e8((void*)_handle, (void*)arg0, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle) != 0;
     }
 
     public bool copyAndLockMap(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg1)
     {
-        return NativeMethods.TablePtr->hs_method_0a65b25a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->hs_method_0a65b25a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     public int countUsersWithMatchingNetworkId(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0)
@@ -275,7 +275,7 @@ public sealed unsafe partial class Level : global::System.IDisposable
 
     public bool destroyBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, bool arg2)
     {
-        return NativeMethods.TablePtr->hs_method_b9e3b5da((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        return NativeMethods.TablePtr->hs_method_b9e3b5da((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2) != 0;
     }
 
     public void digestServerItemComponents(nint arg0)
@@ -300,17 +300,17 @@ public sealed unsafe partial class Level : global::System.IDisposable
 
     public bool explode(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, float arg3, bool arg4, bool arg5, float arg6, bool arg7)
     {
-        return NativeMethods.TablePtr->hs_method_9bd2f084((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), (void*)arg2.Handle, arg3, arg4, arg5, arg6, arg7);
+        return NativeMethods.TablePtr->hs_method_9bd2f084((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), (void*)arg2.Handle, arg3, arg4, arg5, arg6, arg7) != 0;
     }
 
     public bool explode(nint arg0)
     {
-        return NativeMethods.TablePtr->hs_method_611aac06((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_611aac06((void*)_handle, (void*)arg0) != 0;
     }
 
     public bool extinguishFire(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, byte arg2, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg3)
     {
-        return NativeMethods.TablePtr->hs_method_638bc07c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)(arg3?.Handle ?? 0));
+        return NativeMethods.TablePtr->hs_method_638bc07c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)(arg3?.Handle ?? 0)) != 0;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Actor? fetchEntity(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0, bool arg1)
@@ -649,7 +649,7 @@ public sealed unsafe partial class Level : global::System.IDisposable
 
     public bool getDisablePlayerInteractions()
     {
-        return NativeMethods.TablePtr->hs_method_ef4d5511((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_ef4d5511((void*)_handle) != 0;
     }
 
     public nint getEducationLevelSettings()
@@ -774,12 +774,12 @@ public sealed unsafe partial class Level : global::System.IDisposable
 
     public bool getLANBroadcast()
     {
-        return NativeMethods.TablePtr->hs_method_e27b66e2((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_e27b66e2((void*)_handle) != 0;
     }
 
     public bool getLANBroadcastIntent()
     {
-        return NativeMethods.TablePtr->hs_method_7ed96607((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_7ed96607((void*)_handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ getLastOrDefaultSpawnDimensionId(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0)
@@ -883,7 +883,7 @@ public sealed unsafe partial class Level : global::System.IDisposable
 
     public bool getMultiplayerGameIntent()
     {
-        return NativeMethods.TablePtr->hs_method_8b47f8bb((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_8b47f8bb((void*)_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::NonOwnerPointer<NetEventCallback>' requires --link-carrier or --virtual-dispatch.", false)]
@@ -1192,9 +1192,11 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_fef90675((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getScreenshotsFolder_36d859fe() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' requires --link-carrier or --virtual-dispatch.");
+    public string getScreenshotsFolder_36d859fe()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_36d859fe((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint getScreenshotsFolder_a33f2dda() =>
@@ -1242,7 +1244,7 @@ public sealed unsafe partial class Level : global::System.IDisposable
 
     public bool getSimPaused()
     {
-        return NativeMethods.TablePtr->hs_method_f9a27d91((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_f9a27d91((void*)_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PlayerSleepStatus' requires --link-carrier or --virtual-dispatch.", false)]
@@ -1320,7 +1322,7 @@ public sealed unsafe partial class Level : global::System.IDisposable
 
     public bool getTearingDown()
     {
-        return NativeMethods.TablePtr->hs_method_6069c89e((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_6069c89e((void*)_handle) != 0;
     }
 
     public nint getThreadRandom()
@@ -1455,37 +1457,37 @@ public sealed unsafe partial class Level : global::System.IDisposable
 
     public bool hasCommandsEnabled()
     {
-        return NativeMethods.TablePtr->hs_method_2997804b((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_2997804b((void*)_handle) != 0;
     }
 
     public bool hasLevelStorage()
     {
-        return NativeMethods.TablePtr->hs_method_f0754cf7((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_f0754cf7((void*)_handle) != 0;
     }
 
     public bool hasPlatformBroadcast()
     {
-        return NativeMethods.TablePtr->hs_method_0acfd4cb((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_0acfd4cb((void*)_handle) != 0;
     }
 
     public bool hasPlatformBroadcastIntent()
     {
-        return NativeMethods.TablePtr->hs_method_f0b46b8f((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_f0b46b8f((void*)_handle) != 0;
     }
 
     public bool hasStartWithMapEnabled()
     {
-        return NativeMethods.TablePtr->hs_method_c33ff454((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_c33ff454((void*)_handle) != 0;
     }
 
     public bool hasXBLBroadcast()
     {
-        return NativeMethods.TablePtr->hs_method_a9eaf9a9((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_a9eaf9a9((void*)_handle) != 0;
     }
 
     public bool hasXBLBroadcastIntent()
     {
-        return NativeMethods.TablePtr->hs_method_7bca4eb3((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_7bca4eb3((void*)_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -1530,7 +1532,7 @@ public sealed unsafe partial class Level : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_ebcc2a27((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1, (void*)(arg2?.Handle ?? 0), (void*)arg3, (void*)arg4);
+            return NativeMethods.TablePtr->hs_method_ebcc2a27((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1, (void*)(arg2?.Handle ?? 0), (void*)arg3, (void*)arg4) != 0;
         }
     }
 
@@ -1541,27 +1543,27 @@ public sealed unsafe partial class Level : global::System.IDisposable
 
     public bool isClientSide()
     {
-        return NativeMethods.TablePtr->hs_method_4f99c9f7((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_4f99c9f7((void*)_handle) != 0;
     }
 
     public bool isClientSideGenerationEnabled()
     {
-        return NativeMethods.TablePtr->hs_method_018f087b((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_018f087b((void*)_handle) != 0;
     }
 
     public bool isEditorWorld()
     {
-        return NativeMethods.TablePtr->hs_method_41def93f((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_41def93f((void*)_handle) != 0;
     }
 
     public bool isEdu()
     {
-        return NativeMethods.TablePtr->hs_method_5f0114ae((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_5f0114ae((void*)_handle) != 0;
     }
 
     public bool isExporting()
     {
-        return NativeMethods.TablePtr->hs_method_9a047cef((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_9a047cef((void*)_handle) != 0;
     }
 
     public int isFree(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg4, int arg5)
@@ -1571,22 +1573,22 @@ public sealed unsafe partial class Level : global::System.IDisposable
 
     public bool isLeaveGameDone()
     {
-        return NativeMethods.TablePtr->hs_method_0bde2579((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_0bde2579((void*)_handle) != 0;
     }
 
     public bool isMultiplayerGame()
     {
-        return NativeMethods.TablePtr->hs_method_497d48a0((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_497d48a0((void*)_handle) != 0;
     }
 
     public bool isPlayerSuspended(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
     {
-        return NativeMethods.TablePtr->hs_method_94034763((void*)_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->hs_method_94034763((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public static bool isUsableLevel(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0)
     {
-        return NativeMethods.TablePtr->hs_method_367ceb6d((void*)arg0.Handle);
+        return NativeMethods.TablePtr->hs_method_367ceb6d((void*)arg0.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
@@ -2103,12 +2105,12 @@ public sealed unsafe partial class Level : global::System.IDisposable
 
     public bool use3DBiomeMaps()
     {
-        return NativeMethods.TablePtr->hs_method_8cbd2792((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_8cbd2792((void*)_handle) != 0;
     }
 
     public bool useMsaGamertagsOnly()
     {
-        return NativeMethods.TablePtr->hs_method_7fcc69a3((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_7fcc69a3((void*)_handle) != 0;
     }
 
 
