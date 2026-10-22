@@ -1,0 +1,63 @@
+name: verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  managed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: IR contract
+        uses: actions/checkout@v4
+        with:
+          repository: Hosihikari/Bindings.Ir
+          path: Bindings.Ir
+
+      - name: Generator
+        uses: actions/checkout@v4
+        with:
+          repository: Hosihikari/Bindings.Generator
+          path: Bindings.Generator
+
+      - name: ABI contract
+        uses: actions/checkout@v4
+        with:
+          repository: Hosihikari/Bindings.Abi
+          path: Bindings.Abi
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Build
+        run: dotnet build Hosihikari.Bindings.Bedrock.slnx -c Release -p:AbiProjectPath=${{ github.workspace }}/Bindings.Abi/src/Hosihikari.Bindings.Abi/Hosihikari.Bindings.Abi.csproj
+
+      - name: Verify generated sources
+        run: python3 scripts/verify_generated.py
+
+      - name: Validate coverage contract
+        run: dotnet run --project Bindings.Generator/src/Hosihikari.Bindings.Generator/Hosihikari.Bindings.Generator.csproj -c Release -- validate-coverage coverage/summary.json coverage/manifest.jsonl
+
+  native-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Linux shim
+        run: |
+          chmod +x native/BindingShim/build.sh
+          ./native/BindingShim/build.sh \
+            --configuration linux-x64-server \
+            --output artifacts/native/libHosihikari.Bindings.Bedrock.Shim.so
+
+  native-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Windows shim
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File native/BindingShim/build.ps1 -Configuration win-x64-server -Output artifacts/native/Hosihikari.Bindings.Bedrock.Shim.dll
