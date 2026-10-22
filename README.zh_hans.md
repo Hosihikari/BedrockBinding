@@ -11,7 +11,7 @@ Hosihikari 绑定项目的 **Bedrock / MCAPI** 表面：生成的、贴近原生
 ## 当前状态
 
 - Interop：`src/Hosihikari.Bindings.Bedrock.Interop/Generated/` 下 84 个生成的 C# 文件。
-- BindingShim：`native/BindingShim/generated/win-x64-server/bedrock/` 与 `native/BindingShim/generated/linux-x64-server/bedrock/` 各 1,355 个函数。
+- BindingShim：`native/BindingShim/generated/win-x64-server/bedrock/` 与 `native/BindingShim/generated/linux-x64-server/bedrock/` 各 1,375 个函数。
 - 覆盖：两个配置合计绑定 322 个声明与 3,635 个成员。
 
 shim 以 `--symbol-dispatch` 模式发射。支持的 ABI：
@@ -21,9 +21,11 @@ shim 以 `--symbol-dispatch` 模式发射。支持的 ABI：
 - 单层 `T*` / `T&`，以 `void*` 传递；
 - 按值 record：小的 `triviallyCopyable` record 走整数寄存器，较大 record 走栈上临时区与隐藏返回缓冲区；只有平凡析构的 record（`AABB`、`Vec2`、`Brightness`）按字节复制，但因用户提供的拷贝构造而对调用 ABI 非平凡，始终使用隐藏引用；非平凡析构 record 使用其拷贝构造与析构符号；
 - `optional_ref<T>` 参数与返回使用存在标志；
-- `std::vector<T>` 参数与按值返回，元素支持标量/枚举、字符串、单层指针，或 layout 已知且平凡析构的 record；引用与指针 vector 返回仍是借用句柄。
+- `std::vector<T>` 参数与按值返回，元素支持标量/枚举、字符串、单层指针（以 `nint[]` 传入），或 layout 已知且平凡析构的 record；引用与指针 vector 返回仍是借用句柄；
+- `std::optional<T>` 参数与返回，支持标量、字符串与 trivially copyable record；record payload 使用 layout 兼容的 blob，返回的 record 成为拥有包装；
+- `std::shared_ptr<T>` 参数与返回，由 shim holder 持有一个共享引用；`std::weak_ptr<T>` 返回锁定一次形成强快照，过期时为空。
 
-map、`std::optional`、`shared_ptr`、回调、variant、自定义拥有型包装，以及缺少可解析拷贝/析构符号的 record 保留 Interop stub。
+map 需要具名 key/value 类型与匹配的 hash/equality functor，符号流不携带这些信息。回调、variant、自定义拥有型包装，以及缺少可解析拷贝/析构符号的 record 保留 Interop stub。
 
 ## 生成
 

@@ -11,7 +11,7 @@ The **Bedrock / MCAPI** surface for the Hosihikari bindings: a generated native-
 ## Current state
 
 - Interop: 84 generated C# files under `src/Hosihikari.Bindings.Bedrock.Interop/Generated/`.
-- BindingShim: 1,355 functions in each of `native/BindingShim/generated/win-x64-server/bedrock/` and `native/BindingShim/generated/linux-x64-server/bedrock/`.
+- BindingShim: 1,375 functions in each of `native/BindingShim/generated/win-x64-server/bedrock/` and `native/BindingShim/generated/linux-x64-server/bedrock/`.
 - Coverage: 322 declarations and 3,635 members bound across both configurations.
 
 The shim is emitted in `--symbol-dispatch` mode. Supported ABI:
@@ -21,9 +21,11 @@ The shim is emitted in `--symbol-dispatch` mode. Supported ABI:
 - single-level `T*` / `T&` as `void*`;
 - by-value records: small `triviallyCopyable` records travel in integer registers, larger records use a stack temporary and the hidden return buffer, and records that are only trivially destructible (`AABB`, `Vec2`, `Brightness`) are copied as bytes but always use the hidden-reference convention because a user-provided copy constructor makes them non-trivial for calls; non-trivial destructible records use their copy-constructor and destructor symbols;
 - `optional_ref<T>` parameters and results with the presence flag;
-- `std::vector<T>` parameters and by-value results whose element is a scalar/enum, a string, a single-level pointer, or a trivially destructible record with a recorded layout; reference and pointer vector results remain borrowed handles.
+- `std::vector<T>` parameters and by-value results whose element is a scalar/enum, a string, a single-level pointer (surfacing as `nint[]`), or a trivially destructible record with a recorded layout; reference and pointer vector results remain borrowed handles;
+- `std::optional<T>` parameters and results over scalars, strings, and trivially copyable records; record payloads use a layout-compatible blob and returned records become owned wrappers;
+- `std::shared_ptr<T>` parameters and results, which keep one shared reference alive in a shim holder; `std::weak_ptr<T>` results are locked once into a strong snapshot and surface as null when expired.
 
-Maps, `std::optional`, `shared_ptr`, callbacks, variants, custom owning wrappers, and records without resolvable copy/destructor symbols remain Interop stubs.
+Maps require named key/value types and matching hash/equality functors, which the symbol stream does not carry. Callbacks, variants, custom owning wrappers, and records without resolvable copy/destructor symbols remain Interop stubs.
 
 ## Generate
 

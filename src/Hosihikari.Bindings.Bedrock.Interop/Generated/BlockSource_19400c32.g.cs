@@ -266,9 +266,15 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'BlockActor*' is not supported.", false)]
-    public void fetchBlockEntities(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'BlockActor*' is not supported.");
+    public void fetchBlockEntities(global::Hosihikari.Bindings.Bedrock.Interop.AABB arg0, nint[] arg1, bool arg2)
+    {
+        var __hs_vectorItems1 = arg1 ?? global::System.Array.Empty<nint>();
+        fixed (nint* __hs_vectorHandleData1 = __hs_vectorItems1)
+        {
+            var __hs_vectorData1 = (void**)__hs_vectorHandleData1;
+            NativeMethods.TablePtr->hs_method_cbca976b((void*)_handle, (void*)arg0.Handle, arg2, __hs_vectorData1, (nuint)(arg1?.Length ?? 0));
+        }
+    }
 
     public bool fetchBlocks(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1)
     {
@@ -307,9 +313,20 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
     public nint fetchBlocksInCylinderSorted_846fae67(nint centerPos, uint radius, uint height, nint predicate) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public nint fetchCollisionShapes(nint arg0, bool arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+    public nint fetchCollisionShapes(global::Hosihikari.Bindings.Bedrock.Interop.AABB arg0, bool arg1, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext? arg2, global::Hosihikari.Bindings.Bedrock.Interop.AABB[] arg3)
+    {
+        var __hs_vectorItems3 = arg3;
+        var __hs_vectorHandles3 = new nint[__hs_vectorItems3?.Length ?? 0];
+        for (var __hs_i3 = 0; __hs_i3 < __hs_vectorHandles3.Length; __hs_i3++)
+        {
+            __hs_vectorHandles3[__hs_i3] = __hs_vectorItems3![__hs_i3]?.Handle ?? 0;
+        }
+        fixed (nint* __hs_vectorHandleData3 = __hs_vectorHandles3)
+        {
+            var __hs_vectorData3 = (void**)__hs_vectorHandleData3;
+            return (nint)NativeMethods.TablePtr->hs_method_9114ec4e((void*)_handle, (void*)arg0.Handle, arg1, (void*)(arg2?.Handle ?? 0), __hs_vectorData3, (nuint)(arg3?.Length ?? 0), arg2 is not null);
+        }
+    }
 
     public void fetchCollisionShapes(global::Hosihikari.Bindings.Bedrock.Interop.AABB[] arg0, global::Hosihikari.Bindings.Bedrock.Interop.AABB arg1, bool arg2, nint? arg3, global::Hosihikari.Bindings.Bedrock.Interop.AABB[] arg4)
     {
@@ -406,9 +423,10 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_8cf59a05((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2, (void*)arg3, arg4, arg5, (void*)arg6, (void*)(arg7?.Handle ?? 0));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter type is not supported by symbol dispatch.", false)]
-    public void fireBlockEntityAboutToBeRemoved(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter type is not supported by symbol dispatch.");
+    public void fireBlockEntityAboutToBeRemoved(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    {
+        NativeMethods.TablePtr->hs_method_cb655f30((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
 
     public void fireBlockEntityChanged(nint arg0)
     {
@@ -864,9 +882,11 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_23e85ae4((void*)_handle, arg0, arg1, arg2);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
-    public nint removeBlockEntity(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? removeBlockEntity(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_2b7b261a((void*)_handle, (void*)arg0.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public void removeFromRandomTickingQueue(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1)
     {
@@ -888,9 +908,10 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_1b3ed58f((void*)_handle, (void*)arg0.Handle, (void*)arg1, arg2, (void*)arg3, (void*)(arg4?.Handle ?? 0));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter type is not supported by symbol dispatch.", false)]
-    public bool setBlock(nint arg0, nint arg1, int arg2, nint arg3, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter type is not supported by symbol dispatch.");
+    public bool setBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1, int arg2, global::Hosihikari.Bindings.Abi.SharedHandle? arg3, nint arg4, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg5)
+    {
+        return NativeMethods.TablePtr->hs_method_6db71cc7((void*)_handle, (void*)arg0.Handle, (void*)arg1, arg2, arg3?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)arg4, (void*)(arg5?.Handle ?? 0));
+    }
 
     public bool setBlock(int arg0, int arg1, int arg2, nint arg3, int arg4, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg5)
     {

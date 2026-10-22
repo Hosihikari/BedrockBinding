@@ -89,9 +89,10 @@ public sealed unsafe partial class Level : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_ae55263c((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter type is not supported by symbol dispatch.", false)]
-    public void addChunkViewTracker(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter type is not supported by symbol dispatch.");
+    public void addChunkViewTracker(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    {
+        NativeMethods.TablePtr->hs_method_c2280280((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
     public nint addDisplayEntity(nint arg0, nint arg1) =>
@@ -130,9 +131,10 @@ public sealed unsafe partial class Level : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_3379c5ca((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle, arg3, arg4, arg5);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter type is not supported by symbol dispatch.", false)]
-    public void addTickingAreaList(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter type is not supported by symbol dispatch.");
+    public void addTickingAreaList(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1)
+    {
+        NativeMethods.TablePtr->hs_method_e3879428((void*)_handle, (void*)arg0.Handle, arg1?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
     public void addUser(nint arg0) =>
@@ -286,9 +288,10 @@ public sealed unsafe partial class Level : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_c242413e((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void entityChangeDimension(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+    public void entityChangeDimension(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3? arg2)
+    {
+        NativeMethods.TablePtr->hs_method_6be4684c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0), arg2 is not null);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID expandMapByID(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0, bool arg1)
     {
@@ -527,9 +530,11 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_58592259((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::weak_ptr<BlockTypeRegistry>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getBlockRegistry() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::weak_ptr<BlockTypeRegistry>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getBlockRegistry()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_0b1f4638((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::not_null<Bedrock::NonOwnerPointer<BossEventSubscriptionManager>>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getBossEventSubscriptionManager() =>
@@ -1348,21 +1353,29 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_fb94ebd2((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::weak_ptr<TrimMaterialRegistry const>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getTrimMaterialRegistry_d9044123() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::weak_ptr<TrimMaterialRegistry const>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getTrimMaterialRegistry_d9044123()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_d9044123((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::weak_ptr<TrimMaterialRegistry>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getTrimMaterialRegistry_59ddccb2() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::weak_ptr<TrimMaterialRegistry>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getTrimMaterialRegistry_59ddccb2()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_59ddccb2((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::weak_ptr<TrimPatternRegistry const>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getTrimPatternRegistry_0841eb03() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::weak_ptr<TrimPatternRegistry const>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getTrimPatternRegistry_0841eb03()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_0841eb03((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::weak_ptr<TrimPatternRegistry>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getTrimPatternRegistry_b5c9b109() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::weak_ptr<TrimPatternRegistry>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getTrimPatternRegistry_b5c9b109()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_b5c9b109((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::NonOwnerPointer<IUnknownBlockTypeRegistry>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getUnknownBlockTypeRegistry() =>
@@ -1763,9 +1776,11 @@ public sealed unsafe partial class Level : global::System.IDisposable
     public void requestPlayerChangeDimension(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
-    public nint requestTimedStorageDeferment() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? requestTimedStorageDeferment()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_92fa8f00((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public void resumePlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
     {

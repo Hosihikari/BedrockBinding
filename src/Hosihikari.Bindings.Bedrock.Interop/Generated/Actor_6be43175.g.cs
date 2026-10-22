@@ -1104,13 +1104,19 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_9ebc4cad((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'AutomaticID<Dimension,int>' is not supported.", false)]
-    public nint getLastDeathDimension() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'AutomaticID<Dimension,int>' is not supported.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_? getLastDeathDimension()
+    {
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->hs_method_6360d7c7((void*)_handle, &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_((nint)__hs_handle) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'BlockPos' is not supported.", false)]
-    public nint getLastDeathPos() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'BlockPos' is not supported.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? getLastDeathPos()
+    {
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->hs_method_7633040b((void*)_handle, &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Mob? getLastHurtByMob()
     {
@@ -3329,9 +3335,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_705628f9((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
     public nint tryGetEquippableSlotForItem(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Actor? tryGetFromComponent_7080ca4d(nint arg0, bool arg1)
     {
