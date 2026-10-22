@@ -4109,17 +4109,13 @@ static void* hs_method_6360d7c7(void* hs_self, bool* hs_hasValue) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    using HsTypedResult = std::optional<hs_blob<4, 4>>;
-    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
-    using HsFn = void (*)(void*, void*);
+    using HsFn = std::optional<hs_blob<4, 4>> (*)(void*);
     auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
-    hs_fn(static_cast<void*>(hs_typedStorage), hs_self);
-    auto& hs_result = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_result = hs_fn(hs_self);
     *hs_hasValue = hs_result.has_value();
-    if (!*hs_hasValue) { hs_result.~HsTypedResult(); return nullptr; }
+    if (!*hs_hasValue) { return nullptr; }
     auto* const hs_record = static_cast<void*>(::operator new(static_cast<std::size_t>(4), std::align_val_t(4)));
     std::memcpy(hs_record, hs_result->data, static_cast<std::size_t>(4));
-    hs_result.~HsTypedResult();
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -4142,17 +4138,13 @@ static void* hs_method_7633040b(void* hs_self, bool* hs_hasValue) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    using HsTypedResult = std::optional<hs_blob<12, 4>>;
-    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
-    using HsFn = void (*)(void*, void*);
+    using HsFn = std::optional<hs_blob<12, 4>> (*)(void*);
     auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
-    hs_fn(static_cast<void*>(hs_typedStorage), hs_self);
-    auto& hs_result = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_result = hs_fn(hs_self);
     *hs_hasValue = hs_result.has_value();
-    if (!*hs_hasValue) { hs_result.~HsTypedResult(); return nullptr; }
+    if (!*hs_hasValue) { return nullptr; }
     auto* const hs_record = static_cast<void*>(::operator new(static_cast<std::size_t>(12), std::align_val_t(4)));
     std::memcpy(hs_record, hs_result->data, static_cast<std::size_t>(12));
-    hs_result.~HsTypedResult();
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -16356,15 +16348,11 @@ static bool hs_method_396420c8(void* hs_self, bool* hs_hasValue) try
         setLastError("symbol was not resolved");
         return false;
     }
-    using HsTypedResult = std::optional<bool>;
-    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
-    using HsFn = void (*)(void*, void*);
+    using HsFn = std::optional<bool> (*)(void*);
     auto const hs_fn = reinterpret_cast<HsFn>(hs_target);
-    hs_fn(static_cast<void*>(hs_typedStorage), hs_self);
-    auto& hs_result = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    auto hs_result = hs_fn(hs_self);
     *hs_hasValue = hs_result.has_value();
     auto hs_value = hs_result ? static_cast<bool>(*hs_result) : bool{};
-    hs_result.~HsTypedResult();
     return hs_value;
 }
 catch (std::exception const& hs_error)
