@@ -46,14 +46,14 @@ public sealed unsafe partial class StructureFeature
         NativeMethods.TablePtr->hs_method_bc067711((void*)_handle, (void*)arg0.Handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos chunkStartAtSurfaceLevel(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1, int arg2)
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos chunkStartAtSurfaceLevel(global::Hosihikari.Bindings.Bedrock.Interop.IPreliminarySurfaceProvider arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1, int arg2)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_49ff9314((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg2));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_49ff9314((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2));
     }
 
-    public void createBlueprints(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1, nint arg2, nint arg3)
+    public void createBlueprints(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1, nint arg2, global::Hosihikari.Bindings.Bedrock.Interop.IPreliminarySurfaceProvider arg3)
     {
-        NativeMethods.TablePtr->hs_method_6dd7d1a5((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3);
+        NativeMethods.TablePtr->hs_method_6dd7d1a5((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3.Handle);
     }
 
     public void debugRender()

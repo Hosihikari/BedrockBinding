@@ -45,9 +45,9 @@ public sealed unsafe partial class ResourcePackManager
     public void clearStack(nint arg0, bool arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ResourcePackStackType' is not a known bindable declaration.");
 
-    public int composeFullStack(nint arg0, nint arg1, nint arg2, nint arg3)
+    public int composeFullStack(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackStack arg0, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackStack arg1, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackStack arg2, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackStack arg3)
     {
-        return NativeMethods.TablePtr->hs_method_af397282((void*)_handle, (void*)arg0, (void*)arg1, (void*)arg2, (void*)arg3);
+        return NativeMethods.TablePtr->hs_method_af397282((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.SemVersion getFullStackMinEngineVersion()
@@ -217,9 +217,9 @@ public sealed unsafe partial class ResourcePackManager
     public void setPackSourceReport(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'ResourcePackStack' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ResourcePackStackType' is not a known bindable declaration.", false)]
     public bool setStack(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'ResourcePackStack' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ResourcePackStackType' is not a known bindable declaration.");
 
     public void unRegisterResourcePackListener(nint arg0)
     {

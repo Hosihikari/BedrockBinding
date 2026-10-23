@@ -37,6 +37,139 @@ public sealed unsafe partial class Path : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Path Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_84078730();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Path((nint)handle);
+    }
+
+    public static Path Create(nint arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_80a7d66d((void*)arg0);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Path((nint)handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos currentPos()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_796bdcf7((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 currentPos(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_99d6ae5d((void*)_handle, (void*)(arg0?.Handle ?? 0)));
+    }
+
+    public bool endsInXZ(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_7e5c4ca0((void*)_handle, (void*)arg0.Handle) != 0;
+    }
+
+    public sbyte getCompletionType()
+    {
+        return NativeMethods.TablePtr->hs_method_7b0d81f0((void*)_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getEndPos()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_27f05c28((void*)_handle));
+    }
+
+    public ulong getIndex()
+    {
+        return NativeMethods.TablePtr->hs_method_d48fdb30((void*)_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getLastPos()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_a6a85d21((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getNodePos(ulong arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_24e83b17((void*)_handle, arg0), false);
+    }
+
+    public int getNodeType(ulong arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_651b09e7((void*)_handle, arg0);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getPos(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, ulong arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_07de7436((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1));
+    }
+
+    public ulong getSize()
+    {
+        return NativeMethods.TablePtr->hs_method_08fcd1a6((void*)_handle);
+    }
+
+    public bool isDone()
+    {
+        return NativeMethods.TablePtr->hs_method_297f4fd9((void*)_handle) != 0;
+    }
+
+    public bool isValid()
+    {
+        return NativeMethods.TablePtr->hs_method_92dfafec((void*)_handle) != 0;
+    }
+
+    public sbyte mCompletionType
+    {
+        get => NativeMethods.TablePtr->hs_get_2763e32d((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_2763e32d((void*)_handle, value);
+    }
+
+    public ulong mIndex
+    {
+        get => NativeMethods.TablePtr->hs_get_916ed217((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_916ed217((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mNodes
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Path? makeCopy()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_2915f9f9((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Path((nint)__hs_handle) : null;
+    }
+
+    public void next()
+    {
+        NativeMethods.TablePtr->hs_method_66e5a45f((void*)_handle);
+    }
+
+    public bool sameAs(global::Hosihikari.Bindings.Bedrock.Interop.Path? arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_bf129dd4((void*)_handle, (void*)(arg0?.Handle ?? 0)) != 0;
+    }
+
+    public void setIndex(ulong arg0)
+    {
+        NativeMethods.TablePtr->hs_method_10d94535((void*)_handle, arg0);
+    }
+
+    public void setSize(ulong arg0)
+    {
+        NativeMethods.TablePtr->hs_method_2499209e((void*)_handle, arg0);
+    }
+
+
 
     public void Dispose()
     {

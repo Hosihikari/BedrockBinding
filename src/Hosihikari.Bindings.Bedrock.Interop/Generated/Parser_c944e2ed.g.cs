@@ -89,9 +89,9 @@ public sealed unsafe partial class Parser
         NativeMethods.TablePtr->hs_method_b1e480be((void*)arg0, (void*)arg1, (void*)arg2, (void*)arg3);
     }
 
-    public static void parse_37274f37(nint arg0, nint arg1, nint arg2, nint arg3)
+    public static void parse(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.FilterGroup arg1, nint arg2, nint arg3)
     {
-        NativeMethods.TablePtr->hs_method_37274f37((void*)arg0, (void*)arg1, (void*)arg2, (void*)arg3);
+        NativeMethods.TablePtr->hs_method_37274f37((void*)arg0, (void*)arg1.Handle, (void*)arg2, (void*)arg3);
     }
 
     public static void parse_9b5c9dfd(nint arg0, nint arg1, nint arg2)

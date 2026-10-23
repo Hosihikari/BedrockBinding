@@ -61,9 +61,9 @@ public sealed unsafe partial class ResourcePackRepository
         NativeMethods.TablePtr->hs_method_d5e69adb((void*)_handle, (void*)arg0, (void*)arg1);
     }
 
-    public void addServicePacksToStack(nint arg0)
+    public void addServicePacksToStack(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackStack arg0)
     {
-        NativeMethods.TablePtr->hs_method_69cf9b29((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_69cf9b29((void*)_handle, (void*)arg0.Handle);
     }
 
     public void addWorldResourcePacks(nint arg0)
@@ -157,9 +157,9 @@ public sealed unsafe partial class ResourcePackRepository
         return (nint)NativeMethods.TablePtr->hs_method_c617bd13((void*)_handle);
     }
 
-    public nint getPackSourceFactory()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PackSourceFactory getPackSourceFactory()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d20a3527((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PackSourceFactory((nint)NativeMethods.TablePtr->hs_method_d20a3527((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PackCategory' is not a known bindable declaration.", false)]

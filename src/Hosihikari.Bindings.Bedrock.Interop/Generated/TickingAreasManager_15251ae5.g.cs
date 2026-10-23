@@ -125,9 +125,9 @@ public sealed unsafe partial class TickingAreasManager
         NativeMethods.TablePtr->hs_method_408136c7((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
-    public void registerForActorManagerEvents(nint arg0)
+    public void registerForActorManagerEvents(global::Hosihikari.Bindings.Bedrock.Interop.ActorManager arg0)
     {
-        NativeMethods.TablePtr->hs_method_70c69cb8((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_70c69cb8((void*)_handle, (void*)arg0.Handle);
     }
 
     public void registerForLevelStorageManagerEvents(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageManager arg0)

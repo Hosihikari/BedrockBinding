@@ -221,14 +221,14 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_6ebffa48((void*)_handle) != 0;
     }
 
-    public nint getBiomeRegistry_87558698()
+    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry getBiomeRegistry_87558698()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_87558698((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry((nint)NativeMethods.TablePtr->hs_method_87558698((void*)_handle), false);
     }
 
-    public nint getBiomeRegistry_748a3869()
+    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry getBiomeRegistry_748a3869()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_748a3869((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry((nint)NativeMethods.TablePtr->hs_method_748a3869((void*)_handle), false);
     }
 
     public nint getBlockEventDispatcher()
@@ -425,14 +425,15 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public nint getWeather()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Weather getWeather()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_be3ac873((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Weather((nint)NativeMethods.TablePtr->hs_method_be3ac873((void*)_handle), false);
     }
 
-    public nint getWorldGenerator()
+    public global::Hosihikari.Bindings.Bedrock.Interop.WorldGenerator? getWorldGenerator()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_e30e9d8b((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_e30e9d8b((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.WorldGenerator((nint)__hs_handle, false) : null;
     }
 
     public bool hasCeiling()

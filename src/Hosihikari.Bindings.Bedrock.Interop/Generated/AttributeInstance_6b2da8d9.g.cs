@@ -122,9 +122,9 @@ public sealed unsafe partial class AttributeInstance
         return NativeMethods.TablePtr->hs_method_da0e9c65((void*)_handle) != 0;
     }
 
-    public void inheritFrom(global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance arg0, nint arg1)
+    public void inheritFrom(global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.BaseAttributeMap? arg1)
     {
-        NativeMethods.TablePtr->hs_method_7c2c5037((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_7c2c5037((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
     }
 
     public bool isValid()

@@ -3,20 +3,20 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class N4Core8ObserverIN6Social26MultiplayerServiceObserverENS_18SingleThreadedLockEEE
+public sealed partial class IBackgroundTaskOwner
 {
     private nint _handle;
     private readonly bool _ownsHandle;
 
-    public N4Core8ObserverIN6Social26MultiplayerServiceObserverENS_18SingleThreadedLockEEE(nint handle) : this(handle, true) { }
+    public IBackgroundTaskOwner(nint handle) : this(handle, true) { }
 
-    internal N4Core8ObserverIN6Social26MultiplayerServiceObserverENS_18SingleThreadedLockEEE(nint handle, bool ownsHandle)
+    internal IBackgroundTaskOwner(nint handle, bool ownsHandle)
     {
         _handle = handle;
         _ownsHandle = ownsHandle;
     }
 
-    public static N4Core8ObserverIN6Social26MultiplayerServiceObserverENS_18SingleThreadedLockEEE Borrow(nint handle) => new N4Core8ObserverIN6Social26MultiplayerServiceObserverENS_18SingleThreadedLockEEE(handle, false);
+    public static IBackgroundTaskOwner Borrow(nint handle) => new IBackgroundTaskOwner(handle, false);
 
     public nint Handle => _handle;
 

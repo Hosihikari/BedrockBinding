@@ -600,9 +600,9 @@ public sealed unsafe partial class ServerNetworkHandler
         NativeMethods.TablePtr->hs_method_0cad11b5((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public void handle_39664c41(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.TextPacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_39664c41((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_39664c41((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void handle_cae00531(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)

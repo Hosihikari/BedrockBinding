@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class Connector
+public sealed unsafe partial class Connector
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -36,4 +36,103 @@ public sealed partial class Connector
         _handle = 0;
         return __hs_handle;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static Connector Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    public void addConnectionStateListener(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_bc097181((void*)_handle, (void*)arg0);
+    }
+
+    public nint getConnectedGameInfo()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_3634c1c4((void*)_handle);
+    }
+
+    public ushort getIPv4Port()
+    {
+        return NativeMethods.TablePtr->hs_method_7a54108f((void*)_handle);
+    }
+
+    public ushort getIPv6Port()
+    {
+        return NativeMethods.TablePtr->hs_method_8db82dec((void*)_handle);
+    }
+
+    public string getLocalIp()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_949e8908((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string[] getLocalIps()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_689d1306((void*)_handle);
+        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
+        }
+        return __hs_result;
+    }
+
+    public int getNetworkType()
+    {
+        return NativeMethods.TablePtr->hs_method_85f0e738((void*)_handle);
+    }
+
+    public ushort getPort()
+    {
+        return NativeMethods.TablePtr->hs_method_6e4b09bd((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'RakNet::SystemAddress' is not supported.", false)]
+    public nint getRefinedLocalIps() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'RakNet::SystemAddress' is not supported.");
+
+    public bool isIPv4Supported()
+    {
+        return NativeMethods.TablePtr->hs_method_ca61c9c7((void*)_handle) != 0;
+    }
+
+    public bool isIPv6Supported()
+    {
+        return NativeMethods.TablePtr->hs_method_67c0883e((void*)_handle) != 0;
+    }
+
+    public void removeConnectionStateListener(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_336c3cd7((void*)_handle, (void*)arg0);
+    }
+
+    public void setupNatPunch(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_65d3afa2((void*)_handle, arg0);
+    }
+
+    public void startNatPunchingClient(string arg0, ushort arg1)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->hs_method_8c1b9086((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

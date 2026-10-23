@@ -41,9 +41,9 @@ public sealed unsafe partial class Minecraft
     public static Minecraft Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7, nint arg8, nint arg9, nint arg10, nint arg11, nint arg12, nint arg13) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    public static void _tryCatchupMovementTicks(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry arg1)
+    public static void _tryCatchupMovementTicks(global::Hosihikari.Bindings.Bedrock.Interop.EntitySystems arg0, global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry arg1)
     {
-        NativeMethods.TablePtr->hs_method_579fe69f((void*)arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->hs_method_579fe69f((void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void activateAllowList()

@@ -70,9 +70,9 @@ public sealed unsafe partial class MinecraftCommands
         return new global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry((nint)NativeMethods.TablePtr->hs_method_e3c8d0e1((void*)_handle), false);
     }
 
-    public void handleOutput(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg0, nint arg1)
+    public void handleOutput(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput arg1)
     {
-        NativeMethods.TablePtr->hs_method_580cfaaf((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_580cfaaf((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public static void initBlockEnum(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg1)
@@ -84,9 +84,9 @@ public sealed unsafe partial class MinecraftCommands
     public void initCoreEnums(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    public void initCoreEnumsServer(nint arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Recipes arg2)
+    public void initCoreEnumsServer(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Recipes arg2)
     {
-        NativeMethods.TablePtr->hs_method_73d2c38b((void*)_handle, (void*)arg0, (void*)arg1, (void*)arg2.Handle);
+        NativeMethods.TablePtr->hs_method_73d2c38b((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle);
     }
 
     public static void initEntityEnum(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorFactory arg1, nint arg2)
@@ -126,9 +126,9 @@ public sealed unsafe partial class MinecraftCommands
     public nint requestCommandExecution(nint arg0, bool arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'MCRESULT' requires --link-carrier or --virtual-dispatch.");
 
-    public void runCommand(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg1)
+    public void runCommand(global::Hosihikari.Bindings.Bedrock.Interop.Command arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg1)
     {
-        NativeMethods.TablePtr->hs_method_645481f9((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->hs_method_645481f9((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void runCommand(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg1, int arg2)

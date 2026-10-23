@@ -101,9 +101,9 @@ public sealed unsafe partial class ServerLevel
         return (nint)NativeMethods.TablePtr->hs_method_8437bb26((void*)_handle);
     }
 
-    public nint getOrAddDynamicProperties()
+    public global::Hosihikari.Bindings.Bedrock.Interop.DynamicProperties getOrAddDynamicProperties()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d554553f((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DynamicProperties((nint)NativeMethods.TablePtr->hs_method_d554553f((void*)_handle), false);
     }
 
     public nint getPlayerSleepManager_7fad530c()
@@ -180,9 +180,9 @@ public sealed unsafe partial class ServerLevel
         NativeMethods.TablePtr->hs_method_6c634221((void*)_handle);
     }
 
-    public void runCommand(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg1, int arg2)
+    public void runCommand(global::Hosihikari.Bindings.Bedrock.Interop.Command arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg1, int arg2)
     {
-        NativeMethods.TablePtr->hs_method_15c85e0b((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg2);
+        NativeMethods.TablePtr->hs_method_15c85e0b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
     }
 
     public void runCommand(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg1, int arg2, int arg3)

@@ -304,9 +304,9 @@ public sealed unsafe partial class MobEffectInstance : global::System.IDisposabl
     public nint operator_assign_46626e80(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void removeEffects(nint arg0)
+    public void removeEffects(global::Hosihikari.Bindings.Bedrock.Interop.BaseAttributeMap arg0)
     {
-        NativeMethods.TablePtr->hs_method_7ce2b400((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_7ce2b400((void*)_handle, (void*)arg0.Handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? save()

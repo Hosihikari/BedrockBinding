@@ -163,9 +163,9 @@ public sealed unsafe partial class ActorFactory
     public static void registerEntityMapping_fbb0e980(nint arg0, bool arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'std::unique_ptr<Actor,std::default_delete<Actor>> (*const&)(ActorDefinitionGroup*,ActorDefinitionIdentifier const&,EntityContext&)' is not supported.");
 
-    public void setDefinitionGroup(nint arg0)
+    public void setDefinitionGroup(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup? arg0)
     {
-        NativeMethods.TablePtr->hs_method_be16dc8c((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_be16dc8c((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
     public void setEntityInitializer(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)

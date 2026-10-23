@@ -95,9 +95,9 @@ public sealed unsafe partial class LegacyStructureTemplate
         }
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Block _mapToData(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, nint arg1)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Block _mapToData(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings arg1)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_de2ab3c7((void*)arg0.Handle, (void*)arg1), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_de2ab3c7((void*)arg0.Handle, (void*)arg1.Handle), false);
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Block? _mapToProperty(string arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block arg2)
@@ -134,14 +134,14 @@ public sealed unsafe partial class LegacyStructureTemplate
         }
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos calculateConnectedPosition(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, nint arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3)
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos calculateConnectedPosition(global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_20f1789b((void*)_handle, (void*)arg0, (void*)arg1.Handle, (void*)arg2, (void*)arg3.Handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_20f1789b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle));
     }
 
-    public void finalizeBlockRules(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, nint arg2, global::Hosihikari.Bindings.Bedrock.Interop.Random arg3)
+    public void finalizeBlockRules(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings arg2, global::Hosihikari.Bindings.Bedrock.Interop.Random arg3)
     {
-        NativeMethods.TablePtr->hs_method_e5a6fc68((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3.Handle);
+        NativeMethods.TablePtr->hs_method_e5a6fc68((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'JigsawStructureBlockInfo' is not supported.", false)]
@@ -167,14 +167,14 @@ public sealed unsafe partial class LegacyStructureTemplate
         NativeMethods.TablePtr->hs_method_42a60327((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void placeInWorld(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, nint arg2, global::Hosihikari.Bindings.Bedrock.Interop.Random arg3)
+    public void placeInWorld(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings arg2, global::Hosihikari.Bindings.Bedrock.Interop.Random arg3)
     {
-        NativeMethods.TablePtr->hs_method_164b8d04((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3.Handle);
+        NativeMethods.TablePtr->hs_method_164b8d04((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
     }
 
-    public void placeInWorldChunk(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, nint arg2, global::Hosihikari.Bindings.Bedrock.Interop.Random arg3)
+    public void placeInWorldChunk(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings arg2, global::Hosihikari.Bindings.Bedrock.Interop.Random arg3)
     {
-        NativeMethods.TablePtr->hs_method_d2e3da8e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3.Handle);
+        NativeMethods.TablePtr->hs_method_d2e3da8e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.BlockPos transform(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, byte arg1, byte arg2)

@@ -103,9 +103,9 @@ public sealed unsafe partial class ServerScoreboard
         NativeMethods.TablePtr->hs_method_4e864d63((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void intializeWithActorManager(nint arg0)
+    public void intializeWithActorManager(global::Hosihikari.Bindings.Bedrock.Interop.ActorManager arg0)
     {
-        NativeMethods.TablePtr->hs_method_da4c0627((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_da4c0627((void*)_handle, (void*)arg0.Handle);
     }
 
     public void onObjectiveAdded(nint arg0)

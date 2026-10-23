@@ -100,14 +100,16 @@ public sealed unsafe partial class Recipes
         return NativeMethods.TablePtr->hs_method_a856d4dc((void*)_handle);
     }
 
-    public nint getRecipeByNetId(global::Hosihikari.Bindings.Bedrock.Interop.TypedServerNetId_RecipeNetIdTag_unsigned_int_0_ arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Recipe? getRecipeByNetId(global::Hosihikari.Bindings.Bedrock.Interop.TypedServerNetId_RecipeNetIdTag_unsigned_int_0_ arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_42d0b34a((void*)_handle, (void*)arg0.Handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_42d0b34a((void*)_handle, (void*)arg0.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Recipe((nint)__hs_handle, false) : null;
     }
 
-    public nint getRecipeFor(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Recipe? getRecipeFor(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg1)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d973b29c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_d973b29c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Recipe((nint)__hs_handle, false) : null;
     }
 
     public nint getRecipesAllTags()

@@ -56,9 +56,9 @@ public sealed unsafe partial class ContainerComponent
         NativeMethods.TablePtr->hs_method_96dd9549((void*)_handle, (void*)arg0.Handle);
     }
 
-    public bool addItem(nint arg0)
+    public bool addItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemActor arg0)
     {
-        return NativeMethods.TablePtr->hs_method_c432b6f6((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_c432b6f6((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool addItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
@@ -137,9 +137,9 @@ public sealed unsafe partial class ContainerComponent
         return __hs_result;
     }
 
-    public bool hasRoomForItem(nint arg0)
+    public bool hasRoomForItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemActor arg0)
     {
-        return NativeMethods.TablePtr->hs_method_d63dfc75((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_d63dfc75((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool hasRoomForItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)

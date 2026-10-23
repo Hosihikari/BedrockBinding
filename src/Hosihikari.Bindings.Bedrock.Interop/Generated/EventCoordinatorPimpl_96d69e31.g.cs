@@ -3,20 +3,20 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class N4Core8ObserverI15WebviewObserverNS_18SingleThreadedLockEEE
+public sealed partial class EventCoordinatorPimpl
 {
     private nint _handle;
     private readonly bool _ownsHandle;
 
-    public N4Core8ObserverI15WebviewObserverNS_18SingleThreadedLockEEE(nint handle) : this(handle, true) { }
+    public EventCoordinatorPimpl(nint handle) : this(handle, true) { }
 
-    internal N4Core8ObserverI15WebviewObserverNS_18SingleThreadedLockEEE(nint handle, bool ownsHandle)
+    internal EventCoordinatorPimpl(nint handle, bool ownsHandle)
     {
         _handle = handle;
         _ownsHandle = ownsHandle;
     }
 
-    public static N4Core8ObserverI15WebviewObserverNS_18SingleThreadedLockEEE Borrow(nint handle) => new N4Core8ObserverI15WebviewObserverNS_18SingleThreadedLockEEE(handle, false);
+    public static EventCoordinatorPimpl Borrow(nint handle) => new EventCoordinatorPimpl(handle, false);
 
     public nint Handle => _handle;
 

@@ -315,9 +315,9 @@ public sealed unsafe partial class ServerPlayer
         return (nint)NativeMethods.TablePtr->hs_method_bfa645ec((void*)_handle);
     }
 
-    public nint getItemStackNetManagerServer_42da66df()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemStackNetManagerServer getItemStackNetManagerServer_42da66df()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_42da66df((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStackNetManagerServer((nint)NativeMethods.TablePtr->hs_method_42da66df((void*)_handle), false);
     }
 
     public byte getMaxChunkBuildRadius()
@@ -325,9 +325,9 @@ public sealed unsafe partial class ServerPlayer
         return NativeMethods.TablePtr->hs_method_64ff8880((void*)_handle);
     }
 
-    public nint getPlayerEventCoordinator()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PlayerEventCoordinator getPlayerEventCoordinator()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_3766adf6((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerEventCoordinator((nint)NativeMethods.TablePtr->hs_method_3766adf6((void*)_handle), false);
     }
 
     public void handleActorPickRequestOnServer(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, bool arg1, bool arg2)
@@ -494,9 +494,9 @@ public sealed unsafe partial class ServerPlayer
         NativeMethods.TablePtr->hs_method_4fbc7205((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void refreshContainer(nint arg0)
+    public void refreshContainer(global::Hosihikari.Bindings.Bedrock.Interop.IContainerManager arg0)
     {
-        NativeMethods.TablePtr->hs_method_c959a9f2((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_c959a9f2((void*)_handle, (void*)arg0.Handle);
     }
 
     public void respawn()
@@ -558,9 +558,9 @@ public sealed unsafe partial class ServerPlayer
         NativeMethods.TablePtr->hs_method_a09dadec((void*)_handle, arg0, arg1);
     }
 
-    public void setContainerData(nint arg0, int arg1, int arg2)
+    public void setContainerData(global::Hosihikari.Bindings.Bedrock.Interop.IContainerManager arg0, int arg1, int arg2)
     {
-        NativeMethods.TablePtr->hs_method_5ffeb79b((void*)_handle, (void*)arg0, arg1, arg2);
+        NativeMethods.TablePtr->hs_method_5ffeb79b((void*)_handle, (void*)arg0.Handle, arg1, arg2);
     }
 
     public void setDamagedArmor(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1)
@@ -602,9 +602,9 @@ public sealed unsafe partial class ServerPlayer
         NativeMethods.TablePtr->hs_method_b7f67bb3((void*)_handle, arg0, arg1, arg2, arg3);
     }
 
-    public void slotChanged(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Container arg1, int arg2, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg3, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg4, bool arg5)
+    public void slotChanged(global::Hosihikari.Bindings.Bedrock.Interop.IContainerManager arg0, global::Hosihikari.Bindings.Bedrock.Interop.Container arg1, int arg2, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg3, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg4, bool arg5)
     {
-        NativeMethods.TablePtr->hs_method_83afa79a((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg2, (void*)arg3.Handle, (void*)arg4.Handle, arg5);
+        NativeMethods.TablePtr->hs_method_83afa79a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)arg3.Handle, (void*)arg4.Handle, arg5);
     }
 
     public void stopSleepInBed(bool arg0, bool arg1)

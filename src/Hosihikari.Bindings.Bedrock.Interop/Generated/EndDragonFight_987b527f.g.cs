@@ -76,8 +76,8 @@ public sealed unsafe partial class EndDragonFight
         NativeMethods.TablePtr->hs_method_98c87475((void*)_handle);
     }
 
-    public void verifyExitPositions(nint arg0)
+    public void verifyExitPositions(global::Hosihikari.Bindings.Bedrock.Interop.EndGatewayBlockActor arg0)
     {
-        NativeMethods.TablePtr->hs_method_07bb0735((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_07bb0735((void*)_handle, (void*)arg0.Handle);
     }
 }

@@ -304,9 +304,10 @@ public sealed unsafe partial class ItemStackBase : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_method_b9c76575((void*)_handle));
     }
 
-    public nint getComponent(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemComponent? getComponent(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_0599229a((void*)_handle, (void*)arg0.Handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_0599229a((void*)_handle, (void*)arg0.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ItemComponent((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem? getComponentItem()
@@ -365,9 +366,11 @@ public sealed unsafe partial class ItemStackBase : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor((nint)NativeMethods.TablePtr->hs_method_075bb91b((void*)_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'DynamicProperties' is not a known bindable declaration.", false)]
-    public nint getDynamicProperties(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'DynamicProperties' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.DynamicProperties? getDynamicProperties(nint arg0)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_f972e233((void*)_handle, (void*)arg0);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.DynamicProperties((nint)__hs_handle) : null;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint getDynamicProperty_08d2f2bb(nint arg0, nint arg1, nint arg2) =>

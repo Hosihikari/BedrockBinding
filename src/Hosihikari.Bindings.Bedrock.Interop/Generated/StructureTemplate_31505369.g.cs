@@ -135,9 +135,9 @@ public sealed unsafe partial class StructureTemplate
         return NativeMethods.TablePtr->hs_method_ef84bcc6((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), arg2) != 0;
     }
 
-    public void setStructureTemplateData(nint arg0)
+    public void setStructureTemplateData(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplateData arg0)
     {
-        NativeMethods.TablePtr->hs_method_bb382cb2((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_bb382cb2((void*)_handle, (void*)arg0.Handle);
     }
 
     public bool structureTemplateDataIsValid(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.StructureSettings arg3)

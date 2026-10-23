@@ -82,9 +82,10 @@ public sealed unsafe partial class ServerInstance
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public nint getScriptManager()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ServerScriptManager? getScriptManager()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d708b141((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_d708b141((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ServerScriptManager((nint)__hs_handle, false) : null;
     }
 
     public nint getScriptingEngine()
@@ -214,6 +215,10 @@ public sealed unsafe partial class ServerInstance
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
+    public void Destroy_ce3b5be7() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_fe1b33ed() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

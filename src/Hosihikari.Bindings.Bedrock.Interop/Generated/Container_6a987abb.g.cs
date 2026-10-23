@@ -126,9 +126,9 @@ public sealed unsafe partial class Container : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_6d057eea((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    public void addRemovedListener(nint arg0)
+    public void addRemovedListener(global::Hosihikari.Bindings.Bedrock.Interop.ContainerRemovedListener? arg0)
     {
-        NativeMethods.TablePtr->hs_method_bdfc6731((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_bdfc6731((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -445,9 +445,9 @@ public sealed unsafe partial class Container : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_3d91ca49((void*)_handle, arg0, arg1);
     }
 
-    public void removeRemovedListener(nint arg0)
+    public void removeRemovedListener(global::Hosihikari.Bindings.Bedrock.Interop.ContainerRemovedListener? arg0)
     {
-        NativeMethods.TablePtr->hs_method_7760ce8f((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_7760ce8f((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

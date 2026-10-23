@@ -85,9 +85,10 @@ public sealed unsafe partial class Spawner
         NativeMethods.TablePtr->hs_method_78788a59((void*)_handle, (void*)arg0.Handle);
     }
 
-    public nint spawnItem(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3, int arg4)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemActor? spawnItem(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3, int arg4)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_b796827a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0), (void*)arg3.Handle, arg4);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_b796827a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0), (void*)arg3.Handle, arg4);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ItemActor((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Mob? spawnMob(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3, bool arg4, bool arg5, bool arg6)

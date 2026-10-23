@@ -171,9 +171,10 @@ public sealed unsafe partial class ComponentItem
         return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_method_6460cf87((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle));
     }
 
-    public nint getComponent(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemComponent? getComponent(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_197a6c75((void*)_handle, (void*)arg0.Handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_197a6c75((void*)_handle, (void*)arg0.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ItemComponent((nint)__hs_handle, false) : null;
     }
 
     public int getCooldownTime()
@@ -222,9 +223,10 @@ public sealed unsafe partial class ComponentItem
         return NativeMethods.TablePtr->hs_method_78a485c1((void*)_handle);
     }
 
-    public nint getFood()
+    public global::Hosihikari.Bindings.Bedrock.Interop.IFoodItemComponent? getFood()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_428bd3a3((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_428bd3a3((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.IFoodItemComponent((nint)__hs_handle, false) : null;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ResolvedItemIconInfo' requires --link-carrier or --virtual-dispatch.", false)]

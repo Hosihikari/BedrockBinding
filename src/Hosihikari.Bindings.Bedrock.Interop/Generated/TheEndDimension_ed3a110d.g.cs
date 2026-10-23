@@ -95,9 +95,11 @@ public sealed unsafe partial class TheEndDimension
     public static TheEndDimension Create(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'WorldGenerator' is not a known bindable declaration.", false)]
-    public nint createGenerator(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'WorldGenerator' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.WorldGenerator? createGenerator(nint arg0)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_9402515e((void*)_handle, (void*)arg0);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.WorldGenerator((nint)__hs_handle) : null;
+    }
 
     public void deserialize(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {

@@ -1226,14 +1226,16 @@ public sealed unsafe partial class BlockLegacy
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)__hs_handle, false) : null;
     }
 
-    public static nint popResource(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg2)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ItemActor? popResource(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg2)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_3e326fc7((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_3e326fc7((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ItemActor((nint)__hs_handle, false) : null;
     }
 
-    public static nint popResource(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg2)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ItemActor? popResource(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg2)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_58e02812((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_58e02812((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ItemActor((nint)__hs_handle, false) : null;
     }
 
     public bool pushesUpFallingBlocks()

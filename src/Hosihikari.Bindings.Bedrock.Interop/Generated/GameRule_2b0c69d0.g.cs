@@ -37,8 +37,220 @@ public sealed unsafe partial class GameRule : global::System.IDisposable
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static GameRule Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static GameRule Create(global::Hosihikari.Bindings.Bedrock.Interop.GameRule arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_f4177af3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameRule((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static GameRule Create_670fe7ce(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static GameRule Create(nint name, bool arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static GameRule Create(string arg0, bool arg1)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->hs_create_94dfb683(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new GameRule((nint)handle);
+        }
+    }
+
+    public bool allowUseInCommand()
+    {
+        return NativeMethods.TablePtr->hs_method_b092a7ab((void*)_handle) != 0;
+    }
+
+    public bool allowUseInScripting()
+    {
+        return NativeMethods.TablePtr->hs_method_ad68a7ee((void*)_handle) != 0;
+    }
+
+    public bool canBeModifiedByPlayer()
+    {
+        return NativeMethods.TablePtr->hs_method_37bcd0c3((void*)_handle) != 0;
+    }
+
+    public bool getBool()
+    {
+        return NativeMethods.TablePtr->hs_method_9ac3e90c((void*)_handle) != 0;
+    }
+
+    public float getFloat()
+    {
+        return NativeMethods.TablePtr->hs_method_4ad19f49((void*)_handle);
+    }
+
+    public int getInt()
+    {
+        return NativeMethods.TablePtr->hs_method_f332c25f((void*)_handle);
+    }
+
+    public string getLowercaseName_cb2b08b6()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_cb2b08b6((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getLowercaseName_ccad5927() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getName_142dc0c5() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getName_3c998ca8()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_3c998ca8((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getType_edd30dc8() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getValue_8e81cfba() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public bool mAllowUseInCommand
+    {
+        get => NativeMethods.TablePtr->hs_get_fa54eb97((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_fa54eb97((void*)_handle, value);
+    }
+
+    public bool mCanBeModifiedByPlayer
+    {
+        get => NativeMethods.TablePtr->hs_get_27fb4ed2((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_27fb4ed2((void*)_handle, value);
+    }
+
+    public bool mIsDefaultSet
+    {
+        get => NativeMethods.TablePtr->hs_get_ea61cb06((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_ea61cb06((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mName
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    public bool mRequiresCheats
+    {
+        get => NativeMethods.TablePtr->hs_get_1d16729b((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_1d16729b((void*)_handle, value);
+    }
+
+    public bool mShouldSave
+    {
+        get => NativeMethods.TablePtr->hs_get_a364fd1b((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_a364fd1b((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mTagNotFoundCallback
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    public sbyte mType
+    {
+        get => NativeMethods.TablePtr->hs_get_32938173((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_32938173((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mValidateValueCallback
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mValue
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_0cb5c083(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_ce014506(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public bool requiresCheats()
+    {
+        return NativeMethods.TablePtr->hs_method_b27f623a((void*)_handle) != 0;
+    }
+
+    public void resetType(sbyte arg0)
+    {
+        NativeMethods.TablePtr->hs_method_3b080717((void*)_handle, arg0);
+    }
+
+    public bool setBool(bool arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.GameRule_Nested.ValidationError? arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_7a8a835b((void*)_handle, arg0, (void*)arg1, (void*)(arg2?.Handle ?? 0)) != 0;
+    }
+
+    public bool setFloat(float arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.GameRule_Nested.ValidationError? arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_d6323374((void*)_handle, arg0, (void*)arg1, (void*)(arg2?.Handle ?? 0)) != 0;
+    }
+
+    public bool setInt(int arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.GameRule_Nested.ValidationError? arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_6c6a63ba((void*)_handle, arg0, (void*)arg1, (void*)(arg2?.Handle ?? 0)) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public nint setTagDataNotFoundCallback(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public nint setValidateValueCallback(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static GameRule Create(nint arg0) =>
+    public static GameRule Create_1b01cd2c(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
 

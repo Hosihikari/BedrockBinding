@@ -79,9 +79,9 @@ public sealed unsafe partial class DBChunkStorage
     public void acquireDiscarded(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<LevelChunk,LevelChunkFinalDeleter>' is not a known bindable declaration.");
 
-    public void checkAndReplaceChunk(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg1)
+    public void checkAndReplaceChunk(global::Hosihikari.Bindings.Bedrock.Interop.ChunkViewSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg1)
     {
-        NativeMethods.TablePtr->hs_method_4edb92bb((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->hs_method_4edb92bb((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public bool chunkPosNeedsBlending(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg0)
@@ -144,9 +144,9 @@ public sealed unsafe partial class DBChunkStorage
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public bool postProcess(nint arg0)
+    public bool postProcess(global::Hosihikari.Bindings.Bedrock.Interop.ChunkViewSource arg0)
     {
-        return NativeMethods.TablePtr->hs_method_eaac53ac((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_eaac53ac((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool saveLiveChunk(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)

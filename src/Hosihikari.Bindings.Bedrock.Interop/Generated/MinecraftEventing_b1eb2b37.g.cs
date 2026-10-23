@@ -710,9 +710,9 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    public void fireEventBoardTextUpdated(nint arg0)
+    public void fireEventBoardTextUpdated(global::Hosihikari.Bindings.Bedrock.Interop.ChalkboardBlockActor arg0)
     {
-        NativeMethods.TablePtr->hs_method_bcdd561e((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_bcdd561e((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -2437,14 +2437,14 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    public void fireEventPackPlayed(nint arg0, uint arg1)
+    public void fireEventPackPlayed(global::Hosihikari.Bindings.Bedrock.Interop.PackInstance arg0, uint arg1)
     {
-        NativeMethods.TablePtr->hs_method_ab3a70b5((void*)_handle, (void*)arg0, arg1);
+        NativeMethods.TablePtr->hs_method_ab3a70b5((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
-    public void fireEventPackUpgradeAttempt(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest arg0, nint arg1)
+    public void fireEventPackUpgradeAttempt(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest arg0, global::Hosihikari.Bindings.Bedrock.Interop.PackReport arg1)
     {
-        NativeMethods.TablePtr->hs_method_73a273cf((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_73a273cf((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void fireEventPacketViolationDetected(ulong arg0, string arg1, int arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg4, uint arg5, byte arg6, byte arg7, uint arg8)
@@ -5544,9 +5544,9 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    public void fireGlobalResourcePackCrashRecovery(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg1, int arg2)
+    public void fireGlobalResourcePackCrashRecovery(global::Hosihikari.Bindings.Bedrock.Interop.PackInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg1, int arg2)
     {
-        NativeMethods.TablePtr->hs_method_8d3e3060((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg2);
+        NativeMethods.TablePtr->hs_method_8d3e3060((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

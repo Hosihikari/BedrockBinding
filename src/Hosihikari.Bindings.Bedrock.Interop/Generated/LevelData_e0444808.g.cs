@@ -152,9 +152,9 @@ public sealed unsafe partial class LevelData
         return NativeMethods.TablePtr->hs_method_5f91b112((void*)_handle);
     }
 
-    public nint getDefaultAbilities_7e8cd2be()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Abilities getDefaultAbilities_7e8cd2be()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_7e8cd2be((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Abilities((nint)NativeMethods.TablePtr->hs_method_7e8cd2be((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.PermissionsHandler getDefaultPermissions_9d4d079e()

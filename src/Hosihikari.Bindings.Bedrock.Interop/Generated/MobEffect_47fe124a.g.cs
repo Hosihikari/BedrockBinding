@@ -263,9 +263,9 @@ public sealed unsafe partial class MobEffect
         NativeMethods.TablePtr->hs_method_cce565f4((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)(arg1?.Handle ?? 0), (void*)(arg2?.Handle ?? 0), arg3, arg4);
     }
 
-    public void applyModsAndBuffs(nint arg0, int arg1, int arg2)
+    public void applyModsAndBuffs(global::Hosihikari.Bindings.Bedrock.Interop.BaseAttributeMap arg0, int arg1, int arg2)
     {
-        NativeMethods.TablePtr->hs_method_c599b997((void*)_handle, (void*)arg0, arg1, arg2);
+        NativeMethods.TablePtr->hs_method_c599b997((void*)_handle, (void*)arg0.Handle, arg1, arg2);
     }
 
     public float getAttributeModifierValue(int arg0, nint arg1)
@@ -399,9 +399,9 @@ public sealed unsafe partial class MobEffect
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void removeEffects(nint arg0)
+    public void removeEffects(global::Hosihikari.Bindings.Bedrock.Interop.BaseAttributeMap arg0)
     {
-        NativeMethods.TablePtr->hs_method_2d5d229b((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_2d5d229b((void*)_handle, (void*)arg0.Handle);
     }
 
     public void setDurationAmplifier(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)

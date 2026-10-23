@@ -52,9 +52,9 @@ public sealed unsafe partial class BlockTypeRegistry
         NativeMethods.TablePtr->hs_method_dc6db67c();
     }
 
-    public static void finalizeBlockCustomComponentEvents(nint arg0)
+    public static void finalizeBlockCustomComponentEvents(global::Hosihikari.Bindings.Bedrock.Interop.ServerScriptManager arg0)
     {
-        NativeMethods.TablePtr->hs_method_9d01bf55((void*)arg0);
+        NativeMethods.TablePtr->hs_method_9d01bf55((void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]

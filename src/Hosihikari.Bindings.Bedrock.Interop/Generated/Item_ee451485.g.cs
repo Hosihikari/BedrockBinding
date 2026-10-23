@@ -355,9 +355,10 @@ public sealed unsafe partial class Item
     public nint getCommandNames() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'CommandName' is not supported.");
 
-    public nint getComponent(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemComponent? getComponent(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d2e6d7a6((void*)_handle, (void*)arg0.Handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_d2e6d7a6((void*)_handle, (void*)arg0.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ItemComponent((nint)__hs_handle, false) : null;
     }
 
     public int getCooldownTime()
@@ -430,9 +431,10 @@ public sealed unsafe partial class Item
         return NativeMethods.TablePtr->hs_method_75104ef2((void*)_handle);
     }
 
-    public nint getFood()
+    public global::Hosihikari.Bindings.Bedrock.Interop.IFoodItemComponent? getFood()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_689771d5((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_689771d5((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.IFoodItemComponent((nint)__hs_handle, false) : null;
     }
 
     public int getFrameCount()
@@ -863,11 +865,9 @@ public sealed unsafe partial class Item
         set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint mActiveCreativeItemRegistry
+    public static global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemRegistry mActiveCreativeItemRegistry
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemRegistry((nint)NativeMethods.TablePtr->hs_get_e8522625(), false);
     }
 
     public static bool mGenerateDenyParticleEffect
@@ -1132,9 +1132,9 @@ public sealed unsafe partial class Item
         return NativeMethods.TablePtr->hs_method_67c0561f((void*)_handle) != 0;
     }
 
-    public static void startCreativeItemDefinitions(bool arg0, nint arg1)
+    public static void startCreativeItemDefinitions(bool arg0, global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemRegistry? arg1)
     {
-        NativeMethods.TablePtr->hs_method_f9eb4856(arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_f9eb4856(arg0, (void*)(arg1?.Handle ?? 0));
     }
 
     public void tearDown()

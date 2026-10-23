@@ -128,9 +128,9 @@ public sealed unsafe partial class LevelChunk
         NativeMethods.TablePtr->hs_method_68283ca8((void*)_handle);
     }
 
-    public void clientSubChunkRequestGenerateLightingForSubChunk(nint arg0, short arg1)
+    public void clientSubChunkRequestGenerateLightingForSubChunk(global::Hosihikari.Bindings.Bedrock.Interop.ChunkViewSource arg0, short arg1)
     {
-        NativeMethods.TablePtr->hs_method_04aaeabf((void*)_handle, (void*)arg0, arg1);
+        NativeMethods.TablePtr->hs_method_04aaeabf((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::unique_ptr<LevelChunk,LevelChunkPhase1Deleter>' requires --link-carrier or --virtual-dispatch.", false)]
@@ -275,9 +275,9 @@ public sealed unsafe partial class LevelChunk
         NativeMethods.TablePtr->hs_method_b02bbbd9();
     }
 
-    public bool generateOriginalLighting(nint arg0, bool arg1)
+    public bool generateOriginalLighting(global::Hosihikari.Bindings.Bedrock.Interop.ChunkViewSource arg0, bool arg1)
     {
-        return NativeMethods.TablePtr->hs_method_ffe7d5c6((void*)_handle, (void*)arg0, arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_ffe7d5c6((void*)_handle, (void*)arg0.Handle, arg1) != 0;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalHeight getAboveTopSolidBlock(nint arg0, bool arg1, bool arg2, bool arg3)

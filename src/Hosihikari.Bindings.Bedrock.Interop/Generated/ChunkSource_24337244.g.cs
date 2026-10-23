@@ -79,9 +79,9 @@ public sealed unsafe partial class ChunkSource : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_30d803bb((void*)_handle, arg0);
     }
 
-    public void checkAndReplaceChunk(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg1)
+    public void checkAndReplaceChunk(global::Hosihikari.Bindings.Bedrock.Interop.ChunkViewSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg1)
     {
-        NativeMethods.TablePtr->hs_method_2c8f12f8((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->hs_method_2c8f12f8((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public bool chunkPosNeedsBlending(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg0)
@@ -299,9 +299,9 @@ public sealed unsafe partial class ChunkSource : global::System.IDisposable
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public bool postProcess(nint arg0)
+    public bool postProcess(global::Hosihikari.Bindings.Bedrock.Interop.ChunkViewSource arg0)
     {
-        return NativeMethods.TablePtr->hs_method_aa70646b((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_aa70646b((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public void postProcessMobsAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, int arg1, int arg2, global::Hosihikari.Bindings.Bedrock.Interop.Random arg3)

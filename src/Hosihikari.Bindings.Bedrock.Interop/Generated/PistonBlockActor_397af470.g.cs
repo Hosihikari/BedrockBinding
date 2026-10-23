@@ -128,4 +128,8 @@ public sealed unsafe partial class PistonBlockActor
     {
         NativeMethods.TablePtr->hs_method_77291d13((void*)_handle, (void*)arg0.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

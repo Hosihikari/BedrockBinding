@@ -193,9 +193,9 @@ public sealed unsafe partial class NavigationComponent
         NativeMethods.TablePtr->hs_method_3c80eafe((void*)_handle);
     }
 
-    public void initMultiTypeNavigationComponent(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, nint arg1)
+    public void initMultiTypeNavigationComponent(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionDescriptor arg1)
     {
-        NativeMethods.TablePtr->hs_method_a31bc042((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_a31bc042((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void initializeFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, nint arg1)

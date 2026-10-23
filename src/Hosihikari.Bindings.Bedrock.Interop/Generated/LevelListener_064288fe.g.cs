@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class LevelListener
+public sealed unsafe partial class LevelListener : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,7 +37,179 @@ public sealed partial class LevelListener
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static LevelListener Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static LevelListener Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public void addBreakingItemParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.ResolvedItemIconInfo arg2)
+    {
+        NativeMethods.TablePtr->hs_method_843d39ff((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle);
+    }
+
+    public void addParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3, global::Hosihikari.Bindings.Bedrock.Interop.MolangVariableMap arg4)
+    {
+        NativeMethods.TablePtr->hs_method_7198740d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4.Handle);
+    }
+
+    public void addTerrainParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, float arg3, float arg4, float arg5)
+    {
+        NativeMethods.TablePtr->hs_method_2006b9f0((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3, arg4, arg5);
+    }
+
+    public void addTerrainSlideEffect(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, float arg3, float arg4, float arg5)
+    {
+        NativeMethods.TablePtr->hs_method_adb585e8((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3, arg4, arg5);
+    }
+
+    public void allChanged()
+    {
+        NativeMethods.TablePtr->hs_method_b177f799((void*)_handle);
+    }
+
+    public void levelEvent(short arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1)
+    {
+        NativeMethods.TablePtr->hs_method_2cfa3d43((void*)_handle, arg0, (void*)arg1.Handle);
+    }
+
+    public void levelEvent(short arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, int arg2)
+    {
+        NativeMethods.TablePtr->hs_method_78d9723d((void*)_handle, arg0, (void*)arg1.Handle, arg2);
+    }
+
+    public void onChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg1)
+    {
+        NativeMethods.TablePtr->hs_method_7e48175b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
+
+    public void onChunkReloaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg1)
+    {
+        NativeMethods.TablePtr->hs_method_6f7e03cc((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
+
+    public void onChunkUnloaded(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
+    {
+        NativeMethods.TablePtr->hs_method_262e308d((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public void onEntityAdded(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    {
+        NativeMethods.TablePtr->hs_method_47d28a92((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public void onEntityRemoved(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    {
+        NativeMethods.TablePtr->hs_method_a46b1740((void*)_handle, (void*)arg0.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void onLevelDestruction(nint levelId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void onLevelDestruction(string arg0)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->hs_method_2d80aeee((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void onSubChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg1, short arg2, bool arg3)
+    {
+        NativeMethods.TablePtr->hs_method_a674441e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void playMusic(nint name, nint pos, float songOffset, float volume) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void playMusic(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, float arg2, float arg3)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->hs_method_58aa9542((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, arg2, arg3);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void playStreamingMusic(nint name, int x, int y, int z) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void playStreamingMusic(string arg0, int arg1, int arg2, int arg3)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->hs_method_aca75183((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, arg3);
+        }
+    }
+
+    public void playerListChanged()
+    {
+        NativeMethods.TablePtr->hs_method_0d44942d((void*)_handle);
+    }
+
+    public void sendServerLegacyParticle(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, int arg3)
+    {
+        NativeMethods.TablePtr->hs_method_dd224c1c((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle, arg3);
+    }
+
+    public void takePicture(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg2, nint arg3)
+    {
+        NativeMethods.TablePtr->hs_method_5efb75f4((void*)_handle, (void*)arg0, (void*)(arg1?.Handle ?? 0), (void*)(arg2?.Handle ?? 0), (void*)arg3);
+    }
+
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_064288fe((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

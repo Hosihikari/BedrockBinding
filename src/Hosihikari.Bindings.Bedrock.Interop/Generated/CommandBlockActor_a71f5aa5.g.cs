@@ -37,9 +37,9 @@ public sealed unsafe partial class CommandBlockActor
         return __hs_handle;
     }
 
-    public nint getBaseCommandBlock_46b4aa3f()
+    public global::Hosihikari.Bindings.Bedrock.Interop.BaseCommandBlock getBaseCommandBlock_46b4aa3f()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_46b4aa3f((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BaseCommandBlock((nint)NativeMethods.TablePtr->hs_method_46b4aa3f((void*)_handle), false);
     }
 
     public string getCommand()
@@ -48,9 +48,10 @@ public sealed unsafe partial class CommandBlockActor
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public nint getCommandBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.CommandBlock? getCommandBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_b421afaa((void*)_handle, (void*)arg0.Handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_b421afaa((void*)_handle, (void*)arg0.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CommandBlock((nint)__hs_handle, false) : null;
     }
 
     public bool getConditionalMode(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
@@ -191,4 +192,8 @@ public sealed unsafe partial class CommandBlockActor
     {
         return NativeMethods.TablePtr->hs_method_2bd78ffa((void*)_handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

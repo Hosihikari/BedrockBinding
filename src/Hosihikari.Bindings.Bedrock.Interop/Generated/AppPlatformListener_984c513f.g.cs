@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class AppPlatformListener
+public sealed unsafe partial class AppPlatformListener
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,7 +37,147 @@ public sealed partial class AppPlatformListener
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static AppPlatformListener Create(bool arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    public void initListener(float arg0)
+    {
+        NativeMethods.TablePtr->hs_method_a69dddf5((void*)_handle, arg0);
+    }
+
+    public void onAppFocusGained()
+    {
+        NativeMethods.TablePtr->hs_method_1f9c2937((void*)_handle);
+    }
+
+    public void onAppFocusLost()
+    {
+        NativeMethods.TablePtr->hs_method_cac571d6((void*)_handle);
+    }
+
+    public void onAppPaused()
+    {
+        NativeMethods.TablePtr->hs_method_81afa766((void*)_handle);
+    }
+
+    public void onAppPreSuspended()
+    {
+        NativeMethods.TablePtr->hs_method_b167cfe0((void*)_handle);
+    }
+
+    public void onAppResumed()
+    {
+        NativeMethods.TablePtr->hs_method_a05b8ea2((void*)_handle);
+    }
+
+    public void onAppSurfaceCreated()
+    {
+        NativeMethods.TablePtr->hs_method_9ad2ff2d((void*)_handle);
+    }
+
+    public void onAppSurfaceDestroyed()
+    {
+        NativeMethods.TablePtr->hs_method_423c42eb((void*)_handle);
+    }
+
+    public void onAppSuspended()
+    {
+        NativeMethods.TablePtr->hs_method_45ff0edc((void*)_handle);
+    }
+
+    public void onAppTerminated()
+    {
+        NativeMethods.TablePtr->hs_method_d8397715((void*)_handle);
+    }
+
+    public void onAppUnpaused()
+    {
+        NativeMethods.TablePtr->hs_method_e73b8924((void*)_handle);
+    }
+
+    public void onClipboardCopy(string arg0)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->hs_method_52a410cf((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void onClipboardPaste(string arg0)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->hs_method_0ae26506((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void onDeviceLost()
+    {
+        NativeMethods.TablePtr->hs_method_e9fc530b((void*)_handle);
+    }
+
+    public void onLowMemory()
+    {
+        NativeMethods.TablePtr->hs_method_4c16dfd5((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OperationMode' is not a known bindable declaration.", false)]
+    public void onOperationModeChanged(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OperationMode' is not a known bindable declaration.");
+
+    public void onPerformanceModeChanged(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_87752ec4((void*)_handle, arg0);
+    }
+
+    public void onPushNotificationReceived(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_cf78ca42((void*)_handle, (void*)arg0);
+    }
+
+    public void onResizeBegin()
+    {
+        NativeMethods.TablePtr->hs_method_0488c928((void*)_handle);
+    }
+
+    public void onResizeEnd()
+    {
+        NativeMethods.TablePtr->hs_method_67802d90((void*)_handle);
+    }
+
+    public void terminate()
+    {
+        NativeMethods.TablePtr->hs_method_ee7b7a22((void*)_handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
+    public void Destroy_e18132b2() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_234d46ac() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }
