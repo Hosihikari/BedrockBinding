@@ -78,9 +78,10 @@ public sealed unsafe partial class LevelChunk
     public void addEntity(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'HardcodedSpawnAreaType' is not a known bindable declaration.", false)]
-    public void addHardcodedSpawningArea(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'HardcodedSpawnAreaType' is not a known bindable declaration.");
+    public void addHardcodedSpawningArea(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg0, byte arg1)
+    {
+        NativeMethods.TablePtr->hs_method_fd2c7c65((void*)_handle, (void*)arg0.Handle, arg1);
+    }
 
     public void addStructure(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
     {
@@ -699,9 +700,10 @@ public sealed unsafe partial class LevelChunk
     public bool removeEntityFromWorld(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'HardcodedSpawnAreaType' is not a known bindable declaration.", false)]
-    public void removeHardcodedSpawningArea(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'HardcodedSpawnAreaType' is not a known bindable declaration.");
+    public void removeHardcodedSpawningArea(byte arg0)
+    {
+        NativeMethods.TablePtr->hs_method_d0e9cb1e((void*)_handle, arg0);
+    }
 
     public void serialize2DMaps(nint arg0)
     {

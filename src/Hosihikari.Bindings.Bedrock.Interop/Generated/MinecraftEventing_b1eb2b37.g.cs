@@ -37,9 +37,17 @@ public sealed unsafe partial class MinecraftEventing
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MinecraftEventing Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MinecraftEventing Create(nint arg0) =>
+    public static MinecraftEventing Create_2b756dd9(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MinecraftEventing Create_40eee23b(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void addCrashTelemetryToBatch(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
     {
@@ -49,6 +57,10 @@ public sealed unsafe partial class MinecraftEventing
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'Social::Events::IEventListener' has no generated wrapper.", false)]
     public void addListener(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'Social::Events::IEventListener' has no generated wrapper.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fileEventCloudWorldPullFailed(nint reason, nint worldID, bool localLevelDatUsed) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fileEventCloudWorldPullFailed(string arg0, string arg1, bool arg2)
     {
@@ -82,6 +94,10 @@ public sealed unsafe partial class MinecraftEventing
             }
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireBannedSkinVerificationEvent(nint arg0, nint arg1, nint arg2, bool arg3, int arg4, nint arg5) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireBannedSkinVerificationEvent(nint arg0, string arg1, string arg2, bool arg3, int arg4, string arg5)
     {
@@ -129,6 +145,10 @@ public sealed unsafe partial class MinecraftEventing
             }
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireCDNDownloadEvent(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireCDNDownloadEvent(string arg0, string arg1, string arg2, nint arg3, nint arg4, nint arg5)
     {
@@ -187,17 +207,56 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_830b0b1f((void*)_handle, (void*)arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ClassroomSetting' is not a known bindable declaration.", false)]
-    public void fireClassroomSettingUpdated(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ClassroomSetting' is not a known bindable declaration.");
+    public void fireClassroomSettingUpdated(int arg0, int arg1)
+    {
+        NativeMethods.TablePtr->hs_method_9da359e4((void*)_handle, arg0, arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Realms::RealmId' is not a known bindable declaration.", false)]
-    public void fireClubsEngagementEvent(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Realms::RealmId' is not a known bindable declaration.");
+    public void fireClubsEngagementEvent(int arg0, int arg1, nint arg2, global::Hosihikari.Bindings.Bedrock.Interop.Realms.RealmId arg3, string arg4)
+    {
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
+        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+        {
+            NativeMethods.TablePtr->hs_method_4ce45022((void*)_handle, arg0, arg1, (void*)arg2, (void*)arg3.Handle, __hs_stringData4, (nuint)__hs_stringByteCount4);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Realms::RealmId' is not a known bindable declaration.", false)]
-    public void fireClubsOpenFeedScreenEvent(nint arg0, nint arg1, nint arg2, int arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Realms::RealmId' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireClubsEngagementEvent(nint action, nint engagementTargetType, nint target, nint realmId, nint clubId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireClubsOpenFeedScreenEvent(nint source, nint realmId, nint clubId, int unreadPosts) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void fireClubsOpenFeedScreenEvent(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Realms.RealmId arg1, string arg2, int arg3)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            NativeMethods.TablePtr->hs_method_7bfee1c0((void*)_handle, arg0, (void*)arg1.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3);
+        }
+    }
 
     public void fireCodeCommandButtonPressed()
     {
@@ -218,6 +277,10 @@ public sealed unsafe partial class MinecraftEventing
             NativeMethods.TablePtr->hs_method_a1a2673c((void*)_handle, arg0, __hs_vectorData1, (nuint)(arg1?.Length ?? 0));
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireCourseButtonPressed(nint courseTitle, nint courseId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireCourseButtonPressed(string arg0, string arg1)
     {
@@ -276,10 +339,18 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireDBStorageError(nint context, nint errorType) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireDayOneExperienceStateChanged(int arg0, uint? arg1, ulong? arg2)
     {
         NativeMethods.TablePtr->hs_method_63207e71((void*)_handle, arg0, arg1 ?? default(uint), arg2 ?? default(ulong), arg1.HasValue, arg2.HasValue);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireDelayedEventReportOfflineAction(nint offlineAction) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireDelayedEventReportOfflineAction(string arg0)
     {
@@ -300,9 +371,17 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEduServiceRequestFailed_b57ef12e(nint serviceName, nint requestName, nint error, nint details) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'buffer_span<std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>>' is not a known bindable declaration.", false)]
-    public void fireEduServiceRequestFailed(nint arg0, nint arg1, nint arg2, nint arg3) =>
+    public void fireEduServiceRequestFailed_9e3f4c1b(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'buffer_span<std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventAchievementReceived(nint title, nint description, nint achievementId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventAchievementReceived(string arg0, string arg1, string arg2)
     {
@@ -359,6 +438,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventActorValueValidationFailed(nint invalidValue, nint caller) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventActorValueValidationFailed(string arg0, nint arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -377,6 +460,10 @@ public sealed unsafe partial class MinecraftEventing
             NativeMethods.TablePtr->hs_method_1d447ae6((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventAddedFriend(nint arg0, nint arg1, bool arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventAddedFriend(string arg0, int arg1, bool arg2)
     {
@@ -437,6 +524,10 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_1cc459ae((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventAssertFailed(nint assertBucket, nint message) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventAssertFailed(string arg0, string arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -470,9 +561,14 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'MinecraftEventing::AchievementIds' is not a known bindable declaration.", false)]
-    public static void fireEventAwardAchievement(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'MinecraftEventing::AchievementIds' is not a known bindable declaration.");
+    public static void fireEventAwardAchievement(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, int arg1)
+    {
+        NativeMethods.TablePtr->hs_method_4bb4d606((void*)(arg0?.Handle ?? 0), arg1);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static void fireEventBehaviorErrored(nint player, nint errorMessage) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static void fireEventBehaviorErrored(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, string arg1)
     {
@@ -493,6 +589,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static void fireEventBehaviorFailed(nint player, nint failureMessage) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public static void fireEventBehaviorFailed(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, string arg1)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -511,6 +611,10 @@ public sealed unsafe partial class MinecraftEventing
             NativeMethods.TablePtr->hs_method_1294d10d((void*)(arg0?.Handle ?? 0), __hs_stringData1, (nuint)__hs_stringByteCount1);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static void fireEventBellBlockUsed(nint player, nint itemUsed) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static void fireEventBellBlockUsed(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, string arg1)
     {
@@ -531,9 +635,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'MinecraftEventing::BlockPlacementMethod' is not a known bindable declaration.", false)]
-    public static void fireEventBlockBroken(nint arg0, nint arg1, nint arg2, int arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'MinecraftEventing::BlockPlacementMethod' is not a known bindable declaration.");
+    public static void fireEventBlockBroken(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, int arg2, int arg3)
+    {
+        NativeMethods.TablePtr->hs_method_16900350((void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, arg2, arg3);
+    }
 
     public static void fireEventBlockFound(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
     {
@@ -544,6 +649,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_e3fecab8((void*)_handle, (void*)arg0.Handle, arg1);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventBlockTypeRegistryChecksumMismatch(nint reason, nint serverBlockChecksum, nint clientBlockChecksum, nint serverVersion) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventBlockTypeRegistryChecksumMismatch(string arg0, nint arg1, nint arg2, string arg3)
     {
@@ -578,6 +687,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventBlockUser(nint arg0, bool arg1, bool arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventBlockUser(string arg0, bool arg1, bool arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -601,6 +714,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_bcdd561e((void*)_handle, (void*)arg0);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventBundleSubOfferClicked(int offerIndex, int bundleSubOfferCount, nint telemetryId, nint productId, bool isOnSale, nint timeRemainingOnSale) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventBundleSubOfferClicked(int arg0, int arg1, string arg2, string arg3, bool arg4, string arg5)
     {
@@ -649,6 +766,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventButtonPressed(nint buttonName, nint details) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventButtonPressed(string arg0, nint arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -673,18 +794,70 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_3a60116d((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'MinecraftEventing::POIBlockInteractionType' is not a known bindable declaration.", false)]
-    public static void fireEventCampfireBlockUsed(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'MinecraftEventing::POIBlockInteractionType' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static void fireEventCampfireBlockUsed(nint player, nint itemUsed, nint interactionType) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public static void fireEventCampfireBlockUsed(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, string arg1, int arg2)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->hs_method_0032df8f((void*)(arg0?.Handle ?? 0), __hs_stringData1, (nuint)__hs_stringByteCount1, arg2);
+        }
+    }
 
     public static void fireEventCaravanChanged(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, int arg1)
     {
         NativeMethods.TablePtr->hs_method_df7e15cc((void*)arg0.Handle, arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Safety::ChatFloodingAction' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void fireEventChatFloodingActionTaken(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Safety::ChatFloodingAction' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void fireEventChatFloodingActionTaken(string arg0, int arg1, string arg2)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                NativeMethods.TablePtr->hs_method_5b460645((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            }
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'Social::Events::Property' is not supported.", false)]
     public void fireEventChatSettingsUpdated(nint arg0, nint arg1) =>
@@ -704,6 +877,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_69ce26ec((void*)_handle, (void*)arg0.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventClientLeftGameDueToUnrecoverableError(nint reason, bool isServer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventClientLeftGameDueToUnrecoverableError(string arg0, bool arg1)
     {
@@ -729,13 +906,50 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_32425b65((void*)_handle, arg0, arg1, arg2, arg3, arg4);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'EduCloud::Operation' is not a known bindable declaration.", false)]
-    public void fireEventCloudOperationEndedEdu_23999276(nint arg0, nint arg1, nint arg2, uint arg3, ulong arg4, nint arg5, nint arg6, nint arg7, nint arg8) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'EduCloud::Operation' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventCloudOperationEndedEdu_de5ada36(nint arg0, nint arg1, nint arg2, uint arg3, ulong arg4, nint arg5, nint arg6, nint arg7, nint arg8) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'EduCloud::Operation' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void fireEventCloudOperationEndedEdu_23999276(nint arg0, nint arg1, nint arg2, uint arg3, ulong arg4, nint arg5, nint arg6, nint arg7, nint arg8) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void fireEventCloudOperationStartedEdu(nint arg0, nint arg1, ulong arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'EduCloud::Operation' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void fireEventCloudOperationStartedEdu(int arg0, string arg1, ulong arg2, string? arg3)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3 ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg3 ?? string.Empty, __hs_stringBytes3);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+            {
+                NativeMethods.TablePtr->hs_method_485f2df6((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, __hs_stringData3, (nuint)__hs_stringByteCount3, arg3 is not null);
+            }
+        }
+    }
 
     public void fireEventCodeBuilderClosed()
     {
@@ -743,8 +957,16 @@ public sealed unsafe partial class MinecraftEventing
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void fireEventCodeBuilderLog(nint arg0, nint arg1, nint arg2) =>
+    public void fireEventCodeBuilderLog_1559cfb3(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventCodeBuilderLog_19aba17e(nint properties, nint message, nint level) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventCodeBuilderRuntimeAction(nint action) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventCodeBuilderRuntimeAction(string arg0)
     {
@@ -764,6 +986,10 @@ public sealed unsafe partial class MinecraftEventing
             NativeMethods.TablePtr->hs_method_fc390a58((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventCodeBuilderScoreChanged(nint objective, int score) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventCodeBuilderScoreChanged(string arg0, int arg1)
     {
@@ -808,13 +1034,55 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ConnectedStorageEventType' is not a known bindable declaration.", false)]
-    public void fireEventConnectedStorageResult(nint arg0, bool arg1, uint arg2, nint arg3, nint arg4, nint arg5, long arg6, nint arg7, nint arg8, nint arg9) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ConnectedStorageEventType' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventConnectedStorageError(nint message, nint levelId, long quotaRemaining) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IConnectionEventing::ConnectionFailureReason' is not a known bindable declaration.", false)]
-    public void fireEventConnectionFailed(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IConnectionEventing::ConnectionFailureReason' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventConnectedStorageResult(nint eventType, bool succeeded, uint durationMs, nint chunksSent, nint errorMessage, nint levelId, long quotaRemaining, nint filesToAddCount, nint filesToDeleteCount, nint HACK_oldFilesToDeleteCount) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void fireEventConnectedStorageResult(int arg0, bool arg1, uint arg2, uint? arg3, string arg4, string arg5, long arg6, uint? arg7, uint? arg8, uint? arg9)
+    {
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(arg5);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg5, __hs_stringBytes5);
+        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+        {
+            fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+            {
+                NativeMethods.TablePtr->hs_method_8a5849d4((void*)_handle, arg0, arg1, arg2, arg3 ?? default(uint), __hs_stringData4, (nuint)__hs_stringByteCount4, __hs_stringData5, (nuint)__hs_stringByteCount5, arg6, arg7 ?? default(uint), arg8 ?? default(uint), arg9 ?? default(uint), arg3.HasValue, arg7.HasValue, arg8.HasValue, arg9.HasValue);
+            }
+        }
+    }
+
+    public void fireEventConnectionFailed(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_6c2c7fbb((void*)_handle, arg0);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventContentLogsInWorldSession(nint logArea, uint errorCount, uint warningCount) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventContentLogsInWorldSession(string arg0, uint arg1, uint arg2)
     {
@@ -834,6 +1102,10 @@ public sealed unsafe partial class MinecraftEventing
             NativeMethods.TablePtr->hs_method_d5898a09((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventContentShared(nint productId, nint url, nint mode) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventContentShared(string arg0, string arg1, nint arg2)
     {
@@ -868,13 +1140,33 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RawInputType' is not a known bindable declaration.", false)]
-    public void fireEventControlRemappedByPlayer(nint arg0, nint arg1, int arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RawInputType' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventControlRemappedByPlayer(nint actionName, nint inputType, int keyCode) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'EduControlPanelUpdateType' is not a known bindable declaration.", false)]
-    public void fireEventControlTipsPanelUpdated(nint arg0, double arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'EduControlPanelUpdateType' is not a known bindable declaration.");
+    public void fireEventControlRemappedByPlayer(string arg0, int arg1, int arg2)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->hs_method_db7e4958((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2);
+        }
+    }
+
+    public void fireEventControlTipsPanelUpdated(int arg0, double arg1)
+    {
+        NativeMethods.TablePtr->hs_method_3692b4dd((void*)_handle, arg0, arg1);
+    }
 
     public void fireEventCopyWorldEducationEnabled()
     {
@@ -890,6 +1182,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_1d839d4e((void*)_handle, arg0, arg1);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventDefaultCastSelected(int previewIndex, nint appearanceId, nint appearanceName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventDefaultCastSelected(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg1, string arg2)
     {
@@ -914,6 +1210,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_08a544a6((void*)_handle, arg0, arg1);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventDevSlashCommandExecuted(nint commandName, nint command) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventDevSlashCommandExecuted(string arg0, string arg1)
     {
@@ -948,6 +1248,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventDeviceAccountFailure(nint stage, nint phase, uint resultStatus, nint accountID) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventDeviceAccountFailure(int arg0, int arg1, uint arg2, string arg3)
     {
         var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
@@ -966,6 +1270,10 @@ public sealed unsafe partial class MinecraftEventing
             NativeMethods.TablePtr->hs_method_a0d3747f((void*)_handle, arg0, arg1, arg2, __hs_stringData3, (nuint)__hs_stringByteCount3);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventDeviceAccountSuccess(bool isNewAccount, nint accountID) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventDeviceAccountSuccess(bool arg0, string arg1)
     {
@@ -1001,9 +1309,14 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_ba1503c3((void*)_handle, arg0, arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'DiskStatus' is not a known bindable declaration.", false)]
-    public void fireEventDiskStatus(nint arg0, nint arg1, ulong arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DiskStatus' is not a known bindable declaration.");
+    public void fireEventDiskStatus(int arg0, int arg1, ulong arg2)
+    {
+        NativeMethods.TablePtr->hs_method_a068888f((void*)_handle, arg0, arg1, arg2);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventDlcStorageFull(nint arg0, ulong arg1, ulong arg2, ulong arg3, ulong arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventDlcStorageFull(string arg0, ulong arg1, ulong arg2, ulong arg3, ulong arg4)
     {
@@ -1029,17 +1342,22 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_a9e3ef07((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'LastClickedSource' is not a known bindable declaration.", false)]
-    public void fireEventEduDemoConversion(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'LastClickedSource' is not a known bindable declaration.");
+    public void fireEventEduDemoConversion(int arg0, int arg1)
+    {
+        NativeMethods.TablePtr->hs_method_bf7ab51e((void*)_handle, arg0, arg1);
+    }
 
     public void fireEventEduResources()
     {
         NativeMethods.TablePtr->hs_method_425d2353((void*)_handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventEduServiceStatus_24ef6580(nint serviceName, nint requestName, int durationMS, nint details) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'buffer_span<std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>>' is not a known bindable declaration.", false)]
-    public void fireEventEduServiceStatus(nint arg0, nint arg1, int arg2, nint arg3) =>
+    public void fireEventEduServiceStatus_7c3bf79b(nint arg0, nint arg1, int arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'buffer_span<std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>>' is not a known bindable declaration.");
 
     public void fireEventEduiOSPurchaseTransaction(nint arg0)
@@ -1051,6 +1369,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_a44bcea4((void*)_handle, arg0, arg1, arg2);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventEmptyLibraryCategoryError(nint categoryTitle) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventEmptyLibraryCategoryError(string arg0)
     {
@@ -1070,6 +1392,10 @@ public sealed unsafe partial class MinecraftEventing
             NativeMethods.TablePtr->hs_method_e8fbe0e8((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventEncyclopediaTopicChanged(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventEncyclopediaTopicChanged(string arg0, int arg1)
     {
@@ -1104,6 +1430,10 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_760f713c((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1, arg2);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventFeedbackSubmitted(nint productId, bool safetyCheckSuccessful, bool isValidText) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventFeedbackSubmitted(string arg0, bool arg1, bool arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -1122,6 +1452,10 @@ public sealed unsafe partial class MinecraftEventing
             NativeMethods.TablePtr->hs_method_122e319f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventGameRulesUpdated(bool oldValue, bool newValue, nint gameRuleName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventGameRulesUpdated(bool arg0, bool arg1, string arg2)
     {
@@ -1142,6 +1476,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventGameRulesUpdated(float oldValue, float newValue, nint gameRuleName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventGameRulesUpdated(float arg0, float arg1, string arg2)
     {
         var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
@@ -1160,6 +1498,10 @@ public sealed unsafe partial class MinecraftEventing
             NativeMethods.TablePtr->hs_method_352b56c5((void*)_handle, arg0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventGameRulesUpdated(int oldValue, int newValue, nint gameRuleName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventGameRulesUpdated(int arg0, int arg1, string arg2)
     {
@@ -1195,6 +1537,10 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_37537ffa((void*)_handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventHowToPlayTopicChanged(nint topicName, nint inputMode) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventHowToPlayTopicChanged(string arg0, int arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -1213,6 +1559,10 @@ public sealed unsafe partial class MinecraftEventing
             NativeMethods.TablePtr->hs_method_508a2ee3((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventHttpClientError(nint error) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventHttpClientError(string arg0)
     {
@@ -1233,21 +1583,185 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PurchasePath' is not a known bindable declaration.", false)]
-    public void fireEventIAPPurchaseAttempt(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PurchasePath' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventIAPPurchaseAttempt(nint correlationId, nint storeId, nint offer, nint path) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PurchasePath' is not a known bindable declaration.", false)]
-    public void fireEventIAPPurchaseResolved(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PurchasePath' is not a known bindable declaration.");
+    public void fireEventIAPPurchaseAttempt(string arg0, string arg1, nint arg2, int arg3)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->hs_method_7199540e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2, arg3);
+            }
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PurchasePath' is not a known bindable declaration.", false)]
-    public void fireEventIAPRedeemAttempt(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PurchasePath' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventIAPPurchaseResolved(nint correlationId, nint storeId, nint offer, nint purchaseRes, nint path) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PurchasePath' is not a known bindable declaration.", false)]
-    public void fireEventIAPRedeemResolved(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PurchasePath' is not a known bindable declaration.");
+    public void fireEventIAPPurchaseResolved(string arg0, string arg1, nint arg2, int arg3, int arg4)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                NativeMethods.TablePtr->hs_method_1497da5a((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2, arg3, arg4);
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventIAPRedeemAttempt(nint correlationId, nint storeId, nint productId, nint path) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void fireEventIAPRedeemAttempt(string arg0, string arg1, string arg2, int arg3)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->hs_method_62dce8e1((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3);
+                }
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventIAPRedeemResolved(nint correlationId, nint storeId, nint productId, nint purchaseRes, nint path) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void fireEventIAPRedeemResolved(string arg0, string arg1, string arg2, int arg3, int arg4)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->hs_method_681d216f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3, arg4);
+                }
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventImGuiScreenChanged(nint screenName, nint additionalProperties) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventImGuiScreenChanged(string arg0, nint arg1)
     {
@@ -1278,6 +1792,10 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_788ae2ee((void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, arg2);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventJoinByCode(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventJoinByCode(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -1297,9 +1815,14 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'LoadingState' is not a known bindable declaration.", false)]
-    public void fireEventJoinCanceled(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'LoadingState' is not a known bindable declaration.");
+    public void fireEventJoinCanceled(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_4209d61b((void*)_handle, arg0);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static void fireEventJukeboxUsed(nint player, nint disc, nint biome) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static void fireEventJukeboxUsed(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg1, string arg2)
     {
@@ -1329,6 +1852,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_7f0bc2a6((void*)_handle, arg0);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventLevelDatLoadFailed(nint reason, nint worldID, bool isFatal) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventLevelDatLoadFailed(string arg0, string arg1, bool arg2)
     {
@@ -1382,6 +1909,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventLevelDataOverride(nint valueName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventLevelDestruct()
     {
         NativeMethods.TablePtr->hs_method_7aa297d3((void*)_handle);
@@ -1391,6 +1922,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_020f68d0((void*)_handle, (void*)arg0);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventLibrarySearchItemSelected(int sessionId, int correlationId, nint productId, int row, int column) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventLibrarySearchItemSelected(int arg0, int arg1, string arg2, int arg3, int arg4)
     {
@@ -1420,6 +1955,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_533a22b4((void*)_handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventMessageReceived(nint arg0, nint arg1, nint arg2, nint arg3, bool arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventMessageReceived(string arg0, string arg1, string arg2, string arg3, bool arg4)
     {
@@ -1481,6 +2020,10 @@ public sealed unsafe partial class MinecraftEventing
             }
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventMessageServiceImpression(nint arg0, nint arg1, nint arg2, nint arg3, bool arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventMessageServiceImpression(string arg0, string arg1, string arg2, string arg3, bool arg4)
     {
@@ -1548,14 +2091,19 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_03fc3902((void*)arg0.Handle, arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'MinecraftEventing::ChangeType' is not a known bindable declaration.", false)]
-    public static void fireEventMobEffectChanged(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'MinecraftEventing::ChangeType' is not a known bindable declaration.");
+    public static void fireEventMobEffectChanged(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance arg1, int arg2)
+    {
+        NativeMethods.TablePtr->hs_method_c251d784((void*)arg0.Handle, (void*)arg1.Handle, arg2);
+    }
 
     public static void fireEventMobTeleportedToOwner(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0)
     {
         NativeMethods.TablePtr->hs_method_2fb653cc((void*)arg0.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventModalShown(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventModalShown(string arg0, nint arg1)
     {
@@ -1575,6 +2123,10 @@ public sealed unsafe partial class MinecraftEventing
             NativeMethods.TablePtr->hs_method_f77ea631((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventMultiplayerClientConnectionStateChanged(nint arg0, uint arg1, uint arg2, uint arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventMultiplayerClientConnectionStateChanged(string arg0, uint arg1, uint arg2, uint arg3, string arg4)
     {
@@ -1613,6 +2165,10 @@ public sealed unsafe partial class MinecraftEventing
     public void fireEventMultiplayerSessionUpdate(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<MultiPlayerLevel>' is not a known bindable declaration.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventMuteUser(nint arg0, bool arg1, bool arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventMuteUser(string arg0, bool arg1, bool arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -1631,6 +2187,10 @@ public sealed unsafe partial class MinecraftEventing
             NativeMethods.TablePtr->hs_method_50bf9836((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventNewContentCheckCompleted(nint newContentPrefix, bool hasNewStoreContent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventNewContentCheckCompleted(string arg0, bool arg1)
     {
@@ -1655,6 +2215,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_21d72969((void*)_handle, (void*)arg0.Handle, arg1);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventOfferRated(nint productId, int rating, int previous_rating, int count, double timeElapsed) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventOfferRated(string arg0, int arg1, int arg2, int arg3, double arg4)
     {
@@ -1695,6 +2259,10 @@ public sealed unsafe partial class MinecraftEventing
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'SerialWorkListLogEntry' is not supported.", false)]
     public void fireEventOnDeviceLost(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'SerialWorkListLogEntry' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventOnServerDisconnect(nint arg0, nint arg1, nint arg2, nint arg3, ulong arg4, nint arg5) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventOnServerDisconnect(int arg0, string arg1, byte arg2, string arg3, ulong arg4, string arg5)
     {
@@ -1753,6 +2321,10 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_7d44284e((void*)_handle, arg0, arg1, arg2);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventOneDSPlayerReportPayload(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventOneDSPlayerReportPayload(string arg0, string arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -1786,6 +2358,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventOptionsChanged(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventOptionsChanged(string arg0, nint arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -1810,6 +2386,10 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_6c179c0e((void*)_handle, (void*)arg0, arg1, arg2);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventOreUIError(nint userId, nint errorType) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventOreUIError(nint arg0, string arg1)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -1833,6 +2413,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_b0cd7afb((void*)_handle, (void*)arg0.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPackImportTimeout(nint productId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventPackImportTimeout(string arg0)
     {
@@ -1863,9 +2447,28 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_73a273cf((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PacketViolationResponse' is not a known bindable declaration.", false)]
+    public void fireEventPacketViolationDetected(ulong arg0, string arg1, int arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg4, uint arg5, byte arg6, byte arg7, uint arg8)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->hs_method_b8309c4e((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3, (void*)arg4.Handle, arg5, arg6, arg7, arg8);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void fireEventPacketViolationDetected(ulong arg0, nint arg1, nint arg2, nint arg3, nint arg4, uint arg5, nint arg6, nint arg7, uint arg8) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PacketViolationResponse' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventPerformanceContext(nint arg0)
     {
@@ -1877,9 +2480,17 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_bde936e2((void*)_handle, (void*)arg0, arg1);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPersonaAvatarUpdated_cf69a1ad(nint personaProfile, nint newAppearancePieceIds, nint newPieces, nint tintedPieces, bool isNewPersona, bool isBeingDeleted, nint bodySize, nint armSize, nint classicSkinId, bool usesClassicSkin, nint emotesPieceIds, nint emoteSlotNumbers) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public void fireEventPersonaAvatarUpdated(nint arg0, nint arg1, nint arg2, nint arg3, bool arg4, bool arg5, nint arg6, nint arg7, nint arg8, bool arg9, nint arg10, nint arg11) =>
+    public void fireEventPersonaAvatarUpdated_c45aa09c(nint arg0, nint arg1, nint arg2, nint arg3, bool arg4, bool arg5, nint arg6, nint arg7, nint arg8, bool arg9, nint arg10, nint arg11) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPersonaAvatarsListed(nint profileTypesUsed) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventPersonaAvatarsListed(string[] arg0)
     {
@@ -1907,6 +2518,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPersonaCategoryInformation(nint categoryInformation) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventPersonaCategoryInformation(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -1925,6 +2540,10 @@ public sealed unsafe partial class MinecraftEventing
             NativeMethods.TablePtr->hs_method_bf54727e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPersonaCreationFailed(nint errorName, nint pieceId, bool missingTop, bool missingBottom, nint repositoryPieceType, nint appearancePieceType) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventPersonaCreationFailed(string arg0, string arg1, bool arg2, bool arg3, string arg4, string arg5)
     {
@@ -1987,6 +2606,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPersonaEmotePlayed(nint emoteProductId, bool isEmoteEndedEarly, int emoteSlotId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventPersonaEmotePlayed(string arg0, bool arg1, int arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -2006,6 +2629,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPersonaGeneralError(nint personaErrorName, uint duplicateErrorsFired) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventPersonaGeneralError(string arg0, uint arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -2024,6 +2651,10 @@ public sealed unsafe partial class MinecraftEventing
             NativeMethods.TablePtr->hs_method_0a1562d4((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPersonaInitalizationEvent(uint secondsToCompletion, nint status, nint user) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventPersonaInitalizationEvent(uint arg0, string arg1, string arg2)
     {
@@ -2057,6 +2688,10 @@ public sealed unsafe partial class MinecraftEventing
             }
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPersonaItemPreviewed(nint personaProfile, nint itemOfferId, nint productId, uint row, uint column, nint promotionType, bool isOwned, nint creatorId, nint creatorName, double secondsToLoadContent, nint storeType) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventPersonaItemPreviewed(string arg0, string arg1, string arg2, uint arg3, uint arg4, int arg5, bool arg6, string arg7, string arg8, double arg9, int arg10)
     {
@@ -2143,6 +2778,10 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_4e9b2064((void*)_handle, (void*)arg0);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPersonaSkinChanged(nint personaProfile, nint classicSkinId, bool isClassicSkinUsed) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventPersonaSkinChanged(string arg0, string arg1, bool arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -2176,6 +2815,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPersonaStillLoading(bool isSignedIn, bool selectedSkinInitialized, bool isStillSyncingWithService, bool isRepoStillBuildingAppearances, bool isPendingSkinStillLoading, bool isRefreshingEntitlements, bool isUserUpdateInProgress, bool isSelectedSkinLoaded, nint failingPersonaProfiles, int unknownPersonasCount, double timeElapsed) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventPersonaStillLoading(bool arg0, bool arg1, bool arg2, bool arg3, bool arg4, bool arg5, bool arg6, bool arg7, string[] arg8, int arg9, double arg10)
     {
         var __hs_vectorItems8 = arg8 ?? global::System.Array.Empty<string>();
@@ -2201,6 +2844,10 @@ public sealed unsafe partial class MinecraftEventing
             NativeMethods.TablePtr->hs_method_4ca1988a((void*)_handle, arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg9, arg10, __hs_vectorData8, (nuint)(arg8?.Length ?? 0));
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPersonaUserLoadedActive(nint personaProfileName, nint classicSkinId, bool personaUsesClassicSkin) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventPersonaUserLoadedActive(string arg0, string arg1, bool arg2)
     {
@@ -2234,6 +2881,10 @@ public sealed unsafe partial class MinecraftEventing
             }
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPlayIntegrityCheck(nint arg0, nint arg1, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventPlayIntegrityCheck(string arg0, string arg1, string arg2, string arg3)
     {
@@ -2296,6 +2947,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPlayerActionComparisonFailed(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventPlayerActionComparisonFailed(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -2319,6 +2974,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_519207b4((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPlayerBanned(nint bannedPlayer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventPlayerBanned(string arg0)
     {
@@ -2349,9 +3008,14 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_9eb0c550((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IConnectionEventing::PlayerJoinWorldAttemptState' is not a known bindable declaration.", false)]
-    public void fireEventPlayerJoinWorld(nint arg0, nint arg1, bool arg2, nint arg3, nint arg4, int arg5, nint arg6, nint arg7, nint arg8, nint arg9, bool arg10, nint arg11) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IConnectionEventing::PlayerJoinWorldAttemptState' is not a known bindable declaration.");
+    public void fireEventPlayerJoinWorld(nint arg0, byte arg1, bool arg2, bool? arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, bool arg10, int arg11)
+    {
+        NativeMethods.TablePtr->hs_method_31b745d1((void*)_handle, (void*)arg0, arg1, arg2, arg3 ?? default(bool), arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg3.HasValue);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPlayerKicked(nint sessionType, nint kickedPlayer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventPlayerKicked(string arg0, string arg1)
     {
@@ -2386,6 +3050,14 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPlayerMessage_f5cf729a(nint fromName, nint toName, nint message, nint messageType) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPlayerMessageChat(nint fromName, nint message) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventPlayerMessageChat(string arg0, string arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -2418,6 +3090,10 @@ public sealed unsafe partial class MinecraftEventing
             }
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPlayerMessageMe(nint fromName, nint message) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventPlayerMessageMe(string arg0, string arg1)
     {
@@ -2452,6 +3128,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPlayerMessageSay(nint fromName, nint message) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventPlayerMessageSay(string arg0, string arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -2484,6 +3164,10 @@ public sealed unsafe partial class MinecraftEventing
             }
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPlayerMessageTell(nint fromName, nint toName, nint message) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventPlayerMessageTell(string arg0, string arg1, string arg2)
     {
@@ -2532,6 +3216,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPlayerMessageTitle(nint fromName, nint toName, nint message) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventPlayerMessageTitle(string arg0, string arg1, string arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -2578,6 +3266,10 @@ public sealed unsafe partial class MinecraftEventing
             }
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPlayerReportSent(bool arg0, nint arg1, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventPlayerReportSent(bool arg0, string arg1, string arg2, string arg3)
     {
@@ -2626,9 +3318,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'MinecraftEventing::TeleportationCause' is not a known bindable declaration.", false)]
-    public static void fireEventPlayerTeleported(nint arg0, float arg1, nint arg2, int arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'MinecraftEventing::TeleportationCause' is not a known bindable declaration.");
+    public static void fireEventPlayerTeleported(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, float arg1, int arg2, int arg3)
+    {
+        NativeMethods.TablePtr->hs_method_b2f65ccb((void*)(arg0?.Handle ?? 0), arg1, arg2, arg3);
+    }
 
     public static void fireEventPlayerTransform(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
     {
@@ -2639,6 +3332,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_387e2aa4((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPopupClosed(nint popupName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventPopupClosed(string arg0)
     {
@@ -2659,9 +3356,70 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ActiveDirectoryAction' is not a known bindable declaration.", false)]
-    public void fireEventPopupFiredEdu(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ActiveDirectoryAction' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPopupFiredEdu(nint mutsUserId, nint dialogType, nint experienceId, nint title, nint postAction) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void fireEventPopupFiredEdu(string arg0, string arg1, string arg2, string arg3, int arg4)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                    {
+                        NativeMethods.TablePtr->hs_method_031bbeef((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, arg4);
+                    }
+                }
+            }
+        }
+    }
 
     public void fireEventPortfolioExported(int arg0, int arg1)
     {
@@ -2672,6 +3430,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_845d6884((void*)_handle, arg0, arg1, arg2);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventProgressionsSet(nint progressions) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventProgressionsSet(string[] arg0)
     {
@@ -2699,6 +3461,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPromotionNotificationClicked(nint productId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventPromotionNotificationClicked(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -2718,9 +3484,60 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PurchasePath' is not a known bindable declaration.", false)]
-    public void fireEventPurchaseAttempt(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PurchasePath' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPurchaseAttempt(nint correlationId, nint productId, nint price, nint storeType, nint path) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void fireEventPurchaseAttempt(string arg0, string arg1, string arg2, int arg3, int arg4)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->hs_method_6785deeb((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3, arg4);
+                }
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPurchaseFailureDetails(int httpCode, nint errorMessage, nint productId, nint transactionId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventPurchaseFailureDetails(int arg0, string arg1, string arg2, string arg3)
     {
@@ -2769,6 +3586,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPurchaseGameAttempt(nint storeId, nint activeTab, nint productId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventPurchaseGameAttempt(string arg0, string arg1, string arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -2816,9 +3637,60 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PurchasePath' is not a known bindable declaration.", false)]
-    public void fireEventPurchaseResolved(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PurchasePath' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPurchaseResolved(nint correlationId, nint productId, nint price, nint storeType, nint purchaseRes, nint path) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void fireEventPurchaseResolved(string arg0, string arg1, string arg2, int arg3, int arg4, int arg5)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->hs_method_1891641a((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3, arg4, arg5);
+                }
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPushNotificationOpened(nint threadId, nint deepLink) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventPushNotificationOpened(string arg0, string arg1)
     {
@@ -2853,6 +3725,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventPushNotificationPermission(bool permission, nint deviceId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventPushNotificationPermission(bool arg0, string arg1)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -2877,6 +3753,10 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_664714d7((void*)_handle, (void*)arg0);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventQueryPurchasesResult(nint arg0, int arg1, bool arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventQueryPurchasesResult(string arg0, int arg1, bool arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -2895,6 +3775,10 @@ public sealed unsafe partial class MinecraftEventing
             NativeMethods.TablePtr->hs_method_0a58b637((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventRealmDownload(nint correlationId, nint downloadStage, int errorCode, int realmId, int fileSizeKB) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventRealmDownload(string arg0, string arg1, int arg2, int arg3, int arg4)
     {
@@ -2929,12 +3813,16 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    public void fireEventRealmMemberlistCleared(nint arg0, nint arg1)
+    public void fireEventRealmMemberlistCleared(global::Hosihikari.Bindings.Bedrock.Interop.Realms.RealmId arg0, nint arg1)
     {
-        NativeMethods.TablePtr->hs_method_394ea866((void*)_handle, (void*)arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_394ea866((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public void fireEventRealmShared(string arg0, nint arg1, nint arg2)
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventRealmShared(nint url, nint mode, nint worldId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void fireEventRealmShared(string arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Realms.RealmId arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -2949,9 +3837,13 @@ public sealed unsafe partial class MinecraftEventing
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_7a73711d((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1, (void*)arg2);
+            NativeMethods.TablePtr->hs_method_7a73711d((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1, (void*)arg2.Handle);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventRealmUpload(nint correlationId, nint uploadStage, int errorCode, int realmId, int fileSizeKB, bool isPack) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventRealmUpload(string arg0, string arg1, int arg2, int arg3, int arg4, bool arg5)
     {
@@ -2986,7 +3878,11 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    public void fireEventRealmUrlGenerated(string arg0, nint arg1)
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventRealmUrlGenerated(nint url, nint worldId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void fireEventRealmUrlGenerated(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Realms.RealmId arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -3001,9 +3897,13 @@ public sealed unsafe partial class MinecraftEventing
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_977e8cd0((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1);
+            NativeMethods.TablePtr->hs_method_977e8cd0((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventRealmsStoriesOptIn(nint arg0, nint arg1, nint arg2, bool arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventRealmsStoriesOptIn(string arg0, string arg1, string arg2, bool arg3)
     {
@@ -3052,9 +3952,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RealmsPurchaseFailureReason' is not a known bindable declaration.", false)]
-    public void fireEventRealmsSubscriptionPurchaseFailed(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RealmsPurchaseFailureReason' is not a known bindable declaration.");
+    public void fireEventRealmsSubscriptionPurchaseFailed(nint arg0, int arg1, int arg2)
+    {
+        NativeMethods.TablePtr->hs_method_65deeb73((void*)_handle, (void*)arg0, arg1, arg2);
+    }
 
     public void fireEventRealmsSubscriptionPurchaseStarted(nint arg0, int arg1)
     {
@@ -3085,6 +3986,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_2392f6d0((void*)_handle, (void*)arg0, arg1);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventSafetyHTTPRequest(nint arg0, nint arg1, int arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventSafetyHTTPRequest(string arg0, string arg1, int arg2)
     {
@@ -3124,6 +4029,10 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_8169edbc((void*)_handle, arg0, arg1, arg2);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventScreenChanged(nint userId, nint screenName, nint additionalProperties) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventScreenChanged(nint arg0, string arg1, nint arg2)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -3142,6 +4051,10 @@ public sealed unsafe partial class MinecraftEventing
             NativeMethods.TablePtr->hs_method_1eb24f5e((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventScreenLoaded(nint userId, nint screenName, double routeChangedTimestamp, double contentfulPaintTimestamp, double meaningfulPaintTimestamp, double longestFrameTimeMs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventScreenLoaded(nint arg0, string arg1, double arg2, double arg3, double arg4, double arg5)
     {
@@ -3186,6 +4099,10 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_6ac2afa1((void*)_handle, (void*)arg0);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventSearchItemSelected(int correlationId, int sessionId, nint productId, int row, int column, int currentPage) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventSearchItemSelected(int arg0, int arg1, string arg2, int arg3, int arg4, int arg5)
     {
         var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
@@ -3204,6 +4121,10 @@ public sealed unsafe partial class MinecraftEventing
             NativeMethods.TablePtr->hs_method_36d10864((void*)_handle, arg0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3, arg4, arg5);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventServerDrivenLayoutImagesLoaded(nint telem, nint pageID, int imageCount, ulong totalImagesSize, int successCount, int failCount, int cachedCount, nint responseCodes) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventServerDrivenLayoutImagesLoaded(nint arg0, string arg1, int arg2, ulong arg3, int arg4, int arg5, int arg6, ushort[] arg7)
     {
@@ -3226,6 +4147,10 @@ public sealed unsafe partial class MinecraftEventing
             }
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventServerDrivenLayoutPageLoaded(nint telem, nint pageID, int requestSize, int responseSize, int rowCount, int itemCount, int imageCount) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventServerDrivenLayoutPageLoaded(nint arg0, string arg1, int arg2, int arg3, int arg4, int arg5, int arg6)
     {
@@ -3265,10 +4190,18 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventServerPlayerJoinedGame(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventServerRespawnSearchTime(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, nint arg1)
     {
         NativeMethods.TablePtr->hs_method_0e1e20e2((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventServerShutdownDueToError(nint reason) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventServerShutdownDueToError(string arg0)
     {
@@ -3293,6 +4226,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_1a51c908((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventSidebarNavigation(nint userId, nint layoutType, nint telemetryId, int depthLevel, bool isSelected, bool areChildrenVisible, bool hasChildren) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventSidebarNavigation(nint arg0, string arg1, string arg2, int arg3, bool arg4, bool arg5, bool arg6)
     {
@@ -3327,6 +4264,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventSidebarVerboseToggled(nint userId, nint layoutType, nint verboseNavigationType, bool verboseState) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventSidebarVerboseToggled(nint arg0, string arg1, string arg2, bool arg3)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -3360,13 +4301,25 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Identity::EduSignInStage' is not a known bindable declaration.", false)]
-    public void fireEventSignInEdu(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Identity::EduSignInStage' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventSignInEdu_13907d14(nint mutsUserId, nint role, nint stage, nint tenantType, nint error, nint details) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Social::IdentitySignInTrigger' is not a known bindable declaration.", false)]
-    public void fireEventSignInToIdentity(nint arg0, nint arg1, nint arg2, bool arg3, nint arg4, nint arg5, int arg6, nint arg7, nint arg8) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Social::IdentitySignInTrigger' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public void fireEventSignInEdu_76d9d7e4(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventSignInToIdentity_9fb33d05(nint arg0, nint arg1, nint arg2, bool arg3, nint arg4, nint arg5, int arg6, nint arg7, nint arg8) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Social::PlayerIDs' is not a known bindable declaration.", false)]
+    public void fireEventSignInToIdentity_902a383d(nint arg0, nint arg1, nint arg2, bool arg3, nint arg4, nint arg5, int arg6, nint arg7, nint arg8) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Social::PlayerIDs' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventSignOutEdu(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventSignOutEdu(string arg0, int arg1, string arg2, string arg3, string arg4)
     {
@@ -3429,13 +4382,69 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Social::IdentitySignInTrigger' is not a known bindable declaration.", false)]
-    public void fireEventSignOutOfIdentity(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Social::IdentitySignInTrigger' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventSignOutOfIdentity(nint accountType, nint trigger, nint accountId, nint errorCode) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IConnectionEventing::SignalServiceConnectState' is not a known bindable declaration.", false)]
+    public void fireEventSignOutOfIdentity(int arg0, int arg1, string arg2, string arg3)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+            {
+                NativeMethods.TablePtr->hs_method_d7d2878c((void*)_handle, arg0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void fireEventSignalServiceConnect(nint arg0, bool arg1, int arg2, ulong arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IConnectionEventing::SignalServiceConnectState' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void fireEventSignalServiceConnect(int arg0, bool arg1, int arg2, ulong arg3, string arg4)
+    {
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
+        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+        {
+            NativeMethods.TablePtr->hs_method_2fd2caae((void*)_handle, arg0, arg1, arg2, arg3, __hs_stringData4, (nuint)__hs_stringByteCount4);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static void fireEventSlashCommandExecuted(nint player, nint commandName, int successCount, int errorCount, nint errorList) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static void fireEventSlashCommandExecuted(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, string arg1, int arg2, int arg3, string arg4)
     {
@@ -3480,6 +4489,10 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_1c931956((void*)_handle, (void*)arg0);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventStartClient(nint ipAddress) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventStartClient(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -3499,13 +4512,36 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Social::MultiplayerServiceIdentifier' is not a known bindable declaration.", false)]
-    public void fireEventStartWorld(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Social::MultiplayerServiceIdentifier' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventStartWorld(nint networkType, nint ipAddress, nint friendWorldType) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void fireEventStartWorld(int arg0, string arg1, int arg2)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->hs_method_d41b1703((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2);
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'SerialWorkListLogEntry' is not supported.", false)]
     public void fireEventStartupPerformance(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'SerialWorkListLogEntry' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventStorage(int state, nint extra) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventStorage(int arg0, string arg1)
     {
@@ -3526,9 +4562,17 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventStorageAreaFull_f3fcb101(nint areaPath, nint diskSizeData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'Bedrock::DirectoryEntry' is not supported.", false)]
-    public void fireEventStorageAreaFull(nint arg0, nint arg1) =>
+    public void fireEventStorageAreaFull_5efcfd37(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'Bedrock::DirectoryEntry' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventStorageReport(nint report) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventStorageReport(string arg0)
     {
@@ -3553,6 +4597,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_236922cf((void*)_handle, arg0, arg1);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventStoreErrorPage(nint errorCode, nint pageId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventStoreErrorPage(string arg0, string arg1)
     {
@@ -3630,10 +4678,18 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventStoreOfferClicked(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventStorePlayFabRequestResponse(ushort arg0)
     {
         NativeMethods.TablePtr->hs_method_921837de((void*)_handle, arg0);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventStorePromotionNotification(nint productId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventStorePromotionNotification(string arg0)
     {
@@ -3659,6 +4715,10 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_6b48d22a((void*)_handle, (void*)arg0);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventStoreSessionResponse(nint responseType, int status, int retryCount) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventStoreSessionResponse(string arg0, int arg1, int arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -3682,6 +4742,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_9b17ac3d((void*)_handle, (void*)arg0, arg1, arg2);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventSwitchAccountEdu(nint mutsUserId, nint role, nint tenantType) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventSwitchAccountEdu(string arg0, int arg1, string arg2)
     {
@@ -3716,6 +4780,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventTagButtonPressed(nint tag, bool showMore) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventTagButtonPressed(string arg0, bool arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -3734,6 +4802,10 @@ public sealed unsafe partial class MinecraftEventing
             NativeMethods.TablePtr->hs_method_d2a3fe01((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventTextProcessorShadowban(nint arg0, nint arg1, uint arg2, uint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventTextProcessorShadowban(string arg0, string arg1, uint arg2, uint arg3)
     {
@@ -3768,6 +4840,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventTextProcessorStartupFailed(nint arg0, int arg1, int arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventTextProcessorStartupFailed(string arg0, int arg1, int arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -3786,6 +4862,10 @@ public sealed unsafe partial class MinecraftEventing
             NativeMethods.TablePtr->hs_method_b89c2bdf((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventTrackDeeplinks(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventTrackDeeplinks(string arg0, string arg1)
     {
@@ -3886,6 +4966,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventTreatmentPackDownloadFailed(nint productId, nint packId, nint versionNumber, nint requiredTreatmentTag) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventTreatmentPackDownloaded(string arg0, string arg1, string arg2, string arg3)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -3947,6 +5031,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventTreatmentPackDownloaded(nint productId, nint packId, nint versionNumber, nint requiredTreatmentTag) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventTreatmentPackRemoved(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -3966,10 +5054,18 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventTreatmentPackRemoved(nint packId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventTreatmentsCleared()
     {
         NativeMethods.TablePtr->hs_method_e5758df8((void*)_handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventTreatmentsSet(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventTreatmentsSet(string[] arg0, string arg1)
     {
@@ -4011,6 +5107,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventTrialDeviceIdCorrelation(long myTime, nint theirId, long theirTime, nint theirLastSessionId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventTrialDeviceIdCorrelation(long arg0, string arg1, long arg2, string arg3)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -4048,6 +5148,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_d936a30c((void*)_handle, arg0);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventUgcAcquisitionStateChanged(nint arg0, ulong arg1, double arg2, bool arg3, int arg4, bool arg5, int arg6, nint arg7, nint arg8, int arg9) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventUgcAcquisitionStateChanged(string arg0, ulong arg1, double arg2, bool arg3, int arg4, bool arg5, int arg6, string arg7, string arg8, int arg9)
     {
@@ -4105,6 +5209,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_2f065ebb((void*)_handle, (void*)arg0, arg1);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventUserListUpdated(nint productId, nint listId, nint operation, bool success) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventUserListUpdated(string arg0, string arg1, string arg2, bool arg3)
     {
@@ -4172,6 +5280,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventUwpToGdkMigrationComplete(nint deviceIdContext, nint gdkDeviceId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventVRModeChanged(bool arg0)
     {
         NativeMethods.TablePtr->hs_method_64b6d83c((void*)_handle, arg0);
@@ -4181,6 +5293,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_fc4f05f8((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventVideoPlayed(nint productId, nint videoUrl) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventVideoPlayed(string arg0, string arg1)
     {
@@ -4214,6 +5330,10 @@ public sealed unsafe partial class MinecraftEventing
             }
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventWebviewDownload(nint downloadState, nint downloadInfo) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventWebviewDownload(string arg0, nint arg1)
     {
@@ -4258,6 +5378,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventWorldCorruptionCausedWorldShutdown(nint context, nint reason, nint isOutOfDiskSpace) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireEventWorldExported(long arg0, ulong arg1)
     {
         NativeMethods.TablePtr->hs_method_a3929f50((void*)_handle, arg0, arg1);
@@ -4267,6 +5391,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_894de72b((void*)_handle, arg0, arg1, arg2, arg3);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventWorldGenerated(nint levelId, nint levelSettings, bool fromTemplate) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventWorldGenerated(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings arg1, bool arg2)
     {
@@ -4286,6 +5414,10 @@ public sealed unsafe partial class MinecraftEventing
             NativeMethods.TablePtr->hs_method_17ae69aa((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, arg2);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventWorldHistoryPackSourceMissingDuringUpgrade(nint worldPath, nint levelId, nint deletionCandidate) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventWorldHistoryPackSourceMissingDuringUpgrade(string arg0, string arg1, string arg2)
     {
@@ -4339,9 +5471,14 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_2542cb6e((void*)_handle, arg0, arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'FileArchiverOutcome' is not a known bindable declaration.", false)]
-    public void fireEventWorldImportedResult(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'FileArchiverOutcome' is not a known bindable declaration.");
+    public void fireEventWorldImportedResult(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_eeb955ae((void*)_handle, arg0);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventWorldLoaded(nint player, nint personaSlot, nint classicSkinId, bool usingClassicSkin) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventWorldLoaded(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, string arg1, string arg2, bool arg3)
     {
@@ -4377,8 +5514,16 @@ public sealed unsafe partial class MinecraftEventing
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'buffer_span<std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>>' is not a known bindable declaration.", false)]
-    public void fireEventWorldLoadedClassroomCustomization(nint arg0, nint arg1) =>
+    public void fireEventWorldLoadedClassroomCustomization_cf926a44(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'buffer_span<std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireEventWorldLoadedClassroomCustomization_1f539f86(nint customization, nint details) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireExternalUriLaunched(nint uri) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireExternalUriLaunched(string arg0)
     {
@@ -4403,6 +5548,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_8d3e3060((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg2);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireHostClientTransportSettingSync(nint hostTransportType, nint clientTransportType, nint creatorName, nint serverAddress, nint rakNetGUID, ulong webRTCNetworkId, bool clientSwitchRequired) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireHostClientTransportSettingSync(int arg0, int arg1, string arg2, string arg3, string arg4, ulong arg5, bool arg6)
     {
@@ -4451,6 +5600,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireIDESelected(nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireIDESelected(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -4471,12 +5624,39 @@ public sealed unsafe partial class MinecraftEventing
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::set<IMinecraftEventing::IgnoredNotificationSource,std::less<IMinecraftEventing::IgnoredNotificationSource>,std::allocator<IMinecraftEventing::IgnoredNotificationSource>>' is not a known bindable declaration.", false)]
-    public void fireIgnoredNotificationsEvent(nint arg0, int arg1, nint arg2) =>
+    public void fireIgnoredNotificationsEvent_6b126ed0(nint arg0, int arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::set<IMinecraftEventing::IgnoredNotificationSource,std::less<IMinecraftEventing::IgnoredNotificationSource>,std::allocator<IMinecraftEventing::IgnoredNotificationSource>>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OpenCodeMethod' is not a known bindable declaration.", false)]
-    public void fireInAppCodeBuilderActivated(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OpenCodeMethod' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireIgnoredNotificationsEvent_ed9da5bc(nint notificationType, int notificationCount, nint notificationSources) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireInAppCodeBuilderActivated(nint method, nint ideName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void fireInAppCodeBuilderActivated(int arg0, string arg1)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->hs_method_b7fe1f03((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireInAppCodeBuilderDismissed(nint ideName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireInAppCodeBuilderDismissed(string arg0)
     {
@@ -4516,9 +5696,21 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireInviteStatusReceived(nint id) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
-    public void fireInviteStatusSentImpl(uint arg0, nint arg1) =>
+    public void fireInviteStatusSentImpl_bd7af269(uint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireInviteStatusSentImpl_c77012f0(uint userId, nint invitationIds) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireLessonActionTaken(nint lessonTitle, nint lessonId, nint courseId, nint buttonAction, int score) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireLessonActionTaken(string arg0, string arg1, string arg2, int arg3, int arg4)
     {
@@ -4571,6 +5763,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_b8cae974((void*)_handle, arg0);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireLessonProgressEvent(nint lessonTitle, nint lessonId, nint courseId, nint activityId, nint action, int score) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireLessonProgressEvent(string arg0, string arg1, string arg2, string arg3, string arg4, int arg5)
     {
@@ -4647,6 +5843,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireLibraryButtonPressed(nint productId, nint worldName, nint buttonAction) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireLibraryButtonPressed(string arg0, string arg1, string arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -4704,6 +5904,10 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_b5939cc3((void*)_handle, arg0);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireNetworkChangedEvent(nint networkConnectionType) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireNetworkChangedEvent(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -4728,12 +5932,49 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_7c547ce3((void*)_handle, (void*)arg0, (void*)arg1.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'TextProcessingEventOrigin' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void firePassthroughTextProcessEvent(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'TextProcessingEventOrigin' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void firePassthroughTextProcessEvent(string arg0, int arg1, string arg2)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                NativeMethods.TablePtr->hs_method_29d6f878((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void firePerfTestEvent_b3d88b9f(nint testArtifact, nint modelName, nint renderSize, uint renderDistance, uint simDistance, nint memorySize, nint testArtifactData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public void firePerfTestEvent(nint arg0, nint arg1, nint arg2, uint arg3, uint arg4, nint arg5, nint arg6) =>
+    public void firePerfTestEvent_daff2d19(nint arg0, nint arg1, nint arg2, uint arg3, uint arg4, nint arg5, nint arg6) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     public void firePermissionsSetEvent(sbyte arg0, byte arg1, sbyte arg2, byte arg3)
@@ -4749,6 +5990,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_09e87ae9((void*)_handle, arg0, arg1, arg2);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireQueryOfferResult(nint storeID, int NumberOfOffers, bool QuerySucceeded) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireQueryOfferResult(string arg0, int arg1, bool arg2)
     {
@@ -4794,13 +6039,68 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_95c99d6c((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'TextProcessingEventOrigin' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void fireSafetyServiceTextProcessEvent(nint arg0, nint arg1, ushort arg2, nint arg3, bool arg4, double arg5, byte arg6, byte arg7, nint arg8, nint arg9, bool arg10) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'TextProcessingEventOrigin' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void fireSafetyServiceTextProcessEvent(string arg0, int arg1, ushort arg2, string arg3, bool arg4, double arg5, sbyte arg6, sbyte arg7, nint arg8, string arg9, bool arg10)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
+        var __hs_stringByteCount9 = global::System.Text.Encoding.UTF8.GetByteCount(arg9);
+        scoped global::System.Span<byte> __hs_stringBytes9;
+        if (__hs_stringByteCount9 <= 256)
+        {
+            __hs_stringBytes9 = stackalloc byte[__hs_stringByteCount9 == 0 ? 1 : __hs_stringByteCount9];
+        }
+        else
+        {
+            __hs_stringBytes9 = new byte[__hs_stringByteCount9];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg9, __hs_stringBytes9);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+            {
+                fixed (byte* __hs_stringData9 = __hs_stringBytes9)
+                {
+                    NativeMethods.TablePtr->hs_method_ec33e705((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, __hs_stringData3, (nuint)__hs_stringByteCount3, arg4, arg5, arg6, arg7, (void*)arg8, __hs_stringData9, (nuint)__hs_stringByteCount9, arg10);
+                }
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireScreenLoadTimeUpdateEvent_cf1033eb(nint userId, nint screenName, nint duration, nint loadInstanceId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void fireScreenLoadTimeUpdateEvent_fcd7eb09(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireServerConnectionAttemptEvent(nint creatorName, bool isTransfer, nint serverAddress) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireServerConnectionAttemptEvent(string arg0, bool arg1, string arg2)
     {
@@ -4835,9 +6135,46 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IConnectionEventing::ServerConnectionOutcome' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void fireServerConnectionEvent(nint arg0, uint arg1, double arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IConnectionEventing::ServerConnectionOutcome' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void fireServerConnectionEvent(int arg0, uint arg1, double arg2, string arg3, string arg4)
+    {
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
+        fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+        {
+            fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+            {
+                NativeMethods.TablePtr->hs_method_00d0a583((void*)_handle, arg0, arg1, arg2, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4);
+            }
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireServerShutdown(nint serverId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireServerShutdown(string arg0)
     {
@@ -4858,6 +6195,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireServerStarted(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void fireServerStarted(int arg0, string arg1, nint arg2)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -4877,13 +6218,36 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'EduShareUriType' is not a known bindable declaration.", false)]
-    public void fireShareButtonPressed(nint arg0, nint arg1, nint arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'EduShareUriType' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireShareButtonPressed(nint location, nint shareType, nint methodType, bool includesResource) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::StorageMigration::StorageMigrationType' is not a known bindable declaration.", false)]
+    public void fireShareButtonPressed(string arg0, int arg1, int arg2, bool arg3)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->hs_method_5937dfcd((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, arg3);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireStorageMigrationEvent_6c9fc82c(bool isSuccessful, nint migrationType, int numFilesMigrated, int numFilesTotal, nint duration, nint failureReason) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void fireStorageMigrationEvent_1077d76e(bool arg0, nint arg1, int arg2, int arg3, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::StorageMigration::StorageMigrationType' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public void fireStructureBlockAction(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.StructureEditorData arg1, nint arg2)
     {
@@ -4900,18 +6264,42 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_13c61bca((void*)_handle, arg0, arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'UserGeneratedUriSource' is not a known bindable declaration.", false)]
-    public void fireUserGeneratedUriLaunchFailed(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'UserGeneratedUriSource' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireUserGeneratedUriLaunchFailed(nint source, nint reasonCode, nint additionalData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'UserGeneratedUriSource' is not a known bindable declaration.", false)]
-    public void fireUserGeneratedUriLaunched(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'UserGeneratedUriSource' is not a known bindable declaration.");
+    public void fireUserGeneratedUriLaunchFailed(int arg0, int arg1, string arg2)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            NativeMethods.TablePtr->hs_method_a2ae7d3b((void*)_handle, arg0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+        }
+    }
+
+    public void fireUserGeneratedUriLaunched(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_e905db26((void*)_handle, arg0);
+    }
 
     public void fireWorldConversionAttemptEvent(nint arg0)
     {
         NativeMethods.TablePtr->hs_method_61c3e88b((void*)_handle, (void*)arg0);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireWorldConversionInitiatedEvent(nint converterVersion) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireWorldConversionInitiatedEvent(string arg0)
     {
@@ -4936,6 +6324,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_14b3c74b((void*)_handle, (void*)arg0);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void fireWorldUpgradedToCnCPart2(bool willUpgrade, nint baseGameVersion, nint experiments, nint lastOpenedVersion, nint worldSeed, float worldSizeMB) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireWorldUpgradedToCnCPart2(bool arg0, string arg1, nint arg2, string arg3, global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 arg4, float arg5)
     {
@@ -4989,17 +6381,25 @@ public sealed unsafe partial class MinecraftEventing
     public nint getCrashTelemetryProcessor() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::not_null<Bedrock::CrashTelemetryProcessor*>' requires --link-carrier or --virtual-dispatch.");
 
-    public string getPlayerSessionId()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getPlayerSessionId_6fb9fab8() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getPlayerSessionId_a91378a5()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_a91378a5((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string getSessionId()
+    public string getSessionId_ead3d1aa()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_ead3d1aa((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getSessionId_e8d91dff() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void init(nint arg0)
     {
@@ -5020,6 +6420,45 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_0bbbddb1((void*)_handle, (void*)arg0, arg1);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint mAchievementEventing
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint mCachedUUIDs
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint mPlayerTelemetry
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint mRealtimeRoute
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint mScreenFlow
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void prepEventSearchCatalogRequest(nint arg0)
     {
@@ -5056,6 +6495,27 @@ public sealed unsafe partial class MinecraftEventing
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint sHeartbeatMutex
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint sMutex
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint sPlayerTelemetryMutex
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
     public void sendBatchedCrashTelemetry()
     {
         NativeMethods.TablePtr->hs_method_eb0ce6b5((void*)_handle);
@@ -5070,6 +6530,10 @@ public sealed unsafe partial class MinecraftEventing
     {
         NativeMethods.TablePtr->hs_method_3fb5bfa3((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setServerIdsforClient(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setServerIdsforClient(string arg0, string arg1, string arg2, string arg3, string arg4)
     {
@@ -5171,8 +6635,12 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_51ef6da9((void*)_handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void tryFireEventProgressLoadTimes_6e965aeb(nint calledFromScreen, nint progressHandlerLoadTimes) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
-    public void tryFireEventProgressLoadTimes(nint arg0, nint arg1) =>
+    public void tryFireEventProgressLoadTimes_f6bb7039(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
     public void unregisterSecondaryUserCommonProperties(nint arg0)

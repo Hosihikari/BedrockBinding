@@ -220,9 +220,16 @@ public sealed unsafe partial class AppPlatform
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'Social::MultiplayerServiceIdentifier' is not supported.", false)]
-    public nint getBroadcastingMultiplayerServiceIds(bool arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'Social::MultiplayerServiceIdentifier' is not supported.");
+    public int[] getBroadcastingMultiplayerServiceIds(bool arg0, bool arg1)
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_9467063c((void*)_handle, arg0, arg1);
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<int>() : new int[checked((int)__hs_view.Size)];
+        if (__hs_view.Size > 0)
+        {
+            new global::System.ReadOnlySpan<int>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
+        }
+        return __hs_result;
+    }
 
     public int getBuildPlatform()
     {

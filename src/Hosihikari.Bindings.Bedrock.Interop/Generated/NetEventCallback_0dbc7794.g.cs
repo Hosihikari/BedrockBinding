@@ -1156,9 +1156,24 @@ public sealed unsafe partial class NetEventCallback
     public void onWebsocketRequest_575ffd77(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PacketViolationResponse' is not a known bindable declaration.", false)]
-    public void sendPacketViolationDetectedTelemetryData(ulong arg0, nint arg1, nint arg2, nint arg3, nint arg4, uint arg5, nint arg6, nint arg7, uint arg8) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PacketViolationResponse' is not a known bindable declaration.");
+    public void sendPacketViolationDetectedTelemetryData(ulong arg0, string arg1, int arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg4, uint arg5, byte arg6, byte arg7, uint arg8)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->hs_method_d7beb2bd((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3, (void*)arg4.Handle, arg5, arg6, arg7, arg8);
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_c4e5c096() =>

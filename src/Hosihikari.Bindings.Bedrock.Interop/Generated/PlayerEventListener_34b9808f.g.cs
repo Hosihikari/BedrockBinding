@@ -76,9 +76,10 @@ public sealed unsafe partial class PlayerEventListener
         return NativeMethods.TablePtr->hs_method_64e1c794((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'MinecraftEventing::AchievementIds' is not a known bindable declaration.", false)]
-    public nint onPlayerAwardAchievement(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'MinecraftEventing::AchievementIds' is not a known bindable declaration.");
+    public int onPlayerAwardAchievement(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, int arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_248906e7((void*)_handle, (void*)arg0.Handle, arg1);
+    }
 
     public int onPlayerCaravanChanged(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1)
     {
