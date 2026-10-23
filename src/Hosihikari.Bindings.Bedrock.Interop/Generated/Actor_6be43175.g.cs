@@ -349,9 +349,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_db8fc79d((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public float causeFallDamageToActor(float arg0, float arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public void celebrateHunt(int arg0, bool arg1)
     {
@@ -411,9 +411,10 @@ public sealed unsafe partial class Actor : global::System.IDisposable
     public nint createUpdateEquipPacket(int arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'UpdateEquipPacket' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'UpdateTradePacket' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint createUpdateTradePacket(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'UpdateTradePacket' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.UpdateTradePacket createUpdateTradePacket(int arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.UpdateTradePacket((nint)NativeMethods.TablePtr->hs_method_485e8b52((void*)_handle, arg0));
+    }
 
     public void deregisterTagsFromLevelCache()
     {
@@ -1578,18 +1579,18 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_8ef3023e((void*)_handle, arg0, arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void handleFallDamage(float arg0, float arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public void handleInsidePortal(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
     {
         NativeMethods.TablePtr->hs_method_8d6e70b4((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void handleLeftoverFallDamage(float arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public bool hasAnyEffects()
     {

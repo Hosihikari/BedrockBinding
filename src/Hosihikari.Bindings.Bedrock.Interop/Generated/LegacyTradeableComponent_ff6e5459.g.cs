@@ -56,9 +56,10 @@ public sealed unsafe partial class LegacyTradeableComponent
         NativeMethods.TablePtr->hs_method_f87bbba1((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'UpdateTradePacket' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint createDataPacket(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'UpdateTradePacket' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.UpdateTradePacket createDataPacket(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, sbyte arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.UpdateTradePacket((nint)NativeMethods.TablePtr->hs_method_83354963((void*)_handle, (void*)arg0.Handle, arg1));
+    }
 
     public bool getAddRecipeOnUpdate()
     {

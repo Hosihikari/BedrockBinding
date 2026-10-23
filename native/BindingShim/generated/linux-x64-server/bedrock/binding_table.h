@@ -109,6 +109,7 @@ struct HosihikariBindingTableV1 {
     bool (*hs_method_f804d222)(void*, void*, float, float);
     void (*hs_method_a4ecb7c5)(void*, void*, std::int32_t);
     bool (*hs_method_885772a4)(void*);
+    void* (*hs_method_485e8b52)(void*, std::int32_t);
     void (*hs_method_bdcbf22f)(void*);
     void (*hs_method_bbdfef65)(void*);
     void (*hs_method_ceac5b88)(void*, void*);
@@ -855,6 +856,7 @@ struct HosihikariBindingTableV1 {
     std::int32_t (*hs_method_daf6a1d5)(void*);
     std::int32_t (*hs_method_8174b750)(void*);
     void* (*hs_method_69a76eaa)(void*);
+    void* (*hs_method_00447c6d)(void*, const char*, std::size_t);
     HosihikariStringView (*hs_method_233a5038)(void*);
     HosihikariStringView (*hs_method_7cf53c08)(void*);
     float (*hs_method_a4abedff)(void*);
@@ -1004,6 +1006,7 @@ struct HosihikariBindingTableV1 {
     std::int32_t (*hs_method_495f8dd5)(void*);
     std::int32_t (*hs_method_9c2b2bb2)(void*);
     void* (*hs_method_e9565f04)(void*);
+    void* (*hs_method_38e5e88a)(void*, const char*, std::size_t);
     HosihikariStringView (*hs_method_4b22c40a)(void*);
     HosihikariStringView (*hs_method_e05c57b0)(void*);
     std::uint64_t (*hs_method_64ff6386)(void*);
@@ -2916,6 +2919,7 @@ struct HosihikariBindingTableV1 {
     bool (*hs_method_6389a532)(void*, void*, void*, void*);
     bool (*hs_method_351a3738)(void*, void*, void*);
     void (*hs_method_af56ff65)(void*, void*);
+    void* (*hs_method_c69c347d)(void*, std::int8_t);
     void (*hs_method_ef68a314)(void*, void*);
     std::int32_t (*hs_method_06db68ba)(void*);
     HosihikariStringView (*hs_method_c2e09046)(void*);
@@ -3947,6 +3951,7 @@ struct HosihikariBindingTableV1 {
     void (*hs_method_293d23e6)(void*);
     void (*hs_method_684be86f)(void*);
     void (*hs_method_f87bbba1)(void*, void*);
+    void* (*hs_method_83354963)(void*, void*, std::int8_t);
     bool (*hs_method_36733c7d)(void*);
     HosihikariStringView (*hs_method_4f9e584e)(void*);
     bool (*hs_method_37f7854a)(void*, void*, void*, void*);

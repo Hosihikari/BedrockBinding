@@ -310,9 +310,9 @@ public sealed unsafe partial class Player : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_f4fa174d((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public float causeFallDamageToActor(float arg0, float arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public void causeFoodExhaustion(float arg0)
     {

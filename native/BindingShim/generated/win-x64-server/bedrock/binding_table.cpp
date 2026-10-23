@@ -357,12 +357,10 @@ static void* hs_method_d186b096(void* hs_self, void* arg0, void* arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, hs_arg1Storage);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, hs_arg1Storage);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -384,22 +382,10 @@ static void* hs_method_16d0507b(void* hs_self, void* arg0, void* arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[112];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
     using HsFn = void (*)(void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{5719712}, "??0HitResult@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{2164720}, "??1HitResult@@QEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -421,12 +407,10 @@ static void* hs_method_6f2a152b(void* hs_self, void* arg0, void* arg1, bool arg2
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, void*, void*, bool, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2, arg3);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -448,12 +432,10 @@ static void* hs_method_9c83185e(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -475,12 +457,10 @@ static void* hs_method_e2a6fe95(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -502,12 +482,10 @@ static void* hs_method_b22ddf56(void* hs_self, float arg0, float arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*, float, float);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -529,12 +507,10 @@ static void* hs_method_d46e7ade(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -556,12 +532,10 @@ static void* hs_method_df35e9d3(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -585,12 +559,10 @@ static void* hs_method_3774545a(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), hs_arg0Storage);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(hs_self, static_cast<void*>(hs_record), hs_arg0Storage);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -612,12 +584,10 @@ static void* hs_method_b43db7d1(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -639,12 +609,10 @@ static void* hs_method_e2822bdc(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -781,12 +749,10 @@ static void* hs_method_3dd6a309(void* arg0, void* arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -808,12 +774,10 @@ static void* hs_method_cc44833a(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -835,12 +799,10 @@ static void* hs_method_0f0efb64(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -1602,12 +1564,10 @@ static void* hs_method_1f818f46(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -1629,12 +1589,10 @@ static void* hs_method_d46038ca(void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, std::uint64_t);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(static_cast<void*>(hs_recordStorage), *reinterpret_cast<std::uint64_t const*>(arg0));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(static_cast<void*>(hs_record), *reinterpret_cast<std::uint64_t const*>(arg0));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -1679,12 +1637,10 @@ static void* hs_method_e33d1d50(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -2478,6 +2434,31 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static void* hs_method_485e8b52(void* hs_self, std::int32_t arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{26925152}, "?createUpdateTradePacket@Actor@@QEAA?AVUpdateTradePacket@@H@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(144), 8));
+    using HsFn = void (*)(void*, void*, std::int32_t);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
+    return hs_record;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static void hs_method_bdcbf22f(void* hs_self) try
@@ -3348,12 +3329,10 @@ static void* hs_method_104e0a3a(void* hs_self, std::int32_t arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, std::int32_t);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -3375,12 +3354,10 @@ static void* hs_method_20e1d1a2(void* hs_self, std::int32_t arg0, float arg1) tr
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, std::int32_t, float);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -3448,12 +3425,10 @@ static void* hs_method_4c1b4874(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -3477,12 +3452,10 @@ static void* hs_method_3ccd30b8(void* arg0, void* arg1, void* arg2, void* arg3, 
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0, hs_arg1Storage, arg2, arg3);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(static_cast<void*>(hs_record), arg0, hs_arg1Storage, arg2, arg3);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -3504,12 +3477,10 @@ static void* hs_method_37e96704(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -3669,12 +3640,10 @@ static void* hs_method_320cdcf2(float arg0, void* arg1, void* arg2, float arg3) 
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, float, void*, void*, float);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(static_cast<void*>(hs_record), arg0, arg1, arg2, arg3);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -4458,12 +4427,10 @@ static void* hs_method_40b5e646(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -4508,12 +4475,10 @@ static void* hs_method_57a86218(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -4610,12 +4575,10 @@ static void* hs_method_3adecea8(void* hs_self, float arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, float);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -4844,12 +4807,10 @@ static void* hs_method_062049e3(void* hs_self, float arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, float);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -4871,12 +4832,10 @@ static void* hs_method_3062dd31(float arg0, void* arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, float, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -4898,12 +4857,10 @@ static void* hs_method_35d56e55(void* hs_self, float arg0, std::int32_t arg1) tr
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, float, std::int32_t);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -4925,12 +4882,10 @@ static void* hs_method_6d8f4ebf(void* hs_self, float arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, float);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -5528,12 +5483,10 @@ static void* hs_method_fa0dd5cf(void* arg0, std::uint32_t arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*, std::uint32_t);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -5555,12 +5508,10 @@ static void* hs_method_ad4dd3d4(void* hs_self, std::uint32_t arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*, std::uint32_t);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -5814,12 +5765,10 @@ static void* hs_method_ae8462c2(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -6933,12 +6882,10 @@ static void* hs_method_d2954def(void* arg0, float arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, float);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -6960,12 +6907,10 @@ static void* hs_method_b6082c8c(void* arg0, void* arg1, float arg2) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, void*, float);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0, arg1, arg2);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(static_cast<void*>(hs_record), arg0, arg1, arg2);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -6987,12 +6932,10 @@ static void* hs_method_f214d53a(void* hs_self, float arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, float);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -7067,12 +7010,10 @@ static void* hs_method_26a4d6f9(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(1) unsigned char hs_recordStorage[1];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(1));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -16371,22 +16312,10 @@ static void* hs_method_526ee289(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[176];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(176), 8));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{24895056}, "??0ActorDefinitionIdentifier@@QEAA@$$QEAU0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{1345808}, "??1ActorDefinitionIdentifier@@QEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(176), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -16408,12 +16337,10 @@ static void* hs_method_4d64ba2b(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -16460,12 +16387,10 @@ static void* hs_method_92581d4a(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -16870,12 +16795,10 @@ static void* hs_method_0232d2a7(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -17150,12 +17073,10 @@ static void* hs_method_ec87ac2d(void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -20152,6 +20073,32 @@ static void* hs_method_69a76eaa(void* hs_self) try
     void* hs_result = hs_unique.release();
     hs_unique.~HsTypedResult();
     return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_00447c6d(void* hs_self, const char* arg0_data, std::size_t arg0_size) try
+{
+    std::basic_string<char> hs_str0(arg0_data, arg0_size);
+    auto const hs_target = hs_resolve(std::uintptr_t{5076448}, "?getSecureStorageKey@AppPlatform@@UEAA?AVSecureStorageKey@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
+    using HsFn = void (*)(void*, void*, std::basic_string<char,std::char_traits<char>,std::allocator<char>> const&);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, static_cast<void*>(hs_record), hs_str0);
+    return hs_record;
 }
 catch (std::exception const& hs_error)
 {
@@ -23731,6 +23678,32 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_method_38e5e88a(void* hs_self, const char* arg0_data, std::size_t arg0_size) try
+{
+    std::basic_string<char> hs_str0(arg0_data, arg0_size);
+    auto const hs_target = hs_resolve(std::uintptr_t{33104896}, "?getSecureStorageKey@AppPlatform_win32@@UEAA?AVSecureStorageKey@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
+    using HsFn = void (*)(void*, void*, std::basic_string<char,std::char_traits<char>,std::allocator<char>> const&);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, static_cast<void*>(hs_record), hs_str0);
+    return hs_record;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static HosihikariStringView hs_method_4b22c40a(void* hs_self) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{33105264}, "?getSubPlatformString@AppPlatform_win32@@UEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ");
@@ -26414,12 +26387,10 @@ static void* hs_method_d8761697(void* hs_self, void* arg0, void* arg1, void* arg
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*, void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2, arg3);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -26878,22 +26849,10 @@ static void* hs_method_cd24fa80(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{8581552}, "??0CompoundTag@@QEAA@$$QEAV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{8586800}, "??1CompoundTag@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -27448,22 +27407,10 @@ static void* hs_method_0fb9532c(void* hs_self, void* arg0, void* arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[136];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
     using HsFn = void (*)(void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{28608384}, "??0ItemInstance@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{2164880}, "??1ItemInstance@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -27588,12 +27535,10 @@ static void* hs_method_2d4956b5(void* hs_self, void* arg0, void* arg1, void* arg
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -28140,12 +28085,10 @@ static void* hs_method_595927cf(void* hs_self, void* arg0, void* arg1, void* arg
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*, void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2, arg3);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -29691,22 +29634,10 @@ static void* hs_method_a7e2db60(void* hs_self, void* arg0, void* arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[136];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
     using HsFn = void (*)(void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{28608384}, "??0ItemInstance@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{2164880}, "??1ItemInstance@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -29728,22 +29659,10 @@ static void* hs_method_d8455376(void* hs_self, void* arg0, void* arg1, bool arg2
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[136];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
     using HsFn = void (*)(void*, void*, void*, void*, bool);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{28608384}, "??0ItemInstance@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{2164880}, "??1ItemInstance@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -30358,22 +30277,10 @@ static void* hs_method_3f54e907(void* hs_self, void* arg0, void* arg1, void* arg
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[112];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
     using HsFn = void (*)(void*, void*, void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{5719712}, "??0HitResult@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{2164720}, "??1HitResult@@QEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2, arg3);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -30395,22 +30302,10 @@ static void* hs_method_9641f8cb(void* hs_self, void* arg0, void* arg1, void* arg
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[112];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
     using HsFn = void (*)(void*, void*, void*, void*, void*, void*, std::int32_t, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{5719712}, "??0HitResult@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{2164720}, "??1HitResult@@QEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3, arg4, arg5);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2, arg3, arg4, arg5);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -30848,12 +30743,10 @@ static void* hs_method_11f19134(void* hs_self, void* arg0, void* arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(1) unsigned char hs_recordStorage[1];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
     using HsFn = void (*)(void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(1));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -31135,12 +31028,10 @@ static void* hs_method_dad23500(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(1) unsigned char hs_recordStorage[1];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(1));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -31162,12 +31053,10 @@ static void* hs_method_b88d9808(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(1) unsigned char hs_recordStorage[1];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(1));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -31189,12 +31078,10 @@ static void* hs_method_4f2e7e5b(void* hs_self, void* arg0, void* arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -33172,12 +33059,10 @@ static void* hs_method_b8057724(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -33713,12 +33598,10 @@ static void* hs_method_90f1bf5b(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -35552,22 +35435,10 @@ static void* hs_method_a91782d6(void* hs_self, void* arg0, void* arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[136];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
     using HsFn = void (*)(void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{28608384}, "??0ItemInstance@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{2164880}, "??1ItemInstance@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -36293,22 +36164,10 @@ static void* hs_method_6bcad351(void* hs_self, void* arg0, void* arg1, void* arg
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[112];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
     using HsFn = void (*)(void*, void*, void*, void*, void*, void*, void*, std::int32_t, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{5719712}, "??0HitResult@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{2164720}, "??1HitResult@@QEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3, arg4, arg5, arg6);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2, arg3, arg4, arg5, arg6);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -36700,12 +36559,10 @@ static void* hs_method_1b34f800(void* hs_self, void* arg0, void* arg1, void* arg
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*, void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2, arg3);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -39455,12 +39312,10 @@ static void* hs_method_db71eb26(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -39482,12 +39337,10 @@ static void* hs_method_04fccd4b(void* hs_self, void* arg0, void* arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -41019,12 +40872,10 @@ static void* hs_method_694aa0e3(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -41069,12 +40920,10 @@ static void* hs_method_2386ed01(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -41096,12 +40945,10 @@ static void* hs_method_908ff1f3(void* hs_self, std::uint8_t arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, std::uint8_t);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -41146,12 +40993,10 @@ static void* hs_method_00109c99(void* hs_self, std::uint8_t arg0, std::int32_t a
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, std::uint8_t, std::int32_t);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -41231,12 +41076,10 @@ static void* hs_method_bd5f030d(void* hs_self, std::uint8_t arg0, std::uint8_t a
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, std::uint8_t, std::uint8_t, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -42011,22 +41854,10 @@ static void* hs_method_f7d08572(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[112];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{5719712}, "??0HitResult@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{2164720}, "??1HitResult@@QEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -42967,12 +42798,10 @@ static void* hs_method_369a4b27(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(1) unsigned char hs_recordStorage[2];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(2), 1));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(2), 1));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(2));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -43086,12 +42915,10 @@ static void* hs_method_3a6e8dc7(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(1) unsigned char hs_recordStorage[2];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(2), 1));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(2), 1));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(2));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -43323,12 +43150,10 @@ static void* hs_method_70dade26(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -43603,12 +43428,10 @@ static void* hs_method_fb4be657(void* hs_self, void* arg0, bool arg1, bool arg2)
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(1) unsigned char hs_recordStorage[1];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
     using HsFn = void (*)(void*, void*, void*, bool, bool);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(1));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -43632,12 +43455,10 @@ static void* hs_method_dd0c7963(void* hs_self, void* arg0, void* arg1, bool arg2
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(1) unsigned char hs_recordStorage[1];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
     using HsFn = void (*)(void*, void*, void*, void*, bool, bool);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, hs_arg1Storage, arg2, arg3);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(1));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, hs_arg1Storage, arg2, arg3);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -43682,12 +43503,10 @@ static void* hs_method_5fda1253(void* hs_self, void* arg0, void* arg1, bool arg2
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*, void*, void*, bool, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2, arg3);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -47816,12 +47635,10 @@ static void* hs_method_9b1ba9fe(void* hs_self, std::int32_t arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(1) unsigned char hs_recordStorage[1];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
     using HsFn = void (*)(void*, void*, std::int32_t);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(1));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -48236,12 +48053,10 @@ static void* hs_method_fc1a1168(void* hs_self, void* arg0, void* arg1, void* arg
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*, void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2, arg3);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -48744,22 +48559,10 @@ static void* hs_method_a289c9bf(void* hs_self, void* arg0, void* arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[136];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
     using HsFn = void (*)(void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{28608384}, "??0ItemInstance@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{2164880}, "??1ItemInstance@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -48873,22 +48676,10 @@ static void* hs_method_2d9c099b(void* hs_self, void* arg0, void* arg1, void* arg
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[112];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
     using HsFn = void (*)(void*, void*, void*, void*, void*, void*, void*, std::int32_t, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{5719712}, "??0HitResult@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{2164720}, "??1HitResult@@QEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3, arg4, arg5, arg6);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2, arg3, arg4, arg5, arg6);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -48956,12 +48747,10 @@ static void* hs_method_0a52bbc9(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(1) unsigned char hs_recordStorage[1];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(1));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -48983,12 +48772,10 @@ static void* hs_method_f74240a9(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(1) unsigned char hs_recordStorage[1];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(1));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -49194,12 +48981,10 @@ static void* hs_method_90b0a41d(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -49290,12 +49075,10 @@ static void* hs_method_2bfd1c84(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -49363,12 +49146,10 @@ static void* hs_method_244e4ce0(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -49419,12 +49200,10 @@ static void* hs_method_d4800ed1(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -51159,22 +50938,10 @@ static void* hs_method_d043191b(void* hs_self, std::int32_t arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[160];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(160), 8));
     using HsFn = void (*)(void*, void*, std::int32_t);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{28608704}, "??0ItemStack@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{1349568}, "??1ItemStack@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(160), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -51645,12 +51412,10 @@ static void* hs_method_1f328e5d(void* hs_self, float arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, float);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -53891,12 +53656,10 @@ static void* hs_method_0253d8a6(void* hs_self, std::int32_t arg0, void* arg1) tr
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, std::int32_t, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -54118,22 +53881,10 @@ static void* hs_method_783ada27(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{8581552}, "??0CompoundTag@@QEAA@$$QEAV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{8586800}, "??1CompoundTag@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -55485,12 +55236,10 @@ static void* hs_method_6460cf87(void* hs_self, void* arg0, void* arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -56940,22 +56689,10 @@ static void* hs_method_852f6061(void* hs_self, void* arg0, void* arg1, void* arg
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[112];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
     using HsFn = void (*)(void*, void*, void*, void*, void*, void*, void*, std::int32_t, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{5719712}, "??0HitResult@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{2164720}, "??1HitResult@@QEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3, arg4, arg5, arg6);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2, arg3, arg4, arg5, arg6);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -57000,22 +56737,10 @@ static void* hs_method_6c6dfdc1(void* arg0, void* arg1, void* arg2) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[160];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(160), 8));
     using HsFn = void (*)(void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{28608704}, "??0ItemStack@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{1349568}, "??1ItemStack@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0, arg1, arg2);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(160), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(static_cast<void*>(hs_record), arg0, arg1, arg2);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -58905,12 +58630,10 @@ static void* hs_method_78b82c9b(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -58993,22 +58716,10 @@ static void* hs_method_979bfade(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[112];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{1337648}, "??0SemVersion@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{810256}, "??1SemVersion@@QEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -63830,12 +63541,10 @@ static void* hs_method_4686bf9b(void* hs_self, void* arg0, float arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*, void*, float);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -63972,22 +63681,10 @@ static void* hs_method_7dfea190(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[48];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(48), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{41438608}, "??0HashedString@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{800528}, "??1HashedString@@QEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(48), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -64380,12 +64077,10 @@ static void* hs_method_dca94e0e(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(1) unsigned char hs_recordStorage[1];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(1));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -64407,12 +64102,10 @@ static void* hs_method_178aa415(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -66460,22 +66153,10 @@ static void* hs_method_7550f243(void* hs_self, void* arg0, void* arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[136];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
     using HsFn = void (*)(void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{28608384}, "??0ItemInstance@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{2164880}, "??1ItemInstance@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -66612,12 +66293,10 @@ static void* hs_method_4d4d5bbd(void* hs_self, void* arg0, void* arg1, void* arg
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*, void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2, arg3);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -67260,12 +66939,10 @@ static void* hs_method_c853fb20(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 8));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -67432,12 +67109,10 @@ static void* hs_method_98cd88a7(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -67911,6 +67586,31 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static void* hs_method_c69c347d(void* hs_self, std::int8_t arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{5960384}, "?createDataPacket@EconomyTradeableComponent@@QEAA?AVUpdateTradePacket@@W4ContainerID@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(144), 8));
+    using HsFn = void (*)(void*, void*, std::int8_t);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
+    return hs_record;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static void hs_method_ef68a314(void* hs_self, void* arg0) try
@@ -69472,22 +69172,10 @@ static void* hs_method_c290bb8d(void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[136];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{28608384}, "??0ItemInstance@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{2164880}, "??1ItemInstance@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -70416,12 +70104,10 @@ static void* hs_method_c1ad486d(void* hs_self, float arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, float);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -70443,12 +70129,10 @@ static void* hs_method_7bb388da(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -70548,12 +70232,10 @@ static void* hs_method_7370122f(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -70991,12 +70673,10 @@ static void* hs_method_69457713(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -71064,12 +70744,10 @@ static void* hs_method_8d536ee6(void* hs_self, std::int32_t arg0, void* arg1) tr
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, std::int32_t, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -71269,12 +70947,10 @@ static void* hs_method_67c29fd8(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -71319,22 +70995,10 @@ static void* hs_method_129cfd06(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{8581552}, "??0CompoundTag@@QEAA@$$QEAV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{8586800}, "??1CompoundTag@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -72396,12 +72060,10 @@ static void* hs_method_1eea9894(std::uint8_t arg0, float arg1, float arg2) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, std::uint8_t, float, float);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0, arg1, arg2);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(static_cast<void*>(hs_record), arg0, arg1, arg2);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -76696,12 +76358,10 @@ static void* hs_method_7accf6d4(void* arg0, void* arg1, float arg2) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, void*, float);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0, arg1, arg2);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(static_cast<void*>(hs_record), arg0, arg1, arg2);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -76723,12 +76383,10 @@ static void* hs_method_90db25a2(void* arg0, float arg1, float arg2, float arg3) 
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, float, float, float);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(static_cast<void*>(hs_record), arg0, arg1, arg2, arg3);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -76750,12 +76408,10 @@ static void* hs_method_398c6968(void* hs_self, float arg0, std::int32_t arg1) tr
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, float, std::int32_t);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -76777,12 +76433,10 @@ static void* hs_method_dcc8d36a(void* arg0, void* arg1, void* arg2, float arg3, 
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, void*, void*, float, float);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3, arg4);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(static_cast<void*>(hs_record), arg0, arg1, arg2, arg3, arg4);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -77310,12 +76964,10 @@ static void* hs_method_4f4c9c8a(void* hs_self, void* arg0, void* arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -78647,22 +78299,10 @@ static void* hs_method_b5bf77ce(void* hs_self, std::int16_t arg0, void* arg1) tr
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 8));
     using HsFn = void (*)(void*, void*, std::int16_t, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{28604064}, "??0ItemDescriptor@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{1349520}, "??1ItemDescriptor@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -79180,22 +78820,10 @@ static void* hs_method_cd35e29a(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[176];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(176), 8));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{24895056}, "??0ActorDefinitionIdentifier@@QEAA@$$QEAU0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{1345808}, "??1ActorDefinitionIdentifier@@QEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(176), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -79338,12 +78966,10 @@ static void* hs_method_e2cab0d5(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -79434,12 +79060,10 @@ static void* hs_method_5f540f07(void* hs_self, void* arg0, void* arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -80071,12 +79695,10 @@ static void* hs_method_a6c8baf4(void* hs_self, std::int32_t arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(1) unsigned char hs_recordStorage[1];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
     using HsFn = void (*)(void*, void*, std::int32_t);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(1));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -80309,12 +79931,10 @@ static void* hs_method_ef1a8217(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -83943,22 +83563,10 @@ static void* hs_method_f31d9e8d(void* hs_self, void* arg0, void* arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[136];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
     using HsFn = void (*)(void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{28608384}, "??0ItemInstance@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{2164880}, "??1ItemInstance@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -84049,12 +83657,10 @@ static void* hs_method_2f19350d(void* hs_self, void* arg0, void* arg1, void* arg
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*, void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2, arg3);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -84145,22 +83751,10 @@ static void* hs_method_0429d3a5(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[48];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(48), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{41438608}, "??0HashedString@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{800528}, "??1HashedString@@QEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(48), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -84697,22 +84291,10 @@ static void* hs_method_d1bfe8a0(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[136];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{28608384}, "??0ItemInstance@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{2164880}, "??1ItemInstance@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -84734,22 +84316,10 @@ static void* hs_method_adbb447a(void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[136];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{28608384}, "??0ItemInstance@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{2164880}, "??1ItemInstance@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -85235,22 +84805,10 @@ static void* hs_method_20cc8fe2(void* hs_self, std::int16_t arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[48];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(48), 8));
     using HsFn = void (*)(void*, void*, std::int16_t);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{41438608}, "??0HashedString@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{800528}, "??1HashedString@@QEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(48), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -85295,22 +84853,10 @@ static void* hs_method_e0ff012b(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[120];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(120), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{9334016}, "??0BaseGameVersion@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{803008}, "??1BaseGameVersion@@QEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(120), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -85987,22 +85533,10 @@ static void* hs_method_13200ba9(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[160];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(160), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{28608704}, "??0ItemStack@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{1349568}, "??1ItemStack@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(160), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -86024,22 +85558,10 @@ static void* hs_method_520fbb99(void* arg0, void* arg1, bool arg2) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[160];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(160), 8));
     using HsFn = void (*)(void*, void*, void*, bool);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{28608704}, "??0ItemStack@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{1349568}, "??1ItemStack@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0, arg1, arg2);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(160), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(static_cast<void*>(hs_record), arg0, arg1, arg2);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -86061,22 +85583,10 @@ static void* hs_method_6c1b099d(void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[160];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(160), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{28608704}, "??0ItemStack@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{1349568}, "??1ItemStack@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(160), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -86098,22 +85608,10 @@ static void* hs_method_75f10e04(void* arg0, void* arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[160];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(160), 8));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{28608704}, "??0ItemStack@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{1349568}, "??1ItemStack@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(160), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -86204,22 +85702,10 @@ static void* hs_method_331af11e(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[160];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(160), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{28608704}, "??0ItemStack@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{1349568}, "??1ItemStack@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(160), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -87678,12 +87164,10 @@ static void* hs_method_b9c76575(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -87868,22 +87352,10 @@ static void* hs_method_075bb91b(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{28604064}, "??0ItemDescriptor@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{1349520}, "??1ItemDescriptor@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -91665,12 +91137,10 @@ static void* hs_method_20f1789b(void* hs_self, void* arg0, void* arg1, void* arg
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2, arg3);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -91715,12 +91185,10 @@ static void* hs_method_50ca01c0(void* hs_self, std::uint8_t arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, std::uint8_t);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -91742,12 +91210,10 @@ static void* hs_method_96dc69da(void* arg0, std::uint8_t arg1, std::uint8_t arg2
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, std::uint8_t, std::uint8_t, std::int32_t, std::int32_t);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3, arg4);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(static_cast<void*>(hs_record), arg0, arg1, arg2, arg3, arg4);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -91840,12 +91306,10 @@ static void* hs_method_df76ff8b(void* arg0, std::uint8_t arg1, std::uint8_t arg2
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, std::uint8_t, std::uint8_t);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(static_cast<void*>(hs_recordStorage), hs_arg0Storage, arg1, arg2);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(static_cast<void*>(hs_record), hs_arg0Storage, arg1, arg2);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -91926,6 +91390,31 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static void* hs_method_83354963(void* hs_self, void* arg0, std::int8_t arg1) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{6146960}, "?createDataPacket@LegacyTradeableComponent@@QEAA?AVUpdateTradePacket@@AEAVActor@@W4ContainerID@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(144), 8));
+    using HsFn = void (*)(void*, void*, void*, std::int8_t);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
+    return hs_record;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static bool hs_method_36733c7d(void* hs_self) try
@@ -96447,12 +95936,10 @@ static void* hs_method_880a01ca(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -100922,12 +100409,10 @@ static void* hs_method_c56d19ee(void* hs_self, void* arg0, void* arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -101160,12 +100645,10 @@ static void* hs_method_07f9f688(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(1) unsigned char hs_recordStorage[2];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(2), 1));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(2), 1));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(2));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -101849,12 +101332,10 @@ static void* hs_method_f09f0117(void* hs_self, void* arg0, void* arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(1) unsigned char hs_recordStorage[1];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
     using HsFn = void (*)(void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, hs_arg1Storage);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(1), 1));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(1));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, hs_arg1Storage);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -102014,12 +101495,10 @@ static void* hs_method_fbd22a3d(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -103549,12 +103028,10 @@ static void* hs_method_8d9b1507(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -108818,22 +108295,10 @@ static void* hs_method_6b2af0a2(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[48];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(48), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{28459248}, "??0SpawnSettings@@QEAA@AEBU0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{800528}, "??1SpawnSettings@@QEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(48), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -113094,12 +112559,10 @@ static void* hs_method_0aed0ee2(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -122830,12 +122293,10 @@ static void* hs_method_cd6b355a(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -127249,22 +126710,10 @@ static void* hs_method_93797eea(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[128];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(128), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{6075632}, "??0MobEffectInstance@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{1350176}, "??1MobEffectInstance@@QEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(128), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -127332,22 +126781,10 @@ static void* hs_method_df8b7220(void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[128];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(128), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{6075632}, "??0MobEffectInstance@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{1350176}, "??1MobEffectInstance@@QEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(128), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -129083,22 +128520,10 @@ static void* hs_method_a9c205b5(void* hs_self, void* arg0, void* arg1, void* arg
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[112];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
     using HsFn = void (*)(void*, void*, void*, void*, void*, void*, void*, std::int32_t, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{5719712}, "??0HitResult@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{2164720}, "??1HitResult@@QEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3, arg4, arg5, arg6);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2, arg3, arg4, arg5, arg6);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -129189,12 +128614,10 @@ static void* hs_method_4e86855d(void* hs_self, void* arg0, void* arg1, void* arg
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*, void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2, arg3);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -129987,12 +129410,10 @@ static void* hs_method_d364c27e(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -135798,12 +135219,10 @@ static void* hs_method_1b64ce89(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[160];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(160), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(160), 8));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(160));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -139431,12 +138850,10 @@ static void* hs_method_61f0fdb2(void* arg0, void* arg1, bool arg2, bool arg3, fl
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, void*, bool, bool, float);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0, hs_arg1Storage, arg2, arg3, arg4);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(static_cast<void*>(hs_record), arg0, hs_arg1Storage, arg2, arg3, arg4);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -141880,12 +141297,10 @@ static void* hs_method_054502df(void* hs_self, float arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, float);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -142321,12 +141736,10 @@ static void* hs_method_96bc892a(void* hs_self, float arg0, std::int32_t arg1) tr
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, float, std::int32_t);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -142811,12 +142224,10 @@ static void* hs_method_034d0b0c(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -142861,12 +142272,10 @@ static void* hs_method_c7d9fcf5(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -148881,12 +148290,10 @@ static void* hs_method_6ac19288(void* hs_self, void* arg0, void* arg1, void* arg
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*, void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2, arg3);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -148908,12 +148315,10 @@ static void* hs_method_3152cf47(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -149318,12 +148723,10 @@ static void* hs_method_354f6d03(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -150071,12 +149474,10 @@ static void* hs_method_bcd33643(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -150144,12 +149545,10 @@ static void* hs_method_71ec8f26(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -152584,12 +151983,10 @@ static void* hs_method_96df104f(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[160];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(160), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(160), 8));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(160));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -153658,22 +153055,10 @@ static void* hs_method_1faed6e8(void* hs_self, void* arg0, void* arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[136];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
     using HsFn = void (*)(void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{28608384}, "??0ItemInstance@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{2164880}, "??1ItemInstance@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -154345,22 +153730,10 @@ static void* hs_method_87d503cc(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[112];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{1337648}, "??0SemVersion@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{810256}, "??1SemVersion@@QEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -166182,22 +165555,10 @@ static void* hs_method_b072291e(void* hs_self, void* arg0, void* arg1, void* arg
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[112];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
     using HsFn = void (*)(void*, void*, void*, void*, void*, void*, void*, std::int32_t, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{5719712}, "??0HitResult@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{2164720}, "??1HitResult@@QEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3, arg4, arg5, arg6);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2, arg3, arg4, arg5, arg6);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -166888,12 +166249,10 @@ static void* hs_method_4e8c7c27(void* arg0, std::uint8_t arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, std::uint8_t);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -167539,12 +166898,10 @@ static void* hs_method_49ff9314(void* hs_self, void* arg0, void* arg1, std::int3
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, void*, std::uint64_t, std::int32_t);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, *reinterpret_cast<std::uint64_t const*>(arg1), arg2);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, *reinterpret_cast<std::uint64_t const*>(arg1), arg2);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -168210,12 +167567,10 @@ static void* hs_method_635de43d(void* hs_self, std::int32_t arg0, std::int32_t a
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, std::int32_t, std::int32_t, std::int32_t);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -169645,12 +169000,10 @@ static void* hs_method_0fe2dfa3(void* hs_self, void* arg0, void* arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), hs_arg0Storage, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(hs_self, static_cast<void*>(hs_record), hs_arg0Storage, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -171240,12 +170593,10 @@ static void* hs_method_1472994d(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -171328,22 +170679,10 @@ static void* hs_method_18c81d64(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[112];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{1337648}, "??0SemVersion@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{810256}, "??1SemVersion@@QEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -172304,22 +171643,10 @@ static void* hs_method_a25d9947(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[48];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(48), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{41438608}, "??0HashedString@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{800528}, "??1HashedString@@QEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(48), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -172341,12 +171668,10 @@ static void* hs_method_412aab2c(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -172667,12 +171992,10 @@ static void* hs_method_518f4c96(void* hs_self, void* arg0, void* arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, void*, std::uint32_t);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, *reinterpret_cast<std::uint32_t const*>(arg1));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, *reinterpret_cast<std::uint32_t const*>(arg1));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -173766,12 +173089,10 @@ static void* hs_method_8f267c16(void* hs_self, void* arg0, void* arg1, void* arg
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*, void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2, arg3);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -173839,12 +173160,10 @@ static void* hs_method_76ecdf03(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -173918,22 +173237,10 @@ static void* hs_method_31640843(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[136];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{28608384}, "??0ItemInstance@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{2164880}, "??1ItemInstance@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -174898,22 +174205,10 @@ static void* hs_method_1e1503d6(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{8581552}, "??0CompoundTag@@QEAA@$$QEAV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{8586800}, "??1CompoundTag@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -175719,12 +175014,10 @@ static void* hs_method_06af34bf(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -175746,12 +175039,10 @@ static void* hs_method_78194098(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -175773,12 +175064,10 @@ static void* hs_method_55333071(void* arg0, void* arg1, void* arg2) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0, arg1, arg2);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(static_cast<void*>(hs_record), arg0, arg1, arg2);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -175800,12 +175089,10 @@ static void* hs_method_26c1105e(void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -175827,12 +175114,10 @@ static void* hs_method_5134b87d(float arg0, float arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, float, float);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -175877,12 +175162,10 @@ static void* hs_method_af6499ad(void* hs_self, float arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, float);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -175904,12 +175187,10 @@ static void* hs_method_3b4e0236(void* arg0, float arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, float);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -176023,12 +175304,10 @@ static void* hs_method_ff181338(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -176134,12 +175413,10 @@ static void* hs_method_39460269(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -176662,12 +175939,10 @@ static void* hs_method_b0efc5d9(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -176827,12 +176102,10 @@ static void* hs_method_67c97fa9(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 8));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -177460,22 +176733,10 @@ static void* hs_method_8dfd5632(void* hs_self, void* arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[48];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(48), 8));
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{41438608}, "??0HashedString@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{800528}, "??1HashedString@@QEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(48), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -177788,12 +177049,10 @@ static void* hs_method_7ab0218c(void* hs_self, void* arg0, void* arg1, void* arg
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*, void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2, arg3);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -177861,12 +177120,10 @@ static void* hs_method_d2373b16(void* hs_self, void* arg0, void* arg1, void* arg
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -178308,12 +177565,10 @@ static void* hs_method_c08b3b30(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -178381,12 +177636,10 @@ static void* hs_method_bb8bdf09(void* hs_self, std::int32_t arg0, void* arg1) tr
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, std::int32_t, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -178632,12 +177885,10 @@ static void* hs_method_e1c64598(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -178751,22 +178002,10 @@ static void* hs_method_34b7da5a(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 8));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{8581552}, "??0CompoundTag@@QEAA@$$QEAV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{8586800}, "??1CompoundTag@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -178811,22 +178050,10 @@ static void* hs_method_737b3d5f(void* hs_self, void* arg0, void* arg1) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[136];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
     using HsFn = void (*)(void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{28608384}, "??0ItemInstance@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{2164880}, "??1ItemInstance@@UEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -178946,22 +178173,10 @@ static void* hs_method_b065f51e(void* hs_self, void* arg0, void* arg1, void* arg
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(8) unsigned char hs_recordStorage[112];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
     using HsFn = void (*)(void*, void*, void*, void*, void*, void*, void*, std::int32_t, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    auto const hs_returnCopy = hs_resolve(std::uintptr_t{5719712}, "??0HitResult@@QEAA@AEBV0@@Z");
-    auto const hs_returnDtor = hs_resolve(std::uintptr_t{2164720}, "??1HitResult@@QEAA@XZ");
-    if (hs_returnCopy == nullptr || hs_returnDtor == nullptr)
-    {
-        setLastError("the returned record copy or destructor symbol was not resolved");
-        return nullptr;
-    }
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3, arg4, arg5, arg6);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
-    using HsCopy = void (*)(void*, void*);
-    using HsReturnDtor = void (*)(void*);
-    reinterpret_cast<HsCopy>(hs_returnCopy)(hs_record, hs_recordStorage);
-    reinterpret_cast<HsReturnDtor>(hs_returnDtor)(hs_recordStorage);
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2, arg3, arg4, arg5, arg6);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -178983,12 +178198,10 @@ static void* hs_method_6b591249(void* hs_self, void* arg0, void* arg1, void* arg
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[24];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
     using HsFn = void (*)(void*, void*, void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2, arg3);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(24));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2, arg3);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -179033,12 +178246,10 @@ static void* hs_method_af3608c5(void* hs_self, void* arg0, void* arg1, void* arg
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[16];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
     using HsFn = void (*)(void*, void*, void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0, arg1, arg2);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(16));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0, arg1, arg2);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -179539,12 +178750,10 @@ static void* hs_method_2a597445(void* hs_self) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage));
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record));
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -179566,12 +178775,10 @@ static void* hs_method_00a731b9(void* hs_self, std::int32_t arg0) try
         setLastError("symbol was not resolved");
         return nullptr;
     }
-    alignas(4) unsigned char hs_recordStorage[12];
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
     using HsFn = void (*)(void*, void*, std::int32_t);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
-    hs_fn(hs_self, static_cast<void*>(hs_recordStorage), arg0);
-    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(12), 4));
-    std::memcpy(hs_record, hs_recordStorage, static_cast<std::size_t>(12));
+    hs_fn(hs_self, static_cast<void*>(hs_record), arg0);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -180830,6 +180037,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_f804d222,
     &hs_method_a4ecb7c5,
     &hs_method_885772a4,
+    &hs_method_485e8b52,
     &hs_method_bdcbf22f,
     &hs_method_bbdfef65,
     &hs_method_ceac5b88,
@@ -181576,6 +180784,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_daf6a1d5,
     &hs_method_8174b750,
     &hs_method_69a76eaa,
+    &hs_method_00447c6d,
     &hs_method_233a5038,
     &hs_method_7cf53c08,
     &hs_method_a4abedff,
@@ -181725,6 +180934,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_495f8dd5,
     &hs_method_9c2b2bb2,
     &hs_method_e9565f04,
+    &hs_method_38e5e88a,
     &hs_method_4b22c40a,
     &hs_method_e05c57b0,
     &hs_method_64ff6386,
@@ -183637,6 +182847,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_6389a532,
     &hs_method_351a3738,
     &hs_method_af56ff65,
+    &hs_method_c69c347d,
     &hs_method_ef68a314,
     &hs_method_06db68ba,
     &hs_method_c2e09046,
@@ -184668,6 +183879,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_293d23e6,
     &hs_method_684be86f,
     &hs_method_f87bbba1,
+    &hs_method_83354963,
     &hs_method_36733c7d,
     &hs_method_4f9e584e,
     &hs_method_37f7854a,

@@ -46,9 +46,10 @@ public sealed unsafe partial class EconomyTradeableComponent
         NativeMethods.TablePtr->hs_method_af56ff65((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'UpdateTradePacket' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint createDataPacket(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'UpdateTradePacket' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.UpdateTradePacket createDataPacket(sbyte arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.UpdateTradePacket((nint)NativeMethods.TablePtr->hs_method_c69c347d((void*)_handle, arg0));
+    }
 
     public void fixVillagerTierToMatchTradeList(nint arg0)
     {
