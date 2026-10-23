@@ -102,13 +102,13 @@ public sealed unsafe partial class CommandOutput
         return NativeMethods.TablePtr->hs_method_e2f3f45d((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'CommandOutputParameter' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public void error(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'CommandOutputParameter' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'CommandOutputParameter' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public void forceOutput(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'CommandOutputParameter' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     public nint getData()
     {
@@ -148,9 +148,9 @@ public sealed unsafe partial class CommandOutput
         NativeMethods.TablePtr->hs_method_3e197cdb((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'CommandOutputParameter' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public void success(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'CommandOutputParameter' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     public bool wantsData()
     {

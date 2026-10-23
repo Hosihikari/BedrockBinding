@@ -91,14 +91,14 @@ public sealed unsafe partial class ServerLevel
         return (nint)NativeMethods.TablePtr->hs_method_48cb50ac((void*)_handle);
     }
 
-    public nint getMobEvents_5e979a42()
+    public global::Hosihikari.Bindings.Bedrock.Interop.MobEvents getMobEvents_5e979a42()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_5e979a42((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MobEvents((nint)NativeMethods.TablePtr->hs_method_5e979a42((void*)_handle), false);
     }
 
-    public nint getMobEvents_8437bb26()
+    public global::Hosihikari.Bindings.Bedrock.Interop.MobEvents getMobEvents_8437bb26()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_8437bb26((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MobEvents((nint)NativeMethods.TablePtr->hs_method_8437bb26((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.DynamicProperties getOrAddDynamicProperties()
@@ -156,7 +156,7 @@ public sealed unsafe partial class ServerLevel
         }
     }
 
-    public bool initialize(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings arg1, global::Hosihikari.Bindings.Bedrock.Interop.LevelData? arg2, nint arg3, nint arg4)
+    public bool initialize(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings arg1, global::Hosihikari.Bindings.Bedrock.Interop.LevelData? arg2, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg3, nint arg4)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -171,7 +171,7 @@ public sealed unsafe partial class ServerLevel
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_42de84d3((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0), (void*)arg3, (void*)arg4) != 0;
+            return NativeMethods.TablePtr->hs_method_42de84d3((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0), (void*)arg3.Handle, (void*)arg4) != 0;
         }
     }
 

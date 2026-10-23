@@ -114,14 +114,14 @@ public sealed unsafe partial class StructureTemplate
         }
     }
 
-    public void placeInWorld(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.StructureSettings arg3, nint arg4, bool arg5)
+    public void placeInWorld(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPalette arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.StructureSettings arg3, nint arg4, bool arg5)
     {
-        NativeMethods.TablePtr->hs_method_5d606163((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4, arg5);
+        NativeMethods.TablePtr->hs_method_5d606163((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4, arg5);
     }
 
-    public void placeNextSegmentInWorld(nint arg0, nint arg1)
+    public void placeNextSegmentInWorld(global::Hosihikari.Bindings.Bedrock.Interop.StructureAnimationData arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPalette arg1)
     {
-        NativeMethods.TablePtr->hs_method_ee9aea3f((void*)_handle, (void*)arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_ee9aea3f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? save()

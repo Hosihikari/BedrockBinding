@@ -203,9 +203,9 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->hs_get_9d7c97ff((void*)_handle);
     }
 
-    public static nint getExperiments()
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Experiments getExperiments()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_7d8a8cc0();
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Experiments((nint)NativeMethods.TablePtr->hs_method_7d8a8cc0(), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -395,9 +395,9 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
     public static nint registerQueryFunction_0d0ce659(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, ulong arg5, ulong arg6, nint arg7) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'MolangScriptArg const&' is not supported.");
 
-    public static void setExperiments(nint arg0)
+    public static void setExperiments(global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg0)
     {
-        NativeMethods.TablePtr->hs_method_059d0e7c((void*)arg0);
+        NativeMethods.TablePtr->hs_method_059d0e7c((void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

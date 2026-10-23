@@ -37,6 +37,133 @@ public sealed unsafe partial class Pack : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.PathBuffer_std__basic_string_char__ EDUCATION_METADATA_FILE
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->hs_get_00c9d190(), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Pack Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Pack Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'SubpackInfoCollection' has no generated wrapper.", false)]
+    public static Pack Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'SubpackInfoCollection' has no generated wrapper.");
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Pack? createPack(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0, sbyte arg1, sbyte arg2, global::Hosihikari.Bindings.Bedrock.Interop.IPackManifestFactory arg3, nint arg4, nint arg5)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_a7e9fe9e((void*)arg0.Handle, arg1, arg2, (void*)arg3.Handle, (void*)arg4, (void*)arg5);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Pack((nint)__hs_handle) : null;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'PackMetadata' is not a known bindable declaration.", false)]
+    public static nint createPackMetadata(nint arg0, nint arg1, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'PackMetadata' is not a known bindable declaration.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy? getAccessStrategy_cfd14407()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_cfd14407((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PackManifest getManifest_09e5060b()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PackManifest((nint)NativeMethods.TablePtr->hs_method_09e5060b((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PackManifest getManifest_8b03b44b()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PackManifest((nint)NativeMethods.TablePtr->hs_method_8b03b44b((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PackManifest? getManifestPtr_6ba85a21()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_6ba85a21((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PackManifest((nint)__hs_handle, false) : null;
+    }
+
+    public nint getSubpackInfoStack_c3d957aa()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_c3d957aa((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAccessStrategy_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b81ef798((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mManifest_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_47c22945((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMetadata_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_f6e6057d((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPackDeletedCallbacks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_12897f1d((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPackUpdatedCallbacks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_7a2d60c4((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSubpackInfoStack_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_7aa7990f((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public void move(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public void notifyDeleted()
+    {
+        NativeMethods.TablePtr->hs_method_0a02343d((void*)_handle);
+    }
+
+    public void notifyUpdated()
+    {
+        NativeMethods.TablePtr->hs_method_84ea0517((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void registerPackDeletedCallback(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void registerPackUpdatedCallback(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void unregisterPackDeletedCallback(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_99b12e57((void*)_handle, (void*)arg0);
+    }
+
+    public void unregisterPackUpdatedCallback(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_c7454131((void*)_handle, (void*)arg0);
+    }
+
+
 
     public void Dispose()
     {

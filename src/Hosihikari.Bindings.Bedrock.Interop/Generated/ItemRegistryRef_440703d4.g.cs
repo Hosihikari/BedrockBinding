@@ -132,9 +132,9 @@ public sealed unsafe partial class ItemRegistryRef
         return new global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion((nint)NativeMethods.TablePtr->hs_method_e0ff012b((void*)_handle));
     }
 
-    public void init(nint arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg2, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager? arg3)
+    public void init(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg1, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg2, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager? arg3)
     {
-        NativeMethods.TablePtr->hs_method_146ca432((void*)_handle, (void*)arg0, (void*)arg1, (void*)arg2.Handle, (void*)(arg3?.Handle ?? 0));
+        NativeMethods.TablePtr->hs_method_146ca432((void*)_handle, (void*)arg0, (void*)arg1.Handle, (void*)arg2.Handle, (void*)(arg3?.Handle ?? 0));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]

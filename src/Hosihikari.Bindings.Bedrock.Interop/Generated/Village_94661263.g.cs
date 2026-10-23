@@ -120,9 +120,10 @@ public sealed unsafe partial class Village
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public nint getRaid()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Raid? getRaid()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_34406374((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_34406374((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Raid((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.AABB getRaidBounds()
@@ -130,9 +131,10 @@ public sealed unsafe partial class Village
         return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_82e8834a((void*)_handle), false);
     }
 
-    public nint getRaidMutable()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Raid? getRaidMutable()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_0c8aa518((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_0c8aa518((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Raid((nint)__hs_handle, false) : null;
     }
 
     public int getStanding(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0)

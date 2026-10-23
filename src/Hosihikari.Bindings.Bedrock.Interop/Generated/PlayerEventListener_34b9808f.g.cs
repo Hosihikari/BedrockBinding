@@ -57,9 +57,10 @@ public sealed unsafe partial class PlayerEventListener
         return NativeMethods.TablePtr->hs_method_5d80bc26((void*)_handle, (void*)arg0, (void*)arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PlayerActionType' is not a known bindable declaration.", false)]
-    public nint onPlayerAction(nint arg0, nint arg1, nint arg2, int arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PlayerActionType' is not a known bindable declaration.");
+    public int onPlayerAction(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, int arg3)
+    {
+        return NativeMethods.TablePtr->hs_method_c85b88ec((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, arg3);
+    }
 
     public int onPlayerAttackedActor(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
     {
@@ -137,9 +138,9 @@ public sealed unsafe partial class PlayerEventListener
         return NativeMethods.TablePtr->hs_method_d0e3067f((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3);
     }
 
-    public int onPlayerEnchantedItem(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1, nint arg2)
+    public int onPlayerEnchantedItem(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemEnchants arg2)
     {
-        return NativeMethods.TablePtr->hs_method_467a2f2a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
+        return NativeMethods.TablePtr->hs_method_467a2f2a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
     public int onPlayerEquippedArmor(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg1)

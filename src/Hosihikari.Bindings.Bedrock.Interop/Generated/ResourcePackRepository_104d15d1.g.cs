@@ -147,9 +147,9 @@ public sealed unsafe partial class ResourcePackRepository
         return (nint)NativeMethods.TablePtr->hs_method_c43c7614((void*)_handle);
     }
 
-    public nint getPackManifestFactory()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PackManifestFactory getPackManifestFactory()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_6709372a((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PackManifestFactory((nint)NativeMethods.TablePtr->hs_method_6709372a((void*)_handle), false);
     }
 
     public nint getPackSettingsFactory()

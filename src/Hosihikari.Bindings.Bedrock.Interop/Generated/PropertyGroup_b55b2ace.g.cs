@@ -164,7 +164,7 @@ public sealed unsafe partial class PropertyGroup
         }
     }
 
-    public static global::Hosihikari.Bindings.Abi.SharedHandle? loadPropertiesFromJson(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
+    public static global::Hosihikari.Bindings.Abi.SharedHandle? loadPropertiesFromJson(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
     {
         var __hs_shared = NativeMethods.TablePtr->hs_method_95362a10((void*)arg0.Handle, (void*)arg1.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);

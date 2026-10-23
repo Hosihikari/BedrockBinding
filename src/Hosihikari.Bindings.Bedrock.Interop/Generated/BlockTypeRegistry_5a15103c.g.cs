@@ -76,9 +76,9 @@ public sealed unsafe partial class BlockTypeRegistry
         return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_2d19781d((void*)arg0.Handle, arg1), false);
     }
 
-    public static void initHardCodedBlockComponents(nint arg0)
+    public static void initHardCodedBlockComponents(global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg0)
     {
-        NativeMethods.TablePtr->hs_method_58a241bf((void*)arg0);
+        NativeMethods.TablePtr->hs_method_58a241bf((void*)arg0.Handle);
     }
 
     public static void initRWLock()

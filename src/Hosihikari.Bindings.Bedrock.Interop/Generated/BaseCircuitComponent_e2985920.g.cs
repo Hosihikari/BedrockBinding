@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BaseCircuitComponent
+public sealed unsafe partial class BaseCircuitComponent : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,23 +37,30 @@ public sealed unsafe partial class BaseCircuitComponent
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BaseCircuitComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public bool addSource(nint arg0, nint arg1, nint arg2, nint arg3)
+    public static BaseCircuitComponent Create()
     {
-        return NativeMethods.TablePtr->hs_method_5a0963de((void*)_handle, (void*)arg0, (void*)arg1, (void*)arg2, (void*)arg3) != 0;
+        var handle = NativeMethods.TablePtr->hs_create_4c343302();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BaseCircuitComponent((nint)handle);
     }
 
-    public void addSourceItem(nint arg0)
+    public bool addSource(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph arg0, nint arg1, nint arg2, nint arg3)
     {
-        NativeMethods.TablePtr->hs_method_9b158a93((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_5a0963de((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2, (void*)arg3) != 0;
     }
 
-    public bool allowConnection(nint arg0, nint arg1, nint arg2)
+    public void addSourceItem(global::Hosihikari.Bindings.Bedrock.Interop.CircuitComponentList.Item arg0)
     {
-        return NativeMethods.TablePtr->hs_method_7194b434((void*)_handle, (void*)arg0, (void*)arg1, (void*)arg2) != 0;
+        NativeMethods.TablePtr->hs_method_9b158a93((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public bool allowConnection(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph arg0, nint arg1, nint arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_7194b434((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2) != 0;
     }
 
     public bool allowIndirect()
@@ -91,13 +98,15 @@ public sealed unsafe partial class BaseCircuitComponent
         return NativeMethods.TablePtr->hs_method_9a805a4c((void*)_handle, (void*)arg0, (void*)arg1.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CircuitComponentType' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getCircuitComponentGroupType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CircuitComponentType' requires --link-carrier or --virtual-dispatch.");
+    public long getCircuitComponentGroupType()
+    {
+        return NativeMethods.TablePtr->hs_method_6f4db856((void*)_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CircuitComponentType' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getCircuitComponentType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CircuitComponentType' requires --link-carrier or --virtual-dispatch.");
+    public long getCircuitComponentType()
+    {
+        return NativeMethods.TablePtr->hs_method_c280070e((void*)_handle);
+    }
 
     public int getDirection()
     {
@@ -129,6 +138,90 @@ public sealed unsafe partial class BaseCircuitComponent
         return NativeMethods.TablePtr->hs_method_c9d8d675((void*)_handle) != 0;
     }
 
+    public bool mAllowPowerDown
+    {
+        get => NativeMethods.TablePtr->hs_get_59b92e36((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_59b92e36((void*)_handle, value);
+    }
+
+    public bool mAllowPowerUp
+    {
+        get => NativeMethods.TablePtr->hs_get_6e5dc1a4((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_6e5dc1a4((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChunkPosition_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_56aed9ca((void*)_handle);
+    }
+
+    public long mCircuitComponentType
+    {
+        get => NativeMethods.TablePtr->hs_get_29426cd0((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_29426cd0((void*)_handle, value);
+    }
+
+    public bool mConsumePowerAnyDirection
+    {
+        get => NativeMethods.TablePtr->hs_get_5c1f6207((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_5c1f6207((void*)_handle, value);
+    }
+
+    public sbyte mDirection
+    {
+        get => NativeMethods.TablePtr->hs_get_17c91591((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_17c91591((void*)_handle, value);
+    }
+
+    public bool mIgnoreFirstUpdate
+    {
+        get => NativeMethods.TablePtr->hs_get_8813c67d((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_8813c67d((void*)_handle, value);
+    }
+
+    public bool mIsFirstTime
+    {
+        get => NativeMethods.TablePtr->hs_get_c3420efa((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_c3420efa((void*)_handle, value);
+    }
+
+    public bool mNeedsUpdate
+    {
+        get => NativeMethods.TablePtr->hs_get_a4771e4c((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_a4771e4c((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_55111474((void*)_handle);
+    }
+
+    public bool mRemoved
+    {
+        get => NativeMethods.TablePtr->hs_get_900fb39f((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_900fb39f((void*)_handle, value);
+    }
+
+    public bool mShouldEvaluate
+    {
+        get => NativeMethods.TablePtr->hs_get_a0686a05((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_a0686a05((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSources_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_5e61666a((void*)_handle);
+    }
+
+    public int mStrength
+    {
+        get => NativeMethods.TablePtr->hs_get_9b80d1f0((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_9b80d1f0((void*)_handle, value);
+    }
+
     public void removeSource(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BaseCircuitComponent? arg1)
     {
         NativeMethods.TablePtr->hs_method_2b042932((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
@@ -154,16 +247,23 @@ public sealed unsafe partial class BaseCircuitComponent
         NativeMethods.TablePtr->hs_method_972309e4((void*)_handle, arg0);
     }
 
-    public void updateDependencies(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
+    public void updateDependencies(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
     {
-        NativeMethods.TablePtr->hs_method_64110b94((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->hs_method_64110b94((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_67523a37() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_ff2348ca() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_e2985920((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

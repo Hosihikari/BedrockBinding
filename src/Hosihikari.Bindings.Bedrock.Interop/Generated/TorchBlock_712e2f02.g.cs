@@ -86,9 +86,9 @@ public sealed unsafe partial class TorchBlock : global::System.IDisposable
         }
     }
 
-    public void _addHardCodedBlockComponents(nint arg0)
+    public void _addHardCodedBlockComponents(global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg0)
     {
-        NativeMethods.TablePtr->hs_method_baf1cca0((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_baf1cca0((void*)_handle, (void*)arg0.Handle);
     }
 
     public void animateTickBedrockLegacy(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2)

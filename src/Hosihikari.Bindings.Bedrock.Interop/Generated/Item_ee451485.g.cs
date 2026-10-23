@@ -341,9 +341,10 @@ public sealed unsafe partial class Item
         return NativeMethods.TablePtr->hs_method_6450e117((void*)_handle);
     }
 
-    public nint getCamera()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ICameraItemComponent? getCamera()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d342d92c((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_d342d92c((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ICameraItemComponent((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color getColor(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg1)
@@ -651,14 +652,14 @@ public sealed unsafe partial class Item
         NativeMethods.TablePtr->hs_method_52b1c333((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
-    public void initClient(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, bool arg2, nint arg3)
+    public void initClient(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, bool arg2, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg3)
     {
-        NativeMethods.TablePtr->hs_method_93e4dd6e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)arg3);
+        NativeMethods.TablePtr->hs_method_93e4dd6e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)arg3.Handle);
     }
 
-    public bool initServer(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, bool arg2, nint arg3)
+    public bool initServer(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, bool arg2, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg3)
     {
-        return NativeMethods.TablePtr->hs_method_c0bc1505((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)arg3) != 0;
+        return NativeMethods.TablePtr->hs_method_c0bc1505((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)arg3.Handle) != 0;
     }
 
     public void initializeFromNetwork(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)

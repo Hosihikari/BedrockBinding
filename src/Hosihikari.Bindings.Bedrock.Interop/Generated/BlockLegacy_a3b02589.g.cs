@@ -67,9 +67,9 @@ public sealed unsafe partial class BlockLegacy
         get => NativeMethods.TablePtr->hs_get_11013f4e();
     }
 
-    public void _addHardCodedBlockComponents(nint arg0)
+    public void _addHardCodedBlockComponents(global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg0)
     {
-        NativeMethods.TablePtr->hs_method_0ecb914f((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_0ecb914f((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -139,9 +139,9 @@ public sealed unsafe partial class BlockLegacy
         }
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy addComponent(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy addComponent(global::Hosihikari.Bindings.Bedrock.Interop.BlockComponentDescription arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy((nint)NativeMethods.TablePtr->hs_method_910c6866((void*)_handle, (void*)arg0), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy((nint)NativeMethods.TablePtr->hs_method_910c6866((void*)_handle, (void*)arg0.Handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'BlockTrait::IGetPlacementBlockCallback' has no generated wrapper.", false)]
@@ -650,9 +650,9 @@ public sealed unsafe partial class BlockLegacy
         return NativeMethods.TablePtr->hs_method_337958e8((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
-    public nint getMaterial()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Material getMaterial()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_003504fc((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Material((nint)NativeMethods.TablePtr->hs_method_003504fc((void*)_handle), false);
     }
 
     public nint getMobToSpawn(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1)

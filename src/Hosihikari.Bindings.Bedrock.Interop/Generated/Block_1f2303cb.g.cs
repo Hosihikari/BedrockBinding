@@ -531,9 +531,9 @@ public sealed unsafe partial class Block : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_method_4f2e7e5b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle));
     }
 
-    public nint getMaterial()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Material getMaterial()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_3f437787((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Material((nint)NativeMethods.TablePtr->hs_method_3f437787((void*)_handle), false);
     }
 
     public nint getMobToSpawn(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1)

@@ -302,9 +302,9 @@ public sealed unsafe partial class NavigationComponent
         NativeMethods.TablePtr->hs_method_3bc42319((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'PathNavigation' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void setInternalType(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'PathNavigation' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public void setIsFollowingRivers(bool arg0)
     {

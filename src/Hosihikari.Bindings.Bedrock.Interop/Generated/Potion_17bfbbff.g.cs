@@ -512,9 +512,9 @@ public sealed unsafe partial class Potion
     public nint getPrefix_edd4311f() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static void initPotions(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0, nint arg1)
+    public static void initPotions(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg1)
     {
-        NativeMethods.TablePtr->hs_method_49f373f3((void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_49f373f3((void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public static int mLastId

@@ -632,14 +632,14 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_45333aca((void*)_handle, (void*)arg0.Handle), false);
     }
 
-    public nint getMaterial(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Material getMaterial(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_cd965f10((void*)_handle, (void*)arg0.Handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Material((nint)NativeMethods.TablePtr->hs_method_cd965f10((void*)_handle, (void*)arg0.Handle), false);
     }
 
-    public nint getMaterial(int arg0, int arg1, int arg2)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Material getMaterial(int arg0, int arg1, int arg2)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_409133d6((void*)_handle, arg0, arg1, arg2);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Material((nint)NativeMethods.TablePtr->hs_method_409133d6((void*)_handle, arg0, arg1, arg2), false);
     }
 
     public short getMaxHeight()

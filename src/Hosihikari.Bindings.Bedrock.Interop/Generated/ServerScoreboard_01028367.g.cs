@@ -41,7 +41,7 @@ public sealed unsafe partial class ServerScoreboard
     public static ServerScoreboard Create(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    public nint clearDisplayObjective(string arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Objective? clearDisplayObjective(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -56,21 +56,22 @@ public sealed unsafe partial class ServerScoreboard
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_6b2aa1f0((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->hs_method_6b2aa1f0((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Objective((nint)__hs_handle, false) : null;
         }
     }
 
-    public nint createScoreboardId(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId createScoreboardId(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_9fb0db3b((void*)_handle, (void*)arg0.Handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->hs_method_9fb0db3b((void*)_handle, (void*)arg0.Handle), false);
     }
 
-    public nint createScoreboardId(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId createScoreboardId(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_2fd4a515((void*)_handle, (void*)arg0.Handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->hs_method_2fd4a515((void*)_handle, (void*)arg0.Handle), false);
     }
 
-    public nint createScoreboardId(string arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId createScoreboardId(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -85,7 +86,7 @@ public sealed unsafe partial class ServerScoreboard
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_2ef31a40((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->hs_method_2ef31a40((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
         }
     }
 
@@ -108,19 +109,19 @@ public sealed unsafe partial class ServerScoreboard
         NativeMethods.TablePtr->hs_method_da4c0627((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void onObjectiveAdded(nint arg0)
+    public void onObjectiveAdded(global::Hosihikari.Bindings.Bedrock.Interop.Objective arg0)
     {
-        NativeMethods.TablePtr->hs_method_355810f9((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_355810f9((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void onObjectiveRemoved(nint arg0)
+    public void onObjectiveRemoved(global::Hosihikari.Bindings.Bedrock.Interop.Objective arg0)
     {
-        NativeMethods.TablePtr->hs_method_c80f6eb8((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_c80f6eb8((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void onPlayerIdentityUpdated(nint arg0)
+    public void onPlayerIdentityUpdated(global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId arg0)
     {
-        NativeMethods.TablePtr->hs_method_9834ceec((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_9834ceec((void*)_handle, (void*)arg0.Handle);
     }
 
     public void onPlayerJoined(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
@@ -128,14 +129,14 @@ public sealed unsafe partial class ServerScoreboard
         NativeMethods.TablePtr->hs_method_f4f2bc20((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void onPlayerScoreRemoved(nint arg0, nint arg1)
+    public void onPlayerScoreRemoved(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, global::Hosihikari.Bindings.Bedrock.Interop.Objective arg1)
     {
-        NativeMethods.TablePtr->hs_method_0fbd4d52((void*)_handle, (void*)arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_0fbd4d52((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public void onScoreChanged(nint arg0, nint arg1)
+    public void onScoreChanged(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, global::Hosihikari.Bindings.Bedrock.Interop.Objective arg1)
     {
-        NativeMethods.TablePtr->hs_method_2762d958((void*)_handle, (void*)arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_2762d958((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? serialize()
@@ -144,7 +145,7 @@ public sealed unsafe partial class ServerScoreboard
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
     }
 
-    public nint setDisplayObjective(string arg0, nint arg1, byte arg2)
+    public nint setDisplayObjective(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Objective arg1, byte arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -159,13 +160,13 @@ public sealed unsafe partial class ServerScoreboard
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_ab69e8aa((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1, arg2);
+            return (nint)NativeMethods.TablePtr->hs_method_ab69e8aa((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, arg2);
         }
     }
 
-    public void setPacketSender(nint arg0)
+    public void setPacketSender(global::Hosihikari.Bindings.Bedrock.Interop.PacketSender? arg0)
     {
-        NativeMethods.TablePtr->hs_method_bba3ff9f((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_bba3ff9f((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
     public void tick()

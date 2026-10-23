@@ -223,9 +223,9 @@ public sealed unsafe partial class StructureManager
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'StructureAnimationData' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void queueLoad(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'StructureAnimationData' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public bool readStructure(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate arg0)
     {
@@ -254,4 +254,8 @@ public sealed unsafe partial class StructureManager
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'QueueRequestResult' requires --link-carrier or --virtual-dispatch.", false)]
     public nint tryPlaceStructureInWorld(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'QueueRequestResult' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

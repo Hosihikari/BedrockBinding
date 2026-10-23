@@ -122,9 +122,9 @@ public sealed unsafe partial class MapDataManager
         NativeMethods.TablePtr->hs_method_75e55e4e((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
-    public void setPacketSender(nint arg0)
+    public void setPacketSender(global::Hosihikari.Bindings.Bedrock.Interop.PacketSender arg0)
     {
-        NativeMethods.TablePtr->hs_method_c23b0c24((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_c23b0c24((void*)_handle, (void*)arg0.Handle);
     }
 
     public void tick()

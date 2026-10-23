@@ -992,9 +992,9 @@ public sealed unsafe partial class ItemStackBase : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
     }
 
-    public void saveEnchantsToUserData(nint arg0)
+    public void saveEnchantsToUserData(global::Hosihikari.Bindings.Bedrock.Interop.ItemEnchants arg0)
     {
-        NativeMethods.TablePtr->hs_method_f466eccf((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_f466eccf((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -1301,7 +1301,7 @@ public sealed unsafe partial class ItemStackBase : global::System.IDisposable
     public bool updateComponent(nint name, nint data) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public bool updateComponent(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg1)
+    public bool updateComponent(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;

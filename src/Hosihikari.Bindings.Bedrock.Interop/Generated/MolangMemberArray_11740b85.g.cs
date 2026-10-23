@@ -37,6 +37,172 @@ public sealed unsafe partial class MolangMemberArray : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static MolangMemberArray Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_9c853883();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangMemberArray((nint)handle);
+    }
+
+    public static MolangMemberArray Create(global::Hosihikari.Bindings.Bedrock.Interop.MolangMemberArray arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_4058b7b1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangMemberArray((nint)handle);
+    }
+
+    public static MolangMemberArray Create_49bb470c(int arg0, int arg1, int arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_49bb470c(arg0, arg1, arg2);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangMemberArray((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static MolangMemberArray Create(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public static MolangMemberArray Create_8b2ce312(int arg0, int arg1, int arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_8b2ce312(arg0, arg1, arg2);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangMemberArray((nint)handle);
+    }
+
+    public static MolangMemberArray Create_05669cbe(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.mce.Color arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_05669cbe(arg0, (void*)arg1.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangMemberArray((nint)handle);
+    }
+
+    public static MolangMemberArray Create_bef4ae3b(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.mce.Color arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_bef4ae3b(arg0, (void*)arg1.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangMemberArray((nint)handle);
+    }
+
+    public static MolangMemberArray Create_0032f6b0(int arg0, float arg1, float arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_0032f6b0(arg0, arg1, arg2);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangMemberArray((nint)handle);
+    }
+
+    public static MolangMemberArray Create(int arg0, float arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_8ebf19b3(arg0, arg1, (void*)arg2.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangMemberArray((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static MolangMemberArray Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public static MolangMemberArray Create_641f0482(int arg0, float arg1, float arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_641f0482(arg0, arg1, arg2);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangMemberArray((nint)handle);
+    }
+
+    public static MolangMemberArray Create_25f3a6ab(int arg0, float arg1, float arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_25f3a6ab(arg0, arg1, arg2);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangMemberArray((nint)handle);
+    }
+
+    public static MolangMemberArray Create(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec2 arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_772eb7b5(arg0, (void*)arg1.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangMemberArray((nint)handle);
+    }
+
+    public static MolangMemberArray Create(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_e55141a9(arg0, (void*)arg1.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangMemberArray((nint)handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg? get(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_279c7dd8((void*)_handle, (void*)arg0.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg getOrAdd(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->hs_method_a13b785d((void*)_handle, (void*)arg0.Handle), false);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMembers_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e80098b0((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool operator_equal(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static MolangMemberArray Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");

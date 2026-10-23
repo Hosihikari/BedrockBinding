@@ -37,6 +37,179 @@ public sealed unsafe partial class BaseGameVersion : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion ANY
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion((nint)NativeMethods.TablePtr->hs_get_8e519fd3(), false);
+    }
+
+    public static BaseGameVersion Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_f8195f44();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BaseGameVersion((nint)handle);
+    }
+
+    public static BaseGameVersion Create(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_65b78e83((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BaseGameVersion((nint)handle);
+    }
+
+    public static BaseGameVersion Create(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_cb3f3b55((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BaseGameVersion((nint)handle);
+    }
+
+    public static BaseGameVersion Create(ushort arg0, uint arg1, uint arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_76539209(arg0, arg1, arg2);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BaseGameVersion((nint)handle);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion EMPTY
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion((nint)NativeMethods.TablePtr->hs_get_9cff60c3(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion INCOMPATIBLE
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion((nint)NativeMethods.TablePtr->hs_get_8fc88e66(), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.SemVersion asSemVersion()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SemVersion((nint)NativeMethods.TablePtr->hs_method_047f7df4((void*)_handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint asString_2187c314() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string asString_a31af8ad()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_a31af8ad((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint fromString(nint source, nint output) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public static int fromString(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg1)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->hs_method_765cb58c(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle);
+        }
+    }
+
+    public ushort getMajor()
+    {
+        return NativeMethods.TablePtr->hs_method_fa5a3721((void*)_handle);
+    }
+
+    public ushort getMinor()
+    {
+        return NativeMethods.TablePtr->hs_method_a1aa8521((void*)_handle);
+    }
+
+    public ushort getPatch()
+    {
+        return NativeMethods.TablePtr->hs_method_30b23bc1((void*)_handle);
+    }
+
+    public bool isAnyVersion()
+    {
+        return NativeMethods.TablePtr->hs_method_91a0a680((void*)_handle) != 0;
+    }
+
+    public bool isCompatibleWith(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_9be1dfca((void*)_handle, (void*)arg0.Handle) != 0;
+    }
+
+    public bool isNeverCompatible()
+    {
+        return NativeMethods.TablePtr->hs_method_3e66ece2((void*)_handle) != 0;
+    }
+
+    public bool isValid()
+    {
+        return NativeMethods.TablePtr->hs_method_ba41125a((void*)_handle) != 0;
+    }
+
+    public bool mNeverCompatible
+    {
+        get => NativeMethods.TablePtr->hs_get_a1c7e272((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_a1c7e272((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSemVersion_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_80800ade((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool operator_not_equal(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool operator_less(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool operator_less_equal(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool operator_equal(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool operator_greater(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool operator_greater_equal(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static BaseGameVersion Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");

@@ -234,9 +234,9 @@ public sealed unsafe partial class LevelSettings : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_c8fa889a((void*)_handle);
     }
 
-    public nint getExperiments()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Experiments getExperiments()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_37b22f30((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Experiments((nint)NativeMethods.TablePtr->hs_method_37b22f30((void*)_handle), false);
     }
 
     public int getGameDifficulty()

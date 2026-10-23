@@ -131,9 +131,9 @@ public sealed unsafe partial class ActorFactory
         return (nint)NativeMethods.TablePtr->hs_method_45edcb04((void*)_handle);
     }
 
-    public void init(nint arg0)
+    public void init(global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg0)
     {
-        NativeMethods.TablePtr->hs_method_de6a6085((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_de6a6085((void*)_handle, (void*)arg0.Handle);
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? loadActor(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg0, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg1)

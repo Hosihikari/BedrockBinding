@@ -37,6 +37,123 @@ public sealed unsafe partial class BlockVolume : global::System.IDisposable
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BlockVolume Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'buffer_span_mut<Block const*>' is not a known bindable declaration.", false)]
+    public static BlockVolume Create(nint arg0, int arg1, int arg2, int arg3, nint arg4, int arg5) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'buffer_span_mut<Block const*>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint begin_82d2c34f() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint block(nint pos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint block(uint index) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'std::vector<short,std::allocator<short>>' is not a known bindable declaration.", false)]
+    public nint computeHeightMap_f43447a8() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'std::vector<short,std::allocator<short>>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint computeHeightMap_f36fc8ff() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint end_5f7263ac() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public short findHighestNonAirBlock()
+    {
+        return NativeMethods.TablePtr->hs_method_7866143a((void*)_handle);
+    }
+
+    public short getAboveTopSolidBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, bool arg1, bool arg2, bool arg3)
+    {
+        return NativeMethods.TablePtr->hs_method_3207a346((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Pos getDimensions()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Pos((nint)NativeMethods.TablePtr->hs_method_da741fec((void*)_handle));
+    }
+
+    public uint getIndexBounds()
+    {
+        return NativeMethods.TablePtr->hs_method_b21b3cad((void*)_handle);
+    }
+
+    public uint index(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_8d1970a6((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public uint index(global::Hosihikari.Bindings.Bedrock.Interop.Pos arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_1b66763a((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public uint indexNoBoundsCheck(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_9e131aed((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public uint indexNoBoundsCheck(global::Hosihikari.Bindings.Bedrock.Interop.Pos arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_a605a95d((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public bool isInBounds(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_8ecca986((void*)_handle, (void*)arg0.Handle) != 0;
+    }
+
+    public bool isInBounds(global::Hosihikari.Bindings.Bedrock.Interop.Pos arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_52f78714((void*)_handle, (void*)arg0.Handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlocks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_214158b4((void*)_handle);
+    }
+
+    public uint mDepth
+    {
+        get => NativeMethods.TablePtr->hs_get_d5f80923((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_d5f80923((void*)_handle, value);
+    }
+
+    public int mDimensionBottom
+    {
+        get => NativeMethods.TablePtr->hs_get_397e1eff((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_397e1eff((void*)_handle, value);
+    }
+
+    public uint mHeight
+    {
+        get => NativeMethods.TablePtr->hs_get_1a427a28((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_1a427a28((void*)_handle, value);
+    }
+
+    public nint mInitBlock
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_ca3759a7((void*)_handle);
+    }
+
+    public uint mWidth
+    {
+        get => NativeMethods.TablePtr->hs_get_734f93de((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_734f93de((void*)_handle, value);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

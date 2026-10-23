@@ -84,14 +84,14 @@ public sealed unsafe partial class MinecraftCommands
     public void initCoreEnums(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    public void initCoreEnumsServer(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Recipes arg2)
+    public void initCoreEnumsServer(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup arg0, global::Hosihikari.Bindings.Bedrock.Interop.CameraPresets arg1, global::Hosihikari.Bindings.Bedrock.Interop.Recipes arg2)
     {
-        NativeMethods.TablePtr->hs_method_73d2c38b((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle);
+        NativeMethods.TablePtr->hs_method_73d2c38b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
-    public static void initEntityEnum(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorFactory arg1, nint arg2)
+    public static void initEntityEnum(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorFactory arg1, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg2)
     {
-        NativeMethods.TablePtr->hs_method_6a3976c9((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_6a3976c9((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
     public static void initEntityPropertyEnum(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.Level arg1)
@@ -107,9 +107,9 @@ public sealed unsafe partial class MinecraftCommands
     public static void initItemTagEnum(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    public static void initStructureFeatureEnum(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0, nint arg1)
+    public static void initStructureFeatureEnum(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg1)
     {
-        NativeMethods.TablePtr->hs_method_5cc441bf((void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_5cc441bf((void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public static void initUnlockableRecipesEnum(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.Recipes arg1)

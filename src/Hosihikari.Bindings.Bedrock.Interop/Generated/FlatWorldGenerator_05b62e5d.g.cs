@@ -89,7 +89,7 @@ public sealed unsafe partial class FlatWorldGenerator : global::System.IDisposab
     public static FlatWorldGenerator Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static FlatWorldGenerator Create(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0, uint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg2)
+    public static FlatWorldGenerator Create(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0, uint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg2)
     {
         var handle = NativeMethods.TablePtr->hs_create_86df0dc2((void*)arg0.Handle, arg1, (void*)arg2.Handle);
         if (handle == null)

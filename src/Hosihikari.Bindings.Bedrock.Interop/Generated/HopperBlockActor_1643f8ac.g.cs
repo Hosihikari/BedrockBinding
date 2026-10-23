@@ -85,6 +85,30 @@ public sealed unsafe partial class HopperBlockActor
         get => (nint)NativeMethods.TablePtr->hs_get_2e62da39((void*)_handle);
     }
 
+    public int mCooldownTime
+    {
+        get => NativeMethods.TablePtr->hs_get_886b0f7b((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_886b0f7b((void*)_handle, value);
+    }
+
+    public bool mIsEntity
+    {
+        get => NativeMethods.TablePtr->hs_get_d7547879((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_d7547879((void*)_handle, value);
+    }
+
+    public int mMoveItemSpeed
+    {
+        get => NativeMethods.TablePtr->hs_get_16c37e9f((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_16c37e9f((void*)_handle, value);
+    }
+
+    public bool mTransferedFromChestMinecart
+    {
+        get => NativeMethods.TablePtr->hs_get_ac9bf626((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_ac9bf626((void*)_handle, value);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static HopperBlockActor Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");

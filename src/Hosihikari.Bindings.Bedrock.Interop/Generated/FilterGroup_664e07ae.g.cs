@@ -125,12 +125,12 @@ public sealed unsafe partial class FilterGroup
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public bool parse(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg0)
+    public bool parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0)
     {
         return NativeMethods.TablePtr->hs_method_73020f50((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    public void serialize(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg0)
+    public void serialize(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0)
     {
         NativeMethods.TablePtr->hs_method_0600a6c6((void*)_handle, (void*)arg0.Handle);
     }

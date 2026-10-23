@@ -1137,14 +1137,14 @@ public sealed unsafe partial class Player : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_3ce5a0e3((void*)_handle);
     }
 
-    public nint getSkin_30b7b3e3()
+    public global::Hosihikari.Bindings.Bedrock.Interop.SerializedSkin getSkin_30b7b3e3()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_30b7b3e3((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SerializedSkin((nint)NativeMethods.TablePtr->hs_method_30b7b3e3((void*)_handle), false);
     }
 
-    public nint getSkin_5b2a0b7e()
+    public global::Hosihikari.Bindings.Bedrock.Interop.SerializedSkin getSkin_5b2a0b7e()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_5b2a0b7e((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SerializedSkin((nint)NativeMethods.TablePtr->hs_method_5b2a0b7e((void*)_handle), false);
     }
 
     public float getSleepRotation()
@@ -2048,9 +2048,9 @@ public sealed unsafe partial class Player : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_9491a5ea((void*)arg0.Handle, arg1, arg2);
     }
 
-    public void updateSkin(nint arg0, int arg1)
+    public void updateSkin(global::Hosihikari.Bindings.Bedrock.Interop.SerializedSkin arg0, int arg1)
     {
-        NativeMethods.TablePtr->hs_method_efdf1b51((void*)_handle, (void*)arg0, arg1);
+        NativeMethods.TablePtr->hs_method_efdf1b51((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
     public void updateSpawnChunkView()

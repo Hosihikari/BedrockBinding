@@ -46,9 +46,9 @@ public sealed unsafe partial class ShooterItemComponent
         NativeMethods.TablePtr->hs_method_de5888b2((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'AllExperiments' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static void bindType(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'AllExperiments' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public bool checkComponentDataForContentErrors()
     {

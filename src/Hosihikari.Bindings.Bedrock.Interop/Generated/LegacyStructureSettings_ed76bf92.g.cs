@@ -89,9 +89,9 @@ public sealed unsafe partial class LegacyStructureSettings
         return (nint)NativeMethods.TablePtr->hs_method_a715e721((void*)_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Block getSwappedBlock(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Block getSwappedBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPalette arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_bf8a3122((void*)_handle, (void*)arg0, (void*)arg1.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_bf8a3122((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class Goal
+public sealed unsafe partial class Goal
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -36,4 +36,83 @@ public sealed partial class Goal
         _handle = 0;
         return __hs_handle;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static Goal Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Goal Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void appendDebugInfo(nint str) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public bool canBeInterrupted()
+    {
+        return NativeMethods.TablePtr->hs_method_3715cc9d((void*)_handle) != 0;
+    }
+
+    public bool canContinueToUse()
+    {
+        return NativeMethods.TablePtr->hs_method_6d1bd205((void*)_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool canUse() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public int getRequiredControlFlags()
+    {
+        return NativeMethods.TablePtr->hs_method_2bba3e30((void*)_handle);
+    }
+
+    public ushort getTypeId()
+    {
+        return NativeMethods.TablePtr->hs_method_7c8d6e13((void*)_handle);
+    }
+
+    public bool isTargetGoal()
+    {
+        return NativeMethods.TablePtr->hs_method_0db4449d((void*)_handle) != 0;
+    }
+
+    public void onPlayerDimensionChanged(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg2)
+    {
+        NativeMethods.TablePtr->hs_method_19f8d4f7((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, (void*)arg2.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void setRequiredControlFlags(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_8d0b8f9f((void*)_handle, arg0);
+    }
+
+    public void setTypeId(ushort arg0)
+    {
+        NativeMethods.TablePtr->hs_method_7e19686e((void*)_handle, arg0);
+    }
+
+    public void start()
+    {
+        NativeMethods.TablePtr->hs_method_822b82fc((void*)_handle);
+    }
+
+    public void stop()
+    {
+        NativeMethods.TablePtr->hs_method_6a3d9e42((void*)_handle);
+    }
+
+    public void tick()
+    {
+        NativeMethods.TablePtr->hs_method_7e6363a3((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

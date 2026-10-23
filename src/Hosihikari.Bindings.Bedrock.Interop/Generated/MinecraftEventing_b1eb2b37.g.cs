@@ -6043,7 +6043,7 @@ public sealed unsafe partial class MinecraftEventing
     public void fireSafetyServiceTextProcessEvent(nint arg0, nint arg1, ushort arg2, nint arg3, bool arg4, double arg5, byte arg6, byte arg7, nint arg8, nint arg9, bool arg10) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void fireSafetyServiceTextProcessEvent(string arg0, int arg1, ushort arg2, string arg3, bool arg4, double arg5, sbyte arg6, sbyte arg7, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg8, string arg9, bool arg10)
+    public void fireSafetyServiceTextProcessEvent(string arg0, int arg1, ushort arg2, string arg3, bool arg4, double arg5, sbyte arg6, sbyte arg7, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg8, string arg9, bool arg10)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -6329,7 +6329,7 @@ public sealed unsafe partial class MinecraftEventing
     public void fireWorldUpgradedToCnCPart2(bool willUpgrade, nint baseGameVersion, nint experiments, nint lastOpenedVersion, nint worldSeed, float worldSizeMB) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void fireWorldUpgradedToCnCPart2(bool arg0, string arg1, nint arg2, string arg3, global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 arg4, float arg5)
+    public void fireWorldUpgradedToCnCPart2(bool arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg2, string arg3, global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 arg4, float arg5)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
         scoped global::System.Span<byte> __hs_stringBytes1;
@@ -6357,7 +6357,7 @@ public sealed unsafe partial class MinecraftEventing
         {
             fixed (byte* __hs_stringData3 = __hs_stringBytes3)
             {
-                NativeMethods.TablePtr->hs_method_3e3f745b((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2, __hs_stringData3, (nuint)__hs_stringByteCount3, (void*)arg4.Handle, arg5);
+                NativeMethods.TablePtr->hs_method_3e3f745b((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2.Handle, __hs_stringData3, (nuint)__hs_stringByteCount3, (void*)arg4.Handle, arg5);
             }
         }
     }
@@ -6460,9 +6460,9 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_1407b150((void*)_handle, (void*)arg0);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Json.Value propertiesAsJsonValue()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value propertiesAsJsonValue()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->hs_method_469bbdb7((void*)_handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value((nint)NativeMethods.TablePtr->hs_method_469bbdb7((void*)_handle));
     }
 
     public void registerOptionsObserver(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)

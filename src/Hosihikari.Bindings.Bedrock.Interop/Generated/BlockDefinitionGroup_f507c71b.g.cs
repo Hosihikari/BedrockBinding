@@ -103,9 +103,9 @@ public sealed unsafe partial class BlockDefinitionGroup
     public nint loadResource_11e3c1ed(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void loadResources(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0, nint arg1, nint arg2)
+    public void loadResources(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg2)
     {
-        NativeMethods.TablePtr->hs_method_a9e7eb46((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_a9e7eb46((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

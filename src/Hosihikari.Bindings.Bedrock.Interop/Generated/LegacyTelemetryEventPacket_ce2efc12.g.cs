@@ -161,9 +161,9 @@ public sealed unsafe partial class LegacyTelemetryEventPacket : global::System.I
         return new LegacyTelemetryEventPacket((nint)handle);
     }
 
-    public static LegacyTelemetryEventPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, nint arg1, bool arg2)
+    public static LegacyTelemetryEventPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.Raid arg1, bool arg2)
     {
-        var handle = NativeMethods.TablePtr->hs_create_724401ae((void*)(arg0?.Handle ?? 0), (void*)arg1, arg2);
+        var handle = NativeMethods.TablePtr->hs_create_724401ae((void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, arg2);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -315,6 +315,47 @@ public sealed unsafe partial class LegacyTelemetryEventPacket : global::System.I
     }
 
 
+
+    public byte mClientSubId
+    {
+        get => NativeMethods.TablePtr->hs_get_e129512c((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_e129512c((void*)_handle, value);
+    }
+
+    public int mCompressible
+    {
+        get => NativeMethods.TablePtr->hs_get_c43e7812((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_c43e7812((void*)_handle, value);
+    }
+
+    public nint mHandler
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_f02104c7((void*)_handle);
+    }
+
+    public bool mIsHandled
+    {
+        get => NativeMethods.TablePtr->hs_get_1198fa80((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_1198fa80((void*)_handle, value);
+    }
+
+    public int mPriority
+    {
+        get => NativeMethods.TablePtr->hs_get_e953a099((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_e953a099((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mReceiveTimepoint_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_7c890792((void*)_handle);
+    }
+
+    public int mReliability
+    {
+        get => NativeMethods.TablePtr->hs_get_37e49185((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_37e49185((void*)_handle, value);
+    }
 
     public void Dispose()
     {

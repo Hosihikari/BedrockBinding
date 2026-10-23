@@ -172,9 +172,9 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->hs_method_13200ba9((void*)_handle));
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ItemStack fromDescriptor(nint arg0, nint arg1, bool arg2)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ItemStack fromDescriptor(global::Hosihikari.Bindings.Bedrock.Interop.NetworkItemStackDescriptor arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPalette arg1, bool arg2)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->hs_method_520fbb99((void*)arg0, (void*)arg1, arg2));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->hs_method_520fbb99((void*)arg0.Handle, (void*)arg1.Handle, arg2));
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.ItemStack fromTag(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)

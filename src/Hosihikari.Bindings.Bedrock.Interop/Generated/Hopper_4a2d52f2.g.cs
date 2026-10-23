@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class Hopper
+public sealed unsafe partial class Hopper : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,5 +35,68 @@ public sealed partial class Hopper
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+    public static Hopper Create(int arg0, bool arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_671ce688(arg0, arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Hopper((nint)handle);
+    }
+
+    public int getCooldownTime()
+    {
+        return NativeMethods.TablePtr->hs_method_b491ec7b((void*)_handle);
+    }
+
+    public bool isOnCooldown()
+    {
+        return NativeMethods.TablePtr->hs_method_80a5be60((void*)_handle) != 0;
+    }
+
+    public int mCooldownTime
+    {
+        get => NativeMethods.TablePtr->hs_get_e111fb45((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_e111fb45((void*)_handle, value);
+    }
+
+    public bool mIsEntity
+    {
+        get => NativeMethods.TablePtr->hs_get_dcf8bbb1((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_dcf8bbb1((void*)_handle, value);
+    }
+
+    public int mMoveItemSpeed
+    {
+        get => NativeMethods.TablePtr->hs_get_7c99c4cd((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_7c99c4cd((void*)_handle, value);
+    }
+
+    public bool mTransferedFromChestMinecart
+    {
+        get => NativeMethods.TablePtr->hs_get_92af1cfd((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_92af1cfd((void*)_handle, value);
+    }
+
+    public void setCooldownTime(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_1ed27635((void*)_handle, arg0);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_4a2d52f2((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

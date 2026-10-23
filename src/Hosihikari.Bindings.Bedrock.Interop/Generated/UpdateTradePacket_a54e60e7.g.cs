@@ -37,6 +37,47 @@ public sealed unsafe partial class UpdateTradePacket : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public byte mClientSubId
+    {
+        get => NativeMethods.TablePtr->hs_get_55009f93((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_55009f93((void*)_handle, value);
+    }
+
+    public int mCompressible
+    {
+        get => NativeMethods.TablePtr->hs_get_8d852a27((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_8d852a27((void*)_handle, value);
+    }
+
+    public nint mHandler
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_752fb02a((void*)_handle);
+    }
+
+    public bool mIsHandled
+    {
+        get => NativeMethods.TablePtr->hs_get_2ad8b50a((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_2ad8b50a((void*)_handle, value);
+    }
+
+    public int mPriority
+    {
+        get => NativeMethods.TablePtr->hs_get_3b8fbed6((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_3b8fbed6((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mReceiveTimepoint_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b9849c44((void*)_handle);
+    }
+
+    public int mReliability
+    {
+        get => NativeMethods.TablePtr->hs_get_e1a9a7c5((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_e1a9a7c5((void*)_handle, value);
+    }
+
     public static UpdateTradePacket Create()
     {
         var handle = NativeMethods.TablePtr->hs_create_b011a0bf();

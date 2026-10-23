@@ -193,11 +193,11 @@ public sealed unsafe partial class LevelListCache
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'LevelSummary' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public void getLevelList(nint arg0, bool arg1, bool arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'LevelSummary' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
-    public nint getLevelSummary(string arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSummary? getLevelSummary(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -212,11 +212,12 @@ public sealed unsafe partial class LevelListCache
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_611678a4((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->hs_method_611678a4((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LevelSummary((nint)__hs_handle, false) : null;
         }
     }
 
-    public nint getLevelSummaryByName(string arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSummary? getLevelSummaryByName(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -231,16 +232,18 @@ public sealed unsafe partial class LevelListCache
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_44aa78e1((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->hs_method_44aa78e1((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LevelSummary((nint)__hs_handle, false) : null;
         }
     }
 
-    public nint getOrCreateLevelSummary(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSummary? getOrCreateLevelSummary(nint arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_4924d3b6((void*)_handle, (void*)arg0);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_4924d3b6((void*)_handle, (void*)arg0);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LevelSummary((nint)__hs_handle, false) : null;
     }
 
-    public nint getShallowLevelSummary(string arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSummary? getShallowLevelSummary(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -255,7 +258,8 @@ public sealed unsafe partial class LevelListCache
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_35ed497b((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->hs_method_35ed497b((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LevelSummary((nint)__hs_handle, false) : null;
         }
     }
 

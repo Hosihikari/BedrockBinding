@@ -207,19 +207,19 @@ public sealed unsafe partial class LevelData
         return NativeMethods.TablePtr->hs_method_f0ba6782((void*)_handle) != 0;
     }
 
-    public nint getExperiments_83f8998e()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Experiments getExperiments_83f8998e()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_83f8998e((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Experiments((nint)NativeMethods.TablePtr->hs_method_83f8998e((void*)_handle), false);
     }
 
-    public nint getExperiments_9176f510()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Experiments getExperiments_9176f510()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_9176f510((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Experiments((nint)NativeMethods.TablePtr->hs_method_9176f510((void*)_handle), false);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Json.Value getFlatWorldGeneratorOptions()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value getFlatWorldGeneratorOptions()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->hs_method_4f9bccf7((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value((nint)NativeMethods.TablePtr->hs_method_4f9bccf7((void*)_handle), false);
     }
 
     public bool getForceGameType()

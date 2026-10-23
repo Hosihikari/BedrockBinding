@@ -153,9 +153,9 @@ public sealed unsafe partial class RaidBossComponent
         NativeMethods.TablePtr->hs_method_31badfa2((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
-    public void updateBossBarStats(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, nint arg1)
+    public void updateBossBarStats(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Raid arg1)
     {
-        NativeMethods.TablePtr->hs_method_eb241f0d((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_eb241f0d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void updateHealthBarVisible(bool arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)

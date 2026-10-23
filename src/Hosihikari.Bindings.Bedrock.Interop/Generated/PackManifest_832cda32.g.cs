@@ -141,9 +141,9 @@ public sealed unsafe partial class PackManifest
         return NativeMethods.TablePtr->hs_method_ebb4229c((void*)_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Json.Value getPackSettings()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value getPackSettings()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->hs_method_ff85d34f((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value((nint)NativeMethods.TablePtr->hs_method_ff85d34f((void*)_handle), false);
     }
 
     public ulong getPackSize()

@@ -41,9 +41,9 @@ public sealed unsafe partial class ActorDefinitionGroup : global::System.IDispos
     public static ActorDefinitionGroup Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static ActorDefinitionGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg1, global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing arg2, nint arg3)
+    public static ActorDefinitionGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg1, global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing arg2, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg3)
     {
-        var handle = NativeMethods.TablePtr->hs_create_33a4f039((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3);
+        var handle = NativeMethods.TablePtr->hs_create_33a4f039((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -138,7 +138,7 @@ public sealed unsafe partial class ActorDefinitionGroup : global::System.IDispos
     public nint tryGetDefinitionGroup_78144cae(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorDefinitionPtr' requires --link-carrier or --virtual-dispatch.");
 
-    public static bool tryReadEntityResourceFile(global::Hosihikari.Bindings.Bedrock.Interop.PackInstance arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg2)
+    public static bool tryReadEntityResourceFile(global::Hosihikari.Bindings.Bedrock.Interop.PackInstance arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg2)
     {
         return NativeMethods.TablePtr->hs_method_95850e4e((void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle) != 0;
     }

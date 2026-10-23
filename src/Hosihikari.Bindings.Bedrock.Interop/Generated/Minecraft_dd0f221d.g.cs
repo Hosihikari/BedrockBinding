@@ -51,9 +51,9 @@ public sealed unsafe partial class Minecraft
         NativeMethods.TablePtr->hs_method_267d8a31((void*)_handle);
     }
 
-    public void configureGameTest(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0, nint arg1)
+    public void configureGameTest(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg1)
     {
-        NativeMethods.TablePtr->hs_method_4ba3f18d((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_4ba3f18d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void disconnectClient(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, int arg1, string arg2)
@@ -80,9 +80,9 @@ public sealed unsafe partial class Minecraft
         NativeMethods.TablePtr->hs_method_24062afb((void*)_handle);
     }
 
-    public nint getClientNetworkSystem_de622c5b()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ClientNetworkSystem getClientNetworkSystem_de622c5b()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_de622c5b((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ClientNetworkSystem((nint)NativeMethods.TablePtr->hs_method_de622c5b((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.MinecraftCommands getCommands()
@@ -112,11 +112,11 @@ public sealed unsafe partial class Minecraft
         return (nint)NativeMethods.TablePtr->hs_method_a4398c75((void*)_handle);
     }
 
-    public nint? getGameTest()
+    public global::Hosihikari.Bindings.Bedrock.Interop.MinecraftGameTest? getGameTest()
     {
         var __hs_hasValue = false;
         var __hs_handle = NativeMethods.TablePtr->hs_method_192cc900((void*)_handle, &__hs_hasValue);
-        return __hs_hasValue ? (nint)__hs_handle : null;
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MinecraftGameTest((nint)__hs_handle, false) : null;
     }
 
     public double getLastTimestep()
@@ -141,9 +141,9 @@ public sealed unsafe partial class Minecraft
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public nint getServerNetworkSystem_199bcc7b()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ServerNetworkSystem getServerNetworkSystem_199bcc7b()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_199bcc7b((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ServerNetworkSystem((nint)NativeMethods.TablePtr->hs_method_199bcc7b((void*)_handle), false);
     }
 
     public bool getSimPaused()

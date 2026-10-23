@@ -103,9 +103,9 @@ public sealed unsafe partial class BlockTickingQueue
         return NativeMethods.TablePtr->hs_method_04ab63f9((void*)_handle) != 0;
     }
 
-    public void load(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, nint arg1)
+    public void load(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPalette arg1)
     {
-        NativeMethods.TablePtr->hs_method_79934bd7((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_79934bd7((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]

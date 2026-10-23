@@ -3,20 +3,20 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class ITaskQueuePort
+public sealed partial class JsonUtil
 {
     private nint _handle;
     private readonly bool _ownsHandle;
 
-    public ITaskQueuePort(nint handle) : this(handle, true) { }
+    public JsonUtil(nint handle) : this(handle, true) { }
 
-    internal ITaskQueuePort(nint handle, bool ownsHandle)
+    internal JsonUtil(nint handle, bool ownsHandle)
     {
         _handle = handle;
         _ownsHandle = ownsHandle;
     }
 
-    public static ITaskQueuePort Borrow(nint handle) => new ITaskQueuePort(handle, false);
+    public static JsonUtil Borrow(nint handle) => new JsonUtil(handle, false);
 
     public nint Handle => _handle;
 

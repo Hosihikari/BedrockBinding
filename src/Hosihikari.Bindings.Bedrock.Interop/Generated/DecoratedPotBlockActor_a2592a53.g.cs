@@ -109,4 +109,8 @@ public sealed unsafe partial class DecoratedPotBlockActor
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'std::array<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,4>' is not supported.", false)]
     public static nint tryGetSherdsFromTag(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::array<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,4>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

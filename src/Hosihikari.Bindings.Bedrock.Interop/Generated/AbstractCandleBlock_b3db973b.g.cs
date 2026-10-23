@@ -49,7 +49,7 @@ public sealed unsafe partial class AbstractCandleBlock : global::System.IDisposa
     public static AbstractCandleBlock Create(nint nameId, int id, nint material) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static AbstractCandleBlock Create(string arg0, int arg1, nint arg2)
+    public static AbstractCandleBlock Create(string arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Material arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -64,7 +64,7 @@ public sealed unsafe partial class AbstractCandleBlock : global::System.IDisposa
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->hs_create_96221b57(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, (void*)arg2);
+            var handle = NativeMethods.TablePtr->hs_create_96221b57(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, (void*)arg2.Handle);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

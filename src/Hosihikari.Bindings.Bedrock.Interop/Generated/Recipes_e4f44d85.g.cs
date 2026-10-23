@@ -117,9 +117,9 @@ public sealed unsafe partial class Recipes
         return (nint)NativeMethods.TablePtr->hs_method_12b79a92((void*)_handle);
     }
 
-    public void init(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg2, nint arg3)
+    public void init(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg2, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg3)
     {
-        NativeMethods.TablePtr->hs_method_d8d3bc3a((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle, (void*)arg3);
+        NativeMethods.TablePtr->hs_method_d8d3bc3a((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle, (void*)arg3.Handle);
     }
 
     public bool loadRecipe(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg2, bool arg3)

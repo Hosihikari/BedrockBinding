@@ -64,27 +64,59 @@ public sealed unsafe partial class DBStorage
     public nint createSnapshot(nint arg0, bool arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'SnapshotFilenameAndLength' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'DBHelpers::Category' is not a known bindable declaration.", false)]
-    public nint deleteData(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DBHelpers::Category' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? deleteData(string arg0, int arg1)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_shared = NativeMethods.TablePtr->hs_method_a2024f50((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
+            return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+        }
+    }
 
     public void flushToPermanentStorage()
     {
         NativeMethods.TablePtr->hs_method_c94b3cb7((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'DBHelpers::Category' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void forEachKeyWithPrefix(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DBHelpers::Category' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public void freeCaches()
     {
         NativeMethods.TablePtr->hs_method_5514ef83((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'DBHelpers::Category' is not a known bindable declaration.", false)]
-    public nint getCompoundTag(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DBHelpers::Category' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? getCompoundTag(string arg0, int arg1)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_handle = NativeMethods.TablePtr->hs_method_458d14c7((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
+        }
+    }
 
     public nint getFullPath()
     {
@@ -103,9 +135,24 @@ public sealed unsafe partial class DBStorage
     public void getStatistics(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'DBHelpers::Category' is not a known bindable declaration.", false)]
-    public bool hasKey(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DBHelpers::Category' is not a known bindable declaration.");
+    public bool hasKey(string arg0, int arg1)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->hs_method_39ff516e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1) != 0;
+        }
+    }
 
     public bool isShuttingDown()
     {
@@ -131,15 +178,15 @@ public sealed unsafe partial class DBStorage
         NativeMethods.TablePtr->hs_method_acd803f3((void*)_handle);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? saveData(nint arg0)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? saveData(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageWriteBatch arg0)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_8e45362a((void*)_handle, (void*)arg0);
+        var __hs_shared = NativeMethods.TablePtr->hs_method_8e45362a((void*)_handle, (void*)arg0.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'DBHelpers::Category' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: rvalue string references are not supported by symbol dispatch.", false)]
     public nint saveData(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DBHelpers::Category' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: rvalue string references are not supported by symbol dispatch.");
 
     public void saveLevelData(global::Hosihikari.Bindings.Bedrock.Interop.LevelData arg0)
     {

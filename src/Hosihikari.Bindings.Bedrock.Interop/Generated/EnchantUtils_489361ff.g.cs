@@ -46,14 +46,14 @@ public sealed unsafe partial class EnchantUtils
         return NativeMethods.TablePtr->hs_method_f36e0637((void*)arg0.Handle, arg1, arg2, arg3) != 0;
     }
 
-    public static bool applyEnchant_89dcab00(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, nint arg1, bool arg2)
+    public static bool applyEnchant(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, nint arg1, bool arg2)
     {
         return NativeMethods.TablePtr->hs_method_89dcab00((void*)arg0.Handle, (void*)arg1, arg2) != 0;
     }
 
-    public static int applyEnchant_fc87cf96(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, nint arg1, bool arg2)
+    public static int applyEnchant(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemEnchants arg1, bool arg2)
     {
-        return NativeMethods.TablePtr->hs_method_fc87cf96((void*)arg0.Handle, (void*)arg1, arg2);
+        return NativeMethods.TablePtr->hs_method_fc87cf96((void*)arg0.Handle, (void*)arg1.Handle, arg2);
     }
 
     public static float calculateAfterBreachArmorFraction(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0, global::Hosihikari.Bindings.Bedrock.Interop.Mob arg1, float arg2)
@@ -94,9 +94,9 @@ public sealed unsafe partial class EnchantUtils
         NativeMethods.TablePtr->hs_method_cc0ab57d((void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public static void doPostItemHurtActorEffects(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, nint arg2)
+    public static void doPostItemHurtActorEffects(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemEnchants arg2)
     {
-        NativeMethods.TablePtr->hs_method_40668309((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_40668309((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance generateEnchantedBook_c290bb8d(nint arg0)

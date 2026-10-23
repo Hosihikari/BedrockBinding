@@ -525,18 +525,18 @@ public sealed unsafe partial class ServerPlayer
         NativeMethods.TablePtr->hs_method_bc8e5c39((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'ComplexInventoryTransaction' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void sendComplexInventoryTransaction(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'ComplexInventoryTransaction' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public void sendInventory(bool arg0)
     {
         NativeMethods.TablePtr->hs_method_c9297638((void*)_handle, arg0);
     }
 
-    public void sendInventoryTransaction(nint arg0)
+    public void sendInventoryTransaction(global::Hosihikari.Bindings.Bedrock.Interop.InventoryTransaction arg0)
     {
-        NativeMethods.TablePtr->hs_method_8bdf2842((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_8bdf2842((void*)_handle, (void*)arg0.Handle);
     }
 
     public void sendMobEffectPackets()

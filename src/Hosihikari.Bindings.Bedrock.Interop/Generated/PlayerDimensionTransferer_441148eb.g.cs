@@ -118,9 +118,9 @@ public sealed unsafe partial class PlayerDimensionTransferer
         NativeMethods.TablePtr->hs_method_57ee0f22((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public void setPacketSender(nint arg0)
+    public void setPacketSender(global::Hosihikari.Bindings.Bedrock.Interop.PacketSender arg0)
     {
-        NativeMethods.TablePtr->hs_method_3e262baf((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_3e262baf((void*)_handle, (void*)arg0.Handle);
     }
 
     public void setTransitionLocation(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg2)

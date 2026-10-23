@@ -37,9 +37,74 @@ public sealed unsafe partial class GameMode
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static GameMode Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static GameMode Create(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static GameMode Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
+    public static nint MIN_MOVING_NON_CREATIVE_BUILD_DELAY
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+    }
+
+    public static float PICKRANGE_CREATIVE_MAXIMUM
+    {
+        get => NativeMethods.TablePtr->hs_get_ed6c6376();
+    }
+
+    public static float PICKRANGE_CREATIVE_MAXIMUM_SQR
+    {
+        get => NativeMethods.TablePtr->hs_get_fadf08f9();
+    }
+
+    public static float PICKRANGE_GAMEPAD
+    {
+        get => NativeMethods.TablePtr->hs_get_f37b07b2();
+    }
+
+    public static float PICKRANGE_MOUSE
+    {
+        get => NativeMethods.TablePtr->hs_get_cbea38af();
+    }
+
+    public static float PICKRANGE_SURVIVAL_MAXIMUM
+    {
+        get => NativeMethods.TablePtr->hs_get_3b364a97();
+    }
+
+    public static float PICKRANGE_SURVIVAL_MAXIMUM_SQR
+    {
+        get => NativeMethods.TablePtr->hs_get_820a8618();
+    }
+
+    public static float PICKRANGE_TOUCH_CREATIVE
+    {
+        get => NativeMethods.TablePtr->hs_get_2fc02c57();
+    }
+
+    public static float PICKRANGE_TOUCH_SURVIVAL
+    {
+        get => NativeMethods.TablePtr->hs_get_e7b131b9();
+    }
+
+    public static float PICKRANGE_VR_CREATIVE
+    {
+        get => NativeMethods.TablePtr->hs_get_b93c77af();
+    }
+
+    public static float PICKRANGE_VR_SURVIVAL
+    {
+        get => NativeMethods.TablePtr->hs_get_0baf9a5c();
+    }
 
     public bool _startDestroyBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, byte arg2, nint arg3)
     {
@@ -49,6 +114,10 @@ public sealed unsafe partial class GameMode
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public bool _tickContinueDestroyBlock_c4920ff0(nint arg0, nint arg1, byte arg2, nint arg3, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool _tickContinueDestroyBlock_126261be(nint hitPos, nint playerPos, byte arg2, nint hasDestroyedBlock, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool attack(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {
@@ -80,8 +149,12 @@ public sealed unsafe partial class GameMode
         return NativeMethods.TablePtr->hs_method_b7c9ad03((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, (void*)arg3) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint createBlockBreakCaptureScope_97add180(nint callback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: return type 'gsl::final_action<std::function<void (void)>>' is not supported.", false)]
-    public nint createBlockBreakCaptureScope(nint arg0) =>
+    public nint createBlockBreakCaptureScope_55a23063(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'gsl::final_action<std::function<void (void)>>' is not supported.");
 
     public bool destroyBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, byte arg1)
@@ -119,6 +192,10 @@ public sealed unsafe partial class GameMode
         return NativeMethods.TablePtr->hs_method_348c4fdf((void*)_handle, (void*)arg0, arg1);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getPlayer() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public bool interact(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
     {
         return NativeMethods.TablePtr->hs_method_6da5a3c9((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
@@ -133,6 +210,10 @@ public sealed unsafe partial class GameMode
     {
         return NativeMethods.TablePtr->hs_method_7a25dd89((void*)_handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void registerUpsellScreenCallback(nint arg0) =>
@@ -182,4 +263,8 @@ public sealed unsafe partial class GameMode
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.InteractionResult((nint)NativeMethods.TablePtr->hs_method_4b264802((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)arg3.Handle, (void*)(arg4?.Handle ?? 0)));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

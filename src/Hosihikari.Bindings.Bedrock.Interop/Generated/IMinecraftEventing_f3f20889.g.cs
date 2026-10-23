@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class IMinecraftEventing
+public sealed unsafe partial class IMinecraftEventing
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,7 +37,28 @@ public sealed partial class IMinecraftEventing
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static IMinecraftEventing Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static IMinecraftEventing Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void updatePlayerUndergroundStatus(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, bool arg1)
+    {
+        NativeMethods.TablePtr->hs_method_5bc4321f((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
+    public void Destroy_31bfc826() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_f0371a8b() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

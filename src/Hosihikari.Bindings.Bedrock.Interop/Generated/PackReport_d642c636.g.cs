@@ -181,7 +181,7 @@ public sealed unsafe partial class PackReport : global::System.IDisposable
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void serialize(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg0)
+    public void serialize(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0)
     {
         NativeMethods.TablePtr->hs_method_8f62766f((void*)_handle, (void*)arg0.Handle);
     }

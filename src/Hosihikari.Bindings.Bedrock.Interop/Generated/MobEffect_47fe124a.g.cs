@@ -268,9 +268,9 @@ public sealed unsafe partial class MobEffect
         NativeMethods.TablePtr->hs_method_c599b997((void*)_handle, (void*)arg0.Handle, arg1, arg2);
     }
 
-    public float getAttributeModifierValue(int arg0, nint arg1)
+    public float getAttributeModifierValue(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.AttributeModifier arg1)
     {
-        return NativeMethods.TablePtr->hs_method_8e6b5831((void*)_handle, arg0, (void*)arg1);
+        return NativeMethods.TablePtr->hs_method_8e6b5831((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect? getById(uint arg0)
@@ -353,9 +353,9 @@ public sealed unsafe partial class MobEffect
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static void initEffects(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0, nint arg1)
+    public static void initEffects(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg1)
     {
-        NativeMethods.TablePtr->hs_method_fcc97eb8((void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_fcc97eb8((void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public bool isHarmful()

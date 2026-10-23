@@ -94,14 +94,14 @@ public sealed unsafe partial class TickingArea
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public nint getView_63566978()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ITickingAreaView getView_63566978()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_63566978((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ITickingAreaView((nint)NativeMethods.TablePtr->hs_method_63566978((void*)_handle), false);
     }
 
-    public nint getView_5a73710b()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ITickingAreaView getView_5a73710b()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_5a73710b((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ITickingAreaView((nint)NativeMethods.TablePtr->hs_method_5a73710b((void*)_handle), false);
     }
 
     public bool isAlwaysActive()

@@ -41,14 +41,14 @@ public sealed unsafe partial class AttributeInstance
     public static AttributeInstance Create_05269e23(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    public void addBuff_03f9836b(nint arg0)
+    public void addBuff(global::Hosihikari.Bindings.Bedrock.Interop.AttributeBuff arg0)
     {
-        NativeMethods.TablePtr->hs_method_03f9836b((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_03f9836b((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void addModifier(nint arg0)
+    public void addModifier(global::Hosihikari.Bindings.Bedrock.Interop.AttributeModifier arg0)
     {
-        NativeMethods.TablePtr->hs_method_3b149524((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_3b149524((void*)_handle, (void*)arg0.Handle);
     }
 
     public void addModifier(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
@@ -85,9 +85,10 @@ public sealed unsafe partial class AttributeInstance
         return NativeMethods.TablePtr->hs_method_c22e2dc6((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'AttributeModifier' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getModifier(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'AttributeModifier' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.AttributeModifier getModifier(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AttributeModifier((nint)NativeMethods.TablePtr->hs_method_0ec4bc76((void*)_handle, (void*)arg0.Handle));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'AttributeModifier' is not supported.", false)]
     public nint getModifiers() =>
@@ -97,9 +98,9 @@ public sealed unsafe partial class AttributeInstance
     public nint getModifiers(int arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'AttributeModifier' is not supported.");
 
-    public bool hasModifier(nint arg0)
+    public bool hasModifier(global::Hosihikari.Bindings.Bedrock.Interop.AttributeModifier arg0)
     {
-        return NativeMethods.TablePtr->hs_method_2ef65aa7((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_2ef65aa7((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool hasModifier(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0)
@@ -142,9 +143,9 @@ public sealed unsafe partial class AttributeInstance
         NativeMethods.TablePtr->hs_method_244cfa37((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void removeBuff(nint arg0)
+    public void removeBuff(global::Hosihikari.Bindings.Bedrock.Interop.AttributeBuff arg0)
     {
-        NativeMethods.TablePtr->hs_method_35f76e16((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_35f76e16((void*)_handle, (void*)arg0.Handle);
     }
 
     public void removeBuff(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
@@ -162,9 +163,9 @@ public sealed unsafe partial class AttributeInstance
         return NativeMethods.TablePtr->hs_method_696d82fe((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    public void removeModifier(nint arg0)
+    public void removeModifier(global::Hosihikari.Bindings.Bedrock.Interop.AttributeModifier arg0)
     {
-        NativeMethods.TablePtr->hs_method_fe2e60e1((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_fe2e60e1((void*)_handle, (void*)arg0.Handle);
     }
 
     public void removeModifier(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
@@ -232,9 +233,9 @@ public sealed unsafe partial class AttributeInstance
         NativeMethods.TablePtr->hs_method_296d7557((void*)_handle);
     }
 
-    public void updateModifier(nint arg0)
+    public void updateModifier(global::Hosihikari.Bindings.Bedrock.Interop.AttributeModifier arg0)
     {
-        NativeMethods.TablePtr->hs_method_bf39ff3c((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_bf39ff3c((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

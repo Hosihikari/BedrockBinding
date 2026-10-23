@@ -49,7 +49,7 @@ public sealed unsafe partial class LiquidBlock : global::System.IDisposable
     public static LiquidBlock Create(nint nameId, int id, nint material) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static LiquidBlock Create(string arg0, int arg1, nint arg2)
+    public static LiquidBlock Create(string arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Material arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -64,7 +64,7 @@ public sealed unsafe partial class LiquidBlock : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->hs_create_27844a00(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, (void*)arg2);
+            var handle = NativeMethods.TablePtr->hs_create_27844a00(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, (void*)arg2.Handle);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -119,9 +119,9 @@ public sealed unsafe partial class LiquidBlock : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_5d86a75c((void*)_handle, (void*)arg0.Handle);
     }
 
-    public static void handleEntityInside(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, nint arg3)
+    public static void handleEntityInside(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, global::Hosihikari.Bindings.Bedrock.Interop.Material arg3)
     {
-        NativeMethods.TablePtr->hs_method_b079ca5c((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3);
+        NativeMethods.TablePtr->hs_method_b079ca5c((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
     }
 
     public bool mayPick(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, bool arg2)
