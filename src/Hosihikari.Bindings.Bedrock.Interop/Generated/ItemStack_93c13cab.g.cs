@@ -369,6 +369,48 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
 
+    public short mAuxValue
+    {
+        get => NativeMethods.TablePtr->hs_get_4a07b3f0((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_4a07b3f0((void*)_handle, value);
+    }
+
+    public ulong mCanDestroyHash
+    {
+        get => NativeMethods.TablePtr->hs_get_4863aa32((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_4863aa32((void*)_handle, value);
+    }
+
+    public ulong mCanPlaceOnHash
+    {
+        get => NativeMethods.TablePtr->hs_get_91695c27((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_91695c27((void*)_handle, value);
+    }
+
+    public byte mCount
+    {
+        get => NativeMethods.TablePtr->hs_get_3d6e4ba5((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_3d6e4ba5((void*)_handle, value);
+    }
+
+    public bool mShowPickUp
+    {
+        get => NativeMethods.TablePtr->hs_get_33b01a97((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_33b01a97((void*)_handle, value);
+    }
+
+    public bool mValid
+    {
+        get => NativeMethods.TablePtr->hs_get_fd8a839c((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_fd8a839c((void*)_handle, value);
+    }
+
+    public bool mWasPickedUp
+    {
+        get => NativeMethods.TablePtr->hs_get_0447e644((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_0447e644((void*)_handle, value);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

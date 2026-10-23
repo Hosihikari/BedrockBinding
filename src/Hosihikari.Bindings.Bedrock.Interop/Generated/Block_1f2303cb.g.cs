@@ -37,11 +37,13 @@ public sealed unsafe partial class Block
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint BLOCK_DESCRIPTION_PREFIX
+    public static string BLOCK_DESCRIPTION_PREFIX
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_4164fc3c();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
