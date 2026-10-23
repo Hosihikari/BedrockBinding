@@ -43,10 +43,21 @@ public sealed unsafe partial class ScoreboardCommand : global::System.IDisposabl
         set => NativeMethods.TablePtr->hs_set_b593185b((void*)_handle, value);
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFlags_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_47915de4((void*)_handle);
+    }
+
     public byte mPermissionLevel
     {
         get => NativeMethods.TablePtr->hs_get_9ec76551((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_9ec76551((void*)_handle, value);
+    }
+
+    public nint mRegistry
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_5c9a3ad7((void*)_handle);
     }
 
     public int mVersion

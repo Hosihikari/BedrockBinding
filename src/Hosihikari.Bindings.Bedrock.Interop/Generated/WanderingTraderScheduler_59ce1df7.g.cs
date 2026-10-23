@@ -42,11 +42,10 @@ public sealed unsafe partial class WanderingTraderScheduler
         get => NativeMethods.TablePtr->hs_get_5a17459a();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint CHANCE_TO_SPAWN_PER_DAY
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint CHANCE_TO_SPAWN_PER_DAY_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_bdf6b9e1();
     }
 
     public static int DISTANCE_IN_BLOCKS_FROM_MEETING_AREA

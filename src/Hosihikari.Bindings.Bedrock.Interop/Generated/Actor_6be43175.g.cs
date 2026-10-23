@@ -596,11 +596,10 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint filler
+    // The native field type is not projected; this is the address of the field storage.
+    public nint filler_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_c4ba2f3c((void*)_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]

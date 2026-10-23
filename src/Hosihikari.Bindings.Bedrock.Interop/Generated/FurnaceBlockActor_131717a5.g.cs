@@ -37,10 +37,22 @@ public sealed unsafe partial class FurnaceBlockActor
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContainerRuntimeId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_0e2bea18((void*)_handle);
+    }
+
     public sbyte mContainerType
     {
         get => NativeMethods.TablePtr->hs_get_3c237646((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_3c237646((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContentChangeListeners_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_7d542589((void*)_handle);
     }
 
     public bool mCustomName
@@ -53,6 +65,24 @@ public sealed unsafe partial class FurnaceBlockActor
     {
         get => NativeMethods.TablePtr->hs_get_26971cbd((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_26971cbd((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b7144f99((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSizeChangeListeners_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_3c47d0e0((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTransactionContextStack_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_71aafa65((void*)_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]

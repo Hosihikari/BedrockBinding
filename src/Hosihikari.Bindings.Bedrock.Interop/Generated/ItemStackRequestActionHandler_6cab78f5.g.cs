@@ -119,11 +119,10 @@ public sealed unsafe partial class ItemStackRequestActionHandler : global::Syste
     public nint endRequest(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::tuple<ItemStackNetResult,std::vector<ItemStackResponseContainerInfo,std::allocator<ItemStackResponseContainerInfo>>>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint filler
+    // The native field type is not projected; this is the address of the field storage.
+    public nint filler_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_bd73c392((void*)_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -158,11 +157,10 @@ public sealed unsafe partial class ItemStackRequestActionHandler : global::Syste
         return NativeMethods.TablePtr->hs_method_e92c0d17((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mPlayer
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayer_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_08a3ca25((void*)_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

@@ -142,11 +142,10 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint _defaultUnknownQueryFunction
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint _defaultUnknownQueryFunction_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_d2aef873();
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -198,11 +197,10 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
     public static float fast_atof_positiveOnly(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint filler
+    // The native field type is not projected; this is the address of the field storage.
+    public nint filler_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_9d7c97ff((void*)_handle);
     }
 
     public static nint getExperiments()
@@ -318,11 +316,10 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_16df3245((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint mAliasOpTokens
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mAliasOpTokens_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_47fa57fa();
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.ExperimentStorage mExperiments
@@ -330,11 +327,10 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
         get => new global::Hosihikari.Bindings.Bedrock.Interop.ExperimentStorage((nint)NativeMethods.TablePtr->hs_get_d7e155ac(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint mExpressionOpTokens
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mExpressionOpTokens_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_fb7e47f9();
     }
 
     public static bool mMolangInitialized
@@ -342,18 +338,16 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
         get => NativeMethods.TablePtr->hs_get_d3c5160d() != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint mQueryFunctionAccessors
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mQueryFunctionAccessors_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_8ba5dd24();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint mQuerySets
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mQuerySets_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_aa01f0d4();
     }
 
     public void moveConstantChildToValueIfFloatOrHashType(int arg0)

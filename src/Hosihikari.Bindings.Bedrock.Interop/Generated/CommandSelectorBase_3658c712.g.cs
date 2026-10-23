@@ -189,11 +189,10 @@ public sealed unsafe partial class CommandSelectorBase : global::System.IDisposa
         return NativeMethods.TablePtr->hs_method_64cb0ae5((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mBoxDeltas
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBoxDeltas_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_a33571bd((void*)_handle);
     }
 
     public ulong mCount
@@ -220,18 +219,16 @@ public sealed unsafe partial class CommandSelectorBase : global::System.IDisposa
         set => NativeMethods.TablePtr->hs_set_73620d26((void*)_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mFamilyFilters
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFamilyFilters_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_9e5fd515((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: const fields are not projected by symbol dispatch.", false)]
-    public nint mFilterChain
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFilterChain_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: const fields are not projected by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: const fields are not projected by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_f39d6b0e((void*)_handle);
     }
 
     public bool mForcePlayer
@@ -264,11 +261,10 @@ public sealed unsafe partial class CommandSelectorBase : global::System.IDisposa
         set => NativeMethods.TablePtr->hs_set_fb4f6f36((void*)_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mNameFilters
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNameFilters_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_13c25c02((void*)_handle);
     }
 
     public int mOrder
@@ -277,11 +273,10 @@ public sealed unsafe partial class CommandSelectorBase : global::System.IDisposa
         set => NativeMethods.TablePtr->hs_set_cf345325((void*)_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mPosition
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPosition_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_24a9bf34((void*)_handle);
     }
 
     public bool mPositionFiltered
@@ -302,11 +297,10 @@ public sealed unsafe partial class CommandSelectorBase : global::System.IDisposa
         set => NativeMethods.TablePtr->hs_set_57e8f2d0((void*)_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mTagFilters
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTagFilters_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_c755e8d4((void*)_handle);
     }
 
     public int mType
@@ -315,11 +309,10 @@ public sealed unsafe partial class CommandSelectorBase : global::System.IDisposa
         set => NativeMethods.TablePtr->hs_set_0bebd4c1((void*)_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mTypeFilters
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTypeFilters_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_6782fa20((void*)_handle);
     }
 
     public int mVersion

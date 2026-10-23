@@ -37,6 +37,12 @@ public sealed unsafe partial class PlayerCommandOrigin : global::System.IDisposa
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUuid_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_a9ef741b((void*)_handle);
+    }
+
     public static PlayerCommandOrigin Create(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
     {
         var handle = NativeMethods.TablePtr->hs_create_e1db9f4d((void*)arg0.Handle);
@@ -168,11 +174,10 @@ public sealed unsafe partial class PlayerCommandOrigin : global::System.IDisposa
         set => NativeMethods.TablePtr->hs_set_22e45542((void*)_handle, (void*)value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mPlayerId
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayerId_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_a22814db((void*)_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag serialize()

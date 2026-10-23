@@ -37,6 +37,12 @@ public sealed unsafe partial class Minecart
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint filler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_8bcd2069((void*)_handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static Minecart Create(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");

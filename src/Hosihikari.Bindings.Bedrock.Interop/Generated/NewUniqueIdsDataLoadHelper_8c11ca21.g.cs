@@ -153,11 +153,10 @@ public sealed unsafe partial class NewUniqueIdsDataLoadHelper : global::System.I
         set => NativeMethods.TablePtr->hs_set_9a495c9a((void*)_handle, (void*)value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mOldIDToNewID
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOldIDToNewID_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_9215ac29((void*)_handle);
     }
 
     public bool shouldResetTime()

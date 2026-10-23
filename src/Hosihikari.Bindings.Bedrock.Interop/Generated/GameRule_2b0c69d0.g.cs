@@ -161,11 +161,10 @@ public sealed unsafe partial class GameRule : global::System.IDisposable
         set => NativeMethods.TablePtr->hs_set_ea61cb06((void*)_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mName
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_de8d1a45((void*)_handle);
     }
 
     public bool mRequiresCheats
@@ -180,11 +179,10 @@ public sealed unsafe partial class GameRule : global::System.IDisposable
         set => NativeMethods.TablePtr->hs_set_a364fd1b((void*)_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mTagNotFoundCallback
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTagNotFoundCallback_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_503d5bff((void*)_handle);
     }
 
     public sbyte mType
@@ -193,18 +191,16 @@ public sealed unsafe partial class GameRule : global::System.IDisposable
         set => NativeMethods.TablePtr->hs_set_32938173((void*)_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mValidateValueCallback
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mValidateValueCallback_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_b9529e77((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mValue
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mValue_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_413ea7a8((void*)_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

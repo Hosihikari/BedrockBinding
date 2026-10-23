@@ -37,6 +37,12 @@ public sealed unsafe partial class Mob : global::System.IDisposable
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint filler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e1bb5bfd((void*)_handle);
+    }
+
     public static int ARMOR_DAMAGE_DIVISOR
     {
         get => NativeMethods.TablePtr->hs_get_7eaa0fdd();

@@ -851,18 +851,16 @@ public sealed unsafe partial class Item
         return NativeMethods.TablePtr->hs_method_ff626650((void*)_handle, (void*)(arg0?.Handle ?? 0)) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint mActiveCreativeGroupInfo
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mActiveCreativeGroupInfo_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_ea605c05();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint mActiveCreativeItemCategory
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mActiveCreativeItemCategory_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_cb073074();
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemRegistry mActiveCreativeItemRegistry
@@ -875,11 +873,10 @@ public sealed unsafe partial class Item
         get => NativeMethods.TablePtr->hs_get_9f416c84() != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint mServerItemsUsedInCreativeItems
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mServerItemsUsedInCreativeItems_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_a8dd6a9b();
     }
 
     public bool mineBlock(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, int arg2, int arg3, int arg4, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg5)

@@ -217,11 +217,10 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_dfbab32a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mNetIdVariant
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNetIdVariant_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_eae76be1((void*)_handle);
     }
 
     public bool matchesAndNetIdVariantMatches(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
@@ -376,10 +375,33 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
         set => NativeMethods.TablePtr->hs_set_4a07b3f0((void*)_handle, value);
     }
 
+    public nint mBlock
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e7206aa3((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockingTick_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_34683edf((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCanDestroy_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_77382f80((void*)_handle);
+    }
+
     public ulong mCanDestroyHash
     {
         get => NativeMethods.TablePtr->hs_get_4863aa32((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_4863aa32((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCanPlaceOn_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_0a1e09ce((void*)_handle);
     }
 
     public ulong mCanPlaceOnHash
@@ -388,16 +410,40 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
         set => NativeMethods.TablePtr->hs_set_91695c27((void*)_handle, value);
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChargedItem_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_c7fac242((void*)_handle);
+    }
+
     public byte mCount
     {
         get => NativeMethods.TablePtr->hs_get_3d6e4ba5((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_3d6e4ba5((void*)_handle, value);
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItem_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e1e8f2c0((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPickupTime_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_c5cc23c6((void*)_handle);
+    }
+
     public bool mShowPickUp
     {
         get => NativeMethods.TablePtr->hs_get_33b01a97((void*)_handle) != 0;
         set => NativeMethods.TablePtr->hs_set_33b01a97((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUserData_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_5f20482d((void*)_handle);
     }
 
     public bool mValid

@@ -37,6 +37,12 @@ public sealed unsafe partial class ServerPlayer
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint filler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_ed0449d0((void*)_handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static ServerPlayer Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5, nint arg6, nint arg7, nint arg8, nint arg9, nint arg10, nint arg11, nint arg12, int arg13, bool arg14, nint arg15) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");

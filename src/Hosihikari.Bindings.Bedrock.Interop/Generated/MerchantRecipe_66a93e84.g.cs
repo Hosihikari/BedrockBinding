@@ -179,18 +179,16 @@ public sealed unsafe partial class MerchantRecipe : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_f7dc2c5c((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mBuyA
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBuyA_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_9d5d8ad2((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mBuyB
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBuyB_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_e71fc1d9((void*)_handle);
     }
 
     public int mBuyCountA
@@ -229,11 +227,10 @@ public sealed unsafe partial class MerchantRecipe : global::System.IDisposable
         set => NativeMethods.TablePtr->hs_set_7f3160ce((void*)_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mRecipeNetId
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRecipeNetId_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_9a04fcae((void*)_handle);
     }
 
     public bool mRewardExp
@@ -242,11 +239,10 @@ public sealed unsafe partial class MerchantRecipe : global::System.IDisposable
         set => NativeMethods.TablePtr->hs_set_15e25aa9((void*)_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mSell
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSell_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_3ba0c7eb((void*)_handle);
     }
 
     public int mTier

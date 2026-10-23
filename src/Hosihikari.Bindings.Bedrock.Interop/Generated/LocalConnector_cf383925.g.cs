@@ -150,11 +150,10 @@ public sealed unsafe partial class LocalConnector : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_daef9b43((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint sLocalConnectivitySystem
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint sLocalConnectivitySystem_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_29525b3c();
     }
 
     public void setupNatPunch(bool arg0)

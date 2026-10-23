@@ -37,6 +37,12 @@ public sealed unsafe partial class Player : global::System.IDisposable
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint filler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_84d08b40((void*)_handle);
+    }
+
     public static float DEFAULT_BB_HEIGHT
     {
         get => NativeMethods.TablePtr->hs_get_7ba026ca();
@@ -72,18 +78,16 @@ public sealed unsafe partial class Player : global::System.IDisposable
         get => NativeMethods.TablePtr->hs_get_bcc38e03();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint EXHAUSTION
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint EXHAUSTION_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_9f475109();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint EXPERIENCE
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint EXPERIENCE_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_28c51fda();
     }
 
     public static int GLIDE_STOP_DELAY
@@ -91,18 +95,16 @@ public sealed unsafe partial class Player : global::System.IDisposable
         get => NativeMethods.TablePtr->hs_get_092b7ce1();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint HUNGER
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint HUNGER_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_436a1e56();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint LEVEL
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint LEVEL_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_c520bf4c();
     }
 
     public static float PLAYER_ALIVE_HEIGHT
@@ -156,11 +158,10 @@ public sealed unsafe partial class Player : global::System.IDisposable
     public static Player Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint SATURATION
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint SATURATION_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_03553d0f();
     }
 
     public static uint SPAWN_CHUNK_LARGE_JUMP

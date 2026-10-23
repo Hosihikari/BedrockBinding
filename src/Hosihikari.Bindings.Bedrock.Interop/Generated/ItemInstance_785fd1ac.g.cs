@@ -201,10 +201,33 @@ public sealed unsafe partial class ItemInstance : global::System.IDisposable
         set => NativeMethods.TablePtr->hs_set_85045596((void*)_handle, value);
     }
 
+    public nint mBlock
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_06903590((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockingTick_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_fb5df1f0((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCanDestroy_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_cda73f90((void*)_handle);
+    }
+
     public ulong mCanDestroyHash
     {
         get => NativeMethods.TablePtr->hs_get_dbecab5d((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_dbecab5d((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCanPlaceOn_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_92b64edb((void*)_handle);
     }
 
     public ulong mCanPlaceOnHash
@@ -213,16 +236,40 @@ public sealed unsafe partial class ItemInstance : global::System.IDisposable
         set => NativeMethods.TablePtr->hs_set_fc26090b((void*)_handle, value);
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChargedItem_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_ccd4c724((void*)_handle);
+    }
+
     public byte mCount
     {
         get => NativeMethods.TablePtr->hs_get_b81513f4((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_b81513f4((void*)_handle, value);
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mItem_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_16c1f5cc((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPickupTime_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_eb17c1b4((void*)_handle);
+    }
+
     public bool mShowPickUp
     {
         get => NativeMethods.TablePtr->hs_get_8d6d8978((void*)_handle) != 0;
         set => NativeMethods.TablePtr->hs_set_8d6d8978((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUserData_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_2c1ecda5((void*)_handle);
     }
 
     public bool mValid

@@ -91,18 +91,16 @@ public sealed unsafe partial class CreativeItemRegistry : global::System.IDispos
         return (nint)NativeMethods.TablePtr->hs_method_4225f836((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint mCreativeListMutex
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mCreativeListMutex_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_e6f7bca9();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint mCurrentRegistry
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mCurrentRegistry_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_0753d75c();
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

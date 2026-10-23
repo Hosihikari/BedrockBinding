@@ -150,11 +150,10 @@ public sealed unsafe partial class MolangScriptArg : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_84869c7c((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mData
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mData_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_0659e4f3((void*)_handle);
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg mDefaultReturnValue_break
@@ -192,11 +191,10 @@ public sealed unsafe partial class MolangScriptArg : global::System.IDisposable
         get => new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->hs_get_fdf9df4e(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mPOD
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPOD_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_be5a4fb0((void*)_handle);
     }
 
     public int mType

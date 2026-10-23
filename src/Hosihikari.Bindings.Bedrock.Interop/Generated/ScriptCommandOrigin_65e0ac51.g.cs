@@ -37,6 +37,12 @@ public sealed unsafe partial class ScriptCommandOrigin : global::System.IDisposa
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUuid_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_33a8aa76((void*)_handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ScriptCommandOrigin Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");

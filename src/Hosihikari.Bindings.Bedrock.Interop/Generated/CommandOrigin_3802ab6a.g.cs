@@ -199,11 +199,10 @@ public sealed unsafe partial class CommandOrigin : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_706390e0((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mUuid
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUuid_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_d9d89a01((void*)_handle);
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier sUnknownSource

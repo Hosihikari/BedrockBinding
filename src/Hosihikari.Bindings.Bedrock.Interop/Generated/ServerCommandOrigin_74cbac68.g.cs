@@ -37,6 +37,12 @@ public sealed unsafe partial class ServerCommandOrigin : global::System.IDisposa
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUuid_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_68370072((void*)_handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ServerCommandOrigin Create(nint requestId, nint level, nint permission, nint dimensionType) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
@@ -158,18 +164,16 @@ public sealed unsafe partial class ServerCommandOrigin : global::System.IDisposa
         set => NativeMethods.TablePtr->hs_set_73cf007d((void*)_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mDimensionType
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDimensionType_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_b2e61681((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mRequestId
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRequestId_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_13e98643((void*)_handle);
     }
 
     public nint mServerLevel

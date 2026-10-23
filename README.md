@@ -11,7 +11,7 @@ The **Bedrock / MCAPI** surface for the Hosihikari bindings: a generated native-
 ## Current state
 
 - Interop: 701 generated C# files under `src/Hosihikari.Bindings.Bedrock.Interop/Generated/`.
-- BindingShim: 10,873 functions in each of `native/BindingShim/generated/win-x64-server/bedrock/` and `native/BindingShim/generated/linux-x64-server/bedrock/`.
+- BindingShim: 11,507 functions in each of `native/BindingShim/generated/win-x64-server/bedrock/` and `native/BindingShim/generated/linux-x64-server/bedrock/`.
 - Coverage: 2,072 declarations and 33,789 members bound across both configurations.
 - `scripts/classes-1.21.3.txt` selects the current public class set. Classes outside the LeviLamina header supplement contribute symbol and vtable methods; their fields and constructors stay stubs until a layout header is added.
 
@@ -21,6 +21,7 @@ The shim is emitted in `--symbol-dispatch` mode. Supported ABI:
 - `std::string` / `std::string_view` values and const references;
 - single-level `T*` / `T&` as `void*`;
 - by-value records: small `triviallyCopyable` records travel in integer registers, larger records use a stack temporary and the hidden return buffer, and records that are only trivially destructible (`AABB`, `Vec2`, `Brightness`) are copied as bytes but always use the hidden-reference convention because a user-provided copy constructor makes them non-trivial for calls; non-trivial destructible records use their copy-constructor and destructor symbols;
+- fields whose type is not projected expose the address of the field storage as a read-only `nint` named `<field>_Address`; known instance offsets and static symbols remain usable without assuming the field ABI;
 - `optional_ref<T>` parameters and results with the presence flag;
 - `std::vector<T>` parameters and by-value results whose element is a scalar/enum, a string, a single-level pointer (surfacing as `nint[]`), or a trivially destructible record with a recorded layout; reference and pointer vector results remain borrowed handles;
 - `std::optional<T>` parameters and results over scalars, strings, and trivially copyable records; record payloads use a layout-compatible blob and returned records become owned wrappers;

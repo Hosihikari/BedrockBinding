@@ -37,11 +37,10 @@ public sealed unsafe partial class BannerPattern : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint BASE_NAME
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint BASE_NAME_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_705c02fc();
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
@@ -66,11 +65,10 @@ public sealed unsafe partial class BannerPattern : global::System.IDisposable
         set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint SQUARE_TOP_LEFT_NAME_ID
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint SQUARE_TOP_LEFT_NAME_ID_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_b76626cc();
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -190,11 +188,10 @@ public sealed unsafe partial class BannerPattern : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_f55f183d((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint mPatterns
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mPatterns_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_e997c272();
     }
 
     public bool matchesPatternItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0)

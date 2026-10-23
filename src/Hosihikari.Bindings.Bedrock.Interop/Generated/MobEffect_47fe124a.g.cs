@@ -373,11 +373,10 @@ public sealed unsafe partial class MobEffect
         return NativeMethods.TablePtr->hs_method_f1ce936b((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint mMobEffects
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mMobEffects_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_f05ec84e();
     }
 
     public void onActorHurt(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg2, float arg3)

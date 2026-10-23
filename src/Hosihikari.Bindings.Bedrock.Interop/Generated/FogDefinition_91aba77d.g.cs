@@ -37,60 +37,52 @@ public sealed unsafe partial class FogDefinition
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint DEFAULT_DISTANCE_AIR_SETTING
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint DEFAULT_DISTANCE_AIR_SETTING_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_d9a5286d();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint DEFAULT_DISTANCE_LAVA_RESISTANCE_SETTING
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint DEFAULT_DISTANCE_LAVA_RESISTANCE_SETTING_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_50476f66();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint DEFAULT_DISTANCE_LAVA_SETTING
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint DEFAULT_DISTANCE_LAVA_SETTING_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_4df4d563();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint DEFAULT_DISTANCE_NETHER_AIR_SETTING
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint DEFAULT_DISTANCE_NETHER_AIR_SETTING_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_1044d361();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint DEFAULT_DISTANCE_POWDER_SNOW_SETTING
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint DEFAULT_DISTANCE_POWDER_SNOW_SETTING_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_503b714f();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint DEFAULT_DISTANCE_WATER_SETTING
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint DEFAULT_DISTANCE_WATER_SETTING_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_a81ade16();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint DEFAULT_DISTANCE_WEATHER_SETTING
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint DEFAULT_DISTANCE_WEATHER_SETTING_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_88217a77();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint DEFAULT_FOG_AIR_SETTING
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint DEFAULT_FOG_AIR_SETTING_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_d28fa9b1();
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.FogDefinition DEFAULT_FOG_DEFINITION
@@ -98,67 +90,58 @@ public sealed unsafe partial class FogDefinition
         get => new global::Hosihikari.Bindings.Bedrock.Interop.FogDefinition((nint)NativeMethods.TablePtr->hs_get_66ab3ed4(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint DEFAULT_FOG_LAVA_RESISTANCE_SETTING
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint DEFAULT_FOG_LAVA_RESISTANCE_SETTING_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_e1645ea2();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint DEFAULT_FOG_LAVA_SETTING
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint DEFAULT_FOG_LAVA_SETTING_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_9f444edd();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint DEFAULT_FOG_NETHER_AIR_SETTING
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint DEFAULT_FOG_NETHER_AIR_SETTING_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_f18c9ef2();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint DEFAULT_FOG_POWDER_SNOW_SETTING
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint DEFAULT_FOG_POWDER_SNOW_SETTING_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_b1db5e25();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint DEFAULT_FOG_WATER_SETTING
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint DEFAULT_FOG_WATER_SETTING_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_089ce592();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint DEFAULT_FOG_WEATHER_SETTING
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint DEFAULT_FOG_WEATHER_SETTING_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_8521a2b9();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint DEFAULT_VOLUME_COEFFICIENT_AIR_SETTING
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint DEFAULT_VOLUME_COEFFICIENT_AIR_SETTING_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_b2a3a573();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint DEFAULT_VOLUME_COEFFICIENT_CLOUD_SETTING
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint DEFAULT_VOLUME_COEFFICIENT_CLOUD_SETTING_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_41f0b7f2();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint DEFAULT_VOLUME_COEFFICIENT_WATER_SETTING
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint DEFAULT_VOLUME_COEFFICIENT_WATER_SETTING_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_dc7ddc2c();
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.FogDefinition DEFERRED_DEFAULT_FOG_DEFINITION
@@ -166,25 +149,22 @@ public sealed unsafe partial class FogDefinition
         get => new global::Hosihikari.Bindings.Bedrock.Interop.FogDefinition((nint)NativeMethods.TablePtr->hs_get_66ab5412(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint DEFERRED_DEFAULT_VOLUME_DENSITY_AIR_SETTING
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint DEFERRED_DEFAULT_VOLUME_DENSITY_AIR_SETTING_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_1a70c3c5();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint DEFERRED_DEFAULT_VOLUME_DENSITY_WATER_SETTING
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint DEFERRED_DEFAULT_VOLUME_DENSITY_WATER_SETTING_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_f26bb3c7();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint DEFERRED_DEFAULT_VOLUME_DENSITY_WEATHER_SETTING
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint DEFERRED_DEFAULT_VOLUME_DENSITY_WEATHER_SETTING_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_80e5afff();
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]

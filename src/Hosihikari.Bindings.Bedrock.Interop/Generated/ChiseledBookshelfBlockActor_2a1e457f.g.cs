@@ -149,10 +149,22 @@ public sealed unsafe partial class ChiseledBookshelfBlockActor
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ChiseledBookshelfBlockActor((nint)__hs_handle, false) : null;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContainerRuntimeId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_c0c8c2a3((void*)_handle);
+    }
+
     public sbyte mContainerType
     {
         get => NativeMethods.TablePtr->hs_get_bd5b40e2((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_bd5b40e2((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContentChangeListeners_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_c8002478((void*)_handle);
     }
 
     public bool mCustomName
@@ -165,5 +177,23 @@ public sealed unsafe partial class ChiseledBookshelfBlockActor
     {
         get => NativeMethods.TablePtr->hs_get_fd94d563((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_fd94d563((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b63ee62c((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSizeChangeListeners_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_d7119413((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTransactionContextStack_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_f7b5ada7((void*)_handle);
     }
 }

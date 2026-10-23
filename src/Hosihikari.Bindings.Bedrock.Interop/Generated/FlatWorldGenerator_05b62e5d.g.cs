@@ -37,6 +37,12 @@ public sealed unsafe partial class FlatWorldGenerator : global::System.IDisposab
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint filler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_6d7cb951((void*)_handle);
+    }
+
     public int mChunkSide
     {
         get => NativeMethods.TablePtr->hs_get_2951d541((void*)_handle);
@@ -61,10 +67,22 @@ public sealed unsafe partial class FlatWorldGenerator : global::System.IDisposab
         set => NativeMethods.TablePtr->hs_set_c47fe75f((void*)_handle, (void*)value);
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOwnedParent_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_af37b3e3((void*)_handle);
+    }
+
     public nint mParent
     {
         get => (nint)NativeMethods.TablePtr->hs_get_d0fb9072((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_d0fb9072((void*)_handle, (void*)value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mShuttingDown_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_160124f1((void*)_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
@@ -128,32 +146,27 @@ public sealed unsafe partial class FlatWorldGenerator : global::System.IDisposab
         NativeMethods.TablePtr->hs_method_0505e18b((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: const fields are not projected by symbol dispatch.", false)]
     public nint mBiome
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: const fields are not projected by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: const fields are not projected by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_922458d5((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mBiomeSource
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBiomeSource_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_1cde44fb((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mPrototype
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPrototype_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_5865fde5((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mPrototypeBlocks
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPrototypeBlocks_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_d56ddf96((void*)_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -176,6 +189,36 @@ public sealed unsafe partial class FlatWorldGenerator : global::System.IDisposab
     public void prepareHeights(global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1, bool arg2)
     {
         NativeMethods.TablePtr->hs_method_907f129c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHardcodedSpawnTypes_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_bd7ae0d9((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSpinLock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_c754fea2((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStructureFeatureRegistry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_8642eb40((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnknown1_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_19d443e4((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnknown2_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_155df0b3((void*)_handle);
     }
 
     public void Dispose()

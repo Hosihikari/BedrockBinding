@@ -11,7 +11,7 @@ Hosihikari 绑定项目的 **Bedrock / MCAPI** 表面：生成的、贴近原生
 ## 当前状态
 
 - Interop：`src/Hosihikari.Bindings.Bedrock.Interop/Generated/` 下 701 个生成的 C# 文件。
-- BindingShim：`native/BindingShim/generated/win-x64-server/bedrock/` 与 `native/BindingShim/generated/linux-x64-server/bedrock/` 各 10,873 个函数。
+- BindingShim：`native/BindingShim/generated/win-x64-server/bedrock/` 与 `native/BindingShim/generated/linux-x64-server/bedrock/` 各 11,507 个函数。
 - 覆盖：两个配置合计绑定 2,072 个声明与 33,789 个成员。
 - `scripts/classes-1.21.3.txt` 选出当前公开类集。LeviLamina 头补充之外的类贡献符号与 vtable 方法；其字段与构造在补上 layout 头之前保持 stub。
 
@@ -21,6 +21,7 @@ shim 以 `--symbol-dispatch` 模式发射。支持的 ABI：
 - `std::string` / `std::string_view` 的值与 const 引用；
 - 单层 `T*` / `T&`，以 `void*` 传递；
 - 按值 record：小的 `triviallyCopyable` record 走整数寄存器，较大 record 走栈上临时区与隐藏返回缓冲区；只有平凡析构的 record（`AABB`、`Vec2`、`Brightness`）按字节复制，但因用户提供的拷贝构造而对调用 ABI 非平凡，始终使用隐藏引用；非平凡析构 record 使用其拷贝构造与析构符号；
+- 类型未投影的字段以只读 `nint` 暴露字段存储地址，属性名为 `<field>_Address`；已知实例偏移与静态符号仍然可用；
 - `optional_ref<T>` 参数与返回使用存在标志；
 - `std::vector<T>` 参数与按值返回，元素支持标量/枚举、字符串、单层指针（以 `nint[]` 传入），或 layout 已知且平凡析构的 record；引用与指针 vector 返回仍是借用句柄；
 - `std::optional<T>` 参数与返回，支持标量、字符串与 trivially copyable record；record payload 使用 layout 兼容的 blob，返回的 record 成为拥有包装；

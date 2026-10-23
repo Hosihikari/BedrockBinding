@@ -56,11 +56,10 @@ public sealed unsafe partial class EnderMan : global::System.IDisposable
     public static EnderMan Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint SPEED_MODIFIER_ATTACKING
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint SPEED_MODIFIER_ATTACKING_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_16a1e6d8();
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID SPEED_MODIFIER_ATTACKING_UUID
@@ -88,11 +87,10 @@ public sealed unsafe partial class EnderMan : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_c645824e((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint mMayTake
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mMayTake_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_c2335a59();
     }
 
     public static bool mMayTakeIsSetup

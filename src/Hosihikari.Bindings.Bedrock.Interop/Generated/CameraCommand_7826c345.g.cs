@@ -174,10 +174,21 @@ public sealed unsafe partial class CameraCommand
         set => NativeMethods.TablePtr->hs_set_1fee946c((void*)_handle, value);
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFlags_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_03816322((void*)_handle);
+    }
+
     public byte mPermissionLevel
     {
         get => NativeMethods.TablePtr->hs_get_57450958((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_57450958((void*)_handle, value);
+    }
+
+    public nint mRegistry
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_c3b6c792((void*)_handle);
     }
 
     public int mVersion

@@ -174,6 +174,12 @@ public sealed unsafe partial class ClientAutomationCommandOrigin : global::Syste
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CommandOriginData' requires --link-carrier or --virtual-dispatch.");
 
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUuid_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_26b10398((void*)_handle);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

@@ -86,11 +86,10 @@ public sealed unsafe partial class Command : global::System.IDisposable
         set => NativeMethods.TablePtr->hs_set_b8b6223f((void*)_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
-    public nint mFlags
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFlags_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_09c0dc00((void*)_handle);
     }
 
     public byte mPermissionLevel
@@ -99,11 +98,9 @@ public sealed unsafe partial class Command : global::System.IDisposable
         set => NativeMethods.TablePtr->hs_set_eca268ea((void*)_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: const fields are not projected by symbol dispatch.", false)]
     public nint mRegistry
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: const fields are not projected by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: const fields are not projected by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_845e8bac((void*)_handle);
     }
 
     public int mVersion

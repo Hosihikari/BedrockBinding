@@ -185,6 +185,12 @@ public sealed unsafe partial class BlockCommandOrigin : global::System.IDisposab
     }
 
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUuid_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_6b0f7e45((void*)_handle);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

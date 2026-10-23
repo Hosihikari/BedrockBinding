@@ -37,10 +37,22 @@ public sealed unsafe partial class FillingContainer : global::System.IDisposable
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContainerRuntimeId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e5e824e7((void*)_handle);
+    }
+
     public sbyte mContainerType
     {
         get => NativeMethods.TablePtr->hs_get_79589b21((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_79589b21((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContentChangeListeners_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_71b6a99e((void*)_handle);
     }
 
     public bool mCustomName
@@ -53,6 +65,24 @@ public sealed unsafe partial class FillingContainer : global::System.IDisposable
     {
         get => NativeMethods.TablePtr->hs_get_f744f0b8((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_f744f0b8((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_ceb55c01((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSizeChangeListeners_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_5cb24dd3((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTransactionContextStack_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_aa5e9f21((void*)_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]

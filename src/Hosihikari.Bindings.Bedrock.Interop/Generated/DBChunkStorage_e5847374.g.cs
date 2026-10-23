@@ -37,6 +37,12 @@ public sealed unsafe partial class DBChunkStorage
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint filler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_17989c14((void*)_handle);
+    }
+
     public int mChunkSide
     {
         get => NativeMethods.TablePtr->hs_get_cf6e17f1((void*)_handle);
@@ -61,10 +67,22 @@ public sealed unsafe partial class DBChunkStorage
         set => NativeMethods.TablePtr->hs_set_5f6ee2cc((void*)_handle, (void*)value);
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOwnedParent_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_d1825ac4((void*)_handle);
+    }
+
     public nint mParent
     {
         get => (nint)NativeMethods.TablePtr->hs_get_5d7dd5f4((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_5d7dd5f4((void*)_handle, (void*)value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mShuttingDown_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_000e9a30((void*)_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]

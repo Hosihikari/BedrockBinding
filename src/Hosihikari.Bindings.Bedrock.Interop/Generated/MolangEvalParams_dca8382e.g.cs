@@ -62,11 +62,10 @@ public sealed unsafe partial class MolangEvalParams
         return new global::Hosihikari.Bindings.Bedrock.Interop.MolangEvalParams((nint)NativeMethods.TablePtr->hs_method_476173c7(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
-    public static nint mThreadLocalMolangEvalParams
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mThreadLocalMolangEvalParams_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->hs_get_be163e32();
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
