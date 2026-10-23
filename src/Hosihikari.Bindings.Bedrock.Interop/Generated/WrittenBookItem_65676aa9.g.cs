@@ -37,15 +37,132 @@ public sealed unsafe partial class WrittenBookItem
         return __hs_handle;
     }
 
+    public static int MAX_GENERATION
+    {
+        get => NativeMethods.TablePtr->hs_get_8319371f();
+    }
+
+    public static int MAX_PAGES
+    {
+        get => NativeMethods.TablePtr->hs_get_98f5a754();
+    }
+
+    public static int MAX_PAGE_LENGTH
+    {
+        get => NativeMethods.TablePtr->hs_get_f19e9cc5();
+    }
+
+    public static int MAX_TITLE_LENGTH
+    {
+        get => NativeMethods.TablePtr->hs_get_6af73000();
+    }
+
+    public static string TAG_AUTHOR
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_54e72b55();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string TAG_GENERATION
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_e15e2cf0();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string TAG_ID
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_f1dd2490();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string TAG_PAGES
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_486c4f53();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string TAG_PAGE_PHOTO_NAME
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_275ce430();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string TAG_PAGE_TEXT
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_e478295e();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string TAG_RESOLVED
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_08daea21();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string TAG_TITLE
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_5afd6526();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string TAG_XUID
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_0f56843e();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static WrittenBookItem Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static WrittenBookItem Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void appendFormattedHovertext(nint arg0, nint arg1, nint arg2, bool arg3) =>
+    public void appendFormattedHovertext_fabb06b8(nint arg0, nint arg1, nint arg2, bool arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void appendFormattedHovertext_8e27915b(nint stack, nint level, nint hovertext, bool showCategory) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public string buildDescriptionId(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg1)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_f3e66969((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint buildDescriptionId(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static bool canBeCopied(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg0)
     {
@@ -63,6 +180,10 @@ public sealed unsafe partial class WrittenBookItem
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getInteractText(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public static int getPageCount(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
     {
         return NativeMethods.TablePtr->hs_method_451c0a31((void*)arg0.Handle);
@@ -71,6 +192,10 @@ public sealed unsafe partial class WrittenBookItem
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'PageContent' is not supported.", false)]
     public static nint getPages(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'PageContent' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool requiresInteract()
     {
@@ -81,4 +206,8 @@ public sealed unsafe partial class WrittenBookItem
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->hs_method_a72d71f4((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle), false);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

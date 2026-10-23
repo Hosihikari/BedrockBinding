@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ExperienceOrb
+public sealed unsafe partial class ExperienceOrb : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,24 @@ public sealed unsafe partial class ExperienceOrb
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ExperienceOrb Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ExperienceOrb Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static ExperienceOrb Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup? arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg1, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_50785f12((void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, (void*)arg2.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ExperienceOrb((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ExperienceOrb Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {
@@ -60,6 +75,10 @@ public sealed unsafe partial class ExperienceOrb
     {
         return NativeMethods.TablePtr->hs_method_47dbbbd5((void*)_handle, (void*)arg0.Handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void playerTouch(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
     {
@@ -86,11 +105,27 @@ public sealed unsafe partial class ExperienceOrb
         NativeMethods.TablePtr->hs_method_505dd595((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ExperienceOrb::DropType' is not a known bindable declaration.", false)]
-    public static void spawnOrbs(nint arg0, nint arg1, int arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ExperienceOrb::DropType' is not a known bindable declaration.");
+    public static void spawnOrbs(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, int arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.Player? arg4)
+    {
+        NativeMethods.TablePtr->hs_method_3731ffc1((void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, (void*)(arg4?.Handle ?? 0));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ExperienceOrb::DropType' is not a known bindable declaration.", false)]
-    public static void spawnOrbs(nint arg0, nint arg1, int arg2, int arg3, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ExperienceOrb::DropType' is not a known bindable declaration.");
+    public static void spawnOrbs(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, int arg2, int arg3, int arg4, global::Hosihikari.Bindings.Bedrock.Interop.Player? arg5)
+    {
+        NativeMethods.TablePtr->hs_method_aa10e6dc((void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4, (void*)(arg5?.Handle ?? 0));
+    }
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_e97e5ea1((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

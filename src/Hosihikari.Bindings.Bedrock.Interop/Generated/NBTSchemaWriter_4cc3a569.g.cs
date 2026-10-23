@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class NBTSchemaWriter
+public sealed unsafe partial class NBTSchemaWriter : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,14 +37,29 @@ public sealed unsafe partial class NBTSchemaWriter
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static NBTSchemaWriter Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static NBTSchemaWriter Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_5878a02e();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NBTSchemaWriter((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static NBTSchemaWriter Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void close()
     {
         NativeMethods.TablePtr->hs_method_bffab79c((void*)_handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool isSequenceWriter() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool openArray(ulong arg0, nint arg1)
     {
@@ -55,6 +70,10 @@ public sealed unsafe partial class NBTSchemaWriter
     {
         return NativeMethods.TablePtr->hs_method_20edbfe6((void*)_handle, (void*)arg0) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void popMember()
     {
@@ -79,6 +98,10 @@ public sealed unsafe partial class NBTSchemaWriter
             return NativeMethods.TablePtr->hs_method_c489d89f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1) != 0;
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool pushMember(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool write(bool arg0, nint arg1)
     {
@@ -134,6 +157,10 @@ public sealed unsafe partial class NBTSchemaWriter
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool write(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public bool write(byte arg0, nint arg1)
     {
         return NativeMethods.TablePtr->hs_method_ac4427f9((void*)_handle, arg0, (void*)arg1) != 0;
@@ -154,7 +181,17 @@ public sealed unsafe partial class NBTSchemaWriter
         return NativeMethods.TablePtr->hs_method_cadd05e3((void*)_handle, arg0, (void*)arg1) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_4cc3a569((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

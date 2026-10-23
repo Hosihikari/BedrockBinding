@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ServerScriptManager
+public sealed unsafe partial class ServerScriptManager : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,13 +37,35 @@ public sealed unsafe partial class ServerScriptManager
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ServerScriptManager Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<Scheduler>' is not a known bindable declaration.", false)]
     public static ServerScriptManager Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<Scheduler>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ServerScriptManager Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void addModuleFilter(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint filler
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint filler1
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
 
     public nint getBlockCustomComponentRegistry()
     {
@@ -55,25 +77,56 @@ public sealed unsafe partial class ServerScriptManager
         return (nint)NativeMethods.TablePtr->hs_method_29b1c663((void*)_handle);
     }
 
-    public nint getScriptSettings()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptSettings getScriptSettings()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_99b5228d((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptSettings((nint)NativeMethods.TablePtr->hs_method_99b5228d((void*)_handle), false);
     }
 
-    public int onEvent(nint arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mFormPromiseTracker
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    public int onEvent_b30263b0(nint arg0)
     {
         return NativeMethods.TablePtr->hs_method_b30263b0((void*)_handle, (void*)arg0);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint onEvent_54c95d38(nint @event) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void onMainThreadStartLeaveGame()
     {
         NativeMethods.TablePtr->hs_method_45626950((void*)_handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint onServerInitializeEnd(nint instance) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint onServerInitializeStart(nint instance) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public int onServerLevelInitialized(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.Level arg1)
     {
         return NativeMethods.TablePtr->hs_method_856b417e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint onServerMinecraftInitialized(nint instance, nint minecraft) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint onServerResume(nint instance) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint onServerSuspend(nint instance) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int onServerThreadStarted(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0)
     {
@@ -85,21 +138,40 @@ public sealed unsafe partial class ServerScriptManager
         return NativeMethods.TablePtr->hs_method_aeede868((void*)_handle, (void*)arg0.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint onServerUpdateEnd(nint instance) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public int onServerUpdateStart(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0)
     {
         return NativeMethods.TablePtr->hs_method_82c8b646((void*)_handle, (void*)arg0.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint onStartLeaveGame(nint instance) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void shouldInitializeEditorModules(bool arg0)
     {
         NativeMethods.TablePtr->hs_method_d10589b8((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_a602f13e() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_4b22f91a() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_171fe970((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

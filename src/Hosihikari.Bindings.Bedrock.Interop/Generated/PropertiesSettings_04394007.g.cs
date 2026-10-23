@@ -240,9 +240,9 @@ public sealed unsafe partial class PropertiesSettings
     public nint getRemoteServerCommunicationEndpoint() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'NetworkAddress' requires --link-carrier or --virtual-dispatch.");
 
-    public nint getScriptSettings()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptSettings getScriptSettings()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_3a10286d((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptSettings((nint)NativeMethods.TablePtr->hs_method_3a10286d((void*)_handle), false);
     }
 
     public float? getServerBuildRatioOverride()

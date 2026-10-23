@@ -37,6 +37,14 @@ public sealed unsafe partial class CrashDumpLog
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static CrashDumpLog Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static CrashDumpLog Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     public static void logEvent(nint arg0)
     {
         NativeMethods.TablePtr->hs_method_987467dc((void*)arg0);
@@ -52,10 +60,109 @@ public sealed unsafe partial class CrashDumpLog
         NativeMethods.TablePtr->hs_method_4b5d2c7b((void*)arg0);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
+    public static nint mAllData
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
+    public static nint mAssertDataMutex
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
+    public static nint mCrashDumpLog_logThread
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
+    public static nint mCrashDumpThreadMutex
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
+    public static nint mCrashDumpThreadMutexCV
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
+    public static nint mEventDataMutex
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
+    public static nint mFrameDataMutex
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
+    public static nint mGameplayDataMutex
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
+    public static nint mGlobalDataMutex
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
+    public static bool mIsThreadRunning
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
+    public static nint mKeyValueDataMutex
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
+    public static nint mPlayerDataMutex
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
+    public static nint mRenderDataMutex
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public static void setAssertMessage(nint arg0, int arg1, nint arg2, nint arg3)
     {
         NativeMethods.TablePtr->hs_method_de1edb74((void*)arg0, arg1, (void*)arg2, (void*)arg3);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static void setBehaviorPackIds(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static void setBehaviorPackIds(string[] arg0)
     {
@@ -82,6 +189,10 @@ public sealed unsafe partial class CrashDumpLog
             NativeMethods.TablePtr->hs_method_24dd79da(__hs_vectorData0, (nuint)(arg0?.Length ?? 0));
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static bool setDeviceSessionID(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static bool setDeviceSessionID(string arg0)
     {

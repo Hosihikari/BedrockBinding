@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PlayerCommandOrigin
+public sealed unsafe partial class PlayerCommandOrigin : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,16 @@ public sealed unsafe partial class PlayerCommandOrigin
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PlayerCommandOrigin Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static PlayerCommandOrigin Create(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_e1db9f4d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerCommandOrigin((nint)handle);
+    }
 
     public bool canUseAbility(short arg0)
     {
@@ -93,11 +100,15 @@ public sealed unsafe partial class PlayerCommandOrigin
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Level((nint)__hs_handle, false) : null;
     }
 
-    public string getName()
+    public string getName_72881a9d()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_72881a9d((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getName_e419ffc7() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public sbyte getOriginType()
     {
@@ -109,7 +120,11 @@ public sealed unsafe partial class PlayerCommandOrigin
         return NativeMethods.TablePtr->hs_method_3f2a1b0b((void*)_handle);
     }
 
-    public string getRequestId()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getRequestId_33ed2574() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getRequestId_3102aefd()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_3102aefd((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -147,8 +162,35 @@ public sealed unsafe partial class PlayerCommandOrigin
         return NativeMethods.TablePtr->hs_method_3860bea9((void*)_handle) != 0;
     }
 
+    public nint mLevel
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_22e45542((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_22e45542((void*)_handle, (void*)value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mPlayerId
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag serialize()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)NativeMethods.TablePtr->hs_method_d1814b43((void*)_handle));
+    }
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_356bf29d((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

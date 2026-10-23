@@ -37,9 +37,25 @@ public sealed unsafe partial class BlockDefinitionGroup
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BlockDefinitionGroup Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BlockDefinitionGroup Create(nint arg0) =>
+    public static BlockDefinitionGroup Create_97898e13(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BlockDefinitionGroup Create_d41b68bc(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool _parseComponents_2393c067(nint arg0, nint arg1, nint blockIdentifier, nint engineVersion, nint arg4, nint experiments) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _stringToCreativeItemCategory_426b68b6(nint str) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void buildBlockSchema(nint arg0)
     {
@@ -51,8 +67,12 @@ public sealed unsafe partial class BlockDefinitionGroup
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'BlockDefinition' is not a known bindable declaration.");
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,CompoundTag>' is not supported.", false)]
-    public nint generateServerBlockProperties() =>
+    public nint generateServerBlockProperties_748a09a9() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,CompoundTag>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint generateServerBlockProperties_ce5b01a2() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public nint[] getBlockDefinitions()
     {
@@ -76,13 +96,21 @@ public sealed unsafe partial class BlockDefinitionGroup
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'BlockDefinition' is not a known bindable declaration.", false)]
-    public nint loadResource(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5) =>
+    public nint loadResource_c9924111(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'BlockDefinition' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint loadResource_11e3c1ed(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void loadResources(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0, nint arg1, nint arg2)
     {
         NativeMethods.TablePtr->hs_method_a9e7eb46((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'BlockDefinition' has no generated wrapper.", false)]
     public void registerBlockDefinition(nint arg0) =>

@@ -37,14 +37,64 @@ public sealed unsafe partial class PropertyGroup
         return __hs_handle;
     }
 
+    public static ulong MAX_ENUM_SIZE
+    {
+        get => NativeMethods.TablePtr->hs_get_5ed27217();
+    }
+
+    public static ulong MAX_ENUM_VALUE_SIZE
+    {
+        get => NativeMethods.TablePtr->hs_get_ad1e5a5b();
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static PropertyGroup Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static PropertyGroup Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _addBoolProperty_d13f7cd2(nint name, bool arg1, bool defaultValue) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _addEnumIndexProperty_6f782e2f(nint name, bool arg1, ulong defaultValue, nint enumValues) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _addFloatProperty_7c578af2(nint name, bool arg1, float defaultValue, float arg3, float rangeMax) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _addIntProperty_7866ac0f(nint name, bool arg1, int defaultValue, int arg3, int rangeMax) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _addPropertyMetadata_4d81660a(nint name, bool arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _getFriendlyJsonTypeString_20aa09d7(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool _loadPropertyFromJson_1e061408(nint name, nint arg1, nint molangVersion, bool arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static bool _tryGetClientSync_e6aababf(nint propertyName, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool getDefaultBoolValue(ulong arg0, nint arg1)
     {
         return NativeMethods.TablePtr->hs_method_f09e8fdb((void*)_handle, arg0, (void*)arg1) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public ulong getDefaultEnumIndexValue(ulong arg0, nint renderParams, nint propertyName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public ulong getDefaultEnumIndexValue(ulong arg0, nint arg1, string arg2)
     {
@@ -80,15 +130,20 @@ public sealed unsafe partial class PropertyGroup
         return new global::Hosihikari.Bindings.Bedrock.Interop.ListTag((nint)NativeMethods.TablePtr->hs_method_160d94ac((void*)_handle));
     }
 
-    public nint getPropertyMetadata(ulong arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.PropertyMetadata? getPropertyMetadata(ulong arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_a30eb734((void*)_handle, arg0);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_a30eb734((void*)_handle, arg0);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PropertyMetadata((nint)__hs_handle, false) : null;
     }
 
     public bool hasAnyClientSyncProperties()
     {
         return NativeMethods.TablePtr->hs_method_edecb34d((void*)_handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static bool isValidEnumEntry(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static bool isValidEnumEntry(string arg0)
     {
@@ -109,11 +164,15 @@ public sealed unsafe partial class PropertyGroup
         }
     }
 
-    public static global::Hosihikari.Bindings.Abi.SharedHandle? loadPropertiesFromJson(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
+    public static global::Hosihikari.Bindings.Abi.SharedHandle? loadPropertiesFromJson(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_95362a10((void*)arg0, (void*)arg1.Handle);
+        var __hs_shared = NativeMethods.TablePtr->hs_method_95362a10((void*)arg0.Handle, (void*)arg1.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_e998112e() =>

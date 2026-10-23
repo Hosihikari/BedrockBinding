@@ -51,9 +51,9 @@ public sealed unsafe partial class StructureFeature
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_49ff9314((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2));
     }
 
-    public void createBlueprints(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1, nint arg2, global::Hosihikari.Bindings.Bedrock.Interop.IPreliminarySurfaceProvider arg3)
+    public void createBlueprints(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.BiomeSource arg2, global::Hosihikari.Bindings.Bedrock.Interop.IPreliminarySurfaceProvider arg3)
     {
-        NativeMethods.TablePtr->hs_method_6dd7d1a5((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3.Handle);
+        NativeMethods.TablePtr->hs_method_6dd7d1a5((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
     }
 
     public void debugRender()

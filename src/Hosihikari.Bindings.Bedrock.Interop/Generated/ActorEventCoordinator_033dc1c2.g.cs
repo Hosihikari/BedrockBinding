@@ -37,10 +37,22 @@ public sealed unsafe partial class ActorEventCoordinator
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ActorEventCoordinator Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ActorEventCoordinator Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     public nint getActorGameplayHandler()
     {
         return (nint)NativeMethods.TablePtr->hs_method_695882f6((void*)_handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'ActorGameplayHandler' has no generated wrapper.", false)]
     public void registerActorGameplayHandler(nint arg0) =>
@@ -55,6 +67,10 @@ public sealed unsafe partial class ActorEventCoordinator
     {
         NativeMethods.TablePtr->hs_method_535b40aa((void*)_handle, (void*)arg0.Handle, arg1);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void sendActorCreationAttemptFailed(nint actor, nint reason) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void sendActorCreationAttemptFailed(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, string arg1)
     {
@@ -128,4 +144,8 @@ public sealed unsafe partial class ActorEventCoordinator
     {
         NativeMethods.TablePtr->hs_method_68cedae5((void*)_handle, (void*)arg0.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

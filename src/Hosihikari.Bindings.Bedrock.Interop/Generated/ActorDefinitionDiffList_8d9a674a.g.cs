@@ -37,9 +37,21 @@ public sealed unsafe partial class ActorDefinitionDiffList
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ActorDefinitionDiffList Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ActorDefinitionDiffList Create(nint arg0) =>
+    public static ActorDefinitionDiffList Create_8ac5e0d1(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ActorDefinitionDiffList Create_79c5243b(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void addDefinition(nint def) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void addDefinition(string arg0)
     {
@@ -98,6 +110,10 @@ public sealed unsafe partial class ActorDefinitionDiffList
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint definitionListToString(nint delimiter) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public nint getAddedDefinitionGroup()
     {
         return (nint)NativeMethods.TablePtr->hs_method_7c5a11c2((void*)_handle);
@@ -139,6 +155,10 @@ public sealed unsafe partial class ActorDefinitionDiffList
         return NativeMethods.TablePtr->hs_method_a616c34d((void*)_handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool hasDefinition(nint def) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public bool hasDefinition(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -162,6 +182,14 @@ public sealed unsafe partial class ActorDefinitionDiffList
     {
         NativeMethods.TablePtr->hs_method_f38c909a((void*)_handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void removeDefinition(nint def) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void removeDefinition(string arg0)
     {

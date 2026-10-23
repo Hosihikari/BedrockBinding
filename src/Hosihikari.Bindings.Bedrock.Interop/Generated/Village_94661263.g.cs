@@ -71,9 +71,11 @@ public sealed unsafe partial class Village
         NativeMethods.TablePtr->hs_method_a1725809((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'POIType' is not a known bindable declaration.", false)]
-    public nint fetchOwnedPOI(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'POIType' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? fetchOwnedPOI(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0, int arg1)
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_0f2f3ee4((void*)_handle, (void*)arg0.Handle, arg1);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public void fireSoundTheAlarm()
     {
@@ -112,9 +114,11 @@ public sealed unsafe partial class Village
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Player((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'POIType' is not a known bindable declaration.", false)]
-    public nint getClosestPOI(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'POIType' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getClosestPOI(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_1d9771a6((void*)_handle, arg0, (void*)arg1.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public nint getRaid()
     {

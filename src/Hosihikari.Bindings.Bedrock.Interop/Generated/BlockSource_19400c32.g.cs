@@ -96,9 +96,9 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_386c584b((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    public bool areAllChunksLoaded(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1)
+    public bool areAllChunksLoaded(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume arg1)
     {
-        return NativeMethods.TablePtr->hs_method_0e4dfbff((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_0e4dfbff((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     public bool areChunksFullyLoaded(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
@@ -284,9 +284,9 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         }
     }
 
-    public bool fetchBlocks(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1)
+    public bool fetchBlocks(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume arg1)
     {
-        return NativeMethods.TablePtr->hs_method_9df15e55((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_9df15e55((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: span element type 'BlockDataFetchResult<Block> const' is not supported.", false)]

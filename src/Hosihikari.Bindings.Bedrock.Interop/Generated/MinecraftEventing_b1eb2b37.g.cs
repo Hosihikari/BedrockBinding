@@ -4085,9 +4085,9 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_b6f352b7((void*)_handle, arg0);
     }
 
-    public void fireEventScriptPluginDiscovery(nint arg0, bool arg1)
+    public void fireEventScriptPluginDiscovery(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginResult arg0, bool arg1)
     {
-        NativeMethods.TablePtr->hs_method_f1d64da4((void*)_handle, (void*)arg0, arg1);
+        NativeMethods.TablePtr->hs_method_f1d64da4((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -6043,7 +6043,7 @@ public sealed unsafe partial class MinecraftEventing
     public void fireSafetyServiceTextProcessEvent(nint arg0, nint arg1, ushort arg2, nint arg3, bool arg4, double arg5, byte arg6, byte arg7, nint arg8, nint arg9, bool arg10) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void fireSafetyServiceTextProcessEvent(string arg0, int arg1, ushort arg2, string arg3, bool arg4, double arg5, sbyte arg6, sbyte arg7, nint arg8, string arg9, bool arg10)
+    public void fireSafetyServiceTextProcessEvent(string arg0, int arg1, ushort arg2, string arg3, bool arg4, double arg5, sbyte arg6, sbyte arg7, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg8, string arg9, bool arg10)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -6084,7 +6084,7 @@ public sealed unsafe partial class MinecraftEventing
             {
                 fixed (byte* __hs_stringData9 = __hs_stringBytes9)
                 {
-                    NativeMethods.TablePtr->hs_method_ec33e705((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, __hs_stringData3, (nuint)__hs_stringByteCount3, arg4, arg5, arg6, arg7, (void*)arg8, __hs_stringData9, (nuint)__hs_stringByteCount9, arg10);
+                    NativeMethods.TablePtr->hs_method_ec33e705((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, __hs_stringData3, (nuint)__hs_stringByteCount3, arg4, arg5, arg6, arg7, (void*)arg8.Handle, __hs_stringData9, (nuint)__hs_stringByteCount9, arg10);
                 }
             }
         }
@@ -6465,9 +6465,10 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_1407b150((void*)_handle, (void*)arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Json::Value' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint propertiesAsJsonValue() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Json::Value' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json.Value propertiesAsJsonValue()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->hs_method_469bbdb7((void*)_handle));
+    }
 
     public void registerOptionsObserver(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
     {

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Abilities
+public sealed unsafe partial class Abilities : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,26 +37,74 @@ public sealed unsafe partial class Abilities
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Abilities Create_5759c378(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint ABILITY_NAMES
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Abilities Create(bool arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Abilities Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static Abilities Create(global::Hosihikari.Bindings.Bedrock.Interop.Abilities arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_5759c378((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Abilities((nint)handle);
+    }
+
+    public static Abilities Create(bool arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_03e70e54(arg0);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Abilities((nint)handle);
+    }
+
+    public static string DIFF_ABILITIY_AT
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_99c13ed6();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Ability INVALID_ABILITY
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Ability((nint)NativeMethods.TablePtr->hs_get_b7c8b975(), false);
+    }
+
+    public static string SERIALIZATION_TAG
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_a39de62e();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
 
     public void addSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {
         NativeMethods.TablePtr->hs_method_5a6230eb((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Ability::Options' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void forEachAbility_f0d5cbe5(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Ability::Options' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Ability::Options' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void forEachAbility_ce4fb27a(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Ability::Options' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public static nint getAbilityName(short arg0)
     {
@@ -68,9 +116,9 @@ public sealed unsafe partial class Abilities
         return NativeMethods.TablePtr->hs_method_df15ccce((void*)_handle, arg0) != 0;
     }
 
-    public static nint getDefault(short arg0)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Ability getDefault(short arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_1275cb38(arg0);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Ability((nint)NativeMethods.TablePtr->hs_method_1275cb38(arg0), false);
     }
 
     public float getFloat(short arg0)
@@ -87,6 +135,17 @@ public sealed unsafe partial class Abilities
     {
         return NativeMethods.TablePtr->hs_method_6236f453((void*)_handle, (void*)arg0.Handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mAbilities
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint nameToAbilityIndex(nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static short nameToAbilityIndex(string arg0)
     {
@@ -106,6 +165,10 @@ public sealed unsafe partial class Abilities
             return NativeMethods.TablePtr->hs_method_81a7b899(__hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setAbility(short arg0, bool arg1)
     {
@@ -138,6 +201,19 @@ public sealed unsafe partial class Abilities
     }
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static Abilities Create_1726fa68(nint arg0) =>
+    public static Abilities Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_a85c2017((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

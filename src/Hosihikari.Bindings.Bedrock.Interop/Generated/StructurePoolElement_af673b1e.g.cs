@@ -37,17 +37,41 @@ public sealed unsafe partial class StructurePoolElement
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static StructurePoolElement Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static StructurePoolElement Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static StructurePoolElement Create_de5e4e67(nint manager, nint location, nint projection, nint postProcessSettings) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static StructurePoolElement Create_0407ae69(nint manager, nint location, nint settings) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static StructurePoolElement Create_cdec83df(nint manager, nint location, nint blockRules, nint blockTagRules, nint actorRules, nint projection, nint postProcessSettings) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static StructurePoolElement Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
+    public static StructurePoolElement Create_82f44c86(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static StructurePoolElement Create(nint arg0, nint arg1, nint arg2) =>
+    public static StructurePoolElement Create_b035d55c(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static StructurePoolElement Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6) =>
+    public static StructurePoolElement Create_4275d4b9(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _getTemplate_f6a4be72() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: return type 'std::function<StructurePoolElement const& (StructureTemplateRegistrationContext,Projection)>' is not supported.", false)]
     public static nint empty() =>
@@ -66,18 +90,24 @@ public sealed unsafe partial class StructurePoolElement
     public nint getJigsawMarkers(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'JigsawBlockInfo' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PostProcessSettings' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getPostProcessSettings() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PostProcessSettings' requires --link-carrier or --virtual-dispatch.");
+    public int getPostProcessSettings()
+    {
+        return NativeMethods.TablePtr->hs_method_dc64de95((void*)_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Projection' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getProjection() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Projection' requires --link-carrier or --virtual-dispatch.");
+    public int getProjection()
+    {
+        return NativeMethods.TablePtr->hs_method_17ba7563((void*)_handle);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getSize(byte arg0)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_eef8fb8d((void*)_handle, arg0));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void handleDataMarker(nint region, nint markerPos, nint markerData, nint entitiesToPlace) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void handleDataMarker(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, string arg2, nint arg3)
     {
@@ -108,6 +138,14 @@ public sealed unsafe partial class StructurePoolElement
         return NativeMethods.TablePtr->hs_method_b7290f7d((void*)_handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool place(nint region, nint position, nint rotation, nint chunkBB, nint random, nint entitiesToPlace, nint refPos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, byte arg2, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg3, global::Hosihikari.Bindings.Bedrock.Interop.Random arg4, nint arg5, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg6)
     {
         return NativeMethods.TablePtr->hs_method_6f433f75((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)arg3.Handle, (void*)arg4.Handle, (void*)arg5, (void*)arg6.Handle) != 0;
@@ -118,21 +156,31 @@ public sealed unsafe partial class StructurePoolElement
         NativeMethods.TablePtr->hs_method_51c71e1f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)arg3.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Projection' is not a known bindable declaration.", false)]
-    public void setProjection(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Projection' is not a known bindable declaration.");
+    public void setProjection(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_18190a7b((void*)_handle, arg0);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: return type 'std::function<StructurePoolElement const& (StructureTemplateRegistrationContext,Projection)>' is not supported.", false)]
-    public static nint single(nint arg0) =>
+    public static nint single_aee39a99(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::function<StructurePoolElement const& (StructureTemplateRegistrationContext,Projection)>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: return type 'std::function<StructurePoolElement const& (StructureTemplateRegistrationContext,Projection)>' is not supported.", false)]
-    public static nint single(nint arg0, nint arg1) =>
+    public static nint single_3331252a(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::function<StructurePoolElement const& (StructureTemplateRegistrationContext,Projection)>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'StructurePoolElementType' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint type() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'StructurePoolElementType' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint single_5445aed0(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint single_ded65bf8(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public int type()
+    {
+        return NativeMethods.TablePtr->hs_method_12cc769d((void*)_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_3c5a8266() =>

@@ -107,9 +107,9 @@ public sealed unsafe partial class ItemDescriptor : global::System.IDisposable
         return new ItemDescriptor((nint)handle);
     }
 
-    public static ItemDescriptor Create(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
+    public static ItemDescriptor Create(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
     {
-        var handle = NativeMethods.TablePtr->hs_create_9f04b39e((void*)arg0, (void*)arg1.Handle);
+        var handle = NativeMethods.TablePtr->hs_create_9f04b39e((void*)arg0.Handle, (void*)arg1.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -302,9 +302,9 @@ public sealed unsafe partial class ItemDescriptor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_0b6f9eff((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void serialize(nint arg0)
+    public void serialize(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg0)
     {
-        NativeMethods.TablePtr->hs_method_32937410((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_32937410((void*)_handle, (void*)arg0.Handle);
     }
 
 

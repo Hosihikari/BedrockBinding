@@ -46,9 +46,9 @@ public sealed unsafe partial class ResourcePackRepository
         NativeMethods.TablePtr->hs_method_8969c92c((void*)_handle, (void*)arg0);
     }
 
-    public void addInvalidPack(nint arg0, sbyte arg1)
+    public void addInvalidPack(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0, sbyte arg1)
     {
-        NativeMethods.TablePtr->hs_method_29b6513b((void*)_handle, (void*)arg0, arg1);
+        NativeMethods.TablePtr->hs_method_29b6513b((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
     public void addKnownPackFromImport(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest arg0)
@@ -71,14 +71,14 @@ public sealed unsafe partial class ResourcePackRepository
         NativeMethods.TablePtr->hs_method_543a37c5((void*)_handle, (void*)arg0);
     }
 
-    public void deletePack(nint arg0)
+    public void deletePack(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0)
     {
-        NativeMethods.TablePtr->hs_method_4a33e7d0((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_4a33e7d0((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void deletePackFiles(nint arg0)
+    public void deletePackFiles(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0)
     {
-        NativeMethods.TablePtr->hs_method_e4222d3a((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_e4222d3a((void*)_handle, (void*)arg0.Handle);
     }
 
     public string getBehaviorPacksPath()
@@ -162,13 +162,27 @@ public sealed unsafe partial class ResourcePackRepository
         return new global::Hosihikari.Bindings.Bedrock.Interop.PackSourceFactory((nint)NativeMethods.TablePtr->hs_method_d20a3527((void*)_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PackCategory' is not a known bindable declaration.", false)]
-    public nint getPacksByCategory(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PackCategory' is not a known bindable declaration.");
+    public nint[] getPacksByCategory(int arg0)
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_cae482c4((void*)_handle, arg0);
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
+        if (__hs_view.Size > 0)
+        {
+            new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
+        }
+        return __hs_result;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PackOrigin' is not a known bindable declaration.", false)]
-    public nint getPacksByResourceLocation(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PackOrigin' is not a known bindable declaration.");
+    public nint[] getPacksByResourceLocation(sbyte arg0)
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_a5eccdc5((void*)_handle, arg0);
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
+        if (__hs_view.Size > 0)
+        {
+            new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
+        }
+        return __hs_result;
+    }
 
     public nint[] getPacksByType(sbyte arg0)
     {
@@ -187,21 +201,21 @@ public sealed unsafe partial class ResourcePackRepository
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ResourcePack((nint)__hs_handle, false) : null;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ResourcePack? getResourcePackContainingModule(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ResourcePack? getResourcePackContainingModule(global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion arg0)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_f6aa4736((void*)_handle, (void*)arg0);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_f6aa4736((void*)_handle, (void*)arg0.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ResourcePack((nint)__hs_handle, false) : null;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ResourcePack? getResourcePackForPackId(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ResourcePack? getResourcePackForPackId(global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion arg0)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_c70c4a48((void*)_handle, (void*)arg0);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_c70c4a48((void*)_handle, (void*)arg0.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ResourcePack((nint)__hs_handle, false) : null;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ResourcePack? getResourcePackForPackIdOwned(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ResourcePack? getResourcePackForPackIdOwned(global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion arg0)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_5a3c6e43((void*)_handle, (void*)arg0);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_5a3c6e43((void*)_handle, (void*)arg0.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ResourcePack((nint)__hs_handle, false) : null;
     }
 
@@ -211,9 +225,9 @@ public sealed unsafe partial class ResourcePackRepository
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ResourcePack((nint)__hs_handle, false) : null;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ResourcePack? getResourcePackSatisfiesPackId(nint arg0, bool arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ResourcePack? getResourcePackSatisfiesPackId(global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion arg0, bool arg1)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_0ca66123((void*)_handle, (void*)arg0, arg1);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_0ca66123((void*)_handle, (void*)arg0.Handle, arg1);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ResourcePack((nint)__hs_handle, false) : null;
     }
 
@@ -255,23 +269,23 @@ public sealed unsafe partial class ResourcePackRepository
         return (nint)NativeMethods.TablePtr->hs_method_88ce8f43((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'PackIdVersion' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public bool hasServicePacks(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'PackIdVersion' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     public bool isInitialized()
     {
         return NativeMethods.TablePtr->hs_method_e53992b3((void*)_handle) != 0;
     }
 
-    public bool isResourcePackLoaded(nint arg0, nint arg1)
+    public bool isResourcePackLoaded(global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion arg0, nint arg1)
     {
-        return NativeMethods.TablePtr->hs_method_99e6e9e1((void*)_handle, (void*)arg0, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_99e6e9e1((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
     }
 
-    public void postDeletePack(nint arg0)
+    public void postDeletePack(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0)
     {
-        NativeMethods.TablePtr->hs_method_e85243ab((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_e85243ab((void*)_handle, (void*)arg0.Handle);
     }
 
     public void refreshPacks()
@@ -303,18 +317,18 @@ public sealed unsafe partial class ResourcePackRepository
         NativeMethods.TablePtr->hs_method_652cde4a((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'PackIdVersion' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
     public bool setServicePacks(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'PackIdVersion' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
     public void unregisterResourcePackRemovedCallback(nint arg0)
     {
         NativeMethods.TablePtr->hs_method_4c0a460b((void*)_handle, (void*)arg0);
     }
 
-    public void untrackInvalidPack(nint arg0)
+    public void untrackInvalidPack(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0)
     {
-        NativeMethods.TablePtr->hs_method_d65ec647((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_d65ec647((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

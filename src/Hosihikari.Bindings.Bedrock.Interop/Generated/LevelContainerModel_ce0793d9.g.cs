@@ -37,6 +37,10 @@ public sealed unsafe partial class LevelContainerModel
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static LevelContainerModel Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static LevelContainerModel Create(nint arg0, int arg1, nint arg2, nint arg3, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
@@ -44,6 +48,10 @@ public sealed unsafe partial class LevelContainerModel
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static LevelContainerModel Create(nint arg0, int arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static LevelContainerModel Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void containerContentChanged(int arg0)
     {
@@ -80,6 +88,10 @@ public sealed unsafe partial class LevelContainerModel
     {
         return NativeMethods.TablePtr->hs_method_0b6aa2f1((void*)_handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void postInit()
     {

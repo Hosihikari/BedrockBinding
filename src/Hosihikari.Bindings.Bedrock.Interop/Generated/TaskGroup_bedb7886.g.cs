@@ -37,38 +37,63 @@ public sealed unsafe partial class TaskGroup
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static TaskGroup Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static TaskGroup Create_79af4f8d(nint workers, nint context, nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static TaskGroup Create(nint arg0, nint arg1, nint arg2) =>
+    public static TaskGroup Create_dca8cb39(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static TaskGroup Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void disableOwnerThreadChecks()
     {
         NativeMethods.TablePtr->hs_method_19b1b16c((void*)_handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void flush_93162c0d(nint waitFn) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void flush_3299aa68(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public string getName()
+    public string getName_f7bd0fda()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_f7bd0fda((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public nint getScheduler()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getName_9b2cd43e() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scheduler getScheduler()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_5a0e70ac((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scheduler((nint)NativeMethods.TablePtr->hs_method_5a0e70ac((void*)_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TaskGroupState' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getState() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TaskGroupState' requires --link-carrier or --virtual-dispatch.");
+    public int getState()
+    {
+        return NativeMethods.TablePtr->hs_method_3c13049a((void*)_handle);
+    }
 
     public bool isEmpty()
     {
         return NativeMethods.TablePtr->hs_method_44a0775e((void*)_handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void pause()
     {
@@ -84,30 +109,58 @@ public sealed unsafe partial class TaskGroup
     public nint queue_d790ff0c(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'TaskResult' is not supported.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint queue_b25fa10e(nint startInfo, nint task, nint callback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'TaskResult' is not supported.", false)]
     public nint queue_2644833a(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'TaskResult' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint queue_c3ee9694(nint name, nint task, nint callback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'TaskResult' is not supported.", false)]
     public static nint queueChildSync_DEPRECATED_0a432e42(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'TaskResult' is not supported.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint queueChildSync_DEPRECATED_cb12155b(nint startInfo, nint task) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'TaskResult' is not supported.", false)]
     public static nint queueChild_DEPRECATED_66451ebd(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'TaskResult' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint queueChild_DEPRECATED_1cc8760f(nint startInfo, nint task, nint callback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'TaskResult' is not supported.", false)]
     public nint queueSync_2a5f3757(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'TaskResult' is not supported.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint queueSync_0e5b8ed3(nint startInfo, nint task) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'TaskResult' is not supported.", false)]
     public nint queueSync_43bc0bdf(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'TaskResult' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint queueSync_6f549304(nint name, nint task) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void requeueTask(global::Hosihikari.Bindings.Abi.SharedHandle? arg0, bool arg1)
     {
         NativeMethods.TablePtr->hs_method_a6f55e84((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), arg1);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void sync_DEPRECATED_ASK_TOMMO_7b50768b(nint waitFn) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void sync_DEPRECATED_ASK_TOMMO_8df30449(nint arg0) =>

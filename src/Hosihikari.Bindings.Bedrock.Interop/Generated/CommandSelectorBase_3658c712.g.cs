@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CommandSelectorBase
+public sealed unsafe partial class CommandSelectorBase : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,10 +37,21 @@ public sealed unsafe partial class CommandSelectorBase
         return __hs_handle;
     }
 
-    public void addFamilyFilter(nint arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
+    public static nint Unlimited
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+    }
+
+    public void addFamilyFilter_3f829b2c(nint arg0)
     {
         NativeMethods.TablePtr->hs_method_3f829b2c((void*)_handle, (void*)arg0);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void addFamilyFilter_b50f6e14(nint filter) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void addFilter(nint arg0) =>
@@ -50,6 +61,10 @@ public sealed unsafe partial class CommandSelectorBase
     {
         NativeMethods.TablePtr->hs_method_5292bd6f((void*)_handle, (void*)arg0);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void addHasItemFilter(nint itemName, nint auxValue, nint quantity, nint equipmentSlot, nint slot) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void addHasItemFilter(string arg0, int? arg1, nint arg2, int arg3, nint arg4)
     {
@@ -75,32 +90,52 @@ public sealed unsafe partial class CommandSelectorBase
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'HasPermissionFilter' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'std::variant<CommandRationalRange,bool,std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is abstract or not copy-constructible.", false)]
-    public void addHasPropertyFilter(nint arg0, bool arg1, nint arg2) =>
+    public void addHasPropertyFilter_b6567837(nint arg0, bool arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::variant<CommandRationalRange,bool,std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is abstract or not copy-constructible.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void addHasPropertyFilter_cd57e183(nint arg0, bool arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void addLevelFilter(nint arg0)
     {
         NativeMethods.TablePtr->hs_method_5f953bd6((void*)_handle, (void*)arg0);
     }
 
-    public void addNameFilter(nint arg0)
+    public void addNameFilter_d5a0aaed(nint arg0)
     {
         NativeMethods.TablePtr->hs_method_d5a0aaed((void*)_handle, (void*)arg0);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void addNameFilter_26a5e327(nint filter) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void addScoreFilter_5dc9bddb(nint objName, nint range, nint callback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void addScoreFilter(nint arg0, nint arg1, nint arg2) =>
+    public void addScoreFilter_4cc757f9(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void addTagFilter(nint arg0)
+    public void addTagFilter_3545681e(nint arg0)
     {
         NativeMethods.TablePtr->hs_method_3545681e((void*)_handle, (void*)arg0);
     }
 
-    public void addTypeFilter(nint arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void addTagFilter_a82bbb42(nint filter) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void addTypeFilter_fbf978ab(nint arg0)
     {
         NativeMethods.TablePtr->hs_method_fbf978ab((void*)_handle, (void*)arg0);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void addTypeFilter_26d6a170(nint filter) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void addXRotationFilter(nint arg0)
     {
@@ -112,19 +147,32 @@ public sealed unsafe partial class CommandSelectorBase
         NativeMethods.TablePtr->hs_method_6040b10c((void*)_handle, (void*)arg0);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool compareName_cf7e7154(nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public bool compile(nint arg0, nint arg1) =>
+    public bool compile_d9d45c81(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    public string getName()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool compile_b3db9947(nint origin, nint error) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getName_c4765f75()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_c4765f75((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CommandSelectionOrder' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getOrder() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CommandSelectionOrder' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getName_699b21a6() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public int getOrder()
+    {
+        return NativeMethods.TablePtr->hs_method_a88e9375((void*)_handle);
+    }
 
     public ulong getResultCount()
     {
@@ -141,6 +189,145 @@ public sealed unsafe partial class CommandSelectorBase
         return NativeMethods.TablePtr->hs_method_64cb0ae5((void*)_handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mBoxDeltas
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    public ulong mCount
+    {
+        get => NativeMethods.TablePtr->hs_get_5d8b317a((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_5d8b317a((void*)_handle, value);
+    }
+
+    public bool mCountFiltered
+    {
+        get => NativeMethods.TablePtr->hs_get_20b7d91e((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_20b7d91e((void*)_handle, value);
+    }
+
+    public bool mDistanceFiltered
+    {
+        get => NativeMethods.TablePtr->hs_get_df1599ff((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_df1599ff((void*)_handle, value);
+    }
+
+    public bool mExcludeAgents
+    {
+        get => NativeMethods.TablePtr->hs_get_73620d26((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_73620d26((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mFamilyFilters
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: const fields are not projected by symbol dispatch.", false)]
+    public nint mFilterChain
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: const fields are not projected by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: const fields are not projected by symbol dispatch.");
+    }
+
+    public bool mForcePlayer
+    {
+        get => NativeMethods.TablePtr->hs_get_0606ceb8((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_0606ceb8((void*)_handle, value);
+    }
+
+    public bool mHaveDeltas
+    {
+        get => NativeMethods.TablePtr->hs_get_377ad651((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_377ad651((void*)_handle, value);
+    }
+
+    public bool mIncludeDeadPlayers
+    {
+        get => NativeMethods.TablePtr->hs_get_377ab3fc((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_377ab3fc((void*)_handle, value);
+    }
+
+    public bool mIsExplicitIdSelector
+    {
+        get => NativeMethods.TablePtr->hs_get_5616bfe6((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_5616bfe6((void*)_handle, value);
+    }
+
+    public bool mIsPositionBound
+    {
+        get => NativeMethods.TablePtr->hs_get_fb4f6f36((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_fb4f6f36((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mNameFilters
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    public int mOrder
+    {
+        get => NativeMethods.TablePtr->hs_get_cf345325((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_cf345325((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mPosition
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    public bool mPositionFiltered
+    {
+        get => NativeMethods.TablePtr->hs_get_ec77a966((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_ec77a966((void*)_handle, value);
+    }
+
+    public float mRadiusMaxSqr
+    {
+        get => NativeMethods.TablePtr->hs_get_b2a8febb((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_b2a8febb((void*)_handle, value);
+    }
+
+    public float mRadiusMinSqr
+    {
+        get => NativeMethods.TablePtr->hs_get_57e8f2d0((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_57e8f2d0((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mTagFilters
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    public int mType
+    {
+        get => NativeMethods.TablePtr->hs_get_0bebd4c1((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_0bebd4c1((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mTypeFilters
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    public int mVersion
+    {
+        get => NativeMethods.TablePtr->hs_get_297ce5c0((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_297ce5c0((void*)_handle, value);
+    }
+
     public void setBox(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
     {
         NativeMethods.TablePtr->hs_method_93809445((void*)_handle, (void*)arg0.Handle);
@@ -150,6 +337,10 @@ public sealed unsafe partial class CommandSelectorBase
     {
         NativeMethods.TablePtr->hs_method_b9e29dd3((void*)_handle, arg0);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setExplicitIdSelector(nint playerName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setExplicitIdSelector(string arg0)
     {
@@ -180,13 +371,14 @@ public sealed unsafe partial class CommandSelectorBase
         NativeMethods.TablePtr->hs_method_257afec4((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'CommandSelectionOrder' is not a known bindable declaration.", false)]
-    public void setOrder(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'CommandSelectionOrder' is not a known bindable declaration.");
-
-    public void setPosition(nint arg0)
+    public void setOrder(int arg0)
     {
-        NativeMethods.TablePtr->hs_method_2bd88a45((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_70df2d8e((void*)_handle, arg0);
+    }
+
+    public void setPosition(global::Hosihikari.Bindings.Bedrock.Interop.CommandPosition arg0)
+    {
+        NativeMethods.TablePtr->hs_method_2bd88a45((void*)_handle, (void*)arg0.Handle);
     }
 
     public void setRadiusMax(float arg0)
@@ -204,20 +396,28 @@ public sealed unsafe partial class CommandSelectorBase
         NativeMethods.TablePtr->hs_method_70996063((void*)_handle, arg0, arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'CommandSelectionType' is not a known bindable declaration.", false)]
-    public void setType(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'CommandSelectionType' is not a known bindable declaration.");
+    public void setType(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_cc07ac0c((void*)_handle, arg0);
+    }
 
     public void setVersion(int arg0)
     {
         NativeMethods.TablePtr->hs_method_aa540dfc((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_5da861f1() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_a666e2d1() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_3658c712((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

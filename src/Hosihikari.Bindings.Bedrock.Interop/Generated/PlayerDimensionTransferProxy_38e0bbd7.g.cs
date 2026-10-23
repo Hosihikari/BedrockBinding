@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PlayerDimensionTransferProxy
+public sealed unsafe partial class PlayerDimensionTransferProxy : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -36,6 +36,14 @@ public sealed unsafe partial class PlayerDimensionTransferProxy
         _handle = 0;
         return __hs_handle;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static PlayerDimensionTransferProxy Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static PlayerDimensionTransferProxy Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 calculateAgentSpawnPosition(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
     {
@@ -86,6 +94,10 @@ public sealed unsafe partial class PlayerDimensionTransferProxy
         NativeMethods.TablePtr->hs_method_d4976184((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void playerDimensionChangedEvent(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg2)
     {
         NativeMethods.TablePtr->hs_method_be443e99((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
@@ -126,7 +138,17 @@ public sealed unsafe partial class PlayerDimensionTransferProxy
         NativeMethods.TablePtr->hs_method_4609f660((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_38e0bbd7((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SynchedActorDataEntityWrapper
+public sealed unsafe partial class SynchedActorDataEntityWrapper : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,16 @@ public sealed unsafe partial class SynchedActorDataEntityWrapper
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static SynchedActorDataEntityWrapper Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static SynchedActorDataEntityWrapper Create(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_ea0e1018((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SynchedActorDataEntityWrapper((nint)handle);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag getCompoundTag(ushort arg0)
     {
@@ -76,7 +83,11 @@ public sealed unsafe partial class SynchedActorDataEntityWrapper
         return NativeMethods.TablePtr->hs_method_2bcd5d5a((void*)_handle, arg0);
     }
 
-    public string getString(ushort arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getString_2abc57dd(ushort arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getString_912f97b9(ushort arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_912f97b9((void*)_handle, arg0);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -97,18 +108,54 @@ public sealed unsafe partial class SynchedActorDataEntityWrapper
         return NativeMethods.TablePtr->hs_method_f1ca45a0((void*)_handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mActorDataDirtyFlag
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mActorDataFlag
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mSynchedActorData
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mWeakEntity
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
     public void markDirty(ushort arg0)
     {
         NativeMethods.TablePtr->hs_method_52f928a7((void*)_handle, arg0);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'std::unique_ptr<DataItem,std::default_delete<DataItem>>' is not supported.", false)]
-    public nint packAll() =>
+    public nint packAll_517b4f1f() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'std::unique_ptr<DataItem,std::default_delete<DataItem>>' is not supported.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint packAll_59d2fd6e() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'std::unique_ptr<DataItem,std::default_delete<DataItem>>' is not supported.", false)]
-    public nint packDirty() =>
+    public nint packDirty_aecb7d89() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'std::unique_ptr<DataItem,std::default_delete<DataItem>>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint packDirty_c4a7ed42() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'SynchedActorDataReader' requires --link-carrier or --virtual-dispatch.", false)]
     public nint reader() =>
@@ -118,11 +165,18 @@ public sealed unsafe partial class SynchedActorDataEntityWrapper
     public nint writer() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'SynchedActorDataWriter' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_6c33d4a9() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_5b115f45() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_1612c33c((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

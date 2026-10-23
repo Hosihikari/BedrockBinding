@@ -108,9 +108,9 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
         return new ItemStack((nint)handle);
     }
 
-    public static ItemStack Create_a7a064f0(nint arg0)
+    public static ItemStack Create(global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_a7a064f0((void*)arg0);
+        var handle = NativeMethods.TablePtr->hs_create_a7a064f0((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -366,7 +366,7 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
 
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ItemStack Create_4bacea16(nint arg0) =>
+    public static ItemStack Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
 

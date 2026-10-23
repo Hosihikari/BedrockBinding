@@ -37,13 +37,60 @@ public sealed unsafe partial class SnackGoal
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static int CHEW_CHANCE
+    {
+        get => NativeMethods.TablePtr->hs_get_a6556190();
+    }
+
+    public static int EATING_TIME
+    {
+        get => NativeMethods.TablePtr->hs_get_c8f5c1ff();
+    }
+
+    public static float PATH_RANGE
+    {
+        get => NativeMethods.TablePtr->hs_get_e7bc65c2();
+    }
+
+    public static int RANDOM_EATING_END
+    {
+        get => NativeMethods.TablePtr->hs_get_969d8e34();
+    }
+
+    public static int RANDOM_EATING_START
+    {
+        get => NativeMethods.TablePtr->hs_get_413cccdc();
+    }
+
+    public static float SEARCH_SIZE
+    {
+        get => NativeMethods.TablePtr->hs_get_d05d16c0();
+    }
+
+    public static float STOP_DIST_SQRD
+    {
+        get => NativeMethods.TablePtr->hs_get_76246c28();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static SnackGoal Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public static SnackGoal Create(nint arg0, nint arg1, float arg2, float arg3, float arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static SnackGoal Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void appendDebugInfo(nint arg0) =>
+    public void appendDebugInfo_d9cb0e79(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void appendDebugInfo_84a40783(nint str) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool canContinueToUse()
     {
@@ -54,6 +101,10 @@ public sealed unsafe partial class SnackGoal
     {
         return NativeMethods.TablePtr->hs_method_0d5ce1e2((void*)_handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void start()
     {
@@ -69,4 +120,8 @@ public sealed unsafe partial class SnackGoal
     {
         NativeMethods.TablePtr->hs_method_7caeb341((void*)_handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

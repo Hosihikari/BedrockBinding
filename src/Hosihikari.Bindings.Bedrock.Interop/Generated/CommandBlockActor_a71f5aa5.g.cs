@@ -76,9 +76,10 @@ public sealed unsafe partial class CommandBlockActor
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CommandBlockMode' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getMode(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CommandBlockMode' requires --link-carrier or --virtual-dispatch.");
+    public short getMode(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_362ac0f8((void*)_handle, (void*)arg0.Handle);
+    }
 
     public bool getPowered()
     {
@@ -184,9 +185,38 @@ public sealed unsafe partial class CommandBlockActor
         NativeMethods.TablePtr->hs_method_7ca7f6fc((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'CommandBlockMode' is not a known bindable declaration.", false)]
-    public void updateBlock(nint arg0, nint arg1, nint arg2, nint arg3, bool arg4, bool arg5, bool arg6, int arg7, bool arg8) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'CommandBlockMode' is not a known bindable declaration.");
+    public void updateBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, string arg1, string arg2, short arg3, bool arg4, bool arg5, bool arg6, int arg7, bool arg8)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                NativeMethods.TablePtr->hs_method_5d6d9421((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3, arg4, arg5, arg6, arg7, arg8);
+            }
+        }
+    }
 
     public bool wasConditionMet()
     {

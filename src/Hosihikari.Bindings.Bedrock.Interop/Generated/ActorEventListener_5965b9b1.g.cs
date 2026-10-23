@@ -37,6 +37,14 @@ public sealed unsafe partial class ActorEventListener
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ActorEventListener Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ActorEventListener Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     public int onActorAttackedActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
     {
         return NativeMethods.TablePtr->hs_method_4d8be007((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
@@ -46,6 +54,10 @@ public sealed unsafe partial class ActorEventListener
     {
         return NativeMethods.TablePtr->hs_method_69711834((void*)_handle, (void*)arg0.Handle, arg1);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint onActorCreationAttemptFailed(nint actor, nint message) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int onActorCreationAttemptFailed(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, string arg1)
     {
@@ -66,8 +78,12 @@ public sealed unsafe partial class ActorEventListener
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint onActorDefinitionEvent_039c4575(nint actor, nint @event, nint modifiers) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'ActorDefinitionModifier' is not supported.", false)]
-    public nint onActorDefinitionEvent(nint arg0, nint arg1, nint arg2) =>
+    public nint onActorDefinitionEvent_a7057d24(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'ActorDefinitionModifier' is not supported.");
 
     public int onActorMobInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1, int arg2)
@@ -75,9 +91,10 @@ public sealed unsafe partial class ActorEventListener
         return NativeMethods.TablePtr->hs_method_b7be5054((void*)_handle, (void*)arg0.Handle, arg1, arg2);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ReplayCorrectionResult' is not a known bindable declaration.", false)]
-    public nint onActorMovementRewindCorrected(nint arg0, ulong arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ReplayCorrectionResult' is not a known bindable declaration.");
+    public int onActorMovementRewindCorrected(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, ulong arg1, int arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_8300d189((void*)_handle, (void*)arg0.Handle, arg1, arg2);
+    }
 
     public int onActorSneakChanged(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, bool arg1)
     {
@@ -133,6 +150,10 @@ public sealed unsafe partial class ActorEventListener
     {
         return NativeMethods.TablePtr->hs_method_25ffd9d8((void*)_handle, (void*)arg0.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>

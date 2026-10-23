@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LayeredAbilities
+public sealed unsafe partial class LayeredAbilities : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,26 +37,49 @@ public sealed unsafe partial class LayeredAbilities
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static LayeredAbilities Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static string DIFF_LAYER_AT
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_bda3793b();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static LayeredAbilities Create_2cbded20(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static LayeredAbilities Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_1141060b();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LayeredAbilities((nint)handle);
+    }
+
+    public static LayeredAbilities Create(global::Hosihikari.Bindings.Bedrock.Interop.LayeredAbilities arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_2cbded20((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LayeredAbilities((nint)handle);
+    }
 
     public void addSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {
         NativeMethods.TablePtr->hs_method_d64e6f10((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Ability::Options' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void forEachAbility_424cdf57(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Ability::Options' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Ability::Options' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void forEachAbility_e5b7ae8b(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Ability::Options' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void forEachLayer_457161ec(nint arg0) =>
@@ -66,14 +89,15 @@ public sealed unsafe partial class LayeredAbilities
     public void forEachLayer_4587aa88(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public nint getAbility(short arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Ability getAbility(short arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_34e4fe78((void*)_handle, arg0);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Ability((nint)NativeMethods.TablePtr->hs_method_34e4fe78((void*)_handle, arg0), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'AbilitiesLayer' is not a known bindable declaration.", false)]
-    public nint getAbility(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'AbilitiesLayer' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Ability getAbility(ushort arg0, short arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Ability((nint)NativeMethods.TablePtr->hs_method_bc89b096((void*)_handle, arg0, arg1), false);
+    }
 
     public bool getBool(short arg0)
     {
@@ -93,9 +117,10 @@ public sealed unsafe partial class LayeredAbilities
     public nint getFloatWithLayer(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::pair<float,AbilitiesLayer>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'AbilitiesLayer' is not a known bindable declaration.", false)]
-    public nint getLayer_2762066b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'AbilitiesLayer' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Abilities getLayer(ushort arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Abilities((nint)NativeMethods.TablePtr->hs_method_2762066b((void*)_handle, arg0), false);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.PermissionsHandler getPermissionsHandler_5e850f52()
     {
@@ -111,6 +136,24 @@ public sealed unsafe partial class LayeredAbilities
     {
         return NativeMethods.TablePtr->hs_method_9bb830bb((void*)_handle, (void*)arg0.Handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mLayers
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mPermissions
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setAbility(short arg0, bool arg1)
     {
@@ -138,6 +181,19 @@ public sealed unsafe partial class LayeredAbilities
     }
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static LayeredAbilities Create_8c310d1b(nint arg0) =>
+    public static LayeredAbilities Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_da413351((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

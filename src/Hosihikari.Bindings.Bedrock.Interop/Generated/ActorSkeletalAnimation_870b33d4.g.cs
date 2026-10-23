@@ -37,9 +37,25 @@ public sealed unsafe partial class ActorSkeletalAnimation
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ActorSkeletalAnimation Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ActorSkeletalAnimation Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ActorSkeletalAnimation Create_40a4e6b6(nint name, nint sourceFilePathWithExtension) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ActorSkeletalAnimation Create(nint arg0, nint arg1) =>
+    public static ActorSkeletalAnimation Create_c67c75f3(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint addActorEvent(float time, nint @event, nint commandVersion, nint molangVersion) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public nint addActorEvent(float arg0, string arg1, int arg2, int arg3)
     {
@@ -59,6 +75,10 @@ public sealed unsafe partial class ActorSkeletalAnimation
             return (nint)NativeMethods.TablePtr->hs_method_4b9b6aba((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint addBoneAnimation(nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public nint addBoneAnimation(string arg0)
     {
@@ -104,6 +124,10 @@ public sealed unsafe partial class ActorSkeletalAnimation
         NativeMethods.TablePtr->hs_method_23ebf9a4((void*)_handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void removeIrrelevantKeyFramesAndConvertAllFloatKeyFramesToSimplifiedVersion()
     {
         NativeMethods.TablePtr->hs_method_77902e9e((void*)_handle);
@@ -129,9 +153,10 @@ public sealed unsafe partial class ActorSkeletalAnimation
         NativeMethods.TablePtr->hs_method_d3837352((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'AnimationLoopMode' is not a known bindable declaration.", false)]
-    public void setLoopMode(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'AnimationLoopMode' is not a known bindable declaration.");
+    public void setLoopMode(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_8042e409((void*)_handle, arg0);
+    }
 
     public void setShouldOverridePreviousAnimation(bool arg0)
     {

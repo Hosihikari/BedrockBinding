@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class NewUniqueIdsDataLoadHelper
+public sealed unsafe partial class NewUniqueIdsDataLoadHelper : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,16 @@ public sealed unsafe partial class NewUniqueIdsDataLoadHelper
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static NewUniqueIdsDataLoadHelper Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static NewUniqueIdsDataLoadHelper Create(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_9579e941((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NewUniqueIdsDataLoadHelper((nint)handle);
+    }
 
     public int getType()
     {
@@ -65,6 +72,10 @@ public sealed unsafe partial class NewUniqueIdsDataLoadHelper
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.InternalComponentRegistry_Nested.ComponentInfo((nint)__hs_handle, false) : null;
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint loadActorInternalComponentInfo(nint registry, nint componentName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID loadActorUniqueID(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0)
     {
@@ -136,12 +147,35 @@ public sealed unsafe partial class NewUniqueIdsDataLoadHelper
         return NativeMethods.TablePtr->hs_method_09fc5cee((void*)_handle, arg0);
     }
 
+    public nint mLevel
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_9a495c9a((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_9a495c9a((void*)_handle, (void*)value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mOldIDToNewID
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
     public bool shouldResetTime()
     {
         return NativeMethods.TablePtr->hs_method_0009a0fd((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_8c11ca21((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

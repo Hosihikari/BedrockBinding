@@ -234,9 +234,9 @@ public sealed unsafe partial class LevelChunk
         }
     }
 
-    public void fetchBlocks(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1)
+    public void fetchBlocks(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume arg1)
     {
-        NativeMethods.TablePtr->hs_method_55852dc7((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_55852dc7((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void fillBiomes(nint arg0)
@@ -801,9 +801,9 @@ public sealed unsafe partial class LevelChunk
         NativeMethods.TablePtr->hs_method_65915e72((void*)_handle, (void*)arg0, (void*)arg1.Handle);
     }
 
-    public void setBlockVolume(nint arg0, uint arg1)
+    public void setBlockVolume(global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume arg0, uint arg1)
     {
-        NativeMethods.TablePtr->hs_method_cc0e8562((void*)_handle, (void*)arg0, arg1);
+        NativeMethods.TablePtr->hs_method_cc0e8562((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
     public void setBorder(nint arg0, bool arg1)

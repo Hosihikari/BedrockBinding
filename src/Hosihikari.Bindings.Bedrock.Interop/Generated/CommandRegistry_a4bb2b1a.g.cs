@@ -126,9 +126,10 @@ public sealed unsafe partial class CommandRegistry
         NativeMethods.TablePtr->hs_method_d5cdad35((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Json::Value' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint generateDocumentationMetadata(bool arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Json::Value' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json.Value generateDocumentationMetadata(bool arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->hs_method_918cfba0((void*)_handle, arg0));
+    }
 
     public string[] getAliases(string arg0)
     {
@@ -196,9 +197,24 @@ public sealed unsafe partial class CommandRegistry
     public nint getCommandStatus(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CommandStatus' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'CommandTypeFlag' is not a known bindable declaration.", false)]
-    public bool isCommandOfType(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'CommandTypeFlag' is not a known bindable declaration.");
+    public bool isCommandOfType(string arg0, ushort arg1)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->hs_method_ece76c2b((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1) != 0;
+        }
+    }
 
     public bool isValidCommand(string arg0)
     {
@@ -252,9 +268,24 @@ public sealed unsafe partial class CommandRegistry
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'CommandFlag' is not a known bindable declaration.", false)]
-    public void registerCommand(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'CommandFlag' is not a known bindable declaration.");
+    public void registerCommand(string arg0, nint arg1, byte arg2, global::Hosihikari.Bindings.Bedrock.Interop.CommandFlag arg3, global::Hosihikari.Bindings.Bedrock.Interop.CommandFlag arg4)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->hs_method_420b398d((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1, arg2, (void*)arg3.Handle, (void*)arg4.Handle);
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
     public void removeSoftEnumValues(nint arg0, nint arg1) =>

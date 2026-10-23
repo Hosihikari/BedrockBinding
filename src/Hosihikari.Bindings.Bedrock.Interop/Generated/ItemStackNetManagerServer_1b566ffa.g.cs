@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ItemStackNetManagerServer
+public sealed unsafe partial class ItemStackNetManagerServer : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,16 +37,43 @@ public sealed unsafe partial class ItemStackNetManagerServer
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ItemStackNetManagerServer Create(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ItemStackNetManagerServer Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static ItemStackNetManagerServer Create(global::Hosihikari.Bindings.Bedrock.Interop.ServerPlayer arg0, bool arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_72243cf3((void*)arg0.Handle, arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemStackNetManagerServer((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ItemStackNetManagerServer Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _filterStrings_cf34d1d7(nint requestId, nint stringsToFilter, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::pair<ContainerEnumName,std::vector<unsigned char,std::allocator<unsigned char>>>' is not supported.", false)]
-    public void _handleLegacyTransactionRequest(nint arg0, nint arg1) =>
+    public void _handleLegacyTransactionRequest_6e62db10(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::pair<ContainerEnumName,std::vector<unsigned char,std::allocator<unsigned char>>>' is not supported.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _handleLegacyTransactionRequest_8bd17df7(nint legacyClientRequestId, nint legacySetItemSlots) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _retainSetItemStackNetIdVariantScope_d87d7232() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: return type 'gsl::final_action<std::function<void (void)>>' is not supported.", false)]
-    public nint _retainSetItemStackNetIdVariantScope() =>
+    public nint _retainSetItemStackNetIdVariantScope_92911f0d() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'gsl::final_action<std::function<void (void)>>' is not supported.");
 
     public bool allowInventoryTransactionManager()
@@ -54,8 +81,12 @@ public sealed unsafe partial class ItemStackNetManagerServer
         return NativeMethods.TablePtr->hs_method_27e395c2((void*)_handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getRequestId_56265adb() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TypedClientNetId<ItemStackRequestIdTag,int,0>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getRequestId() =>
+    public nint getRequestId_6d25c43f() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TypedClientNetId<ItemStackRequestIdTag,int,0>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'ItemStackRequestData' has no generated wrapper.", false)]
@@ -81,6 +112,10 @@ public sealed unsafe partial class ItemStackNetManagerServer
         NativeMethods.TablePtr->hs_method_4a588b94((void*)_handle, (void*)arg0);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public bool retainSetItemStackNetIdVariant()
     {
         return NativeMethods.TablePtr->hs_method_af4c9609((void*)_handle) != 0;
@@ -91,7 +126,25 @@ public sealed unsafe partial class ItemStackNetManagerServer
         NativeMethods.TablePtr->hs_method_561008c7((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint tryCloseContainerScreen_63cc4e45(nint onContainerScreenCloseCB) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CallbackToken' requires --link-carrier or --virtual-dispatch.", false)]
     public nint tryCloseContainerScreen_e097b47d(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CallbackToken' requires --link-carrier or --virtual-dispatch.");
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_1b566ffa((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

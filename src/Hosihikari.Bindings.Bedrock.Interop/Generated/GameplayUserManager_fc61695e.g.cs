@@ -41,6 +41,10 @@ public sealed unsafe partial class GameplayUserManager
     public static GameplayUserManager Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static GameplayUserManager Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
     public void addGameplayUser(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
@@ -67,7 +71,11 @@ public sealed unsafe partial class GameplayUserManager
         return (nint)NativeMethods.TablePtr->hs_method_dd26ab1a((void*)_handle);
     }
 
-    public nint getGameplayUserEntities()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getGameplayUserEntities_004284da() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public nint getGameplayUserEntities_d6d229e2()
     {
         return (nint)NativeMethods.TablePtr->hs_method_d6d229e2((void*)_handle);
     }
@@ -79,6 +87,14 @@ public sealed unsafe partial class GameplayUserManager
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public bool isGameplayUserSuspended(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint registerAnyGameplayUsersRemovedCallback_b02998b2(nint callback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.", false)]
     public nint registerAnyGameplayUsersRemovedCallback_bcb5c9dd(nint arg0) =>

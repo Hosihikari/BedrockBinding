@@ -37,10 +37,122 @@ public sealed unsafe partial class CameraCommand
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static CameraCommand Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static CameraCommand Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static sbyte ENUM_OPTION_CLEAR
+    {
+        get => NativeMethods.TablePtr->hs_get_e6505f37();
+    }
+
+    public static sbyte ENUM_OPTION_COLOR
+    {
+        get => NativeMethods.TablePtr->hs_get_b197227d();
+    }
+
+    public static sbyte ENUM_OPTION_DEFAULT
+    {
+        get => NativeMethods.TablePtr->hs_get_335c7669();
+    }
+
+    public static sbyte ENUM_OPTION_EASE
+    {
+        get => NativeMethods.TablePtr->hs_get_f48b18c6();
+    }
+
+    public static sbyte ENUM_OPTION_FACING
+    {
+        get => NativeMethods.TablePtr->hs_get_68d928d0();
+    }
+
+    public static sbyte ENUM_OPTION_FADE
+    {
+        get => NativeMethods.TablePtr->hs_get_7ac8c9ad();
+    }
+
+    public static sbyte ENUM_OPTION_POS
+    {
+        get => NativeMethods.TablePtr->hs_get_e5c29b32();
+    }
+
+    public static sbyte ENUM_OPTION_ROT
+    {
+        get => NativeMethods.TablePtr->hs_get_5ea1a65a();
+    }
+
+    public static sbyte ENUM_OPTION_SET
+    {
+        get => NativeMethods.TablePtr->hs_get_fd5b9201();
+    }
+
+    public static sbyte ENUM_OPTION_TIME
+    {
+        get => NativeMethods.TablePtr->hs_get_f0ba7555();
+    }
+
+    public static sbyte OPTION_CLEAR
+    {
+        get => NativeMethods.TablePtr->hs_get_6759c58c();
+    }
+
+    public static sbyte OPTION_COLOR
+    {
+        get => NativeMethods.TablePtr->hs_get_35636929();
+    }
+
+    public static sbyte OPTION_DEFAULT
+    {
+        get => NativeMethods.TablePtr->hs_get_35b94b1d();
+    }
+
+    public static sbyte OPTION_EASE
+    {
+        get => NativeMethods.TablePtr->hs_get_52b37e4c();
+    }
+
+    public static sbyte OPTION_FACING
+    {
+        get => NativeMethods.TablePtr->hs_get_85147f6e();
+    }
+
+    public static sbyte OPTION_FADE
+    {
+        get => NativeMethods.TablePtr->hs_get_c8a57916();
+    }
+
+    public static sbyte OPTION_POS
+    {
+        get => NativeMethods.TablePtr->hs_get_5dc4e58c();
+    }
+
+    public static sbyte OPTION_ROT
+    {
+        get => NativeMethods.TablePtr->hs_get_48c569f6();
+    }
+
+    public static sbyte OPTION_SET
+    {
+        get => NativeMethods.TablePtr->hs_get_8432007d();
+    }
+
+    public static sbyte OPTION_TIME
+    {
+        get => NativeMethods.TablePtr->hs_get_b5a0fd9c();
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput arg1)
     {
         NativeMethods.TablePtr->hs_method_b0bfd26e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool prepareInstruction(nint arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg2, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput arg3)
     {
@@ -50,5 +162,27 @@ public sealed unsafe partial class CameraCommand
     public static void setup(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0)
     {
         NativeMethods.TablePtr->hs_method_d44ecde7((void*)arg0.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public int mCommandSymbol
+    {
+        get => NativeMethods.TablePtr->hs_get_1fee946c((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_1fee946c((void*)_handle, value);
+    }
+
+    public byte mPermissionLevel
+    {
+        get => NativeMethods.TablePtr->hs_get_57450958((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_57450958((void*)_handle, value);
+    }
+
+    public int mVersion
+    {
+        get => NativeMethods.TablePtr->hs_get_78aa676d((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_78aa676d((void*)_handle, value);
     }
 }

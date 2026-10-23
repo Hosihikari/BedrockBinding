@@ -79,9 +79,10 @@ public sealed unsafe partial class MapItemSavedData
         return (nint)NativeMethods.TablePtr->hs_method_bdebfca6((void*)_handle);
     }
 
-    public nint getClientSamplingLock()
+    public global::Hosihikari.Bindings.Bedrock.Interop.SpinLock? getClientSamplingLock()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_5e02e09c((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_5e02e09c((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.SpinLock((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Packet? getFullDataPacket()

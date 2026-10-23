@@ -37,14 +37,58 @@ public sealed unsafe partial class WanderingTraderScheduler
         return __hs_handle;
     }
 
+    public static float CHANCE_TO_SPAWN_IN_WILDERNESS
+    {
+        get => NativeMethods.TablePtr->hs_get_5a17459a();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint CHANCE_TO_SPAWN_PER_DAY
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    public static int DISTANCE_IN_BLOCKS_FROM_MEETING_AREA
+    {
+        get => NativeMethods.TablePtr->hs_get_6f90ee24();
+    }
+
+    public static int DISTANCE_IN_BLOCKS_FROM_PLAYER
+    {
+        get => NativeMethods.TablePtr->hs_get_a6360a20();
+    }
+
+    public static int DISTANCE_IN_BLOCKS_FROM_PLAYER_SQUARE
+    {
+        get => NativeMethods.TablePtr->hs_get_6f9d5602();
+    }
+
+    public static int LENGTH_OF_DAY_IN_TICKS
+    {
+        get => NativeMethods.TablePtr->hs_get_1a44a2c7();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static WanderingTraderScheduler Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static WanderingTraderScheduler Create(nint arg0) =>
+    public static WanderingTraderScheduler Create_c5467a9d(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static WanderingTraderScheduler Create_353bc259(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public bool isWanderingTraderCurrentlyManaged(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {
         return NativeMethods.TablePtr->hs_method_90c9c9fb((void*)_handle, (void*)arg0.Handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void readSaveData()
     {

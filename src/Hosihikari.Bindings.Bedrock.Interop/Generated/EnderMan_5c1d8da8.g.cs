@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EnderMan
+public sealed unsafe partial class EnderMan : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,36 @@ public sealed unsafe partial class EnderMan
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static EnderMan Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static EnderMan Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static EnderMan Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup? arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg1, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_c1b8a40c((void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, (void*)arg2.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EnderMan((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static EnderMan Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint SPEED_MODIFIER_ATTACKING
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID SPEED_MODIFIER_ATTACKING_UUID
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->hs_get_41093e83(), false);
+    }
 
     public bool canBeAffectedByArrow(global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance arg0)
     {
@@ -61,6 +88,18 @@ public sealed unsafe partial class EnderMan
         NativeMethods.TablePtr->hs_method_c645824e((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint mMayTake
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    public static bool mMayTakeIsSetup
+    {
+        get => NativeMethods.TablePtr->hs_get_a5fe62e8() != 0;
+    }
+
     public void newServerAiStep()
     {
         NativeMethods.TablePtr->hs_method_154a4e16((void*)_handle);
@@ -70,6 +109,10 @@ public sealed unsafe partial class EnderMan
     {
         NativeMethods.TablePtr->hs_method_89abd60e((void*)_handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setCarryingBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0)
     {
@@ -84,5 +127,19 @@ public sealed unsafe partial class EnderMan
     public static void shutdown()
     {
         NativeMethods.TablePtr->hs_method_1fae4c0e();
+    }
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_5c1d8da8((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

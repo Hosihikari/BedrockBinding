@@ -37,6 +37,16 @@ public sealed unsafe partial class LegacyStructureSettings
         return __hs_handle;
     }
 
+    public static float INTEGRITY_MAX
+    {
+        get => NativeMethods.TablePtr->hs_get_9dd38877();
+    }
+
+    public static float INTEGRITY_MIN
+    {
+        get => NativeMethods.TablePtr->hs_get_839beb26();
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static LegacyStructureSettings Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
@@ -48,6 +58,11 @@ public sealed unsafe partial class LegacyStructureSettings
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static LegacyStructureSettings Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    public static int MAX_STRUCTURE_SIZE
+    {
+        get => NativeMethods.TablePtr->hs_get_463e9d83();
+    }
 
     public void addSwapAuxValue(int arg0, int arg1)
     {
@@ -79,17 +94,29 @@ public sealed unsafe partial class LegacyStructureSettings
         return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_bf8a3122((void*)_handle, (void*)arg0, (void*)arg1.Handle), false);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void placeWaterBelowSeaLevel(bool arg0)
     {
         NativeMethods.TablePtr->hs_method_c7ae8f69((void*)_handle, arg0);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setBlockRules_7f9cac20(nint blockRules) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePoolBlockRule,std::default_delete<StructurePoolBlockRule>>' is not supported.", false)]
-    public void setBlockRules(nint arg0) =>
+    public void setBlockRules_496dcf22(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePoolBlockRule,std::default_delete<StructurePoolBlockRule>>' is not supported.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setBlockTagRules_48809717(nint blockTagRules) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePoolBlockTagRule,std::default_delete<StructurePoolBlockTagRule>>' is not supported.", false)]
-    public void setBlockTagRules(nint arg0) =>
+    public void setBlockTagRules_6e54d6df(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePoolBlockTagRule,std::default_delete<StructurePoolBlockTagRule>>' is not supported.");
 
     public void setBoundingBox(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg0)
@@ -112,9 +139,10 @@ public sealed unsafe partial class LegacyStructureSettings
         NativeMethods.TablePtr->hs_method_615b5c7b((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Projection' is not a known bindable declaration.", false)]
-    public void setProjection(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Projection' is not a known bindable declaration.");
+    public void setProjection(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_102d2675((void*)_handle, arg0);
+    }
 
     public void setRefPos(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
     {

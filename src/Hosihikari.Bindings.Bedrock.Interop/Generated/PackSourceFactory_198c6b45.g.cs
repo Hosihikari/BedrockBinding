@@ -37,8 +37,16 @@ public sealed unsafe partial class PackSourceFactory
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static PackSourceFactory Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static PackSourceFactory Create_1424db79(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PackSourceFactory Create(nint arg0) =>
+    public static PackSourceFactory Create_b2821054(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public void __autoclassinit2(ulong arg0)
@@ -46,9 +54,10 @@ public sealed unsafe partial class PackSourceFactory
         NativeMethods.TablePtr->hs_method_0195a4a0((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PackOrigin' is not a known bindable declaration.", false)]
-    public nint createDirectoryPackSource(nint arg0, nint arg1, nint arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PackOrigin' is not a known bindable declaration.");
+    public nint createDirectoryPackSource(nint arg0, sbyte arg1, sbyte arg2, bool arg3)
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_b5b1941f((void*)_handle, (void*)arg0, arg1, arg2, arg3);
+    }
 
     public nint createDynamicPackagePackSource(sbyte arg0)
     {
@@ -65,18 +74,19 @@ public sealed unsafe partial class PackSourceFactory
         return (nint)NativeMethods.TablePtr->hs_method_e95b2dfb((void*)_handle, (void*)arg0, arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PackOrigin' is not a known bindable declaration.", false)]
-    public nint createWorldTemplatePackSource(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PackOrigin' is not a known bindable declaration.");
+    public nint createWorldTemplatePackSource(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg1, sbyte arg2, sbyte arg3)
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_71e73518((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg2, arg3);
+    }
 
     public nint getDirectoryPackSource(nint arg0, sbyte arg1)
     {
         return (nint)NativeMethods.TablePtr->hs_method_3fa99cbc((void*)_handle, (void*)arg0, arg1);
     }
 
-    public nint getDirectoryPackSourceContaining(nint arg0)
+    public nint getDirectoryPackSourceContaining(global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_08b478ed((void*)_handle, (void*)arg0);
+        return (nint)NativeMethods.TablePtr->hs_method_08b478ed((void*)_handle, (void*)arg0.Handle);
     }
 
     public nint getDynamicPackagePackSource(sbyte arg0)
@@ -99,6 +109,10 @@ public sealed unsafe partial class PackSourceFactory
         return (nint)NativeMethods.TablePtr->hs_method_21229efe((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void removeFromDirectoryPackSource(nint arg0)
     {
         NativeMethods.TablePtr->hs_method_867b3c11((void*)_handle, (void*)arg0);
@@ -110,8 +124,12 @@ public sealed unsafe partial class PackSourceFactory
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is not a known bindable declaration.", false)]
-    public void setDynamicPackageRoot(nint arg0) =>
+    public void setDynamicPackageRoot_e0625fab(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setDynamicPackageRoot_ca6e97ec(nint path) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_94bf0772() =>

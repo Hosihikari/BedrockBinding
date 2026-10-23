@@ -337,9 +337,11 @@ public sealed unsafe partial class AppPlatform
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ResourceFileSystem' is not a known bindable declaration.", false)]
-    public nint getFileAccess(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ResourceFileSystem' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getFileAccess(int arg0)
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_a2540882((void*)_handle, arg0);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public int getFocusState()
     {
@@ -468,9 +470,12 @@ public sealed unsafe partial class AppPlatform
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'OperationMode' is not supported.", false)]
-    public nint getOperationMode() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'OperationMode' is not supported.");
+    public int? getOperationMode()
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->hs_method_c2c51e93((void*)_handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (int?)null;
+    }
 
     public ulong getOptimalLDBSize()
     {

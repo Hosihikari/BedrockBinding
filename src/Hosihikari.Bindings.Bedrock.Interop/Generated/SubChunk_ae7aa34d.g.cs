@@ -45,9 +45,9 @@ public sealed unsafe partial class SubChunk
     public void deserialize(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional parameter type 'DeserializationChanges*' is not supported.");
 
-    public void fetchBlocks(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, short arg2, nint arg3)
+    public void fetchBlocks(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, short arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume arg3)
     {
-        NativeMethods.TablePtr->hs_method_774701d0((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)arg3);
+        NativeMethods.TablePtr->hs_method_774701d0((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)arg3.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'BlockDataFetchResult<Block>' is not supported.", false)]
@@ -82,9 +82,9 @@ public sealed unsafe partial class SubChunk
     public nint getLight(ushort arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'SubChunkBrightnessStorage::LightPair' requires --link-carrier or --virtual-dispatch.");
 
-    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.Block? arg0, bool arg1, bool arg2, nint arg3, sbyte arg4)
+    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.Block? arg0, bool arg1, bool arg2, global::Hosihikari.Bindings.Bedrock.Interop.SpinLock arg3, sbyte arg4)
     {
-        NativeMethods.TablePtr->hs_method_5519d27a((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1, arg2, (void*)arg3, arg4);
+        NativeMethods.TablePtr->hs_method_5519d27a((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1, arg2, (void*)arg3.Handle, arg4);
     }
 
     public bool isEmpty()
@@ -137,9 +137,9 @@ public sealed unsafe partial class SubChunk
         NativeMethods.TablePtr->hs_method_73eb2099((void*)_handle, arg0, arg1);
     }
 
-    public void setFromBlockVolume(nint arg0, short arg1)
+    public void setFromBlockVolume(global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume arg0, short arg1)
     {
-        NativeMethods.TablePtr->hs_method_c60284c6((void*)_handle, (void*)arg0, arg1);
+        NativeMethods.TablePtr->hs_method_c60284c6((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
     public void setSkyLight(ushort arg0, byte arg1)

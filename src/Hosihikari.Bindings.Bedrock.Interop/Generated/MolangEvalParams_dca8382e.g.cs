@@ -37,6 +37,14 @@ public sealed unsafe partial class MolangEvalParams
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MolangEvalParams Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MolangEvalParams Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     public global::Hosihikari.Bindings.Bedrock.Interop.Actor? getActorFromArg(global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg arg0)
     {
         var __hs_handle = NativeMethods.TablePtr->hs_method_cd204746((void*)_handle, (void*)arg0.Handle);
@@ -53,6 +61,17 @@ public sealed unsafe partial class MolangEvalParams
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.MolangEvalParams((nint)NativeMethods.TablePtr->hs_method_476173c7(), false);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint mThreadLocalMolangEvalParams
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Actor? popActor()
     {

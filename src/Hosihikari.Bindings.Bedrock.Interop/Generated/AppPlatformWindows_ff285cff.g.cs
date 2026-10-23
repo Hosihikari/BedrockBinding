@@ -41,6 +41,33 @@ public sealed unsafe partial class AppPlatformWindows
     public static AppPlatformWindows Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static AppPlatformWindows Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
+    public static nint EXPERIMENTS_ACTIVE_KEY
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _getCurrentStoragePath_48727416() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _getExternalStoragePath_fedb752d() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _getInternalStoragePath_bad2937d() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _getUserdataPath_13f72314() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public bool allowContentLogWriteToDisk()
     {
         return NativeMethods.TablePtr->hs_method_2a0c84b8((void*)_handle) != 0;
@@ -56,20 +83,32 @@ public sealed unsafe partial class AppPlatformWindows
         return NativeMethods.TablePtr->hs_method_bc2b5a74((void*)_handle) != 0;
     }
 
-    public string copyImportFileToTempFolder(nint arg0)
+    public string copyImportFileToTempFolder_5ac1c8ca(nint arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_5ac1c8ca((void*)_handle, (void*)arg0);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint copyImportFileToTempFolder_5c2e1094(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public ulong getHighPerformanceThreadsCount()
     {
         return NativeMethods.TablePtr->hs_method_b520c394((void*)_handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getMainThreadQueue_441e3f15() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
-    public nint getMainThreadQueue() =>
+    public nint getMainThreadQueue_fb7dd47a() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getPackagedShaderCachePath_76ac8fca() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool getPlatformTTSEnabled()
     {
@@ -81,20 +120,36 @@ public sealed unsafe partial class AppPlatformWindows
         return NativeMethods.TablePtr->hs_method_77249e17((void*)_handle) != 0;
     }
 
-    public string getPlatformTempPath()
+    public string getPlatformTempPath_8039e509()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_8039e509((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getPlatformTempPath_826b6d5c() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public ulong getTotalHardwareThreadsCount()
     {
         return NativeMethods.TablePtr->hs_method_8296c22b((void*)_handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void queueForMainThread_DEPRECATED_7171d4cf(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void queueForMainThread_DEPRECATED(nint arg0) =>
+    public void queueForMainThread_DEPRECATED_28262563(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void registerExperimentsActiveCrashDump(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void registerExperimentsActiveCrashDump(string[] arg0)
     {

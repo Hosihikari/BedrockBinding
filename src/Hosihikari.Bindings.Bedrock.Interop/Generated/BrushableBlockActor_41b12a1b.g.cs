@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BrushableBlockActor
+public sealed unsafe partial class BrushableBlockActor : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,28 @@ public sealed unsafe partial class BrushableBlockActor
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BrushableBlockActor Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BrushableBlockActor Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static BrushableBlockActor Create(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, int arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_38455722((void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BrushableBlockActor((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BrushableBlockActor Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint brush_ed4987c3(nint region, nint pos, byte face) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int getContainerSize()
     {
@@ -51,9 +70,15 @@ public sealed unsafe partial class BrushableBlockActor
         return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->hs_method_7df36da1((void*)_handle, arg0), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'BrushableBlockActor::Placement' is not a known bindable declaration.", false)]
+    public static string getLootTableFromVariant(int arg0)
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_31ad6bdb(arg0);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public static nint getLootTableFromVariant(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'BrushableBlockActor::Placement' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int getMaxStackSize()
     {
@@ -74,6 +99,10 @@ public sealed unsafe partial class BrushableBlockActor
     {
         NativeMethods.TablePtr->hs_method_93343ed9((void*)_handle, (void*)arg0.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool save(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {
@@ -103,5 +132,18 @@ public sealed unsafe partial class BrushableBlockActor
     public void update(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
     {
         NativeMethods.TablePtr->hs_method_f14ef31f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_41b12a1b((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

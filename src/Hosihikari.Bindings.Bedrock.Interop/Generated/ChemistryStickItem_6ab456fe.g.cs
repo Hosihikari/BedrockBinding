@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ChemistryStickItem
+public sealed unsafe partial class ChemistryStickItem : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,85 @@ public sealed unsafe partial class ChemistryStickItem
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ChemistryStickItem Create(nint arg0, short arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static string ACTIVATION_TIMESTAMP_TAG
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_d16e94d4();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static int ACTIVE_BIT
+    {
+        get => NativeMethods.TablePtr->hs_get_2263204f();
+    }
+
+    public static int COLOR_BITS
+    {
+        get => NativeMethods.TablePtr->hs_get_a232d127();
+    }
+
+    public static int COLOR_MASK
+    {
+        get => NativeMethods.TablePtr->hs_get_4cf39e9e();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ChemistryStickItem Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ChemistryStickItem Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ChemistryStickItem Create(nint name, short id) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static ChemistryStickItem Create(string arg0, short arg1)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->hs_create_69ff43a9(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new ChemistryStickItem((nint)handle);
+        }
+    }
+
+    public static int DAMAGE_BITS
+    {
+        get => NativeMethods.TablePtr->hs_get_914d23bf();
+    }
+
+    public static int DAMAGE_MASK
+    {
+        get => NativeMethods.TablePtr->hs_get_ce859ca3();
+    }
+
+    public static int DAMAGE_START_BIT
+    {
+        get => NativeMethods.TablePtr->hs_get_8eabe056();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _getColorName_3f9ed8be(int arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fixupCommon(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0)
     {
@@ -76,6 +152,10 @@ public sealed unsafe partial class ChemistryStickItem
         return NativeMethods.TablePtr->hs_method_9eddead2((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public global::Hosihikari.Bindings.Bedrock.Interop.Item setMaxDamage(int arg0)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Item((nint)NativeMethods.TablePtr->hs_method_7cea4f96((void*)_handle, arg0), false);
@@ -101,7 +181,17 @@ public sealed unsafe partial class ChemistryStickItem
         return NativeMethods.TablePtr->hs_method_6f40072f((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), (void*)(arg2?.Handle ?? 0));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_6ab456fe((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

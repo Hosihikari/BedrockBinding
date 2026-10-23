@@ -37,9 +37,17 @@ public sealed unsafe partial class PlayerDimensionTransferer
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static PlayerDimensionTransferer Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static PlayerDimensionTransferer Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'ISharedSpawnGetter' has no generated wrapper.", false)]
     public static PlayerDimensionTransferer Create(nint arg0, bool arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'ISharedSpawnGetter' has no generated wrapper.");
 
     public bool doRespawnIfReady(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, nint arg1, nint arg2)
     {
@@ -50,9 +58,17 @@ public sealed unsafe partial class PlayerDimensionTransferer
     public nint getOnAnyPlayerChangeDimensionPreSuspendRegionConnector() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getOnAnyPlayerChangeDimensionPrepareRegionCompleteConnector_bd5e3064() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
-    public nint getOnAnyPlayerChangeDimensionPrepareRegionCompleteConnector() =>
+    public nint getOnAnyPlayerChangeDimensionPrepareRegionCompleteConnector_f3a12bd4() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void playerDestroyRegion(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, nint arg1)
     {
@@ -89,6 +105,10 @@ public sealed unsafe partial class PlayerDimensionTransferer
         return NativeMethods.TablePtr->hs_method_d8b751b6((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool playerWaitForServer_e515f048(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public bool playerWaitForServer_df84962f(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
@@ -122,4 +142,8 @@ public sealed unsafe partial class PlayerDimensionTransferer
     {
         return NativeMethods.TablePtr->hs_method_71839ffe((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

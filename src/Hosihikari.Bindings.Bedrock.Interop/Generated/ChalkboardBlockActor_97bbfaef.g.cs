@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ChalkboardBlockActor
+public sealed unsafe partial class ChalkboardBlockActor : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,17 +37,55 @@ public sealed unsafe partial class ChalkboardBlockActor
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ChalkboardBlockActor Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static ChalkboardBlockActor Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_9965698c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChalkboardBlockActor((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ChalkboardBlockActor Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ChalkboardSize' is not a known bindable declaration.", false)]
-    public static nint calculateAllBlocks(nint arg0, nint arg1, int arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ChalkboardSize' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint _findChalkboard_17e99786(nint region, nint pos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ChalkboardSize' is not a known bindable declaration.", false)]
-    public static bool canCreateChalkboard(nint arg0, nint arg1, nint arg2, nint arg3, byte arg4, int arg5, nint arg6, nint arg7, bool arg8) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ChalkboardSize' is not a known bindable declaration.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BlockPos[] calculateAllBlocks(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, int arg1, int arg2)
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_f60d8e7b((void*)arg0.Handle, arg1, arg2);
+        var __hs_items = (void**)__hs_view.Data;
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Bedrock.Interop.BlockPos>() : new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_items[__hs_i]);
+        }
+        return __hs_result;
+    }
+
+    public static bool canCreateChalkboard(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, int arg3, byte arg4, int arg5, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos[] arg6, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg7, bool arg8)
+    {
+        var __hs_vectorItems6 = arg6;
+        var __hs_vectorHandles6 = new nint[__hs_vectorItems6?.Length ?? 0];
+        for (var __hs_i6 = 0; __hs_i6 < __hs_vectorHandles6.Length; __hs_i6++)
+        {
+            __hs_vectorHandles6[__hs_i6] = __hs_vectorItems6![__hs_i6]?.Handle ?? 0;
+        }
+        fixed (nint* __hs_vectorHandleData6 = __hs_vectorHandles6)
+        {
+            var __hs_vectorData6 = (void**)__hs_vectorHandleData6;
+            return NativeMethods.TablePtr->hs_method_29261883((void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, (void*)arg2.Handle, arg3, arg4, arg5, (void*)arg7.Handle, arg8, __hs_vectorData6, (nuint)(arg6?.Length ?? 0)) != 0;
+        }
+    }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.ChalkboardBlockActor? convertFromEntity(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1)
     {
@@ -55,19 +93,44 @@ public sealed unsafe partial class ChalkboardBlockActor
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ChalkboardBlockActor((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ChalkboardSize' is not a known bindable declaration.", false)]
-    public static nint createChalkboard(nint arg0, nint arg1, nint arg2, nint arg3, byte arg4, int arg5, bool arg6, nint arg7, nint arg8) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ChalkboardSize' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint createChalkboard(nint creator, nint region, nint basePos, nint boardSize, byte face, int dir, bool isOnGround, nint instance, nint text) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ChalkboardSize const' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getChalkboardSize() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ChalkboardSize const' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ChalkboardBlockActor? createChalkboard(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, int arg3, byte arg4, int arg5, bool arg6, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg7, string arg8)
+    {
+        var __hs_stringByteCount8 = global::System.Text.Encoding.UTF8.GetByteCount(arg8);
+        scoped global::System.Span<byte> __hs_stringBytes8;
+        if (__hs_stringByteCount8 <= 256)
+        {
+            __hs_stringBytes8 = stackalloc byte[__hs_stringByteCount8 == 0 ? 1 : __hs_stringByteCount8];
+        }
+        else
+        {
+            __hs_stringBytes8 = new byte[__hs_stringByteCount8];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg8, __hs_stringBytes8);
+        fixed (byte* __hs_stringData8 = __hs_stringBytes8)
+        {
+            var __hs_handle = NativeMethods.TablePtr->hs_method_e0004880((void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, (void*)arg2.Handle, arg3, arg4, arg5, arg6, (void*)arg7.Handle, __hs_stringData8, (nuint)__hs_stringByteCount8);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ChalkboardBlockActor((nint)__hs_handle, false) : null;
+        }
+    }
+
+    public int getChalkboardSize()
+    {
+        return NativeMethods.TablePtr->hs_method_d4fec0c4((void*)_handle);
+    }
 
     public string getImmersiveReaderText(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_b09d2f91((void*)_handle, (void*)arg0.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getImmersiveReaderText(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool getLocked()
     {
@@ -79,7 +142,11 @@ public sealed unsafe partial class ChalkboardBlockActor
         return NativeMethods.TablePtr->hs_method_8e59a5e2((void*)_handle, (void*)arg0.Handle);
     }
 
-    public string getText()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getText_486c44cf() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getText_7d3bc8f5()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_7d3bc8f5((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -102,6 +169,10 @@ public sealed unsafe partial class ChalkboardBlockActor
         return __hs_result;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getUgcStrings(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void load(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
     {
         NativeMethods.TablePtr->hs_method_c5b071c3((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
@@ -112,10 +183,18 @@ public sealed unsafe partial class ChalkboardBlockActor
         NativeMethods.TablePtr->hs_method_725c4700((void*)_handle, (void*)arg0.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public bool save(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {
         return NativeMethods.TablePtr->hs_method_e269ea27((void*)_handle, (void*)arg0.Handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setText(nint text) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setText(string arg0)
     {
@@ -135,6 +214,10 @@ public sealed unsafe partial class ChalkboardBlockActor
             NativeMethods.TablePtr->hs_method_43932ddc((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setUgcStrings(nint tag, nint list) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setUgcStrings(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, string[] arg1)
     {
@@ -172,7 +255,18 @@ public sealed unsafe partial class ChalkboardBlockActor
         NativeMethods.TablePtr->hs_method_19e311f7((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_97bbfaef((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

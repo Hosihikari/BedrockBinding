@@ -148,14 +148,14 @@ public sealed unsafe partial class BlockLegacy
     public void addGetPlacementBlockCallback(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'BlockTrait::IGetPlacementBlockCallback' has no generated wrapper.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy addState(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy addState(global::Hosihikari.Bindings.Bedrock.Interop.BlockState arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy((nint)NativeMethods.TablePtr->hs_method_96e019b8((void*)_handle, (void*)arg0), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy((nint)NativeMethods.TablePtr->hs_method_96e019b8((void*)_handle, (void*)arg0.Handle), false);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy addState(nint arg0, ulong arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy addState(global::Hosihikari.Bindings.Bedrock.Interop.BlockState arg0, ulong arg1)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy((nint)NativeMethods.TablePtr->hs_method_19e18818((void*)_handle, (void*)arg0, arg1), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy((nint)NativeMethods.TablePtr->hs_method_19e18818((void*)_handle, (void*)arg0.Handle, arg1), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy addTag(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
@@ -498,9 +498,10 @@ public sealed unsafe partial class BlockLegacy
         return NativeMethods.TablePtr->hs_method_4741f1b4((void*)_handle);
     }
 
-    public nint getBlockState(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockState? getBlockState(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_cf234aff((void*)_handle, (void*)arg0.Handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_cf234aff((void*)_handle, (void*)arg0.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockState((nint)__hs_handle, false) : null;
     }
 
     public nint getBlockStateGroup_25302f23()
@@ -837,9 +838,9 @@ public sealed unsafe partial class BlockLegacy
         return NativeMethods.TablePtr->hs_method_7184abb5((void*)_handle) != 0;
     }
 
-    public bool hasState(nint arg0)
+    public bool hasState(global::Hosihikari.Bindings.Bedrock.Interop.BlockState arg0)
     {
-        return NativeMethods.TablePtr->hs_method_aede2cc6((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_aede2cc6((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool hasState(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
@@ -1293,9 +1294,9 @@ public sealed unsafe partial class BlockLegacy
         NativeMethods.TablePtr->hs_method_ec30711f((void*)_handle, arg0, arg1);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy setCreativeEnumState(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy setCreativeEnumState(global::Hosihikari.Bindings.Bedrock.Interop.BlockState arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy((nint)NativeMethods.TablePtr->hs_method_e47e3b66((void*)_handle, (void*)arg0), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy((nint)NativeMethods.TablePtr->hs_method_e47e3b66((void*)_handle, (void*)arg0.Handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

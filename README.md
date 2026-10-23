@@ -10,9 +10,9 @@ The **Bedrock / MCAPI** surface for the Hosihikari bindings: a generated native-
 
 ## Current state
 
-- Interop: 621 generated C# files under `src/Hosihikari.Bindings.Bedrock.Interop/Generated/`.
-- BindingShim: 10,191 functions in each of `native/BindingShim/generated/win-x64-server/bedrock/` and `native/BindingShim/generated/linux-x64-server/bedrock/`.
-- Coverage: 1,732 declarations and 30,753 members bound across both configurations.
+- Interop: 701 generated C# files under `src/Hosihikari.Bindings.Bedrock.Interop/Generated/`.
+- BindingShim: 10,873 functions in each of `native/BindingShim/generated/win-x64-server/bedrock/` and `native/BindingShim/generated/linux-x64-server/bedrock/`.
+- Coverage: 2,072 declarations and 33,789 members bound across both configurations.
 - `scripts/classes-1.21.3.txt` selects the current public class set. Classes outside the LeviLamina header supplement contribute symbol and vtable methods; their fields and constructors stay stubs until a layout header is added.
 
 The shim is emitted in `--symbol-dispatch` mode. Supported ABI:

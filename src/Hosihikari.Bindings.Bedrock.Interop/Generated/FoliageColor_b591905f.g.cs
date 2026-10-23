@@ -37,6 +37,54 @@ public sealed unsafe partial class FoliageColor
         return __hs_handle;
     }
 
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color FOLIAGE_BOTTOM_LEFT
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_80d682ed(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color FOLIAGE_BOTTOM_RIGHT
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_bf3c37c8(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color FOLIAGE_TOP_LEFT
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_bbcac09f(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color FOLIAGE_TOP_RIGHT
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_9bca1a18(), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static FoliageColor Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static FoliageColor Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color GRASS_BOTTOM_LEFT
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_ae2cdbdf(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color GRASS_BOTTOM_RIGHT
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_50b295f8(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color GRASS_TOP_LEFT
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_441fc62a(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color GRASS_TOP_RIGHT
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_a14f0c38(), false);
+    }
+
     public static int getBirchColor(float arg0, float arg1)
     {
         return NativeMethods.TablePtr->hs_method_3cced757(arg0, arg1);
@@ -52,9 +100,10 @@ public sealed unsafe partial class FoliageColor
         return NativeMethods.TablePtr->hs_method_d9f9facd(arg0, arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'FoliageColor::PaletteName' is not a known bindable declaration.", false)]
-    public static int getFoliageColor(nint arg0, float arg1, float arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'FoliageColor::PaletteName' is not a known bindable declaration.");
+    public static int getFoliageColor(int arg0, float arg1, float arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_d73efa24(arg0, arg1, arg2);
+    }
 
     public static int getFoliageColor(float arg0, float arg1)
     {
@@ -85,4 +134,22 @@ public sealed unsafe partial class FoliageColor
     {
         return NativeMethods.TablePtr->hs_method_c03c0e26(arg0, arg1);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint mFoliagePalettes
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint mGrassPalettes
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 }

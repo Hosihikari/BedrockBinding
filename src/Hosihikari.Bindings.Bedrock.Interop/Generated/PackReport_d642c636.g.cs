@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PackReport
+public sealed unsafe partial class PackReport : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,40 +37,66 @@ public sealed unsafe partial class PackReport
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PackReport Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static PackReport Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_944853cf();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PackReport Create_47335dd5(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new PackReport((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static PackReport Create(global::Hosihikari.Bindings.Bedrock.Interop.PackReport arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_47335dd5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PackReport((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public static PackReport Create_040890f9(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    public nint getErrors()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getErrors_dfd854b4() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public nint getErrors_20e97cbc()
     {
         return (nint)NativeMethods.TablePtr->hs_method_20e97cbc((void*)_handle);
     }
 
-    public nint getIdentity()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion getIdentity()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d1a093d9((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion((nint)NativeMethods.TablePtr->hs_method_d1a093d9((void*)_handle), false);
     }
 
-    public nint getLocation()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation getLocation()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_c9377be1((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation((nint)NativeMethods.TablePtr->hs_method_c9377be1((void*)_handle), false);
     }
 
-    public string getOriginalName()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getOriginalName_df21bb2d() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getOriginalName_1ea36d8f()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_1ea36d8f((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string getOriginalVersion()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getOriginalVersion_d1e8340c() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getOriginalVersion_888c0933()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_888c0933((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -86,13 +112,85 @@ public sealed unsafe partial class PackReport
         return NativeMethods.TablePtr->hs_method_34f0ff9b((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PackErrorType' is not a known bindable declaration.", false)]
-    public bool hasErrors(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PackErrorType' is not a known bindable declaration.");
-
-    public void serialize(nint arg0)
+    public bool hasErrors(int arg0)
     {
-        NativeMethods.TablePtr->hs_method_8f62766f((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_84cf6650((void*)_handle, arg0) != 0;
+    }
+
+    public bool mAttemptedUpgrade
+    {
+        get => NativeMethods.TablePtr->hs_get_2d9ebd58((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_2d9ebd58((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mErrors
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mIdentity
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mLocation
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mOriginalName
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mOriginalVersion
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    public sbyte mPackType
+    {
+        get => NativeMethods.TablePtr->hs_get_527865ef((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_527865ef((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mRequiredBaseGameVersion
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mWarnings
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    public bool mWasUpgraded
+    {
+        get => NativeMethods.TablePtr->hs_get_a03e59bb((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_a03e59bb((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void serialize(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg0)
+    {
+        NativeMethods.TablePtr->hs_method_8f62766f((void*)_handle, (void*)arg0.Handle);
     }
 
     public void setAttemptedUpgrade()
@@ -100,15 +198,19 @@ public sealed unsafe partial class PackReport
         NativeMethods.TablePtr->hs_method_c96c592a((void*)_handle);
     }
 
-    public void setIdentity(nint arg0)
+    public void setIdentity(global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion arg0)
     {
-        NativeMethods.TablePtr->hs_method_496e3552((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_496e3552((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void setLocation(nint arg0)
+    public void setLocation(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0)
     {
-        NativeMethods.TablePtr->hs_method_c23404f1((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_c23404f1((void*)_handle, (void*)arg0.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setOriginalIdentity(nint originalName, nint originalVersion) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setOriginalIdentity(string arg0, string arg1)
     {
@@ -158,15 +260,22 @@ public sealed unsafe partial class PackReport
         return NativeMethods.TablePtr->hs_method_29dcb946((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_e76957f8() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static PackReport Create_f890257d(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_5990c037() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_d642c636((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

@@ -153,9 +153,9 @@ public sealed unsafe partial class FeatureRegistry
         }
     }
 
-    public string reverseLookupString(nint arg0)
+    public string reverseLookupString(global::Hosihikari.Bindings.Bedrock.Interop.IFeature arg0)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_3ecedf2f((void*)_handle, (void*)arg0);
+        var __hs_view = NativeMethods.TablePtr->hs_method_3ecedf2f((void*)_handle, (void*)arg0.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 

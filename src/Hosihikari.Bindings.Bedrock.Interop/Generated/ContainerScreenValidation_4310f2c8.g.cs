@@ -45,9 +45,11 @@ public sealed unsafe partial class ContainerScreenValidation
     public nint getCraftResults(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationCraftResult' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ContainerEnumName' is not a known bindable declaration.", false)]
-    public nint getOrCreateSparseContainer(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ContainerEnumName' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getOrCreateSparseContainer(sbyte arg0)
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_ddb8e8d5((void*)_handle, arg0);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public bool isCraftingImplemented()
     {

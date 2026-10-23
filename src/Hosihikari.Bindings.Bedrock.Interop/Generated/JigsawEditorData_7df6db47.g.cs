@@ -37,6 +37,13 @@ public sealed unsafe partial class JigsawEditorData
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint JOINT_TYPE_TO_NAME
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static JigsawEditorData Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
@@ -49,11 +56,19 @@ public sealed unsafe partial class JigsawEditorData
     public static JigsawEditorData Create_7f52ab3a(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static JigsawEditorData Create_56446e77(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, int arg5, int arg6) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static JigsawEditorData Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, int arg5, int arg6) =>
+    public static JigsawEditorData Create_f2a31be6(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, int arg5, int arg6) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    public string getFinalBlock()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getFinalBlock_8a12d5c0() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getFinalBlock_8894c0ab()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_8894c0ab((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -64,7 +79,11 @@ public sealed unsafe partial class JigsawEditorData
         return (nint)NativeMethods.TablePtr->hs_method_5e3d6f61((void*)_handle);
     }
 
-    public string getName()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getName_ccabc971() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getName_90423d7b()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_90423d7b((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -80,13 +99,21 @@ public sealed unsafe partial class JigsawEditorData
         return NativeMethods.TablePtr->hs_method_716252a8((void*)_handle);
     }
 
-    public string getTarget()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getTarget_c011ee1a() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getTarget_9c9a607b()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_9c9a607b((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string getTargetPool()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getTargetPool_3173f8d7() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getTargetPool_491b75ae()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_491b75ae((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -97,10 +124,18 @@ public sealed unsafe partial class JigsawEditorData
         NativeMethods.TablePtr->hs_method_42c0f0a3((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void save(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {
         NativeMethods.TablePtr->hs_method_14b78426((void*)_handle, (void*)arg0.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setFinalBlock(nint finalBlock) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setFinalBlock(string arg0)
     {
@@ -126,6 +161,10 @@ public sealed unsafe partial class JigsawEditorData
         NativeMethods.TablePtr->hs_method_f0a8690e((void*)_handle, (void*)arg0);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setName(nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void setName(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -145,6 +184,10 @@ public sealed unsafe partial class JigsawEditorData
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setTarget(nint target) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void setTarget(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -163,6 +206,10 @@ public sealed unsafe partial class JigsawEditorData
             NativeMethods.TablePtr->hs_method_1f9c569e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setTargetPool(nint targetPool) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setTargetPool(string arg0)
     {

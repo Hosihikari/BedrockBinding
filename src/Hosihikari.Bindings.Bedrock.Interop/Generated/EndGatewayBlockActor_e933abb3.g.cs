@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EndGatewayBlockActor
+public sealed unsafe partial class EndGatewayBlockActor : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,39 @@ public sealed unsafe partial class EndGatewayBlockActor
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static int COOLDOWN_TIME
+    {
+        get => NativeMethods.TablePtr->hs_get_e844d8a7();
+    }
+
+    public static int EVENT_COOLDOWN
+    {
+        get => NativeMethods.TablePtr->hs_get_ec557f17();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static EndGatewayBlockActor Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static EndGatewayBlockActor Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_18466c15((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EndGatewayBlockActor((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static EndGatewayBlockActor Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static int SPAWN_TIME
+    {
+        get => NativeMethods.TablePtr->hs_get_4c48da33();
+    }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.BlockPos findExitPortal(global::Hosihikari.Bindings.Bedrock.Interop.WorldGenerator arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
     {
@@ -76,6 +106,10 @@ public sealed unsafe partial class EndGatewayBlockActor
         NativeMethods.TablePtr->hs_method_ea2a7643((void*)_handle, (void*)arg0.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public bool save(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {
         return NativeMethods.TablePtr->hs_method_596e5a6b((void*)_handle, (void*)arg0.Handle) != 0;
@@ -99,5 +133,19 @@ public sealed unsafe partial class EndGatewayBlockActor
     public void triggerEvent(int arg0, int arg1)
     {
         NativeMethods.TablePtr->hs_method_aa25edce((void*)_handle, arg0, arg1);
+    }
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_e933abb3((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

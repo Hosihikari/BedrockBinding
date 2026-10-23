@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ListBlockVolume
+public sealed unsafe partial class ListBlockVolume : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,21 +37,69 @@ public sealed unsafe partial class ListBlockVolume
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ListBlockVolume Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ListBlockVolume Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_4a4ddb96();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ListBlockVolume Create_8e2e595e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new ListBlockVolume((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ListBlockVolume Create_c7ef171c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ListBlockVolume Create(global::Hosihikari.Bindings.Bedrock.Interop.ListBlockVolume arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_8e2e595e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ListBlockVolume Create_423d0479(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new ListBlockVolume((nint)handle);
+    }
+
+    public static ListBlockVolume Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos[] arg0)
+    {
+        var __hs_vectorItems0 = arg0;
+        var __hs_vectorHandles0 = new nint[__hs_vectorItems0?.Length ?? 0];
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++)
+        {
+            __hs_vectorHandles0[__hs_i0] = __hs_vectorItems0![__hs_i0]?.Handle ?? 0;
+        }
+        fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
+        {
+            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
+            var handle = NativeMethods.TablePtr->hs_create_c7ef171c(__hs_vectorData0, (nuint)(arg0?.Length ?? 0));
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new ListBlockVolume((nint)handle);
+        }
+    }
+
+    public static ListBlockVolume Create(global::Hosihikari.Bindings.Bedrock.Interop.Vec3[] arg0)
+    {
+        var __hs_vectorItems0 = arg0;
+        var __hs_vectorHandles0 = new nint[__hs_vectorItems0?.Length ?? 0];
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++)
+        {
+            __hs_vectorHandles0[__hs_i0] = __hs_vectorItems0![__hs_i0]?.Handle ?? 0;
+        }
+        fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
+        {
+            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
+            var handle = NativeMethods.TablePtr->hs_create_423d0479(__hs_vectorData0, (nuint)(arg0?.Length ?? 0));
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new ListBlockVolume((nint)handle);
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ListBlockVolumeIterator' requires --link-carrier or --virtual-dispatch.", false)]
     public nint begin() =>
@@ -87,8 +135,12 @@ public sealed unsafe partial class ListBlockVolume
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::set<ChunkPos,std::less<ChunkPos>,std::allocator<ChunkPos>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getChunks() =>
+    public nint getChunks_f89e8de8() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::set<ChunkPos,std::less<ChunkPos>,std::allocator<ChunkPos>>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getChunks_02782576() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getMax()
     {
@@ -124,12 +176,30 @@ public sealed unsafe partial class ListBlockVolume
         return NativeMethods.TablePtr->hs_method_1735c922((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void translate(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
     {
         NativeMethods.TablePtr->hs_method_1e0c3233((void*)_handle, (void*)arg0.Handle);
     }
 
+
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ListBlockVolume Create_ca5dcea9(nint arg0) =>
+    public static ListBlockVolume Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_bbd2d680((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

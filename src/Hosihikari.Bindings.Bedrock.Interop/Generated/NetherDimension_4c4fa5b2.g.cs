@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class NetherDimension
+public sealed unsafe partial class NetherDimension : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -91,9 +91,24 @@ public sealed unsafe partial class NetherDimension
         set => NativeMethods.TablePtr->hs_set_fd9075fe((void*)_handle, (void*)value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static NetherDimension Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static NetherDimension Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static NetherDimension Create(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0, global::Hosihikari.Bindings.Bedrock.Interop.Scheduler arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_1c56a2bf((void*)arg0.Handle, (void*)arg1.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NetherDimension((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static NetherDimension Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.WorldGenerator? createGenerator(nint arg0)
     {
@@ -146,6 +161,10 @@ public sealed unsafe partial class NetherDimension
         return NativeMethods.TablePtr->hs_method_b5ef542c((void*)_handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public bool showSky()
     {
         return NativeMethods.TablePtr->hs_method_d8906214((void*)_handle) != 0;
@@ -159,5 +178,18 @@ public sealed unsafe partial class NetherDimension
     public void upgradeLevelChunk(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg1, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg2)
     {
         NativeMethods.TablePtr->hs_method_25801107((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_4c4fa5b2((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

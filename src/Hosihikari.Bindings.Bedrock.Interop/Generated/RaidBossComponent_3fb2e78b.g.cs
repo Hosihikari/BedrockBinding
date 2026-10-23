@@ -37,24 +37,37 @@ public sealed unsafe partial class RaidBossComponent
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static RaidBossComponent Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static RaidBossComponent Create_294dedae(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'BossBarColor' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getColor() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'BossBarColor' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static RaidBossComponent Create_4e1f61d3(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public int getColor()
+    {
+        return NativeMethods.TablePtr->hs_method_404ab2d5((void*)_handle);
+    }
 
     public float getHealthPercent()
     {
         return NativeMethods.TablePtr->hs_method_0841a5b5((void*)_handle);
     }
 
-    public string getName()
+    public string getName_ebfdf74b()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_ebfdf74b((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getName_60b7f08c() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID getOwnerUniqueID()
     {
@@ -86,6 +99,14 @@ public sealed unsafe partial class RaidBossComponent
     {
         return NativeMethods.TablePtr->hs_method_a35d1842((void*)_handle, (void*)arg0.Handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_2aa22d15(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_142db2f6(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void registerPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0)
     {

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CreativeItemRegistry
+public sealed unsafe partial class CreativeItemRegistry : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,15 +37,30 @@ public sealed unsafe partial class CreativeItemRegistry
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static CreativeItemRegistry Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static CreativeItemRegistry Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_a51d4d41();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CreativeItemRegistry((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static CreativeItemRegistry Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemRegistry? current()
     {
         var __hs_handle = NativeMethods.TablePtr->hs_method_84e4a0db();
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemRegistry((nint)__hs_handle, false) : null;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint findCreativeItemEntry_4e3e2a8d(nint netId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public nint findCreativeItemEntry(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0)
     {
@@ -76,6 +91,24 @@ public sealed unsafe partial class CreativeItemRegistry
         return (nint)NativeMethods.TablePtr->hs_method_4225f836((void*)_handle, arg0);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint mCreativeListMutex
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint mCurrentRegistry
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint newCreativeCategory(nint name, nint category) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public nint newCreativeCategory(string arg0, int arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -100,10 +133,18 @@ public sealed unsafe partial class CreativeItemRegistry
         return (nint)NativeMethods.TablePtr->hs_method_ab1db3b1((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint newItemEntry_941c3000(nint creativeNetId, nint item) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public nint newItemEntry(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg1)
     {
         return (nint)NativeMethods.TablePtr->hs_method_e533b690((void*)_handle, (void*)arg0, (void*)arg1.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void resetGroups()
     {
@@ -124,11 +165,18 @@ public sealed unsafe partial class CreativeItemRegistry
         NativeMethods.TablePtr->hs_method_8ee6c928((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_6fe37a82() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_85744b4d() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_ac94ed53((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

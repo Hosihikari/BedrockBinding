@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FlatWorldGenerator
+public sealed unsafe partial class FlatWorldGenerator : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -67,9 +67,24 @@ public sealed unsafe partial class FlatWorldGenerator
         set => NativeMethods.TablePtr->hs_set_d0fb9072((void*)_handle, (void*)value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static FlatWorldGenerator Create(nint arg0, uint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static FlatWorldGenerator Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static FlatWorldGenerator Create(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0, uint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_86df0dc2((void*)arg0.Handle, arg1, (void*)arg2.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FlatWorldGenerator((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static FlatWorldGenerator Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public bool findNearestStructureFeature(nint arg0, nint arg1, nint arg2, bool arg3, nint arg4) =>
@@ -93,14 +108,15 @@ public sealed unsafe partial class FlatWorldGenerator
     public nint getBiomeArea(nint arg0, uint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'BiomeArea' requires --link-carrier or --virtual-dispatch.");
 
-    public nint getBiomeSource()
+    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeSource getBiomeSource()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_f0898910((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeSource((nint)NativeMethods.TablePtr->hs_method_f0898910((void*)_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'WorldGenerator::BlockVolumeDimensions' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getBlockVolumeDimensions() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'WorldGenerator::BlockVolumeDimensions' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.WorldGenerator_Nested.BlockVolumeDimensions getBlockVolumeDimensions()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.WorldGenerator_Nested.BlockVolumeDimensions((nint)NativeMethods.TablePtr->hs_method_5e83b6a0((void*)_handle));
+    }
 
     public bool isStructureFeatureTypeAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, sbyte arg1)
     {
@@ -112,21 +128,66 @@ public sealed unsafe partial class FlatWorldGenerator
         NativeMethods.TablePtr->hs_method_0505e18b((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: const fields are not projected by symbol dispatch.", false)]
+    public nint mBiome
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: const fields are not projected by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: const fields are not projected by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mBiomeSource
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mPrototype
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mPrototypeBlocks
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public bool postProcess(global::Hosihikari.Bindings.Bedrock.Interop.ChunkViewSource arg0)
     {
         return NativeMethods.TablePtr->hs_method_a665caf5((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    public void prepareAndComputeHeights(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1, short[] arg2, bool arg3, int arg4)
+    public void prepareAndComputeHeights(global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1, short[] arg2, bool arg3, int arg4)
     {
         fixed (short* __hs_vectorData2 = arg2)
         {
-            NativeMethods.TablePtr->hs_method_57a38454((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg3, arg4, __hs_vectorData2, (nuint)(arg2?.Length ?? 0));
+            NativeMethods.TablePtr->hs_method_57a38454((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg3, arg4, __hs_vectorData2, (nuint)(arg2?.Length ?? 0));
         }
     }
 
-    public void prepareHeights(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1, bool arg2)
+    public void prepareHeights(global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1, bool arg2)
     {
-        NativeMethods.TablePtr->hs_method_907f129c((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg2);
+        NativeMethods.TablePtr->hs_method_907f129c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_05b62e5d((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

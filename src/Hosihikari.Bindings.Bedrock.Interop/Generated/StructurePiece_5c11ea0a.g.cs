@@ -37,13 +37,25 @@ public sealed unsafe partial class StructurePiece
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static StructurePiece Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static StructurePiece Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos _getWorldPos(int arg0, int arg1, int arg2)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_635de43d((void*)_handle, arg0, arg1, arg2));
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void addChildren_3e7f5b67(nint startPiece, nint pieces, nint random) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.", false)]
-    public void addChildren(nint arg0, nint arg1, nint arg2) =>
+    public void addChildren_51f4b2b8(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.");
 
     public void addHardcodedSpawnAreas(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
@@ -61,8 +73,12 @@ public sealed unsafe partial class StructurePiece
         return NativeMethods.TablePtr->hs_method_82556b69((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3, (void*)arg4.Handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint findCollisionPiece_7e22d28e(nint pieces, nint box) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.", false)]
-    public static nint findCollisionPiece(nint arg0, nint arg1) =>
+    public static nint findCollisionPiece_3ae6c949(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.");
 
     public void generateAirBox(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7)
@@ -109,9 +125,10 @@ public sealed unsafe partial class StructurePiece
     public static int getTotalWeight(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'PieceWeight' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'StructurePieceType' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'StructurePieceType' requires --link-carrier or --virtual-dispatch.");
+    public int getType()
+    {
+        return NativeMethods.TablePtr->hs_method_4f662b68((void*)_handle);
+    }
 
     public int getWorldX(int arg0, int arg1)
     {
@@ -163,10 +180,18 @@ public sealed unsafe partial class StructurePiece
         NativeMethods.TablePtr->hs_method_566cb704((void*)_handle, arg0, arg1, arg2);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void placeBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, int arg2, int arg3, int arg4, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg5)
     {
         NativeMethods.TablePtr->hs_method_ce429039((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4, (void*)arg5.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool postProcess(nint region, nint random, nint chunkBB) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void postProcessMobsAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg2)
     {

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ZipPackAccessStrategy
+public sealed unsafe partial class ZipPackAccessStrategy : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,28 @@ public sealed unsafe partial class ZipPackAccessStrategy
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ZipPackAccessStrategy Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ZipPackAccessStrategy Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ZipPackAccessStrategy Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static ZipPackAccessStrategy Create(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg1, nint arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_591946f4((void*)arg0, (void*)arg1.Handle, (void*)arg2);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ZipPackAccessStrategy((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool _tryReadFromPendingQueue_32e3c46f(nint packRelativePath, nint result) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy? createSubPack(nint arg0)
     {
@@ -57,15 +76,23 @@ public sealed unsafe partial class ZipPackAccessStrategy
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public bool getAsset(nint arg0, nint arg1, bool arg2) =>
+    public bool getAsset_68547d03(nint arg0, nint arg1, bool arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    public nint getPackLocation()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool getAsset_923e7378(nint packRelativePath, nint result, bool trustedContentOnly) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation getPackLocation()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_9a3e8698((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation((nint)NativeMethods.TablePtr->hs_method_9a3e8698((void*)_handle), false);
     }
 
-    public string getPackName()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getPackName_26903569() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getPackName_534573d1()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_534573d1((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -76,14 +103,19 @@ public sealed unsafe partial class ZipPackAccessStrategy
         return NativeMethods.TablePtr->hs_method_9dab36d8((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackAccessStrategyType' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getStrategyType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackAccessStrategyType' requires --link-carrier or --virtual-dispatch.");
+    public int getStrategyType()
+    {
+        return NativeMethods.TablePtr->hs_method_dd216ee3((void*)_handle);
+    }
 
-    public nint getSubPath()
+    public nint getSubPath_9ca31b76()
     {
         return (nint)NativeMethods.TablePtr->hs_method_9ca31b76((void*)_handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getSubPath_718c0b3d() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool hasAsset(nint arg0, bool arg1, bool arg2)
     {
@@ -104,6 +136,10 @@ public sealed unsafe partial class ZipPackAccessStrategy
     {
         return NativeMethods.TablePtr->hs_method_e14172c2((void*)_handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContentIdentity' requires --link-carrier or --virtual-dispatch.", false)]
     public nint readContentIdentity() =>
@@ -138,7 +174,21 @@ public sealed unsafe partial class ZipPackAccessStrategy
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool writeAsset(nint packRelativePath, nint fileContent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_68a656eb((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

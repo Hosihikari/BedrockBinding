@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class OceanMonumentPiece
+public sealed unsafe partial class OceanMonumentPiece : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,24 @@ public sealed unsafe partial class OceanMonumentPiece
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static OceanMonumentPiece Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static OceanMonumentPiece Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static OceanMonumentPiece Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static OceanMonumentPiece Create(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_a381622c((void*)arg0, (void*)arg1.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OceanMonumentPiece((nint)handle);
+    }
 
     public void addHardcodedSpawnAreas(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
     {
@@ -56,12 +71,61 @@ public sealed unsafe partial class OceanMonumentPiece
         return NativeMethods.TablePtr->hs_method_b46388b9((void*)_handle, arg0, arg1);
     }
 
+    public static int mGridroomLeftWingConnectIndex
+    {
+        get => NativeMethods.TablePtr->hs_get_8db04f4f();
+    }
+
+    public static int mGridroomRightWingConnectIndex
+    {
+        get => NativeMethods.TablePtr->hs_get_3fa3b2b4();
+    }
+
+    public static int mGridroomSourceIndex
+    {
+        get => NativeMethods.TablePtr->hs_get_33107dbe();
+    }
+
+    public static int mGridroomTopConnectIndex
+    {
+        get => NativeMethods.TablePtr->hs_get_ce5c7077();
+    }
+
+    public static int mLeftWingIndex
+    {
+        get => NativeMethods.TablePtr->hs_get_510342dd();
+    }
+
+    public static int mPenthouseIndex
+    {
+        get => NativeMethods.TablePtr->hs_get_983cc838();
+    }
+
+    public static int mRightWingIndex
+    {
+        get => NativeMethods.TablePtr->hs_get_7bb64d12();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void postProcessMobsAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg2)
     {
         NativeMethods.TablePtr->hs_method_01b99550((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_1a53c5dd((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

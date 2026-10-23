@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MolangScriptArg
+public sealed unsafe partial class MolangScriptArg : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,48 +37,112 @@ public sealed unsafe partial class MolangScriptArg
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MolangScriptArg Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static MolangScriptArg Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_2183f2e0();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MolangScriptArg Create_af8e1be7(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new MolangScriptArg((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MolangScriptArg Create_6d15eb92(nint actorId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MolangScriptArg Create_ff969131(nint loopBreak) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MolangScriptArg Create_c51fa23e(nint loopContinue) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static MolangScriptArg Create(global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_af8e1be7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangScriptArg((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public static MolangScriptArg Create_7cdd3995(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MolangScriptArg Create(float arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MolangScriptArg Create_fae4ceff(nint actor) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MolangScriptArg Create(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MolangScriptArg Create_08e3f5fe(nint item) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MolangScriptArg Create_f3b2d47f(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MolangScriptArg Create_97d48027(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MolangScriptArg Create_0b175a30(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static MolangScriptArg Create(float arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_35db8e16(arg0);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangScriptArg((nint)handle);
+    }
+
+    public static MolangScriptArg Create(int arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_ce548887(arg0);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangScriptArg((nint)handle);
+    }
 
     public void clear()
     {
         NativeMethods.TablePtr->hs_method_93a4b662((void*)_handle);
     }
 
-    public nint getAsNonConstIfMolangMemberArray()
+    public global::Hosihikari.Bindings.Bedrock.Interop.MolangMemberArray? getAsNonConstIfMolangMemberArray()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d9d32cb5((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_d9d32cb5((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MolangMemberArray((nint)__hs_handle, false) : null;
     }
 
-    public nint getAsNonConstMolangMemberArray()
+    public global::Hosihikari.Bindings.Bedrock.Interop.MolangMemberArray? getAsNonConstMolangMemberArray()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_3e408a67((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_3e408a67((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MolangMemberArray((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'MolangScriptArgType' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getBaseType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'MolangScriptArgType' requires --link-carrier or --virtual-dispatch.");
-
-    public nint getIfMolangMemberArray()
+    public int getBaseType()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_a918450b((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_8667466a((void*)_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.MolangMemberArray? getIfMolangMemberArray()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_a918450b((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MolangMemberArray((nint)__hs_handle, false) : null;
     }
 
     public bool isEqual(global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg arg0)
@@ -86,19 +150,90 @@ public sealed unsafe partial class MolangScriptArg
         return NativeMethods.TablePtr->hs_method_84869c7c((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'MolangScriptArgType' is not a known bindable declaration.", false)]
-    public void setType(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'MolangScriptArgType' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mData
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_a39ebc7c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg mDefaultReturnValue_break
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->hs_get_547e61f3(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg mDefaultReturnValue_emptyStringHash
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->hs_get_451ea540(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg mDefaultReturnValue_float0
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->hs_get_4980e917(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg mDefaultReturnValue_float1
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->hs_get_1282d699(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg mDefaultReturnValue_floatNeg1
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->hs_get_c4df9408(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg mDefaultReturnValue_molangActorIdEmptyArrayPtr
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->hs_get_5e190c29(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg mDefaultReturnValue_structUV0
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->hs_get_fdf9df4e(), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mPOD
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    public int mType
+    {
+        get => NativeMethods.TablePtr->hs_get_bd7f2008((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_bd7f2008((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_99e0ab68(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_f043fa97(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void setType(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_1f331429((void*)_handle, arg0);
+    }
+
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static MolangScriptArg Create_72e41118(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_13c04809() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_cc849525((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

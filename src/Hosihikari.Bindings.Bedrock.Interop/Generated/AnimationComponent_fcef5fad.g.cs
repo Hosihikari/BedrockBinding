@@ -37,9 +37,17 @@ public sealed unsafe partial class AnimationComponent
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static AnimationComponent Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static AnimationComponent Create(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static AnimationComponent Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void applyAnimations(bool arg0)
     {
@@ -52,14 +60,19 @@ public sealed unsafe partial class AnimationComponent
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getAllBoneOrientations_914bebfe() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public nint getAllBoneOrientations_667b318a()
     {
         return (nint)NativeMethods.TablePtr->hs_method_667b318a((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'SkeletalHierarchyIndex' is not a known bindable declaration.", false)]
-    public nint getBoneOrientations_950526d0(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'SkeletalHierarchyIndex' is not a known bindable declaration.");
+    public nint getBoneOrientations(int arg0, bool arg1)
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_950526d0((void*)_handle, arg0, arg1);
+    }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getCurrentAnimationControllerStatePlayer()
     {
@@ -105,6 +118,31 @@ public sealed unsafe partial class AnimationComponent
     {
         return NativeMethods.TablePtr->hs_method_3e7a54e3((void*)_handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint mClientFrameIndex
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint mReloadTimeStampClient
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint mServerFrameIndex
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void serverUpdate(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {

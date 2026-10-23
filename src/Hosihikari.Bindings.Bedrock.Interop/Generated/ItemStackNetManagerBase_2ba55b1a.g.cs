@@ -37,22 +37,47 @@ public sealed unsafe partial class ItemStackNetManagerBase
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ItemStackNetManagerBase Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static ItemStackNetManagerBase Create(nint arg0, bool arg1, bool arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ItemStackNetManagerBase Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _tryBeginClientLegacyTransactionRequest_ae601533() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint _tryBeginClientLegacyTransactionRequest_c15f78e0(nint player) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: return type 'gsl::final_action<std::function<void (void)>>' is not supported.", false)]
-    public static nint _tryBeginClientLegacyTransactionRequest(nint arg0) =>
+    public static nint _tryBeginClientLegacyTransactionRequest_9809b010(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'gsl::final_action<std::function<void (void)>>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool allowInventoryTransactionManager() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getRequestId() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public nint getScreenContext()
     {
         return (nint)NativeMethods.TablePtr->hs_method_67f5d62a((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ContainerEnumName' is not a known bindable declaration.", false)]
-    public nint initOpenContainer(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ContainerEnumName' is not a known bindable declaration.");
+    public nint initOpenContainer(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, sbyte arg1, nint arg2)
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_f008a2ce((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2);
+    }
 
     public bool isClientSide()
     {
@@ -78,6 +103,10 @@ public sealed unsafe partial class ItemStackNetManagerBase
     {
         NativeMethods.TablePtr->hs_method_54de876c((void*)_handle, (void*)arg0);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool retainSetItemStackNetIdVariant()
     {

@@ -37,9 +37,17 @@ public sealed unsafe partial class AppPlatformListener
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static AppPlatformListener Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static AppPlatformListener Create(bool arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static AppPlatformListener Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void initListener(float arg0)
     {
@@ -96,6 +104,10 @@ public sealed unsafe partial class AppPlatformListener
         NativeMethods.TablePtr->hs_method_e73b8924((void*)_handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void onClipboardCopy(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void onClipboardCopy(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -114,6 +126,10 @@ public sealed unsafe partial class AppPlatformListener
             NativeMethods.TablePtr->hs_method_52a410cf((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void onClipboardPaste(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void onClipboardPaste(string arg0)
     {
@@ -144,9 +160,10 @@ public sealed unsafe partial class AppPlatformListener
         NativeMethods.TablePtr->hs_method_4c16dfd5((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OperationMode' is not a known bindable declaration.", false)]
-    public void onOperationModeChanged(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OperationMode' is not a known bindable declaration.");
+    public void onOperationModeChanged(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_5a036f61((void*)_handle, arg0);
+    }
 
     public void onPerformanceModeChanged(bool arg0)
     {
@@ -167,6 +184,10 @@ public sealed unsafe partial class AppPlatformListener
     {
         NativeMethods.TablePtr->hs_method_67802d90((void*)_handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void terminate()
     {

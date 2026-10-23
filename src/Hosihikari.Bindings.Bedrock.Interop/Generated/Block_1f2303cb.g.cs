@@ -287,9 +287,9 @@ public sealed unsafe partial class Block : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_3ae8e091((void*)_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Block copyState(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, nint arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Block copyState(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockState arg1)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_904547ce((void*)_handle, (void*)arg0.Handle, (void*)arg1), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_904547ce((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle), false);
     }
 
     public bool dealsContactDamage(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, bool arg1)
@@ -621,9 +621,9 @@ public sealed unsafe partial class Block : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_e0a07aa6((void*)_handle, arg0) != 0;
     }
 
-    public bool hasState(nint arg0)
+    public bool hasState(global::Hosihikari.Bindings.Bedrock.Interop.BlockState arg0)
     {
-        return NativeMethods.TablePtr->hs_method_cfc13056((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_cfc13056((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool hasTag(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
@@ -806,9 +806,9 @@ public sealed unsafe partial class Block : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_cc4cd98a((void*)_handle) != 0;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Block keepState(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Block keepState(global::Hosihikari.Bindings.Bedrock.Interop.BlockState arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_97c137d1((void*)_handle, (void*)arg0), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_97c137d1((void*)_handle, (void*)arg0.Handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Block keepStates(nint[] arg0)

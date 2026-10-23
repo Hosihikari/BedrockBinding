@@ -37,6 +37,14 @@ public sealed unsafe partial class ChemistryTableBlockActor
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ChemistryTableBlockActor Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ChemistryTableBlockActor Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     public global::Hosihikari.Bindings.Bedrock.Interop.Container? getContainer_558754c4()
     {
         var __hs_handle = NativeMethods.TablePtr->hs_method_558754c4((void*)_handle);
@@ -64,9 +72,10 @@ public sealed unsafe partial class ChemistryTableBlockActor
         return NativeMethods.TablePtr->hs_method_09f6826f((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ChemistryTableType' is not a known bindable declaration.", false)]
-    public bool isSameType(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ChemistryTableType' is not a known bindable declaration.");
+    public bool isSameType(int arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_13835ced((void*)_handle, arg0) != 0;
+    }
 
     public void load(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
     {
@@ -77,6 +86,10 @@ public sealed unsafe partial class ChemistryTableBlockActor
     {
         NativeMethods.TablePtr->hs_method_e749fa85((void*)_handle, (void*)arg0.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void playerOpenLabTable(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
     {

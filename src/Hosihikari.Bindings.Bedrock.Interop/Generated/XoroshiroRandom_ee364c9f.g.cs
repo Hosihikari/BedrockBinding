@@ -37,6 +37,14 @@ public sealed unsafe partial class XoroshiroRandom
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static XoroshiroRandom Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static XoroshiroRandom Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     public void consumeCount(uint arg0)
     {
         NativeMethods.TablePtr->hs_method_d61e7418((void*)_handle, arg0);
@@ -86,6 +94,10 @@ public sealed unsafe partial class XoroshiroRandom
     {
         return NativeMethods.TablePtr->hs_method_09091dd8((void*)_handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Seed128Bit' requires --link-carrier or --virtual-dispatch.", false)]
     public nint seed128() =>

@@ -64,13 +64,13 @@ public sealed unsafe partial class ResourcePackManager
     public nint getPackStackIndexOfResource(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::pair<int,std::basic_string<char,std::char_traits<char>,std::allocator<char>> const&>' requires --link-carrier or --virtual-dispatch.");
 
-    public string getPath(nint arg0)
+    public string getPath(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_a3cc600a((void*)_handle, (void*)arg0);
+        var __hs_view = NativeMethods.TablePtr->hs_method_a3cc600a((void*)_handle, (void*)arg0.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string getPath(nint arg0, string[] arg1)
+    public string getPath(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0, string[] arg1)
     {
         var __hs_vectorItems1 = arg1 ?? global::System.Array.Empty<string>();
         var __hs_vectorCount1 = __hs_vectorItems1.Length;
@@ -92,14 +92,14 @@ public sealed unsafe partial class ResourcePackManager
                 __hs_vectorData1[__hs_i1] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr1 + __hs_vectorOffset1, Size = (nuint)__hs_length1 };
                 __hs_vectorOffset1 += __hs_length1;
             }
-            var __hs_view = NativeMethods.TablePtr->hs_method_aa19f056((void*)_handle, (void*)arg0, __hs_vectorData1, (nuint)(arg1?.Length ?? 0));
+            var __hs_view = NativeMethods.TablePtr->hs_method_aa19f056((void*)_handle, (void*)arg0.Handle, __hs_vectorData1, (nuint)(arg1?.Length ?? 0));
             return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
         }
     }
 
-    public string getPathContainingResource(nint arg0)
+    public string getPathContainingResource(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_516e064a((void*)_handle, (void*)arg0);
+        var __hs_view = NativeMethods.TablePtr->hs_method_516e064a((void*)_handle, (void*)arg0.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -143,17 +143,17 @@ public sealed unsafe partial class ResourcePackManager
         }
     }
 
-    public bool hasResource(nint arg0)
+    public bool hasResource(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0)
     {
-        return NativeMethods.TablePtr->hs_method_da913ab0((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_da913ab0((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    public bool isInStreamableLocation(nint arg0)
+    public bool isInStreamableLocation(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0)
     {
-        return NativeMethods.TablePtr->hs_method_2e189927((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_2e189927((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    public bool isInStreamableLocation(nint arg0, string[] arg1)
+    public bool isInStreamableLocation(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0, string[] arg1)
     {
         var __hs_vectorItems1 = arg1 ?? global::System.Array.Empty<string>();
         var __hs_vectorCount1 = __hs_vectorItems1.Length;
@@ -175,7 +175,7 @@ public sealed unsafe partial class ResourcePackManager
                 __hs_vectorData1[__hs_i1] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr1 + __hs_vectorOffset1, Size = (nuint)__hs_length1 };
                 __hs_vectorOffset1 += __hs_length1;
             }
-            return NativeMethods.TablePtr->hs_method_8d8a12a2((void*)_handle, (void*)arg0, __hs_vectorData1, (nuint)(arg1?.Length ?? 0)) != 0;
+            return NativeMethods.TablePtr->hs_method_8d8a12a2((void*)_handle, (void*)arg0.Handle, __hs_vectorData1, (nuint)(arg1?.Length ?? 0)) != 0;
         }
     }
 

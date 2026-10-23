@@ -151,9 +151,9 @@ public sealed unsafe partial class BlockVolumeTarget
         return NativeMethods.TablePtr->hs_method_71b5b184((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
-    public bool shimPlaceForOldFeatures(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2)
+    public bool shimPlaceForOldFeatures(global::Hosihikari.Bindings.Bedrock.Interop.Feature arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2)
     {
-        return NativeMethods.TablePtr->hs_method_ff8d8de0((void*)_handle, (void*)arg0, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
+        return NativeMethods.TablePtr->hs_method_ff8d8de0((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Block? tryGetLiquidBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)

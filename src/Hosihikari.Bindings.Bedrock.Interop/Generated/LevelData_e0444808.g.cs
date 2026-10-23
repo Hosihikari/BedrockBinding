@@ -217,9 +217,9 @@ public sealed unsafe partial class LevelData
         return (nint)NativeMethods.TablePtr->hs_method_9176f510((void*)_handle);
     }
 
-    public nint getFlatWorldGeneratorOptions()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json.Value getFlatWorldGeneratorOptions()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_4f9bccf7((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->hs_method_4f9bccf7((void*)_handle), false);
     }
 
     public bool getForceGameType()
@@ -422,9 +422,9 @@ public sealed unsafe partial class LevelData
         return NativeMethods.TablePtr->hs_method_9d59cdbf((void*)_handle);
     }
 
-    public nint getWorldTemplateIdentity()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion getWorldTemplateIdentity()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_7aff232a((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion((nint)NativeMethods.TablePtr->hs_method_7aff232a((void*)_handle), false);
     }
 
     public sbyte getWorldVersion()
@@ -821,9 +821,9 @@ public sealed unsafe partial class LevelData
         NativeMethods.TablePtr->hs_method_083d3935((void*)_handle, arg0);
     }
 
-    public void setWorldTemplateIdentity(nint arg0)
+    public void setWorldTemplateIdentity(global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion arg0)
     {
-        NativeMethods.TablePtr->hs_method_cb0ac029((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_cb0ac029((void*)_handle, (void*)arg0.Handle);
     }
 
     public void setWorldTemplateOptionLocked(bool arg0)

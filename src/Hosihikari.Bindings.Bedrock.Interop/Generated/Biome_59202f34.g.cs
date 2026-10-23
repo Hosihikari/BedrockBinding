@@ -37,9 +37,55 @@ public sealed unsafe partial class Biome
         return __hs_handle;
     }
 
+    public static string BACKCOMPAT_FOG_NAME
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_b57054be();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Biome Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Biome Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static Biome Create(int arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color DEFAULT_FOG_COLOR
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_9d8ecec4(), false);
+    }
+
+    public static string DEFAULT_FOG_ID
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_6c566732();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color DEFAULT_UNDERWATER_COLOR
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_cc89276e(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color DEFAULT_WATER_COLOR
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_get_9dec6d98(), false);
+    }
+
+    public static float RAIN_TEMP_THRESHOLD
+    {
+        get => NativeMethods.TablePtr->hs_get_6639a00f();
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint addTag(nint arg0, nint arg1) =>
@@ -60,9 +106,10 @@ public sealed unsafe partial class Biome
         return NativeMethods.TablePtr->hs_method_f82a38d8((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'VanillaBiomeTypes' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getBiomeType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'VanillaBiomeTypes' requires --link-carrier or --virtual-dispatch.");
+    public int getBiomeType()
+    {
+        return NativeMethods.TablePtr->hs_method_aae5981b((void*)_handle);
+    }
 
     public int getBirchFoliageColor(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
     {
@@ -109,15 +156,23 @@ public sealed unsafe partial class Biome
         return NativeMethods.TablePtr->hs_method_d1c99350((void*)_handle, (void*)arg0.Handle);
     }
 
-    public nint getMobs()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getMobs_381c3acb() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public nint getMobs_69d4f54f()
     {
         return (nint)NativeMethods.TablePtr->hs_method_69d4f54f((void*)_handle);
     }
 
-    public nint getMobsMutable()
+    public nint getMobsMutable_14a30965()
     {
         return (nint)NativeMethods.TablePtr->hs_method_14a30965((void*)_handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getMobsMutable_c7ccda97() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int getSnowAccumulationLayers()
     {
@@ -128,6 +183,10 @@ public sealed unsafe partial class Biome
     {
         return NativeMethods.TablePtr->hs_method_3e04430b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getTemperatureCategory_43d2d966() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public float getTemperatureWorldGen(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, short arg1)
     {
@@ -159,6 +218,10 @@ public sealed unsafe partial class Biome
         return NativeMethods.TablePtr->hs_method_f6d390dd((void*)_handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public global::Hosihikari.Bindings.Bedrock.Interop.Biome setMapWaterColor(int arg0)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Biome((nint)NativeMethods.TablePtr->hs_method_5b381342((void*)_handle, arg0), false);
@@ -180,6 +243,10 @@ public sealed unsafe partial class Biome
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
+    public void Destroy_44e95a2f() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_09028d64() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

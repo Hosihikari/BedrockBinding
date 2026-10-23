@@ -41,6 +41,55 @@ public sealed unsafe partial class BaseAttributeMap
     public static BaseAttributeMap Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BaseAttributeMap Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static string DIFF_ATTRIBUTES
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_c98285a5();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string DIFF_ATTRIBUTES_SIZE
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_dfe8e7c0();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string DIFF_DIRTY_ATTRIBUTES
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_6199325a();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string DIFF_DIRTY_ATTRIBUTES_SIZE
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_65a6e18c();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string DIFF_NO_ATTRIBUTES
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_cf38b001();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::_List_iterator<std::_List_val<std::_List_simple_types<std::pair<unsigned int const,AttributeInstance>>>>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint begin_2f11aeb4() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::_List_iterator<std::_List_val<std::_List_simple_types<std::pair<unsigned int const,AttributeInstance>>>>' requires --link-carrier or --virtual-dispatch.");
@@ -95,6 +144,15 @@ public sealed unsafe partial class BaseAttributeMap
     {
         NativeMethods.TablePtr->hs_method_56afeafb((void*)_handle, (void*)arg0.Handle);
     }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance mInvalidInstance
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance((nint)NativeMethods.TablePtr->hs_get_83ee61ba(), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance registerAttribute(nint arg0)
     {

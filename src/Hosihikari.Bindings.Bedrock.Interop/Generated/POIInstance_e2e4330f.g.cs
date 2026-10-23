@@ -37,9 +37,21 @@ public sealed unsafe partial class POIInstance
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static POIInstance Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static POIInstance Create(nint arg0, bool arg1, nint arg2, nint arg3, float arg4, ulong arg5, ulong arg6, nint arg7, nint arg8, nint arg9) =>
+    public static POIInstance Create_a17a5172(nint arg0, bool arg1, nint arg2, nint arg3, float arg4, ulong arg5, ulong arg6, nint arg7, nint arg8, nint arg9) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static POIInstance Create_72c6d536(nint pos, bool useBoundingBox, nint name, nint type, float radius, ulong maxCapacity, ulong weight, nint soundEvent, nint initEvent, nint endEvent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static POIInstance Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void decreaseOwnerCount(ulong arg0)
     {
@@ -91,15 +103,20 @@ public sealed unsafe partial class POIInstance
         return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_1fd6e52f((void*)_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'POIType' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'POIType' requires --link-carrier or --virtual-dispatch.");
+    public int getType()
+    {
+        return NativeMethods.TablePtr->hs_method_87d9a757((void*)_handle);
+    }
 
-    public string getTypeName()
+    public string getTypeName_bd1836b2()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_bd1836b2((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getTypeName_8d3d3ebe() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public ulong getWeight()
     {
@@ -125,6 +142,10 @@ public sealed unsafe partial class POIInstance
     {
         return NativeMethods.TablePtr->hs_method_ad4f67b1((void*)_handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void resetArrivalFailureCount()
     {

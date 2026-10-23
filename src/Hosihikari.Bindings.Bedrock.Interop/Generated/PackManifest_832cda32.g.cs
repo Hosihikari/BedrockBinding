@@ -45,9 +45,9 @@ public sealed unsafe partial class PackManifest
     public static PackManifest Create_a6e3e48a(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    public void addModule(nint arg0)
+    public void addModule(global::Hosihikari.Bindings.Bedrock.Interop.ResourceInformation arg0)
     {
-        NativeMethods.TablePtr->hs_method_8033c083((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_8033c083((void*)_handle, (void*)arg0.Handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.PackManifest? clone()
@@ -76,9 +76,9 @@ public sealed unsafe partial class PackManifest
     public nint getFormatVersion() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackManifestFormat' requires --link-carrier or --virtual-dispatch.");
 
-    public nint getIdentity()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion getIdentity()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_18b3f2e4((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion((nint)NativeMethods.TablePtr->hs_method_18b3f2e4((void*)_handle), false);
     }
 
     public nint getLanguageCodesForPackKeywords()
@@ -86,9 +86,9 @@ public sealed unsafe partial class PackManifest
         return (nint)NativeMethods.TablePtr->hs_method_09995f99((void*)_handle);
     }
 
-    public nint getLocation()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation getLocation()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_6ff176f2((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation((nint)NativeMethods.TablePtr->hs_method_6ff176f2((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ManifestOrigin' requires --link-carrier or --virtual-dispatch.", false)]
@@ -131,17 +131,19 @@ public sealed unsafe partial class PackManifest
     public nint getOriginalFormatVersion() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackManifestFormat' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackCategory' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getPackCategory() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackCategory' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackOrigin' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getPackOrigin() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackOrigin' requires --link-carrier or --virtual-dispatch.");
-
-    public nint getPackSettings()
+    public int getPackCategory()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_ff85d34f((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_acde4c97((void*)_handle);
+    }
+
+    public sbyte getPackOrigin()
+    {
+        return NativeMethods.TablePtr->hs_method_ebb4229c((void*)_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json.Value getPackSettings()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->hs_method_ff85d34f((void*)_handle), false);
     }
 
     public ulong getPackSize()
@@ -268,9 +270,9 @@ public sealed unsafe partial class PackManifest
         NativeMethods.TablePtr->hs_method_0e8a3414((void*)_handle, arg0);
     }
 
-    public void setIdentity(nint arg0)
+    public void setIdentity(global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion arg0)
     {
-        NativeMethods.TablePtr->hs_method_a5a9e347((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_a5a9e347((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
@@ -311,13 +313,15 @@ public sealed unsafe partial class PackManifest
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PackCategory' is not a known bindable declaration.", false)]
-    public void setPackCategory(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PackCategory' is not a known bindable declaration.");
+    public void setPackCategory(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_dbecad8b((void*)_handle, arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PackOrigin' is not a known bindable declaration.", false)]
-    public void setPackOrigin(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PackOrigin' is not a known bindable declaration.");
+    public void setPackOrigin(sbyte arg0)
+    {
+        NativeMethods.TablePtr->hs_method_fa167459((void*)_handle, arg0);
+    }
 
     public void setPackType(sbyte arg0)
     {

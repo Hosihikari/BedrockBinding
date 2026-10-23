@@ -37,6 +37,10 @@ public sealed unsafe partial class AngerLevelComponent
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static AngerLevelComponent Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static AngerLevelComponent Create_ea8908fa(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
@@ -44,6 +48,31 @@ public sealed unsafe partial class AngerLevelComponent
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static AngerLevelComponent Create_b853a33f(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    public static float DEFAULT_ANGER_DECREMENT_INTERVAL_SECONDS
+    {
+        get => NativeMethods.TablePtr->hs_get_bff07699();
+    }
+
+    public static int DEFAULT_ANGRY_BOOST
+    {
+        get => NativeMethods.TablePtr->hs_get_9087a83f();
+    }
+
+    public static int DEFAULT_ANGRY_THRESHOLD
+    {
+        get => NativeMethods.TablePtr->hs_get_2b4b23e5();
+    }
+
+    public static int DEFAULT_MAX_ANGER_LEVEL
+    {
+        get => NativeMethods.TablePtr->hs_get_a2b71ec1();
+    }
+
+    public static bool DEFAULT_SHOULD_REMOVE_TARGET
+    {
+        get => NativeMethods.TablePtr->hs_get_fded014c() != 0;
+    }
 
     public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {
@@ -73,6 +102,14 @@ public sealed unsafe partial class AngerLevelComponent
     {
         return NativeMethods.TablePtr->hs_method_73b17266((void*)_handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_cc1ca781(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_972ff652(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
     {

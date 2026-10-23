@@ -37,9 +37,17 @@ public sealed unsafe partial class PropertyComponent
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static PropertyComponent Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static PropertyComponent Create_2d7456fe(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static PropertyComponent Create_110fc060(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static PropertyComponent Create(nint arg0, nint arg1) =>
@@ -50,7 +58,11 @@ public sealed unsafe partial class PropertyComponent
         NativeMethods.TablePtr->hs_method_d57087be((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void applyPendingChanges(nint arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void applyPendingChanges_9fa37b30(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void applyPendingChanges_6a2d3237(nint arg0)
     {
         NativeMethods.TablePtr->hs_method_6a2d3237((void*)_handle, (void*)arg0);
     }
@@ -75,9 +87,10 @@ public sealed unsafe partial class PropertyComponent
         return NativeMethods.TablePtr->hs_method_fac9733f((void*)_handle, arg0, (void*)arg1.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PropertyMetadata::ContainedType' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getPropertyType(ulong arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PropertyMetadata::ContainedType' requires --link-carrier or --virtual-dispatch.");
+    public int getPropertyType(ulong arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_9ab327a6((void*)_handle, arg0);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.HashedString getString(ulong arg0)
     {
@@ -88,6 +101,14 @@ public sealed unsafe partial class PropertyComponent
     {
         return NativeMethods.TablePtr->hs_method_b745b1f7((void*)_handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_a92016cd(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_8c10048d(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PropertySyncData' requires --link-carrier or --virtual-dispatch.", false)]
     public nint packAllSyncData() =>
@@ -101,6 +122,10 @@ public sealed unsafe partial class PropertyComponent
     {
         NativeMethods.TablePtr->hs_method_4a2e1a8d((void*)_handle, (void*)arg0.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setAliasProperties(nint arg0, nint arg1, nint canonicalName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setAliasProperties(nint arg0, string arg1, string arg2)
     {

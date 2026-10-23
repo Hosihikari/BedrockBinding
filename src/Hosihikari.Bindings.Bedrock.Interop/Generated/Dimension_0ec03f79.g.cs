@@ -56,7 +56,7 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
     public static Dimension Create(nint level, nint dimId, nint heightRange, nint callbackContext, nint name) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static Dimension Create(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange arg2, nint arg3, string arg4)
+    public static Dimension Create(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange arg2, global::Hosihikari.Bindings.Bedrock.Interop.Scheduler arg3, string arg4)
     {
         var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
         scoped global::System.Span<byte> __hs_stringBytes4;
@@ -71,7 +71,7 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
         fixed (byte* __hs_stringData4 = __hs_stringBytes4)
         {
-            var handle = NativeMethods.TablePtr->hs_create_eb30ec52((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3, __hs_stringData4, (nuint)__hs_stringByteCount4);
+            var handle = NativeMethods.TablePtr->hs_create_eb30ec52((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, __hs_stringData4, (nuint)__hs_stringByteCount4);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

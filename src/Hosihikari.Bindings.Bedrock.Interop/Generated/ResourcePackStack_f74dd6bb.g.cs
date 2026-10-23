@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ResourcePackStack
+public sealed unsafe partial class ResourcePackStack : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,15 +37,27 @@ public sealed unsafe partial class ResourcePackStack
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PackInstance' is not copy-constructible.", false)]
-    public void add(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PackInstance' is not copy-constructible.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ResourcePackStack Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackStack? deserialize(nint arg0, nint arg1)
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ResourcePackStack Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    public void add(nint arg0, nint arg1, bool arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackStack? deserialize_1f188198(nint arg0, nint arg1)
     {
         var __hs_handle = NativeMethods.TablePtr->hs_method_1f188198((void*)arg0, (void*)arg1);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackStack((nint)__hs_handle) : null;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint deserialize_e25d35c6(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void generateAssetSet()
     {
@@ -63,6 +75,10 @@ public sealed unsafe partial class ResourcePackStack
         }
         return __hs_result;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getPackTelemetryNamesWithVersion(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void getSplitStacks(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackStack arg0, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackStack arg1)
     {
@@ -88,6 +104,10 @@ public sealed unsafe partial class ResourcePackStack
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool hasCapabilityInStack(nint capability) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public bool hasPlatformLockedContent()
     {
         return NativeMethods.TablePtr->hs_method_f24f94d7((void*)_handle) != 0;
@@ -97,9 +117,9 @@ public sealed unsafe partial class ResourcePackStack
     public void iteratePacks(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public bool loadAllVersionsOf(nint arg0, nint arg1)
+    public bool loadAllVersionsOf(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0, nint arg1)
     {
-        return NativeMethods.TablePtr->hs_method_c05d4ec8((void*)_handle, (void*)arg0, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_c05d4ec8((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -109,6 +129,31 @@ public sealed unsafe partial class ResourcePackStack
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'LoadedResourceData' is not supported.", false)]
     public nint loadAllVersionsOf(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'LoadedResourceData' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mPackSourceReport
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mStack
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint mUpgradePathMap
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void removeDuplicates()
     {
@@ -124,11 +169,18 @@ public sealed unsafe partial class ResourcePackStack
         NativeMethods.TablePtr->hs_method_da0f79a1((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_225617e6() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_19adbdab() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_f74dd6bb((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

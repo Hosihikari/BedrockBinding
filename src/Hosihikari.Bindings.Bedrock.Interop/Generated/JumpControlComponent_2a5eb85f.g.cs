@@ -85,6 +85,10 @@ public sealed unsafe partial class JumpControlComponent
         NativeMethods.TablePtr->hs_method_f1d0d258((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint other) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void resetSpeedModifier(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0)
     {
         NativeMethods.TablePtr->hs_method_a3cd79ca((void*)_handle, (void*)arg0.Handle);
@@ -94,9 +98,10 @@ public sealed unsafe partial class JumpControlComponent
     public void setInternalType(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'JumpControl' has no generated wrapper.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'JumpType' is not a known bindable declaration.", false)]
-    public void setJumpType(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'JumpType' is not a known bindable declaration.");
+    public void setJumpType(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_eed145d1((void*)_handle, arg0);
+    }
 
     public void setJumping(bool arg0)
     {

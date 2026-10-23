@@ -41,9 +41,9 @@ public sealed unsafe partial class RakNetConnector
     public static RakNetConnector Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    public void addConnectionStateListener(nint arg0)
+    public void addConnectionStateListener(global::Hosihikari.Bindings.Bedrock.Interop.Connector_Nested.ConnectionStateListener? arg0)
     {
-        NativeMethods.TablePtr->hs_method_7d001904((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_7d001904((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
     public void closeNetworkConnection(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0)
@@ -94,9 +94,10 @@ public sealed unsafe partial class RakNetConnector
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Connector::NatPunchInfo' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getNatPunchInfo() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Connector::NatPunchInfo' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Connector_Nested.NatPunchInfo getNatPunchInfo()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Connector_Nested.NatPunchInfo((nint)NativeMethods.TablePtr->hs_method_3f103b9a((void*)_handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier getNetworkIdentifier()
     {
@@ -157,9 +158,9 @@ public sealed unsafe partial class RakNetConnector
         return NativeMethods.TablePtr->hs_method_aeac81a6((void*)_handle) != 0;
     }
 
-    public void removeConnectionStateListener(nint arg0)
+    public void removeConnectionStateListener(global::Hosihikari.Bindings.Bedrock.Interop.Connector_Nested.ConnectionStateListener? arg0)
     {
-        NativeMethods.TablePtr->hs_method_972d3614((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_972d3614((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
     public void runEvents()

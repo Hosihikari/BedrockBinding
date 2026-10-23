@@ -37,6 +37,33 @@ public sealed unsafe partial class UnlockedRecipesServerComponent
         return __hs_handle;
     }
 
+    public static string COMPONENT_TAG
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_c112a017();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string UNLOCKED_RECIPES_TAG
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_44be89d1();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string USED_CONTEXTS_TAG
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_22688a00();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static UnlockedRecipesServerComponent Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
@@ -59,6 +86,10 @@ public sealed unsafe partial class UnlockedRecipesServerComponent
         NativeMethods.TablePtr->hs_method_c5de265d((void*)_handle, arg0);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void addUnlockedRecipe(nint recipeId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void addUnlockedRecipe(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -78,9 +109,9 @@ public sealed unsafe partial class UnlockedRecipesServerComponent
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'UnlockedRecipesServerComponent::UnlockingInstruction' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void addUnlockingInstruction(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'UnlockedRecipesServerComponent::UnlockingInstruction' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public void clearChangedInventorySlots()
     {
@@ -92,12 +123,20 @@ public sealed unsafe partial class UnlockedRecipesServerComponent
         NativeMethods.TablePtr->hs_method_20f1e7c5((void*)_handle);
     }
 
-    public nint getChangedInventorySlots()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getChangedInventorySlots_ab2471b4() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public nint getChangedInventorySlots_4576885f()
     {
         return (nint)NativeMethods.TablePtr->hs_method_4576885f((void*)_handle);
     }
 
-    public nint getUnlockedRecipes()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getUnlockedRecipes_e318c6d2() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public nint getUnlockedRecipes_62477ffd()
     {
         return (nint)NativeMethods.TablePtr->hs_method_62477ffd((void*)_handle);
     }
@@ -107,9 +146,10 @@ public sealed unsafe partial class UnlockedRecipesServerComponent
         return (nint)NativeMethods.TablePtr->hs_method_daf7ac36((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RecipeUnlockingRequirement::UnlockingContext' is not a known bindable declaration.", false)]
-    public bool hasContextBeenUsed(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RecipeUnlockingRequirement::UnlockingContext' is not a known bindable declaration.");
+    public bool hasContextBeenUsed(int arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_0c00cb79((void*)_handle, arg0) != 0;
+    }
 
     public bool hasInitialDataBeenSent()
     {
@@ -131,6 +171,10 @@ public sealed unsafe partial class UnlockedRecipesServerComponent
         return NativeMethods.TablePtr->hs_method_a9212adb((void*)_handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool isRecipeUnlocked(nint recipeId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public bool isRecipeUnlocked(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -150,14 +194,23 @@ public sealed unsafe partial class UnlockedRecipesServerComponent
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RecipeUnlockingRequirement::UnlockingContext' is not a known bindable declaration.", false)]
-    public void markContextAsUsed(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RecipeUnlockingRequirement::UnlockingContext' is not a known bindable declaration.");
+    public void markContextAsUsed(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_0cae4ad2((void*)_handle, arg0);
+    }
 
     public void markInitialDataAsSent()
     {
         NativeMethods.TablePtr->hs_method_2ddacc3e((void*)_handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_c841f9c8(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_3533608a(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
     {
@@ -168,6 +221,10 @@ public sealed unsafe partial class UnlockedRecipesServerComponent
     {
         NativeMethods.TablePtr->hs_method_dcffc37b((void*)_handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void removeUnlockedRecipe(nint recipeId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void removeUnlockedRecipe(string arg0)
     {

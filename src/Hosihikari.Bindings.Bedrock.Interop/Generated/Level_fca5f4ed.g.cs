@@ -569,9 +569,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_f3362771((void*)_handle);
     }
 
-    public nint getCapabilities()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities.ISharedController getCapabilities()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_b9df0f4b((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities.ISharedController((nint)NativeMethods.TablePtr->hs_method_b9df0f4b((void*)_handle), false);
     }
 
     public uint getChunkTickRange()

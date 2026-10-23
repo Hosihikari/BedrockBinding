@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Command
+public sealed unsafe partial class Command : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,19 +37,84 @@ public sealed unsafe partial class Command
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Command Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static Command Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_eaf3d1bb();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    public string getCommandName()
+        return new Command((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Command Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static string WILDCARD_TOKEN
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_9fb984cb();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void execute(nint origin, nint output) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getCommandName_dafa531f()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_dafa531f((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'CommandFlag' is not a known bindable declaration.", false)]
-    public bool hasFlag(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'CommandFlag' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getCommandName_afa34a6b() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public bool hasFlag(global::Hosihikari.Bindings.Bedrock.Interop.CommandFlag arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_c49c2117((void*)_handle, (void*)arg0.Handle) != 0;
+    }
+
+    public int mCommandSymbol
+    {
+        get => NativeMethods.TablePtr->hs_get_b8b6223f((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_b8b6223f((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mFlags
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    public byte mPermissionLevel
+    {
+        get => NativeMethods.TablePtr->hs_get_eca268ea((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_eca268ea((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: const fields are not projected by symbol dispatch.", false)]
+    public nint mRegistry
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: const fields are not projected by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: const fields are not projected by symbol dispatch.");
+    }
+
+    public int mVersion
+    {
+        get => NativeMethods.TablePtr->hs_get_e19da7ce((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_e19da7ce((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void run(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput arg1)
     {
@@ -71,11 +136,18 @@ public sealed unsafe partial class Command
         return NativeMethods.TablePtr->hs_method_c38d6da6(arg0, arg1, arg2, (void*)arg3.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_a900d8c6() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_2b28ba6f() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_3016f3a4((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

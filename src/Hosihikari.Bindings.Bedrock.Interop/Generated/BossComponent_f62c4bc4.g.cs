@@ -50,13 +50,15 @@ public sealed unsafe partial class BossComponent
         NativeMethods.TablePtr->hs_method_aa3e7541((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'BossEventUpdateType' is not a known bindable declaration.", false)]
-    public void broadcastBossEvent(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'BossEventUpdateType' is not a known bindable declaration.");
+    public void broadcastBossEvent(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1)
+    {
+        NativeMethods.TablePtr->hs_method_dd5b11b0((void*)_handle, (void*)arg0.Handle, arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'BossBarColor' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getColor() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'BossBarColor' requires --link-carrier or --virtual-dispatch.");
+    public int getColor()
+    {
+        return NativeMethods.TablePtr->hs_method_178ea291((void*)_handle);
+    }
 
     public bool getCreateWorldFog()
     {
@@ -122,9 +124,10 @@ public sealed unsafe partial class BossComponent
         NativeMethods.TablePtr->hs_method_2800cff7((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'BossBarColor' is not a known bindable declaration.", false)]
-    public void setColor(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'BossBarColor' is not a known bindable declaration.");
+    public void setColor(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1)
+    {
+        NativeMethods.TablePtr->hs_method_3aa6d883((void*)_handle, (void*)arg0.Handle, arg1);
+    }
 
     public void setHealthBarVisible(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, bool arg1)
     {

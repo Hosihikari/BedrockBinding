@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BannerBlockActor
+public sealed unsafe partial class BannerBlockActor : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,68 @@ public sealed unsafe partial class BannerBlockActor
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'BannerBlockType' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getBannerType(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'BannerBlockType' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BannerBlockActor Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BannerBlockActor Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static int MAX_PATTERNS
+    {
+        get => NativeMethods.TablePtr->hs_get_c7a85a7c();
+    }
+
+    public static string TAG_BASE_COLOR
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_ad709183();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string TAG_COLOR
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_fc823d69();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string TAG_PATTERN
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_ad821005();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string TAG_PATTERNS
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_e52fe0da();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string TAG_TYPE
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_cdee6faf();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static int getBannerType(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_5c72b1ac((void*)(arg0?.Handle ?? 0));
+    }
 
     public static int getBaseColor(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
     {
@@ -71,6 +130,10 @@ public sealed unsafe partial class BannerBlockActor
         NativeMethods.TablePtr->hs_method_47cdd8a9((void*)_handle, (void*)arg0.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public static bool removeLastPattern(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1)
     {
         return NativeMethods.TablePtr->hs_method_2e125da9((void*)arg0.Handle, (void*)arg1.Handle) != 0;
@@ -91,7 +154,18 @@ public sealed unsafe partial class BannerBlockActor
         NativeMethods.TablePtr->hs_method_a2dc2359((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_e8e15a66((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

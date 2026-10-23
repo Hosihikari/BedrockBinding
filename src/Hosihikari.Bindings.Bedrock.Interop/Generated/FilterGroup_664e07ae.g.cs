@@ -37,14 +37,42 @@ public sealed unsafe partial class FilterGroup
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static FilterGroup Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static FilterGroup Create_abad023b(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    public bool addFilterTest(nint arg0, nint arg1)
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _createSubgroup(nint type) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool _handleUnknownMember_f5455bd1(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool _parseFilterParam_b62d6504(nint filter, nint member, nint jsonVal, nint paramDef, nint input) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool _parseMember_6769dde8(nint name, nint jsonVal) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool _parseObject_141a74fc(nint name, nint jsonVal) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public bool addFilterTest(global::Hosihikari.Bindings.Bedrock.Interop.FilterTest_Nested.Definition arg0, nint arg1)
     {
-        return NativeMethods.TablePtr->hs_method_f1268bd1((void*)_handle, (void*)arg0, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_f1268bd1((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool addFilterTest(nint filterName, nint inputs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool addFilterTest(string arg0, nint arg1)
     {
@@ -75,31 +103,47 @@ public sealed unsafe partial class FilterGroup
         return NativeMethods.TablePtr->hs_method_38295dcf((void*)_handle, (void*)arg0) != 0;
     }
 
-    public nint getChildren()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getChildren_2670d9d0() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public nint getChildren_8533bd67()
     {
         return (nint)NativeMethods.TablePtr->hs_method_8533bd67((void*)_handle);
     }
 
-    public nint getMembers()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getMembers_81cc0bbf() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public nint getMembers_124b41db()
     {
         return (nint)NativeMethods.TablePtr->hs_method_124b41db((void*)_handle);
     }
 
-    public bool parse(nint arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public bool parse(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg0)
     {
-        return NativeMethods.TablePtr->hs_method_73020f50((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_73020f50((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    public void serialize(nint arg0)
+    public void serialize(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg0)
     {
-        NativeMethods.TablePtr->hs_method_0600a6c6((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_0600a6c6((void*)_handle, (void*)arg0.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_42c1e12d() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static FilterGroup Create_1afc599e(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_16eefb2a() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

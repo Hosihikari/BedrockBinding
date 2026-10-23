@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MolangVariableMap
+public sealed unsafe partial class MolangVariableMap : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,17 +37,31 @@ public sealed unsafe partial class MolangVariableMap
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MolangVariableMap Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static MolangVariableMap Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_6c09e373();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MolangVariableMap Create_38ab3a0e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new MolangVariableMap((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static MolangVariableMap Create(global::Hosihikari.Bindings.Bedrock.Interop.MolangVariableMap arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_38ab3a0e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangVariableMap((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public static MolangVariableMap Create_dbecdbf2(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.MolangVariableMap clear()
     {
@@ -92,6 +106,34 @@ public sealed unsafe partial class MolangVariableMap
         return new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->hs_method_dc233002((void*)_handle, (void*)arg0, (void*)arg1), false);
     }
 
+    public bool mHasPublicVariables
+    {
+        get => NativeMethods.TablePtr->hs_get_d193f6dd((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_d193f6dd((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mMapFromVariableIndexToVariableArrayOffset
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mVariables
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_a430095b(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_f803b116(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void setMolangStructMember(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg1, global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg arg2)
     {
         NativeMethods.TablePtr->hs_method_0897441f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
@@ -112,20 +154,27 @@ public sealed unsafe partial class MolangVariableMap
         NativeMethods.TablePtr->hs_method_3e5edf70((void*)_handle, arg0, (void*)arg1, (void*)arg2.Handle);
     }
 
-    public void setMolangVariableSettings(nint arg0)
+    public void setMolangVariableSettings(global::Hosihikari.Bindings.Bedrock.Interop.MolangVariableSettings arg0)
     {
-        NativeMethods.TablePtr->hs_method_4ab30586((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_4ab30586((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_08c780bb() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static MolangVariableMap Create_72854ece(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_26e9cbf9() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_4b7a2dd9((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

@@ -288,14 +288,14 @@ public sealed unsafe partial class ComponentItem
     public void init(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    public void initClient(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, bool arg2, nint arg3)
+    public void initClient(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, bool arg2, nint arg3)
     {
-        NativeMethods.TablePtr->hs_method_338a28b5((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg2, (void*)arg3);
+        NativeMethods.TablePtr->hs_method_338a28b5((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)arg3);
     }
 
-    public bool initServer(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, bool arg2, nint arg3)
+    public bool initServer(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, bool arg2, nint arg3)
     {
-        return NativeMethods.TablePtr->hs_method_7483afb9((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg2, (void*)arg3) != 0;
+        return NativeMethods.TablePtr->hs_method_7483afb9((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)arg3) != 0;
     }
 
     public void initializeFromNetwork(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
