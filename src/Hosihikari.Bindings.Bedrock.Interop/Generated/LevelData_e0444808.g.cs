@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LevelData : global::System.IDisposable
+public sealed unsafe partial class LevelData
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,21 +37,834 @@ public sealed unsafe partial class LevelData : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static LevelData Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static LevelData Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static LevelData Create_7fd2305d(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    public void Dispose()
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static LevelData Create_44437804(nint arg0, nint arg1, nint arg2, nint arg3, bool arg4, nint arg5, float arg6, float arg7) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static LevelData Create(bool arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static LevelData Create_dcbdd0d1(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static LevelData Create_1dd3daa4(nint settings, nint levelName, nint generatorVersion, nint defaultSpawn, bool achievementsDisabled, nint eduOffer, float rainLevel, float lightningLevel) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public void __autoclassinit2(ulong arg0)
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_e0444808((void*)_handle);
-            }
+        NativeMethods.TablePtr->hs_method_1cd46718((void*)_handle, arg0);
+    }
 
-            _handle = 0;
+    public bool achievementsWillBeDisabledOnLoad()
+    {
+        return NativeMethods.TablePtr->hs_method_7872625d((void*)_handle) != 0;
+    }
+
+    public bool cloudSaveForWorldIsEnabled()
+    {
+        return NativeMethods.TablePtr->hs_method_7242ee31((void*)_handle) != 0;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? createTag()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_7df9608c((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
+    }
+
+    public void disableAchievements()
+    {
+        NativeMethods.TablePtr->hs_method_46b54048((void*)_handle);
+    }
+
+    public bool educationFeaturesEnabled()
+    {
+        return NativeMethods.TablePtr->hs_method_9eeb2fe6((void*)_handle) != 0;
+    }
+
+    public bool getAdventureModeOverridesEnabled()
+    {
+        return NativeMethods.TablePtr->hs_method_9df87e1c((void*)_handle) != 0;
+    }
+
+    public nint getAdventureSettings_139b7104()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_139b7104((void*)_handle);
+    }
+
+    public nint getAdventureSettings_14a6f7d8()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_14a6f7d8((void*)_handle);
+    }
+
+    public nint getBaseGameVersion()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_17418a57((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getBiomeOverride_4a3e2453() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getBiomeOverride_5dd4ef6b()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_5dd4ef6b((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public bool getBonusChestSpawned()
+    {
+        return NativeMethods.TablePtr->hs_method_6fb502a4((void*)_handle) != 0;
+    }
+
+    public sbyte getChatRestrictionLevel()
+    {
+        return NativeMethods.TablePtr->hs_method_45c28713((void*)_handle);
+    }
+
+    public nint getCloudSaveInfo_ad8a8b32()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_ad8a8b32((void*)_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Tick getCurrentTick()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Tick((nint)NativeMethods.TablePtr->hs_method_3e688f31((void*)_handle), false);
+    }
+
+    public bool getCustomSkinsDisabled()
+    {
+        return NativeMethods.TablePtr->hs_method_538a2b32((void*)_handle) != 0;
+    }
+
+    public sbyte getDaylightCycle()
+    {
+        return NativeMethods.TablePtr->hs_method_5f91b112((void*)_handle);
+    }
+
+    public nint getDefaultAbilities_7e8cd2be()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_7e8cd2be((void*)_handle);
+    }
+
+    public nint getDefaultPermissions_9d4d079e()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_9d4d079e((void*)_handle);
+    }
+
+    public nint getDefaultPermissions_09c2d3ed()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_09c2d3ed((void*)_handle);
+    }
+
+    public int getEditorWorldType()
+    {
+        return NativeMethods.TablePtr->hs_method_b4a8d46b((void*)_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag getEduSharedUriResource()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)NativeMethods.TablePtr->hs_method_4119e206((void*)_handle), false);
+    }
+
+    public int getEducationEditionOffer()
+    {
+        return NativeMethods.TablePtr->hs_method_49d144ed((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getEducationOid_18ef77fe() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getEducationOid_74c98fe6()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_74c98fe6((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getEducationProductId_79d84859() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getEducationProductId_ea661b4d()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_ea661b4d((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public bool getEmoteChatMuted()
+    {
+        return NativeMethods.TablePtr->hs_method_f0ba6782((void*)_handle) != 0;
+    }
+
+    public nint getExperiments_83f8998e()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_83f8998e((void*)_handle);
+    }
+
+    public nint getExperiments_9176f510()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_9176f510((void*)_handle);
+    }
+
+    public nint getFlatWorldGeneratorOptions()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_4f9bccf7((void*)_handle);
+    }
+
+    public bool getForceGameType()
+    {
+        return NativeMethods.TablePtr->hs_method_eea33f11((void*)_handle) != 0;
+    }
+
+    public int getGameDifficulty()
+    {
+        return NativeMethods.TablePtr->hs_method_5ce2d474((void*)_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameRules getGameRules_97bee1a9()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.GameRules((nint)NativeMethods.TablePtr->hs_method_97bee1a9((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameRules getGameRules_a45dc873()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.GameRules((nint)NativeMethods.TablePtr->hs_method_a45dc873((void*)_handle), false);
+    }
+
+    public int getGameType()
+    {
+        return NativeMethods.TablePtr->hs_method_35390473((void*)_handle);
+    }
+
+    public int getGenerator()
+    {
+        return NativeMethods.TablePtr->hs_method_532076ee((void*)_handle);
+    }
+
+    public bool getIsSingleUseWorld()
+    {
+        return NativeMethods.TablePtr->hs_method_3743a943((void*)_handle) != 0;
+    }
+
+    public bool getLANBroadcast()
+    {
+        return NativeMethods.TablePtr->hs_method_8f978862((void*)_handle) != 0;
+    }
+
+    public bool getLANBroadcastIntent()
+    {
+        return NativeMethods.TablePtr->hs_method_db688e0b((void*)_handle) != 0;
+    }
+
+    public long getLastSaved()
+    {
+        return NativeMethods.TablePtr->hs_method_4fd715a6((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getLevelName_fd58353e() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getLevelName_3e172525()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_3e172525((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public float getLightningLevel()
+    {
+        return NativeMethods.TablePtr->hs_method_84ddf8ff((void*)_handle);
+    }
+
+    public int getLightningTime()
+    {
+        return NativeMethods.TablePtr->hs_method_49285426((void*)_handle);
+    }
+
+    public int getLimitedWorldDepth()
+    {
+        return NativeMethods.TablePtr->hs_method_b01c4dba((void*)_handle);
+    }
+
+    public int getLimitedWorldWidth()
+    {
+        return NativeMethods.TablePtr->hs_method_9a74fdcc((void*)_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag getLoadedPlayerTag()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)NativeMethods.TablePtr->hs_method_51d7a8c8((void*)_handle), false);
+    }
+
+    public nint getMinCompatibleClientVersion()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_3a84490d((void*)_handle);
+    }
+
+    public bool getMultiplayerGameIntent()
+    {
+        return NativeMethods.TablePtr->hs_method_11aa3d01((void*)_handle) != 0;
+    }
+
+    public int getNetherScale()
+    {
+        return NativeMethods.TablePtr->hs_method_ab0c624f((void*)_handle);
+    }
+
+    public sbyte getNetherType()
+    {
+        return NativeMethods.TablePtr->hs_method_d07d5291((void*)_handle);
+    }
+
+    public int getNetworkVersion()
+    {
+        return NativeMethods.TablePtr->hs_method_ed0b3fd9((void*)_handle);
+    }
+
+    public bool getOnlySpawnV1Villagers()
+    {
+        return NativeMethods.TablePtr->hs_method_ca33cddb((void*)_handle) != 0;
+    }
+
+    public bool getPersonaDisabled()
+    {
+        return NativeMethods.TablePtr->hs_method_5ccaeea9((void*)_handle) != 0;
+    }
+
+    public int getPlatformBroadcastIntent()
+    {
+        return NativeMethods.TablePtr->hs_method_439a760d((void*)_handle);
+    }
+
+    public int getPlatformBroadcastMode()
+    {
+        return NativeMethods.TablePtr->hs_method_2acd1cd4((void*)_handle);
+    }
+
+    public nint getPremiumTemplateContentIdentity()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_0ac1a10f((void*)_handle);
+    }
+
+    public float getRainLevel()
+    {
+        return NativeMethods.TablePtr->hs_method_39cb2cd4((void*)_handle);
+    }
+
+    public int getRainTime()
+    {
+        return NativeMethods.TablePtr->hs_method_31c2b37e((void*)_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 getSeed()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64((nint)NativeMethods.TablePtr->hs_method_21d8a02b((void*)_handle));
+    }
+
+    public uint getServerChunkTickRange()
+    {
+        return NativeMethods.TablePtr->hs_method_09ca87a6((void*)_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getSpawnPos()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_9ea439e1((void*)_handle), false);
+    }
+
+    public nint getSpawnSettings()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_4b6fbde3((void*)_handle);
+    }
+
+    public int getStorageVersion()
+    {
+        return NativeMethods.TablePtr->hs_method_f1a5e465((void*)_handle);
+    }
+
+    public int getStoredGenerator()
+    {
+        return NativeMethods.TablePtr->hs_method_895abe3d((void*)_handle);
+    }
+
+    public void getTagData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    {
+        NativeMethods.TablePtr->hs_method_9869ee2f((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public int getTime()
+    {
+        return NativeMethods.TablePtr->hs_method_ad7743bf((void*)_handle);
+    }
+
+    public bool getUseMsaGamertagsOnly()
+    {
+        return NativeMethods.TablePtr->hs_method_c7db0d28((void*)_handle) != 0;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getWorldCenter()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_ab88b3ad((void*)_handle), false);
+    }
+
+    public uint getWorldStartCount()
+    {
+        return NativeMethods.TablePtr->hs_method_9d59cdbf((void*)_handle);
+    }
+
+    public nint getWorldTemplateIdentity()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_7aff232a((void*)_handle);
+    }
+
+    public sbyte getWorldVersion()
+    {
+        return NativeMethods.TablePtr->hs_method_0406f88f((void*)_handle);
+    }
+
+    public int getXBLBroadcastIntent()
+    {
+        return NativeMethods.TablePtr->hs_method_652605de((void*)_handle);
+    }
+
+    public int getXBLBroadcastMode()
+    {
+        return NativeMethods.TablePtr->hs_method_2236071d((void*)_handle);
+    }
+
+    public bool hasAchievementsDisabled()
+    {
+        return NativeMethods.TablePtr->hs_method_47af923b((void*)_handle) != 0;
+    }
+
+    public bool hasBonusChestEnabled()
+    {
+        return NativeMethods.TablePtr->hs_method_04f5672d((void*)_handle) != 0;
+    }
+
+    public bool hasCheatsEnabled()
+    {
+        return NativeMethods.TablePtr->hs_method_60bc7147((void*)_handle) != 0;
+    }
+
+    public bool hasCloudSaveInfo()
+    {
+        return NativeMethods.TablePtr->hs_method_e64f3ea8((void*)_handle) != 0;
+    }
+
+    public bool hasCommandsEnabled()
+    {
+        return NativeMethods.TablePtr->hs_method_9298808a((void*)_handle) != 0;
+    }
+
+    public bool hasConfirmedPlatformLockedContent()
+    {
+        return NativeMethods.TablePtr->hs_method_8f84c496((void*)_handle) != 0;
+    }
+
+    public bool hasLockedBehaviorPack()
+    {
+        return NativeMethods.TablePtr->hs_method_40e55fca((void*)_handle) != 0;
+    }
+
+    public bool hasLockedResourcePack()
+    {
+        return NativeMethods.TablePtr->hs_method_5891bed6((void*)_handle) != 0;
+    }
+
+    public bool hasMapsCenteredToOrigin()
+    {
+        return NativeMethods.TablePtr->hs_method_29220b17((void*)_handle) != 0;
+    }
+
+    public bool hasStartWithMapEnabled()
+    {
+        return NativeMethods.TablePtr->hs_method_7e06a6cc((void*)_handle) != 0;
+    }
+
+    public void incrementTick()
+    {
+        NativeMethods.TablePtr->hs_method_a53a43ba((void*)_handle);
+    }
+
+    public bool isAlwaysDay()
+    {
+        return NativeMethods.TablePtr->hs_method_587818a6((void*)_handle) != 0;
+    }
+
+    public bool isCreatedInEditor()
+    {
+        return NativeMethods.TablePtr->hs_method_d007a41f((void*)_handle) != 0;
+    }
+
+    public bool isEditorWorld()
+    {
+        return NativeMethods.TablePtr->hs_method_526841fe((void*)_handle) != 0;
+    }
+
+    public bool isEducationEditionLevel()
+    {
+        return NativeMethods.TablePtr->hs_method_bea44307((void*)_handle) != 0;
+    }
+
+    public bool isExportedFromEditor()
+    {
+        return NativeMethods.TablePtr->hs_method_d87a750e((void*)_handle) != 0;
+    }
+
+    public bool isFromLockedTemplate()
+    {
+        return NativeMethods.TablePtr->hs_method_7fc83a4f((void*)_handle) != 0;
+    }
+
+    public bool isFromWorldTemplate()
+    {
+        return NativeMethods.TablePtr->hs_method_069cf5da((void*)_handle) != 0;
+    }
+
+    public bool isHardcore()
+    {
+        return NativeMethods.TablePtr->hs_method_1f1d9706((void*)_handle) != 0;
+    }
+
+    public bool isLegacyLevel()
+    {
+        return NativeMethods.TablePtr->hs_method_ca11379a((void*)_handle) != 0;
+    }
+
+    public bool isLightning()
+    {
+        return NativeMethods.TablePtr->hs_method_4a82c1ca((void*)_handle) != 0;
+    }
+
+    public bool isMultiplayerGame()
+    {
+        return NativeMethods.TablePtr->hs_method_3fb196e9((void*)_handle) != 0;
+    }
+
+    public bool isPremiumWorldTemplate()
+    {
+        return NativeMethods.TablePtr->hs_method_6e383199((void*)_handle) != 0;
+    }
+
+    public bool isRaining()
+    {
+        return NativeMethods.TablePtr->hs_method_c03ffb14((void*)_handle) != 0;
+    }
+
+    public bool isTexturepacksRequired()
+    {
+        return NativeMethods.TablePtr->hs_method_0e186c7d((void*)_handle) != 0;
+    }
+
+    public bool isWorldTemplateOptionLocked()
+    {
+        return NativeMethods.TablePtr->hs_method_53ad3ad1((void*)_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_fdd4ae74(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_b884190f(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void recordStartUp()
+    {
+        NativeMethods.TablePtr->hs_method_e6ccf0e6((void*)_handle);
+    }
+
+    public void setAdventureModeOverridesEnabled(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_e4ff4960((void*)_handle, arg0);
+    }
+
+    public void setBaseGameVersion(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_c3b5a69f((void*)_handle, (void*)arg0);
+    }
+
+    public void setBonusChestSpawned(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_2bdce070((void*)_handle, arg0);
+    }
+
+    public void setChatRestrictionLevel(sbyte arg0)
+    {
+        NativeMethods.TablePtr->hs_method_8958bacd((void*)_handle, arg0);
+    }
+
+    public void setCommandsEnabled(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_ea4e069f((void*)_handle, arg0);
+    }
+
+    public void setCustomSkinsDisabled(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_32f80397((void*)_handle, arg0);
+    }
+
+    public void setDataDrivenGenerator(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_805a6812((void*)_handle, arg0);
+    }
+
+    public void setEduSharedUriResource(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_3ce2bf79((void*)_handle, (void*)arg0);
+    }
+
+    public void setEducationEditionOffer(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_d6e0a4a8((void*)_handle, arg0);
+    }
+
+    public void setEducationFeaturesEnabled(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_6381bd42((void*)_handle, arg0);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setEducationOid(nint educationOid) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void setEducationOid(string arg0)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->hs_method_e218b615((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
+
+    public void setEmoteChatMuted(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_6f9ed5b2((void*)_handle, arg0);
+    }
+
+    public void setForceGameType(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_0231f18e((void*)_handle, arg0);
+    }
+
+    public void setGameDifficulty(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_3bdad113((void*)_handle, arg0);
+    }
+
+    public void setGameType(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_48fb79c6((void*)_handle, arg0);
+    }
+
+    public void setGenerator(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_7c376c52((void*)_handle, arg0);
+    }
+
+    public void setHasLockedBehaviorPack(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_e8425507((void*)_handle, arg0);
+    }
+
+    public void setHasLockedResourcePack(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_ddf90f31((void*)_handle, arg0);
+    }
+
+    public void setIsHardcore(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_2116b8f6((void*)_handle, arg0);
+    }
+
+    public void setLANBroadcast(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_5470ed1a((void*)_handle, arg0);
+    }
+
+    public void setLANBroadcastIntent(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_e2f33cf1((void*)_handle, arg0);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setLevelName(nint levelName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void setLevelName(string arg0)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->hs_method_ba0393fc((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void setLightningLevel(float arg0)
+    {
+        NativeMethods.TablePtr->hs_method_da040de0((void*)_handle, arg0);
+    }
+
+    public void setLightningTime(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_5dcf4962((void*)_handle, arg0);
+    }
+
+    public void setMultiplayerGame(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_4d79ec53((void*)_handle, arg0);
+    }
+
+    public void setMultiplayerGameIntent(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_ee7bcbb4((void*)_handle, arg0);
+    }
+
+    public void setOnlySpawnV1Villagers(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_ab279a61((void*)_handle, arg0);
+    }
+
+    public void setPersonaDisabled(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_e91a2542((void*)_handle, arg0);
+    }
+
+    public void setPlatformBroadcastIntent(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_cbcbcc49((void*)_handle, arg0);
+    }
+
+    public void setPlatformBroadcastMode(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_349d2ea9((void*)_handle, arg0);
+    }
+
+    public void setRainLevel(float arg0)
+    {
+        NativeMethods.TablePtr->hs_method_072c83e3((void*)_handle, arg0);
+    }
+
+    public void setRainTime(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_81a02d41((void*)_handle, arg0);
+    }
+
+    public void setSeed(global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 arg0)
+    {
+        NativeMethods.TablePtr->hs_method_49c7d087((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public void setServerChunkTickRange(uint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_b0938dc6((void*)_handle, arg0);
+    }
+
+    public void setSpawnPos(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    {
+        NativeMethods.TablePtr->hs_method_acc8c46c((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public void setStorageVersion(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_359babce((void*)_handle, arg0);
+    }
+
+    public void setTagData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    {
+        NativeMethods.TablePtr->hs_method_55c2420f((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public void setTexturepacksRequired(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_00079b62((void*)_handle, arg0);
+    }
+
+    public void setTime(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_95b043d5((void*)_handle, arg0);
+    }
+
+    public void setUseMsaGamertagsOnly(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_083d3935((void*)_handle, arg0);
+    }
+
+    public void setWorldTemplateIdentity(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_cb0ac029((void*)_handle, (void*)arg0);
+    }
+
+    public void setWorldTemplateOptionLocked(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_760309f8((void*)_handle, arg0);
+    }
+
+    public void setWorldVersion(sbyte arg0)
+    {
+        NativeMethods.TablePtr->hs_method_d76d0e60((void*)_handle, arg0);
+    }
+
+    public void setXBLBroadcastIntent(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_0f5e0137((void*)_handle, arg0);
+    }
+
+    public void setXBLBroadcastMode(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_ab308806((void*)_handle, arg0);
+    }
+
+    public void touchLastLoadedWithVersion()
+    {
+        NativeMethods.TablePtr->hs_method_080352c1((void*)_handle);
+    }
+
+    public void v1_read(nint arg0, int arg1)
+    {
+        NativeMethods.TablePtr->hs_method_3ced0eee((void*)_handle, (void*)arg0, arg1);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_184a28a3() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public static LevelData Create_7f4c1cf1(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_b0411e5d() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

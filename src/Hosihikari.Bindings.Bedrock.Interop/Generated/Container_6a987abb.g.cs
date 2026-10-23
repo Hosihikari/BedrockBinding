@@ -101,14 +101,14 @@ public sealed unsafe partial class Container : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_077ec9b3((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void addCloseListener(nint arg0)
+    public void addCloseListener(global::Hosihikari.Bindings.Bedrock.Interop.ContainerCloseListener? arg0)
     {
-        NativeMethods.TablePtr->hs_method_45bd5fcf((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_45bd5fcf((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
-    public void addContentChangeListener(nint arg0)
+    public void addContentChangeListener(global::Hosihikari.Bindings.Bedrock.Interop.ContainerContentChangeListener? arg0)
     {
-        NativeMethods.TablePtr->hs_method_43e1723e((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_43e1723e((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
     public bool addItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
@@ -400,7 +400,7 @@ public sealed unsafe partial class Container : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_058b88bd(nint arg0) =>
+    public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -430,14 +430,14 @@ public sealed unsafe partial class Container : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_c6107f0f((void*)_handle);
     }
 
-    public void removeCloseListener(nint arg0)
+    public void removeCloseListener(global::Hosihikari.Bindings.Bedrock.Interop.ContainerCloseListener? arg0)
     {
-        NativeMethods.TablePtr->hs_method_172d7d27((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_172d7d27((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
-    public void removeContentChangeListener(nint arg0)
+    public void removeContentChangeListener(global::Hosihikari.Bindings.Bedrock.Interop.ContainerContentChangeListener? arg0)
     {
-        NativeMethods.TablePtr->hs_method_dc1248a3((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_dc1248a3((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
     public void removeItem(int arg0, int arg1)

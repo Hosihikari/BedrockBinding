@@ -7,6 +7,7 @@ param(
     [string]$LeviLaminaRoot = "C:\Users\root\source\repos\hosihikari\LiteLoaderBDS",
     [string]$HeaderIr = "",
     [string]$Classes = "Actor,BlockPos,BlockSource,ChunkPos,ItemStack,ItemStackBase,Level,Vec3,AppPlatform,ServerInstance,Player,Mob,Dimension,Block,Item,ItemRegistryRef,Container",
+    [string]$ClassesFile = "",
     [string]$Version = "1.21.3",
     [string]$Carrier = "BDS 1.21.3.01",
     [string]$TargetModule = "bedrock_server",
@@ -34,6 +35,12 @@ if ([string]::IsNullOrWhiteSpace($AbiRoot)) {
     $AbiRoot = (Resolve-Path $AbiRoot).Path
 }
 $Output = if ([System.IO.Path]::IsPathRooted($Output)) { $Output } else { Join-Path $RepoRoot $Output }
+if (-not [string]::IsNullOrWhiteSpace($ClassesFile)) {
+    $ClassesFile = (Resolve-Path $ClassesFile).Path
+    $Classes = (Get-Content $ClassesFile |
+        ForEach-Object { $_.Trim() } |
+        Where-Object { $_ -ne "" -and -not $_.StartsWith("#") }) -join ","
+}
 if ([string]::IsNullOrWhiteSpace($HeaderIr)) {
     $HeaderIr = Join-Path $Output "header-ir"
 } else {

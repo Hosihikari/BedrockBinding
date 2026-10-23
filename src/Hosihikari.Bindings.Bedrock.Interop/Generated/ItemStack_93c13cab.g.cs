@@ -235,7 +235,7 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint operator_assign_8abebfaa(nint rhs) =>
+    public nint operator_assign(nint rhs) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void playSoundIncrementally(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0)

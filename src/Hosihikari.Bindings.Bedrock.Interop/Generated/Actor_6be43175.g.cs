@@ -188,9 +188,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_782a14b9((void*)_handle);
     }
 
-    public void blockedByShield(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
+    public void blockedByShield(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
     {
-        NativeMethods.TablePtr->hs_method_4f7a637e((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->hs_method_4f7a637e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
@@ -349,9 +349,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_db8fc79d((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ActorDamageSource' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ActorDamageSource' is not copy-constructible.", false)]
     public float causeFallDamageToActor(float arg0, float arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ActorDamageSource' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ActorDamageSource' is not copy-constructible.");
 
     public void celebrateHunt(int arg0, bool arg1)
     {
@@ -425,9 +425,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_bbdfef65((void*)_handle);
     }
 
-    public void die(nint arg0)
+    public void die(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg0)
     {
-        NativeMethods.TablePtr->hs_method_ceac5b88((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_ceac5b88((void*)_handle, (void*)arg0.Handle);
     }
 
     public float distanceSqrToBlockPosCenter(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
@@ -565,9 +565,10 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_c80d6fed((void*)_handle, arg0);
     }
 
-    public nint fetchFishingHook()
+    public global::Hosihikari.Bindings.Bedrock.Interop.FishingHook? fetchFishingHook()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_bb40a5f9((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_bb40a5f9((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.FishingHook((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.DistanceSortedActor[] fetchNearbyActorsSorted(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
@@ -670,9 +671,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_20e1d1a2((void*)_handle, arg0, arg1));
     }
 
-    public nint getAttribute(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance getAttribute(nint arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_c771f0f7((void*)_handle, (void*)arg0);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance((nint)NativeMethods.TablePtr->hs_method_c771f0f7((void*)_handle, (void*)arg0), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::not_null<BaseAttributeMap const*>' requires --link-carrier or --virtual-dispatch.", false)]
@@ -1254,9 +1255,10 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_466631c2((void*)_handle);
     }
 
-    public nint getMutableAttribute(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance? getMutableAttribute(nint arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_6bc8b1a0((void*)_handle, (void*)arg0);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_6bc8b1a0((void*)_handle, (void*)arg0);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance((nint)__hs_handle, false) : null;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -1376,9 +1378,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_80d2ef81((void*)_handle);
     }
 
-    public nint getRandom()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Random getRandom()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_b18c7d38((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Random((nint)NativeMethods.TablePtr->hs_method_b18c7d38((void*)_handle), false);
     }
 
     public nint getRenderParams()
@@ -1576,18 +1578,18 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_8ef3023e((void*)_handle, arg0, arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ActorDamageSource' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ActorDamageSource' is not copy-constructible.", false)]
     public void handleFallDamage(float arg0, float arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ActorDamageSource' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ActorDamageSource' is not copy-constructible.");
 
     public void handleInsidePortal(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
     {
         NativeMethods.TablePtr->hs_method_8d6e70b4((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ActorDamageSource' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ActorDamageSource' is not copy-constructible.", false)]
     public void handleLeftoverFallDamage(float arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ActorDamageSource' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ActorDamageSource' is not copy-constructible.");
 
     public bool hasAnyEffects()
     {
@@ -1750,9 +1752,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_8fd8ecde((void*)_handle, arg0);
     }
 
-    public bool hurt(nint arg0, float arg1, bool arg2, bool arg3)
+    public bool hurt(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg0, float arg1, bool arg2, bool arg3)
     {
-        return NativeMethods.TablePtr->hs_method_e087ff4f((void*)_handle, (void*)arg0, arg1, arg2, arg3) != 0;
+        return NativeMethods.TablePtr->hs_method_e087ff4f((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -1879,9 +1881,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_b5e0412e((void*)_handle) != 0;
     }
 
-    public bool isDamageBlocked(nint arg0)
+    public bool isDamageBlocked(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg0)
     {
-        return NativeMethods.TablePtr->hs_method_8ed55046((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_8ed55046((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool isDancing()
@@ -2034,9 +2036,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_39f91973((void*)_handle) != 0;
     }
 
-    public bool isInvulnerableTo(nint arg0)
+    public bool isInvulnerableTo(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg0)
     {
-        return NativeMethods.TablePtr->hs_method_8126a088((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_8126a088((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool isJumping()
@@ -2428,7 +2430,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_not_equal_7696eb1a(nint rhs) =>
+    public bool operator_not_equal(nint rhs) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -2436,7 +2438,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_equal_806f49f3(nint rhs) =>
+    public bool operator_equal(nint rhs) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void outOfWorld()

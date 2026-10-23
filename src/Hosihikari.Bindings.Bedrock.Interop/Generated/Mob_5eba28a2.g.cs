@@ -214,9 +214,9 @@ public sealed unsafe partial class Mob : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_0209a4da((void*)_handle);
     }
 
-    public void blockedByShield(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
+    public void blockedByShield(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
     {
-        NativeMethods.TablePtr->hs_method_aacc9b84((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->hs_method_aacc9b84((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
@@ -257,9 +257,9 @@ public sealed unsafe partial class Mob : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_6f3eb5d6((void*)_handle) != 0;
     }
 
-    public bool checkForPostHitDamageImmunity(float arg0, nint arg1)
+    public bool checkForPostHitDamageImmunity(float arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg1)
     {
-        return NativeMethods.TablePtr->hs_method_dd19d64a((void*)_handle, arg0, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_dd19d64a((void*)_handle, arg0, (void*)arg1.Handle) != 0;
     }
 
     public bool checkSpawnObstruction()
@@ -272,9 +272,9 @@ public sealed unsafe partial class Mob : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_63e466b8((void*)_handle, arg0) != 0;
     }
 
-    public bool checkTotemDeathProtection(nint arg0)
+    public bool checkTotemDeathProtection(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg0)
     {
-        return NativeMethods.TablePtr->hs_method_13667273((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_13667273((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public void clearMainHandSlot()
@@ -301,9 +301,9 @@ public sealed unsafe partial class Mob : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_72457818((void*)_handle) != 0;
     }
 
-    public void die(nint arg0)
+    public void die(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg0)
     {
-        NativeMethods.TablePtr->hs_method_f5fe4b7f((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_f5fe4b7f((void*)_handle, (void*)arg0.Handle);
     }
 
     public bool doFireHurt(int arg0)
@@ -326,9 +326,9 @@ public sealed unsafe partial class Mob : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_f70a20c3((void*)_handle);
     }
 
-    public void dropEquipmentOnDeath(nint arg0)
+    public void dropEquipmentOnDeath(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg0)
     {
-        NativeMethods.TablePtr->hs_method_8305be80((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_8305be80((void*)_handle, (void*)arg0.Handle);
     }
 
     public void emitJumpPreventedEvent(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
@@ -418,29 +418,29 @@ public sealed unsafe partial class Mob : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_65fb7736((void*)_handle);
     }
 
-    public float getDamageAfterArmorReduction(nint arg0, float arg1)
+    public float getDamageAfterArmorReduction(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg0, float arg1)
     {
-        return NativeMethods.TablePtr->hs_method_bbe82cef((void*)_handle, (void*)arg0, arg1);
+        return NativeMethods.TablePtr->hs_method_bbe82cef((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
-    public float getDamageAfterDamageSensorComponentAdjustments(nint arg0, float arg1)
+    public float getDamageAfterDamageSensorComponentAdjustments(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg0, float arg1)
     {
-        return NativeMethods.TablePtr->hs_method_e5a5c1de((void*)_handle, (void*)arg0, arg1);
+        return NativeMethods.TablePtr->hs_method_e5a5c1de((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
-    public float getDamageAfterEnchantReduction(nint arg0, float arg1)
+    public float getDamageAfterEnchantReduction(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg0, float arg1)
     {
-        return NativeMethods.TablePtr->hs_method_a0b27b70((void*)_handle, (void*)arg0, arg1);
+        return NativeMethods.TablePtr->hs_method_a0b27b70((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
-    public float getDamageAfterPostHitDamageImmunityReduction(nint arg0, float arg1)
+    public float getDamageAfterPostHitDamageImmunityReduction(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg0, float arg1)
     {
-        return NativeMethods.TablePtr->hs_method_e5c90074((void*)_handle, (void*)arg0, arg1);
+        return NativeMethods.TablePtr->hs_method_e5c90074((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
-    public float getDamageAfterResistanceEffect(nint arg0, float arg1)
+    public float getDamageAfterResistanceEffect(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg0, float arg1)
     {
-        return NativeMethods.TablePtr->hs_method_6b3308b2((void*)_handle, (void*)arg0, arg1);
+        return NativeMethods.TablePtr->hs_method_6b3308b2((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
     public int getDeathSound()
@@ -588,18 +588,18 @@ public sealed unsafe partial class Mob : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_fef1f418((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    public void hurtArmor(nint arg0, int arg1)
+    public void hurtArmor(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg0, int arg1)
     {
-        NativeMethods.TablePtr->hs_method_95900437((void*)_handle, (void*)arg0, arg1);
+        NativeMethods.TablePtr->hs_method_95900437((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::bitset<4>' is not a known bindable declaration.", false)]
     public void hurtArmorSlots_1867b1f0(nint arg0, int arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::bitset<4>' is not a known bindable declaration.");
 
-    public void hurtEffects(nint arg0, float arg1, bool arg2, bool arg3)
+    public void hurtEffects(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg0, float arg1, bool arg2, bool arg3)
     {
-        NativeMethods.TablePtr->hs_method_0f166d02((void*)_handle, (void*)arg0, arg1, arg2, arg3);
+        NativeMethods.TablePtr->hs_method_0f166d02((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3);
     }
 
     public bool inCaravan()

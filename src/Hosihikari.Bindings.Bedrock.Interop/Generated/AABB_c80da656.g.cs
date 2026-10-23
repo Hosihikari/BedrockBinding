@@ -37,6 +37,336 @@ public sealed unsafe partial class AABB : global::System.IDisposable
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static AABB Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static AABB Create(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_a4945bd8((void*)arg0.Handle, (void*)arg1.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AABB((nint)handle);
+    }
+
+    public static AABB Create(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, float arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_01844bba((void*)arg0.Handle, arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AABB((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static AABB Create(nint k) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static AABB Create(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_5681c618(arg0, arg1, arg2, arg3, arg4, arg5);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AABB((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: anonymous fields are not projected.", false)]
+    public nint __d1beb62a
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: anonymous fields are not projected.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: anonymous fields are not projected.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: anonymous fields are not projected.", false)]
+    public nint __0a40cf43
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: anonymous fields are not projected.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: anonymous fields are not projected.");
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.AABB BLOCK_SHAPE
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_get_11b7e0db(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.AABB BOX_AT_ORIGIN_WITH_NO_VOLUME
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_get_741d2244(), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.AABB addAABB(global::Hosihikari.Bindings.Bedrock.Interop.AABB arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_3fcaf7ea((void*)_handle, (void*)arg0.Handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 axisInside(global::Hosihikari.Bindings.Bedrock.Interop.AABB arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_d186b096((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.HitResult clip(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.HitResult((nint)NativeMethods.TablePtr->hs_method_16d0507b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ClipCollideResult' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint clipCollide(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ClipCollideResult' requires --link-carrier or --virtual-dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 clipCollide(global::Hosihikari.Bindings.Bedrock.Interop.AABB arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, bool arg2, nint arg3)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_6f2a152b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)arg3));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.AABB cloneAndAddAABB(global::Hosihikari.Bindings.Bedrock.Interop.AABB arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_9c83185e((void*)_handle, (void*)arg0.Handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.AABB cloneAndExpandAlongDirection(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_e2a6fe95((void*)_handle, (void*)arg0.Handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.AABB cloneAndFloor(float arg0, float arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_b22ddf56((void*)_handle, arg0, arg1));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.AABB cloneAndFloorMinAndCeilingMax()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_d46e7ade((void*)_handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.AABB cloneAndGrow(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_df35e9d3((void*)_handle, (void*)arg0.Handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.AABB cloneAndSetBoundsAroundCenter(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_3774545a((void*)_handle, (void*)arg0.Handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.AABB cloneAndShrink(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_b43db7d1((void*)_handle, (void*)arg0.Handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.AABB cloneAndTransformByMatrix(nint arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_e2822bdc((void*)_handle, (void*)arg0));
+    }
+
+    public bool contains(global::Hosihikari.Bindings.Bedrock.Interop.AABB arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_ed78849e((void*)_handle, (void*)arg0.Handle) != 0;
+    }
+
+    public bool contains(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_7af83e7f((void*)_handle, (void*)arg0.Handle) != 0;
+    }
+
+    public float distanceTo(global::Hosihikari.Bindings.Bedrock.Interop.AABB arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_7636b092((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public float distanceTo(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_a13c1dea((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public float distanceToSqr(global::Hosihikari.Bindings.Bedrock.Interop.AABB arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_7f97a3e4((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.AABB fromPoints(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_3dd6a309((void*)arg0.Handle, (void*)arg1.Handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getBounds()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_cc44833a((void*)_handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getCenter()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_0f0efb64((void*)_handle));
+    }
+
+    public float getSize()
+    {
+        return NativeMethods.TablePtr->hs_method_01b3143a((void*)_handle);
+    }
+
+    public float getVolume()
+    {
+        return NativeMethods.TablePtr->hs_method_def93a1e((void*)_handle);
+    }
+
+    public bool intersectSegment(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3)
+    {
+        return NativeMethods.TablePtr->hs_method_f7333d28((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle) != 0;
+    }
+
+    public bool intersects(global::Hosihikari.Bindings.Bedrock.Interop.AABB arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_b5a8266a((void*)_handle, (void*)arg0.Handle) != 0;
+    }
+
+    public bool intersects(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_067487c3((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+    }
+
+    public bool intersectsInner(global::Hosihikari.Bindings.Bedrock.Interop.AABB arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_ba60c8c5((void*)_handle, (void*)arg0.Handle) != 0;
+    }
+
+    public bool isValid()
+    {
+        return NativeMethods.TablePtr->hs_method_ffee5a3e((void*)_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint merge_d4cb3d3a(nint a) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint merge_d46db3b9(nint a) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_BoundingBox() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool operator_not_equal(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool operator_equal(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.AABB set(global::Hosihikari.Bindings.Bedrock.Interop.AABB arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_b3bd6334((void*)_handle, (void*)arg0.Handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.AABB set(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_85ec825b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.AABB set(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_94585db3((void*)_handle, arg0, arg1, arg2, arg3, arg4, arg5), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.AABB shrink(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_f3ee321b((void*)_handle, (void*)arg0.Handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.AABB translateCenterTo(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_f3e3f6af((void*)_handle, (void*)arg0.Handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint b
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint g
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint max
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint min
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint p
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint r
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint s
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint t
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint x
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint y
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint z
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

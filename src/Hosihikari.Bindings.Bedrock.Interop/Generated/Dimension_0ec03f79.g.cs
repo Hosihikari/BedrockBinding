@@ -260,9 +260,9 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
     public nint getChunkLoadActionList_497bb3f2() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::not_null<ChunkLoadActionList*>' requires --link-carrier or --virtual-dispatch.");
 
-    public nint getChunkSource()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource getChunkSource()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_a7f00a7f((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource((nint)NativeMethods.TablePtr->hs_method_a7f00a7f((void*)_handle), false);
     }
 
     public nint getCircuitSystem()
@@ -914,9 +914,9 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_3b7335be((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3, arg4, arg5);
     }
 
-    public void onChunkLoaded(nint arg0, nint arg1)
+    public void onChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg1)
     {
-        NativeMethods.TablePtr->hs_method_9ccb06da((void*)_handle, (void*)arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_9ccb06da((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -1056,9 +1056,9 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
     public void transferEntity(nint arg0, nint arg1, nint arg2, bool arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void transferEntityToUnloadedChunk(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, nint arg1)
+    public void transferEntityToUnloadedChunk(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk? arg1)
     {
-        NativeMethods.TablePtr->hs_method_918af013((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_918af013((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]

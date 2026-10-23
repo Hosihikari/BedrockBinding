@@ -26,7 +26,7 @@ $VsRoot = & $VsWhere -latest -products * -requires Microsoft.VisualStudio.Compon
 if (-not $VsRoot) { throw "Visual Studio with the C++ toolchain was not found." }
 $DevCmd = Join-Path $VsRoot "Common7\Tools\VsDevCmd.bat"
 
-$CommandLine = "cl /nologo /std:c++20 /EHsc /MD /O2 /LD `"$ShimSource`" /I `"$ShimDirectory`" /Fo:`"$OutputDirectory\\`" /Fd:`"$OutputDirectory\\shim-cl.pdb`" /Fe:`"$Output`""
+$CommandLine = "cl /nologo /std:c++20 /EHsc /MD /O2 /bigobj /LD `"$ShimSource`" /I `"$ShimDirectory`" /Fo:`"$OutputDirectory\\`" /Fd:`"$OutputDirectory\\shim-cl.pdb`" /Fe:`"$Output`""
 & cmd.exe /c "`"$DevCmd`" -arch=x64 -host_arch=x64 -no_logo >nul 2>&1 && $CommandLine"
 if ($LASTEXITCODE -ne 0) { throw "MSVC command failed: $CommandLine" }
 

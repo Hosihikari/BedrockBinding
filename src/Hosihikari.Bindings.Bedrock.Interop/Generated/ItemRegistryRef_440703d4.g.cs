@@ -131,9 +131,9 @@ public sealed unsafe partial class ItemRegistryRef
     public nint getWorldBaseGameVersion() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'BaseGameVersion' requires --link-carrier or --virtual-dispatch.");
 
-    public void init(nint arg0, nint arg1, nint arg2, nint arg3)
+    public void init(nint arg0, nint arg1, nint arg2, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager? arg3)
     {
-        NativeMethods.TablePtr->hs_method_146ca432((void*)_handle, (void*)arg0, (void*)arg1, (void*)arg2, (void*)arg3);
+        NativeMethods.TablePtr->hs_method_146ca432((void*)_handle, (void*)arg0, (void*)arg1, (void*)arg2, (void*)(arg3?.Handle ?? 0));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]

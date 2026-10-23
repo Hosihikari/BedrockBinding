@@ -37,14 +37,6 @@ public sealed unsafe partial class Item
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Hatchet' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint HatchetItem(nint arg0, int arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Hatchet' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Hoe' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint HoeItem(nint arg0, int arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Hoe' requires --link-carrier or --virtual-dispatch.");
-
     public static string ICON_DESCRIPTION_PREFIX
     {
         get
@@ -67,20 +59,12 @@ public sealed unsafe partial class Item
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Item Create_4d4ef100(nint arg0, short arg1) =>
+    public static Item Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Mace' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint MaceItem(nint arg0, int arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Mace' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Pickaxe' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint PickaxeItem(nint arg0, int arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Pickaxe' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Shovel' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ShovelItem(nint arg0, int arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Shovel' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static Item Create_4d4ef100(nint arg0, short arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public static string TAG_DAMAGE
     {
@@ -90,10 +74,6 @@ public sealed unsafe partial class Item
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Weapon' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint WeaponItem(nint arg0, int arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Weapon' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
     public static void addCreativeItem_f16994ff(nint arg0, nint arg1) =>
@@ -911,7 +891,7 @@ public sealed unsafe partial class Item
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool operator_equal_347d257b(nint rhs) =>
+    public bool operator_equal(nint rhs) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void playSoundIncrementally(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, global::Hosihikari.Bindings.Bedrock.Interop.Mob arg1)
@@ -919,9 +899,9 @@ public sealed unsafe partial class Item
         NativeMethods.TablePtr->hs_method_8d21217b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public void readUserData(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, nint arg1, nint arg2)
+    public void readUserData(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.ReadOnlyBinaryStream arg2)
     {
-        NativeMethods.TablePtr->hs_method_763de300((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_763de300((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle);
     }
 
     public void refreshedInContainer(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, global::Hosihikari.Bindings.Bedrock.Interop.Level arg1)

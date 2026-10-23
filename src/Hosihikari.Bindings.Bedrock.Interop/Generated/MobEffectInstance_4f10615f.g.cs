@@ -37,8 +37,322 @@ public sealed unsafe partial class MobEffectInstance : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static int MAX_AMPLIFIER_COUNT
+    {
+        get => NativeMethods.TablePtr->hs_get_356573eb();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MobEffectInstance Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static MobEffectInstance Create(global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_e7d03b3a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MobEffectInstance((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static MobEffectInstance Create_ed9ce86b(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public static MobEffectInstance Create(uint arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_0e96bc3d(arg0);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MobEffectInstance((nint)handle);
+    }
+
+    public static MobEffectInstance Create(uint arg0, int arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_2d64d531(arg0, arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MobEffectInstance((nint)handle);
+    }
+
+    public static MobEffectInstance Create(uint arg0, int arg1, int arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_0f50112e(arg0, arg1, arg2);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MobEffectInstance((nint)handle);
+    }
+
+    public static MobEffectInstance Create(uint arg0, int arg1, int arg2, bool arg3, bool arg4, bool arg5)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_ecbb35f3(arg0, arg1, arg2, arg3, arg4, arg5);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MobEffectInstance((nint)handle);
+    }
+
+    public static MobEffectInstance Create(uint arg0, int arg1, int arg2, int arg3, int arg4, int arg5, bool arg6, bool arg7, bool arg8)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_05e37c4f(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MobEffectInstance((nint)handle);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance NO_EFFECT
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance((nint)NativeMethods.TablePtr->hs_get_035e7631(), false);
+    }
+
+    public void applyEffects(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    {
+        NativeMethods.TablePtr->hs_method_5acf3c08((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public bool displaysOnScreenTextureAnimation()
+    {
+        return NativeMethods.TablePtr->hs_method_e06021e0((void*)_handle) != 0;
+    }
+
+    public int getAmplifier()
+    {
+        return NativeMethods.TablePtr->hs_method_3771e847((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public static nint getAverageColorValue(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.HashedString getComponentName()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_16ce8c80((void*)_handle), false);
+    }
+
+    public string getDescriptionId_58459b03()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_58459b03((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getDescriptionId_8eb80e93() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public int getDifficulityDuration(int arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_140c062d((void*)_handle, arg0);
+    }
+
+    public string getDisplayName_01a5c7be()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_01a5c7be((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getDisplayName_612b361f() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public int getDuration()
+    {
+        return NativeMethods.TablePtr->hs_method_d138994a((void*)_handle);
+    }
+
+    public uint getId()
+    {
+        return NativeMethods.TablePtr->hs_method_3349989d((void*)_handle);
+    }
+
+    public int getLingerDuration()
+    {
+        return NativeMethods.TablePtr->hs_method_64a423b0((void*)_handle);
+    }
+
+    public int getSplashDuration()
+    {
+        return NativeMethods.TablePtr->hs_method_fe8ed94c((void*)_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance getSplashEffect()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance((nint)NativeMethods.TablePtr->hs_method_93797eea((void*)_handle));
+    }
+
+    public bool isAmbient()
+    {
+        return NativeMethods.TablePtr->hs_method_9f217e99((void*)_handle) != 0;
+    }
+
+    public bool isEffectVisible()
+    {
+        return NativeMethods.TablePtr->hs_method_c5d0e1a0((void*)_handle) != 0;
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance load(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance((nint)NativeMethods.TablePtr->hs_method_df8b7220((void*)arg0.Handle));
+    }
+
+    public bool mAmbient
+    {
+        get => NativeMethods.TablePtr->hs_get_abe4b001((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_abe4b001((void*)_handle, value);
+    }
+
+    public int mAmplifier
+    {
+        get => NativeMethods.TablePtr->hs_get_b967e279((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_b967e279((void*)_handle, value);
+    }
+
+    public bool mDisplayOnScreenTextureAnimation
+    {
+        get => NativeMethods.TablePtr->hs_get_18f4da96((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_18f4da96((void*)_handle, value);
+    }
+
+    public int mDuration
+    {
+        get => NativeMethods.TablePtr->hs_get_ac44485f((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_ac44485f((void*)_handle, value);
+    }
+
+    public int mDurationEasy
+    {
+        get => NativeMethods.TablePtr->hs_get_9448c2ea((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_9448c2ea((void*)_handle, value);
+    }
+
+    public int mDurationHard
+    {
+        get => NativeMethods.TablePtr->hs_get_91754711((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_91754711((void*)_handle, value);
+    }
+
+    public int mDurationNormal
+    {
+        get => NativeMethods.TablePtr->hs_get_afbaa9fd((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_afbaa9fd((void*)_handle, value);
+    }
+
+    public bool mEffectVisible
+    {
+        get => NativeMethods.TablePtr->hs_get_6eb727a3((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_6eb727a3((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mFactorCalculationData
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    public uint mId
+    {
+        get => NativeMethods.TablePtr->hs_get_87c0de3e((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_87c0de3e((void*)_handle, value);
+    }
+
+    public bool mNoCounter
+    {
+        get => NativeMethods.TablePtr->hs_get_03355399((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_03355399((void*)_handle, value);
+    }
+
+    public void onActorHurt(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg1, float arg2)
+    {
+        NativeMethods.TablePtr->hs_method_67a00886((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+    }
+
+    public void onActorRemovedAfterDeath(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    {
+        NativeMethods.TablePtr->hs_method_41dedada((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public void onEffectsExpired(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    {
+        NativeMethods.TablePtr->hs_method_a5b4677b((void*)_handle, (void*)arg0.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool operator_not_equal(nint obj) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_ef2491b3(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_46626e80(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void removeEffects(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_7ce2b400((void*)_handle, (void*)arg0);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? save()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_30f19e52((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
+    }
+
+    public void setDifficulityDuration(int arg0, int arg1)
+    {
+        NativeMethods.TablePtr->hs_method_bc9a84fc((void*)_handle, arg0, arg1);
+    }
+
+    public void setDuration(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_6c1574f3((void*)_handle, arg0);
+    }
+
+    public static float splashDurationMultiplier
+    {
+        get => NativeMethods.TablePtr->hs_get_cad6b62b();
+    }
+
+    public bool tick()
+    {
+        return NativeMethods.TablePtr->hs_method_5705d41b((void*)_handle) != 0;
+    }
+
+    public void tryInitializeMobEffectData()
+    {
+        NativeMethods.TablePtr->hs_method_527ee64b((void*)_handle);
+    }
+
+    public void update(global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance arg0)
+    {
+        NativeMethods.TablePtr->hs_method_3f2c98e7((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public void updateEffects(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0)
+    {
+        NativeMethods.TablePtr->hs_method_89427b92((void*)_handle, (void*)(arg0?.Handle ?? 0));
+    }
+
+
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static MobEffectInstance Create(nint arg0) =>
+    public static MobEffectInstance Create_238be73c(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
 
