@@ -100,9 +100,9 @@ public sealed unsafe partial class PackManifest
         return (nint)NativeMethods.TablePtr->hs_method_2afb728d((void*)_handle);
     }
 
-    public nint getMinEngineVersion()
+    public global::Hosihikari.Bindings.Bedrock.Interop.SemVersion getMinEngineVersion()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_b95f46f0((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SemVersion((nint)NativeMethods.TablePtr->hs_method_b95f46f0((void*)_handle), false);
     }
 
     public nint getModuleDependencies()
@@ -153,9 +153,9 @@ public sealed unsafe partial class PackManifest
     public nint getPackType() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackType' requires --link-carrier or --virtual-dispatch.");
 
-    public nint getRequiredBaseGameVersion()
+    public global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion getRequiredBaseGameVersion()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_dcd7098e((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion((nint)NativeMethods.TablePtr->hs_method_dcd7098e((void*)_handle), false);
     }
 
     public string[] getTrustedCapabilities()

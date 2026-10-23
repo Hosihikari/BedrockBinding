@@ -353,9 +353,9 @@ public sealed unsafe partial class MobEffect
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static void initEffects(nint arg0, nint arg1)
+    public static void initEffects(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0, nint arg1)
     {
-        NativeMethods.TablePtr->hs_method_fcc97eb8((void*)arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_fcc97eb8((void*)arg0.Handle, (void*)arg1);
     }
 
     public bool isHarmful()

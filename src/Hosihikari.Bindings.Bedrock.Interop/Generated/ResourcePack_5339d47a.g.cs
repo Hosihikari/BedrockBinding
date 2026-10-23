@@ -128,9 +128,9 @@ public sealed unsafe partial class ResourcePack
         return (nint)NativeMethods.TablePtr->hs_method_bbae34e8((void*)_handle);
     }
 
-    public nint getVersion()
+    public global::Hosihikari.Bindings.Bedrock.Interop.SemVersion getVersion()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d305eaab((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SemVersion((nint)NativeMethods.TablePtr->hs_method_d305eaab((void*)_handle), false);
     }
 
     public bool hasResource(nint arg0, int arg1)

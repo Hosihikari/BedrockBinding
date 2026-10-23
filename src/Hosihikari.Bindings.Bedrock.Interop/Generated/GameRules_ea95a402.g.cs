@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GameRules
+public sealed unsafe partial class GameRules : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,18 +37,79 @@ public sealed unsafe partial class GameRules
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static GameRules Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static uint DEFAULT_PLAYER_SPAWN_RADIUS
+    {
+        get => NativeMethods.TablePtr->hs_get_a59a03c0();
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static GameRules Create_0a8eef54(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static int DEFAULT_RANDOMTICKSPEED
+    {
+        get => NativeMethods.TablePtr->hs_get_903fc1b4();
+    }
+
+    public static GameRules Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_5dc90e54();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameRules((nint)handle);
+    }
+
+    public static GameRules Create(global::Hosihikari.Bindings.Bedrock.Interop.GameRules arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_0a8eef54((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameRules((nint)handle);
+    }
+
+    public static int MAX_FUNCTIONCOMMANDLIMIT
+    {
+        get => NativeMethods.TablePtr->hs_get_84824ebe();
+    }
+
+    public static uint MAX_PLAYER_SPAWN_RADIUS
+    {
+        get => NativeMethods.TablePtr->hs_get_bcd6e78b();
+    }
+
+    public static int MAX_RANDOMTICKSPEED
+    {
+        get => NativeMethods.TablePtr->hs_get_baf95c4b();
+    }
+
+    public static uint MIN_PLAYER_SPAWN_RADIUS
+    {
+        get => NativeMethods.TablePtr->hs_get_272b223d();
+    }
+
+    public static string WORLD_POLICY_TAG_NAME
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_be7c0ec6();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
 
     public void __autoclassinit2(ulong arg0)
     {
         NativeMethods.TablePtr->hs_method_a7d46db9((void*)_handle, arg0);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint _getMarketplaceGameRulesDefaultMap_d8bd2ec4() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _registerRule_e4f6e6c3(nint name, nint rule) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'GameRulesChangedPacket' is not a known bindable declaration.", false)]
     public nint createAllGameRulesPacket() =>
@@ -80,18 +141,40 @@ public sealed unsafe partial class GameRules
         return (nint)NativeMethods.TablePtr->hs_method_d514dead((void*)_handle);
     }
 
-    public void getTagData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, nint arg1)
+    public void getTagData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg1)
     {
-        NativeMethods.TablePtr->hs_method_b68dc259((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_b68dc259((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'GameRuleId' is not a known bindable declaration.", false)]
     public bool hasRule(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'GameRuleId' is not a known bindable declaration.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mGameRules
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mWorldPolicies
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint nameToGameRuleIndex_1c7805ba(nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'GameRuleId' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint nameToGameRuleIndex(nint arg0) =>
+    public nint nameToGameRuleIndex_364506e7(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'GameRuleId' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.", false)]
     public nint registerOnGameRuleChangeCallback(nint arg0) =>
@@ -119,15 +202,22 @@ public sealed unsafe partial class GameRules
         NativeMethods.TablePtr->hs_method_da764149((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_698d60ca() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static GameRules Create_ac48e8fe(nint arg0) =>
+    public static GameRules Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_7fd15729() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_ea95a402((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

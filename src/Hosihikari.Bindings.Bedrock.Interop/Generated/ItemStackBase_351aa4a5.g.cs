@@ -294,9 +294,9 @@ public sealed unsafe partial class ItemStackBase : global::System.IDisposable
     public nint getCategoryName_2b2eeb79() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public nint getChargedItem()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance getChargedItem()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_62733b18((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_62733b18((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color getColor()
@@ -474,9 +474,9 @@ public sealed unsafe partial class ItemStackBase : global::System.IDisposable
     public nint getRawNameId_0ec8ae04() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public nint getRequiredBaseGameVersion()
+    public global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion getRequiredBaseGameVersion()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_cb97483c((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion((nint)NativeMethods.TablePtr->hs_method_cb97483c((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -1111,9 +1111,9 @@ public sealed unsafe partial class ItemStackBase : global::System.IDisposable
         }
     }
 
-    public void setChargedItem(nint arg0, bool arg1)
+    public void setChargedItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0, bool arg1)
     {
-        NativeMethods.TablePtr->hs_method_56801647((void*)_handle, (void*)arg0, arg1);
+        NativeMethods.TablePtr->hs_method_56801647((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

@@ -41,9 +41,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
     public static Actor Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static Actor Create(nint arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg2)
+    public static Actor Create(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg1, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg2)
     {
-        var handle = NativeMethods.TablePtr->hs_create_3c42c6fa((void*)arg0, (void*)arg1, (void*)arg2.Handle);
+        var handle = NativeMethods.TablePtr->hs_create_3c42c6fa((void*)arg0, (void*)arg1.Handle, (void*)arg2.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -616,9 +616,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Vec2((nint)NativeMethods.TablePtr->hs_method_29f62627((void*)_handle), false);
     }
 
-    public nint getActorIdentifier()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier getActorIdentifier()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_e9c6387b((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier((nint)NativeMethods.TablePtr->hs_method_e9c6387b((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.HashedString getActorRendererId()
@@ -2727,9 +2727,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_fd327400((void*)_handle, arg0);
     }
 
-    public void setBaseDefinition(nint arg0, bool arg1, bool arg2)
+    public void setBaseDefinition(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg0, bool arg1, bool arg2)
     {
-        NativeMethods.TablePtr->hs_method_e9a10650((void*)_handle, (void*)arg0, arg1, arg2);
+        NativeMethods.TablePtr->hs_method_e9a10650((void*)_handle, (void*)arg0.Handle, arg1, arg2);
     }
 
     public void setBlockTarget(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)

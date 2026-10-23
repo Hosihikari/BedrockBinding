@@ -37,6 +37,11 @@ public sealed unsafe partial class ProjectileComponent
         return __hs_handle;
     }
 
+    public static uint DELAY_ON_HIT
+    {
+        get => NativeMethods.TablePtr->hs_get_c34e8a7d();
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static ProjectileComponent Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
@@ -54,14 +59,15 @@ public sealed unsafe partial class ProjectileComponent
         NativeMethods.TablePtr->hs_method_e1aae375((void*)_handle, (void*)arg0.Handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec2 dampenShooterAngle(global::Hosihikari.Bindings.Bedrock.Interop.Vec2 arg0, float arg1, nint arg2)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec2 dampenShooterAngle(global::Hosihikari.Bindings.Bedrock.Interop.Vec2 arg0, float arg1, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg2)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec2((nint)NativeMethods.TablePtr->hs_method_567cbb9b((void*)arg0.Handle, arg1, (void*)arg2));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec2((nint)NativeMethods.TablePtr->hs_method_567cbb9b((void*)arg0.Handle, arg1, (void*)arg2.Handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ProjectileAnchor' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getAnchor() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ProjectileAnchor' requires --link-carrier or --virtual-dispatch.");
+    public int getAnchor()
+    {
+        return NativeMethods.TablePtr->hs_method_2892d234((void*)_handle);
+    }
 
     public bool getCatchFire()
     {
@@ -187,6 +193,14 @@ public sealed unsafe partial class ProjectileComponent
     {
         NativeMethods.TablePtr->hs_method_579f9e12((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_d7b26319(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_3483d395(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
     {

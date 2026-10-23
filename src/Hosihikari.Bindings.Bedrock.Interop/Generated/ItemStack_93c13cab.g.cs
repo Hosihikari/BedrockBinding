@@ -86,9 +86,9 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
         return new ItemStack((nint)handle);
     }
 
-    public static ItemStack Create_14cadbb8(nint arg0)
+    public static ItemStack Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_14cadbb8((void*)arg0);
+        var handle = NativeMethods.TablePtr->hs_create_14cadbb8((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -354,9 +354,10 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_a46ca0f5((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'InteractionResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint useOn(nint arg0, int arg1, int arg2, int arg3, byte arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'InteractionResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.InteractionResult useOn(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1, int arg2, int arg3, byte arg4, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg5)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.InteractionResult((nint)NativeMethods.TablePtr->hs_method_8a11269b((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3, arg4, (void*)arg5.Handle));
+    }
 
     public int useTimeDepleted(global::Hosihikari.Bindings.Bedrock.Interop.Level? arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player? arg1)
     {

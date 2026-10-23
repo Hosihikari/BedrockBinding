@@ -102,9 +102,9 @@ public sealed unsafe partial class ServerInstance
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'LevelSettings' is not copy-constructible.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ConnectionDefinition' is not a known bindable declaration.", false)]
     public bool initializeServer_84c95d47(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7, nint arg8, int arg9, bool arg10, nint arg11, bool arg12, nint arg13, nint arg14, nint arg15, nint arg16, nint arg17, nint arg18, nint arg19, nint arg20, nint arg21, nint arg22, nint arg23, nint arg24, nint arg25, nint arg26, nint arg27, nint arg28, nint arg29, nint arg30, nint arg31, nint arg32, nint arg33, bool arg34, nint arg35, nint arg36, bool arg37, bool arg38, bool arg39, nint arg40, nint arg41, nint arg42, bool arg43, float arg44, nint arg45, nint arg46, nint arg47, nint arg48, nint arg49, nint arg50, nint arg51) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'LevelSettings' is not copy-constructible.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ConnectionDefinition' is not a known bindable declaration.");
 
     public bool isRealmsStoriesEnabled()
     {

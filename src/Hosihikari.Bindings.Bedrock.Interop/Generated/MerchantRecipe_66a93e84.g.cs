@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MerchantRecipe
+public sealed unsafe partial class MerchantRecipe : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,21 +37,46 @@ public sealed unsafe partial class MerchantRecipe
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MerchantRecipe Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MerchantRecipe Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MerchantRecipe Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static MerchantRecipe Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_88a02ce6((void*)arg0.Handle, (void*)arg1.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MerchantRecipe Create_ea62fc29(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new MerchantRecipe((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'BaseGameVersion' is not a known bindable declaration.", false)]
+    public static MerchantRecipe Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_825edad0((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MerchantRecipe((nint)handle);
+    }
+
+    public static MerchantRecipe Create(global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_ea62fc29((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MerchantRecipe((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void calculateDemandPrices(int arg0, int arg1, int arg2, int arg3, bool arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'BaseGameVersion' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public void calculateDemandPricesDefaults()
     {
@@ -74,14 +99,14 @@ public sealed unsafe partial class MerchantRecipe
         return NativeMethods.TablePtr->hs_method_9acdd12d((void*)_handle);
     }
 
-    public nint getBuyAItem()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance getBuyAItem()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_b5b68f15((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_b5b68f15((void*)_handle), false);
     }
 
-    public nint getBuyBItem()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance getBuyBItem()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_f91f753f((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_f91f753f((void*)_handle), false);
     }
 
     public int getDemand()
@@ -94,9 +119,9 @@ public sealed unsafe partial class MerchantRecipe
         return NativeMethods.TablePtr->hs_method_2db4eab7((void*)_handle);
     }
 
-    public nint getSellItem()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance getSellItem()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_ee2014cd((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_ee2014cd((void*)_handle), false);
     }
 
     public int getTier()
@@ -129,9 +154,9 @@ public sealed unsafe partial class MerchantRecipe
         NativeMethods.TablePtr->hs_method_35be4d74((void*)_handle);
     }
 
-    public void init(nint arg0, nint arg1, nint arg2)
+    public void init(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg2)
     {
-        NativeMethods.TablePtr->hs_method_eff1bdbb((void*)_handle, (void*)arg0, (void*)arg1, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_eff1bdbb((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
     public bool isOutOfUses()
@@ -153,6 +178,98 @@ public sealed unsafe partial class MerchantRecipe
     {
         NativeMethods.TablePtr->hs_method_f7dc2c5c((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mBuyA
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mBuyB
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    public int mBuyCountA
+    {
+        get => NativeMethods.TablePtr->hs_get_60050143((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_60050143((void*)_handle, value);
+    }
+
+    public int mBuyCountB
+    {
+        get => NativeMethods.TablePtr->hs_get_22b0445c((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_22b0445c((void*)_handle, value);
+    }
+
+    public int mDemand
+    {
+        get => NativeMethods.TablePtr->hs_get_59f837f0((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_59f837f0((void*)_handle, value);
+    }
+
+    public int mMaxUses
+    {
+        get => NativeMethods.TablePtr->hs_get_f860b10c((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_f860b10c((void*)_handle, value);
+    }
+
+    public float mPriceMultiplierA
+    {
+        get => NativeMethods.TablePtr->hs_get_62b72de5((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_62b72de5((void*)_handle, value);
+    }
+
+    public float mPriceMultiplierB
+    {
+        get => NativeMethods.TablePtr->hs_get_7f3160ce((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_7f3160ce((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mRecipeNetId
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    public bool mRewardExp
+    {
+        get => NativeMethods.TablePtr->hs_get_15e25aa9((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_15e25aa9((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mSell
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    public int mTier
+    {
+        get => NativeMethods.TablePtr->hs_get_e2fcfe41((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_e2fcfe41((void*)_handle, value);
+    }
+
+    public uint mTraderExp
+    {
+        get => NativeMethods.TablePtr->hs_get_352b671e((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_352b671e((void*)_handle, value);
+    }
+
+    public int mUses
+    {
+        get => NativeMethods.TablePtr->hs_get_700341e1((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_700341e1((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setDemand(int arg0)
     {
@@ -199,15 +316,22 @@ public sealed unsafe partial class MerchantRecipe
         return NativeMethods.TablePtr->hs_method_6696c039((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_19f03990() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static MerchantRecipe Create_00f61ad6(nint arg0) =>
+    public static MerchantRecipe Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_7d8f44bc() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_66a93e84((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

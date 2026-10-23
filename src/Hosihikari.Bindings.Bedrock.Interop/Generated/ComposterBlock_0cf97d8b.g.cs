@@ -86,9 +86,9 @@ public sealed unsafe partial class ComposterBlock
         return NativeMethods.TablePtr->hs_method_d4272d25((void*)arg0.Handle, arg1, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'BaseGameVersion' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public bool breaksFallingBlocks(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'BaseGameVersion' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public bool canContainLiquid()
     {

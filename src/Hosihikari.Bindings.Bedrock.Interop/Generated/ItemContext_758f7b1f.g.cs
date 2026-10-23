@@ -37,6 +37,10 @@ public sealed unsafe partial class ItemContext
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ItemContext Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static ItemContext Create(nint arg0, nint arg1, int arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
@@ -48,6 +52,14 @@ public sealed unsafe partial class ItemContext
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static ItemContext Create(nint arg0, int arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ItemContext Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool clearAllDynamicProperties(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool clearAllDynamicProperties(string arg0)
     {
@@ -76,20 +88,40 @@ public sealed unsafe partial class ItemContext
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>' is not supported.", false)]
-    public nint getCanDestroy() =>
+    public nint getCanDestroy_ef242288() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getCanDestroy_93a9d282() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>' is not supported.", false)]
-    public nint getCanPlaceOn() =>
+    public nint getCanPlaceOn_c9af9f7a() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>' is not supported.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getCanPlaceOn_9ee2c049() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getDynamicProperty_0b69b2d0(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'std::variant<double,float,bool,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,Vec3>' is not supported.", false)]
-    public nint getDynamicProperty(nint arg0, nint arg1) =>
+    public nint getDynamicProperty_cd291842(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::variant<double,float,bool,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,Vec3>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>' is not supported.", false)]
-    public nint getDynamicPropertyIds(nint arg0) =>
+    public nint getDynamicPropertyIds_1ac3136a(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getDynamicPropertyIds_4c51b6d6(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getDynamicPropertyTotalByteCount(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public ulong? getDynamicPropertyTotalByteCount(string arg0)
     {
@@ -112,12 +144,16 @@ public sealed unsafe partial class ItemContext
         }
     }
 
-    public string? getId()
+    public string? getId_6a32d3ba()
     {
         var __hs_hasValue = false;
         var __hs_view = NativeMethods.TablePtr->hs_method_6a32d3ba((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getId_9392cdb4() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'ItemStack' is not supported.", false)]
     public nint getItem() =>
@@ -130,13 +166,20 @@ public sealed unsafe partial class ItemContext
         return __hs_hasValue ? __hs_value != 0 : (bool?)null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'ItemLockMode' is not supported.", false)]
-    public nint getLockMode() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'ItemLockMode' is not supported.");
+    public byte? getLockMode()
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->hs_method_7cff373d((void*)_handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (byte?)null;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>' is not supported.", false)]
-    public nint getLore() =>
+    public nint getLore_eefb8f68() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getLore_a235f737() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int? getMaxAmount()
     {
@@ -145,12 +188,16 @@ public sealed unsafe partial class ItemContext
         return __hs_hasValue ? __hs_value : (int?)null;
     }
 
-    public string? getNameTag()
+    public string? getNameTag_c98d58d1()
     {
         var __hs_hasValue = false;
         var __hs_view = NativeMethods.TablePtr->hs_method_c98d58d1((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getNameTag_f4d7ddce() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'std::vector<ItemTag,std::allocator<ItemTag>>' is not supported.", false)]
     public nint getTags() =>
@@ -189,10 +236,18 @@ public sealed unsafe partial class ItemContext
         return NativeMethods.TablePtr->hs_method_40b6e898((void*)_handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public bool setAmount(int arg0)
     {
         return NativeMethods.TablePtr->hs_method_1ab681c2((void*)_handle, arg0) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint setCanDestroy(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool? setCanDestroy(string[] arg0)
     {
@@ -222,6 +277,10 @@ public sealed unsafe partial class ItemContext
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint setCanPlaceOn(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public bool? setCanPlaceOn(string[] arg0)
     {
         var __hs_hasValue = false;
@@ -250,8 +309,12 @@ public sealed unsafe partial class ItemContext
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool setDynamicProperty_15e974ea(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'std::variant<double,float,bool,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,Vec3>' is abstract or not copy-constructible.", false)]
-    public bool setDynamicProperty(nint arg0, nint arg1, nint arg2) =>
+    public bool setDynamicProperty_720c5bfc(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::variant<double,float,bool,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,Vec3>' is abstract or not copy-constructible.");
 
     public static bool setEquipment(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Mob arg2)
@@ -269,12 +332,17 @@ public sealed unsafe partial class ItemContext
         return NativeMethods.TablePtr->hs_method_d7cae788((void*)_handle, arg0) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ItemLockMode' is not a known bindable declaration.", false)]
-    public bool setLockMode(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ItemLockMode' is not a known bindable declaration.");
+    public bool setLockMode(byte arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_b41ab5a4((void*)_handle, arg0) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool setLore_9f14657d(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>' is abstract or not copy-constructible.", false)]
-    public bool setLore(nint arg0) =>
+    public bool setLore_356596c0(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>' is abstract or not copy-constructible.");
 
     public bool setNameTag(string? arg0)
@@ -295,6 +363,10 @@ public sealed unsafe partial class ItemContext
             return NativeMethods.TablePtr->hs_method_49f519bd((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg0 is not null) != 0;
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool setNameTag(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>

@@ -103,9 +103,10 @@ public sealed unsafe partial class RakNetConnector
         return new global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier((nint)NativeMethods.TablePtr->hs_method_96df104f((void*)_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TransportLayer' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getNetworkType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TransportLayer' requires --link-carrier or --virtual-dispatch.");
+    public int getNetworkType()
+    {
+        return NativeMethods.TablePtr->hs_method_5269f808((void*)_handle);
+    }
 
     public nint getPeer_70b4f098()
     {

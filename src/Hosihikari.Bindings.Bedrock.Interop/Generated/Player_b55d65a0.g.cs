@@ -1556,14 +1556,14 @@ public sealed unsafe partial class Player : global::System.IDisposable
         }
     }
 
-    public void playPredictiveSynchronizedSound(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, nint arg2, int arg3, bool arg4)
+    public void playPredictiveSynchronizedSound(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg2, int arg3, bool arg4)
     {
-        NativeMethods.TablePtr->hs_method_95789e35((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2, arg3, arg4);
+        NativeMethods.TablePtr->hs_method_95789e35((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle, arg3, arg4);
     }
 
-    public void playPredictiveSynchronizedSound(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block arg2, nint arg3, bool arg4)
+    public void playPredictiveSynchronizedSound(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block arg2, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg3, bool arg4)
     {
-        NativeMethods.TablePtr->hs_method_846e6631((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3, arg4);
+        NativeMethods.TablePtr->hs_method_846e6631((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, arg4);
     }
 
     public void prepareRegion(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource arg0)

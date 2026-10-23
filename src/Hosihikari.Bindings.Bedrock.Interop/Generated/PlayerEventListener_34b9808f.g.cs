@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class PlayerEventListener
+public sealed unsafe partial class PlayerEventListener
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,155 +37,236 @@ public sealed partial class PlayerEventListener
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onCameraSetPlayerRot(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onCameraSetPlayerRot(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec2 arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_8613e6c4((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onEvent(nint arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_b9c930a9((void*)_handle, (void*)arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onLocalPlayerDeath(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onLocalPlayerDeath(nint arg0, nint arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_a4d14484((void*)_handle, (void*)arg0, (void*)arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onLocalPlayerRespawn(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onLocalPlayerRespawn(nint arg0, nint arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_5d80bc26((void*)_handle, (void*)arg0, (void*)arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PlayerActionType' is not a known bindable declaration.", false)]
     public nint onPlayerAction(nint arg0, nint arg1, nint arg2, int arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PlayerActionType' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerAttackedActor(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerAttackedActor(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_455b6ac8((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerAuthInputApplied(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerAuthInputApplied(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_f695c853((void*)_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerAuthInputReceived(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerAuthInputReceived(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_64e1c794((void*)_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'MinecraftEventing::AchievementIds' is not a known bindable declaration.", false)]
     public nint onPlayerAwardAchievement(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'MinecraftEventing::AchievementIds' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerCaravanChanged(nint arg0, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerCaravanChanged(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_b0c4c61e((void*)_handle, (void*)arg0.Handle, arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerCraftedItem(nint arg0, nint arg1, bool arg2, bool arg3, bool arg4, int arg5, int arg6, int arg7, bool arg8, bool arg9, nint arg10) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerCraftedItem(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg1, bool arg2, bool arg3, bool arg4, int arg5, int arg6, int arg7, bool arg8, bool arg9, short[] arg10)
+    {
+        fixed (short* __hs_vectorData10 = arg10)
+        {
+            return NativeMethods.TablePtr->hs_method_5345e753((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, __hs_vectorData10, (nuint)(arg10?.Length ?? 0));
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerCreated(nint arg0, nint arg1, nint arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerCreated(nint arg0, string arg1, string arg2, bool arg3)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                return NativeMethods.TablePtr->hs_method_2dc2171d((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3);
+            }
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerDestroyedBlock(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerDestroyedBlock(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_5075f352((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerDestroyedBlock(nint arg0, int arg1, int arg2, int arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerDestroyedBlock(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, int arg1, int arg2, int arg3)
+    {
+        return NativeMethods.TablePtr->hs_method_d0e3067f((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerEnchantedItem(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerEnchantedItem(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1, nint arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_467a2f2a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerEquippedArmor(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerEquippedArmor(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_b645d4e4((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerInput(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerInput(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_271f3ce5((void*)_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerItemEquipped(nint arg0, nint arg1, int arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerItemEquipped(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg1, int arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_ae5882c1((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerItemPlaceInteraction(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerItemPlaceInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_ad525b6e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerItemUseInteraction(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerItemUseInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_b0942820((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerMove(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerMove(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_ca4a8841((void*)_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerNamedItem(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerNamedItem(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_fe274e0e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerPiglinBarter(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerPiglinBarter(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, string arg1, bool arg2)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            return NativeMethods.TablePtr->hs_method_e53e95de((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerPortalBuilt(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerPortalBuilt(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_2861879a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerPortalUsed(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerPortalUsed(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_65b3d777((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerPoweredBeacon(nint arg0, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerPoweredBeacon(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, int arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_db82122c((void*)_handle, (void*)arg0.Handle, arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerSaved(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerSaved(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_2e5b4544((void*)_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerSlide(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerSlide(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_a76ea0c2((void*)_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerSmithiedItem(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerSmithiedItem(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_d4dcc0f1((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerStartRiding(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerStartRiding(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_19412101((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerStopRiding(nint arg0, bool arg1, bool arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerStopRiding(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, bool arg1, bool arg2, bool arg3)
+    {
+        return NativeMethods.TablePtr->hs_method_2d46684f((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerTargetBlockHit(nint arg0, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerTargetBlockHit(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, int arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_0d690733((void*)_handle, (void*)arg0.Handle, arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerTeleported(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerTeleported(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_9bd15b0b((void*)_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerTeleported(nint arg0, float arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerTeleported(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, float arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_e6e10510((void*)_handle, (void*)arg0.Handle, arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerTick(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerTick(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_812b8a14((void*)_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerTurn(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerTurn(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec2 arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_50e275c4((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onPlayerWaxOnWaxOff(nint arg0, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onPlayerWaxOnWaxOff(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, int arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_c8eeb66e((void*)_handle, (void*)arg0.Handle, arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint onStartDestroyBlock(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventResult' requires --link-carrier or --virtual-dispatch.");
+    public int onStartDestroyBlock(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, nint arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_2b4db419((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
+    }
 }

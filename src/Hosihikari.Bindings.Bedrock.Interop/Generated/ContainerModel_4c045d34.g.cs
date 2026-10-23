@@ -80,9 +80,9 @@ public sealed unsafe partial class ContainerModel
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public nint getItemInstance(int arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance getItemInstance(int arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_ba4f5644((void*)_handle, arg0);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_ba4f5644((void*)_handle, arg0), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ItemStack getItemStack(int arg0)

@@ -197,9 +197,9 @@ public sealed unsafe partial class Item
         return NativeMethods.TablePtr->hs_method_cff62d93((void*)_handle) != 0;
     }
 
-    public bool canBeUsedInCommands(nint arg0)
+    public bool canBeUsedInCommands(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0)
     {
-        return NativeMethods.TablePtr->hs_method_fd2bb6c8((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_fd2bb6c8((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool canDestroyInCreative()
@@ -291,9 +291,10 @@ public sealed unsafe partial class Item
         NativeMethods.TablePtr->hs_method_90f67ee2((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorDefinitionIdentifier' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getActorIdentifier(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorDefinitionIdentifier' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier getActorIdentifier(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier((nint)NativeMethods.TablePtr->hs_method_cd35e29a((void*)_handle, (void*)arg0.Handle));
+    }
 
     public int getAnimationFrameFor(global::Hosihikari.Bindings.Bedrock.Interop.Mob? arg0, bool arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack? arg2, bool arg3)
     {
@@ -563,9 +564,9 @@ public sealed unsafe partial class Item
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public nint getRequiredBaseGameVersion()
+    public global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion getRequiredBaseGameVersion()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_05c8be76((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion((nint)NativeMethods.TablePtr->hs_method_05c8be76((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color getSecondaryColor(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
@@ -648,14 +649,14 @@ public sealed unsafe partial class Item
         NativeMethods.TablePtr->hs_method_52b1c333((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
-    public void initClient(nint arg0, nint arg1, bool arg2, nint arg3)
+    public void initClient(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, bool arg2, nint arg3)
     {
-        NativeMethods.TablePtr->hs_method_93e4dd6e((void*)_handle, (void*)arg0, (void*)arg1, arg2, (void*)arg3);
+        NativeMethods.TablePtr->hs_method_93e4dd6e((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg2, (void*)arg3);
     }
 
-    public bool initServer(nint arg0, nint arg1, bool arg2, nint arg3)
+    public bool initServer(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, bool arg2, nint arg3)
     {
-        return NativeMethods.TablePtr->hs_method_c0bc1505((void*)_handle, (void*)arg0, (void*)arg1, arg2, (void*)arg3) != 0;
+        return NativeMethods.TablePtr->hs_method_c0bc1505((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg2, (void*)arg3) != 0;
     }
 
     public void initializeFromNetwork(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
@@ -688,9 +689,9 @@ public sealed unsafe partial class Item
         return NativeMethods.TablePtr->hs_method_d12a33e0((void*)_handle) != 0;
     }
 
-    public bool isCommandOnly(nint arg0)
+    public bool isCommandOnly(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0)
     {
-        return NativeMethods.TablePtr->hs_method_39d6567c((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_39d6567c((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool isComplex()
@@ -753,9 +754,9 @@ public sealed unsafe partial class Item
         return NativeMethods.TablePtr->hs_method_3df8c2a5((void*)_handle) != 0;
     }
 
-    public static bool isFlyEnabled(nint arg0)
+    public static bool isFlyEnabled(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0)
     {
-        return NativeMethods.TablePtr->hs_method_2067f893((void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_2067f893((void*)arg0.Handle) != 0;
     }
 
     public bool isFood()
@@ -838,9 +839,9 @@ public sealed unsafe partial class Item
         return NativeMethods.TablePtr->hs_method_37b4ad7a((void*)_handle, arg0) != 0;
     }
 
-    public bool isValidRepairItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg1, nint arg2)
+    public bool isValidRepairItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg1, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg2)
     {
-        return NativeMethods.TablePtr->hs_method_811d0b32((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2) != 0;
+        return NativeMethods.TablePtr->hs_method_811d0b32((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
     public bool isWearableThroughLootTable(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg0)
@@ -1086,9 +1087,9 @@ public sealed unsafe partial class Item
         return new global::Hosihikari.Bindings.Bedrock.Interop.Item((nint)NativeMethods.TablePtr->hs_method_a70a5f04((void*)_handle, arg0), false);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Item setMinRequiredBaseGameVersion(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Item setMinRequiredBaseGameVersion(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Item((nint)NativeMethods.TablePtr->hs_method_4c861d5a((void*)_handle, (void*)arg0), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Item((nint)NativeMethods.TablePtr->hs_method_4c861d5a((void*)_handle, (void*)arg0.Handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Item setRequiresWorldBuilder(bool arg0)
@@ -1165,9 +1166,10 @@ public sealed unsafe partial class Item
         return NativeMethods.TablePtr->hs_method_9435e773((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'InteractionResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint useOn(nint arg0, nint arg1, int arg2, int arg3, int arg4, byte arg5, nint arg6, nint arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'InteractionResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.InteractionResult useOn(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, int arg2, int arg3, int arg4, byte arg5, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg6, int arg7)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.InteractionResult((nint)NativeMethods.TablePtr->hs_method_fb4cef5d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4, arg5, (void*)arg6.Handle, arg7));
+    }
 
     public int useTimeDepleted(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, global::Hosihikari.Bindings.Bedrock.Interop.Level? arg1, global::Hosihikari.Bindings.Bedrock.Interop.Player? arg2)
     {

@@ -56,7 +56,6 @@ SimulatedPlayer
 AppPlatform_win32
 Core
 Subscriber
-W4EventResult
 Motif
 PointedDripstoneBlock
 MobSpawnRules
@@ -199,3 +198,11 @@ Minecart
 MinecraftCommands
 NullSoundPlayer
 RopeSystem
+ItemInstance
+ContainerValidationResult
+ResolvedItemIconInfo
+SemVersion
+InteractionResult
+UpdateTradePacket
+ActorDefinitionIdentifier
+ChunkLocalHeight

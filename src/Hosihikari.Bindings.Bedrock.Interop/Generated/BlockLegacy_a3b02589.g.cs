@@ -190,18 +190,19 @@ public sealed unsafe partial class BlockLegacy
     public bool anyOf_5967e205(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::reference_wrapper<HashedString const>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint asItemInstance(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance asItemInstance(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockActor? arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_a91782d6((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0)));
+    }
 
     public bool attack(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
     {
         return NativeMethods.TablePtr->hs_method_a82a6f79((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'BaseGameVersion' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public bool breaksFallingBlocks(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'BaseGameVersion' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public string buildDescriptionId(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0)
     {
@@ -263,9 +264,9 @@ public sealed unsafe partial class BlockLegacy
         return NativeMethods.TablePtr->hs_method_ff1f284f((void*)_handle) != 0;
     }
 
-    public bool canBeUsedInCommands(nint arg0)
+    public bool canBeUsedInCommands(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0)
     {
-        return NativeMethods.TablePtr->hs_method_972c0fb3((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_972c0fb3((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool canConnect(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, byte arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block arg2)
@@ -731,9 +732,9 @@ public sealed unsafe partial class BlockLegacy
         return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_2d4c8a45((void*)_handle), false);
     }
 
-    public nint getRequiredBaseGameVersion()
+    public global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion getRequiredBaseGameVersion()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_5d19e687((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion((nint)NativeMethods.TablePtr->hs_method_5d19e687((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'HashedString' is not supported.", false)]
@@ -1225,9 +1226,9 @@ public sealed unsafe partial class BlockLegacy
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)__hs_handle, false) : null;
     }
 
-    public static nint popResource(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, nint arg2)
+    public static nint popResource(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg2)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_3e326fc7((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
+        return (nint)NativeMethods.TablePtr->hs_method_3e326fc7((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
     public static nint popResource(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg2)
@@ -1382,9 +1383,9 @@ public sealed unsafe partial class BlockLegacy
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy((nint)NativeMethods.TablePtr->hs_method_3f2d84ea((void*)_handle, (void*)arg0.Handle), false);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy setMinRequiredBaseGameVersion(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy setMinRequiredBaseGameVersion(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy((nint)NativeMethods.TablePtr->hs_method_658c0c5d((void*)_handle, (void*)arg0), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy((nint)NativeMethods.TablePtr->hs_method_658c0c5d((void*)_handle, (void*)arg0.Handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

@@ -56,9 +56,10 @@ public sealed unsafe partial class ActorPlacerItem
     public static void forEachCustomEgg(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorDefinitionIdentifier' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getActorIdentifier(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorDefinitionIdentifier' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier getActorIdentifier(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier((nint)NativeMethods.TablePtr->hs_method_526ee289((void*)_handle, (void*)arg0.Handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color getBaseColor(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
     {

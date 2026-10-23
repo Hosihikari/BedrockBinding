@@ -247,9 +247,9 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
     public nint fetchActors(nint actorId, nint bb) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public nint[] fetchActors(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.AABB arg1)
+    public nint[] fetchActors(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.AABB arg1)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_e7e80000((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_e7e80000((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {

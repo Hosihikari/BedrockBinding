@@ -75,9 +75,9 @@ public sealed unsafe partial class MinecraftCommands
         NativeMethods.TablePtr->hs_method_580cfaaf((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public static void initBlockEnum(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0, nint arg1)
+    public static void initBlockEnum(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg1)
     {
-        NativeMethods.TablePtr->hs_method_ea364c1e((void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_ea364c1e((void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]

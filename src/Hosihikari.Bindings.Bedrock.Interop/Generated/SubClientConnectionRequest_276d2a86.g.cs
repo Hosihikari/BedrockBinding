@@ -169,9 +169,10 @@ public sealed unsafe partial class SubClientConnectionRequest
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'SemVersion' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getSkinGeometryEngineVersion() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'SemVersion' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.SemVersion getSkinGeometryEngineVersion()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SemVersion((nint)NativeMethods.TablePtr->hs_method_18c81d64((void*)_handle));
+    }
 
     public string getSkinId()
     {

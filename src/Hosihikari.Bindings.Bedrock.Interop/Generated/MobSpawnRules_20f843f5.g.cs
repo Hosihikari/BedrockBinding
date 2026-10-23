@@ -37,6 +37,26 @@ public sealed unsafe partial class MobSpawnRules
         return __hs_handle;
     }
 
+    public static int LOW_END_MAX_SPAWN_DISTANCE
+    {
+        get => NativeMethods.TablePtr->hs_get_c3997afb();
+    }
+
+    public static int MAX_DEFAULT_SPAWN_DISTANCE
+    {
+        get => NativeMethods.TablePtr->hs_get_28629a89();
+    }
+
+    public static ulong MAX_WORLD_AGE
+    {
+        get => NativeMethods.TablePtr->hs_get_bf78ffd6();
+    }
+
+    public static int MIN_DEFAULT_SPAWN_DISTANCE
+    {
+        get => NativeMethods.TablePtr->hs_get_578983ff();
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static MobSpawnRules Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
@@ -48,6 +68,10 @@ public sealed unsafe partial class MobSpawnRules
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static MobSpawnRules Create_6a8f53f7(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint addHerd(int minCount, int maxCount, nint herdEvent) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules addHerd(int arg0, int arg1, string arg2)
     {
@@ -68,9 +92,9 @@ public sealed unsafe partial class MobSpawnRules
         }
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules addPermutation(int arg0, int arg1, nint arg2)
+    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules addPermutation(int arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg2)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_e004445b((void*)_handle, arg0, arg1, (void*)arg2), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_e004445b((void*)_handle, arg0, arg1, (void*)arg2.Handle), false);
     }
 
     public bool canSpawnInConditions(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1)
@@ -102,7 +126,11 @@ public sealed unsafe partial class MobSpawnRules
         return (nint)NativeMethods.TablePtr->hs_method_c88ff21d((void*)_handle);
     }
 
-    public string getMobToDelayId()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getMobToDelayId_4c2f366c() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getMobToDelayId_02b864d7()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_02b864d7((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -168,6 +196,14 @@ public sealed unsafe partial class MobSpawnRules
         return NativeMethods.TablePtr->hs_method_9ccb079a((void*)_handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_c9e44528(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_e46ef561(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public nint selectRandomHerd(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0)
     {
         return (nint)NativeMethods.TablePtr->hs_method_c73dd600((void*)_handle, (void*)arg0.Handle);
@@ -187,6 +223,10 @@ public sealed unsafe partial class MobSpawnRules
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_a4a6f2bc((void*)_handle, arg0), false);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint setDelayRange(int min, int max, nint id) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules setDelayRange(int arg0, int arg1, string arg2)
     {
@@ -235,6 +275,10 @@ public sealed unsafe partial class MobSpawnRules
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_3d27b8e2((void*)_handle), false);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint setMobEventType(nint eventName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules setMobEventType(string arg0)
     {

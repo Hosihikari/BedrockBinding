@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class VirtualCommandOrigin
+public sealed unsafe partial class VirtualCommandOrigin : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,17 +37,39 @@ public sealed unsafe partial class VirtualCommandOrigin
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static VirtualCommandOrigin Create_2bf33f53(nint arg0, nint arg1, nint arg2, int arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static VirtualCommandOrigin Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static VirtualCommandOrigin Create_d581d114(nint arg0, nint arg1, nint arg2, int arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static VirtualCommandOrigin Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, nint arg2, int arg3)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_2bf33f53((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, arg3);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static VirtualCommandOrigin Create_2287c437(nint arg0, nint arg1, nint arg2, int arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new VirtualCommandOrigin((nint)handle);
+    }
+
+    public static VirtualCommandOrigin Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg1, nint arg2, int arg3)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_d581d114((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, arg3);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VirtualCommandOrigin((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static VirtualCommandOrigin Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public static VirtualCommandOrigin Create(nint arg0, nint arg1, nint arg2, int arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public bool canUseAbility(short arg0)
     {
@@ -97,11 +119,15 @@ public sealed unsafe partial class VirtualCommandOrigin
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Level((nint)__hs_handle, false) : null;
     }
 
-    public string getName()
+    public string getName_39a892f2()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_39a892f2((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getName_aa5750c0() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin? getOrigin()
     {
@@ -109,9 +135,10 @@ public sealed unsafe partial class VirtualCommandOrigin
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CommandOriginType' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getOriginType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CommandOriginType' requires --link-carrier or --virtual-dispatch.");
+    public sbyte getOriginType()
+    {
+        return NativeMethods.TablePtr->hs_method_4965ede3((void*)_handle);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin getOutputReceiver()
     {
@@ -123,7 +150,11 @@ public sealed unsafe partial class VirtualCommandOrigin
         return NativeMethods.TablePtr->hs_method_83b48d94((void*)_handle);
     }
 
-    public string getRequestId()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getRequestId_55cdf785() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getRequestId_64bef854()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_64bef854((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -170,6 +201,10 @@ public sealed unsafe partial class VirtualCommandOrigin
     public static nint load(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'VirtualCommandOrigin' has no accessible destructor.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag serialize()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)NativeMethods.TablePtr->hs_method_34b7da5a((void*)_handle));
@@ -178,5 +213,19 @@ public sealed unsafe partial class VirtualCommandOrigin
     public void updateValues()
     {
         NativeMethods.TablePtr->hs_method_a7437157((void*)_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_1879cda5((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

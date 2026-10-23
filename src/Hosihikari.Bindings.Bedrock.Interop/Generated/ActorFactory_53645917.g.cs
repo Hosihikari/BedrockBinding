@@ -59,13 +59,13 @@ public sealed unsafe partial class ActorFactory
         NativeMethods.TablePtr->hs_method_7a0e8569();
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? clientCreateDisplayActor(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec2 arg3)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? clientCreateDisplayActor(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec2 arg3)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_f7ec1d73((void*)_handle, (void*)arg0, (void*)(arg1?.Handle ?? 0), (void*)arg2.Handle, (void*)arg3.Handle);
+        var __hs_shared = NativeMethods.TablePtr->hs_method_f7ec1d73((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), (void*)arg2.Handle, (void*)arg3.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? createActor(string arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3, global::Hosihikari.Bindings.Bedrock.Interop.Vec2 arg4)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? createActor(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3, global::Hosihikari.Bindings.Bedrock.Interop.Vec2 arg4)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -80,44 +80,44 @@ public sealed unsafe partial class ActorFactory
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_shared = NativeMethods.TablePtr->hs_method_4832ed1c((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1, (void*)(arg2?.Handle ?? 0), (void*)arg3.Handle, (void*)arg4.Handle);
+            var __hs_shared = NativeMethods.TablePtr->hs_method_4832ed1c((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0), (void*)arg3.Handle, (void*)arg4.Handle);
             return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
         }
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? createBornActor(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? createBornActor(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_8f498643((void*)_handle, (void*)arg0, (void*)(arg1?.Handle ?? 0));
+        var __hs_shared = NativeMethods.TablePtr->hs_method_8f498643((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? createBornActor(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? createBornActor(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_9b6b4970((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        var __hs_shared = NativeMethods.TablePtr->hs_method_9b6b4970((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? createSpawnedActor(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec2 arg3)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? createSpawnedActor(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec2 arg3)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_fba4cfeb((void*)_handle, (void*)arg0, (void*)(arg1?.Handle ?? 0), (void*)arg2.Handle, (void*)arg3.Handle);
+        var __hs_shared = NativeMethods.TablePtr->hs_method_fba4cfeb((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), (void*)arg2.Handle, (void*)arg3.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? createSummonedActor(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? createSummonedActor(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_9c091c38((void*)_handle, (void*)arg0, (void*)(arg1?.Handle ?? 0), (void*)arg2.Handle);
+        var __hs_shared = NativeMethods.TablePtr->hs_method_9c091c38((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), (void*)arg2.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? createTransformedActor(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1)
+    public global::Hosihikari.Bindings.Abi.SharedHandle? createTransformedActor(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_method_c018da1c((void*)_handle, (void*)arg0, (void*)(arg1?.Handle ?? 0));
+        var __hs_shared = NativeMethods.TablePtr->hs_method_c018da1c((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public static void fillFactoryData(nint arg0, nint arg1, nint arg2, nint arg3)
+    public static void fillFactoryData(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg1, nint arg2, nint arg3)
     {
-        NativeMethods.TablePtr->hs_method_4313fd20((void*)arg0, (void*)arg1, (void*)arg2, (void*)arg3);
+        NativeMethods.TablePtr->hs_method_4313fd20((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3);
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Actor? fixLegacyEntity(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg1)
@@ -154,9 +154,9 @@ public sealed unsafe partial class ActorFactory
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public int lookupEntityType(nint arg0)
+    public int lookupEntityType(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg0)
     {
-        return NativeMethods.TablePtr->hs_method_0a4f0a46((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_0a4f0a46((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: parameter type 'std::unique_ptr<Actor,std::default_delete<Actor>> (*const&)(ActorDefinitionGroup*,ActorDefinitionIdentifier const&,EntityContext&)' is not supported.", false)]

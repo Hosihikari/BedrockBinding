@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LevelSettings
+public sealed unsafe partial class LevelSettings : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,39 +37,72 @@ public sealed unsafe partial class LevelSettings
         return __hs_handle;
     }
 
-    public string GetScenarioId()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint GetScenarioId_9e1b2bc2() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string GetScenarioId_7e563bf4()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_7e563bf4((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string GetServerId()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint GetServerId_048109a4() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string GetServerId_4697df00()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_4697df00((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string GetWorldId()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint GetWorldId_d62a818b() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string GetWorldId_809d2d14()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_809d2d14((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static LevelSettings Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static LevelSettings Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_4c2d4947();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static LevelSettings Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new LevelSettings((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static LevelSettings Create_df0526b9(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static LevelSettings Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelData arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_9a0c469f((void*)arg0.Handle, (void*)arg1.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+        return new LevelSettings((nint)handle);
+    }
+
+    public static LevelSettings Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_df0526b9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelSettings((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public static LevelSettings Create_1488c8da(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
     public void __autoclassinit2(ulong arg0)
     {
@@ -91,10 +124,21 @@ public sealed unsafe partial class LevelSettings
         return NativeMethods.TablePtr->hs_method_00fdf561((void*)_handle) != 0;
     }
 
-    public string educationProductID()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint educationProductID_99539d2d() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string educationProductID_36a2d6da()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_36a2d6da((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint filler
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
     }
 
     public bool forceGameType()
@@ -107,12 +151,16 @@ public sealed unsafe partial class LevelSettings
         return NativeMethods.TablePtr->hs_method_51f03c76((void*)_handle) != 0;
     }
 
-    public nint getBaseGameVersion()
+    public global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion getBaseGameVersion()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d846436d((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion((nint)NativeMethods.TablePtr->hs_method_d846436d((void*)_handle), false);
     }
 
-    public string getBiomeOverride()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getBiomeOverride_d33745dd() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getBiomeOverride_842600e2()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_842600e2((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -138,9 +186,9 @@ public sealed unsafe partial class LevelSettings
         return NativeMethods.TablePtr->hs_method_f8b6e9b3((void*)_handle);
     }
 
-    public nint getDefaultPermissions()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PermissionsHandler getDefaultPermissions()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_aa834796((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PermissionsHandler((nint)NativeMethods.TablePtr->hs_method_aa834796((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getDefaultSpawn()
@@ -158,9 +206,9 @@ public sealed unsafe partial class LevelSettings
         return NativeMethods.TablePtr->hs_method_4ae6e581((void*)_handle);
     }
 
-    public nint getEduSharedUriResource()
+    public global::Hosihikari.Bindings.Bedrock.Interop.EduSharedUriResource getEduSharedUriResource()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d2710b8b((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.EduSharedUriResource((nint)NativeMethods.TablePtr->hs_method_d2710b8b((void*)_handle), false);
     }
 
     public int getEducationEditionOffer()
@@ -178,7 +226,11 @@ public sealed unsafe partial class LevelSettings
         return NativeMethods.TablePtr->hs_method_d14f3006((void*)_handle) != 0;
     }
 
-    public nint getExcludedScriptModules()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getExcludedScriptModules_9faaead4() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public nint getExcludedScriptModules_c8fa889a()
     {
         return (nint)NativeMethods.TablePtr->hs_method_c8fa889a((void*)_handle);
     }
@@ -273,9 +325,10 @@ public sealed unsafe partial class LevelSettings
         return NativeMethods.TablePtr->hs_method_78459fb2((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'SpawnSettings' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getSpawnSettings() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'SpawnSettings' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.SpawnSettings getSpawnSettings()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SpawnSettings((nint)NativeMethods.TablePtr->hs_method_6b2af0a2((void*)_handle));
+    }
 
     public int getTime()
     {
@@ -377,10 +430,22 @@ public sealed unsafe partial class LevelSettings
         return NativeMethods.TablePtr->hs_method_452ccb8d((void*)_handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_6890f11b(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_664eee8d(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void overrideSavedSettings(global::Hosihikari.Bindings.Bedrock.Interop.LevelData arg0)
     {
         NativeMethods.TablePtr->hs_method_7ca98ad1((void*)_handle, (void*)arg0.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint parseSeedString(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64? parseSeedString(string arg0)
     {
@@ -408,9 +473,9 @@ public sealed unsafe partial class LevelSettings
         return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_0694bb15((void*)_handle, arg0), false);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setBaseGameVersion(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setBaseGameVersion(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_c611ae4a((void*)_handle, (void*)arg0), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_c611ae4a((void*)_handle, (void*)arg0.Handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setChatRestrictionLevel(sbyte arg0)
@@ -443,9 +508,9 @@ public sealed unsafe partial class LevelSettings
         return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_6d80899a((void*)_handle, arg0), false);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setEduSharedUriResource(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setEduSharedUriResource(global::Hosihikari.Bindings.Bedrock.Interop.EduSharedUriResource arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_eade3c41((void*)_handle, (void*)arg0), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_eade3c41((void*)_handle, (void*)arg0.Handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setEducationEditionOffer(int arg0)
@@ -457,6 +522,10 @@ public sealed unsafe partial class LevelSettings
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_7af78709((void*)_handle, arg0), false);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint setEducationProductID(nint id) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setEducationProductID(string arg0)
     {
@@ -482,9 +551,9 @@ public sealed unsafe partial class LevelSettings
         return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_3b4ebdf0((void*)_handle, arg0), false);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setExperiments(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setExperiments(global::Hosihikari.Bindings.Bedrock.Interop.ExperimentStorage arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_a0cf4e9e((void*)_handle, (void*)arg0), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_a0cf4e9e((void*)_handle, (void*)arg0.Handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setForceGameType(bool arg0)
@@ -492,9 +561,9 @@ public sealed unsafe partial class LevelSettings
         return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_114c1566((void*)_handle, arg0), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'GameRules' is not copy-constructible.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint setGameRules(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'GameRules' is not copy-constructible.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setGameType(int arg0)
     {
@@ -526,6 +595,10 @@ public sealed unsafe partial class LevelSettings
         return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_593339af((void*)_handle, (void*)arg0.Handle), false);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint setScenarioId(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setScenarioId(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -550,6 +623,10 @@ public sealed unsafe partial class LevelSettings
         return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_cd0153c1((void*)_handle, arg0), false);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint setServerId(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setServerId(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -569,9 +646,9 @@ public sealed unsafe partial class LevelSettings
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'SpawnSettings' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint setSpawnSettings(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'SpawnSettings' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setTexturePackRequired(bool arg0)
     {
@@ -582,6 +659,10 @@ public sealed unsafe partial class LevelSettings
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings((nint)NativeMethods.TablePtr->hs_method_742387cc((void*)_handle, arg0), false);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint setWorldId(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelSettings setWorldId(string arg0)
     {
@@ -617,15 +698,22 @@ public sealed unsafe partial class LevelSettings
         return NativeMethods.TablePtr->hs_method_f73d8b1a((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_d44c3f96() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static LevelSettings Create_cb783f87(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_70864079() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_9b42525d((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

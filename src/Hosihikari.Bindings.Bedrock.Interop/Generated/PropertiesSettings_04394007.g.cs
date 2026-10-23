@@ -289,9 +289,10 @@ public sealed unsafe partial class PropertiesSettings
         return NativeMethods.TablePtr->hs_method_ba1f9de4((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TransportLayer' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getTransportLayerType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TransportLayer' requires --link-carrier or --virtual-dispatch.");
+    public int getTransportLayerType()
+    {
+        return NativeMethods.TablePtr->hs_method_5f82cc26((void*)_handle);
+    }
 
     public bool isClientSideGenEnabled()
     {

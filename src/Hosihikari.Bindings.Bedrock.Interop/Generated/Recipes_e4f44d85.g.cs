@@ -61,9 +61,9 @@ public sealed unsafe partial class Recipes
     public void addShapedRecipe_44838eb3(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, int arg5, nint arg6, nint arg7, nint arg8, bool arg9) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'Recipes::Type' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'ItemInstance' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'Recipes::Type' is not supported.", false)]
     public void addShapedRecipe_d9245876(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, int arg5, nint arg6, nint arg7, nint arg8, bool arg9) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'ItemInstance' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'Recipes::Type' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'Recipes::Type' is not supported.", false)]
     public void addShapelessRecipe(nint arg0, nint arg1, nint arg2, nint arg3, int arg4, nint arg5, nint arg6, nint arg7) =>
@@ -90,23 +90,24 @@ public sealed unsafe partial class Recipes
     public void forEachUnlockableRecipe(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getFurnaceRecipeResult(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance getFurnaceRecipeResult(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_1faed6e8((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle));
+    }
 
     public uint getNumberOfUnlockableRecipes()
     {
         return NativeMethods.TablePtr->hs_method_a856d4dc((void*)_handle);
     }
 
-    public nint getRecipeByNetId_42d0b34a(nint arg0)
+    public nint getRecipeByNetId(global::Hosihikari.Bindings.Bedrock.Interop.TypedServerNetId_RecipeNetIdTag_unsigned_int_0_ arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_42d0b34a((void*)_handle, (void*)arg0);
+        return (nint)NativeMethods.TablePtr->hs_method_42d0b34a((void*)_handle, (void*)arg0.Handle);
     }
 
-    public nint getRecipeFor(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg1)
+    public nint getRecipeFor(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg1)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d973b29c((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        return (nint)NativeMethods.TablePtr->hs_method_d973b29c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public nint getRecipesAllTags()
@@ -114,14 +115,14 @@ public sealed unsafe partial class Recipes
         return (nint)NativeMethods.TablePtr->hs_method_12b79a92((void*)_handle);
     }
 
-    public void init(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0, nint arg1, nint arg2, nint arg3)
+    public void init(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg2, nint arg3)
     {
-        NativeMethods.TablePtr->hs_method_d8d3bc3a((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2, (void*)arg3);
+        NativeMethods.TablePtr->hs_method_d8d3bc3a((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle, (void*)arg3);
     }
 
-    public bool loadRecipe(nint arg0, nint arg1, nint arg2, bool arg3)
+    public bool loadRecipe(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg2, bool arg3)
     {
-        return NativeMethods.TablePtr->hs_method_bbeccc41((void*)_handle, (void*)arg0, (void*)arg1, (void*)arg2, arg3) != 0;
+        return NativeMethods.TablePtr->hs_method_bbeccc41((void*)_handle, (void*)arg0, (void*)arg1.Handle, (void*)arg2.Handle, arg3) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

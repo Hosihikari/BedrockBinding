@@ -77,9 +77,9 @@ public sealed unsafe partial class TrialSpawner
         NativeMethods.TablePtr->hs_method_63a6c716((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void setEntityId(nint arg0)
+    public void setEntityId(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg0)
     {
-        NativeMethods.TablePtr->hs_method_80e4b269((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_80e4b269((void*)_handle, (void*)arg0.Handle);
     }
 
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)

@@ -127,13 +127,14 @@ public sealed unsafe partial class ItemRegistryRef
         return (nint)NativeMethods.TablePtr->hs_method_ab74e3f5((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'BaseGameVersion' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getWorldBaseGameVersion() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'BaseGameVersion' requires --link-carrier or --virtual-dispatch.");
-
-    public void init(nint arg0, nint arg1, nint arg2, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager? arg3)
+    public global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion getWorldBaseGameVersion()
     {
-        NativeMethods.TablePtr->hs_method_146ca432((void*)_handle, (void*)arg0, (void*)arg1, (void*)arg2, (void*)(arg3?.Handle ?? 0));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion((nint)NativeMethods.TablePtr->hs_method_e0ff012b((void*)_handle));
+    }
+
+    public void init(nint arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg2, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager? arg3)
+    {
+        NativeMethods.TablePtr->hs_method_146ca432((void*)_handle, (void*)arg0, (void*)arg1, (void*)arg2.Handle, (void*)(arg3?.Handle ?? 0));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -145,9 +146,9 @@ public sealed unsafe partial class ItemRegistryRef
         return NativeMethods.TablePtr->hs_method_22131700((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    public bool isCreativeItem(nint arg0)
+    public bool isCreativeItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0)
     {
-        return NativeMethods.TablePtr->hs_method_5e6b9545((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_5e6b9545((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool isServerInitializingCreativeItems()
@@ -224,9 +225,9 @@ public sealed unsafe partial class ItemRegistryRef
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void registerAlias(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg1, nint arg2)
+    public void registerAlias(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg1, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg2)
     {
-        NativeMethods.TablePtr->hs_method_f5c02ce8((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_f5c02ce8((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'WeakPtr<Item>' requires --link-carrier or --virtual-dispatch.", false)]
@@ -242,9 +243,9 @@ public sealed unsafe partial class ItemRegistryRef
         NativeMethods.TablePtr->hs_method_5f37779c((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
-    public void registerLegacyMapping(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg1, nint arg2)
+    public void registerLegacyMapping(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg1, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg2)
     {
-        NativeMethods.TablePtr->hs_method_3ad6ba0c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_3ad6ba0c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
     public ulong remapToFullLegacyNameByHash(ulong arg0)

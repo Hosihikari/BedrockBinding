@@ -107,9 +107,9 @@ public sealed unsafe partial class LevelData
         return (nint)NativeMethods.TablePtr->hs_method_14a6f7d8((void*)_handle);
     }
 
-    public nint getBaseGameVersion()
+    public global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion getBaseGameVersion()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_17418a57((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion((nint)NativeMethods.TablePtr->hs_method_17418a57((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -157,14 +157,14 @@ public sealed unsafe partial class LevelData
         return (nint)NativeMethods.TablePtr->hs_method_7e8cd2be((void*)_handle);
     }
 
-    public nint getDefaultPermissions_9d4d079e()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PermissionsHandler getDefaultPermissions_9d4d079e()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_9d4d079e((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PermissionsHandler((nint)NativeMethods.TablePtr->hs_method_9d4d079e((void*)_handle), false);
     }
 
-    public nint getDefaultPermissions_09c2d3ed()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PermissionsHandler getDefaultPermissions_09c2d3ed()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_09c2d3ed((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PermissionsHandler((nint)NativeMethods.TablePtr->hs_method_09c2d3ed((void*)_handle), false);
     }
 
     public int getEditorWorldType()
@@ -382,9 +382,9 @@ public sealed unsafe partial class LevelData
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_9ea439e1((void*)_handle), false);
     }
 
-    public nint getSpawnSettings()
+    public global::Hosihikari.Bindings.Bedrock.Interop.SpawnSettings getSpawnSettings()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_4b6fbde3((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SpawnSettings((nint)NativeMethods.TablePtr->hs_method_4b6fbde3((void*)_handle), false);
     }
 
     public int getStorageVersion()
@@ -590,9 +590,9 @@ public sealed unsafe partial class LevelData
         NativeMethods.TablePtr->hs_method_e4ff4960((void*)_handle, arg0);
     }
 
-    public void setBaseGameVersion(nint arg0)
+    public void setBaseGameVersion(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0)
     {
-        NativeMethods.TablePtr->hs_method_c3b5a69f((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_c3b5a69f((void*)_handle, (void*)arg0.Handle);
     }
 
     public void setBonusChestSpawned(bool arg0)
@@ -620,9 +620,9 @@ public sealed unsafe partial class LevelData
         NativeMethods.TablePtr->hs_method_805a6812((void*)_handle, arg0);
     }
 
-    public void setEduSharedUriResource(nint arg0)
+    public void setEduSharedUriResource(global::Hosihikari.Bindings.Bedrock.Interop.EduSharedUriResource arg0)
     {
-        NativeMethods.TablePtr->hs_method_3ce2bf79((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_3ce2bf79((void*)_handle, (void*)arg0.Handle);
     }
 
     public void setEducationEditionOffer(int arg0)

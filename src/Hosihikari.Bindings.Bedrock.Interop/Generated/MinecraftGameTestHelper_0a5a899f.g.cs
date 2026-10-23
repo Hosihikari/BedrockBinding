@@ -259,7 +259,7 @@ public sealed unsafe partial class MinecraftGameTestHelper
     public void succeedWhenEntityData(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void succeedWhenEntityHasComponent(nint arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, bool arg3)
+    public void succeedWhenEntityHasComponent(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, bool arg3)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
         scoped global::System.Span<byte> __hs_stringBytes1;
@@ -274,18 +274,18 @@ public sealed unsafe partial class MinecraftGameTestHelper
         global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_method_b7f92119((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2.Handle, arg3);
+            NativeMethods.TablePtr->hs_method_b7f92119((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2.Handle, arg3);
         }
     }
 
-    public void succeedWhenEntityPresent(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, bool arg2)
+    public void succeedWhenEntityPresent(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, bool arg2)
     {
-        NativeMethods.TablePtr->hs_method_1b179d9d((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg2);
+        NativeMethods.TablePtr->hs_method_1b179d9d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
     }
 
-    public void succeedWhenEntityPresent(nint arg0, int arg1, int arg2, int arg3, bool arg4)
+    public void succeedWhenEntityPresent(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg0, int arg1, int arg2, int arg3, bool arg4)
     {
-        NativeMethods.TablePtr->hs_method_c8227625((void*)_handle, (void*)arg0, arg1, arg2, arg3, arg4);
+        NativeMethods.TablePtr->hs_method_c8227625((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3, arg4);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]

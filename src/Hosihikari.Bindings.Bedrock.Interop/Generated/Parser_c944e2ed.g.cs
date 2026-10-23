@@ -61,9 +61,9 @@ public sealed unsafe partial class Parser
         return NativeMethods.TablePtr->hs_method_43a4a568((void*)arg0, (void*)arg1, (void*)arg2, (void*)arg3) != 0;
     }
 
-    public static bool parse(nint arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg2)
+    public static bool parse(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg2)
     {
-        return NativeMethods.TablePtr->hs_method_5d0f475b((void*)arg0, (void*)arg1, (void*)arg2.Handle) != 0;
+        return NativeMethods.TablePtr->hs_method_5d0f475b((void*)arg0, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
@@ -74,9 +74,9 @@ public sealed unsafe partial class Parser
     public static bool parse(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'ActorDefinitionTrigger' is not supported.");
 
-    public static void parse_8c823e06(nint arg0, nint arg1, nint arg2, nint arg3)
+    public static void parse(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg1, nint arg2, nint arg3)
     {
-        NativeMethods.TablePtr->hs_method_8c823e06((void*)arg0, (void*)arg1, (void*)arg2, (void*)arg3);
+        NativeMethods.TablePtr->hs_method_8c823e06((void*)arg0, (void*)arg1.Handle, (void*)arg2, (void*)arg3);
     }
 
     public static void parse_8c08e685(nint arg0, nint arg1, nint arg2, nint arg3)
@@ -124,18 +124,18 @@ public sealed unsafe partial class Parser
         NativeMethods.TablePtr->hs_method_ed868910((void*)arg0, (void*)arg1, (void*)arg2, (void*)arg3);
     }
 
-    public static void parse(nint arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockDescriptor arg2)
+    public static void parse(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockDescriptor arg2)
     {
-        NativeMethods.TablePtr->hs_method_46a72895((void*)arg0, (void*)arg1, (void*)arg2.Handle);
+        NativeMethods.TablePtr->hs_method_46a72895((void*)arg0, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'BlockDescriptor' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public static void parse_2f93c547(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'BlockDescriptor' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'BlockDescriptor' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public static void parse_45f185a4(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'BlockDescriptor' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     public static void parse(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, nint arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3)
     {
@@ -166,9 +166,9 @@ public sealed unsafe partial class Parser
     public static void parse_1d498428(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'ActorDefinitionIdentifier' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public static void parse_2cb11019(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'ActorDefinitionIdentifier' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     public static void parse(nint arg0, int[] arg1, nint arg2, nint arg3)
     {
@@ -214,9 +214,9 @@ public sealed unsafe partial class Parser
         NativeMethods.TablePtr->hs_method_259f525b((void*)arg0, (void*)arg1, (void*)arg2, arg3);
     }
 
-    public static void serialize_d7d781c1(nint arg0, nint arg1, nint arg2)
+    public static void serialize(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg0, nint arg1, nint arg2)
     {
-        NativeMethods.TablePtr->hs_method_d7d781c1((void*)arg0, (void*)arg1, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_d7d781c1((void*)arg0.Handle, (void*)arg1, (void*)arg2);
     }
 
     public static void serialize_b8046231(nint arg0, nint arg1, nint arg2)
@@ -244,9 +244,9 @@ public sealed unsafe partial class Parser
         NativeMethods.TablePtr->hs_method_bf1d1b01((void*)arg0, (void*)arg1, (void*)arg2);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'BlockDescriptor' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public static void serialize_82273cbc(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'BlockDescriptor' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public static void serialize_5fa95d96(nint arg0, nint arg1, nint arg2) =>

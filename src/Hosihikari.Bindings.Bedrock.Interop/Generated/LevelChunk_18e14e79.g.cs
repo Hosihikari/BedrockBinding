@@ -278,17 +278,18 @@ public sealed unsafe partial class LevelChunk
         return NativeMethods.TablePtr->hs_method_ffe7d5c6((void*)_handle, (void*)arg0, arg1) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ChunkLocalHeight' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getAboveTopSolidBlock(nint arg0, bool arg1, bool arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ChunkLocalHeight' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalHeight getAboveTopSolidBlock(nint arg0, bool arg1, bool arg2, bool arg3)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalHeight((nint)NativeMethods.TablePtr->hs_method_b1c28f46((void*)_handle, (void*)arg0, arg1, arg2, arg3));
+    }
 
-    public void getActors(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.AABB arg1, nint[] arg2)
+    public void getActors(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.AABB arg1, nint[] arg2)
     {
         var __hs_vectorItems2 = arg2 ?? global::System.Array.Empty<nint>();
         fixed (nint* __hs_vectorHandleData2 = __hs_vectorItems2)
         {
             var __hs_vectorData2 = (void**)__hs_vectorHandleData2;
-            NativeMethods.TablePtr->hs_method_73e05997((void*)_handle, (void*)arg0, (void*)arg1.Handle, __hs_vectorData2, (nuint)(arg2?.Length ?? 0));
+            NativeMethods.TablePtr->hs_method_73e05997((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, __hs_vectorData2, (nuint)(arg2?.Length ?? 0));
         }
     }
 
@@ -465,9 +466,10 @@ public sealed unsafe partial class LevelChunk
         return new global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos((nint)NativeMethods.TablePtr->hs_method_9f6c84e5((void*)_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ChunkLocalHeight' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getPreWorldGenHeightmap(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ChunkLocalHeight' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalHeight getPreWorldGenHeightmap(nint arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalHeight((nint)NativeMethods.TablePtr->hs_method_99ddca03((void*)_handle, (void*)arg0));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'HeightmapWrapper' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getPreWorldGenHeightmap() =>
@@ -533,9 +535,10 @@ public sealed unsafe partial class LevelChunk
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_fbd22a3d((void*)_handle, (void*)arg0));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ChunkLocalHeight' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getTotalAllocatedHeight() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ChunkLocalHeight' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalHeight getTotalAllocatedHeight()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalHeight((nint)NativeMethods.TablePtr->hs_method_3459d1b9((void*)_handle));
+    }
 
     public bool hasAnyBiomeStates()
     {

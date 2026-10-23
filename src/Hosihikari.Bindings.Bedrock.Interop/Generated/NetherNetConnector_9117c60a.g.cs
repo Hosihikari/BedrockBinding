@@ -69,9 +69,10 @@ public sealed unsafe partial class NetherNetConnector
         return new global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier((nint)NativeMethods.TablePtr->hs_method_1b64ce89((void*)_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TransportLayer' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getNetworkType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TransportLayer' requires --link-carrier or --virtual-dispatch.");
+    public int getNetworkType()
+    {
+        return NativeMethods.TablePtr->hs_method_781e0798((void*)_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'NetherNet::NetworkID' is not a known bindable declaration.", false)]
     public bool getSessionState(nint arg0, nint arg1) =>

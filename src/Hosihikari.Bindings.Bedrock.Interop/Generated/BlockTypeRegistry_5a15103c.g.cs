@@ -42,9 +42,9 @@ public sealed unsafe partial class BlockTypeRegistry
         NativeMethods.TablePtr->hs_method_d7d3dec8();
     }
 
-    public static ulong computeBlockTypeRegistryChecksum(nint arg0)
+    public static ulong computeBlockTypeRegistryChecksum(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0)
     {
-        return NativeMethods.TablePtr->hs_method_2b996316((void*)arg0);
+        return NativeMethods.TablePtr->hs_method_2b996316((void*)arg0.Handle);
     }
 
     public static void finalizeBlockComponentStorage()

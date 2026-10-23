@@ -175,9 +175,9 @@ public sealed unsafe partial class PlayerInventory
         NativeMethods.TablePtr->hs_method_5b28a94c((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void load(global::Hosihikari.Bindings.Bedrock.Interop.ListTag arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Level arg2)
+    public void load(global::Hosihikari.Bindings.Bedrock.Interop.ListTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, global::Hosihikari.Bindings.Bedrock.Interop.Level arg2)
     {
-        NativeMethods.TablePtr->hs_method_5aedf4c5((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle);
+        NativeMethods.TablePtr->hs_method_5aedf4c5((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
     public void removeItem(int arg0, int arg1, sbyte arg2)

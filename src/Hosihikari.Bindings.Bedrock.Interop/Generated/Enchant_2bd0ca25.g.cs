@@ -37,13 +37,29 @@ public sealed unsafe partial class Enchant
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Enchant Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Enchant Create(nint arg0, nint arg1, nint arg2, nint arg3, int arg4, int arg5) =>
+    public static Enchant Create_767aa0ad(nint arg0, nint arg1, nint arg2, nint arg3, int arg4, int arg5) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Enchant Create(nint arg0, nint arg1, nint arg2, nint arg3, int arg4, int arg5, bool arg6) =>
+    public static Enchant Create_1c680a34(nint arg0, nint arg1, nint arg2, nint arg3, int arg4, int arg5, bool arg6) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Enchant Create_0e9a36f8(nint type, nint frequency, nint stringId, nint description, int primarySlots, int secondarySlots) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Enchant Create_126e4292(nint type, nint frequency, nint stringId, nint description, int primarySlots, int secondarySlots, bool isLootable) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Enchant Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public bool canEnchant(int arg0, bool arg1)
     {
@@ -55,15 +71,19 @@ public sealed unsafe partial class Enchant
         NativeMethods.TablePtr->hs_method_30f8f5a2((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
     }
 
-    public void doPostHurt(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg2, int arg3)
+    public void doPostHurt(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg2, int arg3)
     {
-        NativeMethods.TablePtr->hs_method_71aca5c2((void*)_handle, (void*)arg0, (void*)arg1.Handle, (void*)arg2.Handle, arg3);
+        NativeMethods.TablePtr->hs_method_71aca5c2((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3);
     }
 
     public void doPostItemHurtActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, int arg2)
     {
         NativeMethods.TablePtr->hs_method_3d550e84((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint enchantSlotFromString_7694ef75(nint str) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public float getAfterBreachArmorFraction(int arg0, float arg1)
     {
@@ -80,17 +100,25 @@ public sealed unsafe partial class Enchant
         return NativeMethods.TablePtr->hs_method_efb75413((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
-    public string getDescription()
+    public string getDescription_74d53cc3()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_74d53cc3((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string getDescriptionId()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getDescription_7fecd212() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getDescriptionId_4f3147b1()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_4f3147b1((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getDescriptionId_120f887f() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Enchant? getEnchant(nint arg0)
     {
@@ -103,6 +131,18 @@ public sealed unsafe partial class Enchant
         var __hs_handle = NativeMethods.TablePtr->hs_method_7b9a49a7((void*)arg0.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Enchant((nint)__hs_handle, false) : null;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getEnchantType_9f9a2d08() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint getEnchantTypeFromName_90fc2d7c(nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getFrequency_614758b8() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int getMaxCost(int arg0)
     {
@@ -139,9 +179,10 @@ public sealed unsafe partial class Enchant
         return NativeMethods.TablePtr->hs_method_73c6d39a((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Enchant::Type' is not a known bindable declaration.", false)]
-    public bool isCompatibleWith(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Enchant::Type' is not a known bindable declaration.");
+    public bool isCompatibleWith(sbyte arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_c747330c((void*)_handle, arg0) != 0;
+    }
 
     public bool isDisabled()
     {
@@ -173,16 +214,52 @@ public sealed unsafe partial class Enchant
         return NativeMethods.TablePtr->hs_method_105c68b3((void*)_handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint mEnchantNameToType
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint mEnchantSlotTypeEnumToStringMap
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint mEnchantSlotTypeNameToEnumMap
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint mEnchants
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public static void shutdownEnchants()
     {
         NativeMethods.TablePtr->hs_method_c3bdda50();
     }
 
-    public static string stringFromEnchantSlot(nint arg0)
+    public static string stringFromEnchantSlot_49593955(nint arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_49593955((void*)arg0);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint stringFromEnchantSlot_a19af761(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_fdcb7ee7() =>

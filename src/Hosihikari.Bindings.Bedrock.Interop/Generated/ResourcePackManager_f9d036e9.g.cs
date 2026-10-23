@@ -50,9 +50,10 @@ public sealed unsafe partial class ResourcePackManager
         return NativeMethods.TablePtr->hs_method_af397282((void*)_handle, (void*)arg0, (void*)arg1, (void*)arg2, (void*)arg3);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'SemVersion' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getFullStackMinEngineVersion() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'SemVersion' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.SemVersion getFullStackMinEngineVersion()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SemVersion((nint)NativeMethods.TablePtr->hs_method_87d503cc((void*)_handle));
+    }
 
     public nint getPackSourceReport()
     {

@@ -90,9 +90,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_526f7151((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
-    public void addBreakingItemParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, int arg1, nint arg2)
+    public void addBreakingItemParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.ResolvedItemIconInfo arg2)
     {
-        NativeMethods.TablePtr->hs_method_ae55263c((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_ae55263c((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle);
     }
 
     public void addChunkViewTracker(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
@@ -186,19 +186,19 @@ public sealed unsafe partial class Level : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_bf017d05((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, arg3);
     }
 
-    public void broadcastSoundEvent(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, global::Hosihikari.Bindings.Bedrock.Interop.Block arg3, nint arg4, bool arg5, bool arg6)
+    public void broadcastSoundEvent(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, global::Hosihikari.Bindings.Bedrock.Interop.Block arg3, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg4, bool arg5, bool arg6)
     {
-        NativeMethods.TablePtr->hs_method_f035db68((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4, arg5, arg6);
+        NativeMethods.TablePtr->hs_method_f035db68((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4.Handle, arg5, arg6);
     }
 
-    public void broadcastSoundEvent(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, int arg3, nint arg4, bool arg5, bool arg6)
+    public void broadcastSoundEvent(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg4, bool arg5, bool arg6)
     {
-        NativeMethods.TablePtr->hs_method_a0409087((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, arg3, (void*)arg4, arg5, arg6);
+        NativeMethods.TablePtr->hs_method_a0409087((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, arg3, (void*)arg4.Handle, arg5, arg6);
     }
 
-    public void broadcastSoundEvent(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, int arg3, nint arg4, bool arg5, bool arg6)
+    public void broadcastSoundEvent(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg4, bool arg5, bool arg6)
     {
-        NativeMethods.TablePtr->hs_method_6c5b5a45((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, arg3, (void*)arg4, arg5, arg6);
+        NativeMethods.TablePtr->hs_method_6c5b5a45((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, arg3, (void*)arg4.Handle, arg5, arg6);
     }
 
     public bool canChangeDimension(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1)
@@ -619,14 +619,14 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_a8d6ab16((void*)_handle);
     }
 
-    public nint getDefaultPermissions_7a1666f1()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PermissionsHandler getDefaultPermissions_7a1666f1()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_7a1666f1((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PermissionsHandler((nint)NativeMethods.TablePtr->hs_method_7a1666f1((void*)_handle), false);
     }
 
-    public nint getDefaultPermissions_82126d2a()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PermissionsHandler getDefaultPermissions_82126d2a()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_82126d2a((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PermissionsHandler((nint)NativeMethods.TablePtr->hs_method_82126d2a((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getDefaultSpawn()
@@ -1734,14 +1734,14 @@ public sealed unsafe partial class Level : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_439933d3((void*)_handle);
     }
 
-    public void playSound(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, int arg3, nint arg4, bool arg5, bool arg6)
+    public void playSound(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg4, bool arg5, bool arg6)
     {
-        NativeMethods.TablePtr->hs_method_1dcbe552((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, arg3, (void*)arg4, arg5, arg6);
+        NativeMethods.TablePtr->hs_method_1dcbe552((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, arg3, (void*)arg4.Handle, arg5, arg6);
     }
 
-    public void playSound(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, int arg3, nint arg4, bool arg5, bool arg6)
+    public void playSound(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg4, bool arg5, bool arg6)
     {
-        NativeMethods.TablePtr->hs_method_0591b62c((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, arg3, (void*)arg4, arg5, arg6);
+        NativeMethods.TablePtr->hs_method_0591b62c((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, arg3, (void*)arg4.Handle, arg5, arg6);
     }
 
     public void playSound(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, float arg2, float arg3)
@@ -1749,9 +1749,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_59513e5e((void*)_handle, arg0, (void*)arg1.Handle, arg2, arg3);
     }
 
-    public void playSound(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, int arg2, nint arg3, bool arg4, bool arg5)
+    public void playSound(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, int arg2, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg3, bool arg4, bool arg5)
     {
-        NativeMethods.TablePtr->hs_method_2bc6b093((void*)_handle, arg0, (void*)arg1.Handle, arg2, (void*)arg3, arg4, arg5);
+        NativeMethods.TablePtr->hs_method_2bc6b093((void*)_handle, arg0, (void*)arg1.Handle, arg2, (void*)arg3.Handle, arg4, arg5);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -1903,9 +1903,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_614af3dd((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'EducationLevelSettings' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void setEducationLevelSettings(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'EducationLevelSettings' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public void setFinishedInitializing()
     {

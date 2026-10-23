@@ -37,13 +37,14 @@ public sealed unsafe partial class EnchantUtils
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Enchant::Type' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public static void appendEnchantToFormattedText(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Enchant::Type' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Enchant::Type' is not a known bindable declaration.", false)]
-    public static bool applyEnchant(nint arg0, nint arg1, int arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Enchant::Type' is not a known bindable declaration.");
+    public static bool applyEnchant(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, sbyte arg1, int arg2, bool arg3)
+    {
+        return NativeMethods.TablePtr->hs_method_f36e0637((void*)arg0.Handle, arg1, arg2, arg3) != 0;
+    }
 
     public static bool applyEnchant_89dcab00(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, nint arg1, bool arg2)
     {
@@ -73,13 +74,15 @@ public sealed unsafe partial class EnchantUtils
         return NativeMethods.TablePtr->hs_method_b9a5ec9f((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Enchant::Type' is not a known bindable declaration.", false)]
-    public static int determineActivation(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Enchant::Type' is not a known bindable declaration.");
+    public static int determineActivation(sbyte arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_9cd33751(arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Enchant::Type' is not a known bindable declaration.", false)]
-    public static int determineCompatibility(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Enchant::Type' is not a known bindable declaration.");
+    public static int determineCompatibility(sbyte arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_c4727dba(arg0);
+    }
 
     public static void doPostDamageEffects(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
     {
@@ -96,9 +99,10 @@ public sealed unsafe partial class EnchantUtils
         NativeMethods.TablePtr->hs_method_40668309((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint generateEnchantedBook_c290bb8d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance generateEnchantedBook_c290bb8d(nint arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_c290bb8d((void*)arg0));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'std::pair<EnchantmentInstance,int>' is not supported.", false)]
     public static nint getAvailableEnchantmentResults(nint arg0, int arg1, bool arg2) =>
@@ -136,13 +140,16 @@ public sealed unsafe partial class EnchantUtils
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Enchant::Type' is not a known bindable declaration.", false)]
-    public static int getEnchantLevel(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Enchant::Type' is not a known bindable declaration.");
+    public static int getEnchantLevel(sbyte arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_46c5ff1c(arg0, (void*)arg1.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Enchant::Type' is not a known bindable declaration.", false)]
-    public static nint getEnchantNameAndLevel(nint arg0, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Enchant::Type' is not a known bindable declaration.");
+    public static string getEnchantNameAndLevel(sbyte arg0, int arg1)
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_0e92042c(arg0, arg1);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3[] getEnchantingTablePositions(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
     {
@@ -156,9 +163,10 @@ public sealed unsafe partial class EnchantUtils
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Enchant::Type' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getEnchantmentId(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Enchant::Type' requires --link-carrier or --virtual-dispatch.");
+    public static sbyte getEnchantmentId(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_e30872f6((void*)arg0.Handle);
+    }
 
     public static int[] getLegalEnchants(global::Hosihikari.Bindings.Bedrock.Interop.Item? arg0)
     {
@@ -186,9 +194,9 @@ public sealed unsafe partial class EnchantUtils
         return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->hs_method_52c22e4e((void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Enchant::Type' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'EquipmentFilter' is not a known bindable declaration.", false)]
     public static nint getRandomItemWith(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Enchant::Type' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'EquipmentFilter' is not a known bindable declaration.");
 
     public static string getRandomName()
     {
@@ -196,26 +204,29 @@ public sealed unsafe partial class EnchantUtils
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Enchant::Type' is not a known bindable declaration.", false)]
-    public static int getTotalProtectionLevels(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Enchant::Type' is not a known bindable declaration.");
+    public static int getTotalProtectionLevels(sbyte arg0, global::Hosihikari.Bindings.Bedrock.Interop.Mob arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_c74e635c(arg0, (void*)arg1.Handle);
+    }
 
     public static bool hasCurse(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0)
     {
         return NativeMethods.TablePtr->hs_method_af1961a3((void*)arg0.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Enchant::Type' is not a known bindable declaration.", false)]
-    public static bool hasEnchant(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Enchant::Type' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Enchant::Type' is not a known bindable declaration.", false)]
-    public static bool isCurse(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Enchant::Type' is not a known bindable declaration.");
-
-    public static void randomlyEnchant(nint arg0, int arg1, int arg2, bool arg3)
+    public static bool hasEnchant(sbyte arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg1)
     {
-        NativeMethods.TablePtr->hs_method_2e245e7f((void*)arg0, arg1, arg2, arg3);
+        return NativeMethods.TablePtr->hs_method_277ad0df(arg0, (void*)arg1.Handle) != 0;
+    }
+
+    public static bool isCurse(sbyte arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_57ac33c2(arg0) != 0;
+    }
+
+    public static void randomlyEnchant(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0, int arg1, int arg2, bool arg3)
+    {
+        NativeMethods.TablePtr->hs_method_2e245e7f((void*)arg0.Handle, arg1, arg2, arg3);
     }
 
     public static void randomlyEnchant(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, int arg1, int arg2, bool arg3)

@@ -81,9 +81,10 @@ public sealed unsafe partial class ExecuteContextCommandOrigin
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CommandOriginType' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getOriginType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CommandOriginType' requires --link-carrier or --virtual-dispatch.");
+    public sbyte getOriginType()
+    {
+        return NativeMethods.TablePtr->hs_method_62206805((void*)_handle);
+    }
 
     public byte getPermissionsLevel()
     {

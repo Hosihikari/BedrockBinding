@@ -107,9 +107,9 @@ public sealed unsafe partial class ItemDescriptor : global::System.IDisposable
         return new ItemDescriptor((nint)handle);
     }
 
-    public static ItemDescriptor Create(nint arg0, nint arg1)
+    public static ItemDescriptor Create(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
     {
-        var handle = NativeMethods.TablePtr->hs_create_9f04b39e((void*)arg0, (void*)arg1);
+        var handle = NativeMethods.TablePtr->hs_create_9f04b39e((void*)arg0, (void*)arg1.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
