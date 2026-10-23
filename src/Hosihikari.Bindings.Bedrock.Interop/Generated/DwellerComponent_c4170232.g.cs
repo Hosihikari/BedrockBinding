@@ -75,9 +75,10 @@ public sealed unsafe partial class DwellerComponent
         return NativeMethods.TablePtr->hs_method_1d7ed02f((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'DwellerRole' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getDwellerRole() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'DwellerRole' requires --link-carrier or --virtual-dispatch.");
+    public int getDwellerRole()
+    {
+        return NativeMethods.TablePtr->hs_method_82307687((void*)_handle);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID getDwellingUniqueID()
     {

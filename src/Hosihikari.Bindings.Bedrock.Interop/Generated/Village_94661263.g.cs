@@ -41,9 +41,10 @@ public sealed unsafe partial class Village
     public static Village Create(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'DwellerRole' is not a known bindable declaration.", false)]
-    public void addActorToVillage(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DwellerRole' is not a known bindable declaration.");
+    public void addActorToVillage(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg1)
+    {
+        NativeMethods.TablePtr->hs_method_77954904((void*)_handle, arg0, (void*)arg1.Handle);
+    }
 
     public void addAggressor(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0)
     {
@@ -150,9 +151,10 @@ public sealed unsafe partial class Village
         return NativeMethods.TablePtr->hs_method_5f764b31((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'DwellerRole' is not a known bindable declaration.", false)]
-    public bool hasSpecificDweller(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DwellerRole' is not a known bindable declaration.");
+    public bool hasSpecificDweller(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_478055ce((void*)_handle, arg0, (void*)arg1.Handle) != 0;
+    }
 
     public static bool isValidRegisteredPOI(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
     {
@@ -207,9 +209,10 @@ public sealed unsafe partial class Village
         NativeMethods.TablePtr->hs_method_3ed7f38e((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'DwellerRole' is not a known bindable declaration.", false)]
-    public void resetDwellerTimer(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DwellerRole' is not a known bindable declaration.");
+    public void resetDwellerTimer(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg1)
+    {
+        NativeMethods.TablePtr->hs_method_ee0ec7c7((void*)_handle, arg0, (void*)arg1.Handle);
+    }
 
     public void resetNoBreedTimer()
     {
@@ -221,9 +224,10 @@ public sealed unsafe partial class Village
         NativeMethods.TablePtr->hs_method_550170b4((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'DwellerRole' is not a known bindable declaration.", false)]
-    public void setSavedDwellerPosition(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DwellerRole' is not a known bindable declaration.");
+    public void setSavedDwellerPosition(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2)
+    {
+        NativeMethods.TablePtr->hs_method_1fe2ef27((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle);
+    }
 
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.Tick arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1)
     {

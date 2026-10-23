@@ -80,9 +80,10 @@ public sealed unsafe partial class StructureTemplate
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_86ae4c8a((void*)_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'BoundingBox' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getTransformedBounds(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'BoundingBox' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox getTransformedBounds(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.StructureSettings arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox((nint)NativeMethods.TablePtr->hs_method_0fe2dfa3((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle));
+    }
 
     public bool isLoaded()
     {

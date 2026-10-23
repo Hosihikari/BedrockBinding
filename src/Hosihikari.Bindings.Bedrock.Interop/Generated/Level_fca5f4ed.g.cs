@@ -1672,9 +1672,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_85bb59e1((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public void onChunkReload(nint arg0)
+    public void onChunkReload(global::Hosihikari.Bindings.Bedrock.Interop.Bounds arg0)
     {
-        NativeMethods.TablePtr->hs_method_294d1c6b((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_294d1c6b((void*)_handle, (void*)arg0.Handle);
     }
 
     public void onChunkReloaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg1)

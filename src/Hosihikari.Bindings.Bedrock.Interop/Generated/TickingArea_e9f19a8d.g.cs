@@ -60,9 +60,9 @@ public sealed unsafe partial class TickingArea
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public nint getBounds()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bounds getBounds()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_a208cb60((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bounds((nint)NativeMethods.TablePtr->hs_method_a208cb60((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TickingAreaDescription' requires --link-carrier or --virtual-dispatch.", false)]

@@ -47,9 +47,10 @@ public sealed unsafe partial class SignBlockActor
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'SignTextSide' is not a known bindable declaration.", false)]
-    public bool getIsGlowing(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'SignTextSide' is not a known bindable declaration.");
+    public bool getIsGlowing(int arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_b1ca3d57((void*)_handle, arg0) != 0;
+    }
 
     public bool getIsLockedForEditing(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0)
     {
@@ -61,26 +62,31 @@ public sealed unsafe partial class SignBlockActor
         return NativeMethods.TablePtr->hs_method_8abca500((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'SignTextSide' is not a known bindable declaration.", false)]
-    public nint getMessage(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'SignTextSide' is not a known bindable declaration.");
+    public string getMessage(int arg0)
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_72e061e2((void*)_handle, arg0);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     public float getShadowRadius(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
     {
         return NativeMethods.TablePtr->hs_method_e279ddca((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'SignTextSide' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getSideFacingPlayer(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'SignTextSide' requires --link-carrier or --virtual-dispatch.");
+    public int getSideFacingPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_28d7582b((void*)_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'SignTextSide' is not a known bindable declaration.", false)]
-    public nint getSignTextColor(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'SignTextSide' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color getSignTextColor(int arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_method_46a4bdba((void*)_handle, arg0), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'SignTextSide' is not a known bindable declaration.", false)]
-    public nint getTextObject(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'SignTextSide' is not a known bindable declaration.");
+    public nint getTextObject(int arg0)
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_d8208396((void*)_handle, arg0);
+    }
 
     public string[] getUgcStrings(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {
@@ -94,9 +100,10 @@ public sealed unsafe partial class SignBlockActor
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'SignTextSide' is not a known bindable declaration.", false)]
-    public bool isStringMessage(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'SignTextSide' is not a known bindable declaration.");
+    public bool isStringMessage(int arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_41ca3a8c((void*)_handle, arg0) != 0;
+    }
 
     public void load(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
     {
@@ -118,25 +125,57 @@ public sealed unsafe partial class SignBlockActor
         NativeMethods.TablePtr->hs_method_73131072((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'SignTextSide' is not a known bindable declaration.", false)]
-    public void setHideGlowOutline(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'SignTextSide' is not a known bindable declaration.");
+    public void setHideGlowOutline(int arg0, bool arg1)
+    {
+        NativeMethods.TablePtr->hs_method_e7f2ef17((void*)_handle, arg0, arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'SignTextSide' is not a known bindable declaration.", false)]
-    public void setIsGlowing(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'SignTextSide' is not a known bindable declaration.");
+    public void setIsGlowing(int arg0, bool arg1)
+    {
+        NativeMethods.TablePtr->hs_method_1cbc923c((void*)_handle, arg0, arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'SignTextSide' is not a known bindable declaration.", false)]
-    public void setMessageForServerScripingOnly_abe5b296(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'SignTextSide' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'TextObjectRoot' is not a known bindable declaration.", false)]
+    public void setMessageForServerScripingOnly(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'TextObjectRoot' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'SignTextSide' is not a known bindable declaration.", false)]
-    public void setMessageForServerScripingOnly_44c6d9b2(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'SignTextSide' is not a known bindable declaration.");
+    public void setMessageForServerScripingOnly(int arg0, string arg1, string arg2)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                NativeMethods.TablePtr->hs_method_44c6d9b2((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            }
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'SignTextSide' is not a known bindable declaration.", false)]
-    public void setSignTextColor(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'SignTextSide' is not a known bindable declaration.");
+    public void setSignTextColor(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.mce.Color arg1)
+    {
+        NativeMethods.TablePtr->hs_method_f46619da((void*)_handle, arg0, (void*)arg1.Handle);
+    }
 
     public void setUgcStrings(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, string[] arg1)
     {

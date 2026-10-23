@@ -144,9 +144,24 @@ public sealed unsafe partial class ServerScoreboard
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ObjectiveSortOrder' is not a known bindable declaration.", false)]
-    public nint setDisplayObjective(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ObjectiveSortOrder' is not a known bindable declaration.");
+    public nint setDisplayObjective(string arg0, nint arg1, byte arg2)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return (nint)NativeMethods.TablePtr->hs_method_ab69e8aa((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1, arg2);
+        }
+    }
 
     public void setPacketSender(nint arg0)
     {

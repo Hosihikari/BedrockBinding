@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ChunkSource
+public sealed unsafe partial class ChunkSource : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,13 +37,28 @@ public sealed unsafe partial class ChunkSource
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ChunkSource Create(nint arg0, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ChunkSource Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ChunkSource Create(global::Hosihikari.Bindings.Bedrock.Interop.Dimension? arg0, int arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_05c6c4f2((void*)(arg0?.Handle ?? 0), arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChunkSource((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ChunkSource Create_3e40b544(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static ChunkSource Create_9452d5ac(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<LevelChunk,LevelChunkFinalDeleter>' is not a known bindable declaration.", false)]
     public void acquireDiscarded(nint arg0) =>
@@ -88,13 +103,22 @@ public sealed unsafe partial class ChunkSource
     public nint createEmptyView(nint arg0, bool arg1, nint arg2, nint arg3, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'GridArea<std::shared_ptr<LevelChunk>>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ChunkSource::LoadMode' is not a known bindable declaration.", false)]
-    public nint createNewChunk(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ChunkSource::LoadMode' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? createNewChunk(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg0, int arg1, bool arg2)
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_13d39fe3((void*)_handle, (void*)arg0.Handle, arg1, arg2);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public void deserializeActorStorageToLevelChunk(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
     {
         NativeMethods.TablePtr->hs_method_5a53b681((void*)_handle, (void*)arg0.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint filler
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
     }
 
     public void flushPendingDiscardedChunkWrites()
@@ -105,6 +129,11 @@ public sealed unsafe partial class ChunkSource
     public void flushThreadBatch()
     {
         NativeMethods.TablePtr->hs_method_5faff2e0((void*)_handle);
+    }
+
+    public static bool gPerfIsClientSide
+    {
+        get => NativeMethods.TablePtr->hs_get_ae11d2ae() != 0;
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getAvailableChunk(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg0)
@@ -119,7 +148,11 @@ public sealed unsafe partial class ChunkSource
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public nint getChunkMap()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getChunkMap_cf1edcee() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public nint getChunkMap_2d76103e()
     {
         return (nint)NativeMethods.TablePtr->hs_method_2d76103e((void*)_handle);
     }
@@ -151,9 +184,11 @@ public sealed unsafe partial class ChunkSource
         return new global::Hosihikari.Bindings.Bedrock.Interop.Level((nint)NativeMethods.TablePtr->hs_method_e171d956((void*)_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ChunkSource::LoadMode' is not a known bindable declaration.", false)]
-    public nint getOrLoadChunk(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ChunkSource::LoadMode' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getOrLoadChunk(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg0, int arg1, bool arg2)
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_0d3a7062((void*)_handle, (void*)arg0.Handle, arg1, arg2);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getRandomChunk(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0)
     {
@@ -161,7 +196,11 @@ public sealed unsafe partial class ChunkSource
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public nint getStorage()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getStorage_4eca629a() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public nint getStorage_65048ce8()
     {
         return (nint)NativeMethods.TablePtr->hs_method_65048ce8((void*)_handle);
     }
@@ -212,6 +251,54 @@ public sealed unsafe partial class ChunkSource
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
+    public int mChunkSide
+    {
+        get => NativeMethods.TablePtr->hs_get_a997aaa8((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_a997aaa8((void*)_handle, value);
+    }
+
+    public nint mDimension
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_8c97ed2b((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_8c97ed2b((void*)_handle, (void*)value);
+    }
+
+    public nint mLevel
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_0e9542a6((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_0e9542a6((void*)_handle, (void*)value);
+    }
+
+    public nint mLevelChunkBuilderData
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_0da4ae3a((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_0da4ae3a((void*)_handle, (void*)value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mOwnedParent
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    public nint mParent
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_a3118fa0((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_a3118fa0((void*)_handle, (void*)value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
+    public nint mShuttingDown
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public bool postProcess(nint arg0)
     {
         return NativeMethods.TablePtr->hs_method_aa70646b((void*)_handle, (void*)arg0) != 0;
@@ -260,15 +347,22 @@ public sealed unsafe partial class ChunkSource
     public void writeEntityChunkTransfersToUnloadedChunk(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'ActorUnloadedChunkTransferEntry' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_2b3dda63() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static ChunkSource Create_6b7b7702(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_0c8b28e0() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_24337244((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

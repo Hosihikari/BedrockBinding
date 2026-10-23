@@ -1067,9 +1067,38 @@ public sealed unsafe partial class NetEventCallback
         NativeMethods.TablePtr->hs_method_5a95ff4b((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Connection::DisconnectFailReason' is not a known bindable declaration.", false)]
-    public void onDisconnect(nint arg0, nint arg1, nint arg2, bool arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Connection::DisconnectFailReason' is not a known bindable declaration.");
+    public void onDisconnect(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, int arg1, string arg2, bool arg3, string arg4)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+            {
+                NativeMethods.TablePtr->hs_method_6a48f9eb((void*)_handle, (void*)arg0.Handle, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3, __hs_stringData4, (nuint)__hs_stringByteCount4);
+            }
+        }
+    }
 
     public void onPlayerReady(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
     {
@@ -1104,9 +1133,24 @@ public sealed unsafe partial class NetEventCallback
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Connection::DisconnectFailReason' is not a known bindable declaration.", false)]
-    public void onUnableToConnect(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Connection::DisconnectFailReason' is not a known bindable declaration.");
+    public void onUnableToConnect(int arg0, string arg1)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->hs_method_d5c98107((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void onWebsocketRequest_575ffd77(nint arg0, nint arg1, nint arg2) =>

@@ -45,9 +45,10 @@ public sealed unsafe partial class StructureSettings
     public static StructureSettings Create_2a7f0730(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'AnimationMode' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getAnimationMode() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'AnimationMode' requires --link-carrier or --virtual-dispatch.");
+    public sbyte getAnimationMode()
+    {
+        return NativeMethods.TablePtr->hs_method_a94851ec((void*)_handle);
+    }
 
     public float getAnimationSeconds()
     {
@@ -119,9 +120,10 @@ public sealed unsafe partial class StructureSettings
         NativeMethods.TablePtr->hs_method_3cf53a85((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'AnimationMode' is not a known bindable declaration.", false)]
-    public void setAnimationMode(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'AnimationMode' is not a known bindable declaration.");
+    public void setAnimationMode(sbyte arg0)
+    {
+        NativeMethods.TablePtr->hs_method_837942a4((void*)_handle, arg0);
+    }
 
     public void setAnimationSeconds(float arg0)
     {

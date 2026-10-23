@@ -56,43 +56,43 @@ public sealed unsafe partial class StructurePiece
         NativeMethods.TablePtr->hs_method_0b3c8056((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public bool canBeReplaced(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, int arg1, int arg2, int arg3, nint arg4)
+    public bool canBeReplaced(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, int arg1, int arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg4)
     {
-        return NativeMethods.TablePtr->hs_method_82556b69((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3, (void*)arg4) != 0;
+        return NativeMethods.TablePtr->hs_method_82556b69((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3, (void*)arg4.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.", false)]
     public static nint findCollisionPiece(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.");
 
-    public void generateAirBox(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, nint arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7)
+    public void generateAirBox(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7)
     {
-        NativeMethods.TablePtr->hs_method_676e9dd5((void*)_handle, (void*)arg0.Handle, (void*)arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+        NativeMethods.TablePtr->hs_method_676e9dd5((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4, arg5, arg6, arg7);
     }
 
-    public void generateBox(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, nint arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, global::Hosihikari.Bindings.Bedrock.Interop.Block arg8, global::Hosihikari.Bindings.Bedrock.Interop.Block arg9, bool arg10)
+    public void generateBox(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, global::Hosihikari.Bindings.Bedrock.Interop.Block arg8, global::Hosihikari.Bindings.Bedrock.Interop.Block arg9, bool arg10)
     {
-        NativeMethods.TablePtr->hs_method_a7a17207((void*)_handle, (void*)arg0.Handle, (void*)arg1, arg2, arg3, arg4, arg5, arg6, arg7, (void*)arg8.Handle, (void*)arg9.Handle, arg10);
+        NativeMethods.TablePtr->hs_method_a7a17207((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4, arg5, arg6, arg7, (void*)arg8.Handle, (void*)arg9.Handle, arg10);
     }
 
-    public void generateBox(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, nint arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, bool arg8, global::Hosihikari.Bindings.Bedrock.Interop.Random arg9, nint arg10)
+    public void generateBox(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, bool arg8, global::Hosihikari.Bindings.Bedrock.Interop.Random arg9, nint arg10)
     {
-        NativeMethods.TablePtr->hs_method_8637fd4d((void*)_handle, (void*)arg0.Handle, (void*)arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, (void*)arg9.Handle, (void*)arg10);
+        NativeMethods.TablePtr->hs_method_8637fd4d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4, arg5, arg6, arg7, arg8, (void*)arg9.Handle, (void*)arg10);
     }
 
-    public void generateMaybeBox(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2, float arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, global::Hosihikari.Bindings.Bedrock.Interop.Block arg10, global::Hosihikari.Bindings.Bedrock.Interop.Block arg11, bool arg12, bool arg13)
+    public void generateMaybeBox(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2, float arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, global::Hosihikari.Bindings.Bedrock.Interop.Block arg10, global::Hosihikari.Bindings.Bedrock.Interop.Block arg11, bool arg12, bool arg13)
     {
-        NativeMethods.TablePtr->hs_method_36fbc4b2((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle, arg3, arg4, arg5, arg6, arg7, arg8, arg9, (void*)arg10.Handle, (void*)arg11.Handle, arg12, arg13);
+        NativeMethods.TablePtr->hs_method_36fbc4b2((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3, arg4, arg5, arg6, arg7, arg8, arg9, (void*)arg10.Handle, (void*)arg11.Handle, arg12, arg13);
     }
 
-    public void generateUpperHalfSphere(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, nint arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, global::Hosihikari.Bindings.Bedrock.Interop.Block arg8, bool arg9)
+    public void generateUpperHalfSphere(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, global::Hosihikari.Bindings.Bedrock.Interop.Block arg8, bool arg9)
     {
-        NativeMethods.TablePtr->hs_method_3cf8dbb8((void*)_handle, (void*)arg0.Handle, (void*)arg1, arg2, arg3, arg4, arg5, arg6, arg7, (void*)arg8.Handle, arg9);
+        NativeMethods.TablePtr->hs_method_3cf8dbb8((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4, arg5, arg6, arg7, (void*)arg8.Handle, arg9);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Block getBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, int arg1, int arg2, int arg3, nint arg4)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Block getBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, int arg1, int arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg4)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_f8d338fa((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3, (void*)arg4), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_f8d338fa((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3, (void*)arg4.Handle), false);
     }
 
     public int getOrientation()
@@ -133,14 +133,14 @@ public sealed unsafe partial class StructurePiece
         return NativeMethods.TablePtr->hs_method_6a024ba1((void*)_handle, arg0, arg1, arg2, (void*)arg3.Handle) != 0;
     }
 
-    public bool isAir(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, int arg1, int arg2, int arg3, nint arg4)
+    public bool isAir(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, int arg1, int arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg4)
     {
-        return NativeMethods.TablePtr->hs_method_dbdb3c65((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3, (void*)arg4) != 0;
+        return NativeMethods.TablePtr->hs_method_dbdb3c65((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3, (void*)arg4.Handle) != 0;
     }
 
-    public bool isInInvalidLocation(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, nint arg1)
+    public bool isInInvalidLocation(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg1)
     {
-        return NativeMethods.TablePtr->hs_method_0781b4f3((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_0781b4f3((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     public bool isReplaceableBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0)
@@ -148,14 +148,14 @@ public sealed unsafe partial class StructurePiece
         return NativeMethods.TablePtr->hs_method_4add7df6((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    public void maybeGenerateBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2, float arg3, int arg4, int arg5, int arg6, global::Hosihikari.Bindings.Bedrock.Interop.Block arg7)
+    public void maybeGenerateBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2, float arg3, int arg4, int arg5, int arg6, global::Hosihikari.Bindings.Bedrock.Interop.Block arg7)
     {
-        NativeMethods.TablePtr->hs_method_7f27f19b((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle, arg3, arg4, arg5, arg6, (void*)arg7.Handle);
+        NativeMethods.TablePtr->hs_method_7f27f19b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3, arg4, arg5, arg6, (void*)arg7.Handle);
     }
 
-    public void maybeGenerateBlockIfNotFloating(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2, float arg3, int arg4, int arg5, int arg6, global::Hosihikari.Bindings.Bedrock.Interop.Block arg7)
+    public void maybeGenerateBlockIfNotFloating(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2, float arg3, int arg4, int arg5, int arg6, global::Hosihikari.Bindings.Bedrock.Interop.Block arg7)
     {
-        NativeMethods.TablePtr->hs_method_82fc31e9((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle, arg3, arg4, arg5, arg6, (void*)arg7.Handle);
+        NativeMethods.TablePtr->hs_method_82fc31e9((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3, arg4, arg5, arg6, (void*)arg7.Handle);
     }
 
     public void moveBoundingBox(int arg0, int arg1, int arg2)
@@ -163,14 +163,14 @@ public sealed unsafe partial class StructurePiece
         NativeMethods.TablePtr->hs_method_566cb704((void*)_handle, arg0, arg1, arg2);
     }
 
-    public void placeBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, int arg2, int arg3, int arg4, nint arg5)
+    public void placeBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, int arg2, int arg3, int arg4, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg5)
     {
-        NativeMethods.TablePtr->hs_method_ce429039((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4, (void*)arg5);
+        NativeMethods.TablePtr->hs_method_ce429039((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4, (void*)arg5.Handle);
     }
 
-    public void postProcessMobsAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, nint arg2)
+    public void postProcessMobsAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg2)
     {
-        NativeMethods.TablePtr->hs_method_c3935bb3((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_c3935bb3((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

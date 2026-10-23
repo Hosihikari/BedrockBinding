@@ -37,17 +37,384 @@ public sealed unsafe partial class Potion
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void appendFormattedPotionText(nint arg0, nint arg1, nint arg2, nint arg3, float arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint Awkward
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint FireResistance
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint Harming
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint Healing
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint Infested
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint Invisibility
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint Leaping
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint LongFireResistance
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint LongInvisibility
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint LongLeaping
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint LongMundane
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint LongNightvision
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint LongPoison
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint LongRegeneration
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint LongSlowFalling
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint LongSlowness
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint LongStrength
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint LongSwiftness
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint LongTurtleMaster
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint LongWaterBreathing
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint LongWeakness
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint Mundane
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint Nightvision
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint Oozing
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint Poison
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Potion Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Potion Create_c3755163(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Potion Create_28fc7387(nint nameId, nint descriptionID, nint mobEffect, nint var) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Potion Create_8d9bb328(nint nameId, nint descriptionIDs, nint mobEffects, nint var) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint Regeneration
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint SlowFalling
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint Slowness
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint Strength
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint StrongHarming
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint StrongHealing
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint StrongLeaping
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint StrongPoison
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint StrongRegeneration
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint StrongSlowness
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint StrongStrength
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint StrongSwiftness
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint StrongTurtleMaster
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint Swiftness
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint Thick
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint TurtleMaster
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint Water
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint WaterBreathing
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint Weakness
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint Weaving
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint WindCharged
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint Wither
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _getDescriptionIdCombiningStrings_018fdf40(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _getDescriptionIdSingleString_c396a545(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public static void appendMobEffectText(nint arg0, nint arg1, uint arg2, int arg3, nint arg4) =>
+    public void appendFormattedPotionText_e9b09b98(nint arg0, nint arg1, nint arg2, nint arg3, float arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Potion::PotionType' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void appendFormattedPotionText_210752e7(nint hovertext, nint potionType, nint potionVariant, nint player, float timeMod) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    public static void appendMobEffectText_27f0ea06(nint arg0, nint arg1, uint arg2, int arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static void appendMobEffectText_805bc2cb(nint arg0, nint arg1, uint arg2, int arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public static string effectDurationToString(int arg0, float arg1, global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance arg2)
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_ccaee3e2(arg0, arg1, (void*)arg2.Handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public static nint effectDurationToString(nint arg0, float arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Potion::PotionType' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static string effectPotencyToString(global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance arg0)
     {
@@ -55,19 +422,39 @@ public sealed unsafe partial class Potion
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Potion::PotionType' is not a known bindable declaration.", false)]
-    public static nint getBasePotion(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Potion::PotionType' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint effectPotencyToString(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public string getDescriptionId()
+    public static string getBasePotion(int arg0)
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_217dec1d(arg0);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint getBasePotion(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getDescriptionId_8adf0d9d()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_8adf0d9d((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Potion::PotionType' is not a known bindable declaration.", false)]
+    public string getDescriptionId(int arg0)
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_c89aa666((void*)_handle, arg0);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getDescriptionId_664353d7() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint getDescriptionId(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Potion::PotionType' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance getMobEffect()
     {
@@ -84,13 +471,39 @@ public sealed unsafe partial class Potion
         return (nint)NativeMethods.TablePtr->hs_method_a0b28726((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Potion::PotionType' is not a known bindable declaration.", false)]
-    public nint getPotencyDescription(nint arg0, float arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Potion::PotionType' is not a known bindable declaration.");
+    public string getPotencyDescription(int arg0, float arg1)
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_2c304811((void*)_handle, arg0, arg1);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Potion::PotionType' is not a known bindable declaration.", false)]
+    public static string getPotencyDescription(int arg0, float arg1, string arg2, global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance arg3)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            var __hs_view = NativeMethods.TablePtr->hs_method_8aa24db2(arg0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)arg3.Handle);
+            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getPotencyDescription(nint arg0, float arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public static nint getPotencyDescription(nint arg0, float arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Potion::PotionType' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static global::Hosihikari.Bindings.Abi.SharedHandle? getPotion(int arg0)
     {
@@ -118,6 +531,10 @@ public sealed unsafe partial class Potion
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint getPotion(nint potionNameId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public static int getPotionCount()
     {
         return NativeMethods.TablePtr->hs_method_780ff973();
@@ -128,16 +545,47 @@ public sealed unsafe partial class Potion
         return NativeMethods.TablePtr->hs_method_652929f1((void*)_handle);
     }
 
-    public string getPrefix()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getPotionVariant_15d51a98() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getPrefix_1dd8d3c0()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_1dd8d3c0((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getPrefix_edd4311f() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public static void initPotions(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0, nint arg1)
     {
         NativeMethods.TablePtr->hs_method_49f373f3((void*)arg0.Handle, (void*)arg1);
     }
+
+    public static int mLastId
+    {
+        get => NativeMethods.TablePtr->hs_get_935ec5d3();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint mPotionsById
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.", false)]
+    public static nint mPotionsByName
+    {
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field type is not supported by symbol dispatch.");
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static void shutdownPotions()
     {
@@ -149,7 +597,7 @@ public sealed unsafe partial class Potion
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static Potion Create(nint arg0) =>
+    public static Potion Create_030a1d74(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]

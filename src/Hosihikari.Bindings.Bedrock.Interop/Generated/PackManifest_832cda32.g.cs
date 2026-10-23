@@ -149,9 +149,10 @@ public sealed unsafe partial class PackManifest
         return NativeMethods.TablePtr->hs_method_70f9617d((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackType' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getPackType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackType' requires --link-carrier or --virtual-dispatch.");
+    public sbyte getPackType()
+    {
+        return NativeMethods.TablePtr->hs_method_493f1f18((void*)_handle);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion getRequiredBaseGameVersion()
     {
@@ -318,9 +319,10 @@ public sealed unsafe partial class PackManifest
     public void setPackOrigin(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PackOrigin' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PackType' is not a known bindable declaration.", false)]
-    public void setPackType(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PackType' is not a known bindable declaration.");
+    public void setPackType(sbyte arg0)
+    {
+        NativeMethods.TablePtr->hs_method_7fd8e562((void*)_handle, arg0);
+    }
 
     public void setSourceIdentity(nint arg0)
     {

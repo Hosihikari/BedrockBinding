@@ -191,22 +191,33 @@ public sealed unsafe partial class MinecraftEventing
     public void fireClassroomSettingUpdated(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ClassroomSetting' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::ClubsEngagementAction' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Realms::RealmId' is not a known bindable declaration.", false)]
     public void fireClubsEngagementEvent(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::ClubsEngagementAction' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Realms::RealmId' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::ClubsFeedScreenSource' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Realms::RealmId' is not a known bindable declaration.", false)]
     public void fireClubsOpenFeedScreenEvent(nint arg0, nint arg1, nint arg2, int arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::ClubsFeedScreenSource' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Realms::RealmId' is not a known bindable declaration.");
 
     public void fireCodeCommandButtonPressed()
     {
         NativeMethods.TablePtr->hs_method_ea0b3a63((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'IMinecraftEventing::CommandParseTableEntry' is not supported.", false)]
-    public void fireCommandParseTableTelemetry(bool arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'IMinecraftEventing::CommandParseTableEntry' is not supported.");
+    public void fireCommandParseTableTelemetry(bool arg0, global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing_Nested.CommandParseTableEntry[] arg1)
+    {
+        var __hs_vectorItems1 = arg1;
+        var __hs_vectorHandles1 = new nint[__hs_vectorItems1?.Length ?? 0];
+        for (var __hs_i1 = 0; __hs_i1 < __hs_vectorHandles1.Length; __hs_i1++)
+        {
+            __hs_vectorHandles1[__hs_i1] = __hs_vectorItems1![__hs_i1]?.Handle ?? 0;
+        }
+        fixed (nint* __hs_vectorHandleData1 = __hs_vectorHandles1)
+        {
+            var __hs_vectorData1 = (void**)__hs_vectorHandleData1;
+            NativeMethods.TablePtr->hs_method_a1a2673c((void*)_handle, arg0, __hs_vectorData1, (nuint)(arg1?.Length ?? 0));
+        }
+    }
 
     public void fireCourseButtonPressed(string arg0, string arg1)
     {
@@ -265,9 +276,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::DayOneExperienceState' is not a known bindable declaration.", false)]
-    public void fireDayOneExperienceStateChanged(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::DayOneExperienceState' is not a known bindable declaration.");
+    public void fireDayOneExperienceStateChanged(int arg0, uint? arg1, ulong? arg2)
+    {
+        NativeMethods.TablePtr->hs_method_63207e71((void*)_handle, arg0, arg1 ?? default(uint), arg2 ?? default(ulong), arg1.HasValue, arg2.HasValue);
+    }
 
     public void fireDelayedEventReportOfflineAction(string arg0)
     {
@@ -366,9 +378,24 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::AddedFriendLocation' is not a known bindable declaration.", false)]
-    public void fireEventAddedFriend(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::AddedFriendLocation' is not a known bindable declaration.");
+    public void fireEventAddedFriend(string arg0, int arg1, bool arg2)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->hs_method_d3e2cde9((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2);
+        }
+    }
 
     public void fireEventAndroidHelpRequest()
     {
@@ -921,9 +948,24 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::SignInStage' is not a known bindable declaration.", false)]
-    public void fireEventDeviceAccountFailure(nint arg0, nint arg1, uint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::SignInStage' is not a known bindable declaration.");
+    public void fireEventDeviceAccountFailure(int arg0, int arg1, uint arg2, string arg3)
+    {
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
+        fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+        {
+            NativeMethods.TablePtr->hs_method_a0d3747f((void*)_handle, arg0, arg1, arg2, __hs_stringData3, (nuint)__hs_stringByteCount3);
+        }
+    }
 
     public void fireEventDeviceAccountSuccess(bool arg0, string arg1)
     {
@@ -987,9 +1029,9 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_a9e3ef07((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'edu::Role' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'LastClickedSource' is not a known bindable declaration.", false)]
     public void fireEventEduDemoConversion(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'edu::Role' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'LastClickedSource' is not a known bindable declaration.");
 
     public void fireEventEduResources()
     {
@@ -1005,9 +1047,10 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_a18b44c9((void*)_handle, (void*)arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::ElementConstructorUseType' is not a known bindable declaration.", false)]
-    public void fireEventElementConstructorUsed(int arg0, int arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::ElementConstructorUseType' is not a known bindable declaration.");
+    public void fireEventElementConstructorUsed(int arg0, int arg1, int arg2)
+    {
+        NativeMethods.TablePtr->hs_method_a44bcea4((void*)_handle, arg0, arg1, arg2);
+    }
 
     public void fireEventEmptyLibraryCategoryError(string arg0)
     {
@@ -1194,17 +1237,17 @@ public sealed unsafe partial class MinecraftEventing
     public void fireEventIAPPurchaseAttempt(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PurchasePath' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::PurchaseResult' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PurchasePath' is not a known bindable declaration.", false)]
     public void fireEventIAPPurchaseResolved(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::PurchaseResult' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PurchasePath' is not a known bindable declaration.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PurchasePath' is not a known bindable declaration.", false)]
     public void fireEventIAPRedeemAttempt(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PurchasePath' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::PurchaseResult' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PurchasePath' is not a known bindable declaration.", false)]
     public void fireEventIAPRedeemResolved(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::PurchaseResult' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PurchasePath' is not a known bindable declaration.");
 
     public void fireEventImGuiScreenChanged(string arg0, nint arg1)
     {
@@ -1644,17 +1687,61 @@ public sealed unsafe partial class MinecraftEventing
     public void fireEventOnAppSuspend(nint arg0, bool arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'SerialWorkListLogEntry' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Connection::DisconnectFailReason' is not a known bindable declaration.", false)]
-    public void fireEventOnClientDisconnect(nint arg0, bool arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Connection::DisconnectFailReason' is not a known bindable declaration.");
+    public void fireEventOnClientDisconnect(byte arg0, bool arg1, int arg2)
+    {
+        NativeMethods.TablePtr->hs_method_1997ac51((void*)_handle, arg0, arg1, arg2);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'SerialWorkListLogEntry' is not supported.", false)]
     public void fireEventOnDeviceLost(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'SerialWorkListLogEntry' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Connection::DisconnectFailReason' is not a known bindable declaration.", false)]
-    public void fireEventOnServerDisconnect(nint arg0, nint arg1, nint arg2, nint arg3, ulong arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Connection::DisconnectFailReason' is not a known bindable declaration.");
+    public void fireEventOnServerDisconnect(int arg0, string arg1, byte arg2, string arg3, ulong arg4, string arg5)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(arg5);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg5, __hs_stringBytes5);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+            {
+                fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+                {
+                    NativeMethods.TablePtr->hs_method_e1cefc4e((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, __hs_stringData3, (nuint)__hs_stringByteCount3, arg4, __hs_stringData5, (nuint)__hs_stringByteCount5);
+                }
+            }
+        }
+    }
 
     public void fireEventOnSuccessfulClientLogin(nint arg0)
     {
@@ -1971,9 +2058,80 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::PromotionType' is not a known bindable declaration.", false)]
-    public void fireEventPersonaItemPreviewed(nint arg0, nint arg1, nint arg2, uint arg3, uint arg4, nint arg5, bool arg6, nint arg7, nint arg8, double arg9, nint arg10) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::PromotionType' is not a known bindable declaration.");
+    public void fireEventPersonaItemPreviewed(string arg0, string arg1, string arg2, uint arg3, uint arg4, int arg5, bool arg6, string arg7, string arg8, double arg9, int arg10)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        var __hs_stringByteCount7 = global::System.Text.Encoding.UTF8.GetByteCount(arg7);
+        scoped global::System.Span<byte> __hs_stringBytes7;
+        if (__hs_stringByteCount7 <= 256)
+        {
+            __hs_stringBytes7 = stackalloc byte[__hs_stringByteCount7 == 0 ? 1 : __hs_stringByteCount7];
+        }
+        else
+        {
+            __hs_stringBytes7 = new byte[__hs_stringByteCount7];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg7, __hs_stringBytes7);
+        var __hs_stringByteCount8 = global::System.Text.Encoding.UTF8.GetByteCount(arg8);
+        scoped global::System.Span<byte> __hs_stringBytes8;
+        if (__hs_stringByteCount8 <= 256)
+        {
+            __hs_stringBytes8 = stackalloc byte[__hs_stringByteCount8 == 0 ? 1 : __hs_stringByteCount8];
+        }
+        else
+        {
+            __hs_stringBytes8 = new byte[__hs_stringByteCount8];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg8, __hs_stringBytes8);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    fixed (byte* __hs_stringData7 = __hs_stringBytes7)
+                    {
+                        fixed (byte* __hs_stringData8 = __hs_stringBytes8)
+                        {
+                            NativeMethods.TablePtr->hs_method_392a8163((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3, arg4, arg5, arg6, __hs_stringData7, (nuint)__hs_stringByteCount7, __hs_stringData8, (nuint)__hs_stringByteCount8, arg9, arg10);
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     public void fireEventPersonaLoadingPieces(uint arg0, double arg1)
     {
@@ -2157,9 +2315,10 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::ExploitType' is not a known bindable declaration.", false)]
-    public void fireEventPlayerAttemptingExploit(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::ExploitType' is not a known bindable declaration.");
+    public void fireEventPlayerAttemptingExploit(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, int arg1)
+    {
+        NativeMethods.TablePtr->hs_method_519207b4((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1);
+    }
 
     public void fireEventPlayerBanned(string arg0)
     {
@@ -2559,9 +2718,9 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::StoreType' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PurchasePath' is not a known bindable declaration.", false)]
     public void fireEventPurchaseAttempt(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::StoreType' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PurchasePath' is not a known bindable declaration.");
 
     public void fireEventPurchaseFailureDetails(int arg0, string arg1, string arg2, string arg3)
     {
@@ -2657,9 +2816,9 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::StoreType' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PurchasePath' is not a known bindable declaration.", false)]
     public void fireEventPurchaseResolved(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::StoreType' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PurchasePath' is not a known bindable declaration.");
 
     public void fireEventPushNotificationOpened(string arg0, string arg1)
     {
@@ -2893,17 +3052,19 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RealmsPurchaseIntent' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RealmsPurchaseFailureReason' is not a known bindable declaration.", false)]
     public void fireEventRealmsSubscriptionPurchaseFailed(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RealmsPurchaseIntent' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RealmsPurchaseFailureReason' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RealmsPurchaseIntent' is not a known bindable declaration.", false)]
-    public void fireEventRealmsSubscriptionPurchaseStarted(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RealmsPurchaseIntent' is not a known bindable declaration.");
+    public void fireEventRealmsSubscriptionPurchaseStarted(nint arg0, int arg1)
+    {
+        NativeMethods.TablePtr->hs_method_a7accb91((void*)_handle, (void*)arg0, arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RealmsPurchaseIntent' is not a known bindable declaration.", false)]
-    public void fireEventRealmsSubscriptionPurchaseSucceeded(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RealmsPurchaseIntent' is not a known bindable declaration.");
+    public void fireEventRealmsSubscriptionPurchaseSucceeded(nint arg0, int arg1)
+    {
+        NativeMethods.TablePtr->hs_method_9e44e291((void*)_handle, (void*)arg0, arg1);
+    }
 
     public void fireEventReducerBlockEntered(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg0)
     {
@@ -3199,21 +3360,78 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'edu::Role' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Identity::EduSignInStage' is not a known bindable declaration.", false)]
     public void fireEventSignInEdu(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'edu::Role' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Identity::EduSignInStage' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::SignInAccountType' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Social::IdentitySignInTrigger' is not a known bindable declaration.", false)]
     public void fireEventSignInToIdentity(nint arg0, nint arg1, nint arg2, bool arg3, nint arg4, nint arg5, int arg6, nint arg7, nint arg8) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::SignInAccountType' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Social::IdentitySignInTrigger' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'edu::Role' is not a known bindable declaration.", false)]
-    public void fireEventSignOutEdu(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'edu::Role' is not a known bindable declaration.");
+    public void fireEventSignOutEdu(string arg0, int arg1, string arg2, string arg3, string arg4)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+                {
+                    fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+                    {
+                        NativeMethods.TablePtr->hs_method_b1c7ccb3((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4);
+                    }
+                }
+            }
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::SignInAccountType' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Social::IdentitySignInTrigger' is not a known bindable declaration.", false)]
     public void fireEventSignOutOfIdentity(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::SignInAccountType' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Social::IdentitySignInTrigger' is not a known bindable declaration.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IConnectionEventing::SignalServiceConnectState' is not a known bindable declaration.", false)]
     public void fireEventSignalServiceConnect(nint arg0, bool arg1, int arg2, ulong arg3, nint arg4) =>
@@ -3281,9 +3499,9 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::NetworkType' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Social::MultiplayerServiceIdentifier' is not a known bindable declaration.", false)]
     public void fireEventStartWorld(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::NetworkType' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Social::MultiplayerServiceIdentifier' is not a known bindable declaration.");
 
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'SerialWorkListLogEntry' is not supported.", false)]
     public void fireEventStartupPerformance(nint arg0, nint arg1, nint arg2) =>
@@ -3460,13 +3678,43 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::ExportOutcome' is not a known bindable declaration.", false)]
-    public void fireEventStructureExport(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::ExportOutcome' is not a known bindable declaration.");
+    public void fireEventStructureExport(nint arg0, int arg1, int arg2)
+    {
+        NativeMethods.TablePtr->hs_method_9b17ac3d((void*)_handle, (void*)arg0, arg1, arg2);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'edu::Role' is not a known bindable declaration.", false)]
-    public void fireEventSwitchAccountEdu(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'edu::Role' is not a known bindable declaration.");
+    public void fireEventSwitchAccountEdu(string arg0, int arg1, string arg2)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                NativeMethods.TablePtr->hs_method_7d5981cc((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            }
+        }
+    }
 
     public void fireEventTagButtonPressed(string arg0, bool arg1)
     {
@@ -4128,9 +4376,9 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::WorldClassroomCustomization' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'buffer_span<std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>>' is not a known bindable declaration.", false)]
     public void fireEventWorldLoadedClassroomCustomization(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::WorldClassroomCustomization' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'buffer_span<std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>>' is not a known bindable declaration.");
 
     public void fireExternalUriLaunched(string arg0)
     {
@@ -4222,9 +4470,9 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::IgnoredNotificationsType' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::set<IMinecraftEventing::IgnoredNotificationSource,std::less<IMinecraftEventing::IgnoredNotificationSource>,std::allocator<IMinecraftEventing::IgnoredNotificationSource>>' is not a known bindable declaration.", false)]
     public void fireIgnoredNotificationsEvent(nint arg0, int arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::IgnoredNotificationsType' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::set<IMinecraftEventing::IgnoredNotificationSource,std::less<IMinecraftEventing::IgnoredNotificationSource>,std::allocator<IMinecraftEventing::IgnoredNotificationSource>>' is not a known bindable declaration.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OpenCodeMethod' is not a known bindable declaration.", false)]
     public void fireInAppCodeBuilderActivated(nint arg0, nint arg1) =>
@@ -4272,13 +4520,57 @@ public sealed unsafe partial class MinecraftEventing
     public void fireInviteStatusSentImpl(uint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::EducationLessonAction' is not a known bindable declaration.", false)]
-    public void fireLessonActionTaken(nint arg0, nint arg1, nint arg2, nint arg3, int arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::EducationLessonAction' is not a known bindable declaration.");
+    public void fireLessonActionTaken(string arg0, string arg1, string arg2, int arg3, int arg4)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                {
+                    NativeMethods.TablePtr->hs_method_9151ef76((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3, arg4);
+                }
+            }
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::LessonCompleteDialogEntryPoint' is not a known bindable declaration.", false)]
-    public void fireLessonCompleteDialogOpened(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::LessonCompleteDialogEntryPoint' is not a known bindable declaration.");
+    public void fireLessonCompleteDialogOpened(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_b8cae974((void*)_handle, arg0);
+    }
 
     public void fireLessonProgressEvent(string arg0, string arg1, string arg2, string arg3, string arg4, int arg5)
     {
@@ -4482,21 +4774,25 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_881c6728((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::RealmConnectionFlow' is not a known bindable declaration.", false)]
-    public void fireRealmConnectionEventGenericLambdaCalled(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::RealmConnectionFlow' is not a known bindable declaration.");
+    public void fireRealmConnectionEventGenericLambdaCalled(int arg0, int arg1, int arg2)
+    {
+        NativeMethods.TablePtr->hs_method_cc7a6997((void*)_handle, arg0, arg1, arg2);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::RealmConnectionFlow' is not a known bindable declaration.", false)]
-    public void fireRealmConnectionEventRealmAPIRequest(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::RealmConnectionFlow' is not a known bindable declaration.");
+    public void fireRealmConnectionEventRealmAPIRequest(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_efc7322f((void*)_handle, arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::RealmConnectionFlow' is not a known bindable declaration.", false)]
-    public void fireRealmConnectionEventRealmAPIResponse(nint arg0, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::RealmConnectionFlow' is not a known bindable declaration.");
+    public void fireRealmConnectionEventRealmAPIResponse(int arg0, int arg1)
+    {
+        NativeMethods.TablePtr->hs_method_df638efc((void*)_handle, arg0, arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::RealmConnectionFlow' is not a known bindable declaration.", false)]
-    public void fireRealmConnectionEventStart(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::RealmConnectionFlow' is not a known bindable declaration.");
+    public void fireRealmConnectionEventStart(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_95c99d6c((void*)_handle, arg0);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'TextProcessingEventOrigin' is not a known bindable declaration.", false)]
     public void fireSafetyServiceTextProcessEvent(nint arg0, nint arg1, ushort arg2, nint arg3, bool arg4, double arg5, byte arg6, byte arg7, nint arg8, nint arg9, bool arg10) =>
@@ -4562,9 +4858,24 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::ServerType' is not a known bindable declaration.", false)]
-    public void fireServerStarted(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::ServerType' is not a known bindable declaration.");
+    public void fireServerStarted(int arg0, string arg1, nint arg2)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->hs_method_221c8051((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2);
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'EduShareUriType' is not a known bindable declaration.", false)]
     public void fireShareButtonPressed(nint arg0, nint arg1, nint arg2, bool arg3) =>
@@ -4574,13 +4885,15 @@ public sealed unsafe partial class MinecraftEventing
     public void fireStorageMigrationEvent_1077d76e(bool arg0, nint arg1, int arg2, int arg3, nint arg4, nint arg5) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::StorageMigration::StorageMigrationType' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::StructureBlockActionType' is not a known bindable declaration.", false)]
-    public void fireStructureBlockAction(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::StructureBlockActionType' is not a known bindable declaration.");
+    public void fireStructureBlockAction(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.StructureEditorData arg1, nint arg2)
+    {
+        NativeMethods.TablePtr->hs_method_59119af1((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::StructureBlockActionType' is not a known bindable declaration.", false)]
-    public void fireStructureBlockRedstoneActivated(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IMinecraftEventing::StructureBlockActionType' is not a known bindable declaration.");
+    public void fireStructureBlockRedstoneActivated(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.StructureEditorData arg1, nint arg2)
+    {
+        NativeMethods.TablePtr->hs_method_1555335b((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2);
+    }
 
     public void fireTextToSpeechToggled(bool arg0, bool arg1)
     {

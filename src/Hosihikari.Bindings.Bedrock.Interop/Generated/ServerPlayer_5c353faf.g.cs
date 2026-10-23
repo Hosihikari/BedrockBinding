@@ -565,9 +565,9 @@ public sealed unsafe partial class ServerPlayer
         NativeMethods.TablePtr->hs_method_e01869b1((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'HudVisibility' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'std::vector<HudElement,std::allocator<HudElement>>' is abstract or not copy-constructible.", false)]
     public void setHudVisibilityState(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'HudVisibility' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::vector<HudElement,std::allocator<HudElement>>' is abstract or not copy-constructible.");
 
     public void setIsCompatibleWithClientSideChunkGen(bool arg0)
     {

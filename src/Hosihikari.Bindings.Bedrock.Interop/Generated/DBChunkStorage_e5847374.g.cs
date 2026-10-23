@@ -37,6 +37,36 @@ public sealed unsafe partial class DBChunkStorage
         return __hs_handle;
     }
 
+    public int mChunkSide
+    {
+        get => NativeMethods.TablePtr->hs_get_cf6e17f1((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_cf6e17f1((void*)_handle, value);
+    }
+
+    public nint mDimension
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_756d5cfe((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_756d5cfe((void*)_handle, (void*)value);
+    }
+
+    public nint mLevel
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b558970e((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_b558970e((void*)_handle, (void*)value);
+    }
+
+    public nint mLevelChunkBuilderData
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_5f6ee2cc((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_5f6ee2cc((void*)_handle, (void*)value);
+    }
+
+    public nint mParent
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_5d7dd5f4((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_5d7dd5f4((void*)_handle, (void*)value);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static DBChunkStorage Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");

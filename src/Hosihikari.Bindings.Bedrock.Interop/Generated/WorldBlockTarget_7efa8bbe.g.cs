@@ -132,9 +132,9 @@ public sealed unsafe partial class WorldBlockTarget
         return NativeMethods.TablePtr->hs_method_489a4c5c((void*)_handle, arg0, (void*)arg1.Handle) != 0;
     }
 
-    public bool isInBounds(nint arg0)
+    public bool isInBounds(global::Hosihikari.Bindings.Bedrock.Interop.Pos arg0)
     {
-        return NativeMethods.TablePtr->hs_method_974a981c((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_974a981c((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool isLegacyLevel()

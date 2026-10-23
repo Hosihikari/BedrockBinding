@@ -349,9 +349,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_db8fc79d((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ActorDamageSource' is not copy-constructible.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
     public float causeFallDamageToActor(float arg0, float arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ActorDamageSource' is not copy-constructible.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public void celebrateHunt(int arg0, bool arg1)
     {
@@ -1578,18 +1578,18 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_8ef3023e((void*)_handle, arg0, arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ActorDamageSource' is not copy-constructible.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
     public void handleFallDamage(float arg0, float arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ActorDamageSource' is not copy-constructible.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public void handleInsidePortal(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
     {
         NativeMethods.TablePtr->hs_method_8d6e70b4((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ActorDamageSource' is not copy-constructible.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
     public void handleLeftoverFallDamage(float arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ActorDamageSource' is not copy-constructible.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public bool hasAnyEffects()
     {

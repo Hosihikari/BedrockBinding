@@ -731,9 +731,9 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_167cdf9b((void*)_handle, (void*)arg0.Handle, arg1, arg2) != 0;
     }
 
-    public bool hasChunksAt(nint arg0, bool arg1)
+    public bool hasChunksAt(global::Hosihikari.Bindings.Bedrock.Interop.Bounds arg0, bool arg1)
     {
-        return NativeMethods.TablePtr->hs_method_f61c6703((void*)_handle, (void*)arg0, arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_f61c6703((void*)_handle, (void*)arg0.Handle, arg1) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::pair<bool,std::optional<SubChunkPos>>' requires --link-carrier or --virtual-dispatch.", false)]

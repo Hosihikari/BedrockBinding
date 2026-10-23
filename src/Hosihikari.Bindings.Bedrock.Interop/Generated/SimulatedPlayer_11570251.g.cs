@@ -139,9 +139,10 @@ public sealed unsafe partial class SimulatedPlayer
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ScriptModuleMinecraft::ScriptFacing' is not a known bindable declaration.", false)]
-    public bool simulateDestroyBlock(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ScriptModuleMinecraft::ScriptFacing' is not a known bindable declaration.");
+    public bool simulateDestroyBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, sbyte arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_b61ebefa((void*)_handle, (void*)arg0.Handle, arg1) != 0;
+    }
 
     public void simulateDisconnect()
     {
@@ -173,9 +174,10 @@ public sealed unsafe partial class SimulatedPlayer
         return NativeMethods.TablePtr->hs_method_9f2bb3de((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ScriptModuleMinecraft::ScriptFacing' is not a known bindable declaration.", false)]
-    public bool simulateInteract(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ScriptModuleMinecraft::ScriptFacing' is not a known bindable declaration.");
+    public bool simulateInteract(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, sbyte arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_d91cce5c((void*)_handle, (void*)arg0.Handle, arg1) != 0;
+    }
 
     public bool simulateJump()
     {
@@ -187,17 +189,20 @@ public sealed unsafe partial class SimulatedPlayer
         NativeMethods.TablePtr->hs_method_831e280b((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'sim::LookDuration' is not a known bindable declaration.", false)]
-    public void simulateLookAt_4581e6f3(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'sim::LookDuration' is not a known bindable declaration.");
+    public void simulateLookAt(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1)
+    {
+        NativeMethods.TablePtr->hs_method_4581e6f3((void*)_handle, (void*)arg0.Handle, arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'sim::LookDuration' is not a known bindable declaration.", false)]
-    public void simulateLookAt_a6f9e174(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'sim::LookDuration' is not a known bindable declaration.");
+    public void simulateLookAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, int arg1)
+    {
+        NativeMethods.TablePtr->hs_method_a6f9e174((void*)_handle, (void*)arg0.Handle, arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'sim::LookDuration' is not a known bindable declaration.", false)]
-    public void simulateLookAt_60c06733(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'sim::LookDuration' is not a known bindable declaration.");
+    public void simulateLookAt(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, int arg1)
+    {
+        NativeMethods.TablePtr->hs_method_60c06733((void*)_handle, (void*)arg0.Handle, arg1);
+    }
 
     public void simulateMoveToLocation(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, float arg1, bool arg2)
     {
@@ -287,13 +292,15 @@ public sealed unsafe partial class SimulatedPlayer
         return NativeMethods.TablePtr->hs_method_10e00efd((void*)_handle, arg0) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ScriptModuleMinecraft::ScriptFacing' is not a known bindable declaration.", false)]
-    public bool simulateUseItemInSlotOnBlock(int arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ScriptModuleMinecraft::ScriptFacing' is not a known bindable declaration.");
+    public bool simulateUseItemInSlotOnBlock(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, sbyte arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3)
+    {
+        return NativeMethods.TablePtr->hs_method_dc348e9d((void*)_handle, arg0, (void*)arg1.Handle, arg2, (void*)arg3.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ScriptModuleMinecraft::ScriptFacing' is not a known bindable declaration.", false)]
-    public bool simulateUseItemOnBlock(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ScriptModuleMinecraft::ScriptFacing' is not a known bindable declaration.");
+    public bool simulateUseItemOnBlock(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, sbyte arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3)
+    {
+        return NativeMethods.TablePtr->hs_method_092c4bb5((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)arg3.Handle) != 0;
+    }
 
     public void simulateWorldMove(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, float arg1)
     {

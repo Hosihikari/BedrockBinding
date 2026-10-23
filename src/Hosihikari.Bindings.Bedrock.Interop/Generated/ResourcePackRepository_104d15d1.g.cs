@@ -46,9 +46,10 @@ public sealed unsafe partial class ResourcePackRepository
         NativeMethods.TablePtr->hs_method_8969c92c((void*)_handle, (void*)arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PackType' is not a known bindable declaration.", false)]
-    public void addInvalidPack(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PackType' is not a known bindable declaration.");
+    public void addInvalidPack(nint arg0, sbyte arg1)
+    {
+        NativeMethods.TablePtr->hs_method_29b6513b((void*)_handle, (void*)arg0, arg1);
+    }
 
     public void addKnownPackFromImport(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest arg0)
     {
@@ -110,12 +111,13 @@ public sealed unsafe partial class ResourcePackRepository
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ResourcePack((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PackType' is not a known bindable declaration.", false)]
-    public nint getInvalidPacks_94a7d273(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PackType' is not a known bindable declaration.");
+    public nint getInvalidPacks(sbyte arg0)
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_94a7d273((void*)_handle, arg0);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'ResourceLocation' is not supported.", false)]
-    public nint getInvalidPacks_e2d234ab(nint arg0) =>
+    public nint getInvalidPacks(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'ResourceLocation' is not supported.");
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getKeyProvider()
@@ -168,9 +170,16 @@ public sealed unsafe partial class ResourcePackRepository
     public nint getPacksByResourceLocation(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PackOrigin' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PackType' is not a known bindable declaration.", false)]
-    public nint getPacksByType(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PackType' is not a known bindable declaration.");
+    public nint[] getPacksByType(sbyte arg0)
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_3571a511((void*)_handle, arg0);
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
+        if (__hs_view.Size > 0)
+        {
+            new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
+        }
+        return __hs_result;
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ResourcePack? getResourcePackByUUID(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0)
     {

@@ -332,13 +332,15 @@ public sealed unsafe partial class Scoreboard
         return NativeMethods.TablePtr->hs_method_e943f681((void*)_handle, (void*)arg0) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PlayerScoreSetFunction' is not a known bindable declaration.", false)]
-    public int modifyPlayerScore_9741f24d(nint arg0, nint arg1, nint arg2, int arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PlayerScoreSetFunction' is not a known bindable declaration.");
+    public int modifyPlayerScore_9741f24d(nint arg0, nint arg1, nint arg2, int arg3, byte arg4)
+    {
+        return NativeMethods.TablePtr->hs_method_9741f24d((void*)_handle, (void*)arg0, (void*)arg1, (void*)arg2, arg3, arg4);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PlayerScoreSetFunction' is not a known bindable declaration.", false)]
-    public int modifyPlayerScore_dc8a98dd(nint arg0, nint arg1, nint arg2, int arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PlayerScoreSetFunction' is not a known bindable declaration.");
+    public int modifyPlayerScore_dc8a98dd(nint arg0, nint arg1, nint arg2, int arg3, byte arg4)
+    {
+        return NativeMethods.TablePtr->hs_method_dc8a98dd((void*)_handle, (void*)arg0, (void*)arg1, (void*)arg2, arg3, arg4);
+    }
 
     public void onObjectiveAdded(nint arg0)
     {
@@ -438,9 +440,24 @@ public sealed unsafe partial class Scoreboard
         NativeMethods.TablePtr->hs_method_4135dd5e((void*)_handle, (void*)arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ObjectiveSortOrder' is not a known bindable declaration.", false)]
-    public nint setDisplayObjective(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ObjectiveSortOrder' is not a known bindable declaration.");
+    public nint setDisplayObjective(string arg0, nint arg1, byte arg2)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return (nint)NativeMethods.TablePtr->hs_method_d5779859((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1, arg2);
+        }
+    }
 
     public void setPacketSender(nint arg0)
     {

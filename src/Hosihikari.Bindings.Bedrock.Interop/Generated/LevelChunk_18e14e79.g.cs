@@ -107,9 +107,10 @@ public sealed unsafe partial class LevelChunk
         return NativeMethods.TablePtr->hs_method_33aae1d8() != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ChunkState' is not a known bindable declaration.", false)]
-    public void changeState(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ChunkState' is not a known bindable declaration.");
+    public void changeState(byte arg0, byte arg1)
+    {
+        NativeMethods.TablePtr->hs_method_c3cc7d10((void*)_handle, arg0, arg1);
+    }
 
     public bool checkSeasonsPostProcessDirty()
     {
@@ -920,9 +921,10 @@ public sealed unsafe partial class LevelChunk
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_8d9b1507((void*)_handle, (void*)arg0));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ChunkState' is not a known bindable declaration.", false)]
-    public bool tryChangeState(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ChunkState' is not a known bindable declaration.");
+    public bool tryChangeState(byte arg0, byte arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_9f4aba9b((void*)_handle, arg0, arg1) != 0;
+    }
 
     public void trySpawnSkeletonTrap(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
     {

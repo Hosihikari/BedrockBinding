@@ -275,9 +275,10 @@ public sealed unsafe partial class AppPlatform_win32
         NativeMethods.TablePtr->hs_method_90f1e2ef((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'FullscreenMode' is not a known bindable declaration.", false)]
-    public void setFullscreenMode(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'FullscreenMode' is not a known bindable declaration.");
+    public void setFullscreenMode(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_d84f5fa3((void*)_handle, arg0);
+    }
 
     public void setScreenSize(int arg0, int arg1)
     {

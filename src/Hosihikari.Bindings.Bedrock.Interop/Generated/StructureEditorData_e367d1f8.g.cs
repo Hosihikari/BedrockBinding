@@ -101,9 +101,10 @@ public sealed unsafe partial class StructureEditorData
         return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_5c7b713a((void*)_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'StructureRedstoneSaveMode' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getRedstoneSaveMode() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'StructureRedstoneSaveMode' requires --link-carrier or --virtual-dispatch.");
+    public sbyte getRedstoneSaveMode()
+    {
+        return NativeMethods.TablePtr->hs_method_7c346ddd((void*)_handle);
+    }
 
     public byte getRotation()
     {
@@ -155,9 +156,10 @@ public sealed unsafe partial class StructureEditorData
         NativeMethods.TablePtr->hs_method_e2188fb2((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'AnimationMode' is not a known bindable declaration.", false)]
-    public void setAnimationMode(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'AnimationMode' is not a known bindable declaration.");
+    public void setAnimationMode(sbyte arg0)
+    {
+        NativeMethods.TablePtr->hs_method_4fdcdcbb((void*)_handle, arg0);
+    }
 
     public void setAnimationSeconds(float arg0)
     {

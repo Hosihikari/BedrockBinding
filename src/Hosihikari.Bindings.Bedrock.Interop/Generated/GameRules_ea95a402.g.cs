@@ -120,21 +120,26 @@ public sealed unsafe partial class GameRules : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_28315413((void*)_handle, (void*)arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'GameRuleId' is not a known bindable declaration.", false)]
-    public bool getBool(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'GameRuleId' is not a known bindable declaration.");
+    public bool getBool(global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId arg0, bool arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_852d490a((void*)_handle, (void*)arg0.Handle, arg1) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'GameRuleId' is not a known bindable declaration.", false)]
-    public float getFloat(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'GameRuleId' is not a known bindable declaration.");
+    public float getFloat(global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_b0d7cfea((void*)_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'GameRuleId' is not a known bindable declaration.", false)]
-    public int getInt(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'GameRuleId' is not a known bindable declaration.");
+    public int getInt(global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_45a74be1((void*)_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'GameRuleId' is not a known bindable declaration.", false)]
-    public nint getRule(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'GameRuleId' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameRule? getRule(global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId arg0)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_ca6cba4a((void*)_handle, (void*)arg0.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.GameRule((nint)__hs_handle, false) : null;
+    }
 
     public nint getRules()
     {
@@ -146,9 +151,10 @@ public sealed unsafe partial class GameRules : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_b68dc259((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'GameRuleId' is not a known bindable declaration.", false)]
-    public bool hasRule(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'GameRuleId' is not a known bindable declaration.");
+    public bool hasRule(global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_8eab998f((void*)_handle, (void*)arg0.Handle) != 0;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the field type is not supported by symbol dispatch.", false)]
     public nint mGameRules
@@ -165,12 +171,27 @@ public sealed unsafe partial class GameRules : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint nameToGameRuleIndex_1c7805ba(nint name) =>
+    public nint nameToGameRuleIndex(nint name) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'GameRuleId' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint nameToGameRuleIndex_364506e7(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'GameRuleId' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId nameToGameRuleIndex(string arg0)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId((nint)NativeMethods.TablePtr->hs_method_364506e7((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0));
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

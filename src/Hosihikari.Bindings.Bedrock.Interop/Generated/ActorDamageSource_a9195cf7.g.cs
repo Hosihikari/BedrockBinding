@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorDamageSource
+public sealed unsafe partial class ActorDamageSource : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,16 @@ public sealed unsafe partial class ActorDamageSource
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ActorDamageSource Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ActorDamageSource Create(int arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_5223f7d3(arg0);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorDamageSource((nint)handle);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource? clone()
     {
@@ -48,12 +55,20 @@ public sealed unsafe partial class ActorDamageSource
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,ActorDamageCause>' is not supported.", false)]
-    public static nint generateDamageCauseCommandEnum(nint arg0) =>
+    public static nint generateDamageCauseCommandEnum_e8d579d4(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,ActorDamageCause>' is not supported.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint generateDamageCauseCommandEnum_34167f0f(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,ActorDamageCause>' is not supported.", false)]
-    public static nint generateNewDamageCauseCommandEnum(nint arg0) =>
+    public static nint generateNewDamageCauseCommandEnum_283ce01e(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,ActorDamageCause>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint generateNewDamageCauseCommandEnum_2b5c4e9f(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'VersionedActorDamageCause' is not supported.", false)]
     public static nint generateVersionedDamageCauseCommandEnum() =>
@@ -94,8 +109,12 @@ public sealed unsafe partial class ActorDamageSource
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getDeathMessage(nint arg0, nint arg1) =>
+    public nint getDeathMessage_7d367d7b(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getDeathMessage_4e4e5b55(nint deadName, nint dead) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public uint getEntityCategories()
     {
@@ -172,6 +191,10 @@ public sealed unsafe partial class ActorDamageSource
         return NativeMethods.TablePtr->hs_method_eeff7301((void*)_handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint lookupCause(nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public static int lookupCause(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -191,10 +214,20 @@ public sealed unsafe partial class ActorDamageSource
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint lookupCauseName(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public static string lookupCauseName(int arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_b800f558(arg0);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public int mCause
+    {
+        get => NativeMethods.TablePtr->hs_get_118377a7((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_118377a7((void*)_handle, value);
     }
 
     public void setCause(int arg0)
@@ -202,7 +235,18 @@ public sealed unsafe partial class ActorDamageSource
         NativeMethods.TablePtr->hs_method_4b001bb3((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_a9195cf7((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

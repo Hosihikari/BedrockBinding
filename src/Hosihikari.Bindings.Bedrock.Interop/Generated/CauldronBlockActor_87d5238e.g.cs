@@ -90,9 +90,10 @@ public sealed unsafe partial class CauldronBlockActor
         return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_method_d4800ed1((void*)_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Potion::PotionType' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getPotionType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Potion::PotionType' requires --link-carrier or --virtual-dispatch.");
+    public int getPotionType()
+    {
+        return NativeMethods.TablePtr->hs_method_0df95617((void*)_handle);
+    }
 
     public void load(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
     {
@@ -128,9 +129,10 @@ public sealed unsafe partial class CauldronBlockActor
         NativeMethods.TablePtr->hs_method_19712d71((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Potion::PotionType' is not a known bindable declaration.", false)]
-    public void setPotionType(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Potion::PotionType' is not a known bindable declaration.");
+    public void setPotionType(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_f294e6a8((void*)_handle, arg0);
+    }
 
     public void startOpen(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
     {

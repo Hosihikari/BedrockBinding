@@ -75,9 +75,9 @@ public sealed unsafe partial class WitherBoss
         return NativeMethods.TablePtr->hs_method_b9e8cde5((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ActorDamageSource' is not copy-constructible.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
     public float causeFallDamageToActor(float arg0, float arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ActorDamageSource' is not copy-constructible.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public void die(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg0)
     {

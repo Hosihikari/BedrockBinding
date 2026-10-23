@@ -54,9 +54,9 @@ public sealed unsafe partial class TickingAreasManager
         NativeMethods.TablePtr->hs_method_268d9ffe((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
-    public void addEntityArea(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg1, nint arg2, bool arg3, float arg4, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg5)
+    public void addEntityArea(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg1, global::Hosihikari.Bindings.Bedrock.Interop.Bounds arg2, bool arg3, float arg4, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg5)
     {
-        NativeMethods.TablePtr->hs_method_316751b2((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, arg3, arg4, (void*)arg5.Handle);
+        NativeMethods.TablePtr->hs_method_316751b2((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3, arg4, (void*)arg5.Handle);
     }
 
     public void addTickingAreaListForDimension(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1)

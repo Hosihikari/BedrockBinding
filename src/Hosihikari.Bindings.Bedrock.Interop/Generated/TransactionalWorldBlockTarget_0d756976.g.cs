@@ -121,9 +121,9 @@ public sealed unsafe partial class TransactionalWorldBlockTarget
         return NativeMethods.TablePtr->hs_method_22c99cd5((void*)_handle, arg0, (void*)arg1.Handle) != 0;
     }
 
-    public bool isInBounds(nint arg0)
+    public bool isInBounds(global::Hosihikari.Bindings.Bedrock.Interop.Pos arg0)
     {
-        return NativeMethods.TablePtr->hs_method_cbf52db4((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_cbf52db4((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool isLegacyLevel()

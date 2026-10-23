@@ -56,9 +56,24 @@ public sealed unsafe partial class Minecraft
         NativeMethods.TablePtr->hs_method_4ba3f18d((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Connection::DisconnectFailReason' is not a known bindable declaration.", false)]
-    public void disconnectClient(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Connection::DisconnectFailReason' is not a known bindable declaration.");
+    public void disconnectClient(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, int arg1, string arg2)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            NativeMethods.TablePtr->hs_method_1a79a4af((void*)_handle, (void*)arg0.Handle, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+        }
+    }
 
     public void earlyShutdownMainthread()
     {
