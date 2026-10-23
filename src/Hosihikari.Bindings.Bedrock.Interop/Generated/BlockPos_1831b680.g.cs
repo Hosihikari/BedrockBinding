@@ -59,9 +59,9 @@ public sealed unsafe partial class BlockPos : global::System.IDisposable
         return new BlockPos((nint)handle);
     }
 
-    public static BlockPos Create(nint arg0)
+    public static BlockPos Create(global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPos arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_7e670732((void*)arg0);
+        var handle = NativeMethods.TablePtr->hs_create_7e670732((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

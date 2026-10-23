@@ -52,9 +52,9 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         return new BlockSource((nint)handle);
     }
 
-    public static BlockSource Create(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0, nint arg1, nint arg2, bool arg3, bool arg4, bool arg5)
+    public static BlockSource Create(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg1, nint arg2, bool arg3, bool arg4, bool arg5)
     {
-        var handle = NativeMethods.TablePtr->hs_create_b2014cae((void*)arg0.Handle, (void*)arg1, (void*)arg2, arg3, arg4, arg5);
+        var handle = NativeMethods.TablePtr->hs_create_b2014cae((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, arg3, arg4, arg5);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -76,19 +76,19 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_61da4d0f((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void addToRandomTickingQueue(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1, int arg2, int arg3, bool arg4)
+    public void addToRandomTickingQueue(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, int arg2, int arg3, bool arg4)
     {
-        NativeMethods.TablePtr->hs_method_e9f668ce((void*)_handle, (void*)arg0.Handle, (void*)arg1, arg2, arg3, arg4);
+        NativeMethods.TablePtr->hs_method_e9f668ce((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4);
     }
 
-    public void addToRandomTickingQueuePercentChance(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1, float arg2, int arg3, bool arg4)
+    public void addToRandomTickingQueuePercentChance(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, float arg2, int arg3, bool arg4)
     {
-        NativeMethods.TablePtr->hs_method_43d17aed((void*)_handle, (void*)arg0.Handle, (void*)arg1, arg2, arg3, arg4);
+        NativeMethods.TablePtr->hs_method_43d17aed((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4);
     }
 
-    public void addToTickingQueue(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1, int arg2, int arg3, bool arg4)
+    public void addToTickingQueue(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, int arg2, int arg3, bool arg4)
     {
-        NativeMethods.TablePtr->hs_method_d45ce55b((void*)_handle, (void*)arg0.Handle, (void*)arg1, arg2, arg3, arg4);
+        NativeMethods.TablePtr->hs_method_d45ce55b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4);
     }
 
     public bool allowsRunes(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
@@ -174,9 +174,9 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
     public bool containsAnyBlockInBox(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public bool containsAnyBlockOfType(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, nint arg2)
+    public bool containsAnyBlockOfType(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block arg2)
     {
-        return NativeMethods.TablePtr->hs_method_24b663ad((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2) != 0;
+        return NativeMethods.TablePtr->hs_method_24b663ad((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
     public bool containsAnyLiquid(global::Hosihikari.Bindings.Bedrock.Interop.AABB arg0)
@@ -433,9 +433,9 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_5809b81b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public void fireBlockChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, uint arg1, nint arg2, nint arg3, int arg4, int arg5, nint arg6, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg7)
+    public void fireBlockChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, uint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block arg2, global::Hosihikari.Bindings.Bedrock.Interop.Block arg3, int arg4, int arg5, global::Hosihikari.Bindings.Bedrock.Interop.ActorBlockSyncMessage? arg6, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg7)
     {
-        NativeMethods.TablePtr->hs_method_8cf59a05((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2, (void*)arg3, arg4, arg5, (void*)arg6, (void*)(arg7?.Handle ?? 0));
+        NativeMethods.TablePtr->hs_method_8cf59a05((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, (void*)arg3.Handle, arg4, arg5, (void*)(arg6?.Handle ?? 0), (void*)(arg7?.Handle ?? 0));
     }
 
     public void fireBlockEntityAboutToBeRemoved(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
@@ -483,19 +483,19 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_6b658fb7((void*)_handle, (void*)arg0.Handle);
     }
 
-    public nint getBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Block getBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_2846bdf8((void*)_handle, (void*)arg0.Handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_2846bdf8((void*)_handle, (void*)arg0.Handle), false);
     }
 
-    public nint getBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, uint arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Block getBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, uint arg1)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_b84f2758((void*)_handle, (void*)arg0.Handle, arg1);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_b84f2758((void*)_handle, (void*)arg0.Handle, arg1), false);
     }
 
-    public nint getBlock(int arg0, int arg1, int arg2)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Block getBlock(int arg0, int arg1, int arg2)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_2374fa1f((void*)_handle, arg0, arg1, arg2);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_2374fa1f((void*)_handle, arg0, arg1, arg2), false);
     }
 
     public nint getBlockEntity_1204da90(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
@@ -548,19 +548,19 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.BrightnessPair((nint)NativeMethods.TablePtr->hs_method_3a6e8dc7((void*)_handle));
     }
 
-    public nint getDimension_0e99850c()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Dimension getDimension_0e99850c()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_0e99850c((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Dimension((nint)NativeMethods.TablePtr->hs_method_0e99850c((void*)_handle), false);
     }
 
-    public nint getDimension_ff006512()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Dimension getDimension_ff006512()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_ff006512((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Dimension((nint)NativeMethods.TablePtr->hs_method_ff006512((void*)_handle), false);
     }
 
-    public nint getDimensionConst()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Dimension getDimensionConst()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_7643f886((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Dimension((nint)NativeMethods.TablePtr->hs_method_7643f886((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ getDimensionId()
@@ -568,18 +568,18 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_((nint)NativeMethods.TablePtr->hs_method_4329b780((void*)_handle));
     }
 
-    public static nint getEmptyBlock()
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Block getEmptyBlock()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_05af7c0d();
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_05af7c0d(), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint getEntities(nint range, float extendDistance, nint actorType, bool ignoreType) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public nint getExtraBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Block getExtraBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_efe71db1((void*)_handle, (void*)arg0.Handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_efe71db1((void*)_handle, (void*)arg0.Handle), false);
     }
 
     public int getGrassColor(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
@@ -622,9 +622,9 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Level((nint)NativeMethods.TablePtr->hs_method_1937d394((void*)_handle), false);
     }
 
-    public nint getLiquidBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Block getLiquidBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_45333aca((void*)_handle, (void*)arg0.Handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_45333aca((void*)_handle, (void*)arg0.Handle), false);
     }
 
     public nint getMaterial(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
@@ -747,24 +747,24 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_561e2967((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    public bool hasTickInPendingTicks_7f8d573c(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1)
+    public bool hasTickInPendingTicks(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1)
     {
-        return NativeMethods.TablePtr->hs_method_7f8d573c((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_7f8d573c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
-    public bool hasTickInPendingTicks_fb0fe7f6(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1, int arg2)
+    public bool hasTickInPendingTicks(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, int arg2)
     {
-        return NativeMethods.TablePtr->hs_method_fb0fe7f6((void*)_handle, (void*)arg0.Handle, (void*)arg1, arg2) != 0;
+        return NativeMethods.TablePtr->hs_method_fb0fe7f6((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2) != 0;
     }
 
-    public bool hasTickInPendingTicks_bf66a0b9(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1)
+    public bool hasTickInPendingTicks(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy arg1)
     {
-        return NativeMethods.TablePtr->hs_method_bf66a0b9((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_bf66a0b9((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
-    public bool hasTickInPendingTicks_1bb234f7(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1, int arg2)
+    public bool hasTickInPendingTicks(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy arg1, int arg2)
     {
-        return NativeMethods.TablePtr->hs_method_1bb234f7((void*)_handle, (void*)arg0.Handle, (void*)arg1, arg2) != 0;
+        return NativeMethods.TablePtr->hs_method_1bb234f7((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2) != 0;
     }
 
     public bool hasTickInPendingTicks(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, int arg1)
@@ -787,9 +787,9 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_3a8e85a4((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    public static bool isEmptyBlock(nint arg0)
+    public static bool isEmptyBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0)
     {
-        return NativeMethods.TablePtr->hs_method_6aa27613((void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_6aa27613((void*)arg0.Handle) != 0;
     }
 
     public bool isEmptyBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
@@ -802,9 +802,9 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_ae792ed0((void*)_handle, arg0, arg1, arg2) != 0;
     }
 
-    public static bool isEmptyWaterBlock(nint arg0)
+    public static bool isEmptyWaterBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0)
     {
-        return NativeMethods.TablePtr->hs_method_ed33411a((void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_ed33411a((void*)arg0.Handle) != 0;
     }
 
     public bool isEmptyWaterBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
@@ -842,9 +842,9 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_f38eae3c((void*)_handle, (void*)arg0.Handle, arg1) != 0;
     }
 
-    public bool isUnderWater(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, nint arg1)
+    public bool isUnderWater(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1)
     {
-        return NativeMethods.TablePtr->hs_method_91e9c68d((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_91e9c68d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     public bool isUnobstructedByEntities(global::Hosihikari.Bindings.Bedrock.Interop.AABB arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1)
@@ -865,9 +865,9 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_ab628798((void*)_handle, arg0) != 0;
     }
 
-    public bool mayPlace(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, byte arg2, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg3, bool arg4, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg5)
+    public bool mayPlace(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, byte arg2, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg3, bool arg4, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg5)
     {
-        return NativeMethods.TablePtr->hs_method_7a6b783a((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg2, (void*)(arg3?.Handle ?? 0), arg4, (void*)arg5.Handle) != 0;
+        return NativeMethods.TablePtr->hs_method_7a6b783a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)(arg3?.Handle ?? 0), arg4, (void*)arg5.Handle) != 0;
     }
 
     public void neighborChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
@@ -879,14 +879,14 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void postGameEvent(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, nint arg3)
+    public void postGameEvent(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.Block? arg3)
     {
-        NativeMethods.TablePtr->hs_method_4779113c((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1, (void*)arg2.Handle, (void*)arg3);
+        NativeMethods.TablePtr->hs_method_4779113c((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1, (void*)arg2.Handle, (void*)(arg3?.Handle ?? 0));
     }
 
-    public void postGameEvent(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, nint arg3)
+    public void postGameEvent(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, global::Hosihikari.Bindings.Bedrock.Interop.Block? arg3)
     {
-        NativeMethods.TablePtr->hs_method_68ed2050((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1, (void*)arg2.Handle, (void*)arg3);
+        NativeMethods.TablePtr->hs_method_68ed2050((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1, (void*)arg2.Handle, (void*)(arg3?.Handle ?? 0));
     }
 
     public bool removeBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
@@ -905,14 +905,14 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public void removeFromRandomTickingQueue(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1)
+    public void removeFromRandomTickingQueue(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1)
     {
-        NativeMethods.TablePtr->hs_method_be238841((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_be238841((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public void removeFromTickingQueue(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1)
+    public void removeFromTickingQueue(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1)
     {
-        NativeMethods.TablePtr->hs_method_98a44aec((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_98a44aec((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void removeListener(global::Hosihikari.Bindings.Bedrock.Interop.BlockSourceListener arg0)
@@ -920,29 +920,29 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_7928e2c6((void*)_handle, (void*)arg0.Handle);
     }
 
-    public bool setBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1, int arg2, nint arg3, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg4)
+    public bool setBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, int arg2, global::Hosihikari.Bindings.Bedrock.Interop.ActorBlockSyncMessage? arg3, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg4)
     {
-        return NativeMethods.TablePtr->hs_method_1b3ed58f((void*)_handle, (void*)arg0.Handle, (void*)arg1, arg2, (void*)arg3, (void*)(arg4?.Handle ?? 0)) != 0;
+        return NativeMethods.TablePtr->hs_method_1b3ed58f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)(arg3?.Handle ?? 0), (void*)(arg4?.Handle ?? 0)) != 0;
     }
 
-    public bool setBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1, int arg2, global::Hosihikari.Bindings.Abi.SharedHandle? arg3, nint arg4, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg5)
+    public bool setBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, int arg2, global::Hosihikari.Bindings.Abi.SharedHandle? arg3, global::Hosihikari.Bindings.Bedrock.Interop.ActorBlockSyncMessage? arg4, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg5)
     {
-        return NativeMethods.TablePtr->hs_method_6db71cc7((void*)_handle, (void*)arg0.Handle, (void*)arg1, arg2, arg3?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)arg4, (void*)(arg5?.Handle ?? 0)) != 0;
+        return NativeMethods.TablePtr->hs_method_6db71cc7((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)(arg4?.Handle ?? 0), (void*)(arg5?.Handle ?? 0)) != 0;
     }
 
-    public bool setBlock(int arg0, int arg1, int arg2, nint arg3, int arg4, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg5)
+    public bool setBlock(int arg0, int arg1, int arg2, global::Hosihikari.Bindings.Bedrock.Interop.Block arg3, int arg4, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg5)
     {
-        return NativeMethods.TablePtr->hs_method_687713d2((void*)_handle, arg0, arg1, arg2, (void*)arg3, arg4, (void*)(arg5?.Handle ?? 0)) != 0;
+        return NativeMethods.TablePtr->hs_method_687713d2((void*)_handle, arg0, arg1, arg2, (void*)arg3.Handle, arg4, (void*)(arg5?.Handle ?? 0)) != 0;
     }
 
-    public bool setBlockNoUpdate(int arg0, int arg1, int arg2, nint arg3)
+    public bool setBlockNoUpdate(int arg0, int arg1, int arg2, global::Hosihikari.Bindings.Bedrock.Interop.Block arg3)
     {
-        return NativeMethods.TablePtr->hs_method_c29167ff((void*)_handle, arg0, arg1, arg2, (void*)arg3) != 0;
+        return NativeMethods.TablePtr->hs_method_c29167ff((void*)_handle, arg0, arg1, arg2, (void*)arg3.Handle) != 0;
     }
 
-    public bool setBlockSimple(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1)
+    public bool setBlockSimple(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1)
     {
-        return NativeMethods.TablePtr->hs_method_2ca682dc((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_2ca682dc((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     public void setBorderBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, bool arg1)
@@ -955,14 +955,14 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_1ba30e43((void*)_handle, (void*)arg0.Handle);
     }
 
-    public bool setExtraBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1, int arg2)
+    public bool setExtraBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, int arg2)
     {
-        return NativeMethods.TablePtr->hs_method_97804ebc((void*)_handle, (void*)arg0.Handle, (void*)arg1, arg2) != 0;
+        return NativeMethods.TablePtr->hs_method_97804ebc((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2) != 0;
     }
 
-    public bool setExtraBlockSimple(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1)
+    public bool setExtraBlockSimple(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1)
     {
-        return NativeMethods.TablePtr->hs_method_05564b4e((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_05564b4e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     public void setIsPersistentBlockSource()
@@ -970,9 +970,9 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_ef90a383((void*)_handle);
     }
 
-    public bool setLiquidBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1, bool arg2, int arg3)
+    public bool setLiquidBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, bool arg2, int arg3)
     {
-        return NativeMethods.TablePtr->hs_method_90f46f64((void*)_handle, (void*)arg0.Handle, (void*)arg1, arg2, arg3) != 0;
+        return NativeMethods.TablePtr->hs_method_90f46f64((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3) != 0;
     }
 
     public void setRandomTickingQueue(nint arg0)

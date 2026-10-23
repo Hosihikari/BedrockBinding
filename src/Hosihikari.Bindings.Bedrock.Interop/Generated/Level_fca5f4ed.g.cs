@@ -76,9 +76,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         }
     }
 
-    public void _destroyEffect(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1, int arg2)
+    public void _destroyEffect(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, int arg2)
     {
-        NativeMethods.TablePtr->hs_method_3b11ce35((void*)_handle, (void*)arg0.Handle, (void*)arg1, arg2);
+        NativeMethods.TablePtr->hs_method_3b11ce35((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
@@ -112,9 +112,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
     public nint addGlobalEntity(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    public void addListener(nint arg0)
+    public void addListener(global::Hosihikari.Bindings.Bedrock.Interop.LevelListener arg0)
     {
-        NativeMethods.TablePtr->hs_method_ec0437be((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_ec0437be((void*)_handle, (void*)arg0.Handle);
     }
 
     public nint addParticle(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg4, bool arg5)
@@ -127,14 +127,14 @@ public sealed unsafe partial class Level : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_99a9d720((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
     }
 
-    public void addTerrainParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, float arg3, float arg4, float arg5)
+    public void addTerrainParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, float arg3, float arg4, float arg5)
     {
-        NativeMethods.TablePtr->hs_method_95fb8426((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle, arg3, arg4, arg5);
+        NativeMethods.TablePtr->hs_method_95fb8426((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3, arg4, arg5);
     }
 
-    public void addTerrainSlideEffect(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, float arg3, float arg4, float arg5)
+    public void addTerrainSlideEffect(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, float arg3, float arg4, float arg5)
     {
-        NativeMethods.TablePtr->hs_method_3379c5ca((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle, arg3, arg4, arg5);
+        NativeMethods.TablePtr->hs_method_3379c5ca((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3, arg4, arg5);
     }
 
     public void addTickingAreaList(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1)
@@ -176,9 +176,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_00de8c14((void*)_handle, arg0, (void*)arg1.Handle, arg2, (void*)(arg3?.Handle ?? 0));
     }
 
-    public void broadcastLocalEvent(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, short arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, nint arg3)
+    public void broadcastLocalEvent(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, short arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, global::Hosihikari.Bindings.Bedrock.Interop.Block arg3)
     {
-        NativeMethods.TablePtr->hs_method_a0227e6c((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, (void*)arg3);
+        NativeMethods.TablePtr->hs_method_a0227e6c((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, (void*)arg3.Handle);
     }
 
     public void broadcastLocalEvent(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, short arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, int arg3)
@@ -186,9 +186,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_bf017d05((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, arg3);
     }
 
-    public void broadcastSoundEvent(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, nint arg3, nint arg4, bool arg5, bool arg6)
+    public void broadcastSoundEvent(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, global::Hosihikari.Bindings.Bedrock.Interop.Block arg3, nint arg4, bool arg5, bool arg6)
     {
-        NativeMethods.TablePtr->hs_method_f035db68((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, (void*)arg3, (void*)arg4, arg5, arg6);
+        NativeMethods.TablePtr->hs_method_f035db68((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4, arg5, arg6);
     }
 
     public void broadcastSoundEvent(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, int arg3, nint arg4, bool arg5, bool arg6)
@@ -196,9 +196,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_a0409087((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, arg3, (void*)arg4, arg5, arg6);
     }
 
-    public void broadcastSoundEvent(nint arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, int arg3, nint arg4, bool arg5, bool arg6)
+    public void broadcastSoundEvent(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, int arg3, nint arg4, bool arg5, bool arg6)
     {
-        NativeMethods.TablePtr->hs_method_6c5b5a45((void*)_handle, (void*)arg0, arg1, (void*)arg2.Handle, arg3, (void*)arg4, arg5, arg6);
+        NativeMethods.TablePtr->hs_method_6c5b5a45((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, arg3, (void*)arg4, arg5, arg6);
     }
 
     public bool canChangeDimension(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1)
@@ -1183,9 +1183,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_e0b9765f((void*)_handle);
     }
 
-    public nint getRegisteredBorderBlock()
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy getRegisteredBorderBlock()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_67b136ec((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy((nint)NativeMethods.TablePtr->hs_method_67b136ec((void*)_handle), false);
     }
 
     public nint getRemotePlayerEventCoordinator()
@@ -1813,9 +1813,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
     public nint removeEntity(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    public void removeListener(nint arg0)
+    public void removeListener(global::Hosihikari.Bindings.Bedrock.Interop.LevelListener arg0)
     {
-        NativeMethods.TablePtr->hs_method_d66cf706((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_d66cf706((void*)_handle, (void*)arg0.Handle);
     }
 
     public void requestMapInfo(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0, bool arg1)
@@ -2064,7 +2064,7 @@ public sealed unsafe partial class Level : global::System.IDisposable
     public void spawnParticleEffect(nint effectName, nint spawnLocation, nint dimension) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void spawnParticleEffect(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, nint arg2)
+    public void spawnParticleEffect(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Dimension? arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -2079,7 +2079,7 @@ public sealed unsafe partial class Level : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_59a35e17((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, (void*)arg2);
+            NativeMethods.TablePtr->hs_method_59a35e17((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0));
         }
     }
 

@@ -6,7 +6,7 @@ param(
     [string]$Elf = "",
     [string]$LeviLaminaRoot = "C:\Users\root\source\repos\hosihikari\LiteLoaderBDS",
     [string]$HeaderIr = "",
-    [string]$Classes = "Actor,BlockPos,BlockSource,ChunkPos,ItemStack,Level,Vec3,AppPlatform,ServerInstance",
+    [string]$Classes = "Actor,BlockPos,BlockSource,ChunkPos,ItemStack,Level,Vec3,AppPlatform,ServerInstance,Player,Mob,Dimension,Block,Item,Container",
     [string]$Version = "1.21.3",
     [string]$Carrier = "BDS 1.21.3.01",
     [string]$TargetModule = "bedrock_server",

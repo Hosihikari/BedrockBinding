@@ -53,9 +53,9 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
         return new ItemStack((nint)handle);
     }
 
-    public static ItemStack Create(nint arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg2)
+    public static ItemStack Create(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg2)
     {
-        var handle = NativeMethods.TablePtr->hs_create_ac12d065((void*)arg0, arg1, (void*)(arg2?.Handle ?? 0));
+        var handle = NativeMethods.TablePtr->hs_create_ac12d065((void*)arg0.Handle, arg1, (void*)(arg2?.Handle ?? 0));
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -64,9 +64,9 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
         return new ItemStack((nint)handle);
     }
 
-    public static ItemStack Create(nint arg0, int arg1)
+    public static ItemStack Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy arg0, int arg1)
     {
-        var handle = NativeMethods.TablePtr->hs_create_f48c369b((void*)arg0, arg1);
+        var handle = NativeMethods.TablePtr->hs_create_f48c369b((void*)arg0.Handle, arg1);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -75,9 +75,9 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
         return new ItemStack((nint)handle);
     }
 
-    public static ItemStack Create(nint arg0, int arg1, int arg2, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg3)
+    public static ItemStack Create(global::Hosihikari.Bindings.Bedrock.Interop.Item arg0, int arg1, int arg2, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg3)
     {
-        var handle = NativeMethods.TablePtr->hs_create_b210252b((void*)arg0, arg1, arg2, (void*)(arg3?.Handle ?? 0));
+        var handle = NativeMethods.TablePtr->hs_create_b210252b((void*)arg0.Handle, arg1, arg2, (void*)(arg3?.Handle ?? 0));
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -187,9 +187,9 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->hs_method_75f10e04((void*)arg0.Handle, (void*)arg1.Handle));
     }
 
-    public float getDestroySpeed(nint arg0)
+    public float getDestroySpeed(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0)
     {
-        return NativeMethods.TablePtr->hs_method_1d809639((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_1d809639((void*)_handle, (void*)arg0.Handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ItemStackNetIdVariant getItemStackNetIdVariant()
@@ -243,14 +243,14 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_d7064f7e((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void reinit(nint arg0, int arg1)
+    public void reinit(global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy arg0, int arg1)
     {
-        NativeMethods.TablePtr->hs_method_beb24fa1((void*)_handle, (void*)arg0, arg1);
+        NativeMethods.TablePtr->hs_method_beb24fa1((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
-    public void reinit_1be6d9b8(nint arg0, int arg1, int arg2)
+    public void reinit(global::Hosihikari.Bindings.Bedrock.Interop.Item arg0, int arg1, int arg2)
     {
-        NativeMethods.TablePtr->hs_method_1be6d9b8((void*)_handle, (void*)arg0, arg1, arg2);
+        NativeMethods.TablePtr->hs_method_1be6d9b8((void*)_handle, (void*)arg0.Handle, arg1, arg2);
     }
 
     public void reinit(string arg0, int arg1, int arg2)
@@ -273,7 +273,7 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void reinit_b2b717e0(nint name, int count, int auxValue) =>
+    public void reinit(nint name, int count, int auxValue) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void releaseUsing(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, int arg1)

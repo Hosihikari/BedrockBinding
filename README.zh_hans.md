@@ -10,9 +10,9 @@ Hosihikari 绑定项目的 **Bedrock / MCAPI** 表面：生成的、贴近原生
 
 ## 当前状态
 
-- Interop：`src/Hosihikari.Bindings.Bedrock.Interop/Generated/` 下 84 个生成的 C# 文件。
-- BindingShim：`native/BindingShim/generated/win-x64-server/bedrock/` 与 `native/BindingShim/generated/linux-x64-server/bedrock/` 各 1,375 个函数。
-- 覆盖：两个配置合计绑定 322 个声明与 3,635 个成员。
+- Interop：`src/Hosihikari.Bindings.Bedrock.Interop/Generated/` 下 116 个生成的 C# 文件。
+- BindingShim：`native/BindingShim/generated/win-x64-server/bedrock/` 与 `native/BindingShim/generated/linux-x64-server/bedrock/` 各 2,481 个函数。
+- 覆盖：两个配置合计绑定 434 个声明与 6,617 个成员。
 
 shim 以 `--symbol-dispatch` 模式发射。支持的 ABI：
 

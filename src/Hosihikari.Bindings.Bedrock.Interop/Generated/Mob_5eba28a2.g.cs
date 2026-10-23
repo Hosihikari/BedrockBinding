@@ -37,6 +37,934 @@ public sealed unsafe partial class Mob : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static int ARMOR_DAMAGE_DIVISOR
+    {
+        get => NativeMethods.TablePtr->hs_get_7eaa0fdd();
+    }
+
+    public static float ARMOR_PROTECTION_DIVIDER
+    {
+        get => NativeMethods.TablePtr->hs_get_7522358e();
+    }
+
+    public static float ASCEND_BLOCK_BY_JUMPING_SPEED
+    {
+        get => NativeMethods.TablePtr->hs_get_2c730be6();
+    }
+
+    public static float BASE_ARMOR_TOUGHNESS
+    {
+        get => NativeMethods.TablePtr->hs_get_ff87b6b4();
+    }
+
+    public static float DEFAULT_GRAVITY
+    {
+        get => NativeMethods.TablePtr->hs_get_1329d448();
+    }
+
+    public static float FRICTION_CONSTANT
+    {
+        get => NativeMethods.TablePtr->hs_get_8ec769ab();
+    }
+
+    public static float FRICTION_CONSTANT_MODIFIED
+    {
+        get => NativeMethods.TablePtr->hs_get_bfd38cd5();
+    }
+
+    public static float FRICTION_MODIFIER
+    {
+        get => NativeMethods.TablePtr->hs_get_76f45b27();
+    }
+
+    public static float GLIDING_FALL_RESET_DELTA
+    {
+        get => NativeMethods.TablePtr->hs_get_d63bf08f();
+    }
+
+    public static float LADDER_CLIMB_SPEED
+    {
+        get => NativeMethods.TablePtr->hs_get_379fbad9();
+    }
+
+    public static float MAX_ARMOR
+    {
+        get => NativeMethods.TablePtr->hs_get_29147876();
+    }
+
+    public static int MAX_INACTIVITY_TIMER
+    {
+        get => NativeMethods.TablePtr->hs_get_1d7986d2();
+    }
+
+    public static float MIN_ARMOR_RATIO
+    {
+        get => NativeMethods.TablePtr->hs_get_1e72a3af();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Mob Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static Mob Create(nint arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_fe59eac8((void*)arg0, (void*)arg1, (void*)arg2.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Mob((nint)handle);
+    }
+
+    public static Mob Create(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_699d643a((void*)arg0.Handle, (void*)arg1.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Mob((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Mob Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static float NUM_ARMOR_ITEMS
+    {
+        get => NativeMethods.TablePtr->hs_get_85505492();
+    }
+
+    public static float PLAYER_SWIMMING_SURFACE_OFFSET
+    {
+        get => NativeMethods.TablePtr->hs_get_e0ec8aa6();
+    }
+
+    public static int REMOVE_PASSENGERS_DELAY
+    {
+        get => NativeMethods.TablePtr->hs_get_b1a515ad();
+    }
+
+    public static float SLOW_FALL_GRAVITY
+    {
+        get => NativeMethods.TablePtr->hs_get_a7204ef0();
+    }
+
+    public static int SPAWN_XP_DELAY
+    {
+        get => NativeMethods.TablePtr->hs_get_e9721481();
+    }
+
+    public float _getWalkTargetValue(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_a7f8c57c((void*)_handle, (void*)arg0.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _logMobComponentInitializationError_a1923a82(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void addPassenger(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    {
+        NativeMethods.TablePtr->hs_method_e3996a38((void*)_handle, (void*)arg0.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void addSpeedModifier(nint attributeID, nint attributeName, float speedModifier) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void addSpeedModifier(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0, string arg1, float arg2)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->hs_method_b2d8323a((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2);
+        }
+    }
+
+    public void aiStep()
+    {
+        NativeMethods.TablePtr->hs_method_7df6fd52((void*)_handle);
+    }
+
+    public void ate()
+    {
+        NativeMethods.TablePtr->hs_method_f2c89e05((void*)_handle);
+    }
+
+    public bool attack(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, nint arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_6787608b((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+    }
+
+    public void baseTick()
+    {
+        NativeMethods.TablePtr->hs_method_0209a4da((void*)_handle);
+    }
+
+    public void blockedByShield(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
+    {
+        NativeMethods.TablePtr->hs_method_aacc9b84((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    public void buildDebugInfo_4451a531(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void buildDebugInfo_54b76cc1(nint @out) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public float calcMoveRelativeSpeed(int arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_cd30ab26((void*)_handle, arg0);
+    }
+
+    public bool canBePulledIntoVehicle()
+    {
+        return NativeMethods.TablePtr->hs_method_8fb82145((void*)_handle) != 0;
+    }
+
+    public bool canChangeDimensionsUsingPortal()
+    {
+        return NativeMethods.TablePtr->hs_method_e485145e((void*)_handle) != 0;
+    }
+
+    public bool canExistWhenDisallowMob()
+    {
+        return NativeMethods.TablePtr->hs_method_06b58648((void*)_handle) != 0;
+    }
+
+    public bool canFreeze()
+    {
+        return NativeMethods.TablePtr->hs_method_9c43848c((void*)_handle) != 0;
+    }
+
+    public bool canPowerJump()
+    {
+        return NativeMethods.TablePtr->hs_method_6f3eb5d6((void*)_handle) != 0;
+    }
+
+    public bool checkForPostHitDamageImmunity(float arg0, nint arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_dd19d64a((void*)_handle, arg0, (void*)arg1) != 0;
+    }
+
+    public bool checkSpawnObstruction()
+    {
+        return NativeMethods.TablePtr->hs_method_dbdfdc46((void*)_handle) != 0;
+    }
+
+    public bool checkSpawnRules(bool arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_63e466b8((void*)_handle, arg0) != 0;
+    }
+
+    public bool checkTotemDeathProtection(nint arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_13667273((void*)_handle, (void*)arg0) != 0;
+    }
+
+    public void clearMainHandSlot()
+    {
+        NativeMethods.TablePtr->hs_method_ccae5a02((void*)_handle);
+    }
+
+    public void clearVanishEnchantedItemsOnDeath()
+    {
+        NativeMethods.TablePtr->hs_method_82afadc6((void*)_handle);
+    }
+
+    public void containerChanged(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_e994c206((void*)_handle, arg0);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'LegacyGoalDefinition' is not supported.", false)]
+    public void createAI(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'LegacyGoalDefinition' is not supported.");
+
+    public bool createAIGoals()
+    {
+        return NativeMethods.TablePtr->hs_method_72457818((void*)_handle) != 0;
+    }
+
+    public void die(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_f5fe4b7f((void*)_handle, (void*)arg0);
+    }
+
+    public bool doFireHurt(int arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_7423766d((void*)_handle, arg0) != 0;
+    }
+
+    public bool doHurtTarget(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, nint arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_3182427e((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1) != 0;
+    }
+
+    public void dropContainer()
+    {
+        NativeMethods.TablePtr->hs_method_c08de93c((void*)_handle);
+    }
+
+    public void dropEquipmentOnDeath()
+    {
+        NativeMethods.TablePtr->hs_method_f70a20c3((void*)_handle);
+    }
+
+    public void dropEquipmentOnDeath(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_8305be80((void*)_handle, (void*)arg0);
+    }
+
+    public void emitJumpPreventedEvent(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    {
+        NativeMethods.TablePtr->hs_method_3e422cb8((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public void frostWalk()
+    {
+        NativeMethods.TablePtr->hs_method_6799efd0((void*)_handle);
+    }
+
+    public nint[] getAllEquipment()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_14a99831((void*)_handle);
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
+        if (__hs_view.Size > 0)
+        {
+            new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
+        }
+        return __hs_result;
+    }
+
+    public nint[] getAllHand()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_7aedb063((void*)_handle);
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
+        if (__hs_view.Size > 0)
+        {
+            new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
+        }
+        return __hs_result;
+    }
+
+    public float getArmorColorInSlot(int arg0, int arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_ed607736((void*)_handle, arg0, arg1);
+    }
+
+    public float getArmorCoverPercentage()
+    {
+        return NativeMethods.TablePtr->hs_method_5fb2fd52((void*)_handle);
+    }
+
+    public int getArmorMaterialTypeInSlot(int arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_88ba139a((void*)_handle, arg0);
+    }
+
+    public int getArmorTextureIndexInSlot(int arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_33aa075b((void*)_handle, arg0);
+    }
+
+    public int getArmorTypeHash()
+    {
+        return NativeMethods.TablePtr->hs_method_f02d03d5((void*)_handle);
+    }
+
+    public int getArmorValue()
+    {
+        return NativeMethods.TablePtr->hs_method_e7e94d0a((void*)_handle);
+    }
+
+    public float getAttackAnim(float arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_1105ab69((void*)_handle, arg0);
+    }
+
+    public int getBlockDamageCause(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_2c329543((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getBoundOrigin()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_cd6b355a((void*)_handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID getCaravanHead()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->hs_method_f713bffe((void*)_handle));
+    }
+
+    public int getCaravanSize()
+    {
+        return NativeMethods.TablePtr->hs_method_65fb7736((void*)_handle);
+    }
+
+    public float getDamageAfterArmorReduction(nint arg0, float arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_bbe82cef((void*)_handle, (void*)arg0, arg1);
+    }
+
+    public float getDamageAfterDamageSensorComponentAdjustments(nint arg0, float arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_e5a5c1de((void*)_handle, (void*)arg0, arg1);
+    }
+
+    public float getDamageAfterEnchantReduction(nint arg0, float arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_a0b27b70((void*)_handle, (void*)arg0, arg1);
+    }
+
+    public float getDamageAfterPostHitDamageImmunityReduction(nint arg0, float arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_e5c90074((void*)_handle, (void*)arg0, arg1);
+    }
+
+    public float getDamageAfterResistanceEffect(nint arg0, float arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_6b3308b2((void*)_handle, (void*)arg0, arg1);
+    }
+
+    public int getDeathSound()
+    {
+        return NativeMethods.TablePtr->hs_method_da23814c((void*)_handle);
+    }
+
+    public int getDeathTime()
+    {
+        return NativeMethods.TablePtr->hs_method_51472472((void*)_handle);
+    }
+
+    public int getEatCounter()
+    {
+        return NativeMethods.TablePtr->hs_method_43a4aaf7((void*)_handle);
+    }
+
+    public float getExpectedFallDamage(float arg0, float arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_a0d0dfc7((void*)_handle, arg0, arg1);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Mob? getFirstCaravanHead()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_45d4c7c1((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Mob((nint)__hs_handle, false) : null;
+    }
+
+    public int getGlidingTicks()
+    {
+        return NativeMethods.TablePtr->hs_method_7746dac5((void*)_handle);
+    }
+
+    public float getInterpolatedBodyRot(float arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_da003bc9((void*)_handle, arg0);
+    }
+
+    public float getInterpolatedBodyYaw(float arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_13f78868((void*)_handle, arg0);
+    }
+
+    public float getInterpolatedHeadRot(float arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_a69dd68c((void*)_handle, arg0);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemStack getItemSlot(int arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->hs_method_2d959191((void*)_handle, arg0), false);
+    }
+
+    public int getItemUseDuration()
+    {
+        return NativeMethods.TablePtr->hs_method_04e9ebc7((void*)_handle);
+    }
+
+    public float getItemUseIntervalProgress()
+    {
+        return NativeMethods.TablePtr->hs_method_8f311a00((void*)_handle);
+    }
+
+    public float getItemUseStartupProgress()
+    {
+        return NativeMethods.TablePtr->hs_method_23152e65((void*)_handle);
+    }
+
+    public float getJumpEffectAmplifierValue()
+    {
+        return NativeMethods.TablePtr->hs_method_e449fc11((void*)_handle);
+    }
+
+    public float getJumpMultiplier()
+    {
+        return NativeMethods.TablePtr->hs_method_d714666e((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'JumpPreventionResult' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getJumpPrevention() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'JumpPreventionResult' requires --link-carrier or --virtual-dispatch.");
+
+    public int getJumpTicks()
+    {
+        return NativeMethods.TablePtr->hs_method_c7ebecb4((void*)_handle);
+    }
+
+    public float getMaxHeadXRot()
+    {
+        return NativeMethods.TablePtr->hs_method_01744b4b((void*)_handle);
+    }
+
+    public int getMeleeKnockbackBonus()
+    {
+        return NativeMethods.TablePtr->hs_method_fa45b8b3((void*)_handle);
+    }
+
+    public int getNoActionTime()
+    {
+        return NativeMethods.TablePtr->hs_method_fbec9851((void*)_handle);
+    }
+
+    public float getSpeed()
+    {
+        return NativeMethods.TablePtr->hs_method_380137d4((void*)_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID getTargetCaptain()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->hs_method_2dd4cd0d((void*)_handle));
+    }
+
+    public int getTravelType()
+    {
+        return NativeMethods.TablePtr->hs_method_dedc7899((void*)_handle);
+    }
+
+    public float getYBodyRotation()
+    {
+        return NativeMethods.TablePtr->hs_method_c22ac5ab((void*)_handle);
+    }
+
+    public float getYawSpeedInDegreesPerSecond()
+    {
+        return NativeMethods.TablePtr->hs_method_eeab57ba((void*)_handle);
+    }
+
+    public void handleEntityEvent(byte arg0, int arg1)
+    {
+        NativeMethods.TablePtr->hs_method_39b518fc((void*)_handle, arg0, arg1);
+    }
+
+    public bool hasBoundOrigin()
+    {
+        return NativeMethods.TablePtr->hs_method_7f428033((void*)_handle) != 0;
+    }
+
+    public bool hasCaravanTail()
+    {
+        return NativeMethods.TablePtr->hs_method_8e18e062((void*)_handle) != 0;
+    }
+
+    public bool hasComponent(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_fef1f418((void*)_handle, (void*)arg0.Handle) != 0;
+    }
+
+    public void hurtArmor(nint arg0, int arg1)
+    {
+        NativeMethods.TablePtr->hs_method_95900437((void*)_handle, (void*)arg0, arg1);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::bitset<4>' is not a known bindable declaration.", false)]
+    public void hurtArmorSlots_1867b1f0(nint arg0, int arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::bitset<4>' is not a known bindable declaration.");
+
+    public void hurtEffects(nint arg0, float arg1, bool arg2, bool arg3)
+    {
+        NativeMethods.TablePtr->hs_method_0f166d02((void*)_handle, (void*)arg0, arg1, arg2, arg3);
+    }
+
+    public bool inCaravan()
+    {
+        return NativeMethods.TablePtr->hs_method_bb07eedf((void*)_handle) != 0;
+    }
+
+    public void initializeComponents(int arg0, nint arg1)
+    {
+        NativeMethods.TablePtr->hs_method_0997f418((void*)_handle, arg0, (void*)arg1);
+    }
+
+    public bool isAbleToMove()
+    {
+        return NativeMethods.TablePtr->hs_method_b37684f5((void*)_handle) != 0;
+    }
+
+    public bool isAlive()
+    {
+        return NativeMethods.TablePtr->hs_method_91a5d0ad((void*)_handle) != 0;
+    }
+
+    public bool isAlliedTo(global::Hosihikari.Bindings.Bedrock.Interop.Mob? arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_86cd6d58((void*)_handle, (void*)(arg0?.Handle ?? 0)) != 0;
+    }
+
+    public bool isBlocking()
+    {
+        return NativeMethods.TablePtr->hs_method_b086316b((void*)_handle) != 0;
+    }
+
+    public bool isEating()
+    {
+        return NativeMethods.TablePtr->hs_method_170842a8((void*)_handle) != 0;
+    }
+
+    public bool isGliding()
+    {
+        return NativeMethods.TablePtr->hs_method_b1c80736((void*)_handle) != 0;
+    }
+
+    public bool isImmobile()
+    {
+        return NativeMethods.TablePtr->hs_method_31e7971f((void*)_handle) != 0;
+    }
+
+    public bool isLayingEgg()
+    {
+        return NativeMethods.TablePtr->hs_method_6bbccd9c((void*)_handle) != 0;
+    }
+
+    public bool isPregnant()
+    {
+        return NativeMethods.TablePtr->hs_method_087de544((void*)_handle) != 0;
+    }
+
+    public bool isSleeping()
+    {
+        return NativeMethods.TablePtr->hs_method_c3b309e1((void*)_handle) != 0;
+    }
+
+    public bool isSprinting()
+    {
+        return NativeMethods.TablePtr->hs_method_7afd626b((void*)_handle) != 0;
+    }
+
+    public bool isSurfaceMob()
+    {
+        return NativeMethods.TablePtr->hs_method_190edee1((void*)_handle) != 0;
+    }
+
+    public bool isTransitioningSitting()
+    {
+        return NativeMethods.TablePtr->hs_method_523b4d2e((void*)_handle) != 0;
+    }
+
+    public void joinCaravan(global::Hosihikari.Bindings.Bedrock.Interop.Mob? arg0)
+    {
+        NativeMethods.TablePtr->hs_method_2cd2368b((void*)_handle, (void*)(arg0?.Handle ?? 0));
+    }
+
+    public void kill()
+    {
+        NativeMethods.TablePtr->hs_method_96d694fb((void*)_handle);
+    }
+
+    public void knockback(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, int arg1, float arg2, float arg3)
+    {
+        NativeMethods.TablePtr->hs_method_155f4329((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1, arg2, arg3);
+    }
+
+    public void knockback(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, int arg1, float arg2, float arg3, float arg4, float arg5)
+    {
+        NativeMethods.TablePtr->hs_method_9f2e1eac((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1, arg2, arg3, arg4, arg5);
+    }
+
+    public void knockback(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, int arg1, float arg2, float arg3, float arg4, float arg5, float arg6)
+    {
+        NativeMethods.TablePtr->hs_method_d1b9019c((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1, arg2, arg3, arg4, arg5, arg6);
+    }
+
+    public void leaveCaravan()
+    {
+        NativeMethods.TablePtr->hs_method_58235cce((void*)_handle);
+    }
+
+    public void lookAt(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, float arg1, float arg2)
+    {
+        NativeMethods.TablePtr->hs_method_7e6737ce((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1, arg2);
+    }
+
+    public void normalTick()
+    {
+        NativeMethods.TablePtr->hs_method_f2a867a6((void*)_handle);
+    }
+
+    public void onBorn(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
+    {
+        NativeMethods.TablePtr->hs_method_9b6a7476((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
+
+    public void onPlayerDimensionChanged(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg2)
+    {
+        NativeMethods.TablePtr->hs_method_1e4a5c3f((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, (void*)arg2.Handle);
+    }
+
+    public void onPlayerJump(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_7be041e1((void*)_handle, arg0);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void pushActors()
+    {
+        NativeMethods.TablePtr->hs_method_120c0b57((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void refreshInventory() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void reloadHardcoded(int arg0, nint arg1)
+    {
+        NativeMethods.TablePtr->hs_method_102cc6b5((void*)_handle, arg0, (void*)arg1);
+    }
+
+    public void reloadHardcodedClient(int arg0, nint arg1)
+    {
+        NativeMethods.TablePtr->hs_method_6614604a((void*)_handle, arg0, (void*)arg1);
+    }
+
+    public void removeSpeedModifier(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0)
+    {
+        NativeMethods.TablePtr->hs_method_fc383c5b((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public void renderDebugServerState(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_2108cf58((void*)_handle, (void*)arg0);
+    }
+
+    public void resetAttributes()
+    {
+        NativeMethods.TablePtr->hs_method_ce30e4cf((void*)_handle);
+    }
+
+    public void resetNoActionTime()
+    {
+        NativeMethods.TablePtr->hs_method_21caed9b((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::bitset<4>' is not a known bindable declaration.", false)]
+    public void sendArmor_cbf3a15f(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::bitset<4>' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::bitset<4>' is not a known bindable declaration.", false)]
+    public void sendArmorDamage_080912b4(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::bitset<4>' is not a known bindable declaration.");
+
+    public void sendArmorDamageSlot(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_2e0c44a3((void*)_handle, arg0);
+    }
+
+    public void sendArmorSlot(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_341dad7d((void*)_handle, arg0);
+    }
+
+    public void sendInventory(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_c63b2f7e((void*)_handle, arg0);
+    }
+
+    public void setDamagedArmor(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1)
+    {
+        NativeMethods.TablePtr->hs_method_7a5b39a6((void*)_handle, arg0, (void*)arg1.Handle);
+    }
+
+    public void setEatCounter(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_309f4645((void*)_handle, arg0);
+    }
+
+    public void setEating(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_0c89b698((void*)_handle, arg0);
+    }
+
+    public void setEquippedSlot(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1)
+    {
+        NativeMethods.TablePtr->hs_method_e8f9e77a((void*)_handle, arg0, (void*)arg1.Handle);
+    }
+
+    public void setIsLayingEgg(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_883b5943((void*)_handle, arg0);
+    }
+
+    public void setIsPregnant(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_aec45030((void*)_handle, arg0);
+    }
+
+    public bool setItemSlot(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_85e51d8a((void*)_handle, arg0, (void*)arg1.Handle) != 0;
+    }
+
+    public void setJumpTicks(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_e4815063((void*)_handle, arg0);
+    }
+
+    public void setNaturallySpawned(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_43ce35f6((void*)_handle, arg0);
+    }
+
+    public void setSleeping(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_e5a0b79a((void*)_handle, arg0);
+    }
+
+    public void setSpawnMethod(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_39a00249((void*)_handle, arg0);
+    }
+
+    public void setSpeed(float arg0)
+    {
+        NativeMethods.TablePtr->hs_method_39462165((void*)_handle, arg0);
+    }
+
+    public void setSpeedModifier(float arg0)
+    {
+        NativeMethods.TablePtr->hs_method_473915c8((void*)_handle, arg0);
+    }
+
+    public void setSprinting(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_81d06e41((void*)_handle, arg0);
+    }
+
+    public void setSurfaceMob(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_dc3359d2((void*)_handle, arg0);
+    }
+
+    public void setTarget(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0)
+    {
+        NativeMethods.TablePtr->hs_method_e77880f8((void*)_handle, (void*)(arg0?.Handle ?? 0));
+    }
+
+    public void setTargetCaptain(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0)
+    {
+        NativeMethods.TablePtr->hs_method_ff040512((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public void setTransitioningSitting(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_f1e5426a((void*)_handle, arg0);
+    }
+
+    public void setYBodyRotation(float arg0)
+    {
+        NativeMethods.TablePtr->hs_method_88461e46((void*)_handle, arg0);
+    }
+
+    public void setYBodyRotations(float arg0, float arg1)
+    {
+        NativeMethods.TablePtr->hs_method_3f53f843((void*)_handle, arg0, arg1);
+    }
+
+    public bool shouldApplyWaterGravity()
+    {
+        return NativeMethods.TablePtr->hs_method_9cceff7b((void*)_handle) != 0;
+    }
+
+    public bool shouldDropDeathLoot()
+    {
+        return NativeMethods.TablePtr->hs_method_28b78dd2((void*)_handle) != 0;
+    }
+
+    public void snapToYBodyRot(float arg0)
+    {
+        NativeMethods.TablePtr->hs_method_be86ba7c((void*)_handle, arg0);
+    }
+
+    public void snapToYHeadRot(float arg0)
+    {
+        NativeMethods.TablePtr->hs_method_f0c4ec00((void*)_handle, arg0);
+    }
+
+    public void spawnAnim()
+    {
+        NativeMethods.TablePtr->hs_method_896d6ffb((void*)_handle);
+    }
+
+    public bool startRiding(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_a0a82159((void*)_handle, (void*)arg0.Handle) != 0;
+    }
+
+    public void swing()
+    {
+        NativeMethods.TablePtr->hs_method_79acb450((void*)_handle);
+    }
+
+    public void teleportTo(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, bool arg1, int arg2, int arg3, bool arg4)
+    {
+        NativeMethods.TablePtr->hs_method_9070aefd((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3, arg4);
+    }
+
+    public void tryFrostWalk()
+    {
+        NativeMethods.TablePtr->hs_method_af17fe46((void*)_handle);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Mob? tryGetFromEntity(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, bool arg1)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_8c6612e0((void*)arg0.Handle, arg1);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Mob((nint)__hs_handle, false) : null;
+    }
+
+    public void tryProcessSoulSpeed()
+    {
+        NativeMethods.TablePtr->hs_method_a69dbf15((void*)_handle);
+    }
+
+    public void tryUpdateAI()
+    {
+        NativeMethods.TablePtr->hs_method_c8338e90((void*)_handle);
+    }
+
+    public void updateEquipment()
+    {
+        NativeMethods.TablePtr->hs_method_757e2bcf((void*)_handle);
+    }
+
+
 
     public void Dispose()
     {

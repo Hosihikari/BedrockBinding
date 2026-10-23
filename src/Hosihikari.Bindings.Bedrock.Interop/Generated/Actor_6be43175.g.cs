@@ -274,9 +274,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_25f1bab0((void*)_handle) != 0;
     }
 
-    public bool canDestroyBlock(nint arg0)
+    public bool canDestroyBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0)
     {
-        return NativeMethods.TablePtr->hs_method_8fd02361((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_8fd02361((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool canDisableShield()
@@ -683,9 +683,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
     public nint getAttributes_06f95eeb() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::not_null<BaseAttributeMap*>' requires --link-carrier or --virtual-dispatch.");
 
-    public int getBlockDamageCause(nint arg0)
+    public int getBlockDamageCause(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0)
     {
-        return NativeMethods.TablePtr->hs_method_b33e64d8((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_b33e64d8((void*)_handle, (void*)arg0.Handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getBlockPosCurrentlyStandingOn(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0)
@@ -828,9 +828,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_a091e17c((void*)_handle);
     }
 
-    public nint getDimension()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Dimension getDimension()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_32dcaceb((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Dimension((nint)NativeMethods.TablePtr->hs_method_32dcaceb((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockSource getDimensionBlockSource()
@@ -843,9 +843,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockSource((nint)NativeMethods.TablePtr->hs_method_6a4e8224((void*)_handle), false);
     }
 
-    public nint getDimensionConst()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Dimension getDimensionConst()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_9ca98d5a((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Dimension((nint)NativeMethods.TablePtr->hs_method_9ca98d5a((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ getDimensionId()
@@ -2469,9 +2469,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_a0443332((void*)_handle);
     }
 
-    public void playSound(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, nint arg2)
+    public void playSound(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block arg2)
     {
-        NativeMethods.TablePtr->hs_method_6bf00c79((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_6bf00c79((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
     public void playSound(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, int arg2)
@@ -2479,9 +2479,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_4fdaadd6((void*)_handle, arg0, (void*)arg1.Handle, arg2);
     }
 
-    public void playSynchronizedSound(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, nint arg2, bool arg3)
+    public void playSynchronizedSound(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block arg2, bool arg3)
     {
-        NativeMethods.TablePtr->hs_method_088775f3((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2, arg3);
+        NativeMethods.TablePtr->hs_method_088775f3((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle, arg3);
     }
 
     public void playSynchronizedSound(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, int arg2, bool arg3)
@@ -2499,9 +2499,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_cc898b8e((void*)_handle);
     }
 
-    public void postGameEvent(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, nint arg2)
+    public void postGameEvent(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block? arg2)
     {
-        NativeMethods.TablePtr->hs_method_889e5097((void*)_handle, (void*)arg0, (void*)arg1.Handle, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_889e5097((void*)_handle, (void*)arg0, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0));
     }
 
     public void postSplashGameEvent()
@@ -3324,9 +3324,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
     public nint traceRay(float tMax, bool includeActor, bool includeBlock, nint blockCheckFunction) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void transferTickingArea(nint arg0)
+    public void transferTickingArea(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0)
     {
-        NativeMethods.TablePtr->hs_method_45f0d74a((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_45f0d74a((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'AddActorBasePacket' is not a known bindable declaration.", false)]
