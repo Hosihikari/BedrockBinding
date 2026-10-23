@@ -349,9 +349,10 @@ public sealed unsafe partial class ServerPlayer
     public void hideAllExcept(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::vector<HudElement,std::allocator<HudElement>>' is abstract or not copy-constructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::bitset<4>' is not a known bindable declaration.", false)]
-    public void hurtArmorSlots_033205d5(nint arg0, int arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::bitset<4>' is not a known bindable declaration.");
+    public void hurtArmorSlots(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg0, int arg1, ulong arg2)
+    {
+        NativeMethods.TablePtr->hs_method_033205d5((void*)_handle, (void*)arg0.Handle, arg1, arg2);
+    }
 
     public void initializeComponents(int arg0, nint arg1)
     {
@@ -508,13 +509,15 @@ public sealed unsafe partial class ServerPlayer
         NativeMethods.TablePtr->hs_method_ce8524f2((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::bitset<4>' is not a known bindable declaration.", false)]
-    public void sendArmor_77e303a8(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::bitset<4>' is not a known bindable declaration.");
+    public void sendArmor(ulong arg0)
+    {
+        NativeMethods.TablePtr->hs_method_77e303a8((void*)_handle, arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::bitset<4>' is not a known bindable declaration.", false)]
-    public void sendArmorDamage_bc8e5c39(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::bitset<4>' is not a known bindable declaration.");
+    public void sendArmorDamage(ulong arg0)
+    {
+        NativeMethods.TablePtr->hs_method_bc8e5c39((void*)_handle, arg0);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'ComplexInventoryTransaction' has no generated wrapper.", false)]
     public void sendComplexInventoryTransaction(nint arg0) =>

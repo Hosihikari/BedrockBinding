@@ -593,9 +593,10 @@ public sealed unsafe partial class Mob : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_95900437((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::bitset<4>' is not a known bindable declaration.", false)]
-    public void hurtArmorSlots_1867b1f0(nint arg0, int arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::bitset<4>' is not a known bindable declaration.");
+    public void hurtArmorSlots(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg0, int arg1, ulong arg2)
+    {
+        NativeMethods.TablePtr->hs_method_1867b1f0((void*)_handle, (void*)arg0.Handle, arg1, arg2);
+    }
 
     public void hurtEffects(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg0, float arg1, bool arg2, bool arg3)
     {
@@ -775,13 +776,15 @@ public sealed unsafe partial class Mob : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_21caed9b((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::bitset<4>' is not a known bindable declaration.", false)]
-    public void sendArmor_cbf3a15f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::bitset<4>' is not a known bindable declaration.");
+    public void sendArmor(ulong arg0)
+    {
+        NativeMethods.TablePtr->hs_method_cbf3a15f((void*)_handle, arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::bitset<4>' is not a known bindable declaration.", false)]
-    public void sendArmorDamage_080912b4(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::bitset<4>' is not a known bindable declaration.");
+    public void sendArmorDamage(ulong arg0)
+    {
+        NativeMethods.TablePtr->hs_method_080912b4((void*)_handle, arg0);
+    }
 
     public void sendArmorDamageSlot(int arg0)
     {

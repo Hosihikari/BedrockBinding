@@ -122915,6 +122915,22 @@ catch (...)
     return;
 }
 
+static void hs_method_1867b1f0(void* hs_self, void* arg0, std::int32_t arg1, std::uint64_t arg2) try
+{
+    setLastError("symbol dispatch has no entry for bedrock:Mob in linux-x64-server");
+    return;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_method_0f166d02(void* hs_self, void* arg0, float arg1, bool arg2, bool arg3) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{108999984}, "_ZN3Mob11hurtEffectsERK17ActorDamageSourcefbb");
@@ -123685,6 +123701,38 @@ static void hs_method_21caed9b(void* hs_self) try
     using HsFn = void (*)(void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
     hs_fn(hs_self);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_cbf3a15f(void* hs_self, std::uint64_t arg0) try
+{
+    setLastError("symbol dispatch has no entry for bedrock:Mob in linux-x64-server");
+    return;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_080912b4(void* hs_self, std::uint64_t arg0) try
+{
+    setLastError("symbol dispatch has no entry for bedrock:Mob in linux-x64-server");
+    return;
 }
 catch (std::exception const& hs_error)
 {
@@ -160976,6 +161024,22 @@ catch (...)
     return;
 }
 
+static void hs_method_033205d5(void* hs_self, void* arg0, std::int32_t arg1, std::uint64_t arg2) try
+{
+    setLastError("symbol dispatch has no entry for bedrock:ServerPlayer in linux-x64-server");
+    return;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_method_a482d9b2(void* hs_self, std::int32_t arg0, void* arg1) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{98649824}, "_ZN12ServerPlayer20initializeComponentsE25ActorInitializationMethodRK20VariantParameterList");
@@ -161678,6 +161742,38 @@ static void hs_method_ce8524f2(void* hs_self, void* arg0) try
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
     hs_fn(hs_self, arg0);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_77e303a8(void* hs_self, std::uint64_t arg0) try
+{
+    setLastError("symbol dispatch has no entry for bedrock:ServerPlayer in linux-x64-server");
+    return;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_bc8e5c39(void* hs_self, std::uint64_t arg0) try
+{
+    setLastError("symbol dispatch has no entry for bedrock:ServerPlayer in linux-x64-server");
+    return;
 }
 catch (std::exception const& hs_error)
 {
@@ -184896,6 +184992,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_8e18e062,
     &hs_method_fef1f418,
     &hs_method_95900437,
+    &hs_method_1867b1f0,
     &hs_method_0f166d02,
     &hs_method_bb07eedf,
     &hs_method_0997f418,
@@ -184930,6 +185027,8 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_2108cf58,
     &hs_method_ce30e4cf,
     &hs_method_21caed9b,
+    &hs_method_cbf3a15f,
+    &hs_method_080912b4,
     &hs_method_2e0c44a3,
     &hs_method_341dad7d,
     &hs_method_c63b2f7e,
@@ -186544,6 +186643,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_bfb238e0,
     &hs_method_5ca012ed,
     &hs_method_68e48427,
+    &hs_method_033205d5,
     &hs_method_a482d9b2,
     &hs_method_a4309e26,
     &hs_method_c4cd47ae,
@@ -186575,6 +186675,8 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_c959a9f2,
     &hs_method_2694be58,
     &hs_method_ce8524f2,
+    &hs_method_77e303a8,
+    &hs_method_bc8e5c39,
     &hs_method_c9297638,
     &hs_method_8bdf2842,
     &hs_method_de08fbe3,
