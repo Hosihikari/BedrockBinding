@@ -65,9 +65,9 @@ public sealed unsafe partial class ServerScriptManager : global::System.IDisposa
         get => (nint)NativeMethods.TablePtr->hs_get_49ed7c3e((void*)_handle);
     }
 
-    public nint getBlockCustomComponentRegistry()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptBlockCustomComponentsRegistry getBlockCustomComponentRegistry()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_cf50dc8e((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptBlockCustomComponentsRegistry((nint)NativeMethods.TablePtr->hs_method_cf50dc8e((void*)_handle), false);
     }
 
     public nint getScriptEngine()

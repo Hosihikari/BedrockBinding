@@ -94,9 +94,9 @@ public sealed unsafe partial class GrassBlock : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_9a8dc9cd((void*)_handle) != 0;
     }
 
-    public bool fertilize(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, nint arg2)
+    public bool fertilize(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Randomize arg2)
     {
-        return NativeMethods.TablePtr->hs_method_4f69f739((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2) != 0;
+        return NativeMethods.TablePtr->hs_method_4f69f739((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
     public int getColor(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0)

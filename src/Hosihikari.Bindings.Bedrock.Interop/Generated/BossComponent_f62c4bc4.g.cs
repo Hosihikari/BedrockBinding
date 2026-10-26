@@ -85,9 +85,10 @@ public sealed unsafe partial class BossComponent
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'BossBarOverlay' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getOverlay() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'BossBarOverlay' requires --link-carrier or --virtual-dispatch.");
+    public int getOverlay()
+    {
+        return NativeMethods.TablePtr->hs_method_abb95f52((void*)_handle);
+    }
 
     public nint getPlayerParty()
     {

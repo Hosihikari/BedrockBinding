@@ -47,9 +47,9 @@ public sealed unsafe partial class NetEventCallback
         return NativeMethods.TablePtr->hs_method_ac9a29c6((void*)_handle) != 0;
     }
 
-    public void handle_3cbca873(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorEventPacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_3cbca873((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_3cbca873((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void handle_276be44b(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
@@ -127,9 +127,9 @@ public sealed unsafe partial class NetEventCallback
         NativeMethods.TablePtr->hs_method_71b99668((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public void handle_88905d7a(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.AvailableActorIdentifiersPacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_88905d7a((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_88905d7a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.AvailableCommandsPacket arg1)
@@ -142,9 +142,9 @@ public sealed unsafe partial class NetEventCallback
         NativeMethods.TablePtr->hs_method_c0d74671((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public void handle_54aa266f(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.BiomeDefinitionListPacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_54aa266f((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_54aa266f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void handle_ffeb506d(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
@@ -182,14 +182,14 @@ public sealed unsafe partial class NetEventCallback
         NativeMethods.TablePtr->hs_method_1e15c0c7((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public void handle_298a1d04(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.BossEventPacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_298a1d04((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_298a1d04((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public void handle_4354e66b(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.CameraInstructionPacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_4354e66b((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_4354e66b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void handle_5593bbf9(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
@@ -197,14 +197,14 @@ public sealed unsafe partial class NetEventCallback
         NativeMethods.TablePtr->hs_method_5593bbf9((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public void handle_2db63cf2(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.CameraPresetsPacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_2db63cf2((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_2db63cf2((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public void handle_58461fc3(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.CameraShakePacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_58461fc3((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_58461fc3((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void handle_7afed845(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
@@ -397,9 +397,9 @@ public sealed unsafe partial class NetEventCallback
         NativeMethods.TablePtr->hs_method_f1dfa071((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public void handle_87606718(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.InteractPacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_87606718((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_87606718((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void handle_67dba6d0(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
@@ -407,9 +407,9 @@ public sealed unsafe partial class NetEventCallback
         NativeMethods.TablePtr->hs_method_67dba6d0((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public void handle_d4aedf71(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.InventoryContentPacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_d4aedf71((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_d4aedf71((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void handle_7d7bcb9e(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
@@ -427,14 +427,14 @@ public sealed unsafe partial class NetEventCallback
         NativeMethods.TablePtr->hs_method_7864bca5((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public void handle_b7f9839a(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackResponsePacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_b7f9839a((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_b7f9839a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public void handle_bc49ea57(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.LabTablePacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_bc49ea57((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_bc49ea57((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void handle_9b45e639(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
@@ -457,9 +457,9 @@ public sealed unsafe partial class NetEventCallback
         NativeMethods.TablePtr->hs_method_cc9510a7((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public void handle_50bf6dd3(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelEventPacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_50bf6dd3((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_50bf6dd3((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void handle_a4ac1008(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
@@ -482,9 +482,9 @@ public sealed unsafe partial class NetEventCallback
         NativeMethods.TablePtr->hs_method_1383e5dd((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public void handle_63316092(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.MapCreateLockedCopyPacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_63316092((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_63316092((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.MapInfoRequestPacket arg1)
@@ -532,9 +532,9 @@ public sealed unsafe partial class NetEventCallback
         NativeMethods.TablePtr->hs_method_49aa9f23((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public void handle_4d761664(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.MovePlayerPacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_4d761664((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_4d761664((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void handle_a1dfe3b4(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
@@ -557,9 +557,9 @@ public sealed unsafe partial class NetEventCallback
         NativeMethods.TablePtr->hs_method_8dc02878((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public void handle_99a70a26(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.NpcDialoguePacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_99a70a26((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_99a70a26((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.NpcRequestPacket arg1)
@@ -637,9 +637,9 @@ public sealed unsafe partial class NetEventCallback
         NativeMethods.TablePtr->hs_method_6ed73dd0((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public void handle_fa9c3caa(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.PlayerListPacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_fa9c3caa((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_fa9c3caa((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void handle_ed332070(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
@@ -707,9 +707,9 @@ public sealed unsafe partial class NetEventCallback
         NativeMethods.TablePtr->hs_method_be60824f((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public void handle_d0e6c7a4(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.RequestPermissionsPacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_d0e6c7a4((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_d0e6c7a4((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void handle_48da01db(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
@@ -747,9 +747,9 @@ public sealed unsafe partial class NetEventCallback
         NativeMethods.TablePtr->hs_method_b90df53d((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public void handle_77c0c8f8(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.ScriptMessagePacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_77c0c8f8((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_77c0c8f8((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void handle_f17c363e(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
@@ -802,9 +802,9 @@ public sealed unsafe partial class NetEventCallback
         NativeMethods.TablePtr->hs_method_1cdc9980((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public void handle_fc04540c(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.SetDifficultyPacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_fc04540c((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_fc04540c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void handle_b4abca84(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
@@ -837,14 +837,14 @@ public sealed unsafe partial class NetEventCallback
         NativeMethods.TablePtr->hs_method_bef9b448((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public void handle_d5fe11bc(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.SetPlayerInventoryOptionsPacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_d5fe11bc((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_d5fe11bc((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public void handle_039145d0(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.SetScorePacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_039145d0((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_039145d0((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void handle_18a9acfb(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
@@ -852,9 +852,9 @@ public sealed unsafe partial class NetEventCallback
         NativeMethods.TablePtr->hs_method_18a9acfb((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public void handle_c12a4d98(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.SetSpawnPositionPacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_c12a4d98((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_c12a4d98((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void handle_9a113eda(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
@@ -887,9 +887,9 @@ public sealed unsafe partial class NetEventCallback
         NativeMethods.TablePtr->hs_method_546952f8((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public void handle_7888f507(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.SimpleEventPacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_7888f507((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_7888f507((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void handle_c0448aa0(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
@@ -902,9 +902,9 @@ public sealed unsafe partial class NetEventCallback
         NativeMethods.TablePtr->hs_method_af10c8a4((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public void handle_214206c4(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.SpawnParticleEffectPacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_214206c4((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_214206c4((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void handle_386be0f1(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)

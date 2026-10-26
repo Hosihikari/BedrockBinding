@@ -114,9 +114,9 @@ public sealed unsafe partial class ChemistryTableBlockActor
     public void serverInitItemStackIds(int arg0, int arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void serverLabTablePacket_DEPRECATED(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1)
+    public void serverLabTablePacket_DEPRECATED(global::Hosihikari.Bindings.Bedrock.Interop.LabTablePacket arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1)
     {
-        NativeMethods.TablePtr->hs_method_e1bb4a19((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->hs_method_e1bb4a19((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void setItem(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1)

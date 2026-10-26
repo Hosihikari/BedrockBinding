@@ -50,9 +50,10 @@ public sealed unsafe partial class PlayerDimensionTransferProxy : global::System
         return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_16f77355((void*)_handle, (void*)arg0.Handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'MovePlayerPacket' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint createMovePlayerPacket(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'MovePlayerPacket' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.MovePlayerPacket createMovePlayerPacket(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, byte arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MovePlayerPacket((nint)NativeMethods.TablePtr->hs_method_f280255f((void*)_handle, (void*)arg0.Handle, arg1));
+    }
 
     public void fireWillChangeDimension(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
     {

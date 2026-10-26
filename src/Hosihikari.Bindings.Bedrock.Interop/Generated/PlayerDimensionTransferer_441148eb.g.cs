@@ -85,9 +85,9 @@ public sealed unsafe partial class PlayerDimensionTransferer
         NativeMethods.TablePtr->hs_method_2b63eeac((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle);
     }
 
-    public void playerSaveLimboActors(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg2, nint arg3)
+    public void playerSaveLimboActors(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg2, global::Hosihikari.Bindings.Bedrock.Interop.PlayerLimboActorManager? arg3)
     {
-        NativeMethods.TablePtr->hs_method_243b2351((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle, (void*)arg3);
+        NativeMethods.TablePtr->hs_method_243b2351((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle, (void*)(arg3?.Handle ?? 0));
     }
 
     public void playerStartChangeDimensionSuspendRegion(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1)

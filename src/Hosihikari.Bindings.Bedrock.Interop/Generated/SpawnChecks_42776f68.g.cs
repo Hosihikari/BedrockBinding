@@ -80,14 +80,14 @@ public sealed unsafe partial class SpawnChecks
         return NativeMethods.TablePtr->hs_method_1ebb1959((void*)arg0.Handle) != 0;
     }
 
-    public static bool canSpawnPigZombieFromPortal(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0, nint arg1)
+    public static bool canSpawnPigZombieFromPortal(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0, global::Hosihikari.Bindings.Bedrock.Interop.Randomize arg1)
     {
-        return NativeMethods.TablePtr->hs_method_a241d956((void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_a241d956((void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
-    public static bool canSpawnSkeletonTrap(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0, nint arg1)
+    public static bool canSpawnSkeletonTrap(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0, global::Hosihikari.Bindings.Bedrock.Interop.Randomize arg1)
     {
-        return NativeMethods.TablePtr->hs_method_9c770c8e((void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_9c770c8e((void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     public static bool canSpawnTadpoles(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0)

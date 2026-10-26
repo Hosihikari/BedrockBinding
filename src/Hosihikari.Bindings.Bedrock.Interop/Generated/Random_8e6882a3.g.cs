@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Random
+public sealed unsafe partial class Random : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,17 +37,42 @@ public sealed unsafe partial class Random
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Random Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static Random Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_7491608f();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Random Create(uint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new Random((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Random Create(ulong arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Random Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static Random Create(uint arg0, bool arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_1e8dd6b6(arg0, arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Random((nint)handle);
+    }
+
+    public static Random Create(ulong arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_1b75fd09(arg0);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Random((nint)handle);
+    }
 
     public void consumeCount(uint arg0)
     {
@@ -63,6 +88,18 @@ public sealed unsafe partial class Random
     public static global::Hosihikari.Bindings.Bedrock.Interop.Random getThreadLocal()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Random((nint)NativeMethods.TablePtr->hs_method_664cccb8(), false);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRandom_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b104ffa1((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mThreadLocalRandom_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_fbbc4179();
     }
 
     public bool nextBoolean()
@@ -125,11 +162,22 @@ public sealed unsafe partial class Random
         return NativeMethods.TablePtr->hs_method_02a34ed9((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_285f4678() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_0e441371() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_8e6882a3((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

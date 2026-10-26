@@ -37,8 +37,98 @@ public sealed unsafe partial class ScriptPackConfigurationManager : global::Syst
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ScriptPackConfigurationManager Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static ScriptPackConfigurationManager Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPackConfigurationManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_a6b53e6e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptPackConfigurationManager((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static ScriptPackConfigurationManager Create_2f0ba83b(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is abstract or not copy-constructible.", false)]
+    public static ScriptPackConfigurationManager Create_e2967760(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is abstract or not copy-constructible.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ScriptPackConfigurationManager Create_bba88904(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getConfigPath_231974a2() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public nint getConfigPath_adf34090()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_adf34090((void*)_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptPackConfiguration getPackConfiguration(string arg0)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptPackConfiguration((nint)NativeMethods.TablePtr->hs_method_578c9e02((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getPackConfiguration(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void loadPackConfigs()
+    {
+        NativeMethods.TablePtr->hs_method_f2d07af1((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDefaultPackConfiguration_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_14545219((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPackConfigurations_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_53aa5652((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public static string sDefaultConfigurationName
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_a27b5d85();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ScriptPackConfigurationManager Create(nint arg0) =>
+    public static ScriptPackConfigurationManager Create_2e286913(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
 

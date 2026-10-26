@@ -817,9 +817,10 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_((nint)NativeMethods.TablePtr->hs_method_959886d5((void*)_handle, (void*)arg0.Handle));
     }
 
-    public nint getLevelChunkMetaDataManager()
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkMetaDataManager? getLevelChunkMetaDataManager()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_7625c0a0((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_7625c0a0((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkMetaDataManager((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelData getLevelData_c2b8edbb()

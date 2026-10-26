@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class StructureFeature
+public sealed unsafe partial class StructureFeature : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,24 @@ public sealed unsafe partial class StructureFeature
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static StructureFeature Create(uint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static StructureFeature Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static StructureFeature Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static StructureFeature Create(uint arg0, sbyte arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_d817e8cc(arg0, arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureFeature((nint)handle);
+    }
 
     public void addHardcodedSpawnAreas(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
     {
@@ -55,6 +70,10 @@ public sealed unsafe partial class StructureFeature
     {
         NativeMethods.TablePtr->hs_method_6dd7d1a5((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint createStructureStart(nint dimension, nint biomeSource, nint random, nint chunkPos, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void debugRender()
     {
@@ -100,10 +119,90 @@ public sealed unsafe partial class StructureFeature
         NativeMethods.TablePtr->hs_method_3fa23546((void*)_handle, (void*)arg0);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool isFeatureChunk(nint biomeSource, nint random, nint chunkPos, uint levelSeed, nint arg4, nint arg5) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public bool isInsideBoundingFeature(int arg0, int arg1, int arg2)
     {
         return NativeMethods.TablePtr->hs_method_0ffc8845((void*)_handle, arg0, arg1, arg2) != 0;
     }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mActiveBlueprintCreateCount_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_a9281ae3((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlueprintWaitVar_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_94a50734((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlueprintsFinished_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_c0a9e3cb((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCacheMutex_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_d06935b4((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCachedStructures_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_2b92d7a6((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCreateBlueprintsMutex_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_47b17847((void*)_handle);
+    }
+
+    public uint mRadius
+    {
+        get => NativeMethods.TablePtr->hs_get_72990059((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_72990059((void*)_handle, value);
+    }
+
+    public sbyte mStructureFeatureType
+    {
+        get => NativeMethods.TablePtr->hs_get_cdd8509b((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_cdd8509b((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mVisitedPositions_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_0191fbb6((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mVisitedPositionsMutex_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_be7443d3((void*)_handle);
+    }
+
+    public int mXScale
+    {
+        get => NativeMethods.TablePtr->hs_get_8d2bda35((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_8d2bda35((void*)_handle, value);
+    }
+
+    public int mZScale
+    {
+        get => NativeMethods.TablePtr->hs_get_bc123912((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_bc123912((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool postProcess(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, int arg2, int arg3)
     {
@@ -135,11 +234,18 @@ public sealed unsafe partial class StructureFeature
         NativeMethods.TablePtr->hs_method_faa1fb35((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_6219a934() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_61378ffa() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_96a09b3a((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

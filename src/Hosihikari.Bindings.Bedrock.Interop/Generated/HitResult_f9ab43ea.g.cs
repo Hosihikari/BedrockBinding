@@ -37,8 +37,179 @@ public sealed unsafe partial class HitResult : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static HitResult Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_f035c4a8();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HitResult((nint)handle);
+    }
+
+    public static HitResult Create(global::Hosihikari.Bindings.Bedrock.Interop.HitResult arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_a49a694d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HitResult((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static HitResult Create_ab417dbb(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public static HitResult Create(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_2f035544((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HitResult((nint)handle);
+    }
+
+    public static HitResult Create(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_5fcf3902((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HitResult((nint)handle);
+    }
+
+    public static HitResult Create(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, byte arg3, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg4)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_72fa624a((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3, (void*)arg4.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HitResult((nint)handle);
+    }
+
+    public static HitResult Create(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_d502f9c9((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HitResult((nint)handle);
+    }
+
+    public float distanceTo(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_dab15d00((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? getEntity()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_60624ba1((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlockPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_a803b5ed((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEntity_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_f135b690((void*)_handle);
+    }
+
+    public sbyte mFacing
+    {
+        get => NativeMethods.TablePtr->hs_get_75b7d6dc((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_75b7d6dc((void*)_handle, value);
+    }
+
+    public bool mIndirectHit
+    {
+        get => NativeMethods.TablePtr->hs_get_a07e2b3c((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_a07e2b3c((void*)_handle, value);
+    }
+
+    public bool mIsHitLiquid
+    {
+        get => NativeMethods.TablePtr->hs_get_c33f7333((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_c33f7333((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLiquid_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_91112438((void*)_handle);
+    }
+
+    public sbyte mLiquidFacing
+    {
+        get => NativeMethods.TablePtr->hs_get_1b16ba68((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_1b16ba68((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLiquidPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_812bfa19((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_39097271((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRayDir_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_7f724953((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStartPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_2324ce24((void*)_handle);
+    }
+
+    public int mType
+    {
+        get => NativeMethods.TablePtr->hs_get_f1b5fcef((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_f1b5fcef((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool operator_bool() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_d37238f7(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_163ca77b(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void setIsHitLiquid(bool arg0, global::Hosihikari.Bindings.Bedrock.Interop.HitResult arg1)
+    {
+        NativeMethods.TablePtr->hs_method_e1c4a220((void*)_handle, arg0, (void*)arg1.Handle);
+    }
+
+
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static HitResult Create(nint arg0) =>
+    public static HitResult Create_f4e022cd(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
 

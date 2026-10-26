@@ -78,9 +78,9 @@ public sealed unsafe partial class SculkCatalystBlockActor
         return NativeMethods.TablePtr->hs_method_61c40132((void*)_handle);
     }
 
-    public nint getSculkSpreader()
+    public global::Hosihikari.Bindings.Bedrock.Interop.SculkSpreader getSculkSpreader()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_924786a2((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SculkSpreader((nint)NativeMethods.TablePtr->hs_method_924786a2((void*)_handle), false);
     }
 
     public void handleGameEvent(nint arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg2)

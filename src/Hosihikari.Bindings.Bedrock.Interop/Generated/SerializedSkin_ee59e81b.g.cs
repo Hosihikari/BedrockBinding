@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SerializedSkin
+public sealed unsafe partial class SerializedSkin : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,35 +37,69 @@ public sealed unsafe partial class SerializedSkin
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static SerializedSkin Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static SerializedSkin Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_4689573d();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static SerializedSkin Create_df2fdfd1(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new SerializedSkin((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static SerializedSkin Create_4a80a76c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static SerializedSkin Create(global::Hosihikari.Bindings.Bedrock.Interop.ConnectionRequest arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_df2fdfd1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+        return new SerializedSkin((nint)handle);
+    }
+
+    public static SerializedSkin Create(global::Hosihikari.Bindings.Bedrock.Interop.SerializedSkin arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_4a80a76c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SerializedSkin((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public static SerializedSkin Create_874e7c3f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static SerializedSkin Create_891396c9(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static SerializedSkin Create(global::Hosihikari.Bindings.Bedrock.Interop.SubClientConnectionRequest arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_891396c9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'SerializedSkin' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint createTrustedDefaultSerializedSkin() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'SerializedSkin' requires --link-carrier or --virtual-dispatch.");
+        return new SerializedSkin((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'persona::AnimatedTextureType' is not a known bindable declaration.", false)]
-    public float getAnimationFrames(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'persona::AnimatedTextureType' is not a known bindable declaration.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.SerializedSkin createTrustedDefaultSerializedSkin()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SerializedSkin((nint)NativeMethods.TablePtr->hs_method_47ffd51e());
+    }
 
-    public string getName()
+    public float getAnimationFrames(int arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_b841a90d((void*)_handle, arg0);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getName_fd3f5a18() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getName_25161fb5()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_25161fb5((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -81,9 +115,155 @@ public sealed unsafe partial class SerializedSkin
         return NativeMethods.TablePtr->hs_method_f4a82761((void*)_handle) != 0;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAnimationData_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_4e3dbcea((void*)_handle);
+    }
+
+    public long mArmSizeType
+    {
+        get => NativeMethods.TablePtr->hs_get_4819ad7c((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_4819ad7c((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCapeId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_d504e62f((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCapeImage_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_8a8e2ad7((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDefaultGeometryName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_da86179a((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFullId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b0c6cd3a((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGeometryData_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_fa47a267((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGeometryDataEngineVersion_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_26cd6b5e((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGeometryDataMutable_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_90627ccf((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_29e20eee((void*)_handle);
+    }
+
+    public bool mIsPersona
+    {
+        get => NativeMethods.TablePtr->hs_get_00e52444((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_00e52444((void*)_handle, value);
+    }
+
+    public bool mIsPersonaCapeOnClassicSkin
+    {
+        get => NativeMethods.TablePtr->hs_get_d568f251((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_d568f251((void*)_handle, value);
+    }
+
+    public bool mIsPremium
+    {
+        get => NativeMethods.TablePtr->hs_get_85a96dc5((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_85a96dc5((void*)_handle, value);
+    }
+
+    public bool mIsPrimaryUser
+    {
+        get => NativeMethods.TablePtr->hs_get_d57dc707((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_d57dc707((void*)_handle, value);
+    }
+
+    public sbyte mIsTrustedSkin
+    {
+        get => NativeMethods.TablePtr->hs_get_f04dea29((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_f04dea29((void*)_handle, value);
+    }
+
+    public bool mOverridesPlayerAppearance
+    {
+        get => NativeMethods.TablePtr->hs_get_b3638516((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_b3638516((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPersonaPieces_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_be931e4e((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPieceTintColors_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_bca05aa8((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayFabId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_97846003((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mResourcePatch_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_0c1744c1((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSkinAnimatedImages_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_62ce640a((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSkinColor_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_2b192487((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSkinImage_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_a5223a2f((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint read(nint arg0) =>
+    public nint read_92612833(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void,std::error_code>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint read_d1eb2969(nint stream) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setIsTrustedSkin(bool arg0)
     {
@@ -105,15 +285,22 @@ public sealed unsafe partial class SerializedSkin
         NativeMethods.TablePtr->hs_method_a3255615((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_768d4c28() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static SerializedSkin Create_9c4825e8(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_c9d2b40d() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_ee59e81b((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

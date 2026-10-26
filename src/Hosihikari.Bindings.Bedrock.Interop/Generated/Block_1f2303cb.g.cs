@@ -997,9 +997,9 @@ public sealed unsafe partial class Block : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_2fa83d9c((void*)_handle) != 0;
     }
 
-    public void spawnResources(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, nint arg2, nint arg3)
+    public void spawnResources(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Randomize arg2, nint arg3)
     {
-        NativeMethods.TablePtr->hs_method_34980be6((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3);
+        NativeMethods.TablePtr->hs_method_34980be6((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3);
     }
 
     public int telemetryVariant(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)

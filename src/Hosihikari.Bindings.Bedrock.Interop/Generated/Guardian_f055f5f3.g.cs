@@ -37,6 +37,12 @@ public sealed unsafe partial class Guardian : global::System.IDisposable
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint filler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_7e1cad17((void*)_handle);
+    }
+
     public static int ATTACK_TIME
     {
         get => NativeMethods.TablePtr->hs_get_3ca9ccbd();

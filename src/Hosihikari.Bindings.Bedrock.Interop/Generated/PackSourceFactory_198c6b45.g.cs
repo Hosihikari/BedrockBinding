@@ -54,9 +54,9 @@ public sealed unsafe partial class PackSourceFactory
         NativeMethods.TablePtr->hs_method_0195a4a0((void*)_handle, arg0);
     }
 
-    public nint createDirectoryPackSource(nint arg0, sbyte arg1, sbyte arg2, bool arg3)
+    public global::Hosihikari.Bindings.Bedrock.Interop.DirectoryPackSource createDirectoryPackSource(nint arg0, sbyte arg1, sbyte arg2, bool arg3)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_b5b1941f((void*)_handle, (void*)arg0, arg1, arg2, arg3);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DirectoryPackSource((nint)NativeMethods.TablePtr->hs_method_b5b1941f((void*)_handle, (void*)arg0, arg1, arg2, arg3), false);
     }
 
     public nint createDynamicPackagePackSource(sbyte arg0)
@@ -79,14 +79,16 @@ public sealed unsafe partial class PackSourceFactory
         return (nint)NativeMethods.TablePtr->hs_method_71e73518((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg2, arg3);
     }
 
-    public nint getDirectoryPackSource(nint arg0, sbyte arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.DirectoryPackSource? getDirectoryPackSource(nint arg0, sbyte arg1)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_3fa99cbc((void*)_handle, (void*)arg0, arg1);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_3fa99cbc((void*)_handle, (void*)arg0, arg1);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.DirectoryPackSource((nint)__hs_handle, false) : null;
     }
 
-    public nint getDirectoryPackSourceContaining(global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.DirectoryPackSource? getDirectoryPackSourceContaining(global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_08b478ed((void*)_handle, (void*)arg0.Handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_08b478ed((void*)_handle, (void*)arg0.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.DirectoryPackSource((nint)__hs_handle, false) : null;
     }
 
     public nint getDynamicPackagePackSource(sbyte arg0)

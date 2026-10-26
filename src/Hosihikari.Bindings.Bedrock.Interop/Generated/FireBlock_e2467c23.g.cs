@@ -84,9 +84,9 @@ public sealed unsafe partial class FireBlock : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_07176de7((void*)_handle) != 0;
     }
 
-    public void checkBurn(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, int arg2, nint arg3, int arg4)
+    public void checkBurn(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, int arg2, global::Hosihikari.Bindings.Bedrock.Interop.Randomize arg3, int arg4)
     {
-        NativeMethods.TablePtr->hs_method_0750e8fc((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)arg3, arg4);
+        NativeMethods.TablePtr->hs_method_0750e8fc((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)arg3.Handle, arg4);
     }
 
     public bool checkIsPathable(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2)

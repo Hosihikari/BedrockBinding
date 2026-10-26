@@ -154,9 +154,9 @@ public sealed unsafe partial class CameraCommand
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public bool prepareInstruction(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.CameraPresets arg1, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg2, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput arg3)
+    public bool prepareInstruction(global::Hosihikari.Bindings.Bedrock.Interop.CameraInstruction arg0, global::Hosihikari.Bindings.Bedrock.Interop.CameraPresets arg1, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg2, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput arg3)
     {
-        return NativeMethods.TablePtr->hs_method_cff09bc3((void*)_handle, (void*)arg0, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle) != 0;
+        return NativeMethods.TablePtr->hs_method_cff09bc3((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle) != 0;
     }
 
     public static void setup(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0)

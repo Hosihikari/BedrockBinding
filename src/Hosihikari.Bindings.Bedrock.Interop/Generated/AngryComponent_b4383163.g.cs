@@ -74,9 +74,9 @@ public sealed unsafe partial class AngryComponent
         return NativeMethods.TablePtr->hs_method_3e2090bd((void*)_handle) != 0;
     }
 
-    public nint getBroadcastFilter()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorFilterGroup getBroadcastFilter()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_b600c917((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorFilterGroup((nint)NativeMethods.TablePtr->hs_method_b600c917((void*)_handle), false);
     }
 
     public int getBroadcastRange()

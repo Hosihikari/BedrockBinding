@@ -528,9 +528,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
     public float evalMolang(nint expression) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public float evaluateSeatRotation(nint arg0, bool arg1)
+    public float evaluateSeatRotation(global::Hosihikari.Bindings.Bedrock.Interop.RideableComponent arg0, bool arg1)
     {
-        return NativeMethods.TablePtr->hs_method_98bc3b70((void*)_handle, (void*)arg0, arg1);
+        return NativeMethods.TablePtr->hs_method_98bc3b70((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

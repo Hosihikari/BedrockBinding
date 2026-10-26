@@ -60,9 +60,10 @@ public sealed unsafe partial class FeatureToggles : global::System.IDisposable
     public void _registerFeature_3b2cca39(nint arg0, nint featureID, nint locName, nint saveName, bool defaultValue, nint dependencyFeatureID, nint setup, nint @lock) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public nint get(int arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Option? get(int arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_a1d2dcfb((void*)_handle, arg0);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_a1d2dcfb((void*)_handle, arg0);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Option((nint)__hs_handle, false) : null;
     }
 
     public bool isEnabled(int arg0)

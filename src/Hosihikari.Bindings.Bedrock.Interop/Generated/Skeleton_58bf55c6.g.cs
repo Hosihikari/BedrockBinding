@@ -37,6 +37,12 @@ public sealed unsafe partial class Skeleton : global::System.IDisposable
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint filler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_a49d0625((void*)_handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID SPEED_MODIFIER_ATTACK_UUID
     {
         get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->hs_get_47ac495c(), false);

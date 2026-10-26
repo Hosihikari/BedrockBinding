@@ -82,9 +82,9 @@ public sealed unsafe partial class PotionItem : global::System.IDisposable
     public void appendFormattedHovertext_eabeae05(nint stack, nint level, nint hovertext, bool showCategory) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static void applyEffect(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1)
+    public static void applyEffect(global::Hosihikari.Bindings.Bedrock.Interop.ThrownPotion? arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1)
     {
-        NativeMethods.TablePtr->hs_method_a85c0e8d((void*)arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->hs_method_a85c0e8d((void*)(arg0?.Handle ?? 0), (void*)arg1.Handle);
     }
 
     public string buildDescriptionId(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg1)

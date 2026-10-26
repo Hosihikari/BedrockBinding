@@ -74,9 +74,9 @@ public sealed unsafe partial class PortalForcer : global::System.IDisposable
     public nint addPortalRecord(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PortalRecord' is not a known bindable declaration.");
 
-    public nint addPortalRecord(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0, nint arg1)
+    public nint addPortalRecord(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0, global::Hosihikari.Bindings.Bedrock.Interop.PortalShape arg1)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_da868ef1((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        return (nint)NativeMethods.TablePtr->hs_method_da868ef1((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public static bool canPortalReplaceBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
@@ -113,9 +113,9 @@ public sealed unsafe partial class PortalForcer : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_0b350113((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
     }
 
-    public void removeMisalignedPortalRecords(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, nint arg1, nint arg2)
+    public void removeMisalignedPortalRecords(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.PortalShape arg1, nint arg2)
     {
-        NativeMethods.TablePtr->hs_method_b49c2d2c((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_b49c2d2c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
     }
 
     public void removePortalRecord(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)

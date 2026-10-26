@@ -41,9 +41,9 @@ public sealed unsafe partial class StalkAndPounceOnTargetGoal : global::System.I
     public static StalkAndPounceOnTargetGoal Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static StalkAndPounceOnTargetGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, nint arg1, float arg2, float arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, bool arg10)
+    public static StalkAndPounceOnTargetGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorFilterGroup arg1, float arg2, float arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, bool arg10)
     {
-        var handle = NativeMethods.TablePtr->hs_create_22b591d4((void*)arg0.Handle, (void*)arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+        var handle = NativeMethods.TablePtr->hs_create_22b591d4((void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

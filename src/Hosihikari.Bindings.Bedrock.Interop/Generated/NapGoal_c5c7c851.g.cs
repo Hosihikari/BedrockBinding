@@ -46,9 +46,9 @@ public sealed unsafe partial class NapGoal : global::System.IDisposable
     public static NapGoal Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static NapGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, float arg1, float arg2, float arg3, float arg4, nint arg5, nint arg6)
+    public static NapGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, float arg1, float arg2, float arg3, float arg4, global::Hosihikari.Bindings.Bedrock.Interop.ActorFilterGroup arg5, global::Hosihikari.Bindings.Bedrock.Interop.ActorFilterGroup arg6)
     {
-        var handle = NativeMethods.TablePtr->hs_create_a0703424((void*)arg0.Handle, arg1, arg2, arg3, arg4, (void*)arg5, (void*)arg6);
+        var handle = NativeMethods.TablePtr->hs_create_a0703424((void*)arg0.Handle, arg1, arg2, arg3, arg4, (void*)arg5.Handle, (void*)arg6.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

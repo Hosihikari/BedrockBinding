@@ -37,6 +37,121 @@ public sealed unsafe partial class PermissionsHandler : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static string DIFF_COMMAND_PERMISSION
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_3b030eb1();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string DIFF_PLAYER_PERMISSION
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_64e5fb36();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static PermissionsHandler Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_9760509d();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PermissionsHandler((nint)handle);
+    }
+
+    public static PermissionsHandler Create(global::Hosihikari.Bindings.Bedrock.Interop.PermissionsHandler arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_837c71fe((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PermissionsHandler((nint)handle);
+    }
+
+    public void addSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    {
+        NativeMethods.TablePtr->hs_method_34038a29((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public byte getCommandPermissions()
+    {
+        return NativeMethods.TablePtr->hs_method_43c183eb((void*)_handle);
+    }
+
+    public sbyte getPlayerPermissions()
+    {
+        return NativeMethods.TablePtr->hs_method_448df56b((void*)_handle);
+    }
+
+    public bool loadSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_ddbf24b7((void*)_handle, (void*)arg0.Handle) != 0;
+    }
+
+    public byte mCommandPermissions
+    {
+        get => NativeMethods.TablePtr->hs_get_d9d020e2((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_d9d020e2((void*)_handle, value);
+    }
+
+    public sbyte mPlayerPermissions
+    {
+        get => NativeMethods.TablePtr->hs_get_1a97871b((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_1a97871b((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint playerPermissionLevelFromString(nint s) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public static sbyte playerPermissionLevelFromString(string arg0)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->hs_method_6682b37f(__hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public static string playerPermissionLevelToString_36b8683b(nint arg0)
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_36b8683b((void*)arg0);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint playerPermissionLevelToString_dc0cf691(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void setCommandPermissions(byte arg0)
+    {
+        NativeMethods.TablePtr->hs_method_1ec78243((void*)_handle, arg0);
+    }
+
+    public void setPlayerPermissions(sbyte arg0)
+    {
+        NativeMethods.TablePtr->hs_method_43e6e550((void*)_handle, arg0);
+    }
+
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static PermissionsHandler Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");

@@ -86,9 +86,10 @@ public sealed unsafe partial class ServerLevel
         return (nint)NativeMethods.TablePtr->hs_method_784ed233((void*)_handle);
     }
 
-    public nint getLevelChunkMetaDataManager()
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkMetaDataManager? getLevelChunkMetaDataManager()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_48cb50ac((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_48cb50ac((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkMetaDataManager((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.MobEvents getMobEvents_5e979a42()
@@ -106,14 +107,14 @@ public sealed unsafe partial class ServerLevel
         return new global::Hosihikari.Bindings.Bedrock.Interop.DynamicProperties((nint)NativeMethods.TablePtr->hs_method_d554553f((void*)_handle), false);
     }
 
-    public nint getPlayerSleepManager_7fad530c()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PlayerSleepManager getPlayerSleepManager_7fad530c()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_7fad530c((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerSleepManager((nint)NativeMethods.TablePtr->hs_method_7fad530c((void*)_handle), false);
     }
 
-    public nint getPlayerSleepManager_a9688806()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PlayerSleepManager getPlayerSleepManager_a9688806()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_a9688806((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerSleepManager((nint)NativeMethods.TablePtr->hs_method_a9688806((void*)_handle), false);
     }
 
     public nint getPositionTrackerDBServer()
