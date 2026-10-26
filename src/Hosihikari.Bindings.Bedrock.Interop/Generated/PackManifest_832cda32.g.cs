@@ -56,9 +56,9 @@ public sealed unsafe partial class PackManifest
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PackManifest((nint)__hs_handle) : null;
     }
 
-    public nint getContentIdentity()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity getContentIdentity()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_85e60a6c((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity((nint)NativeMethods.TablePtr->hs_method_85e60a6c((void*)_handle), false);
     }
 
     public nint getDependentPackIdentities()
@@ -328,9 +328,9 @@ public sealed unsafe partial class PackManifest
         NativeMethods.TablePtr->hs_method_7fd8e562((void*)_handle, arg0);
     }
 
-    public void setSourceIdentity(nint arg0)
+    public void setSourceIdentity(global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity arg0)
     {
-        NativeMethods.TablePtr->hs_method_423f374c((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_423f374c((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

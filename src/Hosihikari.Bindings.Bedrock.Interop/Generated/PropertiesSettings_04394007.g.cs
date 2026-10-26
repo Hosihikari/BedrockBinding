@@ -118,9 +118,10 @@ public sealed unsafe partial class PropertiesSettings
         return NativeMethods.TablePtr->hs_method_23f90708((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PacketCompressionAlgorithm' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getCompressionAlgorithm() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PacketCompressionAlgorithm' requires --link-carrier or --virtual-dispatch.");
+    public int getCompressionAlgorithm()
+    {
+        return NativeMethods.TablePtr->hs_method_de699726((void*)_handle);
+    }
 
     public ushort getCompressionThresholdBytesize()
     {

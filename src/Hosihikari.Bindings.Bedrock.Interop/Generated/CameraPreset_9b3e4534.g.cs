@@ -37,8 +37,96 @@ public sealed unsafe partial class CameraPreset : global::System.IDisposable
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static CameraPreset Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static CameraPreset Create(global::Hosihikari.Bindings.Bedrock.Interop.CameraPreset arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_a4048aa5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CameraPreset((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static CameraPreset Create_25fab035(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public static void bindType(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_39438579((void*)arg0);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIdentifier_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_68ca0128((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mListener_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_50ba1b00((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mParentPreset_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_287f30d1((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPitch_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_6134e444((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_0c9df010((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mYaw_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_694bffc9((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_aae73ed9(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_40c33d56(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint playEffect_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_09d0fe17((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<CameraPreset,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint read_33e426de(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<CameraPreset,std::error_code>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint read_3709b2a6(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void write(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream arg0)
+    {
+        NativeMethods.TablePtr->hs_method_204b23ae((void*)_handle, (void*)arg0.Handle);
+    }
+
+
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static CameraPreset Create(nint arg0) =>
+    public static CameraPreset Create_ec47fcfb(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
 

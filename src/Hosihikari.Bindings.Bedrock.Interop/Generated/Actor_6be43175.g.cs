@@ -363,9 +363,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_10dcef77((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void changeDimension(nint arg0)
+    public void changeDimension(global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionPacket arg0)
     {
-        NativeMethods.TablePtr->hs_method_82fa09dc((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_82fa09dc((void*)_handle, (void*)arg0.Handle);
     }
 
     public void checkFallDamage(float arg0, bool arg1, bool arg2)
@@ -3335,9 +3335,11 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_45f0d74a((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'AddActorBasePacket' is not a known bindable declaration.", false)]
-    public nint tryCreateAddActorPacket() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'AddActorBasePacket' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.AddActorBasePacket? tryCreateAddActorPacket()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_246c8f9f((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.AddActorBasePacket((nint)__hs_handle) : null;
+    }
 
     public nint tryGetEquippableSlotAllowedItems(int arg0)
     {

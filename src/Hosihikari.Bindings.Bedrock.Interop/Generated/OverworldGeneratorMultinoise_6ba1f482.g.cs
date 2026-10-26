@@ -169,9 +169,12 @@ public sealed unsafe partial class OverworldGeneratorMultinoise : global::System
         return NativeMethods.TablePtr->hs_method_b5cf0789((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'DividedPos2d<4>' is not a known bindable declaration.", false)]
-    public nint getPreliminarySurfaceLevel_4a07715f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DividedPos2d<4>' is not a known bindable declaration.");
+    public short? getPreliminarySurfaceLevel(global::Hosihikari.Bindings.Bedrock.Interop.DividedPos2d_4_ arg0)
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->hs_method_4a07715f((void*)_handle, (void*)arg0.Handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (short?)null;
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnknow_Address

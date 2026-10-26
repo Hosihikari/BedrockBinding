@@ -284,9 +284,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_b9e3b5da((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2) != 0;
     }
 
-    public void digestServerItemComponents(nint arg0)
+    public void digestServerItemComponents(global::Hosihikari.Bindings.Bedrock.Interop.ItemComponentPacket arg0)
     {
-        NativeMethods.TablePtr->hs_method_94aee9da((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_94aee9da((void*)_handle, (void*)arg0.Handle);
     }
 
     public void earlyShutdownMainthread()
@@ -481,24 +481,24 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_944ff8fa((void*)_handle);
     }
 
-    public nint getBiomeComponentFactory_02cc7b4b()
+    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeComponentFactory getBiomeComponentFactory_02cc7b4b()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_02cc7b4b((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeComponentFactory((nint)NativeMethods.TablePtr->hs_method_02cc7b4b((void*)_handle), false);
     }
 
-    public nint getBiomeComponentFactory_4fee9369()
+    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeComponentFactory getBiomeComponentFactory_4fee9369()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_4fee9369((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeComponentFactory((nint)NativeMethods.TablePtr->hs_method_4fee9369((void*)_handle), false);
     }
 
-    public nint getBiomeManager_5b211fbf()
+    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeManager getBiomeManager_5b211fbf()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_5b211fbf((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeManager((nint)NativeMethods.TablePtr->hs_method_5b211fbf((void*)_handle), false);
     }
 
-    public nint getBiomeManager_059d8641()
+    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeManager getBiomeManager_059d8641()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_059d8641((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeManager((nint)NativeMethods.TablePtr->hs_method_059d8641((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry getBiomeRegistry_e713ab30()
@@ -792,14 +792,14 @@ public sealed unsafe partial class Level : global::System.IDisposable
     public nint getItemRegistry() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemRegistryRef' requires --link-carrier or --virtual-dispatch.");
 
-    public nint getJigsawStructureRegistry_f7a0821f()
+    public global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureRegistry getJigsawStructureRegistry_f7a0821f()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_f7a0821f((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureRegistry((nint)NativeMethods.TablePtr->hs_method_f7a0821f((void*)_handle), false);
     }
 
-    public nint getJigsawStructureRegistry_ab823e13()
+    public global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureRegistry getJigsawStructureRegistry_ab823e13()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_ab823e13((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureRegistry((nint)NativeMethods.TablePtr->hs_method_ab823e13((void*)_handle), false);
     }
 
     public bool getLANBroadcast()

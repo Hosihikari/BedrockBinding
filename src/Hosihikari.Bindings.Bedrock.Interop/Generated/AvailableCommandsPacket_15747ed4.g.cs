@@ -37,6 +37,106 @@ public sealed unsafe partial class AvailableCommandsPacket : global::System.IDis
         return __hs_handle;
     }
 
+    public static AvailableCommandsPacket Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_3e4fae0e();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AvailableCommandsPacket((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static AvailableCommandsPacket Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static AvailableCommandsPacket Create_028b8119(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'AvailableCommandsPacket::CommandData' is not supported.", false)]
+    public static AvailableCommandsPacket Create_e1020d94(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'AvailableCommandsPacket::CommandData' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _read_32a24d10(nint stream) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public int getId()
+    {
+        return NativeMethods.TablePtr->hs_method_4b85840b((void*)_handle);
+    }
+
+    public string getName_0b7e3f21()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_0b7e3f21((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getName_a0f18a8d() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCommands_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_5fa31860((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mConstraints_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_141c0085((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEnumValues_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_d990e0c7((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEnums_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_268dd887((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPostfixes_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_96d1a38d((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSoftEnums_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_7ba80302((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSubcommandValues_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_69e3ffab((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSubcommands_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_6c3bae35((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void write(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream arg0)
+    {
+        NativeMethods.TablePtr->hs_method_3aa48aa1((void*)_handle, (void*)arg0.Handle);
+    }
+
+
 
     public byte mClientSubId
     {

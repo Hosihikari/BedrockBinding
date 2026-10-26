@@ -352,9 +352,9 @@ public sealed unsafe partial class LevelData
         return NativeMethods.TablePtr->hs_method_2acd1cd4((void*)_handle);
     }
 
-    public nint getPremiumTemplateContentIdentity()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity getPremiumTemplateContentIdentity()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_0ac1a10f((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity((nint)NativeMethods.TablePtr->hs_method_0ac1a10f((void*)_handle), false);
     }
 
     public float getRainLevel()

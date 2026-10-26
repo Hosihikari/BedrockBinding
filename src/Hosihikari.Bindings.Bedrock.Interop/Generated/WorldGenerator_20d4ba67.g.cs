@@ -171,9 +171,12 @@ public sealed unsafe partial class WorldGenerator : global::System.IDisposable
     public nint getBlockVolumeDimensions() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'DividedPos2d<4>' is not a known bindable declaration.", false)]
-    public nint getPreliminarySurfaceLevel_f71e9fe7(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DividedPos2d<4>' is not a known bindable declaration.");
+    public short? getPreliminarySurfaceLevel(global::Hosihikari.Bindings.Bedrock.Interop.DividedPos2d_4_ arg0)
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->hs_method_f71e9fe7((void*)_handle, (void*)arg0.Handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (short?)null;
+    }
 
     public nint getStructureFeatureRegistry()
     {

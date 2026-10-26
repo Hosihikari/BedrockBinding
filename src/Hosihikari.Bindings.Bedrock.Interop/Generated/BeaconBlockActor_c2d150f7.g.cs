@@ -153,6 +153,10 @@ public sealed unsafe partial class BeaconBlockActor
         NativeMethods.TablePtr->hs_method_ff0a5c2b((void*)_handle, (void*)arg0.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mContainerRuntimeId_Address
     {

@@ -62,9 +62,9 @@ public sealed unsafe partial class CommandOrigin : global::System.IDisposable
     public nint clone() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin? fromCommandOriginData(nint arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg2, byte arg3)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin? fromCommandOriginData(global::Hosihikari.Bindings.Bedrock.Interop.CommandOriginData arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg2, byte arg3)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_cf1680ab((void*)arg0, (void*)arg1, (void*)arg2.Handle, arg3);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_cf1680ab((void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle, arg3);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin((nint)__hs_handle) : null;
     }
 
@@ -215,9 +215,10 @@ public sealed unsafe partial class CommandOrigin : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)NativeMethods.TablePtr->hs_method_783ada27((void*)_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CommandOriginData' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint toCommandOriginData() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CommandOriginData' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.CommandOriginData toCommandOriginData()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CommandOriginData((nint)NativeMethods.TablePtr->hs_method_b1fc5d38((void*)_handle));
+    }
 
     public void updateValues()
     {

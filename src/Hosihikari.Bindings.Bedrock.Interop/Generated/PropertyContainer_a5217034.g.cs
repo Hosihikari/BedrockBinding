@@ -58,9 +58,9 @@ public sealed unsafe partial class PropertyContainer
         NativeMethods.TablePtr->hs_method_9ead9bed((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void addEntryToSyncData(global::Hosihikari.Bindings.Bedrock.Interop.PropertyMetadata arg0, nint arg1)
+    public void addEntryToSyncData(global::Hosihikari.Bindings.Bedrock.Interop.PropertyMetadata arg0, global::Hosihikari.Bindings.Bedrock.Interop.PropertySyncData arg1)
     {
-        NativeMethods.TablePtr->hs_method_596d92b2((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_596d92b2((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public bool? getBoolValue(ulong arg0)

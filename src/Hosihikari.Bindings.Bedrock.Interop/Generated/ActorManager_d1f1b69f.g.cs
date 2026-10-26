@@ -109,9 +109,9 @@ public sealed unsafe partial class ActorManager
     public nint registerActorEntityAddedCallback(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.");
 
-    public void registerForLevelChunkEvents(nint arg0)
+    public void registerForLevelChunkEvents(global::Hosihikari.Bindings.Bedrock.Interop.ILevelChunkEventManagerConnector arg0)
     {
-        NativeMethods.TablePtr->hs_method_195ba758((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_195ba758((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.", false)]

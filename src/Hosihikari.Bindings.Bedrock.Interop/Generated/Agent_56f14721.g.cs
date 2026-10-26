@@ -110,9 +110,10 @@ public sealed unsafe partial class Agent
         return NativeMethods.TablePtr->hs_method_263eba2e((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'AgentAnimation' is not a known bindable declaration.", false)]
-    public void handleAnimationEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'AgentAnimation' is not a known bindable declaration.");
+    public void handleAnimationEvent(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_20a76c38((void*)_handle, arg0);
+    }
 
     public void handleEntityEvent(byte arg0, int arg1)
     {

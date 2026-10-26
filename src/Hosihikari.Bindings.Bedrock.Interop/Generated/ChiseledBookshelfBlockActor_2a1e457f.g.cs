@@ -149,6 +149,10 @@ public sealed unsafe partial class ChiseledBookshelfBlockActor
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ChiseledBookshelfBlockActor((nint)__hs_handle, false) : null;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mContainerRuntimeId_Address
     {

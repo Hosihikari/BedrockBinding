@@ -64,9 +64,9 @@ public sealed unsafe partial class FixedBiomeSource : global::System.IDisposable
     public bool containsOnly_9d9edcbb(int arg0, int arg1, int arg2, int arg3, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::span<unsigned long long const,-1>' is not a known bindable declaration.");
 
-    public void fillBiomes(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0, nint arg1)
+    public void fillBiomes(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalNoiseCache arg1)
     {
-        NativeMethods.TablePtr->hs_method_79d7ad95((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_79d7ad95((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Biome? getBiome(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)

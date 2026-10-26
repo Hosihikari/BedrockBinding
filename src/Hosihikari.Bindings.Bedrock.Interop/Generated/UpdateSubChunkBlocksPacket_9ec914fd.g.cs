@@ -78,6 +78,63 @@ public sealed unsafe partial class UpdateSubChunkBlocksPacket : global::System.I
         set => NativeMethods.TablePtr->hs_set_c47a604e((void*)_handle, value);
     }
 
+    public static UpdateSubChunkBlocksPacket Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_5ee9ba07();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UpdateSubChunkBlocksPacket((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public static UpdateSubChunkBlocksPacket Create(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _read_69ab8b3d(nint stream) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public int getId()
+    {
+        return NativeMethods.TablePtr->hs_method_8162bab4((void*)_handle);
+    }
+
+    public string getName_e44d7dfd()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_e44d7dfd((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getName_aee56ad1() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBlocksChanged_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_f2493d51((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSubChunkBlockPosition_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_4a854915((void*)_handle);
+    }
+
+    public void setSubChunkPosition(global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPos arg0)
+    {
+        NativeMethods.TablePtr->hs_method_a5f2d6b3((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public void write(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream arg0)
+    {
+        NativeMethods.TablePtr->hs_method_76a1fa87((void*)_handle, (void*)arg0.Handle);
+    }
+
+
 
     public void Dispose()
     {

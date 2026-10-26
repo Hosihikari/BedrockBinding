@@ -132,9 +132,12 @@ public sealed unsafe partial class TheEndGenerator : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.WorldGenerator_Nested.BlockVolumeDimensions((nint)NativeMethods.TablePtr->hs_method_dac992ec((void*)_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'DividedPos2d<4>' is not a known bindable declaration.", false)]
-    public nint getPreliminarySurfaceLevel_a3e110d0(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DividedPos2d<4>' is not a known bindable declaration.");
+    public short? getPreliminarySurfaceLevel(global::Hosihikari.Bindings.Bedrock.Interop.DividedPos2d_4_ arg0)
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->hs_method_a3e110d0((void*)_handle, (void*)arg0.Handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (short?)null;
+    }
 
     public static bool isOutsideCentralIslandArea(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg0)
     {

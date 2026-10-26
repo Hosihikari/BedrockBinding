@@ -56,9 +56,9 @@ public sealed unsafe partial class ResourcePackRepository
         NativeMethods.TablePtr->hs_method_6539a850((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void addPremiumWorldTemplateResourcePacks(nint arg0, nint arg1)
+    public void addPremiumWorldTemplateResourcePacks(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity arg1)
     {
-        NativeMethods.TablePtr->hs_method_d5e69adb((void*)_handle, (void*)arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_d5e69adb((void*)_handle, (void*)arg0, (void*)arg1.Handle);
     }
 
     public void addServicePacksToStack(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackStack arg0)
@@ -231,9 +231,9 @@ public sealed unsafe partial class ResourcePackRepository
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ResourcePack((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'PackInstanceId' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public void getResourcePacksByPackId(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'PackInstanceId' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     public string getResourcePacksPath()
     {

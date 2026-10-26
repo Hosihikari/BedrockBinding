@@ -82,9 +82,9 @@ public sealed unsafe partial class EnderDragon
         return NativeMethods.TablePtr->hs_method_40127910((void*)_handle, (void*)arg0.Handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Path? findPath(int arg0, int arg1, nint arg2)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Path? findPath(int arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.PathfinderNode? arg2)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_a64fb9ed((void*)_handle, arg0, arg1, (void*)arg2);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_a64fb9ed((void*)_handle, arg0, arg1, (void*)(arg2?.Handle ?? 0));
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Path((nint)__hs_handle) : null;
     }
 

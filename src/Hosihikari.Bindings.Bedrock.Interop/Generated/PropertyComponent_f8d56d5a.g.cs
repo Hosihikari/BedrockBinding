@@ -110,13 +110,15 @@ public sealed unsafe partial class PropertyComponent
     public nint operator_assign_8c10048d(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PropertySyncData' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint packAllSyncData() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PropertySyncData' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.PropertySyncData packAllSyncData()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PropertySyncData((nint)NativeMethods.TablePtr->hs_method_4600c97e((void*)_handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PropertySyncData' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint packDirtySyncData() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PropertySyncData' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.PropertySyncData packDirtySyncData()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PropertySyncData((nint)NativeMethods.TablePtr->hs_method_b7f1514c((void*)_handle));
+    }
 
     public void readLoadedProperties(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {

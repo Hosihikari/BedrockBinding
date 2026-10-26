@@ -54,9 +54,9 @@ public sealed unsafe partial class WorldTemplateLevelData
         return new global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion((nint)NativeMethods.TablePtr->hs_method_cf74e144((void*)_handle), false);
     }
 
-    public nint getContentIdentity()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity getContentIdentity()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_bedc10bb((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity((nint)NativeMethods.TablePtr->hs_method_bedc10bb((void*)_handle), false);
     }
 
     public void getTagData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
@@ -88,9 +88,9 @@ public sealed unsafe partial class WorldTemplateLevelData
         NativeMethods.TablePtr->hs_method_e28f1c97((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void setContentIdentity(nint arg0)
+    public void setContentIdentity(global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity arg0)
     {
-        NativeMethods.TablePtr->hs_method_a6ddc5d5((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_a6ddc5d5((void*)_handle, (void*)arg0.Handle);
     }
 
     public void setIsWorldTemplateOptionLocked(bool arg0)

@@ -76,9 +76,9 @@ public sealed unsafe partial class ServerLevel
         return (nint)NativeMethods.TablePtr->hs_method_772db572((void*)_handle);
     }
 
-    public nint getDynamicPropertiesDefinition()
+    public global::Hosihikari.Bindings.Bedrock.Interop.DynamicPropertiesDefinition getDynamicPropertiesDefinition()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_36be3398((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DynamicPropertiesDefinition((nint)NativeMethods.TablePtr->hs_method_36be3398((void*)_handle), false);
     }
 
     public nint getDynamicPropertiesManager()

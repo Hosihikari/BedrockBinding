@@ -60,14 +60,14 @@ public sealed unsafe partial class VanillaBiomes
         NativeMethods.TablePtr->hs_method_d0a97087((void*)arg0.Handle);
     }
 
-    public static void initBiomeComponentGlue(nint arg0)
+    public static void initBiomeComponentGlue(global::Hosihikari.Bindings.Bedrock.Interop.BiomeComponentFactory arg0)
     {
-        NativeMethods.TablePtr->hs_method_8a96aefe((void*)arg0);
+        NativeMethods.TablePtr->hs_method_8a96aefe((void*)arg0.Handle);
     }
 
-    public static void initBiomeComponents(nint arg0)
+    public static void initBiomeComponents(global::Hosihikari.Bindings.Bedrock.Interop.BiomeComponentFactory arg0)
     {
-        NativeMethods.TablePtr->hs_method_6cf2562c((void*)arg0);
+        NativeMethods.TablePtr->hs_method_6cf2562c((void*)arg0.Handle);
     }
 
     public static void initBiomeDimensionComponent(global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry arg0)

@@ -61,9 +61,10 @@ public sealed unsafe partial class MinecraftCommands
     public nint executeCommand(nint arg0, bool arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'MCRESULT' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CommandOutputType' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getOutputType(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CommandOutputType' requires --link-carrier or --virtual-dispatch.");
+    public static int getOutputType(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_1787c393((void*)arg0.Handle);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry getRegistry_e3c8d0e1()
     {

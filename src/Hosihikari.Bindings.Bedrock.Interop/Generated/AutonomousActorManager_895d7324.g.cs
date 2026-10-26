@@ -99,9 +99,9 @@ public sealed unsafe partial class AutonomousActorManager
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void registerForLevelChunkEvents(nint arg0)
+    public void registerForLevelChunkEvents(global::Hosihikari.Bindings.Bedrock.Interop.ILevelChunkEventManagerConnector arg0)
     {
-        NativeMethods.TablePtr->hs_method_f4e24a04((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_f4e24a04((void*)_handle, (void*)arg0.Handle);
     }
 
     public void registerLevelStorageManagerListener(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageManager arg0)

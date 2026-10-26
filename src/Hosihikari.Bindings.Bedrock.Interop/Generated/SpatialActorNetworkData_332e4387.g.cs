@@ -58,9 +58,9 @@ public sealed unsafe partial class SpatialActorNetworkData
     public static nint getDebugSpatialPacketModifiers_60791a78() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void handleClientData(nint arg0)
+    public void handleClientData(global::Hosihikari.Bindings.Bedrock.Interop.MoveActorAbsoluteData arg0)
     {
-        NativeMethods.TablePtr->hs_method_97f6d9c4((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_97f6d9c4((void*)_handle, (void*)arg0.Handle);
     }
 
     public bool isAutoSendEnabled()

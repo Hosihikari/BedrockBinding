@@ -57,9 +57,9 @@ public sealed unsafe partial class ChunkLoadActionList
     public void addChunkLoadedRequest_5d4e6c1b(nint chunkLoadedRequest, nint dimensionPrefix, nint chunksLoadedStatus, nint levelStorage) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ChunkLoadedRequest' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ChunkLoadedRequest' is not copy-constructible.", false)]
     public void addChunkLoadedRequest_d22d53df(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ChunkLoadedRequest' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ChunkLoadedRequest' is not copy-constructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void loadRequests(nint storage, nint loader, nint dimensionPrefix) =>
@@ -134,9 +134,9 @@ public sealed unsafe partial class ChunkLoadActionList
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ChunkLoadedRequest' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ChunkLoadedRequest' is not copy-constructible.", false)]
     public nint queueRequestOrExecuteAction(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ChunkLoadedRequest' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ChunkLoadedRequest' is not copy-constructible.");
 
     public void tickRequests(global::Hosihikari.Bindings.Bedrock.Interop.ServerLevel arg0, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg1)
     {

@@ -37,6 +37,91 @@ public sealed unsafe partial class PerlinSimplexNoise : global::System.IDisposab
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static PerlinSimplexNoise Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static PerlinSimplexNoise Create(global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg0, int arg1, bool arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_dc5c7902((void*)arg0.Handle, arg1, arg2);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PerlinSimplexNoise((nint)handle);
+    }
+
+    public static PerlinSimplexNoise Create(global::Hosihikari.Bindings.Bedrock.Interop.PerlinSimplexNoise arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_759c71bc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PerlinSimplexNoise((nint)handle);
+    }
+
+    public static PerlinSimplexNoise Create(uint arg0, int arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_bbc773f9(arg0, arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PerlinSimplexNoise((nint)handle);
+    }
+
+    public nint getRegion(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec2 arg1, int arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.Vec2 arg4, float arg5, float arg6)
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_7e4a72ac((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg2, arg3, (void*)arg4.Handle, arg5, arg6);
+    }
+
+    public float getValue(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_248ca86b((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public float getValue(float arg0, float arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_f9b1de90((void*)_handle, arg0, arg1);
+    }
+
+    public float getValueNormalized(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_fc361ec5((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public float getValueNormalized(float arg0, float arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_99739c0a((void*)_handle, arg0, arg1);
+    }
+
+    public int mLevels
+    {
+        get => NativeMethods.TablePtr->hs_get_a6c3f7fd((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_a6c3f7fd((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNoiseLevels_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_f9aac188((void*)_handle);
+    }
+
+    public float mNormalizationFactor
+    {
+        get => NativeMethods.TablePtr->hs_get_5f71fc92((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_5f71fc92((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static PerlinSimplexNoise Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");

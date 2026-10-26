@@ -99,9 +99,9 @@ public sealed unsafe partial class EncryptedFileAccessStrategy
         return NativeMethods.TablePtr->hs_method_f3529a65((void*)_handle) != 0;
     }
 
-    public static bool isValidEncryptedPack(nint arg0, nint arg1)
+    public static bool isValidEncryptedPack(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity arg1)
     {
-        return NativeMethods.TablePtr->hs_method_717a44d0((void*)arg0, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_717a44d0((void*)arg0, (void*)arg1.Handle) != 0;
     }
 
     public bool isWritable()
@@ -113,9 +113,10 @@ public sealed unsafe partial class EncryptedFileAccessStrategy
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContentIdentity' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint readContentIdentity() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContentIdentity' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity readContentIdentity()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity((nint)NativeMethods.TablePtr->hs_method_3ad58e33((void*)_handle));
+    }
 
     public bool writeAsset(nint arg0, string arg1)
     {

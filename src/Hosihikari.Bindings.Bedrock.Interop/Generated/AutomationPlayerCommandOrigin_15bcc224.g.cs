@@ -153,9 +153,10 @@ public sealed unsafe partial class AutomationPlayerCommandOrigin : global::Syste
         return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)NativeMethods.TablePtr->hs_method_8af02b3a((void*)_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CommandOriginData' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint toCommandOriginData() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CommandOriginData' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.CommandOriginData toCommandOriginData()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CommandOriginData((nint)NativeMethods.TablePtr->hs_method_e3563446((void*)_handle));
+    }
 
 
     // The native field type is not projected; this is the address of the field storage.

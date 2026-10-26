@@ -1421,9 +1421,20 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_4bcc2e08((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'ContentIdentity' is not supported.", false)]
-    public void fireEventEntitlementListInfo(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'ContentIdentity' is not supported.");
+    public void fireEventEntitlementListInfo(global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity[] arg0, bool arg1)
+    {
+        var __hs_vectorItems0 = arg0;
+        var __hs_vectorHandles0 = new nint[__hs_vectorItems0?.Length ?? 0];
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++)
+        {
+            __hs_vectorHandles0[__hs_i0] = __hs_vectorItems0![__hs_i0]?.Handle ?? 0;
+        }
+        fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
+        {
+            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
+            NativeMethods.TablePtr->hs_method_3d043367((void*)_handle, arg1, __hs_vectorData0, (nuint)(arg0?.Length ?? 0));
+        }
+    }
 
     public void fireEventEntitySpawned(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, int arg1, uint arg2)
     {
@@ -3982,9 +3993,9 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_0908e4d7((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
-    public void fireEventRespondedToAcceptContent(nint arg0, bool arg1)
+    public void fireEventRespondedToAcceptContent(global::Hosihikari.Bindings.Bedrock.Interop.PacksInfoData arg0, bool arg1)
     {
-        NativeMethods.TablePtr->hs_method_2392f6d0((void*)_handle, (void*)arg0, arg1);
+        NativeMethods.TablePtr->hs_method_2392f6d0((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

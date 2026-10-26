@@ -59,9 +59,9 @@ public sealed unsafe partial class ServerPlayerMovementComponent
         return NativeMethods.TablePtr->hs_method_64742d60((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData)) != 0;
     }
 
-    public bool addMoveActorAbsolutePacket(nint arg0)
+    public bool addMoveActorAbsolutePacket(global::Hosihikari.Bindings.Bedrock.Interop.MoveActorAbsolutePacket arg0)
     {
-        return NativeMethods.TablePtr->hs_method_35c8e1d6((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_35c8e1d6((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]

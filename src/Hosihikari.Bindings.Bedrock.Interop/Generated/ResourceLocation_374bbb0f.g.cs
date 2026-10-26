@@ -37,6 +37,102 @@ public sealed unsafe partial class ResourceLocation : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ResourceLocation Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_c4726a54();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ResourceLocation((nint)handle);
+    }
+
+    public static ResourceLocation Create(nint arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_72f02689((void*)arg0);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ResourceLocation((nint)handle);
+    }
+
+    public static ResourceLocation Create(nint arg0, int arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_fd1cc873((void*)arg0, arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ResourceLocation((nint)handle);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation getEmptyLocation()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation((nint)NativeMethods.TablePtr->hs_method_b97ea2d7(), false);
+    }
+
+    public string getFullPath_fb65e6ae()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_fb65e6ae((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getFullPath_0d8dcc2a() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public nint getRelativePath_980f8811()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_980f8811((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getRelativePath_87e184b8() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public int mFileSystem
+    {
+        get => NativeMethods.TablePtr->hs_get_f391e1bb((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_f391e1bb((void*)_handle, value);
+    }
+
+    public ulong mFullHash
+    {
+        get => NativeMethods.TablePtr->hs_get_14628109((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_14628109((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPath_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_adf17498((void*)_handle);
+    }
+
+    public ulong mPathHash
+    {
+        get => NativeMethods.TablePtr->hs_get_deab2ce1((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_deab2ce1((void*)_handle, value);
+    }
+
+    public void serialize(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0)
+    {
+        NativeMethods.TablePtr->hs_method_5d94e621((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public void setRelativePath_4c7266c2(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_4c7266c2((void*)_handle, (void*)arg0);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setRelativePath_c60cb0b7(nint path) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+
 
     public void Dispose()
     {

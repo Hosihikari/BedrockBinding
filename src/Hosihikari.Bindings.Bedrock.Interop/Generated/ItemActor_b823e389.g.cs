@@ -193,9 +193,11 @@ public sealed unsafe partial class ItemActor : global::System.IDisposable
     public nint throwTime_692588be() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'AddActorBasePacket' is not a known bindable declaration.", false)]
-    public nint tryCreateAddActorPacket() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'AddActorBasePacket' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.AddActorBasePacket? tryCreateAddActorPacket()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_87a6aa8a((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.AddActorBasePacket((nint)__hs_handle) : null;
+    }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.ItemActor? tryGetFromEntity(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, bool arg1)
     {
