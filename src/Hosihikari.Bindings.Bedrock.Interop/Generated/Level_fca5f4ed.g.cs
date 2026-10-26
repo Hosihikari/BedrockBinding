@@ -451,14 +451,14 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_6eda0faf((void*)_handle);
     }
 
-    public nint getAdventureSettings_02455754()
+    public global::Hosihikari.Bindings.Bedrock.Interop.AdventureSettings getAdventureSettings_02455754()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_02455754((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AdventureSettings((nint)NativeMethods.TablePtr->hs_method_02455754((void*)_handle), false);
     }
 
-    public nint getAdventureSettings_a645a5df()
+    public global::Hosihikari.Bindings.Bedrock.Interop.AdventureSettings getAdventureSettings_a645a5df()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_a645a5df((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AdventureSettings((nint)NativeMethods.TablePtr->hs_method_a645a5df((void*)_handle), false);
     }
 
     public nint getArmorTrimUnloader()
@@ -783,9 +783,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.InternalComponentRegistry((nint)NativeMethods.TablePtr->hs_method_0732bd5e((void*)_handle), false);
     }
 
-    public nint getItemEventCoordinator()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemEventCoordinator getItemEventCoordinator()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_ccd6ecd9((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemEventCoordinator((nint)NativeMethods.TablePtr->hs_method_ccd6ecd9((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemRegistryRef' requires --link-carrier or --virtual-dispatch.", false)]
@@ -1250,9 +1250,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
     public nint getScreenshotsFolder_a33f2dda() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public nint getScriptDeferredEventCoordinator()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptDeferredEventCoordinator getScriptDeferredEventCoordinator()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_7379203f((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptDeferredEventCoordinator((nint)NativeMethods.TablePtr->hs_method_7379203f((void*)_handle), false);
     }
 
     public nint getScriptingEventCoordinator()
@@ -1791,9 +1791,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
     public void queueEntityDestruction(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    public void registerTemporaryPointer(nint arg0)
+    public void registerTemporaryPointer(global::Hosihikari.Bindings.Bedrock.Interop._TickPtr arg0)
     {
-        NativeMethods.TablePtr->hs_method_6632a1dc((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_6632a1dc((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
@@ -2143,9 +2143,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Scoreboard((nint)__hs_handle, false) : null;
     }
 
-    public void unregisterTemporaryPointer(nint arg0)
+    public void unregisterTemporaryPointer(global::Hosihikari.Bindings.Bedrock.Interop._TickPtr arg0)
     {
-        NativeMethods.TablePtr->hs_method_8816f0c6((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_8816f0c6((void*)_handle, (void*)arg0.Handle);
     }
 
     public void updateSleepingPlayerList()

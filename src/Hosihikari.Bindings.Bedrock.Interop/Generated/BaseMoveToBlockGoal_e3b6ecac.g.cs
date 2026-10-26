@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class BaseMoveToBlockGoal
+public sealed unsafe partial class BaseMoveToBlockGoal : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,5 +35,57 @@ public sealed partial class BaseMoveToBlockGoal
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BaseMoveToBlockGoal Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static BaseMoveToBlockGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, float arg1, int arg2, int arg3, int arg4, float arg5, float arg6)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_3d89c0b6((void*)arg0.Handle, arg1, arg2, arg3, arg4, arg5, arg6);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BaseMoveToBlockGoal((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BaseMoveToBlockGoal Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public bool canContinueToUse()
+    {
+        return NativeMethods.TablePtr->hs_method_4ac009f7((void*)_handle) != 0;
+    }
+
+    public bool canUse()
+    {
+        return NativeMethods.TablePtr->hs_method_19db4c14((void*)_handle) != 0;
+    }
+
+    public bool findTargetBlock()
+    {
+        return NativeMethods.TablePtr->hs_method_864f4c01((void*)_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_e3b6ecac((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

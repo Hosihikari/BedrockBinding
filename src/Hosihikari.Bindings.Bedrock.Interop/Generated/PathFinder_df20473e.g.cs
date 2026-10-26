@@ -55,9 +55,9 @@ public sealed unsafe partial class PathFinder
     public static PathFinder Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.BlockPos _getStartPositionFlyingActor(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, bool arg2, bool arg3, float arg4)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BlockPos _getStartPositionFlyingActor(global::Hosihikari.Bindings.Bedrock.Interop.IPathBlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, bool arg2, bool arg3, float arg4)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_61f0fdb2((void*)arg0, (void*)arg1.Handle, arg2, arg3, arg4));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_61f0fdb2((void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4));
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.ActorPathingData extractPathingData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1)

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class NetworkEnableDisableListener
+public sealed unsafe partial class NetworkEnableDisableListener
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -36,4 +36,52 @@ public sealed partial class NetworkEnableDisableListener
         _handle = 0;
         return __hs_handle;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static NetworkEnableDisableListener Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static NetworkEnableDisableListener Create_35d9d81b(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static NetworkEnableDisableListener Create_6226c789(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _onDisable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _onEnable() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void disable()
+    {
+        NativeMethods.TablePtr->hs_method_75bae4f1((void*)_handle);
+    }
+
+    public bool isDisabled()
+    {
+        return NativeMethods.TablePtr->hs_method_f996475f((void*)_handle) != 0;
+    }
+
+    public bool isEnabled()
+    {
+        return NativeMethods.TablePtr->hs_method_3ec529f8((void*)_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void tryEnable()
+    {
+        NativeMethods.TablePtr->hs_method_8500b56c((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

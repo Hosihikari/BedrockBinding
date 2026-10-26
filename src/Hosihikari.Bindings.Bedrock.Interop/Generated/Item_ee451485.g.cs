@@ -858,10 +858,9 @@ public sealed unsafe partial class Item
         get => (nint)NativeMethods.TablePtr->hs_get_ea605c05();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mActiveCreativeItemCategory_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemGroupCategory mActiveCreativeItemCategory
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_cb073074();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemGroupCategory((nint)NativeMethods.TablePtr->hs_get_cb073074(), false);
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemRegistry mActiveCreativeItemRegistry

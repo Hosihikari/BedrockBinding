@@ -97,14 +97,14 @@ public sealed unsafe partial class LevelData
         return NativeMethods.TablePtr->hs_method_9df87e1c((void*)_handle) != 0;
     }
 
-    public nint getAdventureSettings_139b7104()
+    public global::Hosihikari.Bindings.Bedrock.Interop.AdventureSettings getAdventureSettings_139b7104()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_139b7104((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AdventureSettings((nint)NativeMethods.TablePtr->hs_method_139b7104((void*)_handle), false);
     }
 
-    public nint getAdventureSettings_14a6f7d8()
+    public global::Hosihikari.Bindings.Bedrock.Interop.AdventureSettings getAdventureSettings_14a6f7d8()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_14a6f7d8((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AdventureSettings((nint)NativeMethods.TablePtr->hs_method_14a6f7d8((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion getBaseGameVersion()

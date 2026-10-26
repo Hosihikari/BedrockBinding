@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class SidePoweredComponent
+public sealed unsafe partial class SidePoweredComponent : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,5 +35,50 @@ public sealed partial class SidePoweredComponent
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+    public bool allowConnection(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph arg0, nint arg1, nint arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_66d19c26((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2) != 0;
+    }
+
+    public bool canConsumePowerAnyDirection()
+    {
+        return NativeMethods.TablePtr->hs_method_d39ed85a((void*)_handle) != 0;
+    }
+
+    public bool canConsumerPower()
+    {
+        return NativeMethods.TablePtr->hs_method_399b2542((void*)_handle) != 0;
+    }
+
+    public byte getPoweroutDirection()
+    {
+        return NativeMethods.TablePtr->hs_method_58975c1f((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSideComponents_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_4efd6258((void*)_handle);
+    }
+
+    public void removeSource(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BaseCircuitComponent? arg1)
+    {
+        NativeMethods.TablePtr->hs_method_6b885e2a((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
+    }
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_d3edb5cd((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class MineshaftPiece
+public sealed unsafe partial class MineshaftPiece : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,5 +35,62 @@ public sealed partial class MineshaftPiece
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MineshaftPiece Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MineshaftPiece Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public bool canBeReplaced(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, int arg1, int arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg4)
+    {
+        return NativeMethods.TablePtr->hs_method_8cd33b96((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3, (void*)arg4.Handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.", false)]
+    public nint createRandomShaftPiece_b4da4d11(nint arg0, nint arg1, nint arg2, int arg3, int arg4, int arg5, int arg6, int arg7) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint createRandomShaftPiece_e4559aad(nint metadata, nint pieces, nint random, int footX, int footY, int footZ, int direction, int genDepth) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint generateAndAddPiece_637a9d21(nint startPiece, nint pieces, nint random, int footX, int footY, int footZ, int direction, int depth) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.", false)]
+    public nint generateAndAddPiece_ca45ef31(nint arg0, nint arg1, nint arg2, int arg3, int arg4, int arg5, int arg6, int arg7) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.");
+
+    public bool isInInvalidLocation(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_802f9403((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void setPlanksBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, int arg2, int arg3, int arg4)
+    {
+        NativeMethods.TablePtr->hs_method_ebde2e0c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4);
+    }
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_fb891cb7((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

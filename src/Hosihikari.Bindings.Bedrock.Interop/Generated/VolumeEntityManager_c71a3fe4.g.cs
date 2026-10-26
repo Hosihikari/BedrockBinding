@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class VolumeEntityManager
+public sealed unsafe partial class VolumeEntityManager : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,5 +35,55 @@ public sealed partial class VolumeEntityManager
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static VolumeEntityManager Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static VolumeEntityManager Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public ulong getVolumeInstanceCount()
+    {
+        return NativeMethods.TablePtr->hs_method_4b8b9f32((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getVolumeInstances(nint dimension) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public nint getVolumeInstances(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0)
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_1b3d9564((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public static bool isTriggerVolumesEnabled
+    {
+        get => NativeMethods.TablePtr->hs_get_cd308f0e() != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public static void registerComponentNetRelevancy(nint arg0, nint arg1)
+    {
+        NativeMethods.TablePtr->hs_method_0472fa25((void*)arg0, (void*)arg1);
+    }
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_c71a3fe4((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

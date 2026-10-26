@@ -83,9 +83,9 @@ public sealed unsafe partial class ServerLevel : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager((nint)__hs_handle, false) : null;
     }
 
-    public nint getCommandManager()
+    public global::Hosihikari.Bindings.Bedrock.Interop.CommandManager getCommandManager()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_772db572((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CommandManager((nint)NativeMethods.TablePtr->hs_method_772db572((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.DynamicPropertiesDefinition getDynamicPropertiesDefinition()

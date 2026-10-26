@@ -49,9 +49,9 @@ public sealed unsafe partial class ExternalDataServerLevel
     public static ExternalDataServerLevel Create_ee00467d(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ILevel const>>' is not a known bindable declaration.");
 
-    public nint getAdventureSettings()
+    public global::Hosihikari.Bindings.Bedrock.Interop.AdventureSettings getAdventureSettings()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_7869f207((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AdventureSettings((nint)NativeMethods.TablePtr->hs_method_7869f207((void*)_handle), false);
     }
 
     public int getDefaultGameType()

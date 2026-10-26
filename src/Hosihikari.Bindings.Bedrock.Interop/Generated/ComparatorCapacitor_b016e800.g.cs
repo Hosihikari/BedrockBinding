@@ -152,6 +152,12 @@ public sealed unsafe partial class ComparatorCapacitor : global::System.IDisposa
     }
 
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSideComponents_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_759dcb10((void*)_handle);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

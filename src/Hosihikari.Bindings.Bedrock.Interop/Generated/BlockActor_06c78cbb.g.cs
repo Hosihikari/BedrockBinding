@@ -200,9 +200,11 @@ public sealed unsafe partial class BlockActor
         return NativeMethods.TablePtr->hs_method_99bc1003((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'BlockActorDataPacket' is not a known bindable declaration.", false)]
-    public nint getServerUpdatePacket(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'BlockActorDataPacket' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockActorDataPacket? getServerUpdatePacket(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_e79b0a81((void*)_handle, (void*)arg0.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockActorDataPacket((nint)__hs_handle) : null;
+    }
 
     public float getShadowRadius(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
     {

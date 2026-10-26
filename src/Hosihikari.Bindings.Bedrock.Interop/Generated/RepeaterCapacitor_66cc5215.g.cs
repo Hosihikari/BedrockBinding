@@ -147,6 +147,12 @@ public sealed unsafe partial class RepeaterCapacitor : global::System.IDisposabl
     }
 
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSideComponents_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_7d08b41e((void*)_handle);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

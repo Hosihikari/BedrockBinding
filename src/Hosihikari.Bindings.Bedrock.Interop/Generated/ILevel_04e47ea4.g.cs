@@ -37,6 +37,45 @@ public sealed unsafe partial class ILevel : global::System.IDisposable
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ILevel Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ILevel Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public void addParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
+    {
+        NativeMethods.TablePtr->hs_method_2e5c9c4b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Level? asLevel()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_ec490518((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Level((nint)__hs_handle, false) : null;
+    }
+
+    public nint asMultiPlayerLevel()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_a08cca7a((void*)_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData createMapSavedData(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg2)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData((nint)NativeMethods.TablePtr->hs_method_aa08e424((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle), false);
+    }
+
+    public nint getTradeTables()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_c36a7993((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+
 
     public void Dispose()
     {

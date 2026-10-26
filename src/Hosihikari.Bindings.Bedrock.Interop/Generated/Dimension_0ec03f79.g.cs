@@ -249,9 +249,9 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_3d8314ed((void*)_handle);
     }
 
-    public nint getChunkBuildOrderPolicy()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ChunkBuildOrderPolicyBase getChunkBuildOrderPolicy()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_f4f1f2ca((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ChunkBuildOrderPolicyBase((nint)NativeMethods.TablePtr->hs_method_f4f1f2ca((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::not_null<ChunkLoadActionList*>' requires --link-carrier or --virtual-dispatch.", false)]

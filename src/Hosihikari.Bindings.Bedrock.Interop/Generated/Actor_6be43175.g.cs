@@ -407,9 +407,10 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_885772a4((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'UpdateEquipPacket' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint createUpdateEquipPacket(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'UpdateEquipPacket' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.UpdateEquipPacket createUpdateEquipPacket(int arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.UpdateEquipPacket((nint)NativeMethods.TablePtr->hs_method_236d8a77((void*)_handle, arg0));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.UpdateTradePacket createUpdateTradePacket(int arg0)
     {

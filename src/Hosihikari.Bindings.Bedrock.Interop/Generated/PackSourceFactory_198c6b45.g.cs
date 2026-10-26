@@ -59,14 +59,14 @@ public sealed unsafe partial class PackSourceFactory
         return new global::Hosihikari.Bindings.Bedrock.Interop.DirectoryPackSource((nint)NativeMethods.TablePtr->hs_method_b5b1941f((void*)_handle, (void*)arg0, arg1, arg2, arg3), false);
     }
 
-    public nint createDynamicPackagePackSource(sbyte arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.InPackagePackSource createDynamicPackagePackSource(sbyte arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_dbee00fe((void*)_handle, arg0);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.InPackagePackSource((nint)NativeMethods.TablePtr->hs_method_dbee00fe((void*)_handle, arg0), false);
     }
 
-    public nint createInPackagePackSource(sbyte arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.InPackagePackSource createInPackagePackSource(sbyte arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_569601ac((void*)_handle, arg0);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.InPackagePackSource((nint)NativeMethods.TablePtr->hs_method_569601ac((void*)_handle, arg0), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.WorldHistoryPackSource createWorldHistoryPackSource(nint arg0, sbyte arg1)
@@ -91,14 +91,16 @@ public sealed unsafe partial class PackSourceFactory
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.DirectoryPackSource((nint)__hs_handle, false) : null;
     }
 
-    public nint getDynamicPackagePackSource(sbyte arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.InPackagePackSource? getDynamicPackagePackSource(sbyte arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_0b5c2531((void*)_handle, arg0);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_0b5c2531((void*)_handle, arg0);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.InPackagePackSource((nint)__hs_handle, false) : null;
     }
 
-    public nint getInPackagePackSource(sbyte arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.InPackagePackSource? getInPackagePackSource(sbyte arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_3ba57ed5((void*)_handle, arg0);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_3ba57ed5((void*)_handle, arg0);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.InPackagePackSource((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.WorldHistoryPackSource? getWorldHistoryPackSource(nint arg0, sbyte arg1)

@@ -37,6 +37,53 @@ public sealed unsafe partial class StructureStart : global::System.IDisposable
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static StructureStart Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static StructureStart Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public bool isValid()
+    {
+        return NativeMethods.TablePtr->hs_method_2a422d82((void*)_handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBoundingBox_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_84936152((void*)_handle);
+    }
+
+    public int mChunkX
+    {
+        get => NativeMethods.TablePtr->hs_get_1bf5ce88((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_1bf5ce88((void*)_handle, value);
+    }
+
+    public int mChunkZ
+    {
+        get => NativeMethods.TablePtr->hs_get_48612e52((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_48612e52((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPieces_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_00d486fd((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public bool postProcess(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_cfcba3e7((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
+    }
+
+
 
     public void Dispose()
     {

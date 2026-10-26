@@ -37,6 +37,153 @@ public sealed unsafe partial class Scheduler : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static float AVERAGE_TASK_TOLERANCE
+    {
+        get => NativeMethods.TablePtr->hs_get_b4c5d969();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Scheduler Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Scheduler Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static Scheduler Create(string arg0, uint arg1)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->hs_create_84280887(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new Scheduler((nint)handle);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Scheduler Create(nint name, uint FPS) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::thread::id' is not a known bindable declaration.", false)]
+    public void changeThread_994578cb(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::thread::id' is not a known bindable declaration.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.WorkerPool getCoroutinePool()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.WorkerPool((nint)NativeMethods.TablePtr->hs_method_f3f69b55((void*)_handle), false);
+    }
+
+    public double mAverageCallbackDuration
+    {
+        get => NativeMethods.TablePtr->hs_get_80cdf336((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_80cdf336((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCoroutinePool_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e7c26ed0((void*)_handle);
+    }
+
+    public double mCoroutineTimeLimit
+    {
+        get => NativeMethods.TablePtr->hs_get_0aa4a99d((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_0aa4a99d((void*)_handle, value);
+    }
+
+    public int mEffectiveFPS
+    {
+        get => NativeMethods.TablePtr->hs_get_55ba701b((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_55ba701b((void*)_handle, value);
+    }
+
+    public int mFramesOverBound
+    {
+        get => NativeMethods.TablePtr->hs_get_8d2a79c6((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_8d2a79c6((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNextStarveCheckTime_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_2465fba7((void*)_handle);
+    }
+
+    public int mPromotionFrames
+    {
+        get => NativeMethods.TablePtr->hs_get_1c33ee50((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_1c33ee50((void*)_handle, value);
+    }
+
+    public int mStarvedFrames
+    {
+        get => NativeMethods.TablePtr->hs_get_8ea0cc15((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_8ea0cc15((void*)_handle, value);
+    }
+
+    public int mTargetFPS
+    {
+        get => NativeMethods.TablePtr->hs_get_766d9b03((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_766d9b03((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mThreadID_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_a57c6066((void*)_handle);
+    }
+
+    public double mTotalCoroutineDuration
+    {
+        get => NativeMethods.TablePtr->hs_get_bd716971((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_bd716971((void*)_handle, value);
+    }
+
+    public int mTotalFrames
+    {
+        get => NativeMethods.TablePtr->hs_get_23564fbd((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_23564fbd((void*)_handle, value);
+    }
+
+    public ulong mTotalRunCoroutines
+    {
+        get => NativeMethods.TablePtr->hs_get_51fcba26((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_51fcba26((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void processCoroutines_67773edb(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void queueCallback(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    {
+        NativeMethods.TablePtr->hs_method_a2523ea5((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void setTargetFPS(uint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_34351826((void*)_handle, arg0);
+    }
+
 
     public void Dispose()
     {
