@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ServerPlayer
+public sealed unsafe partial class ServerPlayer : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -43,9 +43,21 @@ public sealed unsafe partial class ServerPlayer
         get => (nint)NativeMethods.TablePtr->hs_get_ed0449d0((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ServerPlayer Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5, nint arg6, nint arg7, nint arg8, nint arg9, nint arg10, nint arg11, nint arg12, int arg13, bool arg14, nint arg15) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ServerPlayer Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ServerPlayer Create_f3765cf8(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5, nint arg6, nint arg7, nint arg8, nint arg9, nint arg10, nint arg11, nint arg12, int arg13, bool arg14, nint arg15) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public static ServerPlayer Create_db605e7f(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5, nint arg6, nint arg7, nint arg8, nint arg9, nint arg10, nint arg11, nint arg12, int arg13, bool arg14, nint arg15) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ServerPlayer Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void acceptClientPosition(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
     {
@@ -144,6 +156,10 @@ public sealed unsafe partial class ServerPlayer
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void displayTextObjectMessage(nint textObject, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void displayTextObjectWhisperMessage(nint arg0, string arg1, string arg2)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -176,6 +192,14 @@ public sealed unsafe partial class ServerPlayer
             }
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void displayTextObjectWhisperMessage_dcd03475(nint textObject, nint xuid, nint platformId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void displayTextObjectWhisperMessage_47221eb0(nint message, nint xuid, nint platformId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void displayTextObjectWhisperMessage(string arg0, string arg1, string arg2)
     {
@@ -223,6 +247,10 @@ public sealed unsafe partial class ServerPlayer
             }
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void displayWhisperMessage(nint author, nint message, nint xuid, nint platformId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void displayWhisperMessage(string arg0, string arg1, string arg2, string arg3)
     {
@@ -480,6 +508,10 @@ public sealed unsafe partial class ServerPlayer
         return NativeMethods.TablePtr->hs_method_37d2357b((void*)_handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void postLoad(bool arg0)
     {
         NativeMethods.TablePtr->hs_method_74da2d9e((void*)_handle, arg0);
@@ -634,11 +666,18 @@ public sealed unsafe partial class ServerPlayer
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ServerPlayer((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_08e8b566() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_99b241b9() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_5c353faf((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

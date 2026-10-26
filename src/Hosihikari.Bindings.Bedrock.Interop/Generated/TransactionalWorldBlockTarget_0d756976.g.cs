@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TransactionalWorldBlockTarget
+public sealed unsafe partial class TransactionalWorldBlockTarget : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,24 @@ public sealed unsafe partial class TransactionalWorldBlockTarget
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static TransactionalWorldBlockTarget Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static TransactionalWorldBlockTarget Create(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_0f51a8b8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TransactionalWorldBlockTarget((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static TransactionalWorldBlockTarget Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public bool apply()
     {
@@ -50,6 +65,10 @@ public sealed unsafe partial class TransactionalWorldBlockTarget
     {
         return NativeMethods.TablePtr->hs_method_0938102f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool canGetChunk() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool canSurvive(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1)
     {
@@ -62,8 +81,12 @@ public sealed unsafe partial class TransactionalWorldBlockTarget
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: span element type 'BlockDataFetchResult<Block> const' is not supported.", false)]
-    public nint fetchBlocksInBox(nint arg0, nint arg1) =>
+    public nint fetchBlocksInBox_c031285a(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'BlockDataFetchResult<Block> const' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint fetchBlocksInBox_7fff511f(nint box, nint predicate) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Biome? getBiome(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
     {
@@ -81,9 +104,13 @@ public sealed unsafe partial class TransactionalWorldBlockTarget
         return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_59c42c3c((void*)_handle, (void*)arg0.Handle), false);
     }
 
-    public nint getContext()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getChunk(nint pos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.WorldGenContext getContext()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_01acdd6b((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.WorldGenContext((nint)NativeMethods.TablePtr->hs_method_01acdd6b((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Block getExtraBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
@@ -136,6 +163,10 @@ public sealed unsafe partial class TransactionalWorldBlockTarget
         return NativeMethods.TablePtr->hs_method_0d52ce5c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public bool placeStructure(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate arg1, global::Hosihikari.Bindings.Bedrock.Interop.StructureSettings arg2)
     {
         return NativeMethods.TablePtr->hs_method_715f048b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
@@ -162,7 +193,17 @@ public sealed unsafe partial class TransactionalWorldBlockTarget
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_0d756976((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

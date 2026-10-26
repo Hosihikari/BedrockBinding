@@ -51,6 +51,10 @@ public sealed unsafe partial class LegacyTradeableComponent
     public static LegacyTradeableComponent Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static LegacyTradeableComponent Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {
         NativeMethods.TablePtr->hs_method_f87bbba1((void*)_handle, (void*)arg0.Handle);
@@ -66,7 +70,11 @@ public sealed unsafe partial class LegacyTradeableComponent
         return NativeMethods.TablePtr->hs_method_36733c7d((void*)_handle) != 0;
     }
 
-    public string getDisplayName()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getDisplayName_f71fa44b() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getDisplayName_4f9e584e()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_4f9e584e((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -113,6 +121,10 @@ public sealed unsafe partial class LegacyTradeableComponent
         return NativeMethods.TablePtr->hs_method_662e10bd((void*)arg0.Handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint loadDisplayName(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public string loadDisplayName(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_3074c04f((void*)_handle, (void*)arg0.Handle);
@@ -128,6 +140,14 @@ public sealed unsafe partial class LegacyTradeableComponent
     {
         NativeMethods.TablePtr->hs_method_2c27b51d((void*)_handle, (void*)arg0.Handle, arg1);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_8889f137(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_73f3159a(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
     {

@@ -37,13 +37,32 @@ public sealed unsafe partial class Spawner
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint SPAWN_RING_OFFSETS_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_dd5bc44d();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Spawner Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Spawner Create(nint arg0) =>
+    public static Spawner Create_d4b2a3d1(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'SpawnBlockRequirements' is not a known bindable declaration.", false)]
-    public static bool findNextSpawnBlockUnder(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'SpawnBlockRequirements' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Spawner Create_3e732e40(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _tickSpawnStructureMobs_30bf73a0(nint region, nint chunk, nint pos, nint spawnStructureMobCallback, nint getSpawningAreasCallback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public static bool findNextSpawnBlockUnder(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, uint arg2, int arg3)
+    {
+        return NativeMethods.TablePtr->hs_method_3a1f69ab((void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3) != 0;
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ActorSpawnRuleGroup? getSpawnRules()
     {
@@ -77,6 +96,10 @@ public sealed unsafe partial class Spawner
         return NativeMethods.TablePtr->hs_method_8dcbc67e((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void postProcessSpawnMobs(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, int arg1, int arg2, global::Hosihikari.Bindings.Bedrock.Interop.Random arg3)
     {
         NativeMethods.TablePtr->hs_method_223267b8((void*)_handle, (void*)arg0.Handle, arg1, arg2, (void*)arg3.Handle);
@@ -100,8 +123,12 @@ public sealed unsafe partial class Spawner
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::unordered_set<ActorUniqueID,std::hash<ActorUniqueID>,std::equal_to<ActorUniqueID>,std::allocator<ActorUniqueID>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint spawnMobGroup(nint arg0, nint arg1, nint arg2, bool arg3, bool arg4, nint arg5) =>
+    public nint spawnMobGroup_0bdc268e(nint arg0, nint arg1, nint arg2, bool arg3, bool arg4, nint arg5) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unordered_set<ActorUniqueID,std::hash<ActorUniqueID>,std::equal_to<ActorUniqueID>,std::allocator<ActorUniqueID>>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint spawnMobGroup_5bc9121c(nint region, nint spawnGroupId, nint pos, bool doScatter, bool validateDistToPlayer, nint spawnedCallback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Actor? spawnProjectile(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg4)
     {

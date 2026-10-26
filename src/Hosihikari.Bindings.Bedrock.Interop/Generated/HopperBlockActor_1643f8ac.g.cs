@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class HopperBlockActor
+public sealed unsafe partial class HopperBlockActor : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -109,9 +109,24 @@ public sealed unsafe partial class HopperBlockActor
         set => NativeMethods.TablePtr->hs_set_ac9bf626((void*)_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static HopperBlockActor Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static HopperBlockActor Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_0481cb8e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HopperBlockActor((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static HopperBlockActor Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void checkForSmeltEverythingAchievement(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
     {
@@ -151,11 +166,15 @@ public sealed unsafe partial class HopperBlockActor
         return NativeMethods.TablePtr->hs_method_a61cea02((void*)_handle);
     }
 
-    public string getName()
+    public string getName_733173b2()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_733173b2((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getName_8abbc159() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool isAttachedToChestAndFurnace(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
     {
@@ -181,6 +200,10 @@ public sealed unsafe partial class HopperBlockActor
     {
         NativeMethods.TablePtr->hs_method_522375ef((void*)_handle, (void*)arg0.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool save(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {
@@ -219,5 +242,18 @@ public sealed unsafe partial class HopperBlockActor
     public void updateCooldownAfterMove(global::Hosihikari.Bindings.Bedrock.Interop.Tick arg0, int arg1)
     {
         NativeMethods.TablePtr->hs_method_67b73f9a((void*)_handle, (void*)arg0.Handle, arg1);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_1643f8ac((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

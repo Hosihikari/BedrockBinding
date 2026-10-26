@@ -37,9 +37,62 @@ public sealed unsafe partial class EndDragonFight
         return __hs_handle;
     }
 
+    public static int ARENA_SIZE_CHUNKS
+    {
+        get => NativeMethods.TablePtr->hs_get_b02505be();
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BlockPos DEFAULT_PORTAL_LOCATION
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_get_6002f4ba(), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static EndDragonFight Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static EndDragonFight Create(nint arg0) =>
+    public static EndDragonFight Create_48125bcc(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static EndDragonFight Create_60968358(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static int GATEWAY_CHUNK_RADIUS
+    {
+        get => NativeMethods.TablePtr->hs_get_15760ebd();
+    }
+
+    public static int GATEWAY_COUNT
+    {
+        get => NativeMethods.TablePtr->hs_get_f89339e3();
+    }
+
+    public static int GATEWAY_DISTANCE
+    {
+        get => NativeMethods.TablePtr->hs_get_2e7c7b2f();
+    }
+
+    public static int GATEWAY_HEIGHT
+    {
+        get => NativeMethods.TablePtr->hs_get_f535b8f4();
+    }
+
+    public static int TIME_BETWEEN_CRYSTAL_SCANS
+    {
+        get => NativeMethods.TablePtr->hs_get_bb18c1db();
+    }
+
+    public static int TIME_BETWEEN_PLAYER_SCANS
+    {
+        get => NativeMethods.TablePtr->hs_get_a1422152();
+    }
+
+    public static int TIME_BETWEEN_PORTAL_SCANS
+    {
+        get => NativeMethods.TablePtr->hs_get_bdc82806();
+    }
 
     public void loadData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {
@@ -50,6 +103,10 @@ public sealed unsafe partial class EndDragonFight
     {
         NativeMethods.TablePtr->hs_method_39876a05((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void resetSpikeCrystals()
     {

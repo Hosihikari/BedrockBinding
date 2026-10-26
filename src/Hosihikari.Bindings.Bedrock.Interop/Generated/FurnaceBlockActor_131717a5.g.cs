@@ -85,9 +85,108 @@ public sealed unsafe partial class FurnaceBlockActor
         get => (nint)NativeMethods.TablePtr->hs_get_71aafa65((void*)_handle);
     }
 
+    public static string BURN_DURATION_KEY
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_cf5e6d44();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static int BURN_INTERVAL
+    {
+        get => NativeMethods.TablePtr->hs_get_105f6388();
+    }
+
+    public static string BURN_TIME_KEY
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_d1af3eb7();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string COOK_TIME_KEY
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_a227726c();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string CUSTOM_NAME_KEY
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_dc232710();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static float DEFAULT_SMELTING_TIME
+    {
+        get => NativeMethods.TablePtr->hs_get_abe8e078();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static FurnaceBlockActor Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static FurnaceBlockActor Create(nint arg0) =>
+    public static FurnaceBlockActor Create_b3983900(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static FurnaceBlockActor Create_08a0ff58(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static string ITEMS_LIST_KEY
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_6e0934f2();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string LAST_FUEL_KEY
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_ef963899();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string SLOT_KEY
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_86732c88();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string STORED_XP_DEPRECATED_KEY
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_c70e7bc9();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string STORED_XP_KEY
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_d4e12247();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
 
     public bool canPullOutItem(int arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg2)
     {
@@ -166,11 +265,15 @@ public sealed unsafe partial class FurnaceBlockActor
         return NativeMethods.TablePtr->hs_method_a88617e6((void*)_handle);
     }
 
-    public string getName()
+    public string getName_62ef361c()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_62ef361c((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getName_f99e49a6() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int getStoredXP()
     {
@@ -226,6 +329,10 @@ public sealed unsafe partial class FurnaceBlockActor
     {
         NativeMethods.TablePtr->hs_method_100be7cd((void*)_handle, (void*)arg0.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool save(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {

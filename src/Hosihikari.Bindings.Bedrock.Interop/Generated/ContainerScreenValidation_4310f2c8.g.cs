@@ -37,9 +37,21 @@ public sealed unsafe partial class ContainerScreenValidation
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ContainerScreenValidation Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ContainerScreenValidation Create(nint arg0, nint arg1, nint arg2) =>
+    public static ContainerScreenValidation Create_ae6d03b1(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ContainerScreenValidation Create_f5adf1af(nint screenContext, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ContainerScreenValidation Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationCraftResult' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getCraftResults(nint arg0) =>
@@ -55,6 +67,10 @@ public sealed unsafe partial class ContainerScreenValidation
     {
         return NativeMethods.TablePtr->hs_method_8fe13104((void*)_handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void logServerAuthUntrustedFail(nint message) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void logServerAuthUntrustedFail(string arg0)
     {
@@ -76,8 +92,16 @@ public sealed unsafe partial class ContainerScreenValidation
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'ContainerScreenValidation' has no accessible destructor.", false)]
-    public static nint makeContainerScreenValidation(nint arg0, nint arg1, nint arg2) =>
+    public static nint makeContainerScreenValidation_900265f3(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'ContainerScreenValidation' has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint makeContainerScreenValidation_29a1c101(nint screenContext, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
     public nint tryActivate() =>
@@ -115,4 +139,8 @@ public sealed unsafe partial class ContainerScreenValidation
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
     public nint tryTransfer(nint arg0, nint arg1, int arg2, bool arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

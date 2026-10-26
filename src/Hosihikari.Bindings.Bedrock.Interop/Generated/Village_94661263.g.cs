@@ -37,9 +37,235 @@ public sealed unsafe partial class Village
         return __hs_handle;
     }
 
+    public static float ACHIEVEMENT_SOUND_THE_ALARM_TOLERANCE
+    {
+        get => NativeMethods.TablePtr->hs_get_0b7fa371();
+    }
+
+    public static string CELEBRATION_EVENT
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_b29d1b9e();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static bool DEBUG_DRAWING
+    {
+        get => NativeMethods.TablePtr->hs_get_e7513aeb() != 0;
+    }
+
+    public static float DWELLER_REMOVAL_TOLERANCE
+    {
+        get => NativeMethods.TablePtr->hs_get_ece0dccb();
+    }
+
+    public static int MAX_VILLAGE_STANDING
+    {
+        get => NativeMethods.TablePtr->hs_get_7fae4195();
+    }
+
+    public static int MIN_VILLAGE_STANDING
+    {
+        get => NativeMethods.TablePtr->hs_get_4fe31e23();
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 RAID_BOUNDS_PADDING
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_get_19b66645(), false);
+    }
+
+    public static string RAID_EXPIRY_EVENT
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_dddd628b();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static int RAID_FINISHED_DELAY_IN_TICKS
+    {
+        get => NativeMethods.TablePtr->hs_get_ab7f9138();
+    }
+
+    public static int RAID_GROUP_COMPLETE_DELAY_IN_TICKS
+    {
+        get => NativeMethods.TablePtr->hs_get_f934201e();
+    }
+
+    public static int RAID_LOCATION_HELP_DELAY_IN_TICKS
+    {
+        get => NativeMethods.TablePtr->hs_get_0e07f59f();
+    }
+
+    public static byte RAID_MAX_SPAWN_FAILURES
+    {
+        get => NativeMethods.TablePtr->hs_get_e97d6dc8();
+    }
+
+    public static int RAID_PREP_TIME_IN_TICKS
+    {
+        get => NativeMethods.TablePtr->hs_get_1f57182a();
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Tick RAID_TIMEOUT_IN_TICKS
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Tick((nint)NativeMethods.TablePtr->hs_get_e70a2791(), false);
+    }
+
+    public static ulong STANDING_DECAY_INTERVAL_BAD
+    {
+        get => NativeMethods.TablePtr->hs_get_daac1402();
+    }
+
+    public static ulong STANDING_DECAY_INTERVAL_GOOD
+    {
+        get => NativeMethods.TablePtr->hs_get_39c2f32b();
+    }
+
+    public static string STORAGE_KEY_DWELLERS
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_9228185f();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string STORAGE_KEY_PLAYERS
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_0931599b();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string STORAGE_KEY_POI
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_9278e101();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string STORAGE_KEY_PREFIX
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_aa42be6a();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string STORAGE_KEY_RAID
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_852ced95();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static sbyte STORAGE_KEY_SEPARATOR
+    {
+        get => NativeMethods.TablePtr->hs_get_fe527260();
+    }
+
+    public static string STORAGE_KEY_VILLAGE
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_53415641();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static int UNINITIALIZED_VILLAGE_LIFETIME_MAX_TICKS
+    {
+        get => NativeMethods.TablePtr->hs_get_407794b0();
+    }
+
+    public static long VILLAGER_EXPECTED_WORK_INTERVAL
+    {
+        get => NativeMethods.TablePtr->hs_get_93267cd5();
+    }
+
+    public static int VILLAGE_HERO_BESTOW_TIME
+    {
+        get => NativeMethods.TablePtr->hs_get_b8ed15ab();
+    }
+
+    public static ulong VILLAGE_POI_PURGE_TIME
+    {
+        get => NativeMethods.TablePtr->hs_get_6e01ed34();
+    }
+
+    public static float VILLAGE_RADIUS_APPROX_SCALAR
+    {
+        get => NativeMethods.TablePtr->hs_get_eca23d48();
+    }
+
+    public static ulong VILLAGE_SAVE_TICK_DELAY
+    {
+        get => NativeMethods.TablePtr->hs_get_516e1691();
+    }
+
+    public static int VILLAGE_START_HEIGHT
+    {
+        get => NativeMethods.TablePtr->hs_get_af577048();
+    }
+
+    public static int VILLAGE_START_XZ_BOUNDS
+    {
+        get => NativeMethods.TablePtr->hs_get_c5fb7606();
+    }
+
+    public static int VILLAGE_UNCLAIMED_POI_CAP
+    {
+        get => NativeMethods.TablePtr->hs_get_a357b81c();
+    }
+
+    public static ulong VILLAGE_UPDATE_TICK_DELAY
+    {
+        get => NativeMethods.TablePtr->hs_get_0e582656();
+    }
+
+    public static byte VILLAGE_VERSION_CURRENT
+    {
+        get => NativeMethods.TablePtr->hs_get_5b7ce622();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Village Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static Village Create(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Village Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _deleteOldDataIfNeeded_34189434(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _findWeightedPOI_e109ff0d(nint unclaimedPOIStack, nint random, nint id) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _readyRaidGroup_6eeb9da8(nint spawnedMobs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool _spawnRaidGroup_8d28db68(nint spawnPosition, byte groupNumber, nint spawnedMobs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void addActorToVillage(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg1)
     {
@@ -177,6 +403,10 @@ public sealed unsafe partial class Village
         return NativeMethods.TablePtr->hs_method_3bd02a90((void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void loadDataByKey(nint key, nint tag) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void loadDataByKey(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -200,6 +430,10 @@ public sealed unsafe partial class Village
     {
         return NativeMethods.TablePtr->hs_method_12bfa58b((void*)_handle, (void*)arg0.Handle, arg1);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::_List_iterator<std::_List_val<std::_List_simple_types<std::pair<ActorUniqueID const,Village::DwellerData>>>>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint removeActorFromVillage(nint arg0, nint arg1) =>

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FeatureRegistry
+public sealed unsafe partial class FeatureRegistry : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,15 +37,146 @@ public sealed unsafe partial class FeatureRegistry
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static FeatureRegistry Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static string AFTER_SKY_PASS
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_d7517f5a();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string AFTER_SURFACE_PASS
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_5eba8f2d();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string AFTER_UNDERGROUND_PASS
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_26dd8349();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string BEFORE_SKY_PASS
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_0c7bf093();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string BEFORE_SURFACE_PASS
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_4fb77053();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string BEFORE_UNDERGROUND_PASS
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_941aba37();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string FINAL_PASS
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_77ba1bb9();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string FIRST_PASS
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_2c25b294();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static FeatureRegistry Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_cc48b490();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FeatureRegistry((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static FeatureRegistry Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static string PREGENERATION_PASS
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_0295c951();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string SKY_PASS
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_d3c7bfa1();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string SURFACE_PASS
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_50473fd9();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string UNDERGROUND_PASS
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_9ad62cb2();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _featureNamespaceFromInput_90e79858(nint filePath, nint contents) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _registerFeature_f747a9fb(nint name, nint featurePtr) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool _setupFeature_aa1c9835(nint arg0, bool arg1, nint arg2, nint arg3, nint arg4, nint arg5, bool arg6) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void forEachFeature(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public string[] getLargeFeaturePasses()
+    public string[] getLargeFeaturePasses_e056a9d9()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_e056a9d9((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
@@ -57,7 +188,11 @@ public sealed unsafe partial class FeatureRegistry
         return __hs_result;
     }
 
-    public string[] getSmallFeaturePasses()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getLargeFeaturePasses_a5fea94c() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string[] getSmallFeaturePasses_62ec274b()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_62ec274b((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
@@ -68,6 +203,14 @@ public sealed unsafe partial class FeatureRegistry
         }
         return __hs_result;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getSmallFeaturePasses_ca684f80() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool isFeaturePassDefined(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool isFeaturePassDefined(string arg0)
     {
@@ -93,6 +236,10 @@ public sealed unsafe partial class FeatureRegistry
         NativeMethods.TablePtr->hs_method_b250cb8e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint lookupByName(nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public global::Hosihikari.Bindings.Abi.SharedHandle? lookupByName(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -112,6 +259,10 @@ public sealed unsafe partial class FeatureRegistry
             return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint lookupOrReserveFeature(nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? lookupOrReserveFeature(string arg0)
     {
@@ -133,6 +284,56 @@ public sealed unsafe partial class FeatureRegistry
         }
     }
 
+    public bool mClientInitialized
+    {
+        get => NativeMethods.TablePtr->hs_get_79ff44ac((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_79ff44ac((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFeatureLookupMap_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_078d173f((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFeatureRegistry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_a1349697((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFeatureSerializeData_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_c9dbc667((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFeatureSlots_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_15262398((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLargeFeaturePasses_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_5072dee7((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSmallFeaturePasses_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_8b57e6cb((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint reserveFeature(nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public global::Hosihikari.Bindings.Abi.SharedHandle? reserveFeature(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -153,6 +354,10 @@ public sealed unsafe partial class FeatureRegistry
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint reverseLookupString(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public string reverseLookupString(global::Hosihikari.Bindings.Bedrock.Interop.IFeature arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_3ecedf2f((void*)_handle, (void*)arg0.Handle);
@@ -160,14 +365,32 @@ public sealed unsafe partial class FeatureRegistry
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
-    public void setLargeFeaturePasses(nint arg0) =>
+    public void setLargeFeaturePasses_4f660ecd(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setLargeFeaturePasses_9f63bbb4(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
-    public void setSmallFeaturePasses(nint arg0) =>
+    public void setSmallFeaturePasses_0f207c2c(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setSmallFeaturePasses_d856e525(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_f72ed140((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

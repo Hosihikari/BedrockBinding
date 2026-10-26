@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Scoreboard
+public sealed unsafe partial class Scoreboard : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,62 @@ public sealed unsafe partial class Scoreboard
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Scoreboard Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static string DEFAULT_CRITERIA
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_d7704bb8();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string DISPLAY_SLOT_BELOWNAME
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_9e5cb84f();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string DISPLAY_SLOT_LIST
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_17be2ca6();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string DISPLAY_SLOT_SIDEBAR
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_27c8f950();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static sbyte OBJECTIVES_ENUM
+    {
+        get => NativeMethods.TablePtr->hs_get_2fd137a6();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Scoreboard Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    public static Scoreboard Create_1982d859(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Scoreboard Create_c108aceb(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint addObjective(nint name, nint displayName, nint criteria) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Objective? addObjective(string arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.ObjectiveCriteria arg2)
     {
@@ -74,6 +127,10 @@ public sealed unsafe partial class Scoreboard
             }
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void addScoreListener(nint arg0, nint objective) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void addScoreListener(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, string arg1)
     {
@@ -118,6 +175,10 @@ public sealed unsafe partial class Scoreboard
             }
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint clearDisplayObjective(nint displaySlotName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Objective? clearDisplayObjective(string arg0)
     {
@@ -168,6 +229,10 @@ public sealed unsafe partial class Scoreboard
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint createScoreboardId(nint fakePlayer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void forEachIdentityRef(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
@@ -175,6 +240,10 @@ public sealed unsafe partial class Scoreboard
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void forEachObjective(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getCriteria(nint criteriaName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ObjectiveCriteria? getCriteria(string arg0)
     {
@@ -196,7 +265,7 @@ public sealed unsafe partial class Scoreboard
         }
     }
 
-    public string[] getCriteriaNames()
+    public string[] getCriteriaNames_c87aa4bc()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_c87aa4bc((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
@@ -208,16 +277,24 @@ public sealed unsafe partial class Scoreboard
         return __hs_result;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getCriteriaNames_7a062315() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public global::Hosihikari.Bindings.Bedrock.Interop.ObjectiveCriteria getDefaultCriteria()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ObjectiveCriteria((nint)NativeMethods.TablePtr->hs_method_eef4aa2b((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'PlayerScore' is not supported.", false)]
-    public nint getDisplayInfoFiltered(nint arg0) =>
+    public nint getDisplayInfoFiltered_92190ffa(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'PlayerScore' is not supported.");
 
-    public nint getDisplayObjective(string arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getDisplayInfoFiltered_9f68f6c9(nint displaySlot) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.DisplayObjective? getDisplayObjective(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -232,11 +309,16 @@ public sealed unsafe partial class Scoreboard
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_1417cabe((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->hs_method_1417cabe((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.DisplayObjective((nint)__hs_handle, false) : null;
         }
     }
 
-    public string[] getDisplayObjectiveSlotNames()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getDisplayObjective(nint displaySlotName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string[] getDisplayObjectiveSlotNames_4ff9cbf8()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_4ff9cbf8((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
@@ -248,9 +330,17 @@ public sealed unsafe partial class Scoreboard
         return __hs_result;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getDisplayObjectiveSlotNames_2d8eaafe() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'ScoreInfo' is not supported.", false)]
     public nint getIdScores(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'ScoreInfo' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getObjective(nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Objective? getObjective(string arg0)
     {
@@ -272,7 +362,7 @@ public sealed unsafe partial class Scoreboard
         }
     }
 
-    public string[] getObjectiveNames()
+    public string[] getObjectiveNames_2efe5c6d()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_2efe5c6d((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
@@ -283,6 +373,10 @@ public sealed unsafe partial class Scoreboard
         }
         return __hs_result;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getObjectiveNames_18d35b53() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public nint[] getObjectives_70bf0684()
     {
@@ -295,9 +389,9 @@ public sealed unsafe partial class Scoreboard
         return __hs_result;
     }
 
-    public nint getScoreboardEventCoordinator()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardEventCoordinator getScoreboardEventCoordinator()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_62dea2a8((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardEventCoordinator((nint)NativeMethods.TablePtr->hs_method_62dea2a8((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId getScoreboardId(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
@@ -339,14 +433,27 @@ public sealed unsafe partial class Scoreboard
         }
     }
 
-    public nint getScoreboardIdentityRef(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getScoreboardId(nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef? getScoreboardIdentityRef(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_a2cfe570((void*)_handle, (void*)arg0.Handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_a2cfe570((void*)_handle, (void*)arg0.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'ScoreboardIdentityRef' is not supported.", false)]
-    public nint getScoreboardIdentityRefs() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'ScoreboardIdentityRef' is not supported.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef[] getScoreboardIdentityRefs()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_eb746f5d((void*)_handle);
+        var __hs_items = (void**)__hs_view.Data;
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef>() : new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef((nint)__hs_items[__hs_i]);
+        }
+        return __hs_result;
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId[] getTrackedIds()
     {
@@ -365,14 +472,68 @@ public sealed unsafe partial class Scoreboard
         return NativeMethods.TablePtr->hs_method_e943f681((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCriteria_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_64545a25((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDisplayObjectives_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_910e4d67((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIdentityDict_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_c2e308b9((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIdentityRefs_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_13592327((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mObjectives_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_c53168c0((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayerListener_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_51ae9176((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRegistry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_817abed9((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScoreboardEventCoordinator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_ed5d892b((void*)_handle);
+    }
+
+    public bool mShouldUpdateUI
+    {
+        get => NativeMethods.TablePtr->hs_get_3970b370((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_3970b370((void*)_handle, value);
+    }
+
     public int modifyPlayerScore(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg1, global::Hosihikari.Bindings.Bedrock.Interop.Objective arg2, int arg3, byte arg4)
     {
         return NativeMethods.TablePtr->hs_method_9741f24d((void*)_handle, (void*)arg0, (void*)arg1.Handle, (void*)arg2.Handle, arg3, arg4);
     }
 
-    public int modifyPlayerScore(nint arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Objective arg2, int arg3, byte arg4)
+    public int modifyPlayerScore(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef? arg1, global::Hosihikari.Bindings.Bedrock.Interop.Objective arg2, int arg3, byte arg4)
     {
-        return NativeMethods.TablePtr->hs_method_dc8a98dd((void*)_handle, (void*)arg0, (void*)arg1, (void*)arg2.Handle, arg3, arg4);
+        return NativeMethods.TablePtr->hs_method_dc8a98dd((void*)_handle, (void*)arg0, (void*)(arg1?.Handle ?? 0), (void*)arg2.Handle, arg3, arg4);
     }
 
     public void onObjectiveAdded(global::Hosihikari.Bindings.Bedrock.Interop.Objective arg0)
@@ -405,22 +566,26 @@ public sealed unsafe partial class Scoreboard
         NativeMethods.TablePtr->hs_method_ea999003((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public nint registerScoreboardIdentity(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef registerScoreboardIdentity(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_37836f07((void*)_handle, (void*)arg0.Handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef((nint)NativeMethods.TablePtr->hs_method_37836f07((void*)_handle, (void*)arg0.Handle), false);
     }
 
-    public nint registerScoreboardIdentity(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef registerScoreboardIdentity(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg1)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_45d2502d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef((nint)NativeMethods.TablePtr->hs_method_45d2502d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle), false);
     }
 
-    public nint registerScoreboardIdentity(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef registerScoreboardIdentity(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId arg1)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_50fe5d55((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef((nint)NativeMethods.TablePtr->hs_method_50fe5d55((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle), false);
     }
 
-    public nint registerScoreboardIdentity(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, string arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef registerScoreboardIdentity(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, string arg1)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
         scoped global::System.Span<byte> __hs_stringBytes1;
@@ -435,9 +600,13 @@ public sealed unsafe partial class Scoreboard
         global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_fc286a31((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef((nint)NativeMethods.TablePtr->hs_method_fc286a31((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1), false);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint registerScoreboardIdentity(nint scoreboardId, nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool removeObjective(global::Hosihikari.Bindings.Bedrock.Interop.Objective? arg0)
     {
@@ -463,6 +632,10 @@ public sealed unsafe partial class Scoreboard
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void removeScoreListener(nint player, nint objective) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public bool resetPlayerScore(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, global::Hosihikari.Bindings.Bedrock.Interop.Objective arg1)
     {
         return NativeMethods.TablePtr->hs_method_9800858f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
@@ -473,7 +646,7 @@ public sealed unsafe partial class Scoreboard
         NativeMethods.TablePtr->hs_method_4135dd5e((void*)_handle, (void*)arg0.Handle);
     }
 
-    public nint setDisplayObjective(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Objective arg1, byte arg2)
+    public global::Hosihikari.Bindings.Bedrock.Interop.DisplayObjective? setDisplayObjective(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Objective arg1, byte arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -488,9 +661,14 @@ public sealed unsafe partial class Scoreboard
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_d5779859((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, arg2);
+            var __hs_handle = NativeMethods.TablePtr->hs_method_d5779859((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, arg2);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.DisplayObjective((nint)__hs_handle, false) : null;
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint setDisplayObjective(nint displaySlotName, nint objective, nint order) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setPacketSender(global::Hosihikari.Bindings.Bedrock.Interop.PacketSender? arg0)
     {
@@ -511,11 +689,18 @@ public sealed unsafe partial class Scoreboard
         NativeMethods.TablePtr->hs_method_5e8871f6((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_f987d39c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_83998d68() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_6b629579((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

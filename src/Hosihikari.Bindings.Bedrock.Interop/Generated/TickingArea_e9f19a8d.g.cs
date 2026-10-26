@@ -79,9 +79,10 @@ public sealed unsafe partial class TickingArea
         return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->hs_method_72016c2c((void*)_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TickingAreaLoadMode' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getLoadMode() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TickingAreaLoadMode' requires --link-carrier or --virtual-dispatch.");
+    public int getLoadMode()
+    {
+        return NativeMethods.TablePtr->hs_method_c586f5c8((void*)_handle);
+    }
 
     public float getMaxDistToPlayers()
     {
@@ -139,9 +140,10 @@ public sealed unsafe partial class TickingArea
         NativeMethods.TablePtr->hs_method_bb54f172((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'TickingAreaLoadMode' is not a known bindable declaration.", false)]
-    public void setLoadMode(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'TickingAreaLoadMode' is not a known bindable declaration.");
+    public void setLoadMode(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg1)
+    {
+        NativeMethods.TablePtr->hs_method_a308c635((void*)_handle, arg0, (void*)arg1.Handle);
+    }
 
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.Tick arg0, bool arg1)
     {

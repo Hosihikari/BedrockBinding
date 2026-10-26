@@ -37,17 +37,43 @@ public sealed unsafe partial class ActorFactory
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ActorFactory Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ActorFactory Create_1dacbbfb(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ActorFactory Create(nint arg0) =>
+    public static ActorFactory Create_3226be81(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _buildSummonableActorList_aa9edd9c(nint experiments, nint callback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _constructActor_bd5c4d50(nint identifier, nint position, nint rotation, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void applyEntityInitializer(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,ActorDefinitionIdentifier const*>' is not supported.", false)]
-    public nint buildSummonEntityTypeEnum(nint arg0) =>
+    public nint buildSummonEntityTypeEnum_9454205d(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,ActorDefinitionIdentifier const*>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint buildSummonEntityTypeEnum_3089085e(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint builtinEntityMappings_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_c4e5c8b1();
+    }
 
     public void clearDefinitionGroup()
     {
@@ -64,6 +90,10 @@ public sealed unsafe partial class ActorFactory
         var __hs_shared = NativeMethods.TablePtr->hs_method_f7ec1d73((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), (void*)arg2.Handle, (void*)arg3.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint createActor(nint method, nint identifier, nint spawner, nint pos, nint rot) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? createActor(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3, global::Hosihikari.Bindings.Bedrock.Interop.Vec2 arg4)
     {
@@ -120,6 +150,10 @@ public sealed unsafe partial class ActorFactory
         NativeMethods.TablePtr->hs_method_4313fd20((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static void fillFactoryData(nint identifier, nint baseIdentifier, nint arg2, nint data) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Actor? fixLegacyEntity(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg1)
     {
         var __hs_handle = NativeMethods.TablePtr->hs_method_093c3392((void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
@@ -158,6 +192,10 @@ public sealed unsafe partial class ActorFactory
     {
         return NativeMethods.TablePtr->hs_method_0a4f0a46((void*)_handle, (void*)arg0.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: parameter type 'std::unique_ptr<Actor,std::default_delete<Actor>> (*const&)(ActorDefinitionGroup*,ActorDefinitionIdentifier const&,EntityContext&)' is not supported.", false)]
     public static void registerEntityMapping_fbb0e980(nint arg0, bool arg1, nint arg2, nint arg3) =>

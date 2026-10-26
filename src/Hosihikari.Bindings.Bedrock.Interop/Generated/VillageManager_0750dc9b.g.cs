@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class VillageManager
+public sealed unsafe partial class VillageManager : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,52 @@ public sealed unsafe partial class VillageManager
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ulong MAX_POI_QUERIES
+    {
+        get => NativeMethods.TablePtr->hs_get_fad5dd20();
+    }
+
+    public static int MAX_POI_TOLERANCE_DIST
+    {
+        get => NativeMethods.TablePtr->hs_get_de652a50();
+    }
+
+    public static int MAX_QUERY_SCAN_ITERATIONS
+    {
+        get => NativeMethods.TablePtr->hs_get_f2eb32f1();
+    }
+
+    public static int VILLAGE_HERO_EFFECT_DURATION
+    {
+        get => NativeMethods.TablePtr->hs_get_fb9f501a();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static VillageManager Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static VillageManager Create(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_5fcc64b7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VillageManager((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static VillageManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _getVillageWithBedsAvailableMap_ef770e0a() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _unclusterDerelictPOIs_643bc519(nint pois) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? fetchClosestVillage(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, int arg1, uint arg2)
     {
@@ -101,6 +144,10 @@ public sealed unsafe partial class VillageManager
         NativeMethods.TablePtr->hs_method_32d61fe7((void*)_handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void removePOI(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
     {
         NativeMethods.TablePtr->hs_method_a00188cf((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
@@ -127,7 +174,17 @@ public sealed unsafe partial class VillageManager
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_0750dc9b((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

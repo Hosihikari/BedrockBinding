@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RakNetServerLocator
+public sealed unsafe partial class RakNetServerLocator : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,14 +37,50 @@ public sealed unsafe partial class RakNetServerLocator
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RakNetServerLocator Create(nint arg0, nint arg1, nint arg2, bool arg3, nint arg4, nint arg5, nint arg6, nint arg7, nint arg8) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static RakNetServerLocator Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public void addCustomServer(nint arg0, int arg1)
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static RakNetServerLocator Create_874e0bd2(nint arg0, nint ipInterface, nint arg2, bool isServer, nint arg4, nint arg5, nint arg6, nint appPlatform, nint arg8) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<RakNet::RakPeerInterface,void (*)(RakNet::RakPeerInterface*)>' is not supported.", false)]
+    public static RakNetServerLocator Create_8e62bd43(nint arg0, nint arg1, nint arg2, bool arg3, nint arg4, nint arg5, nint arg6, nint arg7, nint arg8) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<RakNet::RakPeerInterface,void (*)(RakNet::RakPeerInterface*)>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static RakNetServerLocator Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _getHostGuid_3e69814a(nint address, int port) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _getServerOriginalAddress_b0efa844(nint originalAddressToSet, nint ip) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool _handleUnconnectedPong_1cfcbf9a(nint data, nint p, bool insertAtBeginning, ulong readTime) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool _pingServerV4_5608c5c0(nint address, int port) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool _pingServerV6_b40dc983(nint address, int port) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void addCustomServer_a6db9a4b(nint arg0, int arg1)
     {
         NativeMethods.TablePtr->hs_method_a6db9a4b((void*)_handle, (void*)arg0, arg1);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void addCustomServer_450d8d1c(nint address, int port) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void addCustomServer(string arg0, int arg1)
     {
@@ -66,13 +102,21 @@ public sealed unsafe partial class RakNetServerLocator
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void checkCanConnectToCustomServerAsync(nint arg0, int arg1, nint arg2) =>
+    public void checkCanConnectToCustomServerAsync_f9ebfb52(nint arg0, int arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void checkCanConnectToCustomServerAsync_82ec73a1(nint hostIpAddress, int port, nint callback) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void clearServerList()
     {
         NativeMethods.TablePtr->hs_method_1e7b1205((void*)_handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public float getPingTimeForGUID(nint guid) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public float getPingTimeForGUID(string arg0)
     {
@@ -96,6 +140,14 @@ public sealed unsafe partial class RakNetServerLocator
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'PingedCompatibleServer' is not supported.", false)]
     public nint getServerList() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'PingedCompatibleServer' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static bool parseUnconnectedPongPacketData(nint data, nint extraData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static bool parseUnconnectedPongPacketData(string arg0, string[] arg1)
     {
@@ -137,8 +189,12 @@ public sealed unsafe partial class RakNetServerLocator
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void startAnnouncingServer_312609c9(nint arg0, nint arg1, nint arg2, nint arg3, int arg4, int arg5, bool arg6, bool arg7) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<AppPlatform>' is not a known bindable declaration.", false)]
-    public void startAnnouncingServer(nint arg0, nint arg1, nint arg2, nint arg3, int arg4, int arg5, bool arg6, bool arg7) =>
+    public void startAnnouncingServer_64e61170(nint arg0, nint arg1, nint arg2, nint arg3, int arg4, int arg5, bool arg6, bool arg7) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<AppPlatform>' is not a known bindable declaration.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PortPair' is not a known bindable declaration.", false)]
@@ -159,7 +215,17 @@ public sealed unsafe partial class RakNetServerLocator
         NativeMethods.TablePtr->hs_method_fc9118ad((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_256ba86e((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

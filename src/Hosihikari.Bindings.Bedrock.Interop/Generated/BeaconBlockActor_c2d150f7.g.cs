@@ -37,9 +37,17 @@ public sealed unsafe partial class BeaconBlockActor
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BeaconBlockActor Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BeaconBlockActor Create(nint arg0) =>
+    public static BeaconBlockActor Create_6edecc48(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BeaconBlockActor Create_f2c96e4e(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void checkShapeAndAchievement(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
     {
@@ -78,11 +86,15 @@ public sealed unsafe partial class BeaconBlockActor
         return NativeMethods.TablePtr->hs_method_3ae5ded2((void*)_handle);
     }
 
-    public string getName()
+    public string getName_662894ac()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_662894ac((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getName_b30adeef() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool hasAlphaLayer()
     {
@@ -108,6 +120,10 @@ public sealed unsafe partial class BeaconBlockActor
     {
         NativeMethods.TablePtr->hs_method_76780d24((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void removeItem(int arg0, int arg1)
     {

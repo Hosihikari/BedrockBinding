@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BossComponent
+public sealed unsafe partial class BossComponent : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,13 +37,24 @@ public sealed unsafe partial class BossComponent
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BossComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static BossComponent Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_4a074f64();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+        return new BossComponent((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public static BossComponent Create_9b643aec(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BossComponent Create_e47bd425(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void addPlayerToParty(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0, int arg1)
     {
@@ -76,21 +87,33 @@ public sealed unsafe partial class BossComponent
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
-    public nint getLastPlayerUpdate() =>
+    public nint getLastPlayerUpdate_f7ed79a5() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
 
-    public string getName()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getLastPlayerUpdate_85002c6d() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getName_4c6aa7e6()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_4c6aa7e6((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getName_3269155c() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int getOverlay()
     {
         return NativeMethods.TablePtr->hs_method_abb95f52((void*)_handle);
     }
 
-    public nint getPlayerParty()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getPlayerParty_c8eff955() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public nint getPlayerParty_91b9cf72()
     {
         return (nint)NativeMethods.TablePtr->hs_method_91b9cf72((void*)_handle);
     }
@@ -104,6 +127,86 @@ public sealed unsafe partial class BossComponent
     {
         NativeMethods.TablePtr->hs_method_a76df7a0((void*)_handle, (void*)arg0.Handle);
     }
+
+    public int mColor
+    {
+        get => NativeMethods.TablePtr->hs_get_842be8a2((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_842be8a2((void*)_handle, value);
+    }
+
+    public bool mCreateWorldFog
+    {
+        get => NativeMethods.TablePtr->hs_get_a35f85bd((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_a35f85bd((void*)_handle, value);
+    }
+
+    public bool mHealthBarVisible
+    {
+        get => NativeMethods.TablePtr->hs_get_6a979157((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_6a979157((void*)_handle, value);
+    }
+
+    public float mHealthPercent
+    {
+        get => NativeMethods.TablePtr->hs_get_e4db8196((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_e4db8196((void*)_handle, value);
+    }
+
+    public int mHudRangeSquared
+    {
+        get => NativeMethods.TablePtr->hs_get_b317746c((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_b317746c((void*)_handle, value);
+    }
+
+    public int mLastHealth
+    {
+        get => NativeMethods.TablePtr->hs_get_204b8f75((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_204b8f75((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLastPlayerUpdate_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b058bd9e((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_3ae6c734((void*)_handle);
+    }
+
+    public int mOverlay
+    {
+        get => NativeMethods.TablePtr->hs_get_79459eb6((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_79459eb6((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayerParty_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_237f8720((void*)_handle);
+    }
+
+    public int mPlayersRegistered
+    {
+        get => NativeMethods.TablePtr->hs_get_d06db76f((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_d06db76f((void*)_handle, value);
+    }
+
+    public bool mShouldDarkenSky
+    {
+        get => NativeMethods.TablePtr->hs_get_06020595((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_06020595((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_d336f640(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_dc93b578(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
     {
@@ -149,6 +252,14 @@ public sealed unsafe partial class BossComponent
     public void setLastPlayerUpdate_ed495b71(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setLastPlayerUpdate_eb75193e(nint lastUpdate) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setName(nint owner, nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void setName(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, string arg1)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -178,15 +289,18 @@ public sealed unsafe partial class BossComponent
         NativeMethods.TablePtr->hs_method_9743c5c0((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_6b69760b() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static BossComponent Create_6511aca5(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_21434b4b() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_f62c4bc4((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

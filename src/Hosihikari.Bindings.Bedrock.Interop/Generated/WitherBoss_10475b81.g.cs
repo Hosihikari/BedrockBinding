@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class WitherBoss
+public sealed unsafe partial class WitherBoss : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -43,9 +43,34 @@ public sealed unsafe partial class WitherBoss
         get => (nint)NativeMethods.TablePtr->hs_get_83f8d471((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static WitherBoss Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID MAX_HEALTH_CAP_UUID
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->hs_get_a4fa9beb(), false);
+    }
+
+    public static int TIME_BEFORE_MOVING
+    {
+        get => NativeMethods.TablePtr->hs_get_c9909e87();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static WitherBoss Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static WitherBoss Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup? arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg1, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_ca98825a((void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, (void*)arg2.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WitherBoss((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static WitherBoss Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {
@@ -72,9 +97,10 @@ public sealed unsafe partial class WitherBoss
         return NativeMethods.TablePtr->hs_method_c26b62d0((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'WitherBoss::WitherAttackType' is not a known bindable declaration.", false)]
-    public static bool canDestroy(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'WitherBoss::WitherAttackType' is not a known bindable declaration.");
+    public static bool canDestroy(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, int arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_9f7dd6a9((void*)arg0.Handle, arg1) != 0;
+    }
 
     public bool canFreeze()
     {
@@ -150,14 +176,19 @@ public sealed unsafe partial class WitherBoss
         NativeMethods.TablePtr->hs_method_0cbc4f12((void*)_handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void postAiStep()
     {
         NativeMethods.TablePtr->hs_method_9daa0195((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'WitherBossPreAIStepResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint preAiStep() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'WitherBossPreAIStepResult' requires --link-carrier or --virtual-dispatch.");
+    public int preAiStep()
+    {
+        return NativeMethods.TablePtr->hs_method_2bda9e19((void*)_handle);
+    }
 
     public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg1)
     {
@@ -224,7 +255,17 @@ public sealed unsafe partial class WitherBoss
         return NativeMethods.TablePtr->hs_method_5bbf3961((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_10475b81((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

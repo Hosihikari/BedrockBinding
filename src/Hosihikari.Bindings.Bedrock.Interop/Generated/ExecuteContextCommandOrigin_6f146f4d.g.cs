@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ExecuteContextCommandOrigin
+public sealed unsafe partial class ExecuteContextCommandOrigin : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -43,9 +43,24 @@ public sealed unsafe partial class ExecuteContextCommandOrigin
         get => (nint)NativeMethods.TablePtr->hs_get_4f59fc13((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ExecuteContextCommandOrigin Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7, int arg8) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ExecuteContextCommandOrigin Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static ExecuteContextCommandOrigin Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec2? arg2, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg3, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg4, int arg5, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg6, global::Hosihikari.Bindings.Bedrock.Interop.Level arg7, int arg8)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_dadad882((void*)arg0.Handle, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0), (void*)arg3.Handle, (void*)arg4.Handle, arg5, (void*)arg6.Handle, (void*)arg7.Handle, arg8, arg2 is not null);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ExecuteContextCommandOrigin((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ExecuteContextCommandOrigin Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin? clone()
     {
@@ -81,11 +96,15 @@ public sealed unsafe partial class ExecuteContextCommandOrigin
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Level((nint)__hs_handle, false) : null;
     }
 
-    public string getName()
+    public string getName_cc21a5a7()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_cc21a5a7((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getName_84251ef9() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public sbyte getOriginType()
     {
@@ -103,7 +122,11 @@ public sealed unsafe partial class ExecuteContextCommandOrigin
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
     }
 
-    public string getRequestId()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getRequestId_9ff4ee7e() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getRequestId_290ea493()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_290ea493((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -129,6 +152,10 @@ public sealed unsafe partial class ExecuteContextCommandOrigin
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'ExecuteContextCommandOrigin' has no accessible destructor.", false)]
     public static nint load(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'ExecuteContextCommandOrigin' has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag serialize()
     {
@@ -173,5 +200,19 @@ public sealed unsafe partial class ExecuteContextCommandOrigin
     public void updateValues()
     {
         NativeMethods.TablePtr->hs_method_c65916a7((void*)_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_6f146f4d((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

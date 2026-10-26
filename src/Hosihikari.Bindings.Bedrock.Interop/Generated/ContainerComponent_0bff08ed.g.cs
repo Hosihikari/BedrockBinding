@@ -45,6 +45,10 @@ public sealed unsafe partial class ContainerComponent
     public static ContainerComponent Create_113786a2(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ContainerComponent Create_84150f13(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
     public global::Hosihikari.Bindings.Bedrock.Interop.FillingContainer? _getRawContainerPtr()
     {
         var __hs_handle = NativeMethods.TablePtr->hs_method_6546d4ab((void*)_handle);
@@ -172,6 +176,14 @@ public sealed unsafe partial class ContainerComponent
         return NativeMethods.TablePtr->hs_method_9248cc53((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_62d2b409(nint other) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_080e80b3(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
     {
         NativeMethods.TablePtr->hs_method_60caabcc((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
@@ -196,6 +208,10 @@ public sealed unsafe partial class ContainerComponent
     public void serverInitItemStackIds(int arg0, int arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setCustomName(nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void setCustomName(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -219,6 +235,10 @@ public sealed unsafe partial class ContainerComponent
     {
         return NativeMethods.TablePtr->hs_method_e35b9a8c((void*)_handle, arg0, (void*)arg1.Handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setLootTable(nint lootTable, int lootTableSeed) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setLootTable(string arg0, int arg1)
     {
@@ -247,10 +267,6 @@ public sealed unsafe partial class ContainerComponent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_40049331() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ContainerComponent Create_f04afd78(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public void Destroy_56661be6() =>

@@ -37,9 +37,17 @@ public sealed unsafe partial class EconomyTradeableComponent
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static EconomyTradeableComponent Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static EconomyTradeableComponent Create(nint arg0) =>
+    public static EconomyTradeableComponent Create_63d1c33d(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static EconomyTradeableComponent Create_bdf7904d(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {
@@ -65,7 +73,11 @@ public sealed unsafe partial class EconomyTradeableComponent
         return NativeMethods.TablePtr->hs_method_06db68ba((void*)_handle);
     }
 
-    public string getDisplayName()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getDisplayName_bda74abf() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getDisplayName_c2e09046()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_c2e09046((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -107,7 +119,11 @@ public sealed unsafe partial class EconomyTradeableComponent
         return NativeMethods.TablePtr->hs_method_33502179((void*)arg0.Handle) != 0;
     }
 
-    public string loadDisplayName()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint loadDisplayName_3440ec6e() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string loadDisplayName_8ec113c2()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_8ec113c2((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -132,6 +148,10 @@ public sealed unsafe partial class EconomyTradeableComponent
     {
         NativeMethods.TablePtr->hs_method_f59dc240((void*)_handle, arg0);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg1)
     {

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DBChunkStorage
+public sealed unsafe partial class DBChunkStorage : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -85,13 +85,50 @@ public sealed unsafe partial class DBChunkStorage
         get => (nint)NativeMethods.TablePtr->hs_get_000e9a30((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static DBChunkStorage Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static DBChunkStorage Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ConsoleChunkBlender::BlenderMode' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint _getBlenderMode(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ConsoleChunkBlender::BlenderMode' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static DBChunkStorage Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public static DBChunkStorage Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint _deserializeChunkActorStorageKeys_03f10a77(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _deserializeIndependentActorStorage_b958a98a(nint lc, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public static int _getBlenderMode(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_44d7ed56((void*)arg0.Handle, (void*)arg1.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _getLevelChunkFormat_1fc69037(nint prefix, nint buffer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _saveBlendData_854ac046(nint batch, nint prefix, nint buffer, nint data) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _serializeEntities_fa96c7f1(nint lc, nint batch, nint buffer, bool arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _upgradeActorStorage_428bf3ef(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _writeActorDigest_14503e8f(nint batch, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<LevelChunk,LevelChunkFinalDeleter>' is not a known bindable declaration.", false)]
     public void acquireDiscarded(nint arg0) =>
@@ -113,8 +150,12 @@ public sealed unsafe partial class DBChunkStorage
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static nint deserializeActorStorageToString(bool arg0, nint arg1, nint arg2) =>
+    public static nint deserializeActorStorageToString_ae5489ae(bool arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint deserializeActorStorageToString_47f75931(bool arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void flushPendingDiscardedChunkWrites()
     {
@@ -162,6 +203,10 @@ public sealed unsafe partial class DBChunkStorage
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public bool postProcess(global::Hosihikari.Bindings.Bedrock.Interop.ChunkViewSource arg0)
     {
         return NativeMethods.TablePtr->hs_method_eaac53ac((void*)_handle, (void*)arg0.Handle) != 0;
@@ -177,6 +222,18 @@ public sealed unsafe partial class DBChunkStorage
         NativeMethods.TablePtr->hs_method_81e94868((void*)_handle);
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint threadBatch_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_2dc1ad78();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint threadBuffer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_4d769011();
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'BlendingDataProvider' is not a known bindable declaration.", false)]
     public nint tryGetBlendingDataProvider() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'BlendingDataProvider' is not a known bindable declaration.");
@@ -190,7 +247,17 @@ public sealed unsafe partial class DBChunkStorage
     public void writeEntityChunkTransfersToUnloadedChunk(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'ActorUnloadedChunkTransferEntry' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_e5847374((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

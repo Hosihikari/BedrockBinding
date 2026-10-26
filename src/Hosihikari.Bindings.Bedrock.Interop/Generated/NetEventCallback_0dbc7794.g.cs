@@ -932,9 +932,9 @@ public sealed unsafe partial class NetEventCallback
         NativeMethods.TablePtr->hs_method_432d2599((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public void handle_6df8d811(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPacket arg1)
     {
-        NativeMethods.TablePtr->hs_method_6df8d811((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_6df8d811((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void handle_e051b3f1(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, nint arg1)

@@ -37,9 +37,25 @@ public sealed unsafe partial class MapItemSavedData
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MapItemSavedData Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static MapItemSavedData Create(nint arg0, bool arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static MapItemSavedData Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _addDecoration_10eccc78(nint type, nint level, nint key, nint position, nint label, nint color) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _updateTrackedPlayerDecorations_3a796413(nint region, nint player, nint decorationPos, nint decorationLabel, nint decorationColor, nint dimensionID, nint type) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? addTrackedMapEntity(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1)
     {
@@ -115,6 +131,10 @@ public sealed unsafe partial class MapItemSavedData
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint getSerializationKey(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public global::Hosihikari.Bindings.Abi.SharedHandle? getTrackedMapEntity(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {
         var __hs_shared = NativeMethods.TablePtr->hs_method_78027dcc((void*)_handle, (void*)arg0.Handle);
@@ -143,9 +163,10 @@ public sealed unsafe partial class MapItemSavedData
         return NativeMethods.TablePtr->hs_method_e743f30e((void*)_handle, (void*)arg0.Handle, arg1) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'MapItemSavedData::ChunkBounds' is not a known bindable declaration.", false)]
-    public bool isChunkAllEmpty(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'MapItemSavedData::ChunkBounds' is not a known bindable declaration.");
+    public bool isChunkAllEmpty(global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData_Nested.ChunkBounds arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_1d37fe9a((void*)_handle, (void*)arg0.Handle) != 0;
+    }
 
     public bool isFullyExplored()
     {
@@ -161,6 +182,10 @@ public sealed unsafe partial class MapItemSavedData
     {
         return NativeMethods.TablePtr->hs_method_361126c1((void*)_handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void removeTrackedMapEntity(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
     {
@@ -239,10 +264,6 @@ public sealed unsafe partial class MapItemSavedData
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_be30c630() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static MapItemSavedData Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public void Destroy_db7787c3() =>

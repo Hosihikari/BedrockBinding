@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class StructureEditorData
+public sealed unsafe partial class StructureEditorData : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,19 +37,80 @@ public sealed unsafe partial class StructureEditorData
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static StructureEditorData Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static string DEFAULT_EXPORT_NAME
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_204657a5();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static StructureEditorData Create_51ccfbef(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static string DEFAULT_STRUCTURE_NAMESPACE
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_5de6c966();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
 
-    public string getAnimationModeAsString()
+    public static int DEFAULT_STRUCTURE_TYPE
+    {
+        get => NativeMethods.TablePtr->hs_get_90d85a5d();
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BlockPos MAX_STRUCTURE_OFFSET
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_get_62ea79b0(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BlockPos MIN_STRUCTURE_OFFSET
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_get_c6341dbc(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BlockPos MIN_STRUCTURE_SIZE
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_get_e32f44bb(), false);
+    }
+
+    public static sbyte NAMESPACE_DELIMITER
+    {
+        get => NativeMethods.TablePtr->hs_get_a9607736();
+    }
+
+    public static StructureEditorData Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_d9980b95();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureEditorData((nint)handle);
+    }
+
+    public static StructureEditorData Create(global::Hosihikari.Bindings.Bedrock.Interop.StructureEditorData arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_51ccfbef((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureEditorData((nint)handle);
+    }
+
+    public string getAnimationModeAsString_6c048699()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_6c048699((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getAnimationModeAsString_ef87ffcb() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public float getAnimationSeconds()
     {
@@ -116,11 +177,16 @@ public sealed unsafe partial class StructureEditorData
         return NativeMethods.TablePtr->hs_method_7df76af2((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'StructureBlockType' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getStructureBlockType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'StructureBlockType' requires --link-carrier or --virtual-dispatch.");
+    public int getStructureBlockType()
+    {
+        return NativeMethods.TablePtr->hs_method_000b48e3((void*)_handle);
+    }
 
-    public string getStructureName()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getStructureName_a1ce3fe0() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getStructureName_958fb8f4()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_958fb8f4((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -145,6 +211,52 @@ public sealed unsafe partial class StructureEditorData
     {
         NativeMethods.TablePtr->hs_method_797ab2fe((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDataField_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_965cdbe8((void*)_handle);
+    }
+
+    public bool mIncludePlayers
+    {
+        get => NativeMethods.TablePtr->hs_get_3b8dfb28((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_3b8dfb28((void*)_handle, value);
+    }
+
+    public sbyte mRedstoneSaveMode
+    {
+        get => NativeMethods.TablePtr->hs_get_15421f09((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_15421f09((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSettings_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_93c6186f((void*)_handle);
+    }
+
+    public bool mShowBoundingBox
+    {
+        get => NativeMethods.TablePtr->hs_get_f80e3280((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_f80e3280((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStructureName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_80b8260b((void*)_handle);
+    }
+
+    public int mType
+    {
+        get => NativeMethods.TablePtr->hs_get_02af55f4((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_02af55f4((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void save(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {
@@ -216,9 +328,10 @@ public sealed unsafe partial class StructureEditorData
         NativeMethods.TablePtr->hs_method_8725090e((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'StructureBlockType' is not a known bindable declaration.", false)]
-    public void setStructureBlockType(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'StructureBlockType' is not a known bindable declaration.");
+    public void setStructureBlockType(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_1481fad9((void*)_handle, arg0);
+    }
 
     public void setStructureName(string arg0)
     {
@@ -239,6 +352,10 @@ public sealed unsafe partial class StructureEditorData
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setStructureName(nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void setStructureOffset(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
     {
         NativeMethods.TablePtr->hs_method_a2a49560((void*)_handle, (void*)arg0.Handle);
@@ -249,15 +366,22 @@ public sealed unsafe partial class StructureEditorData
         NativeMethods.TablePtr->hs_method_706d15ce((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_90bb5606() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static StructureEditorData Create_9e776152(nint arg0) =>
+    public static StructureEditorData Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_8ee142df() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_e367d1f8((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

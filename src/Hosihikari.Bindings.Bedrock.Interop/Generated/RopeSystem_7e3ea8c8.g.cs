@@ -41,6 +41,10 @@ public sealed unsafe partial class RopeSystem
     public static RopeSystem Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static RopeSystem Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     public void _initializePins(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
     {
         NativeMethods.TablePtr->hs_method_3e52b667((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
@@ -66,9 +70,28 @@ public sealed unsafe partial class RopeSystem
         return NativeMethods.TablePtr->hs_method_d72dcf0d((void*)_handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void queueTick(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1)
     {
         NativeMethods.TablePtr->hs_method_3d5d089e((void*)_handle, (void*)arg0.Handle, arg1?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public static float sBucketLength
+    {
+        get => NativeMethods.TablePtr->hs_get_c35778ee();
+    }
+
+    public static bool sEnabled
+    {
+        get => NativeMethods.TablePtr->hs_get_a0815eba() != 0;
+    }
+
+    public static float sEpsilon
+    {
+        get => NativeMethods.TablePtr->hs_get_8bfb6d09();
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ServerScoreboard
+public sealed unsafe partial class ServerScoreboard : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,79 @@ public sealed unsafe partial class ServerScoreboard
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCriteria_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_06da9b58((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDisplayObjectives_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_c21539b2((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIdentityDict_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_1d1b1b8e((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIdentityRefs_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_143829ce((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mObjectives_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e0f279d8((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayerListener_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e8023f29((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRegistry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_76eb6e3e((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScoreboardEventCoordinator_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_91d24ef8((void*)_handle);
+    }
+
+    public bool mShouldUpdateUI
+    {
+        get => NativeMethods.TablePtr->hs_get_15940e24((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_15940e24((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static ServerScoreboard Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _clearAllScoreTagsForObjective_b455e417(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _unpackIdentityDefToScorePacket_fc94e6a9(nint identityDef, nint objName, int score) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _updateAllScoreTagsForObjective_d6e3edcf(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint clearDisplayObjective(nint displaySlotName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Objective? clearDisplayObjective(string arg0)
     {
@@ -90,6 +160,10 @@ public sealed unsafe partial class ServerScoreboard
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint createScoreboardId(nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void deserialize(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
@@ -107,6 +181,72 @@ public sealed unsafe partial class ServerScoreboard
     public void intializeWithActorManager(global::Hosihikari.Bindings.Bedrock.Interop.ActorManager arg0)
     {
         NativeMethods.TablePtr->hs_method_da4c0627((void*)_handle, (void*)arg0.Handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mClearDisplayObjectiveLevelCallback_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_27e4adbc((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIdentityUpdatedLevelCallback_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_3daa9af5((void*)_handle);
+    }
+
+    public bool mIsDirty
+    {
+        get => NativeMethods.TablePtr->hs_get_d0a357cb((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_d0a357cb((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLastUniqueSBID_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_f88e41c3((void*)_handle);
+    }
+
+    public nint mLevelStorage
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_7f8b643f((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_7f8b643f((void*)_handle, (void*)value);
+    }
+
+    public nint mPacketSender
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_14ccad6c((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_14ccad6c((void*)_handle, (void*)value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSaveTimer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_4358a29a((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScoreChangedLevelCallback_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_70cd370b((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScoreRemovedLevelCallback_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_3a8bafe3((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSetDisplayObjectiveLevelCallback_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_8faf5360((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTrackedObjectives_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_722ed925((void*)_handle);
     }
 
     public void onObjectiveAdded(global::Hosihikari.Bindings.Bedrock.Interop.Objective arg0)
@@ -145,7 +285,7 @@ public sealed unsafe partial class ServerScoreboard
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
     }
 
-    public nint setDisplayObjective(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Objective arg1, byte arg2)
+    public global::Hosihikari.Bindings.Bedrock.Interop.DisplayObjective? setDisplayObjective(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Objective arg1, byte arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -160,9 +300,14 @@ public sealed unsafe partial class ServerScoreboard
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_ab69e8aa((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, arg2);
+            var __hs_handle = NativeMethods.TablePtr->hs_method_ab69e8aa((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, arg2);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.DisplayObjective((nint)__hs_handle, false) : null;
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint setDisplayObjective(nint displaySlotName, nint objective, nint order) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setPacketSender(global::Hosihikari.Bindings.Bedrock.Interop.PacketSender? arg0)
     {
@@ -179,7 +324,17 @@ public sealed unsafe partial class ServerScoreboard
         NativeMethods.TablePtr->hs_method_31f6b79b((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_01028367((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

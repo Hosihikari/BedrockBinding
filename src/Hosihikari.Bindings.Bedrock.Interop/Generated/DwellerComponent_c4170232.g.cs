@@ -37,6 +37,18 @@ public sealed unsafe partial class DwellerComponent
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint DWELLING_ROLES_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_83b3017b();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint DWELLING_TYPES_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_f3be89c5();
+    }
+
     public void DecrementDwellingUpdateInterval()
     {
         NativeMethods.TablePtr->hs_method_06a43d34((void*)_handle);
@@ -49,6 +61,10 @@ public sealed unsafe partial class DwellerComponent
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static DwellerComponent Create_303bc49b(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static DwellerComponent Create_865c90b1(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
     {
@@ -171,6 +187,14 @@ public sealed unsafe partial class DwellerComponent
         NativeMethods.TablePtr->hs_method_d29486c1((void*)_handle, (void*)arg0.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_523697f3(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_85b179b0(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
     {
         NativeMethods.TablePtr->hs_method_376b596d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
@@ -219,10 +243,6 @@ public sealed unsafe partial class DwellerComponent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_4d0ebdee() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static DwellerComponent Create_b8065523(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public void Destroy_313c9957() =>

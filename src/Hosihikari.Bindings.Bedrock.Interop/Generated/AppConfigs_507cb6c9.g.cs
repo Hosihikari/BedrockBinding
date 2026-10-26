@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AppConfigs
+public sealed unsafe partial class AppConfigs : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,20 @@ public sealed unsafe partial class AppConfigs
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static AppConfigs Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static AppConfigs Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_ea7bdea1();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AppConfigs((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static AppConfigs Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public bool allowGameArguments()
     {
@@ -71,6 +82,10 @@ public sealed unsafe partial class AppConfigs
         return NativeMethods.TablePtr->hs_method_f05288de((void*)_handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint canUseMaelstrom_5b9e9d05() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'IContentAccessibilityProvider' is not a known bindable declaration.", false)]
     public nint createContentAccessibility(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'IContentAccessibilityProvider' is not a known bindable declaration.");
@@ -93,21 +108,33 @@ public sealed unsafe partial class AppConfigs
         return NativeMethods.TablePtr->hs_method_4d5ee2c1((void*)_handle);
     }
 
-    public string getFeedbackURL()
+    public string getFeedbackURL_9cfc900f()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_9cfc900f((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string getHelpCenterURL()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getFeedbackURL_355dfba2() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getHelpCenterURL_3d921eca()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_3d921eca((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getHelpCenterURL_a510eb61() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'IScreenCapabilities' is not a known bindable declaration.", false)]
-    public nint getScreenCapabilities(nint arg0) =>
+    public nint getScreenCapabilities_99614d11(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'IScreenCapabilities' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getScreenCapabilities_ac815c00(nint screenName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool isChatScreenAllowed()
     {
@@ -148,6 +175,10 @@ public sealed unsafe partial class AppConfigs
     {
         return NativeMethods.TablePtr->hs_method_628fb44d((void*)_handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool requireEduLevelSettings()
     {
@@ -214,11 +245,18 @@ public sealed unsafe partial class AppConfigs
         return NativeMethods.TablePtr->hs_method_f44a924d((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_bf6d22ae() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_86bd3912() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_507cb6c9((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

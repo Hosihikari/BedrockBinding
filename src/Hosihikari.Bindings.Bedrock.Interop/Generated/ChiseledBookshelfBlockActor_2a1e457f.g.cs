@@ -37,9 +37,17 @@ public sealed unsafe partial class ChiseledBookshelfBlockActor
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ChiseledBookshelfBlockActor Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ChiseledBookshelfBlockActor Create(nint arg0) =>
+    public static ChiseledBookshelfBlockActor Create_71f5374c(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ChiseledBookshelfBlockActor Create_7daf7b7e(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public bool addItemToFirstEmptySlot(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
     {
@@ -93,11 +101,15 @@ public sealed unsafe partial class ChiseledBookshelfBlockActor
         return NativeMethods.TablePtr->hs_method_86090de3((void*)_handle);
     }
 
-    public string getName()
+    public string getName_3e59d83d()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_3e59d83d((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getName_6f3dd06f() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool isEmpty()
     {
@@ -113,6 +125,10 @@ public sealed unsafe partial class ChiseledBookshelfBlockActor
     {
         NativeMethods.TablePtr->hs_method_3eb001e8((void*)_handle, (void*)arg0.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ItemStack retrieveBook(int arg0)
     {

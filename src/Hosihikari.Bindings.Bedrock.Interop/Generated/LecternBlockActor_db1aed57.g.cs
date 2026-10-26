@@ -85,9 +85,17 @@ public sealed unsafe partial class LecternBlockActor
         get => (nint)NativeMethods.TablePtr->hs_get_be3f006e((void*)_handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static LecternBlockActor Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static LecternBlockActor Create(nint arg0) =>
+    public static LecternBlockActor Create_f7e878ab(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static LecternBlockActor Create_43752274(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void dropBook(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
     {
@@ -145,6 +153,10 @@ public sealed unsafe partial class LecternBlockActor
     {
         NativeMethods.TablePtr->hs_method_9c56cb32((void*)_handle, (void*)arg0.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool save(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {

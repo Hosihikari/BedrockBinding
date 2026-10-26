@@ -37,8 +37,16 @@ public sealed unsafe partial class PlayerInventory
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static PlayerInventory Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static PlayerInventory Create_8dfb634e(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PlayerInventory Create(nint arg0) =>
+    public static PlayerInventory Create_f41bf27c(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? _getHudContainerManagerModel()
@@ -86,6 +94,10 @@ public sealed unsafe partial class PlayerInventory
     {
         NativeMethods.TablePtr->hs_method_e635e69f((void*)_handle, arg0);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void createTransactionContext_dcab6ea5(nint callback, nint execute) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void createTransactionContext_6ece9ea0(nint arg0, nint arg1) =>
@@ -179,6 +191,10 @@ public sealed unsafe partial class PlayerInventory
     {
         NativeMethods.TablePtr->hs_method_5aedf4c5((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void removeItem(int arg0, int arg1, sbyte arg2)
     {

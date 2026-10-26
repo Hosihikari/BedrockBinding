@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Agent
+public sealed unsafe partial class Agent : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -43,9 +43,24 @@ public sealed unsafe partial class Agent
         get => (nint)NativeMethods.TablePtr->hs_get_e82f10b2((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Agent Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Agent Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static Agent Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup? arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg1, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_3d473858((void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, (void*)arg2.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Agent((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Agent Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void baseTick()
     {
@@ -72,9 +87,10 @@ public sealed unsafe partial class Agent
         return NativeMethods.TablePtr->hs_method_81853091((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'AgentTravelType' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint checkTravelType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'AgentTravelType' requires --link-carrier or --virtual-dispatch.");
+    public int checkTravelType()
+    {
+        return NativeMethods.TablePtr->hs_method_0b06411c((void*)_handle);
+    }
 
     public bool createAIGoals()
     {
@@ -86,9 +102,10 @@ public sealed unsafe partial class Agent
         NativeMethods.TablePtr->hs_method_20bf870b((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'AgentTravelType' is not a known bindable declaration.", false)]
-    public nint doServerTravel(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'AgentTravelType' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 doServerTravel(global::Hosihikari.Bindings.Bedrock.Interop.AABB arg0, int arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_cbc2143d((void*)_handle, (void*)arg0.Handle, arg1));
+    }
 
     public float getMoveSpeedScalar()
     {
@@ -159,6 +176,10 @@ public sealed unsafe partial class Agent
     {
         NativeMethods.TablePtr->hs_method_3599143a((void*)_handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 roundTeleportPos(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
     {
@@ -234,5 +255,19 @@ public sealed unsafe partial class Agent
     public void updateEntitySpecificMolangVariables(nint arg0)
     {
         NativeMethods.TablePtr->hs_method_952fe538((void*)_handle, (void*)arg0);
+    }
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_56f14721((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

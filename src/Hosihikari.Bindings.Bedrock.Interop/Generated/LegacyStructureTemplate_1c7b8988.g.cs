@@ -37,9 +37,149 @@ public sealed unsafe partial class LegacyStructureTemplate
         return __hs_handle;
     }
 
+    public static string AUTHOR_TAG
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_ad1982e0();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string BLOCKS_TAG
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_31a5c0d1();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string BLOCK_TAG_NBT
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_7a08e189();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string BLOCK_TAG_POS
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_fb447a8c();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string BLOCK_TAG_STATE
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_09b99586();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static int CHUNK_SIZE
+    {
+        get => NativeMethods.TablePtr->hs_get_768760ff();
+    }
+
+    public static string DATA_VERSION_TAG
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_a62fa736();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string ENTITIES_TAG
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_b133de17();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string ENTITY_TAG_BLOCKPOS
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_60f38b54();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string ENTITY_TAG_NBT
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_ac172874();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string ENTITY_TAG_POS
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_aea0b2ed();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static LegacyStructureTemplate Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static LegacyStructureTemplate Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static string MINECRAFT_PREFIX
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_3d8bf304();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string PALETTE_TAG
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_4e356303();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string SIZE_TAG
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_43890a1d();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static int STRUCTURE_VERSION
+    {
+        get => NativeMethods.TablePtr->hs_get_1450aac4();
+    }
+
+    public static string VERSION_TAG
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_e38393ac();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Block? _mapPropertyToExtraBlock(string arg0, string arg1)
     {
@@ -75,6 +215,18 @@ public sealed unsafe partial class LegacyStructureTemplate
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint _mapPropertyToExtraBlock(nint propertyString, nint valueString) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static void _mapPropertyToTag_acaacdfb(nint originalTag, nint propertyString, nint valueString) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint _mapTag_48f0921b(nint arg0, nint arg1, int arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Block? _mapToBlock(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -94,6 +246,10 @@ public sealed unsafe partial class LegacyStructureTemplate
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)__hs_handle, false) : null;
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint _mapToBlock(nint blockName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Block _mapToData(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings arg1)
     {
@@ -134,9 +290,18 @@ public sealed unsafe partial class LegacyStructureTemplate
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint _mapToProperty(nint propertyString, nint valueString, nint block) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos calculateConnectedPosition(global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_20f1789b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle));
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings defaultSettings
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings((nint)NativeMethods.TablePtr->hs_get_ebb1bedc(), false);
     }
 
     public void finalizeBlockRules(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings arg2, global::Hosihikari.Bindings.Bedrock.Interop.Random arg3)
@@ -148,8 +313,12 @@ public sealed unsafe partial class LegacyStructureTemplate
     public nint getJigsawMarkers() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'JigsawStructureBlockInfo' is not supported.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getMarkers_df8e2bf1(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::unordered_map<BlockPos,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::hash<BlockPos>,std::equal_to<BlockPos>,std::allocator<std::pair<BlockPos const,std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getMarkers(nint arg0, nint arg1) =>
+    public nint getMarkers_f035f458(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unordered_map<BlockPos,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::hash<BlockPos>,std::equal_to<BlockPos>,std::allocator<std::pair<BlockPos const,std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>' requires --link-carrier or --virtual-dispatch.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getSize(byte arg0)
@@ -166,6 +335,10 @@ public sealed unsafe partial class LegacyStructureTemplate
     {
         NativeMethods.TablePtr->hs_method_42a60327((void*)_handle, (void*)arg0.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void placeInWorld(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings arg2, global::Hosihikari.Bindings.Bedrock.Interop.Random arg3)
     {

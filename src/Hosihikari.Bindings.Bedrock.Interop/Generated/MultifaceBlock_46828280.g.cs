@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MultifaceBlock
+public sealed unsafe partial class MultifaceBlock : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,82 @@ public sealed unsafe partial class MultifaceBlock
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MultifaceBlock Create(nint arg0, int arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static int MULTIFACE_ALL
+    {
+        get => NativeMethods.TablePtr->hs_get_29a85057();
+    }
+
+    public static int MULTIFACE_DOWN
+    {
+        get => NativeMethods.TablePtr->hs_get_5abfaecd();
+    }
+
+    public static int MULTIFACE_EAST
+    {
+        get => NativeMethods.TablePtr->hs_get_a7cc1d27();
+    }
+
+    public static int MULTIFACE_NORTH
+    {
+        get => NativeMethods.TablePtr->hs_get_d6d9a3cd();
+    }
+
+    public static int MULTIFACE_SIDES
+    {
+        get => NativeMethods.TablePtr->hs_get_f19afb85();
+    }
+
+    public static int MULTIFACE_SOUTH
+    {
+        get => NativeMethods.TablePtr->hs_get_44b52de2();
+    }
+
+    public static int MULTIFACE_UP
+    {
+        get => NativeMethods.TablePtr->hs_get_f5ece89b();
+    }
+
+    public static int MULTIFACE_WEST
+    {
+        get => NativeMethods.TablePtr->hs_get_c36c3918();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MultifaceBlock Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MultifaceBlock Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MultifaceBlock Create(nint nameId, int id, nint material) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static MultifaceBlock Create(string arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Material arg2)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->hs_create_3fb2acc7(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, (void*)arg2.Handle);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new MultifaceBlock((nint)handle);
+        }
+    }
 
     public static int _getNumSides(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0)
     {
@@ -121,6 +194,10 @@ public sealed unsafe partial class MultifaceBlock
         NativeMethods.TablePtr->hs_method_8ae15534((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void removeFace(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource? arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3, byte arg4, bool arg5)
     {
         NativeMethods.TablePtr->hs_method_bcd5b85a((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), (void*)arg2.Handle, (void*)arg3.Handle, arg4, arg5);
@@ -134,5 +211,19 @@ public sealed unsafe partial class MultifaceBlock
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2)
     {
         NativeMethods.TablePtr->hs_method_586cbad1((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_46828280((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DecoratedPotBlockActor
+public sealed unsafe partial class DecoratedPotBlockActor : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -85,9 +85,38 @@ public sealed unsafe partial class DecoratedPotBlockActor
         get => (nint)NativeMethods.TablePtr->hs_get_e502bdb3((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint DEFAULT_SHERD_LIST_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_00352e8e();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static DecoratedPotBlockActor Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static DecoratedPotBlockActor Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_bc24b72e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DecoratedPotBlockActor((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static DecoratedPotBlockActor Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static bool _areDefaultSherds_40a61600(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint _tryGetSherdsFromItem_23d2400b(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int getContainerSize()
     {
@@ -104,7 +133,11 @@ public sealed unsafe partial class DecoratedPotBlockActor
         return NativeMethods.TablePtr->hs_method_c3bafa41((void*)_handle);
     }
 
-    public nint getSherdNames()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getSherdNames_610ee2e3() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public nint getSherdNames_30482160()
     {
         return (nint)NativeMethods.TablePtr->hs_method_30482160((void*)_handle);
     }
@@ -113,6 +146,10 @@ public sealed unsafe partial class DecoratedPotBlockActor
     {
         NativeMethods.TablePtr->hs_method_03a65bd7((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static void removeDefaultSherdsFromUserData(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0)
     {
@@ -123,6 +160,10 @@ public sealed unsafe partial class DecoratedPotBlockActor
     {
         return NativeMethods.TablePtr->hs_method_dcf8f99c((void*)_handle, (void*)arg0.Handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static void saveSherdsToTag_eedb9376(nint arg0, nint arg1, bool arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static void saveSherdsToTag(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, nint arg1, bool arg2)
     {
@@ -155,10 +196,24 @@ public sealed unsafe partial class DecoratedPotBlockActor
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'std::array<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,4>' is not supported.", false)]
-    public static nint tryGetSherdsFromTag(nint arg0) =>
+    public static nint tryGetSherdsFromTag_ac8bdb0d(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::array<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,4>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint tryGetSherdsFromTag_31476cb4(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_a2592a53((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

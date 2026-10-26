@@ -37,6 +37,33 @@ public sealed unsafe partial class NpcComponent
         return __hs_handle;
     }
 
+    public static string ACTIONS_TAG
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_a682b747();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string INTERACTIVE_TAG
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_aa5727f3();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string NAME_RAW_TEXT_TAG
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_7df7bcbd();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static NpcComponent Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
@@ -44,6 +71,46 @@ public sealed unsafe partial class NpcComponent
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static NpcComponent Create_0de1fe7d(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static NpcComponent Create_c78061a6(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static string PLAYER_ID_TAG
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_fc54e362();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string PLAYER_SCENE_MAPPING_TAG
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_f09f0f50();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string SCENE_NAME_TAG
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_9d6b6fa5();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string URL_TAG
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_3f77b821();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
 
     public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
     {
@@ -54,6 +121,10 @@ public sealed unsafe partial class NpcComponent
     {
         NativeMethods.TablePtr->hs_method_d096a81f((void*)_handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void executeClosingCommands(nint owner, nint sourcePlayer, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void executeClosingCommands(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1, string arg2)
     {
@@ -74,6 +145,10 @@ public sealed unsafe partial class NpcComponent
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void executeCommandAction(nint owner, nint sourcePlayer, int actionIndex, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void executeCommandAction(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1, int arg2, string arg3)
     {
         var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
@@ -92,6 +167,10 @@ public sealed unsafe partial class NpcComponent
             NativeMethods.TablePtr->hs_method_7e3031ba((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, __hs_stringData3, (nuint)__hs_stringByteCount3);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void executeOpeningCommands(nint owner, nint sourcePlayer, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void executeOpeningCommands(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1, string arg2)
     {
@@ -128,7 +207,11 @@ public sealed unsafe partial class NpcComponent
         return __hs_result;
     }
 
-    public string getDefaultSceneId()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getDefaultSceneId_e235c8cb() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string getDefaultSceneId_5d65ac05()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_5d65ac05((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -139,11 +222,19 @@ public sealed unsafe partial class NpcComponent
         return NativeMethods.TablePtr->hs_method_46f7d010((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getInteractiveText(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public string getInteractiveText(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_32389d47((void*)_handle, (void*)arg0.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getName(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public string getName(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {
@@ -151,11 +242,19 @@ public sealed unsafe partial class NpcComponent
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getNameRawText(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public string getNameRawText(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_cf6366b5((void*)_handle, (void*)arg0.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getSceneStateForPlayer(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public string getSceneStateForPlayer(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0)
     {
@@ -208,13 +307,25 @@ public sealed unsafe partial class NpcComponent
         NativeMethods.TablePtr->hs_method_dcaa2c38((void*)_handle, (void*)arg0.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_eccbd01d(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_f4321d6c(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
     {
         NativeMethods.TablePtr->hs_method_5c1350f1((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setActions_aec16311(nint owner, nint newActions) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::variant<npc::CommandAction,npc::UrlAction>' is not supported.", false)]
-    public void setActions(nint arg0, nint arg1) =>
+    public void setActions_3fcc39ab(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::variant<npc::CommandAction,npc::UrlAction>' is not supported.");
 
     public void setDefaultSceneId(string arg0)
@@ -236,6 +347,14 @@ public sealed unsafe partial class NpcComponent
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setDefaultSceneId(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool setDialogueScene(nint owner, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public bool setDialogueScene(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, string arg1)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -254,6 +373,10 @@ public sealed unsafe partial class NpcComponent
             return NativeMethods.TablePtr->hs_method_f5eacbf4((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setInteractiveText(nint owner, nint text, bool setLocal) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setInteractiveText(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, string arg1, bool arg2)
     {
@@ -274,6 +397,10 @@ public sealed unsafe partial class NpcComponent
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setName(nint owner, nint name, bool setLocal) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void setName(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, string arg1, bool arg2)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -292,6 +419,10 @@ public sealed unsafe partial class NpcComponent
             NativeMethods.TablePtr->hs_method_8e3699ba((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void setSceneStateForPlayer(nint owner, nint playerID, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setSceneStateForPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg1, string arg2)
     {
@@ -325,10 +456,6 @@ public sealed unsafe partial class NpcComponent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_44458835() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static NpcComponent Create_e9df906d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public void Destroy_672c2361() =>

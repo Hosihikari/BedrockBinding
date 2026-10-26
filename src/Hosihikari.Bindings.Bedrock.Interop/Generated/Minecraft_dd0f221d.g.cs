@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Minecraft
+public sealed unsafe partial class Minecraft : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,21 @@ public sealed unsafe partial class Minecraft
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Minecraft Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7, nint arg8, nint arg9, nint arg10, nint arg11, nint arg12, nint arg13) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Minecraft Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Minecraft Create_32d2e06c(nint app, nint gameCallbacks, nint allowList, nint permissionsFile, nint filePathManager, nint maxPlayerIdleTime, nint eventing, nint network, nint packetSender, nint clientSubId, nint simTimer, nint realTimer, nint contentTierManager, nint serverMetrics) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public static Minecraft Create_cf0d4547(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7, nint arg8, nint arg9, nint arg10, nint arg11, nint arg12, nint arg13) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Minecraft Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public static void _tryCatchupMovementTicks(global::Hosihikari.Bindings.Bedrock.Interop.EntitySystems arg0, global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry arg1)
     {
@@ -74,6 +86,10 @@ public sealed unsafe partial class Minecraft
             NativeMethods.TablePtr->hs_method_1a79a4af((void*)_handle, (void*)arg0.Handle, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void disconnectClient(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void earlyShutdownMainthread()
     {
@@ -162,8 +178,12 @@ public sealed unsafe partial class Minecraft
         return NativeMethods.TablePtr->hs_method_053034c5((void*)_handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool hostMultiplayer_74c0aa40(nint serverName, nint arg1, nint localPlayer, nint localPlayerId, nint clientNetworkHandler, int maxChunkRadius, bool shouldAnnounce, bool requireTrustedAuthentication, nint extraTrustedKeys, nint serverType, nint connectionDefinition, nint packIdToContentKey, nint scheduler, nint textFilteringProcessor, nint arg14) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::pair<std::unique_ptr<Level,std::default_delete<Level>>,OwnerPtr<EntityContext>>' is not a known bindable declaration.", false)]
-    public bool hostMultiplayer(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, int arg5, bool arg6, bool arg7, nint arg8, nint arg9, nint arg10, nint arg11, nint arg12, nint arg13, nint arg14) =>
+    public bool hostMultiplayer_b8514879(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, int arg5, bool arg6, bool arg7, nint arg8, nint arg9, nint arg10, nint arg11, nint arg12, nint arg13, nint arg14) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::pair<std::unique_ptr<Level,std::default_delete<Level>>,OwnerPtr<EntityContext>>' is not a known bindable declaration.");
 
     public void init()
@@ -191,10 +211,18 @@ public sealed unsafe partial class Minecraft
         return NativeMethods.TablePtr->hs_method_c53033a3((void*)_handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void requestResourceReload()
     {
         NativeMethods.TablePtr->hs_method_31c4607a((void*)_handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void requestServerShutdown(nint message) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void requestServerShutdown(string arg0)
     {
@@ -235,11 +263,18 @@ public sealed unsafe partial class Minecraft
         return NativeMethods.TablePtr->hs_method_b27630a7((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_1bc9a0cc() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_7af33adc() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_dd0f221d((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

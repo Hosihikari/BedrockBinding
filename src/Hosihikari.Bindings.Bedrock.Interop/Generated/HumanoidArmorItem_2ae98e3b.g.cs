@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class HumanoidArmorItem
+public sealed unsafe partial class HumanoidArmorItem : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,13 +37,90 @@ public sealed unsafe partial class HumanoidArmorItem
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static global::Hosihikari.Bindings.Bedrock.Interop.HumanoidArmorItem_Nested.ArmorMaterial CHAIN
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.HumanoidArmorItem_Nested.ArmorMaterial((nint)NativeMethods.TablePtr->hs_get_d61d53dd(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.HumanoidArmorItem_Nested.ArmorMaterial DIAMOND
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.HumanoidArmorItem_Nested.ArmorMaterial((nint)NativeMethods.TablePtr->hs_get_8a2041b5(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.HumanoidArmorItem_Nested.ArmorMaterial ELYTRA
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.HumanoidArmorItem_Nested.ArmorMaterial((nint)NativeMethods.TablePtr->hs_get_aea7c191(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.HumanoidArmorItem_Nested.ArmorMaterial GOLD
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.HumanoidArmorItem_Nested.ArmorMaterial((nint)NativeMethods.TablePtr->hs_get_b01f5ee1(), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static HumanoidArmorItem Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static HumanoidArmorItem Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static HumanoidArmorItem Create(nint arg0, short arg1, nint arg2, int arg3, nint arg4, bool arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static HumanoidArmorItem Create(string arg0, short arg1, global::Hosihikari.Bindings.Bedrock.Interop.HumanoidArmorItem_Nested.ArmorMaterial arg2, int arg3, int arg4, bool arg5)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->hs_create_2acbf5d5(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, (void*)arg2.Handle, arg3, arg4, arg5);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new HumanoidArmorItem((nint)handle);
+        }
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.HumanoidArmorItem_Nested.ArmorMaterial IRON
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.HumanoidArmorItem_Nested.ArmorMaterial((nint)NativeMethods.TablePtr->hs_get_1212a63d(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.HumanoidArmorItem_Nested.ArmorMaterial LEATHER
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.HumanoidArmorItem_Nested.ArmorMaterial((nint)NativeMethods.TablePtr->hs_get_949a15ed(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.HumanoidArmorItem_Nested.ArmorMaterial NETHERITE
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.HumanoidArmorItem_Nested.ArmorMaterial((nint)NativeMethods.TablePtr->hs_get_254a4c11(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.HumanoidArmorItem_Nested.ArmorMaterial TURTLE
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.HumanoidArmorItem_Nested.ArmorMaterial((nint)NativeMethods.TablePtr->hs_get_d2780ccc(), false);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void appendFormattedHovertext(nint arg0, nint arg1, nint arg2, bool arg3) =>
+    public void appendFormattedHovertext_c699c9eb(nint arg0, nint arg1, nint arg2, bool arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void appendFormattedHovertext_63d59a62(nint arg0, nint arg1, nint arg2, bool arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int buildIdAux(short arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg1)
     {
@@ -144,6 +221,16 @@ public sealed unsafe partial class HumanoidArmorItem
         return NativeMethods.TablePtr->hs_method_025415a2((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mHealthPerSlot_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_c59f3552();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void setColor(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, global::Hosihikari.Bindings.Bedrock.Interop.mce.Color arg1)
     {
         NativeMethods.TablePtr->hs_method_4104b979((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
@@ -152,5 +239,19 @@ public sealed unsafe partial class HumanoidArmorItem
     public global::Hosihikari.Bindings.Bedrock.Interop.ItemStack use(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->hs_method_89cca486((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_2ae98e3b((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

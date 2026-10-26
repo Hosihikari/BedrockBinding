@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ResourcePackManager
+public sealed unsafe partial class ResourcePackManager : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,13 +37,30 @@ public sealed unsafe partial class ResourcePackManager
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ResourcePackManager Create(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ResourcePackManager Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ResourcePackStackType' is not a known bindable declaration.", false)]
-    public void clearStack(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ResourcePackStackType' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ResourcePackManager Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is not supported.", false)]
+    public static ResourcePackManager Create_29c296ed(nint arg0, nint arg1, bool arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ResourcePackManager Create_2362fc17(nint getPath, nint contentTierManager, bool needsToInitialize) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _getResourcesOfGroup_8571dc1f(nint packInstance, nint group, nint resources) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void clearStack(int arg0, bool arg1)
+    {
+        NativeMethods.TablePtr->hs_method_73f3f357((void*)_handle, arg0, arg1);
+    }
 
     public int composeFullStack(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackStack arg0, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackStack arg1, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackStack arg2, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackStack arg3)
     {
@@ -60,8 +77,12 @@ public sealed unsafe partial class ResourcePackManager
         return (nint)NativeMethods.TablePtr->hs_method_05423af5((void*)_handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getPackStackIndexOfResource_252da29d(nint resourceLocation, nint extensionList) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::pair<int,std::basic_string<char,std::char_traits<char>,std::allocator<char>> const&>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getPackStackIndexOfResource(nint arg0, nint arg1) =>
+    public nint getPackStackIndexOfResource_08377113(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::pair<int,std::basic_string<char,std::char_traits<char>,std::allocator<char>> const&>' requires --link-carrier or --virtual-dispatch.");
 
     public string getPath(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0)
@@ -97,6 +118,14 @@ public sealed unsafe partial class ResourcePackManager
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getPath(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getPath(nint resourceLocation, nint extensionList) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public string getPathContainingResource(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_516e064a((void*)_handle, (void*)arg0.Handle);
@@ -104,20 +133,37 @@ public sealed unsafe partial class ResourcePackManager
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
-    public nint getPathContainingResource(nint arg0, nint arg1) =>
+    public nint getPathContainingResource_c6d83805(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getPathContainingResource(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getPathContainingResource_3ccb62c3(nint resourceLocation, nint extensionList) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is not supported.", false)]
-    public nint getResourcesOfGroup(nint arg0, nint arg1) =>
+    public nint getResourcesOfGroup_754e5e95(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is not supported.", false)]
-    public nint getResourcesOfGroup(nint arg0) =>
+    public nint getResourcesOfGroup_43526bb2(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ResourcePackStackType' is not a known bindable declaration.", false)]
-    public nint getStack(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ResourcePackStackType' is not a known bindable declaration.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getResourcesOfGroup_8c6d71e8(nint packInstance, nint group) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getResourcesOfGroup_3dc0fa52(nint group) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackStack getStack(int arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackStack((nint)NativeMethods.TablePtr->hs_method_8e3464f0((void*)_handle, arg0), false);
+    }
 
     public void handlePendingStackChanges()
     {
@@ -142,6 +188,10 @@ public sealed unsafe partial class ResourcePackManager
             return NativeMethods.TablePtr->hs_method_f48614b1((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool hasCapability(nint requiredCapability) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool hasResource(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0)
     {
@@ -179,6 +229,10 @@ public sealed unsafe partial class ResourcePackManager
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool isInStreamableLocation(nint resourceLocation, nint extensionList) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public bool isOnlyBaseGamePacks()
     {
         return NativeMethods.TablePtr->hs_method_6437eba2((void*)_handle) != 0;
@@ -189,7 +243,7 @@ public sealed unsafe partial class ResourcePackManager
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public bool load(nint arg0, nint arg1) =>
+    public bool load_145cc851(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
@@ -200,9 +254,25 @@ public sealed unsafe partial class ResourcePackManager
     public bool load_437afd26(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool load_bc9ee04d(nint resourceLocation, nint resourceStream) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool load_d80229f7(nint resourceLocation, nint resourceStream, nint extensionList) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool load_37183de1(nint resourceLocationPair, nint resourceStream, nint extensionList) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'LoadedResourceData' is not supported.", false)]
     public nint loadAllVersionsOf(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'LoadedResourceData' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void registerResourcePackListener(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackListener arg0)
     {
@@ -217,20 +287,27 @@ public sealed unsafe partial class ResourcePackManager
     public void setPackSourceReport(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ResourcePackStackType' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public bool setStack(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ResourcePackStackType' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public void unRegisterResourcePackListener(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackListener arg0)
     {
         NativeMethods.TablePtr->hs_method_771817f7((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_50f7b6c9() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_05a27c5e() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_f9d036e9((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

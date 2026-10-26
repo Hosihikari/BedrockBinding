@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class OverworldBiomeBuilder
+public sealed unsafe partial class OverworldBiomeBuilder
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,13 +37,109 @@ public sealed partial class OverworldBiomeBuilder
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint EROSIONS_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e5e259c0();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint FULL_RANGE_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_70c62cdf();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint HUMIDITIES_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_4150e47c();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static OverworldBiomeBuilder Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static OverworldBiomeBuilder Create(nint arg0) =>
+    public static OverworldBiomeBuilder Create_ed1e9b7c(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static OverworldBiomeBuilder Create_fa8b2e01(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint TEMPERATURES_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_445c4544();
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'BiomeNoiseTarget' is not supported.", false)]
     public void addBiomes(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'BiomeNoiseTarget' is not supported.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint coastContinentalness_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_d26e52b1();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint deepOceanContinentalness_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_bf7d75e4();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint dripstoneCavesContinentalness_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_7e7c7e1f();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint farInlandContinentalness_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_9dc87bc8();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint inlandContinentalness_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b4cdf88d();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint lushCavesHumidity_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_def1502c();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint midInlandContinentalness_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_35bd9e23();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mushroomFieldsContinentalness_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_665ba57b();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint nearInlandContinentalness_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_4c6ee20b();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint oceanContinentalness_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_ee041757();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>

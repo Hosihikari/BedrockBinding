@@ -56,9 +56,9 @@ public sealed unsafe partial class CanyonFeature : global::System.IDisposable
         return new CanyonFeature((nint)handle);
     }
 
-    public void apply(global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.BiomeSource arg2, nint arg3, global::Hosihikari.Bindings.Bedrock.Interop.Random arg4, uint arg5, nint arg6)
+    public void apply(global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.BiomeSource arg2, nint arg3, global::Hosihikari.Bindings.Bedrock.Interop.Random arg4, uint arg5, global::Hosihikari.Bindings.Bedrock.Interop.WorldGenContext arg6)
     {
-        NativeMethods.TablePtr->hs_method_5e852802((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3, (void*)arg4.Handle, arg5, (void*)arg6);
+        NativeMethods.TablePtr->hs_method_5e852802((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3, (void*)arg4.Handle, arg5, (void*)arg6.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

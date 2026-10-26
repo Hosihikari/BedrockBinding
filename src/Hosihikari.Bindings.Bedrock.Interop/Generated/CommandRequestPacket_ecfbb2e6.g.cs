@@ -48,9 +48,9 @@ public sealed unsafe partial class CommandRequestPacket : global::System.IDispos
         return new CommandRequestPacket((nint)handle);
     }
 
-    public static CommandRequestPacket Create(nint arg0, bool arg1)
+    public static CommandRequestPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandContext arg0, bool arg1)
     {
-        var handle = NativeMethods.TablePtr->hs_create_9e5fa82a((void*)arg0, arg1);
+        var handle = NativeMethods.TablePtr->hs_create_9e5fa82a((void*)arg0.Handle, arg1);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

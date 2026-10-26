@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RakNetConnector
+public sealed unsafe partial class RakNetConnector : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,28 @@ public sealed unsafe partial class RakNetConnector
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RakNetConnector Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static RakNetConnector Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static RakNetConnector Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNetConnector_Nested.ConnectionCallbacks arg0, global::Hosihikari.Bindings.Bedrock.Interop.RakPeerHelper_Nested.IPSupportInterface arg1, nint arg2, nint arg3)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_110702b0((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RakNetConnector((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static RakNetConnector Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _changeNatState_4e46a800(nint newState, int port, nint statusDescription) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void addConnectionStateListener(global::Hosihikari.Bindings.Bedrock.Interop.Connector_Nested.ConnectionStateListener? arg0)
     {
@@ -76,13 +95,17 @@ public sealed unsafe partial class RakNetConnector
         return NativeMethods.TablePtr->hs_method_975c10ee((void*)_handle);
     }
 
-    public string getLocalIp()
+    public string getLocalIp_714fb3e1()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_714fb3e1((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string[] getLocalIps()
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getLocalIp_6a16074a() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string[] getLocalIps_62ea1fe0()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_62ea1fe0((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
@@ -93,6 +116,10 @@ public sealed unsafe partial class RakNetConnector
         }
         return __hs_result;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getLocalIps_523dc206() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Connector_Nested.NatPunchInfo getNatPunchInfo()
     {
@@ -158,6 +185,10 @@ public sealed unsafe partial class RakNetConnector
         return NativeMethods.TablePtr->hs_method_aeac81a6((void*)_handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void removeConnectionStateListener(global::Hosihikari.Bindings.Bedrock.Interop.Connector_Nested.ConnectionStateListener? arg0)
     {
         NativeMethods.TablePtr->hs_method_972d3614((void*)_handle, (void*)(arg0?.Handle ?? 0));
@@ -177,6 +208,10 @@ public sealed unsafe partial class RakNetConnector
     {
         NativeMethods.TablePtr->hs_method_547448ca((void*)_handle, arg0);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void startNatPunchingClient(nint address, ushort port) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void startNatPunchingClient(string arg0, ushort arg1)
     {
@@ -202,11 +237,18 @@ public sealed unsafe partial class RakNetConnector
         NativeMethods.TablePtr->hs_method_ef40a776((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_fd921a98() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_e37290cf() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_bd68ef5d((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

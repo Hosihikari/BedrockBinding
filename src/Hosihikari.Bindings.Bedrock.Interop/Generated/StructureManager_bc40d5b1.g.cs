@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class StructureManager
+public sealed unsafe partial class StructureManager : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,14 +37,71 @@ public sealed unsafe partial class StructureManager
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static sbyte BEHAVIOR_PACK_STRUCTURES_FOLDER
+    {
+        get => NativeMethods.TablePtr->hs_get_e251b809();
+    }
+
+    public static sbyte LEVEL_STORAGE_STRUCTURE_TEMPLATE_PREFIX
+    {
+        get => NativeMethods.TablePtr->hs_get_6a9822c0();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static StructureManager Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static StructureManager Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_33e4bfd8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureManager((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static StructureManager Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _createAndLoadStructure_5ae15709(nint structureName, nint packManager, nint levelStorage) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _createLevelStorageId_0a59f01d(nint dimensionPrefix, nint saveId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool _findResource_0c01a6b7(nint structurePath, nint pack, nint resourceStream) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool _findResource_6a4e937e(nint arg0, nint structurePath, nint arg2, nint pack, nint resourceStream) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _readLegacyStructure_c2122aac(nint name) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _removePlacementQueueItem_8b2264e2(nint dimensionPrefix, nint structureAnimationData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void _savePlacementQueueItem_6d630c22(nint dimensionPrefix, nint structureAnimationData) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void clearAndShutdownStructurePlacement()
     {
         NativeMethods.TablePtr->hs_method_509673e6((void*)_handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint cloneStructure(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate cloneStructure(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate arg0, string arg1)
     {
@@ -65,17 +122,48 @@ public sealed unsafe partial class StructureManager
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'StructureTemplateDataResponsePacket' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint createStructureDataExportPacket(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'StructureTemplateDataResponsePacket' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint createStructureDataExportPacket_560f3779(nint structureName, nint packManager, nint levelStorage, nint responseType) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'StructureTemplateDataResponsePacket' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint createStructureDataImportPacket(nint arg0, nint arg1) =>
+    public nint createStructureDataExportPacket_583094b3(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'StructureTemplateDataResponsePacket' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'StructureDeleteResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint deleteStructure(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'StructureDeleteResult' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint createStructureDataImportPacket_733f928b(nint structureName, nint responseType) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'StructureTemplateDataResponsePacket' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint createStructureDataImportPacket_25d3f2fb(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'StructureTemplateDataResponsePacket' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint deleteStructure(nint structureName, nint levelStorage) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public int deleteStructure(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg1)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->hs_method_c704381f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getOrCreate(nint structureName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate getOrCreate(string arg0)
     {
@@ -96,6 +184,10 @@ public sealed unsafe partial class StructureManager
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getOrCreateLegacy(nint structureName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureTemplate getOrCreateLegacy(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -114,6 +206,10 @@ public sealed unsafe partial class StructureManager
             return new global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureTemplate((nint)NativeMethods.TablePtr->hs_method_eacb5fec((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getOrLoadStructure(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate? getOrLoadStructure(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager? arg1, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage? arg2)
     {
@@ -134,6 +230,10 @@ public sealed unsafe partial class StructureManager
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate((nint)__hs_handle, false) : null;
         }
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getStructure(nint structureName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate? getStructure(string arg0)
     {
@@ -167,12 +267,24 @@ public sealed unsafe partial class StructureManager
         return __hs_result;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getStructureNames(nint arg0, bool arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint getStructurePath_facc73d5(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint getStructurePath_6d24c384(nint arg0, nint structureName) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<Core::StackString<char,1024>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getStructurePath(nint arg0) =>
+    public static nint getStructurePath_fef4aa5c(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<Core::StackString<char,1024>>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<Core::StackString<char,1024>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getStructurePath(nint arg0, nint arg1) =>
+    public static nint getStructurePath_3e80011a(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::PathBuffer<Core::StackString<char,1024>>' requires --link-carrier or --virtual-dispatch.");
 
     public void importStructureFromTemplate(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate arg1)
@@ -194,6 +306,10 @@ public sealed unsafe partial class StructureManager
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void importStructureFromTemplate(nint name, nint temp) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public bool load(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate arg0, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager? arg1, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage? arg2)
     {
         return NativeMethods.TablePtr->hs_method_96510ba8((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), (void*)(arg2?.Handle ?? 0)) != 0;
@@ -203,6 +319,10 @@ public sealed unsafe partial class StructureManager
     {
         NativeMethods.TablePtr->hs_method_61222d70((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void loadPlacementQueueItem(nint key, nint tag, nint level, nint dimension) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void loadPlacementQueueItem(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.Level arg2, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg3)
     {
@@ -223,6 +343,52 @@ public sealed unsafe partial class StructureManager
         }
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLegacyStructureRepository_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_10094122((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPackManager_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_923db166((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRepositoryMutex_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_ea639b17((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStructurePlacementQueue_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_ef0307ac((void*)_handle);
+    }
+
+    public uint mStructurePlacementSaveCounter
+    {
+        get => NativeMethods.TablePtr->hs_get_b53f62ff((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_b53f62ff((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStructureRepository_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_dea6fc0f((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnknownBlockRegistry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_4e77ae3a((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void queueLoad(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
@@ -242,9 +408,9 @@ public sealed unsafe partial class StructureManager
         NativeMethods.TablePtr->hs_method_da31d5bb((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<IUnknownBlockTypeRegistry>' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
     public void setUnknownBlockRegistry(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<IUnknownBlockTypeRegistry>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0)
     {
@@ -255,7 +421,17 @@ public sealed unsafe partial class StructureManager
     public nint tryPlaceStructureInWorld(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'CommandArea' has no generated wrapper.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_bc40d5b1((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

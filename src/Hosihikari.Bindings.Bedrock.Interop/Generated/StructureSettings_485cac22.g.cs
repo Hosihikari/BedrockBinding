@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class StructureSettings
+public sealed unsafe partial class StructureSettings : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,13 +37,38 @@ public sealed unsafe partial class StructureSettings
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static StructureSettings Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BlockPos DEFAULT_STRUCTURE_OFFSET
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_get_99b87550(), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BlockPos DEFAULT_STRUCTURE_SIZE
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_get_50ea2006(), false);
+    }
+
+    public static StructureSettings Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_1f4bc60e();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureSettings((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public static StructureSettings Create_2a7f0730(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static StructureSettings Create(nint size, bool ignoreBlocks, bool ignoreEntities) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static StructureSettings Create_affa798b(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public sbyte getAnimationMode()
     {
@@ -114,6 +139,116 @@ public sealed unsafe partial class StructureSettings
     {
         return NativeMethods.TablePtr->hs_method_277237dc((void*)_handle) != 0;
     }
+
+    public bool mAllowNonTickingPlayerAndTickingAreaChunks
+    {
+        get => NativeMethods.TablePtr->hs_get_9b23b9b7((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_9b23b9b7((void*)_handle, value);
+    }
+
+    public sbyte mAnimationMode
+    {
+        get => NativeMethods.TablePtr->hs_get_fc6b142a((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_fc6b142a((void*)_handle, value);
+    }
+
+    public float mAnimationSeconds
+    {
+        get => NativeMethods.TablePtr->hs_get_b7565517((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_b7565517((void*)_handle, value);
+    }
+
+    public bool mIgnoreBlocks
+    {
+        get => NativeMethods.TablePtr->hs_get_adde33c1((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_adde33c1((void*)_handle, value);
+    }
+
+    public bool mIgnoreEntities
+    {
+        get => NativeMethods.TablePtr->hs_get_22ef2efb((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_22ef2efb((void*)_handle, value);
+    }
+
+    public bool mIgnoreJigsawBlocks
+    {
+        get => NativeMethods.TablePtr->hs_get_28903746((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_28903746((void*)_handle, value);
+    }
+
+    public uint mIntegritySeed
+    {
+        get => NativeMethods.TablePtr->hs_get_9e53ce21((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_9e53ce21((void*)_handle, value);
+    }
+
+    public float mIntegrityValue
+    {
+        get => NativeMethods.TablePtr->hs_get_2035ed7b((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_2035ed7b((void*)_handle, value);
+    }
+
+    public bool mIsWaterLogged
+    {
+        get => NativeMethods.TablePtr->hs_get_fc12980b((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_fc12980b((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLastTouchedByPlayer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_68e07b07((void*)_handle);
+    }
+
+    public byte mMirror
+    {
+        get => NativeMethods.TablePtr->hs_get_8b35b6fa((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_8b35b6fa((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPaletteName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_a6214c78((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPivot_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_a6c1b2fa((void*)_handle);
+    }
+
+    public bool mReloadActorEquipment
+    {
+        get => NativeMethods.TablePtr->hs_get_f8b5649a((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_f8b5649a((void*)_handle, value);
+    }
+
+    public byte mRotation
+    {
+        get => NativeMethods.TablePtr->hs_get_3ec2ffe7((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_3ec2ffe7((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStructureOffset_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_dd3bdc28((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStructureSize_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_bdea526d((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_04858ed9(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_382830d0(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setAllowNonTickingPlayerAndTickingAreaChunks(bool arg0)
     {
@@ -205,15 +340,18 @@ public sealed unsafe partial class StructureSettings
         return NativeMethods.TablePtr->hs_method_17a4a5c3((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_635423db() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static StructureSettings Create_7999185c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_88fcb38e() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_485cac22((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

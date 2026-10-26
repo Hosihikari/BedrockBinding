@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ArmorStand
+public sealed unsafe partial class ArmorStand : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -43,9 +43,108 @@ public sealed unsafe partial class ArmorStand
         get => (nint)NativeMethods.TablePtr->hs_get_01a37f1b((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ArmorStand Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ArmorStand Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static ArmorStand Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup? arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg1, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_96ac82b5((void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, (void*)arg2.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ArmorStand((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ArmorStand Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint POSE_ATHENA_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_8214544c();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint POSE_BRANDISH_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_a39781f4();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint POSE_CANCAN_A_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_308c9d6a();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint POSE_CANCAN_B_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b38e528c();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint POSE_DEFAULT_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_5d79cf33();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint POSE_ENTERTAIN_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_809c8acd();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint POSE_HERO_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_766466c5();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint POSE_HONOR_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_96952241();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint POSE_RIPOSTE_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_8b3a73fc();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint POSE_SALUTE_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_248c13d3();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint POSE_SOLEMN_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_cdf60082();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint POSE_ZERO_ROTATION_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_6fe0de57();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint POSE_ZOMBIE_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b63770ed();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint STAND_POSES_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_6ba81719();
+    }
 
     public bool _hurt(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg0, float arg1, bool arg2, bool arg3)
     {
@@ -87,6 +186,10 @@ public sealed unsafe partial class ArmorStand
         NativeMethods.TablePtr->hs_method_cc6bd14a((void*)_handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void pushActors()
     {
         NativeMethods.TablePtr->hs_method_1d19c2b1((void*)_handle);
@@ -105,5 +208,19 @@ public sealed unsafe partial class ArmorStand
     public void updateEntitySpecificMolangVariables(nint arg0)
     {
         NativeMethods.TablePtr->hs_method_a1234205((void*)_handle, (void*)arg0);
+    }
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_12387679((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

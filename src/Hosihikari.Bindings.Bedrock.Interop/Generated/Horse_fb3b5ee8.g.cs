@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Horse
+public sealed unsafe partial class Horse : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,24 @@ public sealed unsafe partial class Horse
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Horse Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Horse Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static Horse Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup? arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg1, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_9227977d((void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, (void*)arg2.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Horse((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Horse Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public bool canFreeze()
     {
@@ -131,6 +146,10 @@ public sealed unsafe partial class Horse
         NativeMethods.TablePtr->hs_method_b7b46fc1((void*)_handle, (void*)arg0.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void postAiStep()
     {
         NativeMethods.TablePtr->hs_method_b47d767b((void*)_handle);
@@ -146,9 +165,10 @@ public sealed unsafe partial class Horse
         NativeMethods.TablePtr->hs_method_e03a8714((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'HorseFlags' is not a known bindable declaration.", false)]
-    public static void setHorseFlag(nint arg0, nint arg1, nint arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'HorseFlags' is not a known bindable declaration.");
+    public static void setHorseFlag(nint arg0, nint arg1, int arg2, bool arg3)
+    {
+        NativeMethods.TablePtr->hs_method_5b3701ab((void*)arg0, (void*)arg1, arg2, arg3);
+    }
 
     public void setStanding(bool arg0)
     {
@@ -168,5 +188,19 @@ public sealed unsafe partial class Horse
     public void updateEntitySpecificMolangVariables(nint arg0)
     {
         NativeMethods.TablePtr->hs_method_e3dd3e0e((void*)_handle, (void*)arg0);
+    }
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_fb3b5ee8((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

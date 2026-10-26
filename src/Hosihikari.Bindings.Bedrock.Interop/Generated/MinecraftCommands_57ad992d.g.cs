@@ -37,17 +37,29 @@ public sealed unsafe partial class MinecraftCommands
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MinecraftCommands Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MinecraftCommands Create(nint arg0) =>
+    public static MinecraftCommands Create_f5d8e6b0(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MinecraftCommands Create_70d513ad(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint compileCommand_76ce57bf(nint commandStr, nint origin, nint commandVersion, nint onParserError) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public nint compileCommand(nint arg0, nint arg1, nint arg2, nint arg3) =>
+    public nint compileCommand_0e0ad2e5(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'CommandContext' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void enqueueDeferredCommand(nint arg0, bool arg1, bool arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'CommandContext' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Command*>' is not a known bindable declaration.", false)]
     public void enqueueDeferredCompiledCommand(nint arg0, nint arg1) =>
@@ -57,9 +69,10 @@ public sealed unsafe partial class MinecraftCommands
     public bool enqueueDeferredScriptCommand(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'DeferredScriptCommand' has no generated wrapper.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'MCRESULT' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint executeCommand(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'MCRESULT' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.MCRESULT executeCommand(global::Hosihikari.Bindings.Bedrock.Interop.CommandContext arg0, bool arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MCRESULT((nint)NativeMethods.TablePtr->hs_method_ea3ac6f1((void*)_handle, (void*)arg0.Handle, arg1));
+    }
 
     public static int getOutputType(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg0)
     {
@@ -118,14 +131,19 @@ public sealed unsafe partial class MinecraftCommands
         NativeMethods.TablePtr->hs_method_269163f2((void*)arg0.Handle, (void*)arg1.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public static void registerSharedClientServerEnums(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0)
     {
         NativeMethods.TablePtr->hs_method_3f5bb936((void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'MCRESULT' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint requestCommandExecution(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'MCRESULT' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.MCRESULT requestCommandExecution(global::Hosihikari.Bindings.Bedrock.Interop.CommandContext arg0, bool arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MCRESULT((nint)NativeMethods.TablePtr->hs_method_72b97095((void*)_handle, (void*)arg0.Handle, arg1));
+    }
 
     public void runCommand(global::Hosihikari.Bindings.Bedrock.Interop.Command arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg1)
     {
@@ -145,4 +163,8 @@ public sealed unsafe partial class MinecraftCommands
     {
         NativeMethods.TablePtr->hs_method_228f3057((void*)_handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

@@ -37,9 +37,17 @@ public sealed unsafe partial class SubChunkRelighter
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static SubChunkRelighter Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static SubChunkRelighter Create(nint arg0, ulong arg1, nint arg2, bool arg3, bool arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static SubChunkRelighter Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void _checkEdgeForSubtractiveBlockLightProcessing(global::Hosihikari.Bindings.Bedrock.Interop.SubChunkLightIndex arg0)
     {
@@ -130,9 +138,47 @@ public sealed unsafe partial class SubChunkRelighter
         NativeMethods.TablePtr->hs_method_48c499cc();
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mAllSubChunkBorderBitsExceptTheOuterEdgeOfComputationBits_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_cdf2c3e1();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mOuterEdgeOfComputationBits_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e90e1bf1();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'SubChunkLightUpdate' is not supported.", false)]
     public void relightSubChunk(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'SubChunkLightUpdate' is not supported.");
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.SpinLock sDarkSpinLock
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.SpinLock((nint)NativeMethods.TablePtr->hs_get_de20244e(), false);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint sFullyDarkSubChunk_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_fd9de098();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint sFullyLitSubChunk_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_1b779ead();
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.SpinLock sLitSpinLock
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.SpinLock((nint)NativeMethods.TablePtr->hs_get_c259888c(), false);
+    }
 
     public void setBlockLight(global::Hosihikari.Bindings.Bedrock.Interop.Pos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Brightness arg1, global::Hosihikari.Bindings.Bedrock.Interop.Brightness arg2, global::Hosihikari.Bindings.Bedrock.Interop.Brightness arg3, global::Hosihikari.Bindings.Bedrock.Interop.Brightness arg4)
     {

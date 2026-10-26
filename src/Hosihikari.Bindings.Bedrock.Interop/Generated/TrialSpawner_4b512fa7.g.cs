@@ -37,9 +37,40 @@ public sealed unsafe partial class TrialSpawner
         return __hs_handle;
     }
 
+    public static int DELAY_BETWEEN_ITEM_DISPENSING
+    {
+        get => NativeMethods.TablePtr->hs_get_4909f642();
+    }
+
+    public static int SPAWN_ITEM_DELAY_MAX
+    {
+        get => NativeMethods.TablePtr->hs_get_bddf423a();
+    }
+
+    public static int SPAWN_ITEM_DELAY_MIN
+    {
+        get => NativeMethods.TablePtr->hs_get_e37d942f();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static TrialSpawner Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static TrialSpawner Create(nint arg0) =>
+    public static TrialSpawner Create_dfce7c9d(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static TrialSpawner Create_d59ec472(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint _doPlayerScan_94d08997(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint _getRandomLootTableItems_e03942a1(nint arg0, nint arg1, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void applyUpdatePacket(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1)
     {
@@ -62,10 +93,18 @@ public sealed unsafe partial class TrialSpawner
         return (nint)NativeMethods.TablePtr->hs_method_0cee4ec9((void*)_handle, (void*)arg0.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getSpawningLogicState_6011f4da(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void load(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {
         NativeMethods.TablePtr->hs_method_063741c2((void*)_handle, (void*)arg0.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void removeDisplayEntity()
     {

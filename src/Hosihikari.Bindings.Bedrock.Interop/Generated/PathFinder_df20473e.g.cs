@@ -37,18 +37,33 @@ public sealed unsafe partial class PathFinder
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint DEFAULT_DESC_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_cd9a3110();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static PathFinder Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static PathFinder Create(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static PathFinder Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.BlockPos _getStartPositionFlyingActor(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, bool arg2, bool arg3, float arg4)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_61f0fdb2((void*)arg0, (void*)arg1.Handle, arg2, arg3, arg4));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorPathingData' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint extractPathingData(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorPathingData' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ActorPathingData extractPathingData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorPathingData((nint)NativeMethods.TablePtr->hs_method_7a97d2f0((void*)arg0.Handle, arg1));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Path? findPath(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, float arg2)
     {
@@ -62,13 +77,19 @@ public sealed unsafe partial class PathFinder
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Path((nint)__hs_handle) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'CanClimbIntoNode' is not a known bindable declaration.", false)]
-    public nint isFree_44053f8c(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'CanClimbIntoNode' is not a known bindable declaration.");
+    public int isFree(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3, int arg4, int arg5)
+    {
+        return NativeMethods.TablePtr->hs_method_44053f8c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, arg4, arg5);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'CanClimbIntoNode' is not a known bindable declaration.", false)]
-    public nint isFree_aef0e684(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'CanClimbIntoNode' is not a known bindable declaration.");
+    public int isFree(global::Hosihikari.Bindings.Bedrock.Interop.ActorPathingData arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3, int arg4, int arg5)
+    {
+        return NativeMethods.TablePtr->hs_method_aef0e684((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, arg4, arg5);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
