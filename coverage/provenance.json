@@ -1,8 +1,8 @@
 {
     "generator":  "Hosihikari.Bindings.Generator 0.3.0 (IR 1.5.1)",
     "irVersion":  "1.5.1",
-    "irManifestSha256":  "sha256:98f6f130fe500407d051caa712749dd06ae51994883ea9c03b2702873cc149a7",
-    "coverageManifestSha256":  "sha256:364dd590ba3ae488cf50f266369d0c08a019c427b8efbf5386abf07082aeb183",
+    "irManifestSha256":  "sha256:975bf9dc554d1439c97c77d79fec139f0bae9fbb2601048bb39fcb23eb742464",
+    "coverageManifestSha256":  "sha256:7832d9180044938a5017f8a688137bb0b29daa1189f0a574cc3815a88cd8d239",
     "carrier":  "BDS 1.21.3.01",
     "carrierPdbSha256":  "sha256:2a41b42f252915a48e3e227e030948ef9f6d12c78fe593f55c0455bf6948aca4",
     "carrierExeSha256":  "sha256:ccfe036a98d0ec31ede995605c8c5c0df213ff1339c1520dce54b84d719e91d2",
