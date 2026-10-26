@@ -52,12 +52,19 @@ public sealed unsafe partial class ChunkSource : global::System.IDisposable
         return new ChunkSource((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ChunkSource Create_3e40b544(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static ChunkSource Create(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_3e40b544((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChunkSource((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static ChunkSource Create_9452d5ac(nint arg0) =>
+    public static ChunkSource Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<LevelChunk,LevelChunkFinalDeleter>' is not a known bindable declaration.", false)]
@@ -344,10 +351,6 @@ public sealed unsafe partial class ChunkSource : global::System.IDisposable
     public void writeEntityChunkTransfersToUnloadedChunk(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'ActorUnloadedChunkTransferEntry' is not supported.");
 
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ChunkSource Create_6b7b7702(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
 
     public void Dispose()

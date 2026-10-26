@@ -53,9 +53,9 @@ public sealed unsafe partial class LevelData
     public static LevelData Create(bool arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static LevelData Create_dcbdd0d1(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static LevelData Create_1dd3daa4(nint settings, nint levelName, nint generatorVersion, nint defaultSpawn, bool achievementsDisabled, nint eduOffer, float rainLevel, float lightningLevel) =>
@@ -859,10 +859,6 @@ public sealed unsafe partial class LevelData
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_184a28a3() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static LevelData Create_7f4c1cf1(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public void Destroy_b0411e5d() =>

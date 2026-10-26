@@ -106,7 +106,6 @@ public sealed unsafe partial class ScriptBlockCustomComponentsRegistry : global:
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void>' requires --link-carrier or --virtual-dispatch.");
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

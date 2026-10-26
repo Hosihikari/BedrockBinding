@@ -48,9 +48,16 @@ public sealed unsafe partial class CompoundBlockVolume : global::System.IDisposa
         return new CompoundBlockVolume((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CompoundBlockVolume Create_291cf8ed(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static CompoundBlockVolume Create(global::Hosihikari.Bindings.Bedrock.Interop.CompoundBlockVolume arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_291cf8ed((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CompoundBlockVolume((nint)handle);
+    }
 
     public static void bindType(nint arg0)
     {
@@ -144,11 +151,6 @@ public sealed unsafe partial class CompoundBlockVolume : global::System.IDisposa
     {
         return NativeMethods.TablePtr->hs_method_43cdd892((void*)_handle);
     }
-
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static CompoundBlockVolume Create_daf0b28e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
 
     public void Dispose()

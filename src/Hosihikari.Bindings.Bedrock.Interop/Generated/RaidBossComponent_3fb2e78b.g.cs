@@ -168,10 +168,6 @@ public sealed unsafe partial class RaidBossComponent
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static RaidBossComponent Create_587a1dd2(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public void Destroy_c612e786() =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

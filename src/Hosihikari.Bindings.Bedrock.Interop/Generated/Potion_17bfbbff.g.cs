@@ -191,9 +191,9 @@ public sealed unsafe partial class Potion
     public static Potion Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Potion Create_c3755163(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static Potion Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static Potion Create_28fc7387(nint nameId, nint descriptionID, nint mobEffect, nint var) =>
@@ -546,10 +546,6 @@ public sealed unsafe partial class Potion
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_a7637345() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static Potion Create_030a1d74(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public void Destroy_a54c1aa7() =>

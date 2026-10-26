@@ -106,8 +106,4 @@ public sealed unsafe partial class FlockingComponent
     {
         return NativeMethods.TablePtr->hs_method_c886e1a6((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static FlockingComponent Create_f1f7cce4(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

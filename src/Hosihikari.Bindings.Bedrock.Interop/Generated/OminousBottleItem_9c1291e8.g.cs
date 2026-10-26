@@ -153,7 +153,6 @@ public sealed unsafe partial class OminousBottleItem : global::System.IDisposabl
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

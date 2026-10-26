@@ -47,9 +47,16 @@ public sealed unsafe partial class BannerPattern : global::System.IDisposable
     public static BannerPattern Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BannerPattern Create_49511c8f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static BannerPattern Create(global::Hosihikari.Bindings.Bedrock.Interop.BannerPattern arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_49511c8f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BannerPattern((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
     public static nint CREEPER_NAME_ID
@@ -219,10 +226,6 @@ public sealed unsafe partial class BannerPattern : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle, false) : null;
     }
 
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static BannerPattern Create_43819dbc(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
 
     public void Dispose()

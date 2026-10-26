@@ -48,9 +48,16 @@ public sealed unsafe partial class LoginPacket : global::System.IDisposable
         return new LoginPacket((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LoginPacket Create_a1d115da(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static LoginPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.LoginPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_a1d115da((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LoginPacket((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint _read_43174e42(nint stream) =>
@@ -101,11 +108,6 @@ public sealed unsafe partial class LoginPacket : global::System.IDisposable
     {
         NativeMethods.TablePtr->hs_method_82408187((void*)_handle, (void*)arg0.Handle);
     }
-
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static LoginPacket Create_a858936c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
 
     public byte mClientSubId

@@ -79,9 +79,16 @@ public sealed unsafe partial class NetworkItemInstanceDescriptor : global::Syste
     public static NetworkItemInstanceDescriptor Create_33936429(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static NetworkItemInstanceDescriptor Create_6b8668c1(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static NetworkItemInstanceDescriptor Create(global::Hosihikari.Bindings.Bedrock.Interop.NetworkItemInstanceDescriptor arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_6b8668c1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NetworkItemInstanceDescriptor((nint)handle);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance getItemInstance(global::Hosihikari.Bindings.Bedrock.Interop.BlockPalette arg0)
     {
@@ -105,10 +112,6 @@ public sealed unsafe partial class NetworkItemInstanceDescriptor : global::Syste
         NativeMethods.TablePtr->hs_method_c07ca281((void*)_handle, (void*)arg0.Handle);
     }
 
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static NetworkItemInstanceDescriptor Create_21246857(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
 
     public void Dispose()

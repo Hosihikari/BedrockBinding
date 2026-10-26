@@ -160,10 +160,6 @@ public sealed unsafe partial class MobEquipmentPacket : global::System.IDisposab
     }
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static MobEquipmentPacket Create_3230080d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
 
     public byte mClientSubId
     {

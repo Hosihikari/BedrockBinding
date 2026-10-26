@@ -155,7 +155,6 @@ public sealed unsafe partial class BannerBlockActor : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

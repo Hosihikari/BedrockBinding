@@ -106,7 +106,6 @@ public sealed unsafe partial class EnderCrystal : global::System.IDisposable
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

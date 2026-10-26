@@ -126,7 +126,6 @@ public sealed unsafe partial class MerchantRecipeList : global::System.IDisposab
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

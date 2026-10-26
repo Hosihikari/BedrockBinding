@@ -243,10 +243,6 @@ public sealed unsafe partial class Biome
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_44e95a2f() =>
+    public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_09028d64() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

@@ -45,9 +45,9 @@ public sealed unsafe partial class RideableComponent
     public static RideableComponent Create_2f3afcab(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static RideableComponent Create_878bc4ab(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public bool allowInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1)
     {
@@ -101,10 +101,6 @@ public sealed unsafe partial class RideableComponent
     {
         return NativeMethods.TablePtr->hs_method_56ef3d6d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static RideableComponent Create_1f63d8d6(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>

@@ -127,10 +127,6 @@ public sealed unsafe partial class StructureBlockPalette : global::System.IDispo
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<IUnknownBlockTypeRegistry>' is not a known bindable declaration.");
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static StructureBlockPalette Create_2d8d99e0(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
 
     public void Dispose()
     {

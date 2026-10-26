@@ -52,9 +52,16 @@ public sealed unsafe partial class ComplexInventoryTransaction : global::System.
         return new ComplexInventoryTransaction((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ComplexInventoryTransaction Create_f1ade197(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static ComplexInventoryTransaction Create(global::Hosihikari.Bindings.Bedrock.Interop.ComplexInventoryTransaction arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_f1ade197((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ComplexInventoryTransaction((nint)handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint data_Address
@@ -128,10 +135,6 @@ public sealed unsafe partial class ComplexInventoryTransaction : global::System.
         NativeMethods.TablePtr->hs_method_1fcac53d((void*)_handle, (void*)arg0.Handle);
     }
 
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ComplexInventoryTransaction Create_f1a348aa(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
 
     public void Dispose()

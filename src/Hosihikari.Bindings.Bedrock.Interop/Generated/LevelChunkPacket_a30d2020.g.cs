@@ -154,7 +154,6 @@ public sealed unsafe partial class LevelChunkPacket : global::System.IDisposable
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_1654f5c6((void*)_handle);

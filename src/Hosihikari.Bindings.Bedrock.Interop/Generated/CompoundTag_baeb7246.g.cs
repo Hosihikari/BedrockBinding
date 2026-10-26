@@ -52,9 +52,16 @@ public sealed unsafe partial class CompoundTag : global::System.IDisposable
     public static CompoundTag Create_3147a9b7(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CompoundTag Create_fa795b4c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static CompoundTag Create(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_fa795b4c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CompoundTag((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static CompoundTag Create_5874d3a7(nint tags) =>
@@ -1061,10 +1068,6 @@ public sealed unsafe partial class CompoundTag : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_e951e478((void*)_handle, (void*)arg0.Handle);
     }
 
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static CompoundTag Create_88654704(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
 
     public void Dispose()

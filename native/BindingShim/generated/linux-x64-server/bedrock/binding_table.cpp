@@ -45918,6 +45918,31 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_create_49511c8f(void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{127344240}, "_ZN13BannerPatternC2ERKS_");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    auto* const hs_memory = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 8));
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_memory, arg0);
+    return hs_memory;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void* hs_get_b76626cc() try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{146190816}, "_ZN13BannerPattern23SQUARE_TOP_LEFT_NAME_IDE");
@@ -90619,6 +90644,31 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_create_af85b51a(void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{122388016}, "_ZN13CameraPresetsC2ERKS_");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    auto* const hs_memory = static_cast<void*>(hs_allocate(static_cast<std::size_t>(56), 8));
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_memory, arg0);
+    return hs_memory;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static HosihikariArrayView hs_method_50d83d30(void* hs_self) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{122051584}, "_ZNK13CameraPresets21buildCameraPresetListEv");
@@ -103470,6 +103520,31 @@ static void* hs_create_05c6c4f2(void* arg0, std::int32_t arg1) try
 {
     setLastError("symbol dispatch has no entry for bedrock:ChunkSource in linux-x64-server");
     return nullptr;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_3e40b544(void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{122102352}, "_ZN11ChunkSourceC1ERS_");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    auto* const hs_memory = static_cast<void*>(hs_allocate(static_cast<std::size_t>(112), 8));
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_memory, arg0);
+    return hs_memory;
 }
 catch (std::exception const& hs_error)
 {
@@ -117255,6 +117330,31 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_create_f1ade197(void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{69194768}, "_ZN27ComplexInventoryTransactionC2ERKS_");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    auto* const hs_memory = static_cast<void*>(hs_allocate(static_cast<std::size_t>(104), 8));
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_memory, arg0);
+    return hs_memory;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void* hs_get_e3b02d2f(void* hs_self) try
 {
     return const_cast<void*>(static_cast<void const*>(static_cast<unsigned char const*>(hs_self) + 16));
@@ -119801,6 +119901,31 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_create_291cf8ed(void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{120906576}, "_ZN19CompoundBlockVolumeC1EOS_");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    auto* const hs_memory = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 8));
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_memory, arg0);
+    return hs_memory;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void hs_method_0768e84c(void* arg0) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{120911696}, "_ZN19CompoundBlockVolume8bindTypeERN6cereal13ReflectionCtxE");
@@ -120552,6 +120677,31 @@ static void* hs_create_7b78bada() try
 {
     setLastError("symbol dispatch has no entry for bedrock:CompoundTag in linux-x64-server");
     return nullptr;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_fa795b4c(void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{74215072}, "_ZN11CompoundTagC2EOS_");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    auto* const hs_memory = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 8));
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_memory, arg0);
+    return hs_memory;
 }
 catch (std::exception const& hs_error)
 {
@@ -248518,6 +248668,31 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_create_a1d115da(void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{78444736}, "_ZN11LoginPacketC1EOS_");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    auto* const hs_memory = static_cast<void*>(hs_allocate(static_cast<std::size_t>(64), 8));
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_memory, arg0);
+    return hs_memory;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static bool hs_method_43606cbb(void* hs_self) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{78447616}, "_ZNK11LoginPacket16disallowBatchingEv");
@@ -298778,6 +298953,31 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_create_6b8668c1(void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{117977728}, "_ZN29NetworkItemInstanceDescriptorC2ERKS_");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    auto* const hs_memory = static_cast<void*>(hs_allocate(static_cast<std::size_t>(24), 8));
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_memory, arg0);
+    return hs_memory;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void* hs_method_0ff0d538(void* hs_self, void* arg0) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{120206784}, "_ZNK29NetworkItemInstanceDescriptor15getItemInstanceERK12BlockPalette");
@@ -330823,6 +331023,31 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_create_9137e055(void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{78544192}, "_ZN21PlayerAuthInputPacketC2EOS_");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    auto* const hs_memory = static_cast<void*>(hs_allocate(static_cast<std::size_t>(200), 8));
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_memory, arg0);
+    return hs_memory;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static std::int32_t hs_method_0c43e810(void* hs_self) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{78544976}, "_ZNK21PlayerAuthInputPacket5getIdEv");
@@ -353929,6 +354154,31 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static void* hs_create_8b38a3ec(void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{117609552}, "_ZN6RecipeC2EOS_");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    auto* const hs_memory = static_cast<void*>(hs_allocate(static_cast<std::size_t>(176), 8));
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_memory, arg0);
+    return hs_memory;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static std::int32_t hs_method_b519cc06(void* hs_self, void* arg0) try
@@ -385050,6 +385300,31 @@ catch (...)
     return;
 }
 
+static void* hs_create_da132fb5(void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{117857744}, "_ZN12ShapedRecipeC1EOS_");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    auto* const hs_memory = static_cast<void*>(hs_allocate(static_cast<std::size_t>(176), 8));
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_memory, arg0);
+    return hs_memory;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void* hs_method_d7c8bd46(void* hs_self, void* arg0, void* arg1) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{117857840}, "_ZNK12ShapedRecipe8assembleER17CraftingContainerR15CraftingContext");
@@ -385431,6 +385706,31 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static void* hs_create_1d2b3aa0(void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{117874912}, "_ZN15ShapelessRecipeC2EOS_");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    auto* const hs_memory = static_cast<void*>(hs_allocate(static_cast<std::size_t>(176), 8));
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_memory, arg0);
+    return hs_memory;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static void* hs_method_2a799fd2(void* hs_self, void* arg0, void* arg1) try
@@ -444465,6 +444765,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_acfdff7d,
     &hs_destroy_eba7750b,
     &hs_get_705c02fc,
+    &hs_create_49511c8f,
     &hs_get_b76626cc,
     &hs_method_7f3855bb,
     &hs_method_b9939cfe,
@@ -446514,6 +446815,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_destroy_687b216f,
     &hs_create_72abfded,
     &hs_create_bed23cd2,
+    &hs_create_af85b51a,
     &hs_method_50d83d30,
     &hs_method_32e7e1f5,
     &hs_method_aa054314,
@@ -447134,6 +447436,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_destroy_b0503bbd,
     &hs_destroy_24337244,
     &hs_create_05c6c4f2,
+    &hs_create_3e40b544,
     &hs_method_0df1ba74,
     &hs_method_61c0eb57,
     &hs_method_30d803bb,
@@ -447841,6 +448144,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_cc76480e,
     &hs_destroy_fed07905,
     &hs_create_fc40057c,
+    &hs_create_f1ade197,
     &hs_get_e3b02d2f,
     &hs_method_de42d0d1,
     &hs_method_0f9e1b0f,
@@ -447950,6 +448254,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_ceb40322,
     &hs_destroy_025809a3,
     &hs_create_b9b8c2ef,
+    &hs_create_291cf8ed,
     &hs_method_0768e84c,
     &hs_method_bd2a8696,
     &hs_method_93b26b3e,
@@ -447984,6 +448289,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_d45e775e,
     &hs_destroy_baeb7246,
     &hs_create_7b78bada,
+    &hs_create_fa795b4c,
     &hs_method_01dc6fc9,
     &hs_method_ef35ef6e,
     &hs_method_5749d059,
@@ -453906,6 +454212,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_838006d0,
     &hs_destroy_3e43d6f5,
     &hs_create_ebd6f60a,
+    &hs_create_a1d115da,
     &hs_method_43606cbb,
     &hs_method_3154298c,
     &hs_method_828b89e4,
@@ -456271,6 +456578,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_13df9070,
     &hs_create_9508da23,
     &hs_create_a646ba6c,
+    &hs_create_6b8668c1,
     &hs_method_0ff0d538,
     &hs_method_c07ca281,
     &hs_destroy_e6d18452,
@@ -457834,6 +458142,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_e05df30b,
     &hs_set_e05df30b,
     &hs_create_d0b84054,
+    &hs_create_9137e055,
     &hs_method_0c43e810,
     &hs_method_55202755,
     &hs_method_741b9bd3,
@@ -458926,6 +459235,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_c6054116,
     &hs_method_8849f58f,
     &hs_destroy_7612cb02,
+    &hs_create_8b38a3ec,
     &hs_method_b519cc06,
     &hs_method_f3399719,
     &hs_method_cf9c4123,
@@ -460441,6 +460751,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_991e4e34,
     &hs_get_4b8ec7c2,
     &hs_set_4b8ec7c2,
+    &hs_create_da132fb5,
     &hs_method_d7c8bd46,
     &hs_method_d52a909b,
     &hs_method_37b43faf,
@@ -460462,6 +460773,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_43777b01,
     &hs_get_9393d76d,
     &hs_set_9393d76d,
+    &hs_create_1d2b3aa0,
     &hs_method_2a799fd2,
     &hs_method_71345809,
     &hs_method_0d9663df,

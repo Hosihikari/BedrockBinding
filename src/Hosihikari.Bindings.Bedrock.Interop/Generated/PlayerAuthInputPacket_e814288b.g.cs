@@ -90,12 +90,19 @@ public sealed unsafe partial class PlayerAuthInputPacket : global::System.IDispo
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static PlayerAuthInputPacket Create_766a822a(nint arg0) =>
+    public static PlayerAuthInputPacket Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerAuthInputPacket Create_9137e055(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static PlayerAuthInputPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerAuthInputPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_9137e055((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerAuthInputPacket((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint _read_2a641a70(nint stream) =>
@@ -250,10 +257,6 @@ public sealed unsafe partial class PlayerAuthInputPacket : global::System.IDispo
         NativeMethods.TablePtr->hs_method_e9288d5b((void*)_handle, (void*)arg0.Handle);
     }
 
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static PlayerAuthInputPacket Create_ec56053f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
 
     public void Dispose()

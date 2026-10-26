@@ -105,7 +105,6 @@ public sealed unsafe partial class EnchantingContainerManagerModel : global::Sys
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

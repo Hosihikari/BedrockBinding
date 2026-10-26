@@ -41,9 +41,9 @@ public sealed unsafe partial class ItemEnchants
     public static ItemEnchants Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ItemEnchants Create_474744f4(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ItemEnchants Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static ItemEnchants Create(int arg0) =>
@@ -140,10 +140,6 @@ public sealed unsafe partial class ItemEnchants
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_025bf779() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ItemEnchants Create_c0022bd9(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public void Destroy_c8e2f478() =>

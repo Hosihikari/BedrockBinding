@@ -48,7 +48,7 @@ public sealed unsafe partial class CameraPresets : global::System.IDisposable
         return new CameraPresets((nint)handle);
     }
 
-    public static CameraPresets Create_bed23cd2(nint arg0)
+    public static CameraPresets Create(nint arg0)
     {
         var handle = NativeMethods.TablePtr->hs_create_bed23cd2((void*)arg0);
         if (handle == null)
@@ -59,9 +59,16 @@ public sealed unsafe partial class CameraPresets : global::System.IDisposable
         return new CameraPresets((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CameraPresets Create_af85b51a(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static CameraPresets Create(global::Hosihikari.Bindings.Bedrock.Interop.CameraPresets arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_af85b51a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CameraPresets((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public static void _loadJsonFiles_a148c538(nint resourcePackManager, nint path, nint callback) =>
@@ -189,10 +196,6 @@ public sealed unsafe partial class CameraPresets : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_71cbb7bf((void*)_handle, (void*)arg0.Handle);
     }
 
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static CameraPresets Create_973bd14d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
 
     public void Dispose()

@@ -123,10 +123,6 @@ public sealed unsafe partial class IDataInput
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_14cf8162() =>
+    public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_06050fbc() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

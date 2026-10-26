@@ -122,10 +122,6 @@ public sealed unsafe partial class Option
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_fc9932be() =>
+    public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_cde80a7c() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

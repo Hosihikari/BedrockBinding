@@ -96,12 +96,19 @@ public sealed unsafe partial class ShapelessRecipe : global::System.IDisposable
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static ShapelessRecipe Create_3f0457fd(nint arg0) =>
+    public static ShapelessRecipe Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ShapelessRecipe Create_1d2b3aa0(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static ShapelessRecipe Create(global::Hosihikari.Bindings.Bedrock.Interop.ShapelessRecipe arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_1d2b3aa0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ShapelessRecipe((nint)handle);
+    }
 
     public nint assemble(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer arg0, nint arg1)
     {
@@ -137,10 +144,6 @@ public sealed unsafe partial class ShapelessRecipe : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_dc1327c6((void*)_handle);
     }
 
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ShapelessRecipe Create_03ec0acf(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
 
     public void Dispose()

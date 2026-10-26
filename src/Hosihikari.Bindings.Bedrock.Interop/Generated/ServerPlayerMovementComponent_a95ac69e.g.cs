@@ -121,8 +121,4 @@ public sealed unsafe partial class ServerPlayerMovementComponent
     {
         NativeMethods.TablePtr->hs_method_8f634b93((void*)_handle);
     }
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ServerPlayerMovementComponent Create_b8da8e32(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

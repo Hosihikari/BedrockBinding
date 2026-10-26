@@ -256,7 +256,6 @@ public sealed unsafe partial class ChalkboardBlockActor : global::System.IDispos
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

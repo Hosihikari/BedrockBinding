@@ -161,8 +161,4 @@ public sealed unsafe partial class CommandBlockComponent
     {
         NativeMethods.TablePtr->hs_method_048db635((void*)_handle, arg0);
     }
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static CommandBlockComponent Create_1230087e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

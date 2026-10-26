@@ -85,7 +85,6 @@ public sealed unsafe partial class HudContainerManagerModel : global::System.IDi
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

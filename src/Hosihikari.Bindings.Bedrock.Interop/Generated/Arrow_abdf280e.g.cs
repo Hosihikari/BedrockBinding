@@ -120,7 +120,6 @@ public sealed unsafe partial class Arrow : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

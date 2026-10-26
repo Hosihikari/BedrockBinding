@@ -136,14 +136,10 @@ public sealed unsafe partial class FilterGroup
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_42c1e12d() =>
+    public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static FilterGroup Create_1afc599e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_16eefb2a() =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

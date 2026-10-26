@@ -226,7 +226,6 @@ public sealed unsafe partial class CommandOrigin : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)
