@@ -151,9 +151,9 @@ public sealed unsafe partial class ShieldItem
         NativeMethods.TablePtr->hs_method_9d847c72((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
-    public void readUserData(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.ReadOnlyBinaryStream arg2)
+    public void readUserData(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, global::Hosihikari.Bindings.Bedrock.Interop.IDataInput arg1, global::Hosihikari.Bindings.Bedrock.Interop.ReadOnlyBinaryStream arg2)
     {
-        NativeMethods.TablePtr->hs_method_b98f5616((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle);
+        NativeMethods.TablePtr->hs_method_b98f5616((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ItemStack use(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1)
@@ -161,9 +161,9 @@ public sealed unsafe partial class ShieldItem
         return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->hs_method_740cf23f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle), false);
     }
 
-    public void writeUserData(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, nint arg1)
+    public void writeUserData(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput arg1)
     {
-        NativeMethods.TablePtr->hs_method_38b88628((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_38b88628((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

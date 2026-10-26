@@ -93,7 +93,7 @@ public sealed unsafe partial class Block : global::System.IDisposable
         }
     }
 
-    public bool addCollisionShapes(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.AABB? arg2, global::Hosihikari.Bindings.Bedrock.Interop.AABB[] arg3, nint? arg4)
+    public bool addCollisionShapes(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.AABB? arg2, global::Hosihikari.Bindings.Bedrock.Interop.AABB[] arg3, global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeInterface? arg4)
     {
         var __hs_vectorItems3 = arg3;
         var __hs_vectorHandles3 = new nint[__hs_vectorItems3?.Length ?? 0];
@@ -104,7 +104,7 @@ public sealed unsafe partial class Block : global::System.IDisposable
         fixed (nint* __hs_vectorHandleData3 = __hs_vectorHandles3)
         {
             var __hs_vectorData3 = (void**)__hs_vectorHandleData3;
-            return NativeMethods.TablePtr->hs_method_d5f400a2((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0), (void*)(arg4 ?? 0), __hs_vectorData3, (nuint)(arg3?.Length ?? 0), arg4 is not null) != 0;
+            return NativeMethods.TablePtr->hs_method_d5f400a2((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0), (void*)(arg4?.Handle ?? 0), __hs_vectorData3, (nuint)(arg3?.Length ?? 0), arg4 is not null) != 0;
         }
     }
 
@@ -182,9 +182,9 @@ public sealed unsafe partial class Block : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_af9a3bce((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
-    public bool canBeBuiltOver(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, nint arg2)
+    public bool canBeBuiltOver(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockItem arg2)
     {
-        return NativeMethods.TablePtr->hs_method_597e701e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2) != 0;
+        return NativeMethods.TablePtr->hs_method_597e701e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
     public bool canBeFertilized(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block arg2)
@@ -277,9 +277,9 @@ public sealed unsafe partial class Block : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.HitResult((nint)NativeMethods.TablePtr->hs_method_3f54e907((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle));
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.HitResult clip(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3, int arg4, nint? arg5)
+    public global::Hosihikari.Bindings.Bedrock.Interop.HitResult clip(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3, int arg4, global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeInterface? arg5)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.HitResult((nint)NativeMethods.TablePtr->hs_method_9641f8cb((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, arg4, (void*)(arg5 ?? 0), arg5 is not null));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.HitResult((nint)NativeMethods.TablePtr->hs_method_9641f8cb((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, arg4, (void*)(arg5?.Handle ?? 0), arg5 is not null));
     }
 
     public uint computeRawSerializationIdHashForNetwork()
@@ -397,9 +397,9 @@ public sealed unsafe partial class Block : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_6e081613((void*)_handle, arg0) != 0;
     }
 
-    public bool getCollisionShape(global::Hosihikari.Bindings.Bedrock.Interop.AABB arg0, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, nint? arg3)
+    public bool getCollisionShape(global::Hosihikari.Bindings.Bedrock.Interop.AABB arg0, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeInterface? arg3)
     {
-        return NativeMethods.TablePtr->hs_method_7963ac1e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)(arg3 ?? 0), arg3 is not null) != 0;
+        return NativeMethods.TablePtr->hs_method_7963ac1e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)(arg3?.Handle ?? 0), arg3 is not null) != 0;
     }
 
     public bool getCollisionShapeForCamera(global::Hosihikari.Bindings.Bedrock.Interop.AABB arg0, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2)
@@ -1083,9 +1083,9 @@ public sealed unsafe partial class Block : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_256708bf((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    public bool updateTallestCollisionShape(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.AABB arg2, nint? arg3, global::Hosihikari.Bindings.Bedrock.Interop.AABB arg4, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg5, nint arg6)
+    public bool updateTallestCollisionShape(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.AABB arg2, global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeInterface? arg3, global::Hosihikari.Bindings.Bedrock.Interop.AABB arg4, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg5, nint arg6)
     {
-        return NativeMethods.TablePtr->hs_method_318fbf7c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)(arg3 ?? 0), (void*)arg4.Handle, (void*)arg5.Handle, (void*)arg6, arg3 is not null) != 0;
+        return NativeMethods.TablePtr->hs_method_318fbf7c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)(arg3?.Handle ?? 0), (void*)arg4.Handle, (void*)arg5.Handle, (void*)arg6, arg3 is not null) != 0;
     }
 
     public bool use(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, byte arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3? arg3)

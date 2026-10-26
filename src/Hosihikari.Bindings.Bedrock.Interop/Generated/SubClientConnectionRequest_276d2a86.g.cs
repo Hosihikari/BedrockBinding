@@ -82,9 +82,10 @@ public sealed unsafe partial class SubClientConnectionRequest
         return NativeMethods.TablePtr->hs_method_99c93027((void*)_handle);
     }
 
-    public nint getCertificate()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Certificate? getCertificate()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d391ccf5((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_d391ccf5((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Certificate((nint)__hs_handle, false) : null;
     }
 
     public ulong getClientRandomId()

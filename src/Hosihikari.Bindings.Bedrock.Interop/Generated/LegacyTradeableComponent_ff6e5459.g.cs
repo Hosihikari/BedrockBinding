@@ -82,9 +82,10 @@ public sealed unsafe partial class LegacyTradeableComponent
         return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->hs_method_b66afd81((void*)_handle));
     }
 
-    public nint getOffers(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipeList? getOffers(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_098f48f0((void*)_handle, (void*)arg0.Handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_098f48f0((void*)_handle, (void*)arg0.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipeList((nint)__hs_handle, false) : null;
     }
 
     public bool getResetLockedOnFirstTrade()
@@ -148,9 +149,9 @@ public sealed unsafe partial class LegacyTradeableComponent
         NativeMethods.TablePtr->hs_method_ccee340b((void*)_handle, arg0);
     }
 
-    public void setOffers(nint arg0)
+    public void setOffers(global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipeList arg0)
     {
-        NativeMethods.TablePtr->hs_method_7532420e((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_7532420e((void*)_handle, (void*)arg0.Handle);
     }
 
     public void setResetLockedOnFirstTrade(bool arg0)

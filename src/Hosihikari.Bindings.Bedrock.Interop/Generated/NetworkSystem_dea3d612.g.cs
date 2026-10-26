@@ -98,9 +98,10 @@ public sealed unsafe partial class NetworkSystem
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public nint getNetworkStatistics()
+    public global::Hosihikari.Bindings.Bedrock.Interop.NetworkStatistics? getNetworkStatistics()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_90ac3079((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_90ac3079((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.NetworkStatistics((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.NetworkPeer? getPeerForUser(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0)

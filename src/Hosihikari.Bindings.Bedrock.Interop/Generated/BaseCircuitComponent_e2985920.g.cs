@@ -68,9 +68,9 @@ public sealed unsafe partial class BaseCircuitComponent : global::System.IDispos
         return NativeMethods.TablePtr->hs_method_9b54639b((void*)_handle) != 0;
     }
 
-    public void cacheValues(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
+    public void cacheValues(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSystem arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
     {
-        NativeMethods.TablePtr->hs_method_80688fed((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->hs_method_80688fed((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public bool canConsumePowerAnyDirection()
@@ -88,14 +88,14 @@ public sealed unsafe partial class BaseCircuitComponent : global::System.IDispos
         return NativeMethods.TablePtr->hs_method_c123db17((void*)_handle) != 0;
     }
 
-    public void checkLock(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
+    public void checkLock(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSystem arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
     {
-        NativeMethods.TablePtr->hs_method_ef821415((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->hs_method_ef821415((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public bool evaluate(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
+    public bool evaluate(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSystem arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
     {
-        return NativeMethods.TablePtr->hs_method_9a805a4c((void*)_handle, (void*)arg0, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->hs_method_9a805a4c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     public long getCircuitComponentGroupType()

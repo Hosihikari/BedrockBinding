@@ -37,6 +37,54 @@ public sealed unsafe partial class ShulkerBoxBlockActor
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContainerRuntimeId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_5a39995e((void*)_handle);
+    }
+
+    public sbyte mContainerType
+    {
+        get => NativeMethods.TablePtr->hs_get_24a26169((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_24a26169((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContentChangeListeners_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e5a2ec25((void*)_handle);
+    }
+
+    public bool mCustomName
+    {
+        get => NativeMethods.TablePtr->hs_get_d61f5729((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_d61f5729((void*)_handle, value);
+    }
+
+    public sbyte mGameplayContainerType
+    {
+        get => NativeMethods.TablePtr->hs_get_7c99211d((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_7c99211d((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_0a557d05((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSizeChangeListeners_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b7cb415d((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTransactionContextStack_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e6dc9c36((void*)_handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static ShulkerBoxBlockActor Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");

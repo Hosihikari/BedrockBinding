@@ -1056,9 +1056,9 @@ public sealed unsafe partial class CompoundTag : global::System.IDisposable
     public nint toString_ade403b7() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void write(nint arg0)
+    public void write(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput arg0)
     {
-        NativeMethods.TablePtr->hs_method_e951e478((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_e951e478((void*)_handle, (void*)arg0.Handle);
     }
 
 

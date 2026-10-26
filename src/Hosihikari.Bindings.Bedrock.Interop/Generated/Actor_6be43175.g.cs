@@ -694,9 +694,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_4c1b4874((void*)_handle, (void*)(arg0?.Handle ?? 0)));
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getBlockPosCurrentlyStandingOn(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.AABB arg1, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg2, nint? arg3)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getBlockPosCurrentlyStandingOn(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.AABB arg1, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg2, global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeInterface? arg3)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_3ccd30b8((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)(arg3 ?? 0), arg3 is not null));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_3ccd30b8((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)(arg3?.Handle ?? 0), arg3 is not null));
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getBlockTarget()
@@ -1430,9 +1430,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->hs_method_75056f5b((void*)_handle));
     }
 
-    public nint getSpatialNetworkData_c1f74037()
+    public global::Hosihikari.Bindings.Bedrock.Interop.SpatialActorNetworkData getSpatialNetworkData_c1f74037()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_c1f74037((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SpatialActorNetworkData((nint)NativeMethods.TablePtr->hs_method_c1f74037((void*)_handle), false);
     }
 
     public float getSpeedInMetersPerSecond()
@@ -1497,9 +1497,10 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_9c8c581c((void*)_handle) != 0;
     }
 
-    public nint getTradeOffers()
+    public global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipeList? getTradeOffers()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_f9d4ac89((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_f9d4ac89((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipeList((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Player? getTradingPlayer()

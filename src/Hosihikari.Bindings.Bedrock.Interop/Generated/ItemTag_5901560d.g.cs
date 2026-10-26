@@ -37,6 +37,23 @@ public sealed unsafe partial class ItemTag : global::System.IDisposable
         return __hs_handle;
     }
 
+    public ulong hash
+    {
+        get => NativeMethods.TablePtr->hs_get_2300532c((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_2300532c((void*)_handle, value);
+    }
+
+    public nint lastMatch
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_c181af29((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint str_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_4a3f1a5a((void*)_handle);
+    }
+
 
     public void Dispose()
     {

@@ -83,9 +83,9 @@ public sealed unsafe partial class SignBlockActor
         return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_method_46a4bdba((void*)_handle, arg0), false);
     }
 
-    public nint getTextObject(int arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.TextObjectRoot getTextObject(int arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d8208396((void*)_handle, arg0);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TextObjectRoot((nint)NativeMethods.TablePtr->hs_method_d8208396((void*)_handle, arg0), false);
     }
 
     public string[] getUgcStrings(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
@@ -135,9 +135,9 @@ public sealed unsafe partial class SignBlockActor
         NativeMethods.TablePtr->hs_method_1cbc923c((void*)_handle, arg0, arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'TextObjectRoot' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void setMessageForServerScripingOnly(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'TextObjectRoot' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public void setMessageForServerScripingOnly(int arg0, string arg1, string arg2)
     {

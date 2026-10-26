@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ScriptPluginManager : global::System.IDisposable
+public sealed unsafe partial class ScriptPluginManager
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,17 +37,70 @@ public sealed unsafe partial class ScriptPluginManager : global::System.IDisposa
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ScriptPluginManager Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public void Dispose()
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptPluginManager Create(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ScriptPluginManager Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint discoverPlugins_0fc8e222(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ScriptPluginManagerResult' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint discoverPlugins_884eeeb6(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ScriptPluginManagerResult' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackCapability' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint getPackCapability() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackCapability' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'ScriptPluginStats' is not supported.", false)]
+    public nint getPluginStats() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'ScriptPluginStats' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getPlugins_0e4461a1() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public nint getPlugins_fba2a2e0()
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_8f16e5f7((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        return (nint)NativeMethods.TablePtr->hs_method_fba2a2e0((void*)_handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void releaseAll()
+    {
+        NativeMethods.TablePtr->hs_method_3639b572((void*)_handle);
+    }
+
+    public void releasePlugins()
+    {
+        NativeMethods.TablePtr->hs_method_a12836d3((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ScriptPluginManagerResult' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint runAll_4ededb00(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ScriptPluginManagerResult' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint runAll_b586a2c3(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_f8ed0259() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_09ad1078() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

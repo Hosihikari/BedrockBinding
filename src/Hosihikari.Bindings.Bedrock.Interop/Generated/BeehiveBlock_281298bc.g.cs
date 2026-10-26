@@ -122,9 +122,9 @@ public sealed unsafe partial class BeehiveBlock : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_81c5dce3((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ItemStack getHiveItemWithOccupants(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, nint arg1)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ItemStack getHiveItemWithOccupants(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, global::Hosihikari.Bindings.Bedrock.Interop.BeehiveBlockActor? arg1)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->hs_method_7dd62494((void*)arg0.Handle, (void*)arg1));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->hs_method_7dd62494((void*)arg0.Handle, (void*)(arg1?.Handle ?? 0)));
     }
 
     public byte getMappedFace(byte arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1)

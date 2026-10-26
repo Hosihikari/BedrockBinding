@@ -99,9 +99,9 @@ public sealed unsafe partial class SkullBlock : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_5f50cf5b((void*)_handle, (void*)arg0.Handle, arg1, arg2) != 0;
     }
 
-    public bool checkMobSpawn(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, nint arg3)
+    public bool checkMobSpawn(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.SkullBlockActor arg3)
     {
-        return NativeMethods.TablePtr->hs_method_f56f3e6f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3) != 0;
+        return NativeMethods.TablePtr->hs_method_f56f3e6f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Block getPlacementBlock(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, byte arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3, int arg4)

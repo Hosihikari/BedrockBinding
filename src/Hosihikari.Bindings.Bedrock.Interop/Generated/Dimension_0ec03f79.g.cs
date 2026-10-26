@@ -263,9 +263,9 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource((nint)NativeMethods.TablePtr->hs_method_a7f00a7f((void*)_handle), false);
     }
 
-    public nint getCircuitSystem()
+    public global::Hosihikari.Bindings.Bedrock.Interop.CircuitSystem getCircuitSystem()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_c906fd13((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CircuitSystem((nint)NativeMethods.TablePtr->hs_method_c906fd13((void*)_handle), false);
     }
 
     public short getCloudHeight()

@@ -147,9 +147,9 @@ public sealed unsafe partial class ItemStackRequestActionHandler : global::Syste
         return (nint)NativeMethods.TablePtr->hs_method_a05c74a5((void*)_handle);
     }
 
-    public sbyte handleRequestAction(nint arg0)
+    public sbyte handleRequestAction(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestAction arg0)
     {
-        return NativeMethods.TablePtr->hs_method_6e6d52c4((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_6e6d52c4((void*)_handle, (void*)arg0.Handle);
     }
 
     public bool isValidationCraftingImplemented()

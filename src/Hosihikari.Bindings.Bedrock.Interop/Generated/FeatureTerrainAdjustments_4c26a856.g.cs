@@ -37,6 +37,78 @@ public sealed unsafe partial class FeatureTerrainAdjustments : global::System.ID
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static FeatureTerrainAdjustments Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static FeatureTerrainAdjustments Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint at_627f2366(nint chunkPos) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public static float calculateContribution(global::Hosihikari.Bindings.Bedrock.Interop.FeatureTerrainAdjustments_Nested.Descriptions arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, float arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_99f32d72((void*)arg0.Handle, (void*)arg1.Handle, arg2);
+    }
+
+    public void garbageCollectDescriptions()
+    {
+        NativeMethods.TablePtr->hs_method_0b29aa6e((void*)_handle);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BeardKernel getBeardKernel()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BeardKernel((nint)NativeMethods.TablePtr->hs_method_de53acbc(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BeardKernel mBeardKernel
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.BeardKernel((nint)NativeMethods.TablePtr->hs_get_1ee59cd3(), false);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDescriptionsToProcess_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_ed86b25d((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMutex_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_5ddc5555((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? setBeardAndShaver(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg0, int arg1, float arg2, float arg3)
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_8823ea27((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? setBeardifier(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg0, int arg1)
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_a53285da((void*)_handle, (void*)arg0.Handle, arg1);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? setBury(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg0)
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_40d3a8bd((void*)_handle, (void*)arg0.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public static bool shouldDoTerrainAdjustments(global::Hosihikari.Bindings.Bedrock.Interop.FeatureTerrainAdjustments_Nested.Descriptions arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_1c7a6f0a((void*)arg0.Handle) != 0;
+    }
+
+
 
     public void Dispose()
     {

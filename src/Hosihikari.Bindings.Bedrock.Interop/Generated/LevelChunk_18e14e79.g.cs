@@ -149,19 +149,19 @@ public sealed unsafe partial class LevelChunk
     public static nint deserialize3DData(nint arg0, nint arg1, ushort arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::tuple<std::array<ChunkLocalHeight,256>,unsigned short,std::vector<std::unique_ptr<SubChunkStorage<Biome>,std::default_delete<SubChunkStorage<Biome>>>,std::allocator<std::unique_ptr<SubChunkStorage<Biome>,std::default_delete<SubChunkStorage<Biome>>>>>>' requires --link-carrier or --virtual-dispatch.");
 
-    public void deserializeBiomes(nint arg0, bool arg1)
+    public void deserializeBiomes(global::Hosihikari.Bindings.Bedrock.Interop.IDataInput arg0, bool arg1)
     {
-        NativeMethods.TablePtr->hs_method_ae3a25e3((void*)_handle, (void*)arg0, arg1);
+        NativeMethods.TablePtr->hs_method_ae3a25e3((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
-    public void deserializeBlockEntities(nint arg0)
+    public void deserializeBlockEntities(global::Hosihikari.Bindings.Bedrock.Interop.IDataInput arg0)
     {
-        NativeMethods.TablePtr->hs_method_2aa34534((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_2aa34534((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void deserializeFinalization(nint arg0)
+    public void deserializeFinalization(global::Hosihikari.Bindings.Bedrock.Interop.IDataInput arg0)
     {
-        NativeMethods.TablePtr->hs_method_564c0c4a((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_564c0c4a((void*)_handle, (void*)arg0.Handle);
     }
 
     public bool deserializeKey(string arg0, string arg1)
@@ -197,14 +197,14 @@ public sealed unsafe partial class LevelChunk
         }
     }
 
-    public void deserializeLoadedVersion(nint arg0)
+    public void deserializeLoadedVersion(global::Hosihikari.Bindings.Bedrock.Interop.IDataInput arg0)
     {
-        NativeMethods.TablePtr->hs_method_f397ee53((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_f397ee53((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void deserializeMetaDataHash(nint arg0)
+    public void deserializeMetaDataHash(global::Hosihikari.Bindings.Bedrock.Interop.IDataInput arg0)
     {
-        NativeMethods.TablePtr->hs_method_58997d26((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_58997d26((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional parameter type 'DeserializationChanges*' is not supported.", false)]
@@ -215,9 +215,9 @@ public sealed unsafe partial class LevelChunk
     public void deserializeSubChunk(byte arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional parameter type 'DeserializationChanges*' is not supported.");
 
-    public void deserializeSubChunkBlockEntities(nint arg0, nint arg1)
+    public void deserializeSubChunkBlockEntities(global::Hosihikari.Bindings.Bedrock.Interop.IDataInput arg0, nint arg1)
     {
-        NativeMethods.TablePtr->hs_method_b5225da4((void*)_handle, (void*)arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_b5225da4((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'LevelChunkBlockActorAccessToken' requires --link-carrier or --virtual-dispatch.", false)]
@@ -606,14 +606,14 @@ public sealed unsafe partial class LevelChunk
         return NativeMethods.TablePtr->hs_method_64741e78((void*)_handle, (void*)arg0) != 0;
     }
 
-    public void legacyDeserializeBlockExtraData(nint arg0)
+    public void legacyDeserializeBlockExtraData(global::Hosihikari.Bindings.Bedrock.Interop.IDataInput arg0)
     {
-        NativeMethods.TablePtr->hs_method_5bafa7ad((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_5bafa7ad((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void legacyDeserializeTerrain(nint arg0)
+    public void legacyDeserializeTerrain(global::Hosihikari.Bindings.Bedrock.Interop.IDataInput arg0)
     {
-        NativeMethods.TablePtr->hs_method_2d592fc5((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_2d592fc5((void*)_handle, (void*)arg0.Handle);
     }
 
     public bool levelChunkHad3dBiomeTagOnLastDeserialize()
@@ -705,39 +705,39 @@ public sealed unsafe partial class LevelChunk
         NativeMethods.TablePtr->hs_method_d0e9cb1e((void*)_handle, arg0);
     }
 
-    public void serialize2DMaps(nint arg0)
+    public void serialize2DMaps(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput arg0)
     {
-        NativeMethods.TablePtr->hs_method_fb0f780b((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_fb0f780b((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void serialize3DMaps(nint arg0)
+    public void serialize3DMaps(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput arg0)
     {
-        NativeMethods.TablePtr->hs_method_18c2a6cd((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_18c2a6cd((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void serializeBiomeStates(nint arg0)
+    public void serializeBiomeStates(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput arg0)
     {
-        NativeMethods.TablePtr->hs_method_a5ddbe20((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_a5ddbe20((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void serializeBiomes(nint arg0)
+    public void serializeBiomes(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput arg0)
     {
-        NativeMethods.TablePtr->hs_method_8936885e((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_8936885e((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void serializeBlockEntities(nint arg0)
+    public void serializeBlockEntities(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput arg0)
     {
-        NativeMethods.TablePtr->hs_method_214337fc((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_214337fc((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void serializeBlockEntitiesForSubChunk(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPos arg1)
+    public void serializeBlockEntitiesForSubChunk(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput arg0, global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPos arg1)
     {
-        NativeMethods.TablePtr->hs_method_02c63ca9((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->hs_method_02c63ca9((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public bool serializeBorderBlocks(nint arg0)
+    public bool serializeBorderBlocks(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput arg0)
     {
-        return NativeMethods.TablePtr->hs_method_26c82700((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_26c82700((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
@@ -752,29 +752,29 @@ public sealed unsafe partial class LevelChunk
     public void serializeEntityRemovals(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void serializeFinalization(nint arg0)
+    public void serializeFinalization(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput arg0)
     {
-        NativeMethods.TablePtr->hs_method_9f5c0fa0((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_9f5c0fa0((void*)_handle, (void*)arg0.Handle);
     }
 
-    public bool serializeHardcodedSpawners(nint arg0)
+    public bool serializeHardcodedSpawners(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput arg0)
     {
-        return NativeMethods.TablePtr->hs_method_28a839e8((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_28a839e8((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    public void serializeMetaDataHash(nint arg0)
+    public void serializeMetaDataHash(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput arg0)
     {
-        NativeMethods.TablePtr->hs_method_685298d1((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_685298d1((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void serializeRandomTicks(nint arg0)
+    public void serializeRandomTicks(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput arg0)
     {
-        NativeMethods.TablePtr->hs_method_36b702ea((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_36b702ea((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void serializeTicks(nint arg0)
+    public void serializeTicks(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput arg0)
     {
-        NativeMethods.TablePtr->hs_method_c2123392((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_c2123392((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'buffer_span<BlockID>' is not a known bindable declaration.", false)]

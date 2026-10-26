@@ -51,9 +51,9 @@ public sealed unsafe partial class EconomyTradeableComponent
         return new global::Hosihikari.Bindings.Bedrock.Interop.UpdateTradePacket((nint)NativeMethods.TablePtr->hs_method_c69c347d((void*)_handle, arg0));
     }
 
-    public void fixVillagerTierToMatchTradeList(nint arg0)
+    public void fixVillagerTierToMatchTradeList(global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipeList? arg0)
     {
-        NativeMethods.TablePtr->hs_method_ef68a314((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_ef68a314((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'IntRange' requires --link-carrier or --virtual-dispatch.", false)]
@@ -76,9 +76,10 @@ public sealed unsafe partial class EconomyTradeableComponent
         return NativeMethods.TablePtr->hs_method_9a72a185((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
     }
 
-    public nint getOffers()
+    public global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipeList? getOffers()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_89a4f85e((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_89a4f85e((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipeList((nint)__hs_handle, false) : null;
     }
 
     public int getRiches()
@@ -152,9 +153,9 @@ public sealed unsafe partial class EconomyTradeableComponent
         NativeMethods.TablePtr->hs_method_455b7567((void*)_handle, arg0);
     }
 
-    public void setOffers(nint arg0)
+    public void setOffers(global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipeList arg0)
     {
-        NativeMethods.TablePtr->hs_method_e7da3ee3((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_e7da3ee3((void*)_handle, (void*)arg0.Handle);
     }
 
     public void setRiches(int arg0)
@@ -192,8 +193,8 @@ public sealed unsafe partial class EconomyTradeableComponent
         NativeMethods.TablePtr->hs_method_8fd19552((void*)_handle);
     }
 
-    public void tryToTransferOldOffers(nint arg0)
+    public void tryToTransferOldOffers(global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipeList? arg0)
     {
-        NativeMethods.TablePtr->hs_method_a7f0e7a9((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_a7f0e7a9((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 }

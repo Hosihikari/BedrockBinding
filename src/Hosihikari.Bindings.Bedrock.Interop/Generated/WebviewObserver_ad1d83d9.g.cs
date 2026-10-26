@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class WebviewObserver
+public sealed unsafe partial class WebviewObserver
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -36,4 +36,87 @@ public sealed partial class WebviewObserver
         _handle = 0;
         return __hs_handle;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static WebviewObserver Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static WebviewObserver Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void __unk_vfn_1() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void onDownloadBegin(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_0e11165e((void*)_handle, (void*)arg0);
+    }
+
+    public void onDownloadCanceled(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_5a26887f((void*)_handle, (void*)arg0);
+    }
+
+    public void onDownloadComplete(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_77b6c7f5((void*)_handle, (void*)arg0);
+    }
+
+    public void onDownloadUpdate(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_8075c63d((void*)_handle, (void*)arg0);
+    }
+
+    public void onError(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_97e150ff((void*)_handle, (void*)arg0);
+    }
+
+    public void onLoadingBegin()
+    {
+        NativeMethods.TablePtr->hs_method_c6b6faf4((void*)_handle);
+    }
+
+    public void onLoadingEnd()
+    {
+        NativeMethods.TablePtr->hs_method_feb00d36((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void onMessageRecieved(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void onMessageRecieved(string arg0)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->hs_method_9a395e99((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    public void onWebviewChanged()
+    {
+        NativeMethods.TablePtr->hs_method_52d7dbb9((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

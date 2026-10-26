@@ -37,6 +37,106 @@ public sealed unsafe partial class MolangVariable : global::System.IDisposable
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MolangVariable Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    public static MolangVariable Create(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MolangVariable Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static ushort getVariableIndex(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_0ceb0f64((void*)arg0.Handle);
+    }
+
+    public static ushort getVariableIndex(ulong arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_5cab2aac(arg0);
+    }
+
+    public static ushort getVariableIndex(ulong arg0, nint arg1, bool arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_5fdaf734(arg0, (void*)arg1, arg2);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.HashedString getVariableName(ushort arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_60ba763f(arg0), false);
+    }
+
+    public static void initVariableMaps()
+    {
+        NativeMethods.TablePtr->hs_method_8de87268();
+    }
+
+    public static bool mHasSetWatermark
+    {
+        get => NativeMethods.TablePtr->hs_get_901479c5() != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mIndexToVariableNameMap_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_9e0a55e8();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mIndexToVariableNameMap_LowWaterMark_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_17ecabf6();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_1f2bdba9((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPublicValue_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e1c78fa9((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSettings_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b79562f5((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mValue_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_9b0aaf49((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mVariableNameToIndexMap_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_1a769333();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mVariableNameToIndexMap_LowWaterMark_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_50626b5f();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public static void processWaterMark()
+    {
+        NativeMethods.TablePtr->hs_method_546443ae();
+    }
+
+
 
     public void Dispose()
     {

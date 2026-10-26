@@ -238,9 +238,9 @@ public sealed unsafe partial class ItemStackBase : global::System.IDisposable
     public nint constructItemEnchantsFromUserData() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemEnchants' requires --link-carrier or --virtual-dispatch.");
 
-    public void deserializeComponents(nint arg0)
+    public void deserializeComponents(global::Hosihikari.Bindings.Bedrock.Interop.IDataInput arg0)
     {
-        NativeMethods.TablePtr->hs_method_da678b54((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_da678b54((void*)_handle, (void*)arg0.Handle);
     }
 
     public int getArmorSlot()
@@ -1020,9 +1020,9 @@ public sealed unsafe partial class ItemStackBase : global::System.IDisposable
         }
     }
 
-    public void serializeComponents(nint arg0)
+    public void serializeComponents(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput arg0)
     {
-        NativeMethods.TablePtr->hs_method_4952569d((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_4952569d((void*)_handle, (void*)arg0.Handle);
     }
 
     public void set(int arg0)

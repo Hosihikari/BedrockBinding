@@ -89,9 +89,9 @@ public sealed unsafe partial class ItemStackNetManagerServer : global::System.ID
     public nint getRequestId_6d25c43f() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TypedClientNetId<ItemStackRequestIdTag,int,0>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'ItemStackRequestData' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<TextFilteringProcessor>' is not a known bindable declaration.", false)]
     public void handleRequest(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'ItemStackRequestData' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<TextFilteringProcessor>' is not a known bindable declaration.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<TextFilteringProcessor>' is not a known bindable declaration.", false)]
     public void handleRequestBatch(nint arg0, nint arg1) =>

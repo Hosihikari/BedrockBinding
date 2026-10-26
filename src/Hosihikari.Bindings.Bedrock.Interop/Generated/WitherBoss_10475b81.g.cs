@@ -217,4 +217,8 @@ public sealed unsafe partial class WitherBoss
     {
         return NativeMethods.TablePtr->hs_method_5bbf3961((void*)_handle) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

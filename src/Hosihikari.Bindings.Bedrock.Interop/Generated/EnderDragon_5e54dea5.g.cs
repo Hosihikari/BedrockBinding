@@ -148,9 +148,9 @@ public sealed unsafe partial class EnderDragon
         return NativeMethods.TablePtr->hs_method_80d8e5a5((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    public void onCrystalDestroyed(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg2)
+    public void onCrystalDestroyed(global::Hosihikari.Bindings.Bedrock.Interop.EnderCrystal arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg2)
     {
-        NativeMethods.TablePtr->hs_method_a29bbb4a((void*)_handle, (void*)arg0, (void*)arg1.Handle, (void*)arg2.Handle);
+        NativeMethods.TablePtr->hs_method_a29bbb4a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
     public void postAiStep()

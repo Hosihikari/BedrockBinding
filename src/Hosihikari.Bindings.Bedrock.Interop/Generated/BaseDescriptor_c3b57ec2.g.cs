@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested;
 
-public sealed partial class BaseDescriptor
+public sealed unsafe partial class BaseDescriptor : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,7 +37,17 @@ public sealed partial class BaseDescriptor
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_c3b57ec2((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

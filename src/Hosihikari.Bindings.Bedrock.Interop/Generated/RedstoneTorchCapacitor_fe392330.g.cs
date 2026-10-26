@@ -58,14 +58,14 @@ public sealed unsafe partial class RedstoneTorchCapacitor : global::System.IDisp
         return NativeMethods.TablePtr->hs_method_dabe3a8c((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2) != 0;
     }
 
-    public void cacheValues(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
+    public void cacheValues(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSystem arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
     {
-        NativeMethods.TablePtr->hs_method_be7228ce((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->hs_method_be7228ce((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public bool evaluate(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
+    public bool evaluate(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSystem arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
     {
-        return NativeMethods.TablePtr->hs_method_cf70d190((void*)_handle, (void*)arg0, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->hs_method_cf70d190((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     public long getCircuitComponentType()
@@ -131,6 +131,7 @@ public sealed unsafe partial class RedstoneTorchCapacitor : global::System.IDisp
     {
         NativeMethods.TablePtr->hs_method_4b79e8eb((void*)_handle, arg0);
     }
+
 
 
     public void Dispose()

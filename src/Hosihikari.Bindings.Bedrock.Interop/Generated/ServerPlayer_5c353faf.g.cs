@@ -111,7 +111,7 @@ public sealed unsafe partial class ServerPlayer
         NativeMethods.TablePtr->hs_method_23a0b01f((void*)_handle);
     }
 
-    public void displayTextObjectMessage(nint arg0, string arg1, string arg2)
+    public void displayTextObjectMessage(global::Hosihikari.Bindings.Bedrock.Interop.TextObjectRoot arg0, string arg1, string arg2)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
         scoped global::System.Span<byte> __hs_stringBytes1;
@@ -139,7 +139,7 @@ public sealed unsafe partial class ServerPlayer
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                NativeMethods.TablePtr->hs_method_7be43abd((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                NativeMethods.TablePtr->hs_method_7be43abd((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
             }
         }
     }

@@ -37,6 +37,135 @@ public sealed unsafe partial class Vec2 : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec2 LOWEST
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Vec2((nint)NativeMethods.TablePtr->hs_get_790a5a5c(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec2 MAX
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Vec2((nint)NativeMethods.TablePtr->hs_get_88bdeb37(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec2 MIN
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Vec2((nint)NativeMethods.TablePtr->hs_get_5d465c40(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec2 NEG_UNIT_X
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Vec2((nint)NativeMethods.TablePtr->hs_get_b478550f(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec2 NEG_UNIT_Y
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Vec2((nint)NativeMethods.TablePtr->hs_get_79a50c3c(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec2 ONE
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Vec2((nint)NativeMethods.TablePtr->hs_get_74e81b77(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec2 UNIT_X
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Vec2((nint)NativeMethods.TablePtr->hs_get_8d648b6a(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec2 UNIT_Y
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Vec2((nint)NativeMethods.TablePtr->hs_get_85ecb98b(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec2 ZERO
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Vec2((nint)NativeMethods.TablePtr->hs_get_ed71043a(), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Vec2 normalized()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec2((nint)NativeMethods.TablePtr->hs_method_b13f2d55((void*)_handle));
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec2 rotate(global::Hosihikari.Bindings.Bedrock.Interop.Vec2 arg0, float arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec2((nint)NativeMethods.TablePtr->hs_method_d3a6bb5e((void*)arg0.Handle, arg1));
+    }
+
+    public string toJsonString_f5a8ee64()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_f5a8ee64((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint toJsonString_16e5188b() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string toString_e9c75dbf()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_e9c75dbf((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint toString_ba5f8fc4() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public float b
+    {
+        get => NativeMethods.TablePtr->hs_get_6c8870ca((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_6c8870ca((void*)_handle, value);
+    }
+
+    public float g
+    {
+        get => NativeMethods.TablePtr->hs_get_e1640bcd((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_e1640bcd((void*)_handle, value);
+    }
+
+    public float p
+    {
+        get => NativeMethods.TablePtr->hs_get_f92b98e6((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_f92b98e6((void*)_handle, value);
+    }
+
+    public float r
+    {
+        get => NativeMethods.TablePtr->hs_get_93b62635((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_93b62635((void*)_handle, value);
+    }
+
+    public float s
+    {
+        get => NativeMethods.TablePtr->hs_get_779808de((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_779808de((void*)_handle, value);
+    }
+
+    public float t
+    {
+        get => NativeMethods.TablePtr->hs_get_8cbbddb0((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_8cbbddb0((void*)_handle, value);
+    }
+
+    public float x
+    {
+        get => NativeMethods.TablePtr->hs_get_f99bd900((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_f99bd900((void*)_handle, value);
+    }
+
+    public float y
+    {
+        get => NativeMethods.TablePtr->hs_get_21cc48c6((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_21cc48c6((void*)_handle, value);
+    }
+
+    public float z
+    {
+        get => NativeMethods.TablePtr->hs_get_23081048((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_23081048((void*)_handle, value);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

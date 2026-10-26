@@ -298,9 +298,9 @@ public sealed unsafe partial class Mob : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_e994c206((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'LegacyGoalDefinition' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
     public void createAI(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'LegacyGoalDefinition' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
     public bool createAIGoals()
     {

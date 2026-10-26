@@ -134,6 +134,54 @@ public sealed unsafe partial class BrushableBlockActor : global::System.IDisposa
         NativeMethods.TablePtr->hs_method_f14ef31f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContainerRuntimeId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_2c23bfb5((void*)_handle);
+    }
+
+    public sbyte mContainerType
+    {
+        get => NativeMethods.TablePtr->hs_get_79cf35bf((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_79cf35bf((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContentChangeListeners_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_df4d01b2((void*)_handle);
+    }
+
+    public bool mCustomName
+    {
+        get => NativeMethods.TablePtr->hs_get_c6471699((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_c6471699((void*)_handle, value);
+    }
+
+    public sbyte mGameplayContainerType
+    {
+        get => NativeMethods.TablePtr->hs_get_07ce60e4((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_07ce60e4((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e26b149a((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSizeChangeListeners_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_eec0755a((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTransactionContextStack_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_4e8242bc((void*)_handle);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

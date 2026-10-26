@@ -107,9 +107,9 @@ public sealed unsafe partial class Minecraft
         return new global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing((nint)NativeMethods.TablePtr->hs_method_a70aea67((void*)_handle), false);
     }
 
-    public nint getGameModuleServer()
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameModuleServer getGameModuleServer()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_a4398c75((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.GameModuleServer((nint)NativeMethods.TablePtr->hs_method_a4398c75((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.MinecraftGameTest? getGameTest()

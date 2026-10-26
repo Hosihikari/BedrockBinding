@@ -41,13 +41,17 @@ public sealed unsafe partial class MapItemSavedData
     public static MapItemSavedData Create(nint arg0, bool arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'MapDecoration::Type' is not a known bindable declaration.", false)]
-    public nint addTrackedMapEntity(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'MapDecoration::Type' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? addTrackedMapEntity(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1)
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_4825aaa3((void*)_handle, (void*)arg0.Handle, arg1);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'MapDecoration::Type' is not a known bindable declaration.", false)]
-    public nint addTrackedMapEntity(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'MapDecoration::Type' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? addTrackedMapEntity(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1, int arg2)
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_a0bb8db1((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public bool areClientPixelsDirty()
     {

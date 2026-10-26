@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class BlockSourceListener
+public sealed unsafe partial class BlockSourceListener
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,7 +37,63 @@ public sealed partial class BlockSourceListener
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BlockSourceListener Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BlockSourceListener Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public void onAreaChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2)
+    {
+        NativeMethods.TablePtr->hs_method_19a3f52c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+    }
+
+    public void onBlockChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, uint arg2, global::Hosihikari.Bindings.Bedrock.Interop.Block arg3, global::Hosihikari.Bindings.Bedrock.Interop.Block arg4, int arg5, global::Hosihikari.Bindings.Bedrock.Interop.ActorBlockSyncMessage? arg6, int arg7, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg8)
+    {
+        NativeMethods.TablePtr->hs_method_844d3cba((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)arg3.Handle, (void*)arg4.Handle, arg5, (void*)(arg6?.Handle ?? 0), arg7, (void*)(arg8?.Handle ?? 0));
+    }
+
+    public void onBlockEntityChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockActor arg1)
+    {
+        NativeMethods.TablePtr->hs_method_a5d712c8((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
+
+    public void onBlockEvent(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, int arg1, int arg2, int arg3, int arg4, int arg5)
+    {
+        NativeMethods.TablePtr->hs_method_197a6e35((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3, arg4, arg5);
+    }
+
+    public void onBrightnessChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
+    {
+        NativeMethods.TablePtr->hs_method_9db9ecad((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
+
+    public void onEntityChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1)
+    {
+        NativeMethods.TablePtr->hs_method_142c2136((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
+
+    public void onSourceCreated(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
+    {
+        NativeMethods.TablePtr->hs_method_f7a2d6aa((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public void onSourceDestroyed(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
+    {
+        NativeMethods.TablePtr->hs_method_291c4c16((void*)_handle, (void*)arg0.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
+    public void Destroy_6a626191() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_467b59e6() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

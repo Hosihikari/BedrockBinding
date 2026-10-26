@@ -69,9 +69,9 @@ public sealed unsafe partial class PackSourceFactory
         return (nint)NativeMethods.TablePtr->hs_method_569601ac((void*)_handle, arg0);
     }
 
-    public nint createWorldHistoryPackSource(nint arg0, sbyte arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.WorldHistoryPackSource createWorldHistoryPackSource(nint arg0, sbyte arg1)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_e95b2dfb((void*)_handle, (void*)arg0, arg1);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.WorldHistoryPackSource((nint)NativeMethods.TablePtr->hs_method_e95b2dfb((void*)_handle, (void*)arg0, arg1), false);
     }
 
     public nint createWorldTemplatePackSource(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg1, sbyte arg2, sbyte arg3)
@@ -99,9 +99,10 @@ public sealed unsafe partial class PackSourceFactory
         return (nint)NativeMethods.TablePtr->hs_method_3ba57ed5((void*)_handle, arg0);
     }
 
-    public nint getWorldHistoryPackSource(nint arg0, sbyte arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.WorldHistoryPackSource? getWorldHistoryPackSource(nint arg0, sbyte arg1)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_9bd407e5((void*)_handle, (void*)arg0, arg1);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_9bd407e5((void*)_handle, (void*)arg0, arg1);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.WorldHistoryPackSource((nint)__hs_handle, false) : null;
     }
 
     public nint getWorldTemplatePackSource(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0, sbyte arg1)

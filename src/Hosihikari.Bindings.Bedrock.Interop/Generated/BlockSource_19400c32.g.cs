@@ -208,7 +208,7 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
     public bool destroyBlock(nint pos, nint tool, nint toolOwner) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static bool doesIntersect(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.AABB arg1, nint arg2, global::Hosihikari.Bindings.Bedrock.Interop.AABB[] arg3, bool arg4)
+    public static bool doesIntersect(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.AABB arg1, global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeInterface arg2, global::Hosihikari.Bindings.Bedrock.Interop.AABB[] arg3, bool arg4)
     {
         var __hs_vectorItems3 = arg3;
         var __hs_vectorHandles3 = new nint[__hs_vectorItems3?.Length ?? 0];
@@ -219,7 +219,7 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         fixed (nint* __hs_vectorHandleData3 = __hs_vectorHandles3)
         {
             var __hs_vectorData3 = (void**)__hs_vectorHandleData3;
-            return NativeMethods.TablePtr->hs_method_c92c6777((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, arg4, __hs_vectorData3, (nuint)(arg3?.Length ?? 0)) != 0;
+            return NativeMethods.TablePtr->hs_method_c92c6777((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg4, __hs_vectorData3, (nuint)(arg3?.Length ?? 0)) != 0;
         }
     }
 
@@ -336,7 +336,7 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         }
     }
 
-    public void fetchCollisionShapes(global::Hosihikari.Bindings.Bedrock.Interop.AABB[] arg0, global::Hosihikari.Bindings.Bedrock.Interop.AABB arg1, bool arg2, nint? arg3, global::Hosihikari.Bindings.Bedrock.Interop.AABB[] arg4)
+    public void fetchCollisionShapes(global::Hosihikari.Bindings.Bedrock.Interop.AABB[] arg0, global::Hosihikari.Bindings.Bedrock.Interop.AABB arg1, bool arg2, global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeInterface? arg3, global::Hosihikari.Bindings.Bedrock.Interop.AABB[] arg4)
     {
         var __hs_vectorItems0 = arg0;
         var __hs_vectorHandles0 = new nint[__hs_vectorItems0?.Length ?? 0];
@@ -356,7 +356,7 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
             fixed (nint* __hs_vectorHandleData4 = __hs_vectorHandles4)
             {
                 var __hs_vectorData4 = (void**)__hs_vectorHandleData4;
-                NativeMethods.TablePtr->hs_method_3bd88fcf((void*)_handle, (void*)arg1.Handle, arg2, (void*)(arg3 ?? 0), __hs_vectorData0, (nuint)(arg0?.Length ?? 0), __hs_vectorData4, (nuint)(arg4?.Length ?? 0), arg3 is not null);
+                NativeMethods.TablePtr->hs_method_3bd88fcf((void*)_handle, (void*)arg1.Handle, arg2, (void*)(arg3?.Handle ?? 0), __hs_vectorData0, (nuint)(arg0?.Length ?? 0), __hs_vectorData4, (nuint)(arg4?.Length ?? 0), arg3 is not null);
             }
         }
     }
@@ -677,9 +677,9 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_68651de6((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.AABB getTallestCollisionShape(global::Hosihikari.Bindings.Bedrock.Interop.AABB arg0, nint arg1, bool arg2, nint? arg3)
+    public global::Hosihikari.Bindings.Bedrock.Interop.AABB getTallestCollisionShape(global::Hosihikari.Bindings.Bedrock.Interop.AABB arg0, nint arg1, bool arg2, global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeInterface? arg3)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_5fda1253((void*)_handle, (void*)arg0.Handle, (void*)arg1, arg2, (void*)(arg3 ?? 0), arg3 is not null));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_5fda1253((void*)_handle, (void*)arg0.Handle, (void*)arg1, arg2, (void*)(arg3?.Handle ?? 0), arg3 is not null));
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockTickingQueue? getTickingQueue(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, int arg1, bool arg2)

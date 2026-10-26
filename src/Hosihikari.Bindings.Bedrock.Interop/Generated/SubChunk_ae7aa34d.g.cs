@@ -122,9 +122,9 @@ public sealed unsafe partial class SubChunk
         return NativeMethods.TablePtr->hs_method_c232fc0a((void*)_handle) != 0;
     }
 
-    public void serialize(nint arg0, bool arg1)
+    public void serialize(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput arg0, bool arg1)
     {
-        NativeMethods.TablePtr->hs_method_193ded49((void*)_handle, (void*)arg0, arg1);
+        NativeMethods.TablePtr->hs_method_193ded49((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
     public void setBlock(ushort arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1)

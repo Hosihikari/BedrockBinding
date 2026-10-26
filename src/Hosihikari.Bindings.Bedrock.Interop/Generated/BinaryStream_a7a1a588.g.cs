@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BinaryStream
+public sealed unsafe partial class BinaryStream : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,19 +37,54 @@ public sealed unsafe partial class BinaryStream
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BinaryStream Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static BinaryStream Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_07d5c15d();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BinaryStream Create(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new BinaryStream((nint)handle);
+    }
 
-    public string getAndReleaseData()
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BinaryStream Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: constructors do not accept mutable string references.", false)]
+    public static BinaryStream Create_a4b2a2e4(nint arg0, bool arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors do not accept mutable string references.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BinaryStream Create_5ef5ca28(nint buffer, bool copyBuffer) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public string getAndReleaseData_054ae187()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_054ae187((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getAndReleaseData_d3c42da5() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public nint mBuffer_0daa8bdb
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_acc5ed24((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_acc5ed24((void*)_handle, (void*)value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOwnedBuffer_fba6266d_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b31933ba((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void reset()
     {
@@ -115,6 +150,26 @@ public sealed unsafe partial class BinaryStream
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void writeString(nint data, nint docName, nint docDesc) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void writeType_2f36d534(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void writeType_63dd57f1(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void writeType_c638c0ea(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void writeType_b7ed81a4(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void writeUnsignedChar(byte arg0, nint arg1, nint arg2)
     {
         NativeMethods.TablePtr->hs_method_f7ec5240((void*)_handle, arg0, (void*)arg1, (void*)arg2);
@@ -155,11 +210,41 @@ public sealed unsafe partial class BinaryStream
         NativeMethods.TablePtr->hs_method_481691ba((void*)_handle, arg0, (void*)arg1, (void*)arg2);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_b8507a5c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_6191f0e4() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public nint mBuffer_adf1f0ce
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_1d58d920((void*)_handle);
+    }
+
+    public bool mHasOverflowed
+    {
+        get => NativeMethods.TablePtr->hs_get_74914d54((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_74914d54((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOwnedBuffer_d3e71f7a_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e2ce10a8((void*)_handle);
+    }
+
+    public ulong mReadPointer
+    {
+        get => NativeMethods.TablePtr->hs_get_927e8908((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_927e8908((void*)_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_a7a1a588((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class RandomizableBlockActorFillingContainer
+public sealed unsafe partial class RandomizableBlockActorFillingContainer
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -36,4 +36,106 @@ public sealed partial class RandomizableBlockActorFillingContainer
         _handle = 0;
         return __hs_handle;
     }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContainerRuntimeId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_4eb7b1a8((void*)_handle);
+    }
+
+    public sbyte mContainerType
+    {
+        get => NativeMethods.TablePtr->hs_get_5a953a59((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_5a953a59((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContentChangeListeners_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_04110a46((void*)_handle);
+    }
+
+    public bool mCustomName
+    {
+        get => NativeMethods.TablePtr->hs_get_634d01c9((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_634d01c9((void*)_handle, value);
+    }
+
+    public sbyte mGameplayContainerType
+    {
+        get => NativeMethods.TablePtr->hs_get_a7523a07((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_a7523a07((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_922b5871((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSizeChangeListeners_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_44dfb1b4((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTransactionContextStack_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_5dd200b0((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static RandomizableBlockActorFillingContainer Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static RandomizableBlockActorFillingContainer Create_83849be7(nint blockEntityType, nint id, nint pos, int numTotalSlots, nint containerType) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static RandomizableBlockActorFillingContainer Create_cb2a3ab7(nint arg0, nint arg1, nint arg2, int arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static RandomizableBlockActorFillingContainer Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public void dropContents(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, bool arg2)
+    {
+        NativeMethods.TablePtr->hs_method_8b7b7a7e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+    }
+
+    public void dropSlotContent(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, bool arg2, int arg3)
+    {
+        NativeMethods.TablePtr->hs_method_83589a19((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3);
+    }
+
+    public void initializeContainerContents(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
+    {
+        NativeMethods.TablePtr->hs_method_cbd43477((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public void onRemoved(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
+    {
+        NativeMethods.TablePtr->hs_method_788f6615((void*)_handle, (void*)arg0.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void setContainerChanged(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_3886b693((void*)_handle, arg0);
+    }
+
+    public void startOpen(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    {
+        NativeMethods.TablePtr->hs_method_2f5075ef((void*)_handle, (void*)arg0.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

@@ -103,9 +103,9 @@ public sealed unsafe partial class PowderSnowBlock : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_9298d6d0((void*)_handle, (void*)arg0.Handle, arg1, arg2) != 0;
     }
 
-    public static bool canWalkOnTop(nint arg0)
+    public static bool canWalkOnTop(global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeInterface arg0)
     {
-        return NativeMethods.TablePtr->hs_method_ad6570f7((void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_ad6570f7((void*)arg0.Handle) != 0;
     }
 
     public bool causesFreezeEffect()
@@ -118,9 +118,9 @@ public sealed unsafe partial class PowderSnowBlock : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_82e7112c((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.AABB getCollisionShape(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, nint? arg3)
+    public global::Hosihikari.Bindings.Bedrock.Interop.AABB getCollisionShape(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeInterface? arg3)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_c832d04e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)(arg3 ?? 0), arg3 is not null));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_c832d04e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)(arg3?.Handle ?? 0), arg3 is not null));
     }
 
     public bool isWaterBlocking()

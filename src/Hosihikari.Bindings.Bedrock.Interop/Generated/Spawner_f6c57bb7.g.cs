@@ -45,14 +45,16 @@ public sealed unsafe partial class Spawner
     public static bool findNextSpawnBlockUnder(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'SpawnBlockRequirements' is not a known bindable declaration.");
 
-    public nint getSpawnRules()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorSpawnRuleGroup? getSpawnRules()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_aa9dc774((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_aa9dc774((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ActorSpawnRuleGroup((nint)__hs_handle, false) : null;
     }
 
-    public nint getSpawnRulesMutable()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorSpawnRuleGroup? getSpawnRulesMutable()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_f934dedf((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_f934dedf((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ActorSpawnRuleGroup((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.SpawnSettings getSpawnSettings()

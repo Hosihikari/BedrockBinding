@@ -37,6 +37,54 @@ public sealed unsafe partial class CrafterBlockActor : global::System.IDisposabl
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContainerRuntimeId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_7d933436((void*)_handle);
+    }
+
+    public sbyte mContainerType
+    {
+        get => NativeMethods.TablePtr->hs_get_3dd508b2((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_3dd508b2((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContentChangeListeners_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_41376515((void*)_handle);
+    }
+
+    public bool mCustomName
+    {
+        get => NativeMethods.TablePtr->hs_get_9366f5cf((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_9366f5cf((void*)_handle, value);
+    }
+
+    public sbyte mGameplayContainerType
+    {
+        get => NativeMethods.TablePtr->hs_get_ed3b85b8((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_ed3b85b8((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_7584a485((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSizeChangeListeners_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_d9617561((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTransactionContextStack_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_2c49611b((void*)_handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static CrafterBlockActor Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");

@@ -898,9 +898,9 @@ public sealed unsafe partial class Item
         NativeMethods.TablePtr->hs_method_8d21217b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public void readUserData(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.ReadOnlyBinaryStream arg2)
+    public void readUserData(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, global::Hosihikari.Bindings.Bedrock.Interop.IDataInput arg1, global::Hosihikari.Bindings.Bedrock.Interop.ReadOnlyBinaryStream arg2)
     {
-        NativeMethods.TablePtr->hs_method_763de300((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle);
+        NativeMethods.TablePtr->hs_method_763de300((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
     public void refreshedInContainer(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, global::Hosihikari.Bindings.Bedrock.Interop.Level arg1)
@@ -1195,9 +1195,9 @@ public sealed unsafe partial class Item
     public nint validateFromNetwork(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void writeUserData(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, nint arg1)
+    public void writeUserData(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput arg1)
     {
-        NativeMethods.TablePtr->hs_method_828e4c2a((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_828e4c2a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

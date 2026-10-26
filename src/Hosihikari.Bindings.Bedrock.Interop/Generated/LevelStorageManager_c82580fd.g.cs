@@ -65,9 +65,9 @@ public sealed unsafe partial class LevelStorageManager
         return (nint)NativeMethods.TablePtr->hs_method_07449eeb((void*)_handle);
     }
 
-    public void initializeWithDimensionManager(nint arg0)
+    public void initializeWithDimensionManager(global::Hosihikari.Bindings.Bedrock.Interop.DimensionManager arg0)
     {
-        NativeMethods.TablePtr->hs_method_43a69dda((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_43a69dda((void*)_handle, (void*)arg0.Handle);
     }
 
     public void initializeWithPlayerDeathManager(nint arg0)

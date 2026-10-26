@@ -37,6 +37,18 @@ public sealed unsafe partial class NetworkItemStackDescriptor : global::System.I
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mImpl_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_a0bd7fe4((void*)_handle);
+    }
+
+    public ushort mStackSize
+    {
+        get => NativeMethods.TablePtr->hs_get_fe1bb1a0((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_fe1bb1a0((void*)_handle, value);
+    }
+
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static NetworkItemStackDescriptor Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");

@@ -150,9 +150,9 @@ public sealed unsafe partial class Player : global::System.IDisposable
     public static Player Create_481dc04f(nint arg0, nint arg1, nint arg2, bool arg3, nint arg4, nint arg5, nint arg6, nint arg7, nint arg8, nint arg9, nint arg10, nint arg11, nint arg12) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'Certificate' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static Player Create_f906481d(nint arg0, nint arg1, nint arg2, bool arg3, nint arg4, nint arg5, nint arg6, nint arg7, nint arg8, nint arg9, nint arg10, nint arg11, nint arg12) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'Certificate' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static Player Create(nint arg0) =>
@@ -338,9 +338,9 @@ public sealed unsafe partial class Player : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_2bd423ee((void*)_handle, (void*)arg0.Handle);
     }
 
-    public static bool checkNeedAutoJump(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg0, nint arg1, nint arg2, float arg3, nint arg4, nint? arg5, float arg6, float arg7)
+    public static bool checkNeedAutoJump(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg0, nint arg1, nint arg2, float arg3, nint arg4, global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeInterface? arg5, float arg6, float arg7)
     {
-        return NativeMethods.TablePtr->hs_method_39d74354((void*)arg0.Handle, (void*)arg1, (void*)arg2, arg3, (void*)arg4, (void*)(arg5 ?? 0), arg6, arg7, arg5 is not null) != 0;
+        return NativeMethods.TablePtr->hs_method_39d74354((void*)arg0.Handle, (void*)arg1, (void*)arg2, arg3, (void*)arg4, (void*)(arg5?.Handle ?? 0), arg6, arg7, arg5 is not null) != 0;
     }
 
     public bool checkNeedAutoJump(float arg0, float arg1)
@@ -451,7 +451,7 @@ public sealed unsafe partial class Player : global::System.IDisposable
         }
     }
 
-    public void displayTextObjectMessage(nint arg0, string arg1, string arg2)
+    public void displayTextObjectMessage(global::Hosihikari.Bindings.Bedrock.Interop.TextObjectRoot arg0, string arg1, string arg2)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
         scoped global::System.Span<byte> __hs_stringBytes1;
@@ -479,7 +479,7 @@ public sealed unsafe partial class Player : global::System.IDisposable
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                NativeMethods.TablePtr->hs_method_c3daf878((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                NativeMethods.TablePtr->hs_method_c3daf878((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
             }
         }
     }

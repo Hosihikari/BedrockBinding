@@ -204,9 +204,9 @@ public sealed unsafe partial class ResourcePackManager
     public nint loadAllVersionsOf(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'LoadedResourceData' is not supported.");
 
-    public void registerResourcePackListener(nint arg0)
+    public void registerResourcePackListener(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackListener arg0)
     {
-        NativeMethods.TablePtr->hs_method_3e4d6ff1((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_3e4d6ff1((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -221,9 +221,9 @@ public sealed unsafe partial class ResourcePackManager
     public bool setStack(nint arg0, nint arg1, bool arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ResourcePackStackType' is not a known bindable declaration.");
 
-    public void unRegisterResourcePackListener(nint arg0)
+    public void unRegisterResourcePackListener(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackListener arg0)
     {
-        NativeMethods.TablePtr->hs_method_771817f7((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_771817f7((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

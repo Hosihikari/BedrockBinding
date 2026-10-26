@@ -86,9 +86,10 @@ public sealed unsafe partial class ConnectionRequest
         return NativeMethods.TablePtr->hs_method_f7463d6b((void*)_handle);
     }
 
-    public nint getCertificate()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Certificate? getCertificate()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_e8fc83d1((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_e8fc83d1((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Certificate((nint)__hs_handle, false) : null;
     }
 
     public string getClientPlatformId()

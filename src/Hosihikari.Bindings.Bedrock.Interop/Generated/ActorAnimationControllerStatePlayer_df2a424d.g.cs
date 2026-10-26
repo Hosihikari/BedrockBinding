@@ -41,9 +41,9 @@ public sealed unsafe partial class ActorAnimationControllerStatePlayer : global:
     public static ActorAnimationControllerStatePlayer Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static ActorAnimationControllerStatePlayer Create(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, nint arg1, global::Hosihikari.Bindings.Abi.SharedHandle? arg2, global::Hosihikari.Bindings.Bedrock.Interop.AnimationComponent arg3, global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode arg4, nint arg5)
+    public static ActorAnimationControllerStatePlayer Create(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationControllerPlayer arg1, global::Hosihikari.Bindings.Abi.SharedHandle? arg2, global::Hosihikari.Bindings.Bedrock.Interop.AnimationComponent arg3, global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode arg4, nint arg5)
     {
-        var handle = NativeMethods.TablePtr->hs_create_ed01dfba((void*)arg0.Handle, (void*)arg1, arg2?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)arg3.Handle, (void*)arg4.Handle, (void*)arg5);
+        var handle = NativeMethods.TablePtr->hs_create_ed01dfba((void*)arg0.Handle, (void*)arg1.Handle, arg2?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)arg3.Handle, (void*)arg4.Handle, (void*)arg5);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

@@ -660,14 +660,14 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_9ae91fd9((void*)_handle);
     }
 
-    public nint getDimensionManager_7cdd0715()
+    public global::Hosihikari.Bindings.Bedrock.Interop.DimensionManager getDimensionManager_7cdd0715()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_7cdd0715((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DimensionManager((nint)NativeMethods.TablePtr->hs_method_7cdd0715((void*)_handle), false);
     }
 
-    public nint getDimensionManager_8c559ba3()
+    public global::Hosihikari.Bindings.Bedrock.Interop.DimensionManager getDimensionManager_8c559ba3()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_8c559ba3((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DimensionManager((nint)NativeMethods.TablePtr->hs_method_8c559ba3((void*)_handle), false);
     }
 
     public bool getDisablePlayerInteractions()

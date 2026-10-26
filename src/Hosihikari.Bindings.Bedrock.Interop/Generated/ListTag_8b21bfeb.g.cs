@@ -210,9 +210,9 @@ public sealed unsafe partial class ListTag : global::System.IDisposable
     public nint toString_c6081592() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void write(nint arg0)
+    public void write(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput arg0)
     {
-        NativeMethods.TablePtr->hs_method_474447dc((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_474447dc((void*)_handle, (void*)arg0.Handle);
     }
 
 

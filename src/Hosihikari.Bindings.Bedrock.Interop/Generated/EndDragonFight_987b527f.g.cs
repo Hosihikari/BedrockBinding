@@ -46,9 +46,9 @@ public sealed unsafe partial class EndDragonFight
         NativeMethods.TablePtr->hs_method_9cb8661d((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void onCrystalDestroyed(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg1)
+    public void onCrystalDestroyed(global::Hosihikari.Bindings.Bedrock.Interop.EnderCrystal arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg1)
     {
-        NativeMethods.TablePtr->hs_method_39876a05((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->hs_method_39876a05((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void resetSpikeCrystals()

@@ -94,9 +94,9 @@ public sealed unsafe partial class JumpControlComponent
         NativeMethods.TablePtr->hs_method_a3cd79ca((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'JumpControl' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void setInternalType(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'JumpControl' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public void setJumpType(int arg0)
     {
