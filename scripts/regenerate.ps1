@@ -13,6 +13,9 @@ param(
     [string]$TargetModule = "bedrock_server",
     [string]$GeneratorRoot = "",
     [string]$AbiRoot = "",
+    # The symbol stage reads the whole PDB and takes an hour once the class set is large.
+    # Reuse the shard from the previous run while iterating on later stages.
+    [switch]$SkipSymbols,
     [string]$Output = "artifacts/regenerated"
 )
 
@@ -79,7 +82,14 @@ if (-not [string]::IsNullOrWhiteSpace($ClassesFile)) {
 if (-not [string]::IsNullOrWhiteSpace($Elf)) {
     $symbolArguments.Elf = $Elf
 }
-& (Join-Path $GeneratorRoot "frontend\run-symbols.ps1") @symbolArguments
+if ($SkipSymbols) {
+    if (-not (Test-Path (Join-Path $SymbolIr "ir-manifest.json"))) {
+        throw "-SkipSymbols was set but $SymbolIr has no ir-manifest.json."
+    }
+    Write-Output "Reusing the symbol IR under $SymbolIr."
+} else {
+    & (Join-Path $GeneratorRoot "frontend\run-symbols.ps1") @symbolArguments
+}
 
 if (-not (Test-Path (Join-Path $HeaderIr "ir-manifest.json"))) {
     & (Join-Path $GeneratorRoot "frontend\run-levilamina-headers.ps1") `
@@ -99,6 +109,9 @@ dotnet run --project (Join-Path $GeneratorRoot "src\Hosihikari.Bindings.Generato
     emit (Join-Path $MergedIr "ir-manifest.json") $MergedIr $Emitted `
     --abi-header $AbiHeader `
     --symbol-dispatch --target-module $TargetModule
+# Without this the script copies whatever the previous run left in the emitted directory,
+# and a rejected IR shows up as "regenerated" with last run's numbers.
+if ($LASTEXITCODE -ne 0) { throw "emit exited with $LASTEXITCODE; the merged IR was not accepted" }
 
 $InteropTarget = Join-Path $RepoRoot "src\Hosihikari.Bindings.Bedrock.Interop\Generated"
 $CoverageTarget = Join-Path $RepoRoot "coverage"

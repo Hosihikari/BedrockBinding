@@ -1,12 +1,12 @@
 # Hosihikari.Bindings.Bedrock
 
-Hosihikari 绑定项目的 **Bedrock / MCAPI** 表面：生成的、贴近原生风格的 **Interop** 与按符号分发的原生 **binding shim**。
+Hosihikari 绑定项目的 **Bedrock / MCAPI** 互操作面：生成的、贴近原生风格的 **Interop** 与按符号分发的原生 **绑定垫片**。
 
 ## 边界
 
 - `Hosihikari.Bindings.Bedrock.Interop` 由 `Hosihikari/BindingGenerator` 从 Bedrock Dedicated Server **1.21.3.01** 的符号级 IR 生成，并合并 LeviLamina **v0.13.5** 头文件补充。它映照 MCAPI 声明：record 保留生成的包装类型，单层指针与引用返回变为类型化借用包装，`optional_ref<T>` 复用该路径，不受支持的成员保留带原因的 `NotSupportedException` stub。ABI 值类型与 shim 加载器来自 `Hosihikari/BindingAbi`。
 - `native/BindingShim/` 是 C ABI 投影，自包含：不包含游戏头文件，也不链接 import library。直接成员在 Windows 上解析 `模块基址 + rva`，在 Linux 上解析 `模块基址 + address`；虚成员按每配置 vtable 槽索引。缺少地址时回退到 `GetProcAddress`/`dlsym` 与记录的符号。命名模块不存在时，Windows 与 Linux 会回退到进程主模块，因此 `bedrock_server.exe` 与 `bedrock_server_mod.exe` 都能工作。
-- 手写 Idiomatic 层延后；生成的 Interop 是当前公开表面。
+- 手写 Idiomatic 层延后；生成的 Interop 是当前公开的互操作面。
 
 ## 当前状态
 
@@ -66,8 +66,8 @@ shim 内嵌从 1.21.3.01 调试符号恢复的 RVA、Itanium/MSVC 符号名与 v
 - `Hosihikari/BindingIr`：IR schema、模型、读写器与校验器。
 - `Hosihikari/BindingAbi`：共享 ABI 值类型、加载器与原生头。
 - `Hosihikari/BindingGenerator`：libTooling 前端与发射器。
-- `Hosihikari/LeviLaminaBinding`：LeviLamina 表面。
-- `Hosihikari/EndstoneBinding`：Endstone 表面。
+- `Hosihikari/LeviLaminaBinding`：LeviLamina 互操作面。
+- `Hosihikari/EndstoneBinding`：Endstone 互操作面。
 
 ## 许可证
 
