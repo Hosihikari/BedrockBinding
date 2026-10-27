@@ -61,14 +61,20 @@ if (-not (Test-Path $AbiHeader)) {
     throw "hosihikari_abi.h was not found under $AbiRoot."
 }
 
+# Past a few thousand names a comma-joined list overruns the 32,767-character Windows
+# command line, so a file selection stays a file all the way down.
 $symbolArguments = @{
     Pdb = $Pdb
     Exe = $Exe
     IrOutput = $SymbolIr
     NoPrototype = $true
     Version = $Version
-    Classes = @($Classes.Split(",") | ForEach-Object { $_.Trim() } | Where-Object { $_ })
     SkipBuild = $true
+}
+if (-not [string]::IsNullOrWhiteSpace($ClassesFile)) {
+    $symbolArguments.ClassesFile = $ClassesFile
+} else {
+    $symbolArguments.Classes = @($Classes.Split(",") | ForEach-Object { $_.Trim() } | Where-Object { $_ })
 }
 if (-not [string]::IsNullOrWhiteSpace($Elf)) {
     $symbolArguments.Elf = $Elf
@@ -86,7 +92,7 @@ if (-not (Test-Path (Join-Path $HeaderIr "ir-manifest.json"))) {
     --symbol $SymbolIr `
     --header $HeaderIr `
     --output $MergedIr `
-    --classes $Classes
+    $(if ($ClassesFile) { @("--classes-file", $ClassesFile) } else { @("--classes", $Classes) })
 if ($LASTEXITCODE -ne 0) { throw "merge-symbol-ir.py exited with $LASTEXITCODE" }
 
 dotnet run --project (Join-Path $GeneratorRoot "src\Hosihikari.Bindings.Generator\Hosihikari.Bindings.Generator.csproj") -c Release -- `
