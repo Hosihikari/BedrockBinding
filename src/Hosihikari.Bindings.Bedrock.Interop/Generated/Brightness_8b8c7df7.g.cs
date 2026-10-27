@@ -37,8 +37,59 @@ public sealed unsafe partial class Brightness : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Brightness Create(global::Hosihikari.Bindings.Bedrock.Interop.Brightness arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_b48aa79a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Brightness((nint)handle);
+    }
+
+    public static Brightness Create_385cdb29(nint arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_385cdb29((void*)arg0);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Brightness((nint)handle);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Brightness INVALID
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Brightness((nint)NativeMethods.TablePtr->hs_get_086ba7bd(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Brightness MAX
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Brightness((nint)NativeMethods.TablePtr->hs_get_c71d8865(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Brightness MIN
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Brightness((nint)NativeMethods.TablePtr->hs_get_4c21003b(), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_9b9ddf1d(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_0477e7d2(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public byte value
+    {
+        get => NativeMethods.TablePtr->hs_get_3599f98e((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_3599f98e((void*)_handle, value);
+    }
+
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static Brightness Create(nint arg0) =>
+    public static Brightness Create_763eb996(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
     public void Dispose()

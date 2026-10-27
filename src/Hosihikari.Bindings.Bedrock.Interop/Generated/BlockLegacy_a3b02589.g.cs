@@ -444,9 +444,9 @@ public sealed unsafe partial class BlockLegacy
         }
     }
 
-    public bool executeTrigger(nint arg0, nint arg1)
+    public bool executeTrigger(global::Hosihikari.Bindings.Bedrock.Interop.DefinitionTrigger arg0, nint arg1)
     {
-        return NativeMethods.TablePtr->hs_method_d88c9189((void*)_handle, (void*)arg0, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_d88c9189((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -1342,9 +1342,9 @@ public sealed unsafe partial class BlockLegacy
         NativeMethods.TablePtr->hs_method_82ae2afe((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IntRange' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IntRange' is not copy-constructible.", false)]
     public nint setExperienceDrop(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IntRange' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IntRange' is not copy-constructible.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy setFlammable(int arg0, int arg1, int arg2)
     {

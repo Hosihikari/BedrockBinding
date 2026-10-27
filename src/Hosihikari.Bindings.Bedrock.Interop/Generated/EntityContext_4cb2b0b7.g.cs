@@ -37,6 +37,63 @@ public sealed unsafe partial class EntityContext : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static EntityContext Create(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.EntityId arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_da5f883f((void*)arg0.Handle, (void*)arg1.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EntityContext((nint)handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry _registry()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry((nint)NativeMethods.TablePtr->hs_method_2f180814((void*)_handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getRegistry_f025e308() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getRegistry_357c472d() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getWeakRef()
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_feede911((void*)_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public bool isValid()
+    {
+        return NativeMethods.TablePtr->hs_method_cef4073d((void*)_handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEntity_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_be893c62((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEnttRegistry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_4b0de638((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRegistry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_f2400127((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool operator_equal(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void Dispose()
     {
         if (_handle != 0)

@@ -41,8 +41,14 @@ if (-not [string]::IsNullOrWhiteSpace($ClassesFile)) {
         ForEach-Object { $_.Trim() } |
         Where-Object { $_ -ne "" -and -not $_.StartsWith("#") }) -join ","
 }
+# A reused header IR goes stale silently: the class list and the header list keep growing,
+# and merging against a six-day-old IR binds almost nothing. Rebuild by default; pass
+# -HeaderIr to reuse one on purpose.
 if ([string]::IsNullOrWhiteSpace($HeaderIr)) {
     $HeaderIr = Join-Path $Output "header-ir"
+    if (Test-Path (Join-Path $HeaderIr "ir-manifest.json")) {
+        Remove-Item $HeaderIr -Recurse -Force
+    }
 } else {
     $HeaderIr = (Resolve-Path $HeaderIr).Path
 }

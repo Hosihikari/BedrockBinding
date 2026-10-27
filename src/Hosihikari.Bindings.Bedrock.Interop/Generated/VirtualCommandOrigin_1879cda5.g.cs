@@ -47,9 +47,9 @@ public sealed unsafe partial class VirtualCommandOrigin : global::System.IDispos
     public static VirtualCommandOrigin Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static VirtualCommandOrigin Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, nint arg2, int arg3)
+    public static VirtualCommandOrigin Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, global::Hosihikari.Bindings.Bedrock.Interop.CommandPositionFloat arg2, int arg3)
     {
-        var handle = NativeMethods.TablePtr->hs_create_2bf33f53((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, arg3);
+        var handle = NativeMethods.TablePtr->hs_create_2bf33f53((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -58,9 +58,9 @@ public sealed unsafe partial class VirtualCommandOrigin : global::System.IDispos
         return new VirtualCommandOrigin((nint)handle);
     }
 
-    public static VirtualCommandOrigin Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg1, nint arg2, int arg3)
+    public static VirtualCommandOrigin Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg1, global::Hosihikari.Bindings.Bedrock.Interop.CommandPositionFloat arg2, int arg3)
     {
-        var handle = NativeMethods.TablePtr->hs_create_d581d114((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, arg3);
+        var handle = NativeMethods.TablePtr->hs_create_d581d114((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -110,9 +110,9 @@ public sealed unsafe partial class VirtualCommandOrigin : global::System.IDispos
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getExecutePosition(int arg0, nint arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getExecutePosition(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandPositionFloat arg1)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_bb8bdf09((void*)_handle, arg0, (void*)arg1));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_bb8bdf09((void*)_handle, arg0, (void*)arg1.Handle));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CommandOriginIdentity' requires --link-carrier or --virtual-dispatch.", false)]

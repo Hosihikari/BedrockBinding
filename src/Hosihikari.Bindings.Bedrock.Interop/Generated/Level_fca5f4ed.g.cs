@@ -325,9 +325,10 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'StrictEntityContext' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint fetchStrictEntity(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'StrictEntityContext' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext fetchStrictEntity(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0, bool arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext((nint)NativeMethods.TablePtr->hs_method_84bcc5f6((void*)_handle, (void*)arg0.Handle, arg1));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Path? findPath(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, global::Hosihikari.Bindings.Bedrock.Interop.NavigationComponent arg2)
     {
@@ -511,14 +512,14 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry((nint)NativeMethods.TablePtr->hs_method_d629fe91((void*)_handle), false);
     }
 
-    public nint getBlockComponentFactory_f35a44bd()
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockComponentFactory getBlockComponentFactory_f35a44bd()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_f35a44bd((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockComponentFactory((nint)NativeMethods.TablePtr->hs_method_f35a44bd((void*)_handle), false);
     }
 
-    public nint getBlockComponentFactory_ba080293()
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockComponentFactory getBlockComponentFactory_ba080293()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_ba080293((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockComponentFactory((nint)NativeMethods.TablePtr->hs_method_ba080293((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinitionGroup? getBlockDefinitions()

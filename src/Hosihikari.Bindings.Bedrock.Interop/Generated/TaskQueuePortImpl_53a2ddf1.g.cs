@@ -46,14 +46,14 @@ public sealed unsafe partial class TaskQueuePortImpl
         NativeMethods.TablePtr->hs_method_fe6534d0((void*)_handle, (void*)arg0);
     }
 
-    public void Detach(nint arg0)
+    public void Detach(global::Hosihikari.Bindings.Bedrock.Interop.ITaskQueuePortContext? arg0)
     {
-        NativeMethods.TablePtr->hs_method_4b884b4a((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_4b884b4a((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
-    public bool Dispatch(nint arg0, uint arg1)
+    public bool Dispatch(global::Hosihikari.Bindings.Bedrock.Interop.ITaskQueuePortContext? arg0, uint arg1)
     {
-        return NativeMethods.TablePtr->hs_method_0123d7bc((void*)_handle, (void*)arg0, arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_0123d7bc((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1) != 0;
     }
 
     public nint GetHandle()
@@ -99,9 +99,9 @@ public sealed unsafe partial class TaskQueuePortImpl
         NativeMethods.TablePtr->hs_method_6d940d16((void*)_handle);
     }
 
-    public void ResumeTermination(nint arg0)
+    public void ResumeTermination(global::Hosihikari.Bindings.Bedrock.Interop.ITaskQueuePortContext? arg0)
     {
-        NativeMethods.TablePtr->hs_method_df4ca2a9((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_df4ca2a9((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
     public void SuspendPort()

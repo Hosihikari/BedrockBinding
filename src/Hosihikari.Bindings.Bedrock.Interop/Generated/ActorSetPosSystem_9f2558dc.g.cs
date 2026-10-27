@@ -83,9 +83,9 @@ public sealed unsafe partial class ActorSetPosSystem
     public void registerEvents(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void singleTick(nint arg0, nint arg1)
+    public void singleTick(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg1)
     {
-        NativeMethods.TablePtr->hs_method_c391da81((void*)_handle, (void*)arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_c391da81((void*)_handle, (void*)arg0, (void*)arg1.Handle);
     }
 
     public void tick(nint arg0)

@@ -348,9 +348,9 @@ public sealed unsafe partial class Block : global::System.IDisposable
         }
     }
 
-    public bool executeTrigger(nint arg0, nint arg1)
+    public bool executeTrigger(global::Hosihikari.Bindings.Bedrock.Interop.DefinitionTrigger arg0, nint arg1)
     {
-        return NativeMethods.TablePtr->hs_method_32321ad3((void*)_handle, (void*)arg0, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_32321ad3((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
     }
 
     // The native field type is not projected; this is the address of the field storage.

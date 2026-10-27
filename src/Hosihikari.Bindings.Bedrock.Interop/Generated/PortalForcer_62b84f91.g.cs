@@ -99,9 +99,9 @@ public sealed unsafe partial class PortalForcer : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_4decd67a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)arg3.Handle) != 0;
     }
 
-    public void force(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, nint arg1)
+    public void force(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.DimensionTransitionComponent arg1)
     {
-        NativeMethods.TablePtr->hs_method_0533d146((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_0533d146((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

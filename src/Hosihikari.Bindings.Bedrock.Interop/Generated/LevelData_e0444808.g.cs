@@ -132,9 +132,9 @@ public sealed unsafe partial class LevelData
         return NativeMethods.TablePtr->hs_method_45c28713((void*)_handle);
     }
 
-    public nint getCloudSaveInfo_ad8a8b32()
+    public global::Hosihikari.Bindings.Bedrock.Interop.CloudSaveLevelInfo getCloudSaveInfo_ad8a8b32()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_ad8a8b32((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CloudSaveLevelInfo((nint)NativeMethods.TablePtr->hs_method_ad8a8b32((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Tick getCurrentTick()

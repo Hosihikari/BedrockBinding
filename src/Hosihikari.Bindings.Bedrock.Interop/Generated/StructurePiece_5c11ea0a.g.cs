@@ -121,9 +121,9 @@ public sealed unsafe partial class StructurePiece
         return NativeMethods.TablePtr->hs_method_4feb9c6b((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'PieceWeight' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public static int getTotalWeight(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'PieceWeight' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     public int getType()
     {

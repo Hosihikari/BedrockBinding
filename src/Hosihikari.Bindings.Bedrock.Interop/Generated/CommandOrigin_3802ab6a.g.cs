@@ -110,9 +110,9 @@ public sealed unsafe partial class CommandOrigin : global::System.IDisposable
     public nint getEntity() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getExecutePosition(int arg0, nint arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getExecutePosition(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandPositionFloat arg1)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_0253d8a6((void*)_handle, arg0, (void*)arg1));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_0253d8a6((void*)_handle, arg0, (void*)arg1.Handle));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CommandOriginIdentity' requires --link-carrier or --virtual-dispatch.", false)]

@@ -37,6 +37,125 @@ public sealed unsafe partial class PlayerListEntry : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static PlayerListEntry Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_4c0b97fa();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerListEntry((nint)handle);
+    }
+
+    public static PlayerListEntry Create(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_656dddd8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerListEntry((nint)handle);
+    }
+
+    public static PlayerListEntry Create(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_c90898e9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerListEntry((nint)handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PlayerListEntry clone()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerListEntry((nint)NativeMethods.TablePtr->hs_method_dca6bfa2((void*)_handle));
+    }
+
+    public int mBuildPlatform
+    {
+        get => NativeMethods.TablePtr->hs_get_73afb4f0((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_73afb4f0((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_fc5fd2e1((void*)_handle);
+    }
+
+    public bool mIsHost
+    {
+        get => NativeMethods.TablePtr->hs_get_3dc30bcc((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_3dc30bcc((void*)_handle, value);
+    }
+
+    public bool mIsTeacher
+    {
+        get => NativeMethods.TablePtr->hs_get_a4681431((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_a4681431((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_061681e3((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlatformOnlineId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_5a9bb59e((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSkin_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_d3453e24((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUuid_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_52b294b8((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mXuid_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b5160c7a((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint read_b3c26214(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void,std::error_code>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint read_a999a247(nint stream) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint readRemove_4cb9c71d(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void,std::error_code>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint readRemove_96859b28(nint stream) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void write(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream arg0)
+    {
+        NativeMethods.TablePtr->hs_method_a2ad1766((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public void writeRemove(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream arg0)
+    {
+        NativeMethods.TablePtr->hs_method_6586dfc3((void*)_handle, (void*)arg0.Handle);
+    }
+
+
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static PlayerListEntry Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");

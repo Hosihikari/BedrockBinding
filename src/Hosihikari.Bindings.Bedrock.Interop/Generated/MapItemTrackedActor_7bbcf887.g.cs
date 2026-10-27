@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MapItemTrackedActor : global::System.IDisposable
+public sealed unsafe partial class MapItemTrackedActor
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,16 +37,46 @@ public sealed unsafe partial class MapItemTrackedActor : global::System.IDisposa
         return __hs_handle;
     }
 
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_7bbcf887((void*)_handle);
-            }
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MapItemTrackedActor Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-            _handle = 0;
-        }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static MapItemTrackedActor Create(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MapItemTrackedActor Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public float getDecorationRotation(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_93d148a4((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? getEntity(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_ff381edd((void*)_handle, (void*)arg0.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Packet? nextUpdatePacket(global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData arg0)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_d5a234d7((void*)_handle, (void*)arg0.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Packet((nint)__hs_handle) : null;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void setNeedsResend()
+    {
+        NativeMethods.TablePtr->hs_method_cccbed2b((void*)_handle);
+    }
+
+    public void setPixelDirty(uint arg0, uint arg1)
+    {
+        NativeMethods.TablePtr->hs_method_85997c02((void*)_handle, arg0, arg1);
     }
 }

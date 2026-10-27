@@ -56,9 +56,9 @@ public sealed unsafe partial class LodestoneBlockActor : global::System.IDisposa
     public static LodestoneBlockActor Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public nint getTrackingHandle()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingId getTrackingHandle()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_933a95fb((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingId((nint)NativeMethods.TablePtr->hs_method_933a95fb((void*)_handle), false);
     }
 
     public bool hasTrackingHandle()
@@ -94,9 +94,9 @@ public sealed unsafe partial class LodestoneBlockActor : global::System.IDisposa
         return NativeMethods.TablePtr->hs_method_9f9f7414((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    public bool setTrackingHandle(nint arg0)
+    public bool setTrackingHandle(global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingId arg0)
     {
-        return NativeMethods.TablePtr->hs_method_600ef463((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_600ef463((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)

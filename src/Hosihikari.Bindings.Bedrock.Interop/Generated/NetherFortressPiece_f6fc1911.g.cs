@@ -101,9 +101,9 @@ public sealed unsafe partial class NetherFortressPiece : global::System.IDisposa
     public nint generateChildRight_432366ea(nint arg0, nint arg1, nint arg2, int arg3, int arg4, bool arg5) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'PieceWeight' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.", false)]
     public nint generatePiece_95750640(nint arg0, nint arg1, nint arg2, nint arg3, int arg4, int arg5, int arg6, int arg7, int arg8) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'PieceWeight' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece,std::default_delete<StructurePiece>>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint generatePiece_3cdaa8bb(nint startPiece, nint currentPieces, nint pieces, nint random, int footX, int footY, int footZ, int direction, int depth) =>

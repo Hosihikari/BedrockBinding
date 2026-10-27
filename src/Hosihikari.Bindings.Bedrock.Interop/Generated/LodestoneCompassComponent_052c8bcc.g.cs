@@ -59,9 +59,9 @@ public sealed unsafe partial class LodestoneCompassComponent
         return NativeMethods.TablePtr->hs_method_dee4fe33();
     }
 
-    public void initialize(nint arg0)
+    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingId arg0)
     {
-        NativeMethods.TablePtr->hs_method_46127312((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_46127312((void*)_handle, (void*)arg0.Handle);
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.CompassSpriteCalculator mSpinningLodestone

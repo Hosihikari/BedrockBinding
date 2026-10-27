@@ -57,14 +57,16 @@ public sealed unsafe partial class BlockDefinitionGroup
     public nint _stringToCreativeItemCategory_426b68b6(nint str) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void buildBlockSchema(nint arg0)
+    public void buildBlockSchema(global::Hosihikari.Bindings.Bedrock.Interop.BlockComponentFactory arg0)
     {
-        NativeMethods.TablePtr->hs_method_568989bf((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_568989bf((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'BlockDefinition' is not a known bindable declaration.", false)]
-    public nint generateBlockDefinition(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'BlockDefinition' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinition? generateBlockDefinition(global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinitionGroup_Nested.BlockResource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg1)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_cf263953((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinition((nint)__hs_handle) : null;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,CompoundTag>' is not supported.", false)]
     public nint generateServerBlockProperties_748a09a9() =>
@@ -85,9 +87,9 @@ public sealed unsafe partial class BlockDefinitionGroup
         return __hs_result;
     }
 
-    public void initializeBlockFromDefinition(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Level arg1)
+    public void initializeBlockFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinition arg0, global::Hosihikari.Bindings.Bedrock.Interop.Level arg1)
     {
-        NativeMethods.TablePtr->hs_method_da46621d((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->hs_method_da46621d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void initializeBlocks(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0)
@@ -95,30 +97,60 @@ public sealed unsafe partial class BlockDefinitionGroup
         NativeMethods.TablePtr->hs_method_bde3ebfd((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'BlockDefinition' is not a known bindable declaration.", false)]
-    public nint loadResource_c9924111(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'BlockDefinition' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinition? loadResource(string arg0, nint arg1, string arg2, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg3, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg4, bool arg5)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                var __hs_handle = NativeMethods.TablePtr->hs_method_c9924111((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)arg3.Handle, (void*)arg4.Handle, arg5);
+                return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinition((nint)__hs_handle) : null;
+            }
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint loadResource_11e3c1ed(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5) =>
+    public nint loadResource(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void loadResources(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg2)
+    public void loadResources(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockComponentFactory arg1, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg2)
     {
-        NativeMethods.TablePtr->hs_method_a9e7eb46((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle);
+        NativeMethods.TablePtr->hs_method_a9e7eb46((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'BlockDefinition' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void registerBlockDefinition(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'BlockDefinition' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void registerBlockFromDefinition(nint arg0, bool arg1)
+    public void registerBlockFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinition arg0, bool arg1)
     {
-        NativeMethods.TablePtr->hs_method_65fc724c((void*)_handle, (void*)arg0, arg1);
+        NativeMethods.TablePtr->hs_method_65fc724c((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
     public void registerBlocks()

@@ -37,6 +37,72 @@ public sealed unsafe partial class Bounds : global::System.IDisposable
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint b_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_448fa0c9((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint g_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_cc507b9a((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint max_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_a9bd2266((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint min_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_72f6c20a((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint p_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_0e54b13f((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint r_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_da36adff((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint s_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_0cd3f072((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint t_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_7438852d((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint x_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_bda0121e((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint y_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_737ed620((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint z_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_d7b4bf62((void*)_handle);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

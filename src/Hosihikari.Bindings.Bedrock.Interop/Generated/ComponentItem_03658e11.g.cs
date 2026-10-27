@@ -192,9 +192,9 @@ public sealed unsafe partial class ComponentItem : global::System.IDisposable
         }
     }
 
-    public bool executeTrigger(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, nint arg1, nint arg2)
+    public bool executeTrigger(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, global::Hosihikari.Bindings.Bedrock.Interop.DefinitionTrigger arg1, nint arg2)
     {
-        return NativeMethods.TablePtr->hs_method_d4bf82ea((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2) != 0;
+        return NativeMethods.TablePtr->hs_method_d4bf82ea((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2) != 0;
     }
 
     public int getAnimationFrameFor(global::Hosihikari.Bindings.Bedrock.Interop.Mob? arg0, bool arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack? arg2, bool arg3)

@@ -3379,9 +3379,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
     public static nint tryGetFromEntity(nint arg0, bool arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'StackRefResult<EntityContext>' is not copy-constructible.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Actor? tryGetFromEntity(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry arg1, bool arg2)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Actor? tryGetFromEntity(global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry arg1, bool arg2)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_ed5568e4((void*)arg0, (void*)arg1.Handle, arg2);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_ed5568e4((void*)arg0.Handle, (void*)arg1.Handle, arg2);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
     }
 

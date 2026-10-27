@@ -53,19 +53,19 @@ public sealed unsafe partial class Parser
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static bool parse_78fa4261(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, nint arg1, bool arg2)
+    public static bool parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionTrigger arg1, bool arg2)
     {
-        return NativeMethods.TablePtr->hs_method_78fa4261((void*)arg0.Handle, (void*)arg1, arg2) != 0;
+        return NativeMethods.TablePtr->hs_method_78fa4261((void*)arg0.Handle, (void*)arg1.Handle, arg2) != 0;
     }
 
-    public static bool parse_45ba41f6(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, nint arg1, nint arg2)
+    public static bool parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionTrigger arg1, nint arg2)
     {
-        return NativeMethods.TablePtr->hs_method_45ba41f6((void*)arg0.Handle, (void*)arg1, (void*)arg2) != 0;
+        return NativeMethods.TablePtr->hs_method_45ba41f6((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2) != 0;
     }
 
-    public static bool parse_221e0e95(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, nint arg1, bool arg2)
+    public static bool parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.DefinitionTrigger arg1, bool arg2)
     {
-        return NativeMethods.TablePtr->hs_method_221e0e95((void*)arg0.Handle, (void*)arg1, arg2) != 0;
+        return NativeMethods.TablePtr->hs_method_221e0e95((void*)arg0.Handle, (void*)arg1.Handle, arg2) != 0;
     }
 
     public static bool parse_43a4a568(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, nint arg1, nint arg2, nint arg3)
@@ -82,9 +82,9 @@ public sealed unsafe partial class Parser
     public static bool parse_ce653ab9(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'ActorDefinitionTrigger' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public static bool parse(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'ActorDefinitionTrigger' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg1, nint arg2, nint arg3)
     {
@@ -106,9 +106,9 @@ public sealed unsafe partial class Parser
         NativeMethods.TablePtr->hs_method_37274f37((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3);
     }
 
-    public static void parse_9b5c9dfd(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, nint arg1, nint arg2)
+    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.FloatRange arg1, nint arg2)
     {
-        NativeMethods.TablePtr->hs_method_9b5c9dfd((void*)arg0.Handle, (void*)arg1, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_9b5c9dfd((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
     }
 
     public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg1, nint arg2, nint arg3)
@@ -116,9 +116,9 @@ public sealed unsafe partial class Parser
         NativeMethods.TablePtr->hs_method_4965dc59((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3);
     }
 
-    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, nint arg1, nint arg2, int arg3, int arg4)
+    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.IntRange arg1, nint arg2, int arg3, int arg4)
     {
-        NativeMethods.TablePtr->hs_method_8257cd5b((void*)arg0.Handle, (void*)arg1, (void*)arg2, arg3, arg4);
+        NativeMethods.TablePtr->hs_method_8257cd5b((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, arg3, arg4);
     }
 
     public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1, nint arg2)
@@ -154,7 +154,7 @@ public sealed unsafe partial class Parser
         NativeMethods.TablePtr->hs_method_3a47cff0((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3.Handle);
     }
 
-    public static void parse_4de37196(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, nint arg1, nint arg2)
+    public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, nint arg1, nint arg2)
     {
         NativeMethods.TablePtr->hs_method_4de37196((void*)arg0.Handle, (void*)arg1, (void*)arg2);
     }
@@ -239,9 +239,9 @@ public sealed unsafe partial class Parser
         NativeMethods.TablePtr->hs_method_d7d781c1((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
     }
 
-    public static void serialize_b8046231(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1, nint arg2)
+    public static void serialize(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionTrigger arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1, nint arg2)
     {
-        NativeMethods.TablePtr->hs_method_b8046231((void*)arg0, (void*)arg1.Handle, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_b8046231((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
     }
 
     public static void serialize_78206ada(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1, nint arg2)
@@ -249,9 +249,9 @@ public sealed unsafe partial class Parser
         NativeMethods.TablePtr->hs_method_78206ada((void*)arg0, (void*)arg1.Handle, (void*)arg2);
     }
 
-    public static void serialize_43fb52d8(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1, nint arg2)
+    public static void serialize(global::Hosihikari.Bindings.Bedrock.Interop.FloatRange arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1, nint arg2)
     {
-        NativeMethods.TablePtr->hs_method_43fb52d8((void*)arg0, (void*)arg1.Handle, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_43fb52d8((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
     }
 
     public static void serialize_b4dee1ff(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1, nint arg2)

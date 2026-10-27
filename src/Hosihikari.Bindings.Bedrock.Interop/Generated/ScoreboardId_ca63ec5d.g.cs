@@ -37,6 +37,91 @@ public sealed unsafe partial class ScoreboardId : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId INVALID
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->hs_get_4966af0d(), false);
+    }
+
+    public static ScoreboardId Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_1edfe64e();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScoreboardId((nint)handle);
+    }
+
+    public static ScoreboardId Create(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_67248150((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScoreboardId((nint)handle);
+    }
+
+    public static ScoreboardId Create(long arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_8083becd(arg0);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScoreboardId((nint)handle);
+    }
+
+    public ulong getHash()
+    {
+        return NativeMethods.TablePtr->hs_method_6570dabb((void*)_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.IdentityDefinition getIdentityDef()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.IdentityDefinition((nint)NativeMethods.TablePtr->hs_method_d2431c05((void*)_handle), false);
+    }
+
+    public bool isValid()
+    {
+        return NativeMethods.TablePtr->hs_method_55a8fa4a((void*)_handle) != 0;
+    }
+
+    public nint mIdentityDef
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_6071d74c((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_6071d74c((void*)_handle, (void*)value);
+    }
+
+    public long mRawId
+    {
+        get => NativeMethods.TablePtr->hs_get_97b034a4((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_97b034a4((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool operator_bool() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool operator_not_equal(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_operator__() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint scoreboardId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool operator_equal(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static ScoreboardId Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");

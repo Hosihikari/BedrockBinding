@@ -41,9 +41,9 @@ public sealed unsafe partial class TemptGoal : global::System.IDisposable
     public static TemptGoal Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'FloatRange' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public static TemptGoal Create(nint arg0, float arg1, nint arg2, nint arg3, nint arg4, bool arg5, float arg6, bool arg7, bool arg8) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'FloatRange' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     public static TemptGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.TemptGoal arg0)
     {

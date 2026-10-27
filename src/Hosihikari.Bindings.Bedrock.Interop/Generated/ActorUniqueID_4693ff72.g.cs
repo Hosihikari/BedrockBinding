@@ -37,6 +37,27 @@ public sealed unsafe partial class ActorUniqueID : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID INVALID_ID
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->hs_get_fb342580(), false);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID fromUUID(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->hs_method_8b88e5f6((void*)arg0.Handle));
+    }
+
+    public ulong getHash()
+    {
+        return NativeMethods.TablePtr->hs_method_52e0b20e((void*)_handle);
+    }
+
+    public long id
+    {
+        get => NativeMethods.TablePtr->hs_get_eb7329e4((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_eb7329e4((void*)_handle, value);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

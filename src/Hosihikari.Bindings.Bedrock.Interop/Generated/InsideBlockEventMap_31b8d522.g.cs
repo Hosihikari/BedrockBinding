@@ -53,14 +53,14 @@ public sealed unsafe partial class InsideBlockEventMap
     public nint getBlock() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::not_null<Block const*>' requires --link-carrier or --virtual-dispatch.");
 
-    public nint getEnteredEvent()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionTrigger getEnteredEvent()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_9282a163((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionTrigger((nint)NativeMethods.TablePtr->hs_method_9282a163((void*)_handle), false);
     }
 
-    public nint getExitedEvent()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionTrigger getExitedEvent()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d3d8696f((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionTrigger((nint)NativeMethods.TablePtr->hs_method_d3d8696f((void*)_handle), false);
     }
 
     public bool isActorCurrentlyInside()

@@ -85,9 +85,9 @@ public sealed unsafe partial class ExecuteContextCommandOrigin : global::System.
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getExecutePosition(int arg0, nint arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getExecutePosition(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandPositionFloat arg1)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_8d536ee6((void*)_handle, arg0, (void*)arg1));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_8d536ee6((void*)_handle, arg0, (void*)arg1.Handle));
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Level? getLevel()

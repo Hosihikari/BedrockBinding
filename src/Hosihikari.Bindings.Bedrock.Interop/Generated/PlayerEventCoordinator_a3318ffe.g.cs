@@ -45,18 +45,18 @@ public sealed unsafe partial class PlayerEventCoordinator
     public static PlayerEventCoordinator Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public nint getPlayerGameplayHandler()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PlayerGameplayHandler getPlayerGameplayHandler()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_95cb7220((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerGameplayHandler((nint)NativeMethods.TablePtr->hs_method_95cb7220((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'PlayerGameplayHandler' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void registerPlayerGameplayHandler(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'PlayerGameplayHandler' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'EventRef<MutablePlayerGameplayEvent<CoordinatorResult>>' is not a known bindable declaration.", false)]
     public nint sendEvent_f61c0eef(nint arg0) =>

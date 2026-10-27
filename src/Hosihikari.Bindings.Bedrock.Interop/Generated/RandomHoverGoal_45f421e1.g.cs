@@ -41,9 +41,9 @@ public sealed unsafe partial class RandomHoverGoal
     public static RandomHoverGoal Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IntRange' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IntRange' is not copy-constructible.", false)]
     public static RandomHoverGoal Create(nint arg0, float arg1, int arg2, float arg3, float arg4, float arg5, nint arg6) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IntRange' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IntRange' is not copy-constructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static RandomHoverGoal Create(nint arg0) =>

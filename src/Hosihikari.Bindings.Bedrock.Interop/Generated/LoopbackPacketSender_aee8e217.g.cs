@@ -155,6 +155,12 @@ public sealed unsafe partial class LoopbackPacketSender : global::System.IDispos
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
 
+    public byte mSenderSubId
+    {
+        get => NativeMethods.TablePtr->hs_get_739146c4((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_739146c4((void*)_handle, value);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

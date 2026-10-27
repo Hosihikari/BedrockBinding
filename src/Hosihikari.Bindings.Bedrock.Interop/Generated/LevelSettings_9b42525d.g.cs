@@ -170,9 +170,9 @@ public sealed unsafe partial class LevelSettings : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_66ba9d5f((void*)_handle);
     }
 
-    public nint getCloudSaveInfo()
+    public global::Hosihikari.Bindings.Bedrock.Interop.CloudSaveLevelInfo getCloudSaveInfo()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_a0829a33((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CloudSaveLevelInfo((nint)NativeMethods.TablePtr->hs_method_a0829a33((void*)_handle), false);
     }
 
     public bool getCustomSkinsDisabled()
