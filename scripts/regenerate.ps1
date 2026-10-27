@@ -25,12 +25,12 @@ if (-not [string]::IsNullOrWhiteSpace($Elf)) {
     $Elf = (Resolve-Path $Elf).Path
 }
 if ([string]::IsNullOrWhiteSpace($GeneratorRoot)) {
-    $GeneratorRoot = (Resolve-Path (Join-Path $RepoRoot "..\Bindings.Generator")).Path
+    $GeneratorRoot = (Resolve-Path (Join-Path $RepoRoot "..\Binding.Generator")).Path
 } else {
     $GeneratorRoot = (Resolve-Path $GeneratorRoot).Path
 }
 if ([string]::IsNullOrWhiteSpace($AbiRoot)) {
-    $AbiRoot = (Resolve-Path (Join-Path $RepoRoot "..\Bindings.Abi")).Path
+    $AbiRoot = (Resolve-Path (Join-Path $RepoRoot "..\Binding.Abi")).Path
 } else {
     $AbiRoot = (Resolve-Path $AbiRoot).Path
 }
