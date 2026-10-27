@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class BlockComponentStorage
+public sealed unsafe partial class BlockComponentStorage
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,7 +37,43 @@ public sealed partial class BlockComponentStorage
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BlockComponentStorage Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BlockComponentStorage Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public bool addingComponentsIsAllowed()
+    {
+        return NativeMethods.TablePtr->hs_method_b07394e1((void*)_handle) != 0;
+    }
+
+    public void allowComponentReplacement()
+    {
+        NativeMethods.TablePtr->hs_method_4c6693e2((void*)_handle);
+    }
+
+    public void allowTryGetComponentBeforeFinalization()
+    {
+        NativeMethods.TablePtr->hs_method_876bb600((void*)_handle);
+    }
+
+    public void finalizeComponents()
+    {
+        NativeMethods.TablePtr->hs_method_6d9dc4e4((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
+    public void Destroy_0cb416d2() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_2858c240() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

@@ -37,6 +37,12 @@ public sealed unsafe partial class ResourcePackManager : global::System.IDisposa
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_56485b44((void*)_handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ResourcePackManager Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
@@ -72,9 +78,10 @@ public sealed unsafe partial class ResourcePackManager : global::System.IDisposa
         return new global::Hosihikari.Bindings.Bedrock.Interop.SemVersion((nint)NativeMethods.TablePtr->hs_method_87d503cc((void*)_handle));
     }
 
-    public nint getPackSourceReport()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PackSourceReport? getPackSourceReport()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_05423af5((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_05423af5((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PackSourceReport((nint)__hs_handle, false) : null;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

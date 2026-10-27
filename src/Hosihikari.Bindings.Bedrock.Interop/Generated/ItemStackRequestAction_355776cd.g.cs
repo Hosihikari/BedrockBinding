@@ -77,9 +77,10 @@ public sealed unsafe partial class ItemStackRequestAction : global::System.IDisp
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public nint getCraftAction()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionCraftBase? getCraftAction()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_719d05fb((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_719d05fb((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionCraftBase((nint)__hs_handle, false) : null;
     }
 
     public int getFilteredStringIndex()

@@ -37,6 +37,12 @@ public sealed unsafe partial class ItemStackRequestActionCraftResults_DEPRECATED
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_fc699bcc((void*)_handle);
+    }
+
     public byte mActionType
     {
         get => NativeMethods.TablePtr->hs_get_e56e81b4((void*)_handle);

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class UpdateBoundingBox
+public sealed unsafe partial class UpdateBoundingBox
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,5 +35,15 @@ public sealed partial class UpdateBoundingBox
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+    public void singleTick(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg1)
+    {
+        NativeMethods.TablePtr->hs_method_0237ea54((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+    }
+
+    public void tick(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_4fb2c1f0((void*)_handle, (void*)arg0);
     }
 }

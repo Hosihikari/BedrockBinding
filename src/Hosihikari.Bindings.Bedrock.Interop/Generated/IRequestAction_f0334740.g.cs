@@ -37,6 +37,54 @@ public sealed unsafe partial class IRequestAction : global::System.IDisposable
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static IRequestAction Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static IRequestAction Create_443a6ae3(nint arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_443a6ae3((void*)arg0);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IRequestAction((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static IRequestAction Create_4a34bbce(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void execute(nint level, nint dimension) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public static bool isValidTag(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_6529b616((void*)arg0.Handle) != 0;
+    }
+
+    public sbyte mActionType
+    {
+        get => NativeMethods.TablePtr->hs_get_053eb3fa((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_053eb3fa((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool operator_equal(nint action) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void serialize(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    {
+        NativeMethods.TablePtr->hs_method_874903e3((void*)_handle, (void*)arg0.Handle);
+    }
+
+
 
     public void Dispose()
     {

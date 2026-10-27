@@ -37,6 +37,12 @@ public sealed unsafe partial class Goat : global::System.IDisposable
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint filler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_47f407f4((void*)_handle);
+    }
+
     public static int DEFAULT_HORN_COUNT
     {
         get => NativeMethods.TablePtr->hs_get_78b65bc7();
@@ -122,9 +128,9 @@ public sealed unsafe partial class Goat : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_a3afb095((void*)_handle);
     }
 
-    public void updateEntitySpecificMolangVariables(nint arg0)
+    public void updateEntitySpecificMolangVariables(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0)
     {
-        NativeMethods.TablePtr->hs_method_56a5d3cc((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_56a5d3cc((void*)_handle, (void*)arg0.Handle);
     }
 
 

@@ -41,21 +41,21 @@ public sealed unsafe partial class ActorSkeletalAnimationPlayer
     public static ActorSkeletalAnimationPlayer Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ActorSkeletalAnimationPtr' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
     public static ActorSkeletalAnimationPlayer Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ActorSkeletalAnimationPtr' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ActorSkeletalAnimationPlayer Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void applyToPose_bb3a9cbe(nint renderParams, nint destBoneOrientationMap, float blendWeight) =>
+    public void applyToPose(nint renderParams, nint destBoneOrientationMap, float blendWeight) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void applyToPose_6ce12922(nint arg0, nint arg1, float arg2)
+    public void applyToPose(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0, nint arg1, float arg2)
     {
-        NativeMethods.TablePtr->hs_method_6ce12922((void*)_handle, (void*)arg0, (void*)arg1, arg2);
+        NativeMethods.TablePtr->hs_method_6ce12922((void*)_handle, (void*)arg0.Handle, (void*)arg1, arg2);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

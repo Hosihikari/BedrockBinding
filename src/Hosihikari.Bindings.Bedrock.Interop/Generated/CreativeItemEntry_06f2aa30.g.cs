@@ -37,9 +37,59 @@ public sealed unsafe partial class CreativeItemEntry : global::System.IDisposabl
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_3210ec8e((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static CreativeItemEntry Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public static CreativeItemEntry Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public static CreativeItemEntry Create(global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemEntry arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_882f66d5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CreativeItemEntry((nint)handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.TypedServerNetId_CreativeItemNetIdTag_unsigned_int_0_ getCreativeNetId_d313b399()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TypedServerNetId_CreativeItemNetIdTag_unsigned_int_0_((nint)NativeMethods.TablePtr->hs_method_d313b399((void*)_handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getCreativeNetId_37045f2e() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.CreativeGroupInfo? getGroup()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_0925c874((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CreativeGroupInfo((nint)__hs_handle, false) : null;
+    }
+
+    public uint getIndex()
+    {
+        return NativeMethods.TablePtr->hs_method_e7aa7d5a((void*)_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance getItemInstance()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_7ee2745f((void*)_handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
 
     public void Dispose()

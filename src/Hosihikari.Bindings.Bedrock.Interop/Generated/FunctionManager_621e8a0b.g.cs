@@ -57,16 +57,16 @@ public sealed unsafe partial class FunctionManager
     public void _queueCommandsAfterCaller_003bb705(nint toQueue, nint origin) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public int execute(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg1, int arg2)
+    public int execute(global::Hosihikari.Bindings.Bedrock.Interop.FunctionEntry arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg1, int arg2)
     {
-        return NativeMethods.TablePtr->hs_method_0ec69c88((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg2);
+        return NativeMethods.TablePtr->hs_method_0ec69c88((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint getFunction(nint functionName) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public nint getFunction(string arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.FunctionEntry? getFunction(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -81,7 +81,8 @@ public sealed unsafe partial class FunctionManager
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_2e556ae6((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->hs_method_2e556ae6((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.FunctionEntry((nint)__hs_handle, false) : null;
         }
     }
 

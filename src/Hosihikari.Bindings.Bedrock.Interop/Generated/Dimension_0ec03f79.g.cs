@@ -37,6 +37,12 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_6aeaa669((void*)_handle);
+    }
+
     public int CIRCUIT_TICK_RATE
     {
         get => NativeMethods.TablePtr->hs_get_c99bed8a((void*)_handle);
@@ -229,9 +235,9 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry((nint)NativeMethods.TablePtr->hs_method_748a3869((void*)_handle), false);
     }
 
-    public nint getBlockEventDispatcher()
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockEventDispatcher getBlockEventDispatcher()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_feb55d2c((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockEventDispatcher((nint)NativeMethods.TablePtr->hs_method_feb55d2c((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockSource getBlockSourceFromMainChunkSource()
@@ -244,9 +250,9 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_method_4686bf9b((void*)_handle, (void*)arg0.Handle, arg1));
     }
 
-    public nint getBrightnessRamp()
+    public global::Hosihikari.Bindings.Bedrock.Interop.DimensionBrightnessRamp getBrightnessRamp()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_3d8314ed((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DimensionBrightnessRamp((nint)NativeMethods.TablePtr->hs_method_3d8314ed((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ChunkBuildOrderPolicyBase getChunkBuildOrderPolicy()
@@ -397,14 +403,14 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public nint getTickingAreas()
+    public global::Hosihikari.Bindings.Bedrock.Interop.TickingAreaList getTickingAreas()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_434244d2((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TickingAreaList((nint)NativeMethods.TablePtr->hs_method_434244d2((void*)_handle), false);
     }
 
-    public nint getTickingAreasConst()
+    public global::Hosihikari.Bindings.Bedrock.Interop.TickingAreaList getTickingAreasConst()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_3e3764e9((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TickingAreaList((nint)NativeMethods.TablePtr->hs_method_3e3764e9((void*)_handle), false);
     }
 
     public float getTimeOfDay(float arg0)

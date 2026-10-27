@@ -37,6 +37,95 @@ public sealed unsafe partial class ComparatorCapacitor : global::System.IDisposa
         return __hs_handle;
     }
 
+    public bool mAllowPowerDown
+    {
+        get => NativeMethods.TablePtr->hs_get_f16caccd((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_f16caccd((void*)_handle, value);
+    }
+
+    public bool mAllowPowerUp
+    {
+        get => NativeMethods.TablePtr->hs_get_17c8c770((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_17c8c770((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChunkPosition_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_13186920((void*)_handle);
+    }
+
+    public long mCircuitComponentType_b0cd745c
+    {
+        get => NativeMethods.TablePtr->hs_get_e549c83d((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_e549c83d((void*)_handle, value);
+    }
+
+    public bool mConsumePowerAnyDirection
+    {
+        get => NativeMethods.TablePtr->hs_get_71ca4f50((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_71ca4f50((void*)_handle, value);
+    }
+
+    public sbyte mDirection
+    {
+        get => NativeMethods.TablePtr->hs_get_462f5a5c((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_462f5a5c((void*)_handle, value);
+    }
+
+    public bool mIgnoreFirstUpdate
+    {
+        get => NativeMethods.TablePtr->hs_get_21feb114((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_21feb114((void*)_handle, value);
+    }
+
+    public bool mIsFirstTime
+    {
+        get => NativeMethods.TablePtr->hs_get_ee22a53e((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_ee22a53e((void*)_handle, value);
+    }
+
+    public bool mNeedsUpdate
+    {
+        get => NativeMethods.TablePtr->hs_get_94754d28((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_94754d28((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_fb29b66d((void*)_handle);
+    }
+
+    public bool mRemoved
+    {
+        get => NativeMethods.TablePtr->hs_get_9fd50a09((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_9fd50a09((void*)_handle, value);
+    }
+
+    public bool mShouldEvaluate
+    {
+        get => NativeMethods.TablePtr->hs_get_7d3e57e2((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_7d3e57e2((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSources_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_5b05a9d1((void*)_handle);
+    }
+
+    public int mStrength
+    {
+        get => NativeMethods.TablePtr->hs_get_74eef82a((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_74eef82a((void*)_handle, value);
+    }
+
+    public long mCircuitComponentType_4021f2c4
+    {
+        get => NativeMethods.TablePtr->hs_get_1604a0eb((void*)_handle);
+    }
+
     public static ComparatorCapacitor Create()
     {
         var handle = NativeMethods.TablePtr->hs_create_8a8ce816();
@@ -83,7 +172,7 @@ public sealed unsafe partial class ComparatorCapacitor : global::System.IDisposa
         return NativeMethods.TablePtr->hs_method_fff72e91((void*)_handle) != 0;
     }
 
-    public long mCircuitComponentType
+    public long mCircuitComponentType_282d1df7
     {
         get => NativeMethods.TablePtr->hs_get_6d9027eb((void*)_handle);
     }
@@ -151,6 +240,29 @@ public sealed unsafe partial class ComparatorCapacitor : global::System.IDisposa
         NativeMethods.TablePtr->hs_method_08139e9c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
+
+    public bool mAttachedAllowed
+    {
+        get => NativeMethods.TablePtr->hs_get_4860069e((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_4860069e((void*)_handle, value);
+    }
+
+    public long mCircuitComponentType_e478e014
+    {
+        get => NativeMethods.TablePtr->hs_get_50ae3f1a((void*)_handle);
+    }
+
+    public int mNextStrength
+    {
+        get => NativeMethods.TablePtr->hs_get_614592ab((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_614592ab((void*)_handle, value);
+    }
+
+    public bool mStopPower
+    {
+        get => NativeMethods.TablePtr->hs_get_80843e5f((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_80843e5f((void*)_handle, value);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSideComponents_Address

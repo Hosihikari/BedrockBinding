@@ -37,6 +37,83 @@ public sealed unsafe partial class CommandPosition : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static CommandPosition Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_72aeea57();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandPosition((nint)handle);
+    }
+
+    public static CommandPosition Create(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_e4f43da9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandPosition((nint)handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getBlockPos(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_942059b0((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getBlockPos(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_23ffef9a((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getPosition(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_52b61fb3((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getPosition(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_8c3403fa((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle));
+    }
+
+    public bool mLocal
+    {
+        get => NativeMethods.TablePtr->hs_get_466f2c1f((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_466f2c1f((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOffset_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_3e6d3ebd((void*)_handle);
+    }
+
+    public bool mRelativeX
+    {
+        get => NativeMethods.TablePtr->hs_get_a51a25a7((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_a51a25a7((void*)_handle, value);
+    }
+
+    public bool mRelativeY
+    {
+        get => NativeMethods.TablePtr->hs_get_83bcaf52((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_83bcaf52((void*)_handle, value);
+    }
+
+    public bool mRelativeZ
+    {
+        get => NativeMethods.TablePtr->hs_get_321097b9((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_321097b9((void*)_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag serialize()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)NativeMethods.TablePtr->hs_method_85a87883((void*)_handle));
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

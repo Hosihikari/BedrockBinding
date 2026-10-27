@@ -37,6 +37,36 @@ public sealed unsafe partial class StringByteInput : global::System.IDisposable
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static StringByteInput Create(nint sv, ulong offset) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBuffer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_39915c7d((void*)_handle);
+    }
+
+    public ulong mIdx
+    {
+        get => NativeMethods.TablePtr->hs_get_9aa91c6e((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_9aa91c6e((void*)_handle, value);
+    }
+
+    public ulong numBytesLeft()
+    {
+        return NativeMethods.TablePtr->hs_method_9df9cfa0((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint readBytesResult_fb0dd794(nint arg0, ulong arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void,std::error_code>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint readBytesResult_abedd66e(nint arg0, ulong arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+
 
     public void Dispose()
     {

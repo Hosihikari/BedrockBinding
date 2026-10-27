@@ -95,9 +95,9 @@ public sealed unsafe partial class AnimationComponent
         return NativeMethods.TablePtr->hs_method_616e592b();
     }
 
-    public nint getRenderParams()
+    public global::Hosihikari.Bindings.Bedrock.Interop.RenderParams getRenderParams()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_92782c6a((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RenderParams((nint)NativeMethods.TablePtr->hs_method_92782c6a((void*)_handle), false);
     }
 
     public static void incrementCurrentServerFrameIndex()

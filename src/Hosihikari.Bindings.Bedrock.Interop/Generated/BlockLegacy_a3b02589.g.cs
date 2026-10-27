@@ -144,9 +144,9 @@ public sealed unsafe partial class BlockLegacy
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy((nint)NativeMethods.TablePtr->hs_method_910c6866((void*)_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'BlockTrait::IGetPlacementBlockCallback' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void addGetPlacementBlockCallback(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'BlockTrait::IGetPlacementBlockCallback' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy addState(global::Hosihikari.Bindings.Bedrock.Interop.BlockState arg0)
     {
@@ -163,9 +163,9 @@ public sealed unsafe partial class BlockLegacy
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy((nint)NativeMethods.TablePtr->hs_method_f137a49f((void*)_handle, (void*)arg0.Handle), false);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy addTrait(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy addTrait(global::Hosihikari.Bindings.Bedrock.Interop.BlockTrait.ITrait arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy((nint)NativeMethods.TablePtr->hs_method_28ab5201((void*)_handle, (void*)arg0), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy((nint)NativeMethods.TablePtr->hs_method_28ab5201((void*)_handle, (void*)arg0.Handle), false);
     }
 
     public void animateTick(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2)
@@ -425,7 +425,7 @@ public sealed unsafe partial class BlockLegacy
     public void executeEvent(nint name, nint @params) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void executeEvent(string arg0, nint arg1)
+    public void executeEvent(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -440,13 +440,13 @@ public sealed unsafe partial class BlockLegacy
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_91fb0461((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1);
+            NativeMethods.TablePtr->hs_method_91fb0461((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle);
         }
     }
 
-    public bool executeTrigger(global::Hosihikari.Bindings.Bedrock.Interop.DefinitionTrigger arg0, nint arg1)
+    public bool executeTrigger(global::Hosihikari.Bindings.Bedrock.Interop.DefinitionTrigger arg0, global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg1)
     {
-        return NativeMethods.TablePtr->hs_method_d88c9189((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_d88c9189((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -504,9 +504,10 @@ public sealed unsafe partial class BlockLegacy
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockState((nint)__hs_handle, false) : null;
     }
 
-    public nint getBlockStateGroup_25302f23()
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockStateGroup? getBlockStateGroup_25302f23()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_25302f23((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_25302f23((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockStateGroup((nint)__hs_handle, false) : null;
     }
 
     public bool getClientPredictionOverride(int arg0)
@@ -1492,14 +1493,14 @@ public sealed unsafe partial class BlockLegacy
         return NativeMethods.TablePtr->hs_method_ff382487((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
-    public void spawnAfterBreak(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, nint arg3)
+    public void spawnAfterBreak(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.ResourceDropsContext arg3)
     {
-        NativeMethods.TablePtr->hs_method_76c96e11((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3);
+        NativeMethods.TablePtr->hs_method_76c96e11((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
     }
 
-    public void spawnResources(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block arg2, global::Hosihikari.Bindings.Bedrock.Interop.Randomize arg3, nint arg4)
+    public void spawnResources(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block arg2, global::Hosihikari.Bindings.Bedrock.Interop.Randomize arg3, global::Hosihikari.Bindings.Bedrock.Interop.ResourceDropsContext arg4)
     {
-        NativeMethods.TablePtr->hs_method_2e809654((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4);
+        NativeMethods.TablePtr->hs_method_2e809654((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -1521,9 +1522,10 @@ public sealed unsafe partial class BlockLegacy
         NativeMethods.TablePtr->hs_method_3d488cea((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3);
     }
 
-    public nint tryGetCopperBehavior()
+    public global::Hosihikari.Bindings.Bedrock.Interop.CopperBehavior? tryGetCopperBehavior()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_da13ad09((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_da13ad09((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CopperBehavior((nint)__hs_handle, false) : null;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

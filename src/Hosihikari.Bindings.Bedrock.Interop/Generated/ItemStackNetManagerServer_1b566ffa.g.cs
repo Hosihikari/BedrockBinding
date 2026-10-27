@@ -97,9 +97,9 @@ public sealed unsafe partial class ItemStackNetManagerServer : global::System.ID
     public void handleRequestBatch(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<TextFilteringProcessor>' is not a known bindable declaration.");
 
-    public bool itemMatches(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1)
+    public bool itemMatches(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestSlotInfo arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1)
     {
-        return NativeMethods.TablePtr->hs_method_71cd42ce((void*)_handle, (void*)arg0, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->hs_method_71cd42ce((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     public void normalTick()
@@ -107,9 +107,9 @@ public sealed unsafe partial class ItemStackNetManagerServer : global::System.ID
         NativeMethods.TablePtr->hs_method_97d22a83((void*)_handle);
     }
 
-    public void onContainerScreenOpen(nint arg0)
+    public void onContainerScreenOpen(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0)
     {
-        NativeMethods.TablePtr->hs_method_4a588b94((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_4a588b94((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

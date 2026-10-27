@@ -64,9 +64,9 @@ public sealed unsafe partial class NetworkItemStackDescriptor : global::System.I
         return new NetworkItemStackDescriptor((nint)handle);
     }
 
-    public static NetworkItemStackDescriptor Create_2d438f9a(nint arg0)
+    public static NetworkItemStackDescriptor Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackDescriptor arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_2d438f9a((void*)arg0);
+        var handle = NativeMethods.TablePtr->hs_create_2d438f9a((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

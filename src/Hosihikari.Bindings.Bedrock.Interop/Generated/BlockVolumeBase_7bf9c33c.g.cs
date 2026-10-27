@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class BlockVolumeBase
+public sealed unsafe partial class BlockVolumeBase : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,5 +35,19 @@ public sealed partial class BlockVolumeBase
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_7bf9c33c((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

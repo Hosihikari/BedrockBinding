@@ -60,9 +60,9 @@ public sealed unsafe partial class LevelStorageManager
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public nint getSavedDataStorage()
+    public global::Hosihikari.Bindings.Bedrock.Interop.SavedDataStorage getSavedDataStorage()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_07449eeb((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SavedDataStorage((nint)NativeMethods.TablePtr->hs_method_07449eeb((void*)_handle), false);
     }
 
     public void initializeWithDimensionManager(global::Hosihikari.Bindings.Bedrock.Interop.DimensionManager arg0)
@@ -70,9 +70,9 @@ public sealed unsafe partial class LevelStorageManager
         NativeMethods.TablePtr->hs_method_43a69dda((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void initializeWithPlayerDeathManager(nint arg0)
+    public void initializeWithPlayerDeathManager(global::Hosihikari.Bindings.Bedrock.Interop.PlayerDeathManager arg0)
     {
-        NativeMethods.TablePtr->hs_method_c1b3854b((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_c1b3854b((void*)_handle, (void*)arg0.Handle);
     }
 
     public void onAppSuspend()

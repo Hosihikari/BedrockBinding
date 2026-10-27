@@ -51,19 +51,8 @@ public sealed unsafe partial class Block : global::System.IDisposable
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Block Create_1f52eb48(nint arg0) =>
+    public static Block Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static Block Create_5cdfccb5(nint arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_5cdfccb5((void*)arg0);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new Block((nint)handle);
-    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<BlockLegacy*>' is not a known bindable declaration.", false)]
     public static Block Create(ushort arg0, nint arg1) =>
@@ -306,7 +295,7 @@ public sealed unsafe partial class Block : global::System.IDisposable
     public void executeEvent_f80b246e(nint name, nint @params) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void executeEvent(string arg0, nint arg1)
+    public void executeEvent(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -321,7 +310,7 @@ public sealed unsafe partial class Block : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_53f6a7ee((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1);
+            NativeMethods.TablePtr->hs_method_53f6a7ee((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle);
         }
     }
 
@@ -348,9 +337,9 @@ public sealed unsafe partial class Block : global::System.IDisposable
         }
     }
 
-    public bool executeTrigger(global::Hosihikari.Bindings.Bedrock.Interop.DefinitionTrigger arg0, nint arg1)
+    public bool executeTrigger(global::Hosihikari.Bindings.Bedrock.Interop.DefinitionTrigger arg0, global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg1)
     {
-        return NativeMethods.TablePtr->hs_method_32321ad3((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_32321ad3((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     // The native field type is not projected; this is the address of the field storage.
@@ -997,9 +986,9 @@ public sealed unsafe partial class Block : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_2fa83d9c((void*)_handle) != 0;
     }
 
-    public void spawnResources(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Randomize arg2, nint arg3)
+    public void spawnResources(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Randomize arg2, global::Hosihikari.Bindings.Bedrock.Interop.ResourceDropsContext arg3)
     {
-        NativeMethods.TablePtr->hs_method_34980be6((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3);
+        NativeMethods.TablePtr->hs_method_34980be6((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
     }
 
     public int telemetryVariant(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
@@ -1027,9 +1016,10 @@ public sealed unsafe partial class Block : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_dec121e9((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3);
     }
 
-    public nint tryGetCopperBehavior()
+    public global::Hosihikari.Bindings.Bedrock.Interop.CopperBehavior? tryGetCopperBehavior()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_78a621ad((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_78a621ad((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CopperBehavior((nint)__hs_handle, false) : null;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -1097,7 +1087,6 @@ public sealed unsafe partial class Block : global::System.IDisposable
     {
         return NativeMethods.TablePtr->hs_method_7d3e597b((void*)_handle) != 0;
     }
-
 
 
     public void Dispose()

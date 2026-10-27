@@ -64,9 +64,10 @@ public sealed unsafe partial class ItemStackRequestActionMineBlock
         return NativeMethods.TablePtr->hs_method_78643897((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemStackRequestSlotInfo' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getSrc() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemStackRequestSlotInfo' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestSlotInfo getSrc()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestSlotInfo((nint)NativeMethods.TablePtr->hs_method_de728802((void*)_handle));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

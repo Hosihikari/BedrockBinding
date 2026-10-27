@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class StringByteOutput
+public sealed unsafe partial class StringByteOutput : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,5 +35,34 @@ public sealed partial class StringByteOutput
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static StringByteOutput Create(nint str) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public nint mBuffer
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_f328835c((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_f328835c((void*)_handle, (void*)value);
+    }
+
+    public void writeBytes(nint arg0, ulong arg1)
+    {
+        NativeMethods.TablePtr->hs_method_41083085((void*)_handle, (void*)arg0, arg1);
+    }
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_ae451fd5((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

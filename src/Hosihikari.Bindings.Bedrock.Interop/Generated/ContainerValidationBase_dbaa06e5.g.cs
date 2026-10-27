@@ -45,9 +45,9 @@ public sealed unsafe partial class ContainerValidationBase
     public static ContainerValidationBase Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public bool canDestroy(nint arg0)
+    public bool canDestroy(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0)
     {
-        return NativeMethods.TablePtr->hs_method_91644c10((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_91644c10((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public bool canItemMoveToContainer(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0)
@@ -60,19 +60,19 @@ public sealed unsafe partial class ContainerValidationBase
         return NativeMethods.TablePtr->hs_method_7b5a90ad((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
-    public int getContainerOffset(nint arg0)
+    public int getContainerOffset(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0)
     {
-        return NativeMethods.TablePtr->hs_method_e7f5da16((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_e7f5da16((void*)_handle, (void*)arg0.Handle);
     }
 
-    public int getContainerSize(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Container arg1)
+    public int getContainerSize(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.Container arg1)
     {
-        return NativeMethods.TablePtr->hs_method_d61d2c8e((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        return NativeMethods.TablePtr->hs_method_d61d2c8e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public bool isItemAllowedInSlot(nint arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg2, int arg3)
+    public bool isItemAllowedInSlot(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg2, int arg3)
     {
-        return NativeMethods.TablePtr->hs_method_83274c59((void*)_handle, (void*)arg0, arg1, (void*)arg2.Handle, arg3) != 0;
+        return NativeMethods.TablePtr->hs_method_83274c59((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, arg3) != 0;
     }
 
     public bool isItemAllowedToAdd(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
@@ -80,14 +80,14 @@ public sealed unsafe partial class ContainerValidationBase
         return NativeMethods.TablePtr->hs_method_33ce846a((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    public bool isItemAllowedToRemove(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg1)
+    public bool isItemAllowedToRemove(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg1)
     {
-        return NativeMethods.TablePtr->hs_method_27bc2762((void*)_handle, (void*)arg0, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->hs_method_27bc2762((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
-    public bool isValidSlotForContainer(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Container arg1, int arg2)
+    public bool isValidSlotForContainer(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.Container arg1, int arg2)
     {
-        return NativeMethods.TablePtr->hs_method_33c2e547((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg2) != 0;
+        return NativeMethods.TablePtr->hs_method_33c2e547((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

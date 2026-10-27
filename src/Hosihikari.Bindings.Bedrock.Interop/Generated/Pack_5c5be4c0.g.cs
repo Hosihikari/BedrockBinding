@@ -37,6 +37,12 @@ public sealed unsafe partial class Pack : global::System.IDisposable
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_062340f2((void*)_handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.PathBuffer_std__basic_string_char__ EDUCATION_METADATA_FILE
     {
         get => new global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->hs_get_00c9d190(), false);
@@ -54,9 +60,9 @@ public sealed unsafe partial class Pack : global::System.IDisposable
     public static Pack Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'SubpackInfoCollection' has no generated wrapper.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Pack? createPack(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0, sbyte arg1, sbyte arg2, global::Hosihikari.Bindings.Bedrock.Interop.IPackManifestFactory arg3, nint arg4, nint arg5)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Pack? createPack(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0, sbyte arg1, sbyte arg2, global::Hosihikari.Bindings.Bedrock.Interop.IPackManifestFactory arg3, nint arg4, global::Hosihikari.Bindings.Bedrock.Interop.PackSourceReport? arg5)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_a7e9fe9e((void*)arg0.Handle, arg1, arg2, (void*)arg3.Handle, (void*)arg4, (void*)arg5);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_a7e9fe9e((void*)arg0.Handle, arg1, arg2, (void*)arg3.Handle, (void*)arg4, (void*)(arg5?.Handle ?? 0));
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Pack((nint)__hs_handle) : null;
     }
 

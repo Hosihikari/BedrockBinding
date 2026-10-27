@@ -37,6 +37,12 @@ public sealed unsafe partial class BiomeRegistry : global::System.IDisposable
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e598e14b((void*)_handle);
+    }
+
     public static BiomeRegistry Create()
     {
         var handle = NativeMethods.TablePtr->hs_create_c0ef57bd();

@@ -119,6 +119,60 @@ public sealed unsafe partial class FireworksRecipe : global::System.IDisposable
     }
 
 
+    public int mHeight
+    {
+        get => NativeMethods.TablePtr->hs_get_2e633458((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_2e633458((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMyId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_9bb68390((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMyIngredients_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_ab6980e0((void*)_handle);
+    }
+
+    public int mPriority
+    {
+        get => NativeMethods.TablePtr->hs_get_0299e6da((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_0299e6da((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRecipeId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_1a75b149((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRecipeNetId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e483875d((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTag_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_2ef144cd((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUnlockingRequirement_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_c7266229((void*)_handle);
+    }
+
+    public int mWidth
+    {
+        get => NativeMethods.TablePtr->hs_get_57fc68ef((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_57fc68ef((void*)_handle, value);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

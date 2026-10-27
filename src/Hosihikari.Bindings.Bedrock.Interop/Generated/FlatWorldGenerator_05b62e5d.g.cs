@@ -38,6 +38,12 @@ public sealed unsafe partial class FlatWorldGenerator : global::System.IDisposab
     }
 
     // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_566a9fc8((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
     public nint filler_Address
     {
         get => (nint)NativeMethods.TablePtr->hs_get_6d7cb951((void*)_handle);

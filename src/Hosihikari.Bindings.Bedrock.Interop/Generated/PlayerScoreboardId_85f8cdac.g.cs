@@ -37,6 +37,39 @@ public sealed unsafe partial class PlayerScoreboardId : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId INVALID
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId((nint)NativeMethods.TablePtr->hs_get_234f7e48(), false);
+    }
+
+    public static PlayerScoreboardId Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_defda1c7();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerScoreboardId((nint)handle);
+    }
+
+    public static PlayerScoreboardId Create(long arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_ef468a01(arg0);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerScoreboardId((nint)handle);
+    }
+
+    public long mActorUniqueId
+    {
+        get => NativeMethods.TablePtr->hs_get_ba0275b9((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_ba0275b9((void*)_handle, value);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

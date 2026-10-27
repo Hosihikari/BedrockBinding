@@ -37,6 +37,12 @@ public sealed unsafe partial class NetherDimension : global::System.IDisposable
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_65ab1a86((void*)_handle);
+    }
+
     public int CIRCUIT_TICK_RATE
     {
         get => NativeMethods.TablePtr->hs_get_8087ec91((void*)_handle);

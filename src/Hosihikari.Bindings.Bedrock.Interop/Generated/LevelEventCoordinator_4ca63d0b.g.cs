@@ -45,9 +45,9 @@ public sealed unsafe partial class LevelEventCoordinator
     public static LevelEventCoordinator Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public nint getLevelGameplayHandler()
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelGameplayHandler getLevelGameplayHandler()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_9686e3dd((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelGameplayHandler((nint)NativeMethods.TablePtr->hs_method_9686e3dd((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -59,9 +59,9 @@ public sealed unsafe partial class LevelEventCoordinator
         NativeMethods.TablePtr->hs_method_a4ac041e((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'LevelGameplayHandler' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void registerLevelGameplayHandler(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'LevelGameplayHandler' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public void registerWithActorManagerEvents(global::Hosihikari.Bindings.Bedrock.Interop.ActorManager arg0)
     {

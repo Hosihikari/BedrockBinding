@@ -37,6 +37,12 @@ public sealed unsafe partial class EducationOptions
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_40c479da((void*)_handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.EducationOptions DEFAULT_OPTION
     {
         get => new global::Hosihikari.Bindings.Bedrock.Interop.EducationOptions((nint)NativeMethods.TablePtr->hs_get_8ba02403(), false);

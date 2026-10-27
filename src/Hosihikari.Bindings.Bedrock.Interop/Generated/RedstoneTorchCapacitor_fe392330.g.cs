@@ -37,6 +37,118 @@ public sealed unsafe partial class RedstoneTorchCapacitor : global::System.IDisp
         return __hs_handle;
     }
 
+    public bool mAllowPowerDown
+    {
+        get => NativeMethods.TablePtr->hs_get_69c953e9((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_69c953e9((void*)_handle, value);
+    }
+
+    public bool mAllowPowerUp
+    {
+        get => NativeMethods.TablePtr->hs_get_d723f6a2((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_d723f6a2((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChunkPosition_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_90daa13d((void*)_handle);
+    }
+
+    public long mCircuitComponentType_9bfc0970
+    {
+        get => NativeMethods.TablePtr->hs_get_749b78ca((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_749b78ca((void*)_handle, value);
+    }
+
+    public bool mConsumePowerAnyDirection
+    {
+        get => NativeMethods.TablePtr->hs_get_aef9b115((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_aef9b115((void*)_handle, value);
+    }
+
+    public sbyte mDirection
+    {
+        get => NativeMethods.TablePtr->hs_get_92940842((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_92940842((void*)_handle, value);
+    }
+
+    public bool mIgnoreFirstUpdate
+    {
+        get => NativeMethods.TablePtr->hs_get_4eac8156((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_4eac8156((void*)_handle, value);
+    }
+
+    public bool mIsFirstTime
+    {
+        get => NativeMethods.TablePtr->hs_get_cdeb0759((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_cdeb0759((void*)_handle, value);
+    }
+
+    public bool mNeedsUpdate
+    {
+        get => NativeMethods.TablePtr->hs_get_04321521((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_04321521((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_abea91b4((void*)_handle);
+    }
+
+    public bool mRemoved
+    {
+        get => NativeMethods.TablePtr->hs_get_4663601a((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_4663601a((void*)_handle, value);
+    }
+
+    public bool mShouldEvaluate
+    {
+        get => NativeMethods.TablePtr->hs_get_cb642efb((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_cb642efb((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSources_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_0dfb9018((void*)_handle);
+    }
+
+    public int mStrength
+    {
+        get => NativeMethods.TablePtr->hs_get_bff39068((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_bff39068((void*)_handle, value);
+    }
+
+    public long mCircuitComponentType_a8bd7c4a
+    {
+        get => NativeMethods.TablePtr->hs_get_8208015f((void*)_handle);
+    }
+
+    public bool mAttachedAllowed
+    {
+        get => NativeMethods.TablePtr->hs_get_0483389c((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_0483389c((void*)_handle, value);
+    }
+
+    public long mCircuitComponentType_197e754f
+    {
+        get => NativeMethods.TablePtr->hs_get_27536c06((void*)_handle);
+    }
+
+    public int mNextStrength
+    {
+        get => NativeMethods.TablePtr->hs_get_66ffd221((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_66ffd221((void*)_handle, value);
+    }
+
+    public bool mStopPower
+    {
+        get => NativeMethods.TablePtr->hs_get_e25a6deb((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_e25a6deb((void*)_handle, value);
+    }
+
     public static RedstoneTorchCapacitor Create()
     {
         var handle = NativeMethods.TablePtr->hs_create_11192de4();
@@ -94,7 +206,7 @@ public sealed unsafe partial class RedstoneTorchCapacitor : global::System.IDisp
         set => NativeMethods.TablePtr->hs_set_a61ad3e7((void*)_handle, value);
     }
 
-    public long mCircuitComponentType
+    public long mCircuitComponentType_39aefe00
     {
         get => NativeMethods.TablePtr->hs_get_00683903((void*)_handle);
     }

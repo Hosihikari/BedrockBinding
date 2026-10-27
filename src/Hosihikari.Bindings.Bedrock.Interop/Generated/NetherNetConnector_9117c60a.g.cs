@@ -37,6 +37,12 @@ public sealed unsafe partial class NetherNetConnector
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_6f15e14f((void*)_handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static NetherNetConnector Create(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
@@ -54,9 +60,9 @@ public sealed unsafe partial class NetherNetConnector
     public bool closeSessionWithUser(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'NetherNet::NetworkID' is not a known bindable declaration.");
 
-    public bool connect(nint arg0, nint arg1)
+    public bool connect(global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo arg0, global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo arg1)
     {
-        return NativeMethods.TablePtr->hs_method_3ba32130((void*)_handle, (void*)arg0, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_3ba32130((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     public void disconnect()

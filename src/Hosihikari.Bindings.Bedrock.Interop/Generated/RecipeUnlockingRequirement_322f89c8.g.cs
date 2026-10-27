@@ -37,6 +37,59 @@ public sealed unsafe partial class RecipeUnlockingRequirement : global::System.I
         return __hs_handle;
     }
 
+    public static RecipeUnlockingRequirement Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_00c693f1();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RecipeUnlockingRequirement((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
+    public static RecipeUnlockingRequirement Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
+
+    public bool canBeUnlockedByContext(int arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_6dc5b47d((void*)_handle, arg0) != 0;
+    }
+
+    public bool canBeUnlockedByIngredient(global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_a7a8728f((void*)_handle, (void*)arg0.Handle) != 0;
+    }
+
+    public bool isUnlockable()
+    {
+        return NativeMethods.TablePtr->hs_method_60762825((void*)_handle) != 0;
+    }
+
+    public int mContext
+    {
+        get => NativeMethods.TablePtr->hs_get_fd7717a4((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_fd7717a4((void*)_handle, value);
+    }
+
+    public int mRule
+    {
+        get => NativeMethods.TablePtr->hs_get_7f7f65ab((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_7f7f65ab((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mValidIngredients_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b511303b((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint unlockingContextFromString_88f49a86(nint context) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+
 
     public void Dispose()
     {

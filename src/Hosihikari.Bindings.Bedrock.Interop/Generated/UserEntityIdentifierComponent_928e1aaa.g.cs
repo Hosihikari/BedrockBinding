@@ -37,9 +37,75 @@ public sealed unsafe partial class UserEntityIdentifierComponent : global::Syste
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static UserEntityIdentifierComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static UserEntityIdentifierComponent Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public static UserEntityIdentifierComponent Create_0de51531(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static UserEntityIdentifierComponent Create_18b9dad3(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static UserEntityIdentifierComponent Create_d5be4cd9(nint arg0, nint clientSubId, nint arg2, nint arg3, nint certificate) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static UserEntityIdentifierComponent Create_4120289b(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public bool isPrimaryClient()
+    {
+        return NativeMethods.TablePtr->hs_method_b974c60f((void*)_handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCertificate_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_9e0a2889((void*)_handle);
+    }
+
+    public byte mClientSubId
+    {
+        get => NativeMethods.TablePtr->hs_get_4fb994dd((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_4fb994dd((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mClientUUID_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e6773878((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNetworkId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_c4686691((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayFabId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_2a527be9((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_3136d702(nint other) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_134ad8d3(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.UserEntityIdentifierComponent? tryGetFromEntity(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_4e4bd071((void*)arg0.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.UserEntityIdentifierComponent((nint)__hs_handle, false) : null;
+    }
+
 
 
     public void Dispose()

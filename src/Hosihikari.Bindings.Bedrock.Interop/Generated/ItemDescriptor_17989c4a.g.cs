@@ -129,10 +129,6 @@ public sealed unsafe partial class ItemDescriptor : global::System.IDisposable
         return new ItemDescriptor((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static ItemDescriptor Create_ee3f1fa3(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
     public static ItemDescriptor Create(global::Hosihikari.Bindings.Bedrock.Interop.ReadOnlyBinaryStream arg0)
     {
         var handle = NativeMethods.TablePtr->hs_create_685132ac((void*)arg0.Handle);

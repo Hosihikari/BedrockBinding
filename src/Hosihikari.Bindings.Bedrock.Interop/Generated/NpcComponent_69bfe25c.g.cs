@@ -72,9 +72,9 @@ public sealed unsafe partial class NpcComponent
     public static NpcComponent Create_0de1fe7d(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static NpcComponent Create_c78061a6(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public static string PLAYER_ID_TAG
     {
@@ -191,9 +191,9 @@ public sealed unsafe partial class NpcComponent
         }
     }
 
-    public nint getActionsContainer_38e5a861()
+    public global::Hosihikari.Bindings.Bedrock.Interop.npc.ActionContainer getActionsContainer_38e5a861()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_38e5a861((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.npc.ActionContainer((nint)NativeMethods.TablePtr->hs_method_38e5a861((void*)_handle), false);
     }
 
     public int[] getCommandCounts()
@@ -217,9 +217,9 @@ public sealed unsafe partial class NpcComponent
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public bool getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1, nint arg2)
+    public bool getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1, global::Hosihikari.Bindings.Bedrock.Interop.ActorInteraction arg2)
     {
-        return NativeMethods.TablePtr->hs_method_46f7d010((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2) != 0;
+        return NativeMethods.TablePtr->hs_method_46f7d010((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

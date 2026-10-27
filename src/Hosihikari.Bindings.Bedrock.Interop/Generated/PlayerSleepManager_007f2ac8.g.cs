@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PlayerSleepManager : global::System.IDisposable
+public sealed unsafe partial class PlayerSleepManager
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,17 +37,38 @@ public sealed unsafe partial class PlayerSleepManager : global::System.IDisposab
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static PlayerSleepManager Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    public void Dispose()
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static PlayerSleepManager Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public nint getPlayerSleepStatus()
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_007f2ac8((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        return (nint)NativeMethods.TablePtr->hs_method_a64ca5e8((void*)_handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void setSleepStatus(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_b25ef0b2((void*)_handle, (void*)arg0);
+    }
+
+    public void updateSleepingPlayerList()
+    {
+        NativeMethods.TablePtr->hs_method_45fd8bcb((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_f79fcd7a() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_fde41d6b() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

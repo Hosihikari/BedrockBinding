@@ -37,6 +37,12 @@ public sealed unsafe partial class CompoundBlockVolume : global::System.IDisposa
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_a52a855b((void*)_handle);
+    }
+
     public static CompoundBlockVolume Create()
     {
         var handle = NativeMethods.TablePtr->hs_create_b9b8c2ef();

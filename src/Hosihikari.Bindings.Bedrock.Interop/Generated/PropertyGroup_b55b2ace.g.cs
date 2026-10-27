@@ -87,16 +87,16 @@ public sealed unsafe partial class PropertyGroup
     public static bool _tryGetClientSync_e6aababf(nint propertyName, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public bool getDefaultBoolValue(ulong arg0, nint arg1)
+    public bool getDefaultBoolValue(ulong arg0, global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg1)
     {
-        return NativeMethods.TablePtr->hs_method_f09e8fdb((void*)_handle, arg0, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_f09e8fdb((void*)_handle, arg0, (void*)arg1.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public ulong getDefaultEnumIndexValue(ulong arg0, nint renderParams, nint propertyName) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public ulong getDefaultEnumIndexValue(ulong arg0, nint arg1, string arg2)
+    public ulong getDefaultEnumIndexValue(ulong arg0, global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg1, string arg2)
     {
         var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
         scoped global::System.Span<byte> __hs_stringBytes2;
@@ -111,18 +111,18 @@ public sealed unsafe partial class PropertyGroup
         global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
         fixed (byte* __hs_stringData2 = __hs_stringBytes2)
         {
-            return NativeMethods.TablePtr->hs_method_8930c798((void*)_handle, arg0, (void*)arg1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            return NativeMethods.TablePtr->hs_method_8930c798((void*)_handle, arg0, (void*)arg1.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2);
         }
     }
 
-    public float getDefaultFloatValue(ulong arg0, nint arg1)
+    public float getDefaultFloatValue(ulong arg0, global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg1)
     {
-        return NativeMethods.TablePtr->hs_method_3e3692d9((void*)_handle, arg0, (void*)arg1);
+        return NativeMethods.TablePtr->hs_method_3e3692d9((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
-    public int getDefaultIntValue(ulong arg0, nint arg1)
+    public int getDefaultIntValue(ulong arg0, global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg1)
     {
-        return NativeMethods.TablePtr->hs_method_dcecced9((void*)_handle, arg0, (void*)arg1);
+        return NativeMethods.TablePtr->hs_method_dcecced9((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ListTag getNetworkSyncPropertyDescriptionsAsListTag()

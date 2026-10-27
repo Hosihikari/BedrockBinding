@@ -91,9 +91,9 @@ public sealed unsafe partial class StructurePiece
         NativeMethods.TablePtr->hs_method_a7a17207((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4, arg5, arg6, arg7, (void*)arg8.Handle, (void*)arg9.Handle, arg10);
     }
 
-    public void generateBox(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, bool arg8, global::Hosihikari.Bindings.Bedrock.Interop.Random arg9, nint arg10)
+    public void generateBox(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, bool arg8, global::Hosihikari.Bindings.Bedrock.Interop.Random arg9, global::Hosihikari.Bindings.Bedrock.Interop.BlockSelector arg10)
     {
-        NativeMethods.TablePtr->hs_method_8637fd4d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4, arg5, arg6, arg7, arg8, (void*)arg9.Handle, (void*)arg10);
+        NativeMethods.TablePtr->hs_method_8637fd4d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4, arg5, arg6, arg7, arg8, (void*)arg9.Handle, (void*)arg10.Handle);
     }
 
     public void generateMaybeBox(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2, float arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, global::Hosihikari.Bindings.Bedrock.Interop.Block arg10, global::Hosihikari.Bindings.Bedrock.Interop.Block arg11, bool arg12, bool arg13)

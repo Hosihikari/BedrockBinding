@@ -74,9 +74,9 @@ public sealed unsafe partial class ItemStackRequestActionCraftHandler
         return NativeMethods.TablePtr->hs_method_67971c66((void*)_handle, (void*)arg0);
     }
 
-    public sbyte handleCraftAction(nint arg0)
+    public sbyte handleCraftAction(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionCraftBase arg0)
     {
-        return NativeMethods.TablePtr->hs_method_fe241349((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_fe241349((void*)_handle, (void*)arg0.Handle);
     }
 
     public sbyte handleCraftResults(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionCraftResults_DEPRECATEDASKTYLAING arg0)
@@ -84,9 +84,9 @@ public sealed unsafe partial class ItemStackRequestActionCraftHandler
         return NativeMethods.TablePtr->hs_method_637cceec((void*)_handle, (void*)arg0.Handle);
     }
 
-    public sbyte handleCreate(nint arg0)
+    public sbyte handleCreate(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionCreate arg0)
     {
-        return NativeMethods.TablePtr->hs_method_73e26b24((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_73e26b24((void*)_handle, (void*)arg0.Handle);
     }
 
     public bool isCraftRequest()
@@ -94,9 +94,9 @@ public sealed unsafe partial class ItemStackRequestActionCraftHandler
         return NativeMethods.TablePtr->hs_method_e0854418((void*)_handle) != 0;
     }
 
-    public void onContainerScreenOpen(nint arg0)
+    public void onContainerScreenOpen(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0)
     {
-        NativeMethods.TablePtr->hs_method_66a4eb23((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_66a4eb23((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

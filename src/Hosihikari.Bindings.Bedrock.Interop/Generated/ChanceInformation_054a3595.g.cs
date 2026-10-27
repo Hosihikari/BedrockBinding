@@ -68,8 +68,4 @@ public sealed unsafe partial class ChanceInformation
     {
         NativeMethods.TablePtr->hs_method_08a52d04((void*)_handle, arg0, arg1);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

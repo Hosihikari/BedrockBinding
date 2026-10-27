@@ -78,4 +78,10 @@ public sealed unsafe partial class FunctionAction
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public sbyte mActionType
+    {
+        get => NativeMethods.TablePtr->hs_get_806b97d0((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_806b97d0((void*)_handle, value);
+    }
 }

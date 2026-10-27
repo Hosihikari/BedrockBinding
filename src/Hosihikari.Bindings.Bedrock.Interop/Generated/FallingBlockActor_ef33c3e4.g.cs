@@ -37,6 +37,12 @@ public sealed unsafe partial class FallingBlockActor : global::System.IDisposabl
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint filler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_8c3a3795((void*)_handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static FallingBlockActor Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
@@ -70,9 +76,9 @@ public sealed unsafe partial class FallingBlockActor : global::System.IDisposabl
     public float causeFallDamageToActor(float arg0, float arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
-    public void doNormalTick(nint arg0)
+    public void doNormalTick(global::Hosihikari.Bindings.Bedrock.Interop.ITickDelegate arg0)
     {
-        NativeMethods.TablePtr->hs_method_273c7720((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_273c7720((void*)_handle, (void*)arg0.Handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Block getFallingBlock()

@@ -45,9 +45,9 @@ public sealed unsafe partial class AllowList : global::System.IDisposable
     public static AllowList Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public bool addEntry(nint arg0)
+    public bool addEntry(global::Hosihikari.Bindings.Bedrock.Interop.AllowListEntry arg0)
     {
-        return NativeMethods.TablePtr->hs_method_9baa3aca((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_9baa3aca((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     public void deserialize(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0)

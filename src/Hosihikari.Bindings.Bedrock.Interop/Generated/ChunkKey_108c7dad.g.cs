@@ -37,6 +37,55 @@ public sealed unsafe partial class ChunkKey : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ChunkKey Create(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_390b89f2((void*)arg0.Handle, (void*)arg1.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChunkKey((nint)handle);
+    }
+
+    public static ChunkKey Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_37480785((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChunkKey((nint)handle);
+    }
+
+    public string asSpan_436d8a7a()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_436d8a7a((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint asSpan_7facbe1c() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public ulong hashCode()
+    {
+        return NativeMethods.TablePtr->hs_method_253dafa7((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint id_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e1aa77a5((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint pos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_1624cb24((void*)_handle);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

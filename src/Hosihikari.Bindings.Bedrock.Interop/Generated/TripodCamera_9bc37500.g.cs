@@ -106,9 +106,9 @@ public sealed unsafe partial class TripodCamera : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_0ed9d3e5((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void updateEntitySpecificMolangVariables(nint arg0)
+    public void updateEntitySpecificMolangVariables(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0)
     {
-        NativeMethods.TablePtr->hs_method_ba8dc618((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_ba8dc618((void*)_handle, (void*)arg0.Handle);
     }
 
 

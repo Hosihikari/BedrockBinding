@@ -83,7 +83,7 @@ public sealed unsafe partial class ShovelItem : global::System.IDisposable
     public void executeEvent(nint item, nint name, nint @params) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void executeEvent(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, string arg1, nint arg2)
+    public void executeEvent(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg2)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
         scoped global::System.Span<byte> __hs_stringBytes1;
@@ -98,7 +98,7 @@ public sealed unsafe partial class ShovelItem : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_method_f6db3b7a((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2);
+            NativeMethods.TablePtr->hs_method_f6db3b7a((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2.Handle);
         }
     }
 

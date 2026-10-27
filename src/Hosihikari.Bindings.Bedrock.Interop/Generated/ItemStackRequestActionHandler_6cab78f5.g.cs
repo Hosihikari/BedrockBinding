@@ -85,14 +85,14 @@ public sealed unsafe partial class ItemStackRequestActionHandler : global::Syste
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public sbyte _handleRemove(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1, int arg2)
+    public sbyte _handleRemove(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionTransferBase arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1, int arg2)
     {
-        return NativeMethods.TablePtr->hs_method_1fa46c31((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg2);
+        return NativeMethods.TablePtr->hs_method_1fa46c31((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
     }
 
-    public void _initScreen(nint arg0)
+    public void _initScreen(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackNetManagerScreen arg0)
     {
-        NativeMethods.TablePtr->hs_method_652bcf8e((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_652bcf8e((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -142,9 +142,9 @@ public sealed unsafe partial class ItemStackRequestActionHandler : global::Syste
     public nint getRequestId_e96a16a2() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public nint getScreenContext()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext getScreenContext()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_a05c74a5((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext((nint)NativeMethods.TablePtr->hs_method_a05c74a5((void*)_handle), false);
     }
 
     public sbyte handleRequestAction(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestAction arg0)

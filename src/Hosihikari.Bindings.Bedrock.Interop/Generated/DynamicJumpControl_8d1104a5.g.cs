@@ -58,9 +58,9 @@ public sealed unsafe partial class DynamicJumpControl : global::System.IDisposab
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.JumpControl((nint)__hs_handle) : null;
     }
 
-    public void initializeInternal(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, nint arg1)
+    public void initializeInternal(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.JumpControlDescription? arg1)
     {
-        NativeMethods.TablePtr->hs_method_276b6597((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_276b6597((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

@@ -37,6 +37,12 @@ public sealed unsafe partial class ImguiProfiler : global::System.IDisposable
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_fcfaa41f((void*)_handle);
+    }
+
     public static ImguiProfiler Create()
     {
         var handle = NativeMethods.TablePtr->hs_create_8462f88b();

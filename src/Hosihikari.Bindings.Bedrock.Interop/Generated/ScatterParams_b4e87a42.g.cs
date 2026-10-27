@@ -54,9 +54,9 @@ public sealed unsafe partial class ScatterParams
         NativeMethods.TablePtr->hs_method_b33d13b6((void*)_handle, (void*)arg0.Handle);
     }
 
-    public static void initMolangParams(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2)
+    public static void initMolangParams(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2)
     {
-        NativeMethods.TablePtr->hs_method_7aa9515d((void*)arg0, (void*)arg1.Handle, (void*)arg2.Handle);
+        NativeMethods.TablePtr->hs_method_7aa9515d((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
     public static void initScatterParamIndices()

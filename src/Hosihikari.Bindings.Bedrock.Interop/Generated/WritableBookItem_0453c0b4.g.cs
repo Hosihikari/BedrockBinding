@@ -45,9 +45,9 @@ public sealed unsafe partial class WritableBookItem
     public static WritableBookItem Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static void addPageAt(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, int arg1, nint arg2)
+    public static void addPageAt(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.PageContent arg2)
     {
-        NativeMethods.TablePtr->hs_method_3b2efe96((void*)arg0.Handle, arg1, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_3b2efe96((void*)arg0.Handle, arg1, (void*)arg2.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PageContent' requires --link-carrier or --virtual-dispatch.", false)]
@@ -68,9 +68,9 @@ public sealed unsafe partial class WritableBookItem
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static void replacePage(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, int arg1, nint arg2)
+    public static void replacePage(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.PageContent arg2)
     {
-        NativeMethods.TablePtr->hs_method_6bd96c6b((void*)arg0.Handle, arg1, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_6bd96c6b((void*)arg0.Handle, arg1, (void*)arg2.Handle);
     }
 
     public bool requiresInteract()

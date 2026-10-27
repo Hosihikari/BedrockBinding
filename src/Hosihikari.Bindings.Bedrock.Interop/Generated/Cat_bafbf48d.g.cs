@@ -37,6 +37,12 @@ public sealed unsafe partial class Cat : global::System.IDisposable
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint filler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_609f39d9((void*)_handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static Cat Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
@@ -85,9 +91,9 @@ public sealed unsafe partial class Cat : global::System.IDisposable
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void updateEntitySpecificMolangVariables(nint arg0)
+    public void updateEntitySpecificMolangVariables(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0)
     {
-        NativeMethods.TablePtr->hs_method_c312b596((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_c312b596((void*)_handle, (void*)arg0.Handle);
     }
 
 

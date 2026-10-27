@@ -115,6 +115,12 @@ public sealed unsafe partial class EncryptedNetworkPeer : global::System.IDispos
 
 
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPeer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_bb8a427a((void*)_handle);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

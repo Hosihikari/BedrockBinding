@@ -49,9 +49,9 @@ public sealed unsafe partial class PortalShape
     public static PortalShape Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public void createPortalBlocks(nint arg0)
+    public void createPortalBlocks(global::Hosihikari.Bindings.Bedrock.Interop.WorldChangeTransaction arg0)
     {
-        NativeMethods.TablePtr->hs_method_a3f47db1((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_a3f47db1((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PortalRecord' requires --link-carrier or --virtual-dispatch.", false)]
@@ -82,9 +82,9 @@ public sealed unsafe partial class PortalShape
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void removePortalBlocks(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
+    public void removePortalBlocks(global::Hosihikari.Bindings.Bedrock.Interop.WorldChangeTransaction arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
     {
-        NativeMethods.TablePtr->hs_method_303a3d3d((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->hs_method_303a3d3d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void setAxis(int arg0)

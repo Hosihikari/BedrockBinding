@@ -37,6 +37,12 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_9155823d((void*)_handle);
+    }
+
     public static string IS_SLEEPING_POSSIBLE
     {
         get
@@ -436,9 +442,10 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ActorFactory((nint)NativeMethods.TablePtr->hs_method_e09dcab1((void*)_handle), false);
     }
 
-    public nint getActorInfoRegistry()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorInfoRegistry? getActorInfoRegistry()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_3906d66d((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_3906d66d((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ActorInfoRegistry((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getActorManager_c45b4a93()
@@ -447,9 +454,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public nint getActorPropertyGroup()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PropertyGroupManager getActorPropertyGroup()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_6eda0faf((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PropertyGroupManager((nint)NativeMethods.TablePtr->hs_method_6eda0faf((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.AdventureSettings getAdventureSettings_02455754()
@@ -467,9 +474,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_dced9dff((void*)_handle);
     }
 
-    public nint getAutomationBehaviorTreeGroup()
+    public global::Hosihikari.Bindings.Bedrock.Interop.AutomationBehaviorTreeGroup getAutomationBehaviorTreeGroup()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_0ff71e75((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AutomationBehaviorTreeGroup((nint)NativeMethods.TablePtr->hs_method_0ff71e75((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.AutonomousActorManager getAutonomousActorManager()
@@ -543,9 +550,10 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPalette((nint)NativeMethods.TablePtr->hs_method_f0d60fdb((void*)_handle), false);
     }
 
-    public nint getBlockReducer()
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockReducer? getBlockReducer()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_58592259((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_58592259((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockReducer((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getBlockRegistry()
@@ -580,14 +588,14 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_082ac8ce((void*)_handle);
     }
 
-    public nint getChunkTickRangeManager()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ChunkTickRangeManager getChunkTickRangeManager()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_49ab68a1((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ChunkTickRangeManager((nint)NativeMethods.TablePtr->hs_method_49ab68a1((void*)_handle), false);
     }
 
-    public nint getClientPlayerEventCoordinator()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ClientPlayerEventCoordinator getClientPlayerEventCoordinator()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_ec1a428d((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ClientPlayerEventCoordinator((nint)NativeMethods.TablePtr->hs_method_ec1a428d((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager? getClientResourcePackManager()
@@ -734,14 +742,14 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.FeatureRegistry((nint)NativeMethods.TablePtr->hs_method_3e813b29((void*)_handle), false);
     }
 
-    public nint getFeatureTypeFactory_bc9f95e9()
+    public global::Hosihikari.Bindings.Bedrock.Interop.FeatureTypeFactory getFeatureTypeFactory_bc9f95e9()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_bc9f95e9((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.FeatureTypeFactory((nint)NativeMethods.TablePtr->hs_method_bc9f95e9((void*)_handle), false);
     }
 
-    public nint getFeatureTypeFactory_3cc30731()
+    public global::Hosihikari.Bindings.Bedrock.Interop.FeatureTypeFactory getFeatureTypeFactory_3cc30731()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_3cc30731((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.FeatureTypeFactory((nint)NativeMethods.TablePtr->hs_method_3cc30731((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.GameRules getGameRules_239eb2e9()
@@ -980,9 +988,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public nint getPhotoStorage()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PhotoStorage getPhotoStorage()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_97ce72ac((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PhotoStorage((nint)NativeMethods.TablePtr->hs_method_97ce72ac((void*)_handle), false);
     }
 
     public int getPlatformBroadcastIntent()
@@ -1167,9 +1175,10 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_0586646e((void*)_handle);
     }
 
-    public nint getPositionTrackerDBServer()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.PositionTrackingDBServer? getPositionTrackerDBServer()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_6c15146b((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_6c15146b((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.PositionTrackingDBServer((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Player? getPrimaryLocalPlayer()
@@ -1178,9 +1187,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Player((nint)__hs_handle, false) : null;
     }
 
-    public nint getProjectileFactory()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ProjectileFactory getProjectileFactory()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_cf7bc261((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ProjectileFactory((nint)NativeMethods.TablePtr->hs_method_cf7bc261((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Random getRandom()
@@ -1226,9 +1235,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Player((nint)__hs_handle, false) : null;
     }
 
-    public nint getSavedData()
+    public global::Hosihikari.Bindings.Bedrock.Interop.SavedDataStorage getSavedData()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_f7229c04((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SavedDataStorage((nint)NativeMethods.TablePtr->hs_method_f7229c04((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Scoreboard getScoreboard_1339ce9c()
@@ -1256,9 +1265,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptDeferredEventCoordinator((nint)NativeMethods.TablePtr->hs_method_7379203f((void*)_handle), false);
     }
 
-    public nint getScriptingEventCoordinator()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptingEventCoordinator getScriptingEventCoordinator()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_470c65cb((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptingEventCoordinator((nint)NativeMethods.TablePtr->hs_method_470c65cb((void*)_handle), false);
     }
 
     public uint getSeed()
@@ -1266,14 +1275,14 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_b192c7ef((void*)_handle);
     }
 
-    public nint getServerLevelEventCoordinator()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ServerLevelEventCoordinator getServerLevelEventCoordinator()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_370deaf1((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ServerLevelEventCoordinator((nint)NativeMethods.TablePtr->hs_method_370deaf1((void*)_handle), false);
     }
 
-    public nint getServerNetworkEventCoordinator()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ServerNetworkEventCoordinator getServerNetworkEventCoordinator()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d6219b8a((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ServerNetworkEventCoordinator((nint)NativeMethods.TablePtr->hs_method_d6219b8a((void*)_handle), false);
     }
 
     public nint getServerPlayerEventCoordinator()

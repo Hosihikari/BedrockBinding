@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.cereal;
 
-public sealed partial class SchemaReader
+public sealed unsafe partial class SchemaReader : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,5 +35,19 @@ public sealed partial class SchemaReader
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_2f771ad1((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

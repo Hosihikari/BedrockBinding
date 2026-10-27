@@ -37,6 +37,12 @@ public sealed unsafe partial class CreativeItemRegistry : global::System.IDispos
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_c3873558((void*)_handle);
+    }
+
     public static CreativeItemRegistry Create()
     {
         var handle = NativeMethods.TablePtr->hs_create_a51d4d41();
@@ -131,9 +137,10 @@ public sealed unsafe partial class CreativeItemRegistry : global::System.IDispos
         }
     }
 
-    public nint newCreativeGroup(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg2)
+    public global::Hosihikari.Bindings.Bedrock.Interop.CreativeGroupInfo? newCreativeGroup(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg2)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_ab1db3b1((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_ab1db3b1((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CreativeGroupInfo((nint)__hs_handle, false) : null;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

@@ -37,6 +37,63 @@ public sealed unsafe partial class ChunkLocalNoiseCache : global::System.IDispos
         return __hs_handle;
     }
 
+    public static ChunkLocalNoiseCache Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_88e2db96();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChunkLocalNoiseCache((nint)handle);
+    }
+
+    public static ChunkLocalNoiseCache Create(global::Hosihikari.Bindings.Bedrock.Interop.DividedPos2d_4_ arg0, int arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_04eeadea((void*)arg0.Handle, arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChunkLocalNoiseCache((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ChunkLocalNoiseCache Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getCacheEntry_ad821637(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public int mCellCountXZ
+    {
+        get => NativeMethods.TablePtr->hs_get_14af4feb((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFirstQuartPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_c600cc4c((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNoiseCacheEntries_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_f9274be6((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void setCacheEntry(global::Hosihikari.Bindings.Bedrock.Interop.DividedPos2d_4_ arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalNoiseCache_Nested.CacheEntry arg1)
+    {
+        NativeMethods.TablePtr->hs_method_ad8a7ab1((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
+
+
 
     public void Dispose()
     {

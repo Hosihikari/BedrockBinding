@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RangedAttackGoal
+public sealed unsafe partial class RangedAttackGoal : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -87,7 +87,17 @@ public sealed unsafe partial class RangedAttackGoal
         NativeMethods.TablePtr->hs_method_24eef15b((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_592ef65e((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

@@ -338,9 +338,9 @@ public sealed unsafe partial class Player : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_2bd423ee((void*)_handle, (void*)arg0.Handle);
     }
 
-    public static bool checkNeedAutoJump(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg0, nint arg1, nint arg2, float arg3, nint arg4, global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeInterface? arg5, float arg6, float arg7)
+    public static bool checkNeedAutoJump(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.AABBShapeComponent arg1, nint arg2, float arg3, global::Hosihikari.Bindings.Bedrock.Interop.StateVectorComponent arg4, global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeInterface? arg5, float arg6, float arg7)
     {
-        return NativeMethods.TablePtr->hs_method_39d74354((void*)arg0.Handle, (void*)arg1, (void*)arg2, arg3, (void*)arg4, (void*)(arg5?.Handle ?? 0), arg6, arg7, arg5 is not null) != 0;
+        return NativeMethods.TablePtr->hs_method_39d74354((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, arg3, (void*)arg4.Handle, (void*)(arg5?.Handle ?? 0), arg6, arg7, arg5 is not null) != 0;
     }
 
     public bool checkNeedAutoJump(float arg0, float arg1)
@@ -2009,9 +2009,9 @@ public sealed unsafe partial class Player : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_bb39696f((void*)_handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Player? tryGetFromComponent_eb83cdbf(nint arg0, nint arg1, bool arg2)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Player? tryGetFromComponent(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorOwnerComponent arg1, bool arg2)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_eb83cdbf((void*)arg0, (void*)arg1, arg2);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_eb83cdbf((void*)arg0, (void*)arg1.Handle, arg2);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Player((nint)__hs_handle, false) : null;
     }
 

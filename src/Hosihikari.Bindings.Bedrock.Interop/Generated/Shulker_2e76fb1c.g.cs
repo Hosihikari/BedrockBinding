@@ -117,9 +117,11 @@ public sealed unsafe partial class Shulker : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_a235cd67((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'BodyControl' is not a known bindable declaration.", false)]
-    public nint initBodyControl() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'BodyControl' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.BodyControl? initBodyControl()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_60ba3b01((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BodyControl((nint)__hs_handle) : null;
+    }
 
     public bool isInWall()
     {

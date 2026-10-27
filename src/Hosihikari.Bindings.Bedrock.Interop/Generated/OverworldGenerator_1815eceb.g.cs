@@ -38,6 +38,12 @@ public sealed unsafe partial class OverworldGenerator : global::System.IDisposab
     }
 
     // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_86913edb((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
     public nint filler_Address
     {
         get => (nint)NativeMethods.TablePtr->hs_get_369d6bc0((void*)_handle);
@@ -108,9 +114,9 @@ public sealed unsafe partial class OverworldGenerator : global::System.IDisposab
     public void _prepareHeights(nint box, nint chunkPos, nint worldGenCache, nint aquiferPtr, nint tickUpdateFn, bool factorInBeardsAndShavers, nint ZXheights, int skipTopN) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void buildSurfaces(global::Hosihikari.Bindings.Bedrock.Interop.OverworldGenerator_Nested.ThreadData arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume arg1, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg2, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg3, nint arg4)
+    public void buildSurfaces(global::Hosihikari.Bindings.Bedrock.Interop.OverworldGenerator_Nested.ThreadData arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume arg1, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg2, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg3, global::Hosihikari.Bindings.Bedrock.Interop.SurfaceLevelCache arg4)
     {
-        NativeMethods.TablePtr->hs_method_3ec20db9((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4);
+        NativeMethods.TablePtr->hs_method_3ec20db9((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

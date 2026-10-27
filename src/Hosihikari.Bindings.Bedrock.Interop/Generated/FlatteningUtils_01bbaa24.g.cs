@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class FlatteningUtils
+public sealed unsafe partial class FlatteningUtils
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,5 +35,20 @@ public sealed partial class FlatteningUtils
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+    public void addValue(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    {
+        NativeMethods.TablePtr->hs_method_ec500ec2((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public void match(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterNodeBuilder arg0, ulong arg1)
+    {
+        NativeMethods.TablePtr->hs_method_b72e2de7((void*)_handle, (void*)arg0.Handle, arg1);
+    }
+
+    public ulong valueCount()
+    {
+        return NativeMethods.TablePtr->hs_method_699093d2((void*)_handle);
     }
 }

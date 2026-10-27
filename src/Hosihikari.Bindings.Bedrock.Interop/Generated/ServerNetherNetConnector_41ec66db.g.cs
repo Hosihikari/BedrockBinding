@@ -37,6 +37,12 @@ public sealed unsafe partial class ServerNetherNetConnector
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_f57d7b82((void*)_handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'NetherNet::NetworkID' is not a known bindable declaration.", false)]
     public void OnSessionOpen(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'NetherNet::NetworkID' is not a known bindable declaration.");

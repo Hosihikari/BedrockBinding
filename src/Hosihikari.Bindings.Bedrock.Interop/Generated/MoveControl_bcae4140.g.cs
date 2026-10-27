@@ -82,9 +82,9 @@ public sealed unsafe partial class MoveControl : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_d73521e4((void*)arg0.Handle, (void*)arg1.Handle));
     }
 
-    public void initializeInternal(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, nint arg1)
+    public void initializeInternal(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.MoveControlDescription? arg1)
     {
-        NativeMethods.TablePtr->hs_method_f1aad2ca((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_f1aad2ca((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

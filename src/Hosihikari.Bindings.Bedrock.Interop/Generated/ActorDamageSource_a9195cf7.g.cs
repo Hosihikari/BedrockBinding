@@ -79,9 +79,9 @@ public sealed unsafe partial class ActorDamageSource : global::System.IDisposabl
         return NativeMethods.TablePtr->hs_method_80b0b6d7((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::Version' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
     public static nint getCauseMapVersionCutoffInclusive(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::Version' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public uint getDamagingEntityCategories()
     {

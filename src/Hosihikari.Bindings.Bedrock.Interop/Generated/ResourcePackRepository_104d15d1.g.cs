@@ -38,6 +38,12 @@ public sealed unsafe partial class ResourcePackRepository : global::System.IDisp
     }
 
     // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_3bc40b1a((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
     public static nint CHEMISTRY_PACK_UUIDS_Address
     {
         get => (nint)NativeMethods.TablePtr->hs_get_e4988dbb();
@@ -201,9 +207,10 @@ public sealed unsafe partial class ResourcePackRepository : global::System.IDisp
     public nint getKnownValidPacksPath_a6d0e30c() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public nint getPackLoadingReport()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PackSourceReport? getPackLoadingReport()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_c43c7614((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_c43c7614((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PackSourceReport((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.PackManifestFactory getPackManifestFactory()
@@ -335,9 +342,10 @@ public sealed unsafe partial class ResourcePackRepository : global::System.IDisp
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ResourcePack((nint)__hs_handle, false) : null;
     }
 
-    public nint getWorldPackSource()
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompositePackSource? getWorldPackSource()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_88ce8f43((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_88ce8f43((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompositePackSource((nint)__hs_handle, false) : null;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]

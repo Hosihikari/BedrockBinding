@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class CapacitorComponent
+public sealed unsafe partial class CapacitorComponent : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,5 +35,152 @@ public sealed partial class CapacitorComponent
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+    public bool mAllowPowerDown
+    {
+        get => NativeMethods.TablePtr->hs_get_97d8f10f((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_97d8f10f((void*)_handle, value);
+    }
+
+    public bool mAllowPowerUp
+    {
+        get => NativeMethods.TablePtr->hs_get_ad304937((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_ad304937((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChunkPosition_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_4faf5877((void*)_handle);
+    }
+
+    public long mCircuitComponentType_c43e3f67
+    {
+        get => NativeMethods.TablePtr->hs_get_87d33c35((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_87d33c35((void*)_handle, value);
+    }
+
+    public bool mConsumePowerAnyDirection
+    {
+        get => NativeMethods.TablePtr->hs_get_5fc5fd5d((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_5fc5fd5d((void*)_handle, value);
+    }
+
+    public sbyte mDirection
+    {
+        get => NativeMethods.TablePtr->hs_get_c2331de5((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_c2331de5((void*)_handle, value);
+    }
+
+    public bool mIgnoreFirstUpdate
+    {
+        get => NativeMethods.TablePtr->hs_get_a03a58c7((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_a03a58c7((void*)_handle, value);
+    }
+
+    public bool mIsFirstTime
+    {
+        get => NativeMethods.TablePtr->hs_get_373e1201((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_373e1201((void*)_handle, value);
+    }
+
+    public bool mNeedsUpdate
+    {
+        get => NativeMethods.TablePtr->hs_get_8750e8de((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_8750e8de((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_8a9dd2da((void*)_handle);
+    }
+
+    public bool mRemoved
+    {
+        get => NativeMethods.TablePtr->hs_get_aeef9d8a((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_aeef9d8a((void*)_handle, value);
+    }
+
+    public bool mShouldEvaluate
+    {
+        get => NativeMethods.TablePtr->hs_get_3df8fa7d((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_3df8fa7d((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSources_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_4700abe9((void*)_handle);
+    }
+
+    public int mStrength
+    {
+        get => NativeMethods.TablePtr->hs_get_35bdab3b((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_35bdab3b((void*)_handle, value);
+    }
+
+    public static CapacitorComponent Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_ad4a6eb6();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CapacitorComponent((nint)handle);
+    }
+
+    public long getCircuitComponentType()
+    {
+        return NativeMethods.TablePtr->hs_method_3daf8ef6((void*)_handle);
+    }
+
+    public byte getPoweroutDirection()
+    {
+        return NativeMethods.TablePtr->hs_method_69549853((void*)_handle);
+    }
+
+    public long mCircuitComponentType_d1cbdf01
+    {
+        get => NativeMethods.TablePtr->hs_get_ace0827a((void*)_handle);
+    }
+
+
+    public bool mAttachedAllowed
+    {
+        get => NativeMethods.TablePtr->hs_get_38910f06((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_38910f06((void*)_handle, value);
+    }
+
+    public long mCircuitComponentType_9046b968
+    {
+        get => NativeMethods.TablePtr->hs_get_030d68bc((void*)_handle);
+    }
+
+    public int mNextStrength
+    {
+        get => NativeMethods.TablePtr->hs_get_040e3eb9((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_040e3eb9((void*)_handle, value);
+    }
+
+    public bool mStopPower
+    {
+        get => NativeMethods.TablePtr->hs_get_dda7bede((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_dda7bede((void*)_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_eade71df((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

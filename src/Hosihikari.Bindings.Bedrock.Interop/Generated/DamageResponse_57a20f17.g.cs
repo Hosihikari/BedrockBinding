@@ -59,9 +59,9 @@ public sealed unsafe partial class DamageResponse
         NativeMethods.TablePtr->hs_method_80d410a1((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)arg1);
     }
 
-    public void executeAction(nint arg0)
+    public void executeAction(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0)
     {
-        NativeMethods.TablePtr->hs_method_c9f33c57((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_c9f33c57((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

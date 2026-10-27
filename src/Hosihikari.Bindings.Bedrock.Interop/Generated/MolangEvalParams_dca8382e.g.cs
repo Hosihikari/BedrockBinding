@@ -113,9 +113,9 @@ public sealed unsafe partial class MolangEvalParams
         NativeMethods.TablePtr->hs_method_6a75092b((void*)_handle, arg0, arg1);
     }
 
-    public void pushRenderParams(nint arg0)
+    public void pushRenderParams(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0)
     {
-        NativeMethods.TablePtr->hs_method_cfc373a4((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_cfc373a4((void*)_handle, (void*)arg0.Handle);
     }
 
     public void pushReturnValue()
@@ -128,14 +128,14 @@ public sealed unsafe partial class MolangEvalParams
         NativeMethods.TablePtr->hs_method_e40af552((void*)_handle, arg0);
     }
 
-    public nint renderParams_b00250ca()
+    public global::Hosihikari.Bindings.Bedrock.Interop.RenderParams renderParams_b00250ca()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_b00250ca((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RenderParams((nint)NativeMethods.TablePtr->hs_method_b00250ca((void*)_handle), false);
     }
 
-    public nint renderParams_acb17d1e()
+    public global::Hosihikari.Bindings.Bedrock.Interop.RenderParams renderParams_acb17d1e()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_acb17d1e((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RenderParams((nint)NativeMethods.TablePtr->hs_method_acb17d1e((void*)_handle), false);
     }
 
     public void restoreAndPopStackState()

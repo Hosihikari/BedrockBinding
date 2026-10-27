@@ -94,6 +94,18 @@ public sealed unsafe partial class BigEndianStringByteInput : global::System.IDi
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBuffer_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_bd868372((void*)_handle);
+    }
+
+    public ulong mIdx
+    {
+        get => NativeMethods.TablePtr->hs_get_cf5d3e77((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_cf5d3e77((void*)_handle, value);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

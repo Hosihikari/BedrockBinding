@@ -114,14 +114,14 @@ public sealed unsafe partial class ActorDefinitionDiffList
     public nint definitionListToString(nint delimiter) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public nint getAddedDefinitionGroup()
+    public global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup getAddedDefinitionGroup()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_7c5a11c2((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup((nint)NativeMethods.TablePtr->hs_method_7c5a11c2((void*)_handle), false);
     }
 
-    public nint getAddedDefinitionGroupMutable()
+    public global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup getAddedDefinitionGroupMutable()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_5fd79d5d((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup((nint)NativeMethods.TablePtr->hs_method_5fd79d5d((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionDescriptor getChangedDescription()
@@ -140,14 +140,14 @@ public sealed unsafe partial class ActorDefinitionDiffList
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionDescriptor((nint)__hs_handle) : null;
     }
 
-    public nint getRemovedDefinitionGroup()
+    public global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup getRemovedDefinitionGroup()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_b6a847ed((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup((nint)NativeMethods.TablePtr->hs_method_b6a847ed((void*)_handle), false);
     }
 
-    public nint getRemovedDefinitionGroupMutable()
+    public global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup getRemovedDefinitionGroupMutable()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_bc0a1664((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup((nint)NativeMethods.TablePtr->hs_method_bc0a1664((void*)_handle), false);
     }
 
     public bool hasChanged()

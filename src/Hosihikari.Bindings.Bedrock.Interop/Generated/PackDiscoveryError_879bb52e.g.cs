@@ -94,6 +94,24 @@ public sealed unsafe partial class PackDiscoveryError : global::System.IDisposab
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mErrorParameters_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_80098be2((void*)_handle);
+    }
+
+    public int mErrorValue
+    {
+        get => NativeMethods.TablePtr->hs_get_973d7c15((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_973d7c15((void*)_handle, value);
+    }
+
+    public int mPackErrorType
+    {
+        get => NativeMethods.TablePtr->hs_get_031dd39b((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_031dd39b((void*)_handle, value);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

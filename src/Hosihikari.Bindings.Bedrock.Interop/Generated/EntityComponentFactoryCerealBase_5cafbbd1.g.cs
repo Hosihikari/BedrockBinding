@@ -74,9 +74,9 @@ public sealed unsafe partial class EntityComponentFactoryCerealBase : global::Sy
     public void serializeComponentDefinitions_b0e03ec3(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void serializeComponentDefinitions(nint arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg2)
+    public void serializeComponentDefinitions(global::Hosihikari.Bindings.Bedrock.Interop.DefinitionInstanceGroup arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg2)
     {
-        NativeMethods.TablePtr->hs_method_18f43ccb((void*)_handle, (void*)arg0, (void*)arg1, (void*)arg2.Handle);
+        NativeMethods.TablePtr->hs_method_18f43ccb((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

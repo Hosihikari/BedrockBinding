@@ -37,6 +37,118 @@ public sealed unsafe partial class PulseCapacitor : global::System.IDisposable
         return __hs_handle;
     }
 
+    public bool mAllowPowerDown
+    {
+        get => NativeMethods.TablePtr->hs_get_b4f23f1c((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_b4f23f1c((void*)_handle, value);
+    }
+
+    public bool mAllowPowerUp
+    {
+        get => NativeMethods.TablePtr->hs_get_9071119a((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_9071119a((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChunkPosition_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_6f98c455((void*)_handle);
+    }
+
+    public long mCircuitComponentType_d75e06c5
+    {
+        get => NativeMethods.TablePtr->hs_get_d0fd18d3((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_d0fd18d3((void*)_handle, value);
+    }
+
+    public bool mConsumePowerAnyDirection
+    {
+        get => NativeMethods.TablePtr->hs_get_5500f576((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_5500f576((void*)_handle, value);
+    }
+
+    public sbyte mDirection
+    {
+        get => NativeMethods.TablePtr->hs_get_d7180404((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_d7180404((void*)_handle, value);
+    }
+
+    public bool mIgnoreFirstUpdate
+    {
+        get => NativeMethods.TablePtr->hs_get_857b8ece((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_857b8ece((void*)_handle, value);
+    }
+
+    public bool mIsFirstTime
+    {
+        get => NativeMethods.TablePtr->hs_get_9ae61c6c((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_9ae61c6c((void*)_handle, value);
+    }
+
+    public bool mNeedsUpdate
+    {
+        get => NativeMethods.TablePtr->hs_get_2ba5c873((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_2ba5c873((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_c2e2976c((void*)_handle);
+    }
+
+    public bool mRemoved
+    {
+        get => NativeMethods.TablePtr->hs_get_5e5bda6f((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_5e5bda6f((void*)_handle, value);
+    }
+
+    public bool mShouldEvaluate
+    {
+        get => NativeMethods.TablePtr->hs_get_a5aa628c((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_a5aa628c((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSources_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_8f38ae02((void*)_handle);
+    }
+
+    public int mStrength
+    {
+        get => NativeMethods.TablePtr->hs_get_0d1b8df2((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_0d1b8df2((void*)_handle, value);
+    }
+
+    public long mCircuitComponentType_800d1ae4
+    {
+        get => NativeMethods.TablePtr->hs_get_560e3522((void*)_handle);
+    }
+
+    public bool mAttachedAllowed
+    {
+        get => NativeMethods.TablePtr->hs_get_3ee258af((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_3ee258af((void*)_handle, value);
+    }
+
+    public long mCircuitComponentType_bf91f51b
+    {
+        get => NativeMethods.TablePtr->hs_get_c0bc835f((void*)_handle);
+    }
+
+    public int mNextStrength
+    {
+        get => NativeMethods.TablePtr->hs_get_caa8c400((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_caa8c400((void*)_handle, value);
+    }
+
+    public bool mStopPower
+    {
+        get => NativeMethods.TablePtr->hs_get_30f32229((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_30f32229((void*)_handle, value);
+    }
+
     public static PulseCapacitor Create()
     {
         var handle = NativeMethods.TablePtr->hs_create_12abd190();
@@ -83,7 +195,7 @@ public sealed unsafe partial class PulseCapacitor : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_932aabc4((void*)_handle);
     }
 
-    public long mCircuitComponentType
+    public long mCircuitComponentType_1ae6effb
     {
         get => NativeMethods.TablePtr->hs_get_cfe4426a((void*)_handle);
     }

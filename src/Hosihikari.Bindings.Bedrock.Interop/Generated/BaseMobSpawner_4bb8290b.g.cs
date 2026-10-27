@@ -76,9 +76,9 @@ public sealed unsafe partial class BaseMobSpawner
     public void setEntityId(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'SpawnData' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void setNextSpawnData(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'SpawnData' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
     {

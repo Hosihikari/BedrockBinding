@@ -58,9 +58,9 @@ public sealed unsafe partial class DefinitionTrigger
         NativeMethods.TablePtr->hs_method_8d39c61a((void*)arg0);
     }
 
-    public bool canTrigger(nint arg0)
+    public bool canTrigger(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0)
     {
-        return NativeMethods.TablePtr->hs_method_5ff3316d((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_5ff3316d((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

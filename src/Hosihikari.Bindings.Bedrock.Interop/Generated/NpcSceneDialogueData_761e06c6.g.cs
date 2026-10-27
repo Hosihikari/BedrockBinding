@@ -53,14 +53,16 @@ public sealed unsafe partial class NpcSceneDialogueData : global::System.IDispos
     public static NpcSceneDialogueData Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public nint getActionsContainer_fb7df062()
+    public global::Hosihikari.Bindings.Bedrock.Interop.npc.ActionContainer? getActionsContainer_fb7df062()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_fb7df062((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_fb7df062((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.npc.ActionContainer((nint)__hs_handle, false) : null;
     }
 
-    public nint getActionsContainer_e7b6d489()
+    public global::Hosihikari.Bindings.Bedrock.Interop.npc.ActionContainer? getActionsContainer_e7b6d489()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_e7b6d489((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_e7b6d489((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.npc.ActionContainer((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Actor? getActor_d6c42055()

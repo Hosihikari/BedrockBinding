@@ -37,6 +37,12 @@ public sealed unsafe partial class ActorSpawnRuleGroup : global::System.IDisposa
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSpawnDelayStartMap_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_c75c8947((void*)_handle);
+    }
+
     public static ActorSpawnRuleGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0, global::Hosihikari.Bindings.Bedrock.Interop.IWorldRegistriesProvider arg1)
     {
         var handle = NativeMethods.TablePtr->hs_create_a4b1810f((void*)arg0.Handle, (void*)arg1.Handle);

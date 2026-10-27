@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class RakNet
+public sealed unsafe partial class RakNet
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -36,4 +36,1101 @@ public sealed partial class RakNet
         _handle = 0;
         return __hs_handle;
     }
+
+    public bool AckTimeout(ulong arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_a8c71421((void*)_handle, arg0) != 0;
+    }
+
+    public void AddBitsAndReallocate(uint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_8c88f095((void*)_handle, arg0);
+    }
+
+    public void AddToBanList(nint arg0, uint arg1)
+    {
+        NativeMethods.TablePtr->hs_method_b1d624f6((void*)_handle, (void*)arg0, arg1);
+    }
+
+    public void AddToSecurityExceptionList(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_e2c28025((void*)_handle, (void*)arg0);
+    }
+
+    public bool AdvertiseSystem(nint arg0, ushort arg1, nint arg2, int arg3, uint arg4)
+    {
+        return NativeMethods.TablePtr->hs_method_b9332470((void*)_handle, (void*)arg0, arg1, (void*)arg2, arg3, arg4) != 0;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.Packet? AllocatePacket_c59656a3(uint arg0)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_c59656a3((void*)_handle, arg0);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.Packet((nint)__hs_handle, false) : null;
+    }
+
+    public void AllowConnectionResponseIPMigration(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_377eb59f((void*)_handle, arg0);
+    }
+
+    public void ApplyNetworkSimulator(float arg0, ushort arg1, ushort arg2)
+    {
+        NativeMethods.TablePtr->hs_method_80aadb26((void*)_handle, arg0, arg1, arg2);
+    }
+
+    public bool AreAcksWaiting()
+    {
+        return NativeMethods.TablePtr->hs_method_8e5f980c((void*)_handle) != 0;
+    }
+
+    public void AttachPlugin_888cadfd(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_888cadfd((void*)_handle, (void*)arg0);
+    }
+
+    public int Bind(nint arg0, nint arg1, uint arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_d0aec320((void*)_handle, (void*)arg0, (void*)arg1, arg2);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint BitStream() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint BitStream(nint arg0, uint arg1, bool arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint BitStream(uint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    public void BlockOnStopRecvPollingThread()
+    {
+        NativeMethods.TablePtr->hs_method_aff96f4f((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint CCRakNetSlidingWindow() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    public void CancelConnectionAttempt(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0)
+    {
+        NativeMethods.TablePtr->hs_method_cfacdb87((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public void ChangeSystemAddress(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakNetGUID arg0, global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg1)
+    {
+        NativeMethods.TablePtr->hs_method_c39ce0ff((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
+
+    public void ClearBanList()
+    {
+        NativeMethods.TablePtr->hs_method_a08cea5d((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::AddressOrGUID' is not a known bindable declaration.", false)]
+    public void CloseConnection(nint arg0, bool arg1, byte arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::AddressOrGUID' is not a known bindable declaration.");
+
+    public void CloseConnection(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0)
+    {
+        NativeMethods.TablePtr->hs_method_9feefa63((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public int Connect(nint arg0, ushort arg1, nint arg2, int arg3, nint arg4, uint arg5, uint arg6, uint arg7, uint arg8)
+    {
+        return NativeMethods.TablePtr->hs_method_a9652989((void*)_handle, (void*)arg0, arg1, (void*)arg2, arg3, (void*)arg4, arg5, arg6, arg7, arg8);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress Connect(nint arg0, ushort arg1, bool arg2, ushort arg3, nint arg4)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress((nint)NativeMethods.TablePtr->hs_method_98ae5de4((void*)_handle, (void*)arg0, arg1, arg2, arg3, (void*)arg4));
+    }
+
+    public int ConnectWithSocket(nint arg0, ushort arg1, nint arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakNetSocket2? arg4, nint arg5, uint arg6, uint arg7, uint arg8)
+    {
+        return NativeMethods.TablePtr->hs_method_9dd83f2a((void*)_handle, (void*)arg0, arg1, (void*)arg2, arg3, (void*)(arg4?.Handle ?? 0), (void*)arg5, arg6, arg7, arg8);
+    }
+
+    public void CopyPort(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0)
+    {
+        NativeMethods.TablePtr->hs_method_b0680957((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public int CreateRecvPollingThread(int arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_285c69ff((void*)_handle, arg0);
+    }
+
+    public void DeallocatePacket(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.Packet? arg0)
+    {
+        NativeMethods.TablePtr->hs_method_56624108((void*)_handle, (void*)(arg0?.Handle ?? 0));
+    }
+
+    public bool Deserialize(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.BitStream? arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_ae8f2622((void*)_handle, (void*)(arg0?.Handle ?? 0)) != 0;
+    }
+
+    public static void DestroyInstance(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakPeerInterface? arg0)
+    {
+        NativeMethods.TablePtr->hs_method_0f4a0db3((void*)(arg0?.Handle ?? 0));
+    }
+
+    public void DetachPlugin_377f8d67(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_377f8d67((void*)_handle, (void*)arg0);
+    }
+
+    public void DisableSecurity()
+    {
+        NativeMethods.TablePtr->hs_method_f1af6e63((void*)_handle);
+    }
+
+    public bool EqualsExcludingPort(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_22463356((void*)_handle, (void*)arg0.Handle) != 0;
+    }
+
+    public void FixForIPVersion(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0)
+    {
+        NativeMethods.TablePtr->hs_method_355cdd5a((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public void FreeMemory_12e9a7a1()
+    {
+        NativeMethods.TablePtr->hs_method_12e9a7a1((void*)_handle);
+    }
+
+    public static void FreeMemoryNoMutex()
+    {
+        NativeMethods.TablePtr->hs_method_3174bd58();
+    }
+
+    public bool FromString(nint arg0, sbyte arg1, int arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_e9d396bc((void*)_handle, (void*)arg0, arg1, arg2) != 0;
+    }
+
+    public bool FromStringExplicitPort(nint arg0, ushort arg1, int arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_7a5a45c4((void*)_handle, (void*)arg0, arg1, arg2) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'unsigned int*const' is not a known bindable declaration.", false)]
+    public void GenerateFromFrequencyTable_a6c38cd6(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'unsigned int*const' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'RakNet::uint24_t' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint GetAndIncrementNextDatagramSequenceNumber() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'RakNet::uint24_t' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::AddressOrGUID' is not a known bindable declaration.", false)]
+    public int GetAveragePing(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::AddressOrGUID' is not a known bindable declaration.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress GetBoundAddress()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress((nint)NativeMethods.TablePtr->hs_method_7bf40d9e((void*)_handle));
+    }
+
+    public ulong GetBytesPerSecondLimitByCongestionControl()
+    {
+        return NativeMethods.TablePtr->hs_method_d2c72e30((void*)_handle);
+    }
+
+    public bool GetClientPublicKeyFromSystemAddress(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0, nint arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_db74aa08((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::AddressOrGUID' is not a known bindable declaration.", false)]
+    public ulong GetClockDifferential(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::AddressOrGUID' is not a known bindable declaration.");
+
+    public ushort GetConnectionCount()
+    {
+        return NativeMethods.TablePtr->hs_method_9888679e((void*)_handle);
+    }
+
+    public bool GetConnectionList_a277b9eb(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress? arg0, nint arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_a277b9eb((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1) != 0;
+    }
+
+    public void GetConnectionList_86adbe4c(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress? arg0, nint arg1)
+    {
+        NativeMethods.TablePtr->hs_method_86adbe4c((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::AddressOrGUID' is not a known bindable declaration.", false)]
+    public nint GetConnectionState(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::AddressOrGUID' is not a known bindable declaration.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress GetExternalID(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress((nint)NativeMethods.TablePtr->hs_method_bb00437e((void*)_handle, (void*)arg0.Handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakNetGUID GetGUIDFromIndex(uint arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakNetGUID((nint)NativeMethods.TablePtr->hs_method_474e080e((void*)_handle, arg0));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakNetGUID GetGuidFromSystemAddress(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakNetGUID((nint)NativeMethods.TablePtr->hs_method_785a295e((void*)_handle, (void*)arg0.Handle), false);
+    }
+
+    public uint GetIPPROTO()
+    {
+        return NativeMethods.TablePtr->hs_method_69573572((void*)_handle);
+    }
+
+    public string GetIPString()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_f382ebfb((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public byte GetIPVersion()
+    {
+        return NativeMethods.TablePtr->hs_method_b29bdaa5((void*)_handle);
+    }
+
+    public void GetIncomingPassword(nint arg0, nint arg1)
+    {
+        NativeMethods.TablePtr->hs_method_7c58bafe((void*)_handle, (void*)arg0, (void*)arg1);
+    }
+
+    public int GetIndexFromSystemAddress(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_7dfff62d((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakPeerInterface? GetInstance_64ebddee()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_64ebddee();
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakPeerInterface((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress GetInternalID(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0, int arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress((nint)NativeMethods.TablePtr->hs_method_659487e7((void*)_handle, (void*)arg0.Handle, arg1));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::AddressOrGUID' is not a known bindable declaration.", false)]
+    public int GetLastPing(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::AddressOrGUID' is not a known bindable declaration.");
+
+    public ulong GetLength()
+    {
+        return NativeMethods.TablePtr->hs_method_aa1efc69((void*)_handle);
+    }
+
+    public nint GetLocalAdapter(uint arg0)
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_de4fb678((void*)_handle, arg0);
+    }
+
+    public nint GetLocalIP(uint arg0)
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_bdb4d2ed((void*)_handle, arg0);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::AddressOrGUID' is not a known bindable declaration.", false)]
+    public int GetLowestPing(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::AddressOrGUID' is not a known bindable declaration.");
+
+    public uint GetMTU()
+    {
+        return NativeMethods.TablePtr->hs_method_a48ec44a((void*)_handle);
+    }
+
+    public int GetMTUSize(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_acd2d010((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public uint GetMaximumIncomingConnections()
+    {
+        return NativeMethods.TablePtr->hs_method_db05e9a1((void*)_handle);
+    }
+
+    public uint GetMaximumNumberOfPeers()
+    {
+        return NativeMethods.TablePtr->hs_method_7856529c((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::NetworkAdapter*const' is not a known bindable declaration.", false)]
+    public static void GetMyAdapters_98953228(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::NetworkAdapter*const' is not a known bindable declaration.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress GetMyBoundAddress(int arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress((nint)NativeMethods.TablePtr->hs_method_86254a49((void*)_handle, arg0));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakNetGUID GetMyGUID()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakNetGUID((nint)NativeMethods.TablePtr->hs_method_f643cae4((void*)_handle));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::SystemAddress*const' is not a known bindable declaration.", false)]
+    public static void GetMyIP_56fc40a1(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::SystemAddress*const' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'RakNet::uint24_t' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint GetNextDatagramSequenceNumber() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'RakNet::uint24_t' requires --link-carrier or --virtual-dispatch.");
+
+    public uint GetNextSendReceipt()
+    {
+        return NativeMethods.TablePtr->hs_method_862295a8((void*)_handle);
+    }
+
+    public uint GetNumberOfAdapters()
+    {
+        return NativeMethods.TablePtr->hs_method_b6fb83be((void*)_handle);
+    }
+
+    public uint GetNumberOfAddresses()
+    {
+        return NativeMethods.TablePtr->hs_method_7e3085e3((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public void GetOfflinePingResponse(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public uint GetOutgoingDataBufferSize(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_bb467653((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public ushort GetPort()
+    {
+        return NativeMethods.TablePtr->hs_method_fd6d6d8f((void*)_handle);
+    }
+
+    public ushort GetPortNetworkOrder()
+    {
+        return NativeMethods.TablePtr->hs_method_96ceebef((void*)_handle);
+    }
+
+    public ulong GetRTOForRetransmission(byte arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_7c3a36d2((void*)_handle, arg0);
+    }
+
+    public uint GetReceiveBufferSize()
+    {
+        return NativeMethods.TablePtr->hs_method_c76e3a5c((void*)_handle);
+    }
+
+    public int GetRetransmissionBandwidth(ulong arg0, ulong arg1, uint arg2, bool arg3)
+    {
+        return NativeMethods.TablePtr->hs_method_60f97020((void*)_handle, arg0, arg1, arg2, arg3);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakNetSocket2? GetSocket(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_78cd6bcb((void*)_handle, (void*)arg0.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakNetSocket2((nint)__hs_handle, false) : null;
+    }
+
+    public nint GetSocketLayerOverride()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_49339bcc((void*)_handle);
+    }
+
+    public int GetSocketType()
+    {
+        return NativeMethods.TablePtr->hs_method_57937738((void*)_handle);
+    }
+
+    public void GetSockets(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_0f9ef407((void*)_handle, (void*)arg0);
+    }
+
+    public int GetSplitMessageProgressInterval()
+    {
+        return NativeMethods.TablePtr->hs_method_630c180e((void*)_handle);
+    }
+
+    public nint GetStatistics(nint arg0)
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_082afeae((void*)_handle, (void*)arg0);
+    }
+
+    public nint GetStatistics(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0, nint arg1)
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_e06ed1d9((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+    }
+
+    public bool GetStatistics(uint arg0, nint arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_dd2f0168((void*)_handle, arg0, (void*)arg1) != 0;
+    }
+
+    public void GetStatisticsList(nint arg0, nint arg1, nint arg2)
+    {
+        NativeMethods.TablePtr->hs_method_2a4ebb7f((void*)_handle, (void*)arg0, (void*)arg1, (void*)arg2);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress GetSystemAddressFromGuid(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakNetGUID arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress((nint)NativeMethods.TablePtr->hs_method_042e407b((void*)_handle, (void*)arg0.Handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress GetSystemAddressFromIndex(uint arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress((nint)NativeMethods.TablePtr->hs_method_86820b52((void*)_handle, arg0));
+    }
+
+    public void GetSystemList(nint arg0, nint arg1)
+    {
+        NativeMethods.TablePtr->hs_method_0cfade85((void*)_handle, (void*)arg0, (void*)arg1);
+    }
+
+    public uint GetTimeoutTime()
+    {
+        return NativeMethods.TablePtr->hs_method_f0bbe253((void*)_handle);
+    }
+
+    public uint GetTimeoutTime(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_5ec965ed((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public int GetTransmissionBandwidth(ulong arg0, ulong arg1, uint arg2, bool arg3)
+    {
+        return NativeMethods.TablePtr->hs_method_d37eae91((void*)_handle, arg0, arg1, arg2, arg3);
+    }
+
+    public uint GetUserConnectionSocketIndex()
+    {
+        return NativeMethods.TablePtr->hs_method_a6b549c2((void*)_handle);
+    }
+
+    public bool HandleSocketReceiveFromConnectedPlayer(nint arg0, uint arg1, global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg2, nint arg3, int arg4, global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakNetSocket2? arg5, nint arg6, ulong arg7, global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.BitStream arg8)
+    {
+        return NativeMethods.TablePtr->hs_method_34c9695f((void*)_handle, (void*)arg0, arg1, (void*)arg2.Handle, (void*)arg3, arg4, (void*)(arg5?.Handle ?? 0), (void*)arg6, arg7, (void*)arg8.Handle) != 0;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress HasCompletedConnectionAttempt()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress((nint)NativeMethods.TablePtr->hs_method_a4170306((void*)_handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress HasFailedConnectionAttempt()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress((nint)NativeMethods.TablePtr->hs_method_2f5ada67((void*)_handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress HasLostConnection()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress((nint)NativeMethods.TablePtr->hs_method_5d91d26d((void*)_handle));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint HuffmanEncodingTree() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    public bool IPAddressMatch(nint arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_694834ae((void*)_handle, (void*)arg0) != 0;
+    }
+
+    public void IgnoreBits(uint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_0d8f7aa1((void*)_handle, arg0);
+    }
+
+    public void IgnoreBytes(uint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_04ed73e2((void*)_handle, arg0);
+    }
+
+    public uint IncrementNextSendReceipt()
+    {
+        return NativeMethods.TablePtr->hs_method_825191d8((void*)_handle);
+    }
+
+    public void Init(ulong arg0, uint arg1)
+    {
+        NativeMethods.TablePtr->hs_method_bc2ac677((void*)_handle, arg0, arg1);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'RakNet::ShadowBanList' has no generated wrapper.", false)]
+    public void InitializeConfiguration(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'RakNet::ShadowBanList' has no generated wrapper.");
+
+    public bool InitializeSecurity(nint arg0, nint arg1, bool arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_5bd751c9((void*)_handle, (void*)arg0, (void*)arg1, arg2) != 0;
+    }
+
+    public bool IsActive()
+    {
+        return NativeMethods.TablePtr->hs_method_952ea329((void*)_handle) != 0;
+    }
+
+    public bool IsBanned(nint arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_76224eda((void*)_handle, (void*)arg0) != 0;
+    }
+
+    public bool IsBerkleySocket()
+    {
+        return NativeMethods.TablePtr->hs_method_6596b9aa((void*)_handle) != 0;
+    }
+
+    public bool IsDeadConnection()
+    {
+        return NativeMethods.TablePtr->hs_method_f92d085e((void*)_handle) != 0;
+    }
+
+    public bool IsEmpty()
+    {
+        return NativeMethods.TablePtr->hs_method_a628ea32((void*)_handle) != 0;
+    }
+
+    public bool IsInSecurityExceptionList(nint arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_6fcfdf22((void*)_handle, (void*)arg0) != 0;
+    }
+
+    public bool IsLinkLocalAddress()
+    {
+        return NativeMethods.TablePtr->hs_method_bd8b0c07((void*)_handle) != 0;
+    }
+
+    public bool IsLocalIP(nint arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_bf7262ba((void*)_handle, (void*)arg0) != 0;
+    }
+
+    public bool IsLoopback()
+    {
+        return NativeMethods.TablePtr->hs_method_4f949251((void*)_handle) != 0;
+    }
+
+    public bool IsMulticastAddress()
+    {
+        return NativeMethods.TablePtr->hs_method_fc04812e((void*)_handle) != 0;
+    }
+
+    public static bool IsNetworkOrder()
+    {
+        return NativeMethods.TablePtr->hs_method_44f76558() != 0;
+    }
+
+    public static bool IsNetworkOrderInternal()
+    {
+        return NativeMethods.TablePtr->hs_method_67d2c96a() != 0;
+    }
+
+    public bool IsNetworkSimulatorActive()
+    {
+        return NativeMethods.TablePtr->hs_method_c8792465((void*)_handle) != 0;
+    }
+
+    public bool IsOutgoingDataWaiting()
+    {
+        return NativeMethods.TablePtr->hs_method_bc15fac0((void*)_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::uint24_t' is not a known bindable declaration.", false)]
+    public static bool LessThan(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::uint24_t' is not a known bindable declaration.");
+
+    public ushort NumberOfConnections()
+    {
+        return NativeMethods.TablePtr->hs_method_94ea5e12((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::uint24_t' is not a known bindable declaration.", false)]
+    public void OnAck(ulong arg0, ulong arg1, bool arg2, double arg3, double arg4, double arg5, bool arg6, nint arg7) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::uint24_t' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::uint24_t' is not a known bindable declaration.", false)]
+    public bool OnGotPacket(nint arg0, bool arg1, ulong arg2, uint arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::uint24_t' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::uint24_t' is not a known bindable declaration.", false)]
+    public void OnGotPacketPair(nint arg0, uint arg1, ulong arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::uint24_t' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::uint24_t' is not a known bindable declaration.", false)]
+    public void OnNAK(ulong arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::uint24_t' is not a known bindable declaration.");
+
+    public void OnResend(ulong arg0, ulong arg1)
+    {
+        NativeMethods.TablePtr->hs_method_dbac088e((void*)_handle, arg0, arg1);
+    }
+
+    public void OnSendAck(ulong arg0, uint arg1)
+    {
+        NativeMethods.TablePtr->hs_method_9d235e22((void*)_handle, arg0, arg1);
+    }
+
+    public void OnSendAckGetBAndAS(ulong arg0, nint arg1, nint arg2, nint arg3)
+    {
+        NativeMethods.TablePtr->hs_method_839cf138((void*)_handle, arg0, (void*)arg1, (void*)arg2, (void*)arg3);
+    }
+
+    public void OnSendBytes(ulong arg0, uint arg1)
+    {
+        NativeMethods.TablePtr->hs_method_af2c10df((void*)_handle, arg0, arg1);
+    }
+
+    public void PadWithZeroToByteLength(uint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_92b29e95((void*)_handle, arg0);
+    }
+
+    public bool Ping(nint arg0, ushort arg1, bool arg2, uint arg3)
+    {
+        return NativeMethods.TablePtr->hs_method_53901afe((void*)_handle, (void*)arg0, arg1, arg2, arg3) != 0;
+    }
+
+    public void Ping(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0)
+    {
+        NativeMethods.TablePtr->hs_method_879719b2((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public void PushBackPacket(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.Packet? arg0, bool arg1)
+    {
+        NativeMethods.TablePtr->hs_method_a10ed038((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint RakPeer() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint RakString() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint RakString(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint RakString(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    public bool Read_f205c233(nint arg0, uint arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_f205c233((void*)_handle, (void*)arg0, arg1) != 0;
+    }
+
+    public bool ReadAlignedBytes(nint arg0, uint arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_fc177b01((void*)_handle, (void*)arg0, arg1) != 0;
+    }
+
+    public bool ReadAlignedVar16(nint arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_1d3cb8ff((void*)_handle, (void*)arg0) != 0;
+    }
+
+    public bool ReadAlignedVar32(nint arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_987f32d0((void*)_handle, (void*)arg0) != 0;
+    }
+
+    public bool ReadAlignedVar8(nint arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_4f20f24a((void*)_handle, (void*)arg0) != 0;
+    }
+
+    public bool ReadBits(nint arg0, uint arg1, bool arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_2b2154fb((void*)_handle, (void*)arg0, arg1, arg2) != 0;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.Packet? Receive()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_51941e3b((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.Packet((nint)__hs_handle, false) : null;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public uint Receive(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public bool ReceiveHasPackets()
+    {
+        return NativeMethods.TablePtr->hs_method_810e7ed1((void*)_handle) != 0;
+    }
+
+    public void ReleaseSockets(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_8c0c85be((void*)_handle, (void*)arg0);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint ReliabilityLayer() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    public void RemoveFromBanList(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_e571f8f1((void*)_handle, (void*)arg0);
+    }
+
+    public void RemoveFromSecurityExceptionList(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_39db2ea1((void*)_handle, (void*)arg0);
+    }
+
+    public void Reset()
+    {
+        NativeMethods.TablePtr->hs_method_4c17c6ea((void*)_handle);
+    }
+
+    public void Reset(bool arg0, int arg1, bool arg2)
+    {
+        NativeMethods.TablePtr->hs_method_c3690c63((void*)_handle, arg0, arg1, arg2);
+    }
+
+    public void ResetReadPointer()
+    {
+        NativeMethods.TablePtr->hs_method_b3c32ad8((void*)_handle);
+    }
+
+    public void ResetWritePointer()
+    {
+        NativeMethods.TablePtr->hs_method_fd9cceb0((void*)_handle);
+    }
+
+    public static void ReverseBytes(nint arg0, nint arg1, uint arg2)
+    {
+        NativeMethods.TablePtr->hs_method_1c3235a1((void*)arg0, (void*)arg1, arg2);
+    }
+
+    public bool RunUpdateCycle(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.BitStream arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_139afe9b((void*)_handle, (void*)arg0.Handle) != 0;
+    }
+
+    public bool Send(nint arg0, uint arg1, int arg2, int arg3, byte arg4, bool arg5, int arg6, ulong arg7, uint arg8)
+    {
+        return NativeMethods.TablePtr->hs_method_fb28a2d7((void*)_handle, (void*)arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) != 0;
+    }
+
+    public int Send(nint arg0, nint arg1, uint arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_2db14241((void*)_handle, (void*)arg0, (void*)arg1, arg2);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::AddressOrGUID' is not a known bindable declaration.", false)]
+    public uint Send(nint arg0, nint arg1, nint arg2, byte arg3, nint arg4, bool arg5, uint arg6) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::AddressOrGUID' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::AddressOrGUID' is not a known bindable declaration.", false)]
+    public uint Send(nint arg0, int arg1, nint arg2, nint arg3, byte arg4, nint arg5, bool arg6, uint arg7) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::AddressOrGUID' is not a known bindable declaration.");
+
+    public void Send(nint arg0, uint arg1, global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg2, bool arg3)
+    {
+        NativeMethods.TablePtr->hs_method_6ad6c1b0((void*)_handle, (void*)arg0, arg1, (void*)arg2.Handle, arg3);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public bool SendList(nint arg0, nint arg1, int arg2, nint arg3, bool arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::AddressOrGUID' is not a known bindable declaration.", false)]
+    public uint SendList(nint arg0, nint arg1, int arg2, nint arg3, nint arg4, byte arg5, nint arg6, bool arg7, uint arg8) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::AddressOrGUID' is not a known bindable declaration.");
+
+    public void SendLoopback(nint arg0, int arg1)
+    {
+        NativeMethods.TablePtr->hs_method_00f623e4((void*)_handle, (void*)arg0, arg1);
+    }
+
+    public void SendNatTraversalMessage(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0)
+    {
+        NativeMethods.TablePtr->hs_method_b55a7402((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public bool SendOutOfBand(nint arg0, ushort arg1, nint arg2, uint arg3, uint arg4)
+    {
+        return NativeMethods.TablePtr->hs_method_96ce015d((void*)_handle, (void*)arg0, arg1, (void*)arg2, arg3, arg4) != 0;
+    }
+
+    public void SendTTL(nint arg0, ushort arg1, int arg2, uint arg3)
+    {
+        NativeMethods.TablePtr->hs_method_c336fa54((void*)_handle, (void*)arg0, arg1, arg2, arg3);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::AddressOrGUID' is not a known bindable declaration.", false)]
+    public bool SetApplicationHandshakeCompleted(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::AddressOrGUID' is not a known bindable declaration.");
+
+    public void SetDoNotFragment(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_9a5d2497((void*)_handle, arg0);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: parameter type 'bool (*)(RakNet::RNS2RecvStruct*)' is not supported.", false)]
+    public void SetIncomingDatagramEventHandler(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'bool (*)(RakNet::RNS2RecvStruct*)' is not supported.");
+
+    public void SetIncomingPassword(nint arg0, int arg1)
+    {
+        NativeMethods.TablePtr->hs_method_70c20a8f((void*)_handle, (void*)arg0, arg1);
+    }
+
+    public void SetInternalID(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0, int arg1)
+    {
+        NativeMethods.TablePtr->hs_method_c6049590((void*)_handle, (void*)arg0.Handle, arg1);
+    }
+
+    public void SetLimitIPConnectionFrequency(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_0e673062((void*)_handle, arg0);
+    }
+
+    public void SetMaximumIncomingConnections(ushort arg0)
+    {
+        NativeMethods.TablePtr->hs_method_f4780b5a((void*)_handle, arg0);
+    }
+
+    public void SetMulticastInterface(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_4579befd((void*)_handle, arg0);
+    }
+
+    public void SetOccasionalPing(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_3c8f8dba((void*)_handle, arg0);
+    }
+
+    public void SetOfflinePingResponse(nint arg0, uint arg1)
+    {
+        NativeMethods.TablePtr->hs_method_a0f33231((void*)_handle, (void*)arg0, arg1);
+    }
+
+    public void SetPerConnectionOutgoingBandwidthLimit(uint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_a516d4f6((void*)_handle, arg0);
+    }
+
+    public void SetPortHostOrder(ushort arg0)
+    {
+        NativeMethods.TablePtr->hs_method_3092fff1((void*)_handle, arg0);
+    }
+
+    public void SetSplitMessageProgressInterval(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_b30629b1((void*)_handle, arg0);
+    }
+
+    public void SetTimeoutTime(uint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_eda822e3((void*)_handle, arg0);
+    }
+
+    public void SetTimeoutTime(uint arg0, global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg1)
+    {
+        NativeMethods.TablePtr->hs_method_2b84529a((void*)_handle, arg0, (void*)arg1.Handle);
+    }
+
+    public void SetToLoopback(byte arg0)
+    {
+        NativeMethods.TablePtr->hs_method_f6812092((void*)_handle, arg0);
+    }
+
+    public void SetUnreliableTimeout(uint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_dfefe098((void*)_handle, arg0);
+    }
+
+    public void SetUserConnectionSocketIndex(uint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_bdb37ae4((void*)_handle, arg0);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: parameter type 'void (*)(RakNet::RakPeerInterface*,void*)' is not supported.", false)]
+    public void SetUserUpdateThread(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'void (*)(RakNet::RakPeerInterface*,void*)' is not supported.");
+
+    public void SetWriteOffset(uint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_79a047e9((void*)_handle, arg0);
+    }
+
+    public bool ShouldSendACKs(ulong arg0, ulong arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_4488c8cf((void*)_handle, arg0, arg1) != 0;
+    }
+
+    public void Shutdown(uint arg0, byte arg1, int arg2)
+    {
+        NativeMethods.TablePtr->hs_method_bfdc3942((void*)_handle, arg0, arg1, arg2);
+    }
+
+    public void SignalStopRecvPollingThread()
+    {
+        NativeMethods.TablePtr->hs_method_8f3507e9((void*)_handle);
+    }
+
+    public bool Start(ushort arg0, ushort arg1, ushort arg2, int arg3, ushort arg4, nint arg5)
+    {
+        return NativeMethods.TablePtr->hs_method_199b214f((void*)_handle, arg0, arg1, arg2, arg3, arg4, (void*)arg5) != 0;
+    }
+
+    public int Startup(uint arg0, nint arg1, uint arg2, int arg3)
+    {
+        return NativeMethods.TablePtr->hs_method_24b06e34((void*)_handle, arg0, (void*)arg1, arg2, arg3);
+    }
+
+    public void Stop()
+    {
+        NativeMethods.TablePtr->hs_method_e6dd1d20((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint SystemAddress() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint SystemAddress(nint arg0, ushort arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint TCPInterface() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unsigned long' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nuint ToInteger_834229ad(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unsigned long' requires --link-carrier or --virtual-dispatch.");
+
+    public string ToString(sbyte arg0)
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_d7139da3((void*)_handle, arg0);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public void ToString(bool arg0, nint arg1, sbyte arg2)
+    {
+        NativeMethods.TablePtr->hs_method_3b5d1db8((void*)_handle, arg0, (void*)arg1, arg2);
+    }
+
+    public void Update(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakNetSocket2? arg0, global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg1, int arg2, ulong arg3, uint arg4, nint arg5, nint arg6, global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.BitStream arg7)
+    {
+        NativeMethods.TablePtr->hs_method_6c94c844((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, arg2, arg3, arg4, (void*)arg5, (void*)arg6, (void*)arg7.Handle);
+    }
+
+    public void Update(ulong arg0, bool arg1)
+    {
+        NativeMethods.TablePtr->hs_method_c0740bd8((void*)_handle, arg0, arg1);
+    }
+
+    public bool WasStarted()
+    {
+        return NativeMethods.TablePtr->hs_method_34ccd5c4((void*)_handle) != 0;
+    }
+
+    public void Write_b28e7bea(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.BitStream arg0, uint arg1)
+    {
+        NativeMethods.TablePtr->hs_method_b28e7bea((void*)_handle, (void*)arg0.Handle, arg1);
+    }
+
+    public void Write_6ae9d92b(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.BitStream? arg0, uint arg1)
+    {
+        NativeMethods.TablePtr->hs_method_6ae9d92b((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1);
+    }
+
+    public void Write(nint arg0, uint arg1)
+    {
+        NativeMethods.TablePtr->hs_method_ec68295c((void*)_handle, (void*)arg0, arg1);
+    }
+
+    public void Write0()
+    {
+        NativeMethods.TablePtr->hs_method_445d5f19((void*)_handle);
+    }
+
+    public void Write1()
+    {
+        NativeMethods.TablePtr->hs_method_5e83ce55((void*)_handle);
+    }
+
+    public void WriteAlignedBytes(nint arg0, uint arg1)
+    {
+        NativeMethods.TablePtr->hs_method_9e145c46((void*)_handle, (void*)arg0, arg1);
+    }
+
+    public void WriteAlignedVar16(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_58ab66a1((void*)_handle, (void*)arg0);
+    }
+
+    public void WriteAlignedVar32(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_793e6eda((void*)_handle, (void*)arg0);
+    }
+
+    public void WriteAlignedVar8(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_04f38364((void*)_handle, (void*)arg0);
+    }
+
+    public void WriteBits(nint arg0, uint arg1, bool arg2)
+    {
+        NativeMethods.TablePtr->hs_method_5c71f429((void*)_handle, (void*)arg0, arg1, arg2);
+    }
+
+    public void WriteOutOfBandHeader(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.BitStream? arg0)
+    {
+        NativeMethods.TablePtr->hs_method_1a5c9784((void*)_handle, (void*)(arg0?.Handle ?? 0));
+    }
+
+    public void resetMyGUID()
+    {
+        NativeMethods.TablePtr->hs_method_a83c5291((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _BitStream() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _CCRakNetSlidingWindow() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _HuffmanEncodingTree() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _RNS2_Berkley() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _RakPeer() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _RakPeerInterface() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _RakString() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _ReliabilityLayer() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _TCPInterface() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
 }

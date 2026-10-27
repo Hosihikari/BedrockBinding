@@ -98,9 +98,9 @@ public sealed unsafe partial class LookControlComponent
         NativeMethods.TablePtr->hs_method_9520bc5a((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'LookControl' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void setInternalType(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'LookControl' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public void setLookAtPosition(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, float arg1, float arg2)
     {

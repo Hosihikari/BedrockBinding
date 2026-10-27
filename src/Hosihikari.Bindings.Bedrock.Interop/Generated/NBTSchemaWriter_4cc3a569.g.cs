@@ -61,14 +61,14 @@ public sealed unsafe partial class NBTSchemaWriter : global::System.IDisposable
     public bool isSequenceWriter() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public bool openArray(ulong arg0, nint arg1)
+    public bool openArray(ulong arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.PropertyReader arg1)
     {
-        return NativeMethods.TablePtr->hs_method_9e1379f2((void*)_handle, arg0, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_9e1379f2((void*)_handle, arg0, (void*)arg1.Handle) != 0;
     }
 
-    public bool openObject(nint arg0)
+    public bool openObject(global::Hosihikari.Bindings.Bedrock.Interop.cereal.PropertyReader arg0)
     {
-        return NativeMethods.TablePtr->hs_method_20edbfe6((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_20edbfe6((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -80,7 +80,7 @@ public sealed unsafe partial class NBTSchemaWriter : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_3ca92d29((void*)_handle);
     }
 
-    public bool pushMember(string arg0, nint arg1)
+    public bool pushMember(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.PropertyReader arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -95,7 +95,7 @@ public sealed unsafe partial class NBTSchemaWriter : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_c489d89f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1) != 0;
+            return NativeMethods.TablePtr->hs_method_c489d89f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle) != 0;
         }
     }
 
@@ -103,42 +103,42 @@ public sealed unsafe partial class NBTSchemaWriter : global::System.IDisposable
     public bool pushMember(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public bool write(bool arg0, nint arg1)
+    public bool write(bool arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.PropertyReader arg1)
     {
-        return NativeMethods.TablePtr->hs_method_82755074((void*)_handle, arg0, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_82755074((void*)_handle, arg0, (void*)arg1.Handle) != 0;
     }
 
-    public bool write(double arg0, nint arg1)
+    public bool write(double arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.PropertyReader arg1)
     {
-        return NativeMethods.TablePtr->hs_method_f328f787((void*)_handle, arg0, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_f328f787((void*)_handle, arg0, (void*)arg1.Handle) != 0;
     }
 
-    public bool write(float arg0, nint arg1)
+    public bool write(float arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.PropertyReader arg1)
     {
-        return NativeMethods.TablePtr->hs_method_f6ad18d1((void*)_handle, arg0, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_f6ad18d1((void*)_handle, arg0, (void*)arg1.Handle) != 0;
     }
 
-    public bool write(int arg0, nint arg1)
+    public bool write(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.PropertyReader arg1)
     {
-        return NativeMethods.TablePtr->hs_method_3408cae8((void*)_handle, arg0, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_3408cae8((void*)_handle, arg0, (void*)arg1.Handle) != 0;
     }
 
-    public bool write(long arg0, nint arg1)
+    public bool write(long arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.PropertyReader arg1)
     {
-        return NativeMethods.TablePtr->hs_method_e23a3953((void*)_handle, arg0, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_e23a3953((void*)_handle, arg0, (void*)arg1.Handle) != 0;
     }
 
-    public bool write(short arg0, nint arg1)
+    public bool write(short arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.PropertyReader arg1)
     {
-        return NativeMethods.TablePtr->hs_method_7f9e0a22((void*)_handle, arg0, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_7f9e0a22((void*)_handle, arg0, (void*)arg1.Handle) != 0;
     }
 
-    public bool write(sbyte arg0, nint arg1)
+    public bool write(sbyte arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.PropertyReader arg1)
     {
-        return NativeMethods.TablePtr->hs_method_cf1e4149((void*)_handle, arg0, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_cf1e4149((void*)_handle, arg0, (void*)arg1.Handle) != 0;
     }
 
-    public bool write(string arg0, nint arg1)
+    public bool write(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.PropertyReader arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -153,7 +153,7 @@ public sealed unsafe partial class NBTSchemaWriter : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_75255211((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1) != 0;
+            return NativeMethods.TablePtr->hs_method_75255211((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle) != 0;
         }
     }
 
@@ -161,24 +161,24 @@ public sealed unsafe partial class NBTSchemaWriter : global::System.IDisposable
     public bool write(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public bool write(byte arg0, nint arg1)
+    public bool write(byte arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.PropertyReader arg1)
     {
-        return NativeMethods.TablePtr->hs_method_ac4427f9((void*)_handle, arg0, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_ac4427f9((void*)_handle, arg0, (void*)arg1.Handle) != 0;
     }
 
-    public bool write(uint arg0, nint arg1)
+    public bool write(uint arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.PropertyReader arg1)
     {
-        return NativeMethods.TablePtr->hs_method_247348dc((void*)_handle, arg0, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_247348dc((void*)_handle, arg0, (void*)arg1.Handle) != 0;
     }
 
-    public bool write(ulong arg0, nint arg1)
+    public bool write(ulong arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.PropertyReader arg1)
     {
-        return NativeMethods.TablePtr->hs_method_5528c35e((void*)_handle, arg0, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_5528c35e((void*)_handle, arg0, (void*)arg1.Handle) != 0;
     }
 
-    public bool write(ushort arg0, nint arg1)
+    public bool write(ushort arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.PropertyReader arg1)
     {
-        return NativeMethods.TablePtr->hs_method_cadd05e3((void*)_handle, arg0, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_cadd05e3((void*)_handle, arg0, (void*)arg1.Handle) != 0;
     }
 
 

@@ -41,9 +41,9 @@ public sealed unsafe partial class ServerScriptManager : global::System.IDisposa
     public static ServerScriptManager Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<Scheduler>' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static ServerScriptManager Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<Scheduler>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ServerScriptManager Create(nint arg0) =>
@@ -70,9 +70,9 @@ public sealed unsafe partial class ServerScriptManager : global::System.IDisposa
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptBlockCustomComponentsRegistry((nint)NativeMethods.TablePtr->hs_method_cf50dc8e((void*)_handle), false);
     }
 
-    public nint getScriptEngine()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ScriptEngine getScriptEngine()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_29b1c663((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ScriptEngine((nint)NativeMethods.TablePtr->hs_method_29b1c663((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ScriptSettings getScriptSettings()

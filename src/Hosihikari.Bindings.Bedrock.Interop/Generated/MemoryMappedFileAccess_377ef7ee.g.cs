@@ -38,9 +38,14 @@ public sealed unsafe partial class MemoryMappedFileAccess
     }
 
     // The native field type is not projected; this is the address of the field storage.
-    public static nint EMPTY_TRANSFORMS_Address
+    public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_6a883ff4();
+        get => (nint)NativeMethods.TablePtr->hs_get_c32a9aca((void*)_handle);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.FileAccessTransforms EMPTY_TRANSFORMS
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.FileAccessTransforms((nint)NativeMethods.TablePtr->hs_get_6a883ff4(), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
@@ -51,9 +56,9 @@ public sealed unsafe partial class MemoryMappedFileAccess
     public static MemoryMappedFileAccess Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'FileAccessTransforms' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static MemoryMappedFileAccess Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'FileAccessTransforms' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public int fclose(nint arg0)
     {

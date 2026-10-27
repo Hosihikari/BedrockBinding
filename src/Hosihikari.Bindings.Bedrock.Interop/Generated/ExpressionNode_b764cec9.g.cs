@@ -117,31 +117,6 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
     public static ExpressionNode Create_b3133880(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::span<HashedString const,-1>' is not a known bindable declaration.");
 
-    public static ExpressionNode Create(string arg0, int arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            var handle = NativeMethods.TablePtr->hs_create_328a1146(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
-            if (handle == null)
-            {
-                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-            }
-
-            return new ExpressionNode((nint)handle);
-        }
-    }
-
     // The native field type is not projected; this is the address of the field storage.
     public static nint _defaultUnknownQueryFunction_Address
     {
@@ -183,14 +158,14 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_7ad322a1((void*)_handle);
     }
 
-    public float evalAsFloat(nint arg0)
+    public float evalAsFloat(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0)
     {
-        return NativeMethods.TablePtr->hs_method_18f73ec7((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_18f73ec7((void*)_handle, (void*)arg0.Handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg evalGeneric(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg evalGeneric(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->hs_method_ffea2cb3((void*)_handle, (void*)arg0), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg((nint)NativeMethods.TablePtr->hs_method_ffea2cb3((void*)_handle, (void*)arg0.Handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]

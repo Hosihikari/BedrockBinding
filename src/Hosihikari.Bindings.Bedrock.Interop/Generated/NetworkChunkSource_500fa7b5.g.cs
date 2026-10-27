@@ -38,6 +38,12 @@ public sealed unsafe partial class NetworkChunkSource : global::System.IDisposab
     }
 
     // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_34898a58((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
     public nint filler_Address
     {
         get => (nint)NativeMethods.TablePtr->hs_get_1acb7e40((void*)_handle);

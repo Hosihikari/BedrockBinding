@@ -37,6 +37,12 @@ public sealed unsafe partial class StructureManager : global::System.IDisposable
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_ec90c414((void*)_handle);
+    }
+
     public static sbyte BEHAVIOR_PACK_STRUCTURES_FOLDER
     {
         get => NativeMethods.TablePtr->hs_get_e251b809();

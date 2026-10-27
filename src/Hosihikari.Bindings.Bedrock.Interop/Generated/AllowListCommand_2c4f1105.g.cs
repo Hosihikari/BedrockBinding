@@ -50,19 +50,18 @@ public sealed unsafe partial class AllowListCommand
         NativeMethods.TablePtr->hs_method_c65d146f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mAllowListFile_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.AllowListFile mAllowListFile
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_b58f0b86();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.AllowListFile((nint)NativeMethods.TablePtr->hs_get_b58f0b86(), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static void setup(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0, nint arg1)
+    public static void setup(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.AllowListFile arg1)
     {
-        NativeMethods.TablePtr->hs_method_5ca61b02((void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_5ca61b02((void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

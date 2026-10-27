@@ -37,6 +37,12 @@ public sealed unsafe partial class MinecraftEventing
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_eece5337((void*)_handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static MinecraftEventing Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
@@ -54,9 +60,9 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_cef0efdf((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'Social::Events::IEventListener' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void addListener(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'Social::Events::IEventListener' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void fileEventCloudWorldPullFailed(nint reason, nint worldID, bool localLevelDatUsed) =>
@@ -859,9 +865,9 @@ public sealed unsafe partial class MinecraftEventing
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'Social::Events::Property' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public void fireEventChatSettingsUpdated(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'Social::Events::Property' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     public void fireEventChunkChanged(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
     {
@@ -4205,9 +4211,9 @@ public sealed unsafe partial class MinecraftEventing
     public void fireEventServerPlayerJoinedGame(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void fireEventServerRespawnSearchTime(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, nint arg1)
+    public void fireEventServerRespawnSearchTime(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.PlayerRespawnTelemetryData arg1)
     {
-        NativeMethods.TablePtr->hs_method_0e1e20e2((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_0e1e20e2((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

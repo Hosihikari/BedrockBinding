@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested;
 
-public sealed partial class ILifetimeScopeListener
+public sealed unsafe partial class ILifetimeScopeListener : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,5 +35,19 @@ public sealed partial class ILifetimeScopeListener
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_f47f0f9d((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

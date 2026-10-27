@@ -37,8 +37,55 @@ public sealed unsafe partial class ScorePacketInfo : global::System.IDisposable
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static ScorePacketInfo Create_6e986235(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEntityId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_883f62d8((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFakePlayerName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_f1d5953d((void*)_handle);
+    }
+
+    public byte mIdentityType
+    {
+        get => NativeMethods.TablePtr->hs_get_853d6b86((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_853d6b86((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mObjectiveName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_39dfcbfa((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayerId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_862cdc56((void*)_handle);
+    }
+
+    public int mScoreValue
+    {
+        get => NativeMethods.TablePtr->hs_get_72dd52bc((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_72dd52bc((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScoreboardId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_bc0f5070((void*)_handle);
+    }
+
+
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ScorePacketInfo Create(nint arg0) =>
+    public static ScorePacketInfo Create_034ca21e(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
 

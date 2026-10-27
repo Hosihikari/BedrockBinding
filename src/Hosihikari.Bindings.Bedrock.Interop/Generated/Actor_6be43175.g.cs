@@ -492,13 +492,13 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_a61d1bab((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public void equip_7d21adeb(nint arg0)
+    public void equip(global::Hosihikari.Bindings.Bedrock.Interop.EquipmentTable arg0)
     {
-        NativeMethods.TablePtr->hs_method_7d21adeb((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_7d21adeb((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void equip_65e42e69(nint arg0) =>
+    public void equip(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void equip(string arg0)
@@ -735,9 +735,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_2025e3b1((void*)_handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getCenter(float arg0, nint arg1, nint arg2, float arg3)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getCenter(float arg0, global::Hosihikari.Bindings.Bedrock.Interop.AABBShapeComponent arg1, global::Hosihikari.Bindings.Bedrock.Interop.StateVectorComponent arg2, float arg3)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_320cdcf2(arg0, (void*)arg1, (void*)arg2, arg3));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_320cdcf2(arg0, (void*)arg1.Handle, (void*)arg2.Handle, arg3));
     }
 
     public bool getChainedDamageEffects()
@@ -1044,9 +1044,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_d6b53398((void*)_handle);
     }
 
-    public bool getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2)
+    public bool getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorInteraction arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2)
     {
-        return NativeMethods.TablePtr->hs_method_9645d77f((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle) != 0;
+        return NativeMethods.TablePtr->hs_method_9645d77f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
     public float getInterpolatedBodyRot(float arg0)
@@ -1069,9 +1069,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_062049e3((void*)_handle, arg0));
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getInterpolatedPosition(float arg0, nint arg1)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getInterpolatedPosition(float arg0, global::Hosihikari.Bindings.Bedrock.Interop.StateVectorComponent arg1)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_3062dd31(arg0, (void*)arg1));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_3062dd31(arg0, (void*)arg1.Handle));
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getInterpolatedRidingOffset(float arg0, int arg1)
@@ -1228,9 +1228,10 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_bd98bdcd(arg0);
     }
 
-    public nint getLootTable()
+    public global::Hosihikari.Bindings.Bedrock.Interop.LootTable? getLootTable()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_2b2bd8cd((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_2b2bd8cd((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LootTable((nint)__hs_handle, false) : null;
     }
 
     public float getMapDecorationRotation()
@@ -1386,9 +1387,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Random((nint)NativeMethods.TablePtr->hs_method_b18c7d38((void*)_handle), false);
     }
 
-    public nint getRenderParams()
+    public global::Hosihikari.Bindings.Bedrock.Interop.RenderParams getRenderParams()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_dff90d6a((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RenderParams((nint)NativeMethods.TablePtr->hs_method_dff90d6a((void*)_handle), false);
     }
 
     public float getRidingHeight()
@@ -1780,12 +1781,12 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_19cb8b1b((void*)_handle);
     }
 
-    public void initParams_43e7c212(nint arg0)
+    public void initParams(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0)
     {
-        NativeMethods.TablePtr->hs_method_43e7c212((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_43e7c212((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void initParams_597d3792(nint arg0)
+    public void initParams(nint arg0)
     {
         NativeMethods.TablePtr->hs_method_597d3792((void*)_handle, (void*)arg0);
     }
@@ -3351,15 +3352,15 @@ public sealed unsafe partial class Actor : global::System.IDisposable
     public nint tryGetEquippableSlotForItem(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Actor? tryGetFromComponent_7080ca4d(nint arg0, bool arg1)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Actor? tryGetFromComponent_7080ca4d(global::Hosihikari.Bindings.Bedrock.Interop.ActorOwnerComponent arg0, bool arg1)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_7080ca4d((void*)arg0, arg1);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_7080ca4d((void*)arg0.Handle, arg1);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Actor? tryGetFromComponent_588efce3(nint arg0, bool arg1)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Actor? tryGetFromComponent_588efce3(global::Hosihikari.Bindings.Bedrock.Interop.ActorOwnerComponent arg0, bool arg1)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_588efce3((void*)arg0, arg1);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_588efce3((void*)arg0.Handle, arg1);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
     }
 
@@ -3410,9 +3411,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_ec14f66f((void*)_handle);
     }
 
-    public void updateMolangVariables(nint arg0)
+    public void updateMolangVariables(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0)
     {
-        NativeMethods.TablePtr->hs_method_6d3eaf12((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_6d3eaf12((void*)_handle, (void*)arg0.Handle);
     }
 
     public void updateTickingData()

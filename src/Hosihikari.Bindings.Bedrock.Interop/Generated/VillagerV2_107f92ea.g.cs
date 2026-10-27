@@ -75,9 +75,9 @@ public sealed unsafe partial class VillagerV2 : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_45863b64((void*)_handle, (void*)arg0.Handle);
     }
 
-    public bool getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2)
+    public bool getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorInteraction arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2)
     {
-        return NativeMethods.TablePtr->hs_method_c28568aa((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle) != 0;
+        return NativeMethods.TablePtr->hs_method_c28568aa((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
     public void newServerAiStep()
@@ -99,9 +99,9 @@ public sealed unsafe partial class VillagerV2 : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_f88ce712((void*)_handle);
     }
 
-    public void updateEntitySpecificMolangVariables(nint arg0)
+    public void updateEntitySpecificMolangVariables(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0)
     {
-        NativeMethods.TablePtr->hs_method_8fad866c((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_8fad866c((void*)_handle, (void*)arg0.Handle);
     }
 
 

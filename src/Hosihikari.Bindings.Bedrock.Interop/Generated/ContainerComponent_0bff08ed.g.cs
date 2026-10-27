@@ -156,9 +156,9 @@ public sealed unsafe partial class ContainerComponent
         NativeMethods.TablePtr->hs_method_9151de5b((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, nint arg1)
+    public void initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ContainerDescription arg1)
     {
-        NativeMethods.TablePtr->hs_method_3307f8b8((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_3307f8b8((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public bool isEmpty()

@@ -37,6 +37,62 @@ public sealed unsafe partial class ScoreboardIdentityRef : global::System.IDispo
         return __hs_handle;
     }
 
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef Undefined
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef((nint)NativeMethods.TablePtr->hs_get_05f2580f(), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID getEntityId()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->hs_method_fd57e700((void*)_handle), false);
+    }
+
+    public byte getIdentityType()
+    {
+        return NativeMethods.TablePtr->hs_method_b8aac8f1((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getName_3dd21b59(nint playerNameResolver) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> const&' is not supported.", false)]
+    public nint getName_02da07e5(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> const&' is not supported.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId getPlayerId()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId((nint)NativeMethods.TablePtr->hs_method_a3566c46((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId getScoreboardId()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->hs_method_cef67e60((void*)_handle), false);
+    }
+
+    public uint mObjectiveReferences
+    {
+        get => NativeMethods.TablePtr->hs_get_d0dc2633((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_d0dc2633((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScoreboardId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_d0d018d4((void*)_handle);
+    }
+
+    public bool modifyScoreInObjective(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Objective arg1, int arg2, byte arg3)
+    {
+        return NativeMethods.TablePtr->hs_method_f0391721((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg2, arg3) != 0;
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? serialize(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef arg0)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_5d19f0d5((void*)arg0.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

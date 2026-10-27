@@ -49,9 +49,10 @@ public sealed unsafe partial class DBStorageEnvironmentChain
     public static DBStorageEnvironmentChain Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public nint getCompactionListenerEnv()
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompactionListenerEnv? getCompactionListenerEnv()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_1676b612((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_1676b612((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompactionListenerEnv((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.FlushableEnv? getFlushableEnv()

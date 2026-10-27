@@ -37,10 +37,9 @@ public sealed unsafe partial class PathFinder
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DEFAULT_DESC_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.PreferredPathDescription DEFAULT_DESC
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_cd9a3110();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.PreferredPathDescription((nint)NativeMethods.TablePtr->hs_get_cd9a3110(), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]

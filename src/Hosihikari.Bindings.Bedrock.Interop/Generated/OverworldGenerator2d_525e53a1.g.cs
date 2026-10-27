@@ -38,6 +38,12 @@ public sealed unsafe partial class OverworldGenerator2d : global::System.IDispos
     }
 
     // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_62069ef7((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
     public nint filler_Address
     {
         get => (nint)NativeMethods.TablePtr->hs_get_edd38011((void*)_handle);

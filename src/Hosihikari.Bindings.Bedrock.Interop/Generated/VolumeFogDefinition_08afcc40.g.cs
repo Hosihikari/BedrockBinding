@@ -50,9 +50,9 @@ public sealed unsafe partial class VolumeFogDefinition
         NativeMethods.TablePtr->hs_method_f74d4c2c((void*)arg0);
     }
 
-    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, nint arg1)
+    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.VolumeFogComponent arg1)
     {
-        NativeMethods.TablePtr->hs_method_a2b9f3d2((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_a2b9f3d2((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

@@ -59,10 +59,6 @@ public sealed unsafe partial class Item
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Item Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static Item Create_4d4ef100(nint arg0, short arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
@@ -252,7 +248,7 @@ public sealed unsafe partial class Item
     public void executeEvent(nint item, nint name, nint @params) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void executeEvent(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, string arg1, nint arg2)
+    public void executeEvent(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg2)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
         scoped global::System.Span<byte> __hs_stringBytes1;
@@ -267,7 +263,7 @@ public sealed unsafe partial class Item
         global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_method_5cf5dc5d((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2);
+            NativeMethods.TablePtr->hs_method_5cf5dc5d((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2.Handle);
         }
     }
 
@@ -852,10 +848,9 @@ public sealed unsafe partial class Item
         return NativeMethods.TablePtr->hs_method_ff626650((void*)_handle, (void*)(arg0?.Handle ?? 0)) != 0;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mActiveCreativeGroupInfo_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.CreativeGroupInfo mActiveCreativeGroupInfo
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_ea605c05();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.CreativeGroupInfo((nint)NativeMethods.TablePtr->hs_get_ea605c05(), false);
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemGroupCategory mActiveCreativeItemCategory

@@ -48,17 +48,6 @@ public sealed unsafe partial class Path : global::System.IDisposable
         return new Path((nint)handle);
     }
 
-    public static Path Create(nint arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_80a7d66d((void*)arg0);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new Path((nint)handle);
-    }
-
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos currentPos()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_796bdcf7((void*)_handle), false);

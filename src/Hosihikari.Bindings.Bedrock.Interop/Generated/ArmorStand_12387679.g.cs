@@ -161,9 +161,9 @@ public sealed unsafe partial class ArmorStand : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_b50c8dbd((void*)_handle, (void*)arg0.Handle);
     }
 
-    public bool getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2)
+    public bool getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorInteraction arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2)
     {
-        return NativeMethods.TablePtr->hs_method_89ba8938((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle) != 0;
+        return NativeMethods.TablePtr->hs_method_89ba8938((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
     public float getShadowRadius()
@@ -205,9 +205,9 @@ public sealed unsafe partial class ArmorStand : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_6126ad4e((void*)_handle, arg0);
     }
 
-    public void updateEntitySpecificMolangVariables(nint arg0)
+    public void updateEntitySpecificMolangVariables(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0)
     {
-        NativeMethods.TablePtr->hs_method_a1234205((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_a1234205((void*)_handle, (void*)arg0.Handle);
     }
 
 

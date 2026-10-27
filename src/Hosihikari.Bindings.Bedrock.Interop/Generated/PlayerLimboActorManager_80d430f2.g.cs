@@ -73,15 +73,15 @@ public sealed unsafe partial class PlayerLimboActorManager
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? processOwnedAgentForPlayer(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? processOwnedAgentForPlayer(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.IAddActorEntityProxy arg1, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_b11aa531((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle, (void*)arg3.Handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_b11aa531((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
     }
 
-    public void processOwnedEntityLimboForPlayer(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3)
+    public void processOwnedEntityLimboForPlayer(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0, global::Hosihikari.Bindings.Bedrock.Interop.IAddActorEntityProxy arg1, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3)
     {
-        NativeMethods.TablePtr->hs_method_6c15e0e8((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle, (void*)arg3.Handle);
+        NativeMethods.TablePtr->hs_method_6c15e0e8((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
     }
 
     public void saveOwnedLimboActorsForPlayer(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0)

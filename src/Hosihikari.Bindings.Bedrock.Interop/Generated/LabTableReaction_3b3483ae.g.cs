@@ -45,18 +45,20 @@ public sealed unsafe partial class LabTableReaction
     public static LabTableReaction Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'LabTableReactionComponent' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void addComponent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'LabTableReactionComponent' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public void addResultItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
     {
         NativeMethods.TablePtr->hs_method_041bd1b4((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'LabTableReaction' has no accessible destructor.", false)]
-    public static nint createReaction(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'LabTableReaction' has no accessible destructor.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.LabTableReaction? createReaction(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, bool arg2)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_eae2a64c(arg0, (void*)arg1.Handle, arg2);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LabTableReaction((nint)__hs_handle) : null;
+    }
 
     public int getReactionId()
     {

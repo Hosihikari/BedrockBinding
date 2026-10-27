@@ -121,6 +121,12 @@ public sealed unsafe partial class AbstractArrow : global::System.IDisposable
     }
 
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint filler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_03e4ae58((void*)_handle);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

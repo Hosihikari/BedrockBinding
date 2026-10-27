@@ -65,9 +65,9 @@ public sealed unsafe partial class MinecraftCommands
     public void enqueueDeferredCompiledCommand(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Command*>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'DeferredScriptCommand' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public bool enqueueDeferredScriptCommand(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'DeferredScriptCommand' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.MCRESULT executeCommand(global::Hosihikari.Bindings.Bedrock.Interop.CommandContext arg0, bool arg1)
     {

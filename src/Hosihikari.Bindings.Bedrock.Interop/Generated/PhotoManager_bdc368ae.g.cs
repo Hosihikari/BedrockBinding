@@ -81,9 +81,9 @@ public sealed unsafe partial class PhotoManager
         }
     }
 
-    public nint getPhotoStorage()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PhotoStorage getPhotoStorage()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_1a61d0bb((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PhotoStorage((nint)NativeMethods.TablePtr->hs_method_1a61d0bb((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]

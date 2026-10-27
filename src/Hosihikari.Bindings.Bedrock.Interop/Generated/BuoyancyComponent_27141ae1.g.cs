@@ -45,9 +45,9 @@ public sealed unsafe partial class BuoyancyComponent
     public static BuoyancyComponent Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public bool canFloat(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg1)
+    public bool canFloat(global::Hosihikari.Bindings.Bedrock.Interop.StateVectorComponent arg0, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg1)
     {
-        return NativeMethods.TablePtr->hs_method_6a396bf0((void*)_handle, (void*)arg0, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->hs_method_6a396bf0((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     public float getBaseBuoyancy()
@@ -98,9 +98,9 @@ public sealed unsafe partial class BuoyancyComponent
         }
     }
 
-    public bool needToResurface(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg1)
+    public bool needToResurface(global::Hosihikari.Bindings.Bedrock.Interop.StateVectorComponent arg0, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg1)
     {
-        return NativeMethods.TablePtr->hs_method_b8a4b2d9((void*)_handle, (void*)arg0, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->hs_method_b8a4b2d9((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -122,6 +122,10 @@ public sealed unsafe partial class BuoyancyComponent
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
+    public void Destroy_e416f5f8() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_5a502a97() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

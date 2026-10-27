@@ -77,9 +77,9 @@ public sealed unsafe partial class LeashFenceKnotActor : global::System.IDisposa
         return NativeMethods.TablePtr->hs_method_a6c9bb33((void*)_handle);
     }
 
-    public bool getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2)
+    public bool getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorInteraction arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2)
     {
-        return NativeMethods.TablePtr->hs_method_f9279e5f((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle) != 0;
+        return NativeMethods.TablePtr->hs_method_f9279e5f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
     public float getShadowRadius()

@@ -38,6 +38,12 @@ public sealed unsafe partial class VoidGenerator : global::System.IDisposable
     }
 
     // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_89713a14((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
     public nint filler_Address
     {
         get => (nint)NativeMethods.TablePtr->hs_get_4422bb5e((void*)_handle);

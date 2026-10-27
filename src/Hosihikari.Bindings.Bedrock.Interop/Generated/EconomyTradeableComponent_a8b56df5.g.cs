@@ -83,9 +83,9 @@ public sealed unsafe partial class EconomyTradeableComponent
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public bool getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, nint arg1)
+    public bool getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorInteraction arg1)
     {
-        return NativeMethods.TablePtr->hs_method_9a72a185((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_9a72a185((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipeList? getOffers()

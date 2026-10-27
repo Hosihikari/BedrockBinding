@@ -64,9 +64,9 @@ public sealed unsafe partial class NetworkItemInstanceDescriptor : global::Syste
         return new NetworkItemInstanceDescriptor((nint)handle);
     }
 
-    public static NetworkItemInstanceDescriptor Create_a646ba6c(nint arg0)
+    public static NetworkItemInstanceDescriptor Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackDescriptor arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_a646ba6c((void*)arg0);
+        var handle = NativeMethods.TablePtr->hs_create_a646ba6c((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -76,7 +76,7 @@ public sealed unsafe partial class NetworkItemInstanceDescriptor : global::Syste
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static NetworkItemInstanceDescriptor Create_33936429(nint arg0) =>
+    public static NetworkItemInstanceDescriptor Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
     public static NetworkItemInstanceDescriptor Create(global::Hosihikari.Bindings.Bedrock.Interop.NetworkItemInstanceDescriptor arg0)

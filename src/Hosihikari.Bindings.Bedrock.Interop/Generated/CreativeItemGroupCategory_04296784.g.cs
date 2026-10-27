@@ -37,6 +37,12 @@ public sealed unsafe partial class CreativeItemGroupCategory : global::System.ID
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_eacc4875((void*)_handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static CreativeItemGroupCategory Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
@@ -45,19 +51,22 @@ public sealed unsafe partial class CreativeItemGroupCategory : global::System.ID
     public static CreativeItemGroupCategory Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public nint addAnonymousGroup()
+    public global::Hosihikari.Bindings.Bedrock.Interop.CreativeGroupInfo? addAnonymousGroup()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_dadd923c((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_dadd923c((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CreativeGroupInfo((nint)__hs_handle, false) : null;
     }
 
-    public nint addChildGroup(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.CreativeGroupInfo? addChildGroup(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg1)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_413eb4be((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_413eb4be((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CreativeGroupInfo((nint)__hs_handle, false) : null;
     }
 
-    public nint getChildGroup(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.CreativeGroupInfo? getChildGroup(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_eec0cd0d((void*)_handle, (void*)arg0.Handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_eec0cd0d((void*)_handle, (void*)arg0.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CreativeGroupInfo((nint)__hs_handle, false) : null;
     }
 
     public int getCreativeCategory()
@@ -65,9 +74,10 @@ public sealed unsafe partial class CreativeItemGroupCategory : global::System.ID
         return NativeMethods.TablePtr->hs_method_c4f468ba((void*)_handle);
     }
 
-    public nint getOrAddTailAnonymousGroup()
+    public global::Hosihikari.Bindings.Bedrock.Interop.CreativeGroupInfo? getOrAddTailAnonymousGroup()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d61c21fa((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_d61c21fa((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CreativeGroupInfo((nint)__hs_handle, false) : null;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

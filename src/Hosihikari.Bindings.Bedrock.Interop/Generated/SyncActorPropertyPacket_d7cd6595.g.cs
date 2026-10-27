@@ -89,9 +89,9 @@ public sealed unsafe partial class SyncActorPropertyPacket : global::System.IDis
         return new SyncActorPropertyPacket((nint)handle);
     }
 
-    public static SyncActorPropertyPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, nint arg1)
+    public static SyncActorPropertyPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.PropertyGroupManager arg1)
     {
-        var handle = NativeMethods.TablePtr->hs_create_54014a03((void*)arg0.Handle, (void*)arg1);
+        var handle = NativeMethods.TablePtr->hs_create_54014a03((void*)arg0.Handle, (void*)arg1.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

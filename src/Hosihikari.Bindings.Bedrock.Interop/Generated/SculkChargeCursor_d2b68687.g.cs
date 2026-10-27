@@ -53,22 +53,19 @@ public sealed unsafe partial class SculkChargeCursor
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint sDefaultSculkBehavior_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.DefaultSculkBehavior sDefaultSculkBehavior
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_78f49664();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.DefaultSculkBehavior((nint)NativeMethods.TablePtr->hs_get_78f49664(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint sSculkBlockBehavior_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.SculkBlockBehavior sSculkBlockBehavior
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_97da71ee();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.SculkBlockBehavior((nint)NativeMethods.TablePtr->hs_get_97da71ee(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint sSculkVeinBlockBehavior_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.SculkVeinBlockBehavior sSculkVeinBlockBehavior
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_2ead801c();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.SculkVeinBlockBehavior((nint)NativeMethods.TablePtr->hs_get_2ead801c(), false);
     }
 
     public void update(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource? arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.Random arg3, global::Hosihikari.Bindings.Bedrock.Interop.SculkSpreader arg4, bool arg5)

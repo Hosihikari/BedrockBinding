@@ -41,14 +41,6 @@ public sealed unsafe partial class IconItemComponent
     public static IconItemComponent Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static IconItemComponent Create_95a57933(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static IconItemComponent Create_fbf638e6(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
     public void _initializeComponent()
     {
         NativeMethods.TablePtr->hs_method_358f78a2((void*)_handle);

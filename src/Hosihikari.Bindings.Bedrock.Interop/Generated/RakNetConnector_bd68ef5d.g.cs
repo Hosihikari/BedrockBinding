@@ -37,6 +37,12 @@ public sealed unsafe partial class RakNetConnector : global::System.IDisposable
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b4e97f77((void*)_handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static RakNetConnector Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
@@ -70,9 +76,9 @@ public sealed unsafe partial class RakNetConnector : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_5a46c50c((void*)_handle, (void*)arg0.Handle);
     }
 
-    public bool connect(nint arg0, nint arg1)
+    public bool connect(global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo arg0, global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo arg1)
     {
-        return NativeMethods.TablePtr->hs_method_3bd30155((void*)_handle, (void*)arg0, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_3bd30155((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     public void disconnect()
@@ -80,9 +86,9 @@ public sealed unsafe partial class RakNetConnector : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_bf431ced((void*)_handle);
     }
 
-    public nint getConnectedGameInfo()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo getConnectedGameInfo()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_35b18287((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo((nint)NativeMethods.TablePtr->hs_method_35b18287((void*)_handle), false);
     }
 
     public ushort getIPv4Port()
@@ -136,14 +142,16 @@ public sealed unsafe partial class RakNetConnector : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_5269f808((void*)_handle);
     }
 
-    public nint getPeer_70b4f098()
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakPeerInterface? getPeer_70b4f098()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_70b4f098((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_70b4f098((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakPeerInterface((nint)__hs_handle, false) : null;
     }
 
-    public nint getPeer_c240863b()
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakPeerInterface? getPeer_c240863b()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_c240863b((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_c240863b((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakPeerInterface((nint)__hs_handle, false) : null;
     }
 
     public ushort getPort()
@@ -151,9 +159,17 @@ public sealed unsafe partial class RakNetConnector : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_31f7b4c8((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'RakNet::SystemAddress' is not supported.", false)]
-    public nint getRefinedLocalIps() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'RakNet::SystemAddress' is not supported.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress[] getRefinedLocalIps()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_774c734c((void*)_handle);
+        var __hs_items = (void**)__hs_view.Data;
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress>() : new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress((nint)__hs_items[__hs_i]);
+        }
+        return __hs_result;
+    }
 
     public bool getStatistics(nint arg0)
     {

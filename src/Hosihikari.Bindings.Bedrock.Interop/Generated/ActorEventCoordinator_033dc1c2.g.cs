@@ -45,18 +45,18 @@ public sealed unsafe partial class ActorEventCoordinator
     public static ActorEventCoordinator Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public nint getActorGameplayHandler()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorGameplayHandler getActorGameplayHandler()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_695882f6((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorGameplayHandler((nint)NativeMethods.TablePtr->hs_method_695882f6((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'ActorGameplayHandler' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void registerActorGameplayHandler(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'ActorGameplayHandler' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public void registerWithGameplayUserManagerEvents(global::Hosihikari.Bindings.Bedrock.Interop.GameplayUserManager arg0)
     {

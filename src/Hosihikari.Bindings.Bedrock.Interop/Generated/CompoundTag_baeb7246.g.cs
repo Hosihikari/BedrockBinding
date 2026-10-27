@@ -736,7 +736,7 @@ public sealed unsafe partial class CompoundTag : global::System.IDisposable
     public void print(nint prefix_, nint @out) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void print(string arg0, nint arg1)
+    public void print(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.PrintStream arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -751,7 +751,7 @@ public sealed unsafe partial class CompoundTag : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_0c65f509((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1);
+            NativeMethods.TablePtr->hs_method_0c65f509((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle);
         }
     }
 

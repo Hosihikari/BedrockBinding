@@ -54,9 +54,9 @@ public sealed unsafe partial class Connector
         NativeMethods.TablePtr->hs_method_bc097181((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
-    public nint getConnectedGameInfo()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo getConnectedGameInfo()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_3634c1c4((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo((nint)NativeMethods.TablePtr->hs_method_3634c1c4((void*)_handle), false);
     }
 
     public ushort getIPv4Port()
@@ -109,9 +109,17 @@ public sealed unsafe partial class Connector
         return NativeMethods.TablePtr->hs_method_6e4b09bd((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'RakNet::SystemAddress' is not supported.", false)]
-    public nint getRefinedLocalIps() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'RakNet::SystemAddress' is not supported.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress[] getRefinedLocalIps()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_ea695675((void*)_handle);
+        var __hs_items = (void**)__hs_view.Data;
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress>() : new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress((nint)__hs_items[__hs_i]);
+        }
+        return __hs_result;
+    }
 
     public bool isIPv4Supported()
     {

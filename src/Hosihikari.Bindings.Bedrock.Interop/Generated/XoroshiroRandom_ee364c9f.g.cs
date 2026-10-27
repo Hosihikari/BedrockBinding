@@ -56,9 +56,9 @@ public sealed unsafe partial class XoroshiroRandom
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.IRandom((nint)__hs_handle) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'IPositionalRandomFactory' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'IPositionalRandomFactory' has no accessible destructor.", false)]
     public nint forkPositional() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'IPositionalRandomFactory' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'IPositionalRandomFactory' has no accessible destructor.");
 
     public bool nextBoolean()
     {
@@ -118,6 +118,10 @@ public sealed unsafe partial class XoroshiroRandom
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
+    public void Destroy_0e3d9800() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_ad1eeae4() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

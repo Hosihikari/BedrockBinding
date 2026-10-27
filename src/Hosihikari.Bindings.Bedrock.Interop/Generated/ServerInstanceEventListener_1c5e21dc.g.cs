@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class ServerInstanceEventListener
+public sealed unsafe partial class ServerInstanceEventListener
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -36,4 +36,51 @@ public sealed partial class ServerInstanceEventListener
         _handle = 0;
         return __hs_handle;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ServerInstanceEventListener Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ServerInstanceEventListener Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public int onServerInitializeEnd(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_cae6503a((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public int onServerInitializeStart(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_4b21be61((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public int onServerMinecraftInitialized(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0, nint arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_b549bf98((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+    }
+
+    public int onServerResume(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_9bd45d54((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public int onServerSuspend(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_93044cee((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public int onServerUpdateEnd(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_f26337cb((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public int onStartLeaveGame(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_9eea7e54((void*)_handle, (void*)arg0.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 }

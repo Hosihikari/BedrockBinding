@@ -67,12 +67,12 @@ public sealed unsafe partial class ActorAnimationControllerStatePlayer : global:
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void applyToPose_c6eed2a1(nint renderParams, nint destBoneOrientationsMap, float blendWeight) =>
+    public void applyToPose(nint renderParams, nint destBoneOrientationsMap, float blendWeight) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void applyToPose_5f22b7f6(nint arg0, nint arg1, float arg2)
+    public void applyToPose(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0, nint arg1, float arg2)
     {
-        NativeMethods.TablePtr->hs_method_5f22b7f6((void*)_handle, (void*)arg0, (void*)arg1, arg2);
+        NativeMethods.TablePtr->hs_method_5f22b7f6((void*)_handle, (void*)arg0.Handle, (void*)arg1, arg2);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

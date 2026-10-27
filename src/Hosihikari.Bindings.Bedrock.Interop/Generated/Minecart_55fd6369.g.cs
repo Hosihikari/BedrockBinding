@@ -106,9 +106,9 @@ public sealed unsafe partial class Minecart : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_fa921446((void*)_handle);
     }
 
-    public static float getHeightOffset(nint arg0)
+    public static float getHeightOffset(global::Hosihikari.Bindings.Bedrock.Interop.AABBShapeComponent arg0)
     {
-        return NativeMethods.TablePtr->hs_method_02f266b4((void*)arg0);
+        return NativeMethods.TablePtr->hs_method_02f266b4((void*)arg0.Handle);
     }
 
     public float getInterpolatedBodyYaw(float arg0)

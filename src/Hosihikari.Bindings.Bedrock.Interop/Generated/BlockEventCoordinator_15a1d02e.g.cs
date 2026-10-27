@@ -45,18 +45,18 @@ public sealed unsafe partial class BlockEventCoordinator
     public static BlockEventCoordinator Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public nint getBlockGameplayHandler()
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockGameplayHandler getBlockGameplayHandler()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_741bfcd9((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockGameplayHandler((nint)NativeMethods.TablePtr->hs_method_741bfcd9((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'BlockGameplayHandler' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void registerBlockGameplayHandler(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'BlockGameplayHandler' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public void sendBlockDestroyedByPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg3, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg4)
     {

@@ -38,6 +38,12 @@ public sealed unsafe partial class OverworldGeneratorMultinoise : global::System
     }
 
     // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_ef69ffaf((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
     public nint filler_Address
     {
         get => (nint)NativeMethods.TablePtr->hs_get_185d47c2((void*)_handle);

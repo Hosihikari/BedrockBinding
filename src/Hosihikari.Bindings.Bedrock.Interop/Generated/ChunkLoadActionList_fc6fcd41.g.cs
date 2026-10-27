@@ -65,7 +65,7 @@ public sealed unsafe partial class ChunkLoadActionList
     public void loadRequests(nint storage, nint loader, nint dimensionPrefix) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void loadRequests(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg0, nint arg1, string arg2)
+    public void loadRequests(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg0, global::Hosihikari.Bindings.Bedrock.Interop.ICommandOriginLoader arg1, string arg2)
     {
         var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
         scoped global::System.Span<byte> __hs_stringBytes2;
@@ -80,7 +80,7 @@ public sealed unsafe partial class ChunkLoadActionList
         global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
         fixed (byte* __hs_stringData2 = __hs_stringBytes2)
         {
-            NativeMethods.TablePtr->hs_method_8fe5d71e((void*)_handle, (void*)arg0.Handle, (void*)arg1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            NativeMethods.TablePtr->hs_method_8fe5d71e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2);
         }
     }
 

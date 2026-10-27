@@ -37,6 +37,12 @@ public sealed unsafe partial class TheEndDimension : global::System.IDisposable
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_6a2f06b2((void*)_handle);
+    }
+
     public int CIRCUIT_TICK_RATE
     {
         get => NativeMethods.TablePtr->hs_get_9b3f6561((void*)_handle);

@@ -61,14 +61,14 @@ public sealed unsafe partial class MinecraftGameTest : global::System.IDisposabl
         NativeMethods.TablePtr->hs_method_771bcbc4((void*)_handle, (void*)arg0.Handle);
     }
 
-    public nint getRegistry()
+    public global::Hosihikari.Bindings.Bedrock.Interop.gametest.GameTestRegistry getRegistry()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_2e4a0a91((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.gametest.GameTestRegistry((nint)NativeMethods.TablePtr->hs_method_2e4a0a91((void*)_handle), false);
     }
 
-    public nint getTicker()
+    public global::Hosihikari.Bindings.Bedrock.Interop.gametest.GameTestTicker getTicker()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_836f8523((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.gametest.GameTestTicker((nint)NativeMethods.TablePtr->hs_method_836f8523((void*)_handle), false);
     }
 
     public void loadExistingTests(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0)
@@ -113,7 +113,7 @@ public sealed unsafe partial class MinecraftGameTest : global::System.IDisposabl
         NativeMethods.TablePtr->hs_method_de6652a2((void*)_handle);
     }
 
-    public string runTest(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg1, nint arg2)
+    public string runTest(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg1, global::Hosihikari.Bindings.Bedrock.Interop.gametest.TestParameters arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -128,7 +128,7 @@ public sealed unsafe partial class MinecraftGameTest : global::System.IDisposabl
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_view = NativeMethods.TablePtr->hs_method_7bb805b1((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, (void*)arg2);
+            var __hs_view = NativeMethods.TablePtr->hs_method_7bb805b1((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, (void*)arg2.Handle);
             return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
         }
     }

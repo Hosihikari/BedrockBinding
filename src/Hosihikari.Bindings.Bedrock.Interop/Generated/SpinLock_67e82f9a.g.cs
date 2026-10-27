@@ -37,6 +37,47 @@ public sealed unsafe partial class SpinLock : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static SpinLock Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_c71accc5();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SpinLock((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static SpinLock Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public void @lock()
+    {
+        NativeMethods.TablePtr->hs_method_4ed5b3fd((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public bool try_lock()
+    {
+        return NativeMethods.TablePtr->hs_method_c0921f53((void*)_handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint unk_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b4cd9fb3((void*)_handle);
+    }
+
+    public void unlock()
+    {
+        NativeMethods.TablePtr->hs_method_dcfa59c2((void*)_handle);
+    }
+
+
 
     public void Dispose()
     {

@@ -49,9 +49,9 @@ public sealed unsafe partial class RakPeerHelper
     public static RakPeerHelper Create_8575f841(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public int getConnectionIndex(nint arg0)
+    public int getConnectionIndex(global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo arg0)
     {
-        return NativeMethods.TablePtr->hs_method_60712752((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_60712752((void*)_handle, (void*)arg0.Handle);
     }
 
     public ushort getIPv4BoundPort()
@@ -88,9 +88,9 @@ public sealed unsafe partial class RakPeerHelper
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public int peerStartup(nint arg0, nint arg1, int arg2)
+    public int peerStartup(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakPeerInterface? arg0, nint arg1, int arg2)
     {
-        return NativeMethods.TablePtr->hs_method_de8c9a6b((void*)_handle, (void*)arg0, (void*)arg1, arg2);
+        return NativeMethods.TablePtr->hs_method_de8c9a6b((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1, arg2);
     }
 
     public void reset()

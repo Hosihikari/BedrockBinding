@@ -63,9 +63,9 @@ public sealed unsafe partial class MobEvents
         return NativeMethods.TablePtr->hs_method_1055b671((void*)_handle) != 0;
     }
 
-    public nint getEvent(int arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.MobEvent getEvent(int arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_6afb5cb9((void*)_handle, arg0);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MobEvent((nint)NativeMethods.TablePtr->hs_method_6afb5cb9((void*)_handle, arg0), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

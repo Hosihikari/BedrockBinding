@@ -539,9 +539,10 @@ public sealed unsafe partial class LevelChunk
         return new global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalHeight((nint)NativeMethods.TablePtr->hs_method_99ddca03((void*)_handle, (void*)arg0.Handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'HeightmapWrapper' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getPreWorldGenHeightmap() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'HeightmapWrapper' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.HeightmapWrapper getPreWorldGenHeightmap()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.HeightmapWrapper((nint)NativeMethods.TablePtr->hs_method_8275944a((void*)_handle));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint getPreservedBlockEntities_487a7e1b() =>

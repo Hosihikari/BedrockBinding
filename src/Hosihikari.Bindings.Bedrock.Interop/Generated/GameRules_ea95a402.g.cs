@@ -37,6 +37,12 @@ public sealed unsafe partial class GameRules : global::System.IDisposable
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e0f7a4a4((void*)_handle);
+    }
+
     public static uint DEFAULT_PLAYER_SPAWN_RADIUS
     {
         get => NativeMethods.TablePtr->hs_get_a59a03c0();
@@ -111,13 +117,15 @@ public sealed unsafe partial class GameRules : global::System.IDisposable
     public nint _registerRule_e4f6e6c3(nint name, nint rule) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'GameRulesChangedPacket' is not a known bindable declaration.", false)]
-    public nint createAllGameRulesPacket() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'GameRulesChangedPacket' is not a known bindable declaration.");
-
-    public void deserializeRules(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameRulesChangedPacket? createAllGameRulesPacket()
     {
-        NativeMethods.TablePtr->hs_method_28315413((void*)_handle, (void*)arg0);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_817b7aee((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.GameRulesChangedPacket((nint)__hs_handle) : null;
+    }
+
+    public void deserializeRules(global::Hosihikari.Bindings.Bedrock.Interop.GameRulesChangedPacketData arg0)
+    {
+        NativeMethods.TablePtr->hs_method_28315413((void*)_handle, (void*)arg0.Handle);
     }
 
     public bool getBool(global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId arg0, bool arg1)
@@ -204,17 +212,23 @@ public sealed unsafe partial class GameRules : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_5e418686((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'GameRulesChangedPacket' is not a known bindable declaration.", false)]
-    public nint setRule(nint arg0, bool arg1, bool arg2, nint arg3, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'GameRulesChangedPacket' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameRulesChangedPacket? setRule(global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId arg0, bool arg1, bool arg2, nint arg3, nint arg4, global::Hosihikari.Bindings.Bedrock.Interop.GameRule_Nested.ValidationError? arg5)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_40daecb1((void*)_handle, (void*)arg0.Handle, arg1, arg2, (void*)arg3, (void*)arg4, (void*)(arg5?.Handle ?? 0));
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.GameRulesChangedPacket((nint)__hs_handle) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'GameRulesChangedPacket' is not a known bindable declaration.", false)]
-    public nint setRule(nint arg0, float arg1, bool arg2, nint arg3, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'GameRulesChangedPacket' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameRulesChangedPacket? setRule(global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId arg0, float arg1, bool arg2, nint arg3, nint arg4, global::Hosihikari.Bindings.Bedrock.Interop.GameRule_Nested.ValidationError? arg5)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_2dc8d22f((void*)_handle, (void*)arg0.Handle, arg1, arg2, (void*)arg3, (void*)arg4, (void*)(arg5?.Handle ?? 0));
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.GameRulesChangedPacket((nint)__hs_handle) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'GameRulesChangedPacket' is not a known bindable declaration.", false)]
-    public nint setRule(nint arg0, int arg1, bool arg2, nint arg3, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'GameRulesChangedPacket' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameRulesChangedPacket? setRule(global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId arg0, int arg1, bool arg2, nint arg3, nint arg4, global::Hosihikari.Bindings.Bedrock.Interop.GameRule_Nested.ValidationError? arg5)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_66408e2c((void*)_handle, (void*)arg0.Handle, arg1, arg2, (void*)arg3, (void*)arg4, (void*)(arg5?.Handle ?? 0));
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.GameRulesChangedPacket((nint)__hs_handle) : null;
+    }
 
     public void setTagData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {

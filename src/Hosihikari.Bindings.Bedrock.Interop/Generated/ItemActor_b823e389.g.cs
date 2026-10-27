@@ -88,9 +88,9 @@ public sealed unsafe partial class ItemActor : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_7178738b((void*)_handle) != 0;
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.AABB getLiquidAABB(nint arg0)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.AABB getLiquidAABB(global::Hosihikari.Bindings.Bedrock.Interop.AABBShapeComponent arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_f8191a0d((void*)arg0));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_f8191a0d((void*)arg0.Handle));
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID getSourceUniqueID()

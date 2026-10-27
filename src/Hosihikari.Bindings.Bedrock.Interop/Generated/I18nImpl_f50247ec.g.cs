@@ -72,9 +72,9 @@ public sealed unsafe partial class I18nImpl : global::System.IDisposable
     public nint _getPackKeywordLocale_eddad3d0(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void addI18nObserver(nint arg0)
+    public void addI18nObserver(global::Hosihikari.Bindings.Bedrock.Interop.I18nObserver arg0)
     {
-        NativeMethods.TablePtr->hs_method_b63e046a((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_b63e046a((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

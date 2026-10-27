@@ -255,9 +255,9 @@ public sealed unsafe partial class EnderDragon : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_4fd5ba2d((void*)_handle, arg0);
     }
 
-    public void updateEntitySpecificMolangVariables(nint arg0)
+    public void updateEntitySpecificMolangVariables(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0)
     {
-        NativeMethods.TablePtr->hs_method_dab71918((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_dab71918((void*)_handle, (void*)arg0.Handle);
     }
 
 

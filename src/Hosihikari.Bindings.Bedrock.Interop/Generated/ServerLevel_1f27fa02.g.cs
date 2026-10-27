@@ -37,6 +37,12 @@ public sealed unsafe partial class ServerLevel : global::System.IDisposable
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_c6f843ab((void*)_handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ServerLevel Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
@@ -93,9 +99,9 @@ public sealed unsafe partial class ServerLevel : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.DynamicPropertiesDefinition((nint)NativeMethods.TablePtr->hs_method_36be3398((void*)_handle), false);
     }
 
-    public nint getDynamicPropertiesManager()
+    public global::Hosihikari.Bindings.Bedrock.Interop.DynamicPropertiesManager getDynamicPropertiesManager()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_784ed233((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DynamicPropertiesManager((nint)NativeMethods.TablePtr->hs_method_784ed233((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkMetaDataManager? getLevelChunkMetaDataManager()
@@ -129,9 +135,10 @@ public sealed unsafe partial class ServerLevel : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerSleepManager((nint)NativeMethods.TablePtr->hs_method_a9688806((void*)_handle), false);
     }
 
-    public nint getPositionTrackerDBServer()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.PositionTrackingDBServer? getPositionTrackerDBServer()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_40307a2d((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_40307a2d((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.PositionTrackingDBServer((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager? getServerResourcePackManager()

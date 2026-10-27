@@ -55,7 +55,7 @@ public sealed unsafe partial class LevelChunkMetaDataManager
     public static void inferInitialMetaDataAfterDeserialization(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static void inferInitialMetaDataAfterDeserialization(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 arg1, int arg2, string arg3, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg4, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange arg5, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg6, nint arg7)
+    public static void inferInitialMetaDataAfterDeserialization(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 arg1, int arg2, string arg3, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg4, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange arg5, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg6, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkMetaData arg7)
     {
         var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
         scoped global::System.Span<byte> __hs_stringBytes3;
@@ -70,13 +70,13 @@ public sealed unsafe partial class LevelChunkMetaDataManager
         global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
         fixed (byte* __hs_stringData3 = __hs_stringBytes3)
         {
-            NativeMethods.TablePtr->hs_method_b5c289b2((void*)arg0.Handle, (void*)arg1.Handle, arg2, __hs_stringData3, (nuint)__hs_stringByteCount3, (void*)arg4.Handle, (void*)arg5.Handle, (void*)arg6.Handle, (void*)arg7);
+            NativeMethods.TablePtr->hs_method_b5c289b2((void*)arg0.Handle, (void*)arg1.Handle, arg2, __hs_stringData3, (nuint)__hs_stringByteCount3, (void*)arg4.Handle, (void*)arg5.Handle, (void*)arg6.Handle, (void*)arg7.Handle);
         }
     }
 
-    public static void inferTargetMetaData(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1, nint arg2)
+    public static void inferTargetMetaData(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkMetaData arg2)
     {
-        NativeMethods.TablePtr->hs_method_2b2c1267((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_2b2c1267((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

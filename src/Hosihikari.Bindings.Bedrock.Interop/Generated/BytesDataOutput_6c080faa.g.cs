@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class BytesDataOutput
+public sealed unsafe partial class BytesDataOutput
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -36,4 +36,84 @@ public sealed partial class BytesDataOutput
         _handle = 0;
         return __hs_handle;
     }
+
+    public void writeByte(sbyte arg0)
+    {
+        NativeMethods.TablePtr->hs_method_4f2ed231((void*)_handle, arg0);
+    }
+
+    public void writeDouble(double arg0)
+    {
+        NativeMethods.TablePtr->hs_method_bf270f6f((void*)_handle, arg0);
+    }
+
+    public void writeFloat(float arg0)
+    {
+        NativeMethods.TablePtr->hs_method_99fc36fe((void*)_handle, arg0);
+    }
+
+    public void writeInt(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_e4f05108((void*)_handle, arg0);
+    }
+
+    public void writeLongLong(long arg0)
+    {
+        NativeMethods.TablePtr->hs_method_14023dc2((void*)_handle, arg0);
+    }
+
+    public void writeLongString(string arg0)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->hs_method_dad4e9d0((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void writeLongString(nint v) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void writeShort(short arg0)
+    {
+        NativeMethods.TablePtr->hs_method_a63af17f((void*)_handle, arg0);
+    }
+
+    public void writeString(string arg0)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->hs_method_b4d53578((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void writeString(nint v) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

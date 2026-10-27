@@ -91,9 +91,9 @@ public sealed unsafe partial class Squid : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_d7628ed5((void*)_handle);
     }
 
-    public void updateEntitySpecificMolangVariables(nint arg0)
+    public void updateEntitySpecificMolangVariables(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0)
     {
-        NativeMethods.TablePtr->hs_method_f557de20((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_f557de20((void*)_handle, (void*)arg0.Handle);
     }
 
 

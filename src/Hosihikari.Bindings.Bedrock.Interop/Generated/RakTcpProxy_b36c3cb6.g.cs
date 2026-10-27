@@ -45,34 +45,53 @@ public sealed unsafe partial class RakTcpProxy
     public static RakTcpProxy Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::SystemAddress' is not a known bindable declaration.", false)]
-    public void close(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::SystemAddress' is not a known bindable declaration.");
+    public void close(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0)
+    {
+        NativeMethods.TablePtr->hs_method_068a00b6((void*)_handle, (void*)arg0.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint connect_c3854b5d(nint host, ushort port) =>
+    public nint connect(nint host, ushort port) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'RakNet::SystemAddress' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint connect_e504439d(nint arg0, ushort arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'RakNet::SystemAddress' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress connect(string arg0, ushort arg1)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress((nint)NativeMethods.TablePtr->hs_method_e504439d((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1));
+        }
+    }
 
     public void deallocatePacket(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.Packet? arg0)
     {
         NativeMethods.TablePtr->hs_method_56cfa474((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'RakNet::SystemAddress' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint nextCompletedConnectionAttempt() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'RakNet::SystemAddress' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress nextCompletedConnectionAttempt()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress((nint)NativeMethods.TablePtr->hs_method_4c777a18((void*)_handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'RakNet::SystemAddress' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint nextFailedConnectionAttempt() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'RakNet::SystemAddress' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress nextFailedConnectionAttempt()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress((nint)NativeMethods.TablePtr->hs_method_6da5176e((void*)_handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'RakNet::SystemAddress' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint nextLostConnection() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'RakNet::SystemAddress' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress nextLostConnection()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress((nint)NativeMethods.TablePtr->hs_method_d6d655eb((void*)_handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.Packet? nextPacket()
     {
@@ -89,9 +108,10 @@ public sealed unsafe partial class RakTcpProxy
         return NativeMethods.TablePtr->hs_method_8ed605c0((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::SystemAddress' is not a known bindable declaration.", false)]
-    public void send(nint arg0, uint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::SystemAddress' is not a known bindable declaration.");
+    public void send(nint arg0, uint arg1, global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg2)
+    {
+        NativeMethods.TablePtr->hs_method_c06d7e58((void*)_handle, (void*)arg0, arg1, (void*)arg2.Handle);
+    }
 
     public bool start(ushort arg0, ushort arg1, ushort arg2)
     {

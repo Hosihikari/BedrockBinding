@@ -37,6 +37,98 @@ public sealed unsafe partial class PackInfoData : global::System.IDisposable
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static PackInfoData Create(nint guid, nint version, ulong packSize, nint contentKey, nint subpackName, nint contentIdentity, bool hasScripts, bool isRayTracingCapable) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static PackInfoData Create(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, ulong arg2, string arg3, string arg4, global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity arg5, bool arg6, bool arg7)
+    {
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg3, __hs_stringBytes3);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
+        fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+        {
+            fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+            {
+                var handle = NativeMethods.TablePtr->hs_create_ec7f253d((void*)arg0.Handle, (void*)arg1.Handle, arg2, __hs_stringData3, (nuint)__hs_stringByteCount3, __hs_stringData4, (nuint)__hs_stringByteCount4, (void*)arg5.Handle, arg6, arg7);
+                if (handle == null)
+                {
+                    throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+                }
+
+                return new PackInfoData((nint)handle);
+            }
+        }
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContentIdentity_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_9d2ae7b8((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mContentKey_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_f978e7db((void*)_handle);
+    }
+
+    public bool mHasExceptions
+    {
+        get => NativeMethods.TablePtr->hs_get_7f4bced6((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_7f4bced6((void*)_handle, value);
+    }
+
+    public bool mHasScripts
+    {
+        get => NativeMethods.TablePtr->hs_get_4c8c385e((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_4c8c385e((void*)_handle, value);
+    }
+
+    public bool mIsRayTracingCapable
+    {
+        get => NativeMethods.TablePtr->hs_get_bd884986((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_bd884986((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPackIdVersion_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_17ef10b5((void*)_handle);
+    }
+
+    public ulong mPackSize
+    {
+        get => NativeMethods.TablePtr->hs_get_0a9aaf73((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_0a9aaf73((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSubpackName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_5ffefd0a((void*)_handle);
+    }
+
+
 
     public void Dispose()
     {

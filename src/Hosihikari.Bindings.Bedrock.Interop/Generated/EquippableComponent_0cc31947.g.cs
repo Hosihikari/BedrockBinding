@@ -45,9 +45,9 @@ public sealed unsafe partial class EquippableComponent
     public static EquippableComponent Create_2ccd6f87(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static EquippableComponent Create_30249053(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.UpdateEquipPacket createDataPacket(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, sbyte arg1)
     {

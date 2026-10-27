@@ -37,6 +37,66 @@ public sealed unsafe partial class InventoryAction : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static InventoryAction Create(global::Hosihikari.Bindings.Bedrock.Interop.InventoryAction arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_ee4f2bc1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InventoryAction((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static InventoryAction Create_e8c9be5a(nint source, uint slot, nint fromItem, nint toItem) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static InventoryAction Create_22d21932(nint source, uint slot, nint fromItemDescriptor, nint toItemDescriptor) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFromItem_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_aa7f505e((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFromItemDescriptor_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_1d1165df((void*)_handle);
+    }
+
+    public uint mSlot
+    {
+        get => NativeMethods.TablePtr->hs_get_f3dc5a78((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_f3dc5a78((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSource_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b3c3c9b4((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mToItem_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_ff13ee88((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mToItemDescriptor_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_a7e22673((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static InventoryAction Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");

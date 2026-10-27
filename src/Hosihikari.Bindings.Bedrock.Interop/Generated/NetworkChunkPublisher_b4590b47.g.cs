@@ -97,9 +97,9 @@ public sealed unsafe partial class NetworkChunkPublisher
         NativeMethods.TablePtr->hs_method_d2687880((void*)_handle);
     }
 
-    public void setServerSettings(global::Hosihikari.Bindings.Bedrock.Interop.ServerNetworkSystem arg0, nint arg1)
+    public void setServerSettings(global::Hosihikari.Bindings.Bedrock.Interop.ServerNetworkSystem arg0, global::Hosihikari.Bindings.Bedrock.Interop.ClientBlobCache.Server.ActiveTransfersManager arg1)
     {
-        NativeMethods.TablePtr->hs_method_487ca8b9((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_487ca8b9((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

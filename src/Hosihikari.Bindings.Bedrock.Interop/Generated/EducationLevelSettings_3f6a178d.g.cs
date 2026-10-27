@@ -37,6 +37,110 @@ public sealed unsafe partial class EducationLevelSettings : global::System.IDisp
         return __hs_handle;
     }
 
+    public static string DEFAULT_BORDER_PATH
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_cde268b1();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static EducationLevelSettings Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_8a85b6c1();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EducationLevelSettings((nint)handle);
+    }
+
+    public static EducationLevelSettings Create(global::Hosihikari.Bindings.Bedrock.Interop.EducationLevelSettings arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_e86b1967((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EducationLevelSettings((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getCommandOverrideFunctor_f23d33af() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.", false)]
+    public nint getCommandOverrideFunctor_2cf1863f() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAgentCapabilities_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_7d4d2b47((void*)_handle);
+    }
+
+    public bool mCanResizeCodeBuilder
+    {
+        get => NativeMethods.TablePtr->hs_get_7fa5ecce((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_7fa5ecce((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCodeBuilderDefaultUri_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_c00c630d((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCodeBuilderTitle_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_72ef03c2((void*)_handle);
+    }
+
+    public bool mDisableLegacyTitleBar
+    {
+        get => NativeMethods.TablePtr->hs_get_ade8273c((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_ade8273c((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mExternalLinkSettings_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_cd7ebc1b((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mHiddenCommands_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e82f628e((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLocalSettings_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_d1dc60a1((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPostProcessFilter_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_8b2d07c4((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScreenshotBorderResourcePath_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_db8cd560((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static EducationLevelSettings Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");

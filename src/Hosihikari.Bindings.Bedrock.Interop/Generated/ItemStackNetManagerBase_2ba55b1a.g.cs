@@ -69,14 +69,15 @@ public sealed unsafe partial class ItemStackNetManagerBase
     public nint getRequestId() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public nint getScreenContext()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext getScreenContext()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_67f5d62a((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext((nint)NativeMethods.TablePtr->hs_method_67f5d62a((void*)_handle), false);
     }
 
-    public nint initOpenContainer(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, sbyte arg1, nint arg2)
+    public global::Hosihikari.Bindings.Bedrock.Interop.SparseContainer? initOpenContainer(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, sbyte arg1, nint arg2)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_f008a2ce((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_f008a2ce((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.SparseContainer((nint)__hs_handle, false) : null;
     }
 
     public bool isClientSide()
@@ -99,9 +100,9 @@ public sealed unsafe partial class ItemStackNetManagerBase
         NativeMethods.TablePtr->hs_method_7e6f9ca6((void*)_handle);
     }
 
-    public void onContainerScreenOpen(nint arg0)
+    public void onContainerScreenOpen(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0)
     {
-        NativeMethods.TablePtr->hs_method_54de876c((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_54de876c((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

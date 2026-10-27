@@ -73,13 +73,13 @@ public sealed unsafe partial class RakNetServerLocator : global::System.IDisposa
     public bool _pingServerV6_b40dc983(nint address, int port) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void addCustomServer_a6db9a4b(nint arg0, int arg1)
+    public void addCustomServer(global::Hosihikari.Bindings.Bedrock.Interop.AsynchronousIPResolver arg0, int arg1)
     {
-        NativeMethods.TablePtr->hs_method_a6db9a4b((void*)_handle, (void*)arg0, arg1);
+        NativeMethods.TablePtr->hs_method_a6db9a4b((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addCustomServer_450d8d1c(nint address, int port) =>
+    public void addCustomServer(nint address, int port) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void addCustomServer(string arg0, int arg1)

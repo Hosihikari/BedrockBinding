@@ -37,6 +37,42 @@ public sealed unsafe partial class DataItem : global::System.IDisposable
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint clone() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint create(nint key, bool value) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint create(ushort key, bool value) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public bool isDataEqual(global::Hosihikari.Bindings.Bedrock.Interop.DataItem arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_f9d548d0((void*)_handle, (void*)arg0.Handle) != 0;
+    }
+
+    public bool mDirty
+    {
+        get => NativeMethods.TablePtr->hs_get_616113cf((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_616113cf((void*)_handle, value);
+    }
+
+    public ushort mId
+    {
+        get => NativeMethods.TablePtr->hs_get_52bc02e1((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_52bc02e1((void*)_handle, value);
+    }
+
+    public byte mType
+    {
+        get => NativeMethods.TablePtr->hs_get_3fc54876((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_3fc54876((void*)_handle, value);
+    }
+
+
 
     public void Dispose()
     {

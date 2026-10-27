@@ -198,9 +198,9 @@ public sealed unsafe partial class NavigationComponent
         NativeMethods.TablePtr->hs_method_a31bc042((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public void initializeFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, nint arg1)
+    public void initializeFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.NavigationDescription? arg1)
     {
-        NativeMethods.TablePtr->hs_method_f0d99255((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_f0d99255((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
     }
 
     public bool isDone()

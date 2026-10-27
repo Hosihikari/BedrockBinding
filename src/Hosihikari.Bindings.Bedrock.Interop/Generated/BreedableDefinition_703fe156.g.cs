@@ -50,14 +50,14 @@ public sealed unsafe partial class BreedableDefinition
         NativeMethods.TablePtr->hs_method_4c66ab9b((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void addBreedableType(nint arg0)
+    public void addBreedableType(global::Hosihikari.Bindings.Bedrock.Interop.BreedableType arg0)
     {
-        NativeMethods.TablePtr->hs_method_ac24f2ea((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_ac24f2ea((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void addEnvironmentRequirement(nint arg0)
+    public void addEnvironmentRequirement(global::Hosihikari.Bindings.Bedrock.Interop.EnvironmentRequirement arg0)
     {
-        NativeMethods.TablePtr->hs_method_124ca072((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_124ca072((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

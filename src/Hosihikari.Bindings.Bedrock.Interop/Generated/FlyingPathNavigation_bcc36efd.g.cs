@@ -45,9 +45,9 @@ public sealed unsafe partial class FlyingPathNavigation
     public static FlyingPathNavigation Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public void initializeInternal(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, nint arg1)
+    public void initializeInternal(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.NavigationDescription? arg1)
     {
-        NativeMethods.TablePtr->hs_method_f48f6a5a((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_f48f6a5a((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

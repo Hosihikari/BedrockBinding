@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Timer : global::System.IDisposable
+public sealed unsafe partial class Timer
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -170,19 +170,5 @@ public sealed unsafe partial class Timer : global::System.IDisposable
     public bool stepping()
     {
         return NativeMethods.TablePtr->hs_method_9bbec6b0((void*)_handle) != 0;
-    }
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_94e099ff((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

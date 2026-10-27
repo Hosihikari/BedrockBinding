@@ -46,9 +46,9 @@ public sealed unsafe partial class StrongholdFeature : global::System.IDisposabl
     public static StrongholdFeature Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static StrongholdFeature Create(nint arg0, uint arg1)
+    public static StrongholdFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.VillageFeature? arg0, uint arg1)
     {
-        var handle = NativeMethods.TablePtr->hs_create_f8b69603((void*)arg0, arg1);
+        var handle = NativeMethods.TablePtr->hs_create_f8b69603((void*)(arg0?.Handle ?? 0), arg1);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

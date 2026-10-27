@@ -73,9 +73,9 @@ public sealed unsafe partial class ScriptPlugin : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_8785d52a((void*)_handle);
     }
 
-    public nint getScriptContext_546165f3()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ScriptContext getScriptContext_546165f3()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_546165f3((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ScriptContext((nint)NativeMethods.TablePtr->hs_method_546165f3((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

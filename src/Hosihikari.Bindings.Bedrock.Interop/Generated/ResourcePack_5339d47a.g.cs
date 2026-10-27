@@ -37,6 +37,12 @@ public sealed unsafe partial class ResourcePack : global::System.IDisposable
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_7252f0d4((void*)_handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.PathBuffer_std__basic_string_char__ RESOURCE_PACK_BUG_ICON_PATH
     {
         get => new global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->hs_get_629f1ad1(), false);

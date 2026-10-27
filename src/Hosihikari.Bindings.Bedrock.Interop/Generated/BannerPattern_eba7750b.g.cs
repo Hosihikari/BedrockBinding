@@ -228,6 +228,12 @@ public sealed unsafe partial class BannerPattern : global::System.IDisposable
 
 
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e20205cf((void*)_handle);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

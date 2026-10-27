@@ -126,7 +126,7 @@ public sealed unsafe partial class NetworkSystem
     public nint getResourcePackUploadManager(nint packetSender, nint source, nint resourceName) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public nint getResourcePackUploadManager(global::Hosihikari.Bindings.Bedrock.Interop.PacketSender arg0, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg1, string arg2)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackFileUploadManager getResourcePackUploadManager(global::Hosihikari.Bindings.Bedrock.Interop.PacketSender arg0, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg1, string arg2)
     {
         var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
         scoped global::System.Span<byte> __hs_stringBytes2;
@@ -141,7 +141,7 @@ public sealed unsafe partial class NetworkSystem
         global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
         fixed (byte* __hs_stringData2 = __hs_stringBytes2)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_e715ba79((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            return new global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackFileUploadManager((nint)NativeMethods.TablePtr->hs_method_e715ba79((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2), false);
         }
     }
 

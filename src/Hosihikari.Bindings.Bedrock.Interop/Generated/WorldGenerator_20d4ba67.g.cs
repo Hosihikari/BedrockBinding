@@ -38,6 +38,12 @@ public sealed unsafe partial class WorldGenerator : global::System.IDisposable
     }
 
     // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_1a69fbe3((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
     public nint filler_Address
     {
         get => (nint)NativeMethods.TablePtr->hs_get_d4ca672a((void*)_handle);
@@ -105,9 +111,9 @@ public sealed unsafe partial class WorldGenerator : global::System.IDisposable
         return new WorldGenerator((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'StructureFeatureRegistry' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static WorldGenerator Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'StructureFeatureRegistry' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static WorldGenerator Create(nint arg0) =>
@@ -178,9 +184,9 @@ public sealed unsafe partial class WorldGenerator : global::System.IDisposable
         return __hs_hasValue ? __hs_value : (short?)null;
     }
 
-    public nint getStructureFeatureRegistry()
+    public global::Hosihikari.Bindings.Bedrock.Interop.StructureFeatureRegistry getStructureFeatureRegistry()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_4864f98e((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.StructureFeatureRegistry((nint)NativeMethods.TablePtr->hs_method_4864f98e((void*)_handle), false);
     }
 
     public void init()

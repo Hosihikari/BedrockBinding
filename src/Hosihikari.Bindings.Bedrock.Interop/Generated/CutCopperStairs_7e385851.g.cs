@@ -117,9 +117,10 @@ public sealed unsafe partial class CutCopperStairs : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_fe111b14((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
-    public nint tryGetCopperBehavior()
+    public global::Hosihikari.Bindings.Bedrock.Interop.CopperBehavior? tryGetCopperBehavior()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_56ccf599((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_56ccf599((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CopperBehavior((nint)__hs_handle, false) : null;
     }
 
     public bool use(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, byte arg2)

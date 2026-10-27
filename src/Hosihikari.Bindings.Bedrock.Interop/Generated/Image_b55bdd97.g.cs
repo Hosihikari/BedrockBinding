@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.mce;
 
-public sealed partial class Image
+public sealed unsafe partial class Image
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -36,4 +36,80 @@ public sealed partial class Image
         _handle = 0;
         return __hs_handle;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Image Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Image Create_43e86491(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Image Create_ce54012e(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Image Create(uint w, uint h, nint format, nint usage) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint clone() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public int imageFormat
+    {
+        get => NativeMethods.TablePtr->hs_get_53b82650((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_53b82650((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool isEmpty() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public uint mDepth
+    {
+        get => NativeMethods.TablePtr->hs_get_e4c89378((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_e4c89378((void*)_handle, value);
+    }
+
+    public uint mHeight
+    {
+        get => NativeMethods.TablePtr->hs_get_460ae483((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_460ae483((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mImageBytes_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_1411cc87((void*)_handle);
+    }
+
+    public byte mUsage
+    {
+        get => NativeMethods.TablePtr->hs_get_969ae65b((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_969ae65b((void*)_handle, value);
+    }
+
+    public uint mWidth
+    {
+        get => NativeMethods.TablePtr->hs_get_9247a852((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_9247a852((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_a55d1dd0(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_110bc7fb(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void resizeImageBytesToFitImageDescription() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

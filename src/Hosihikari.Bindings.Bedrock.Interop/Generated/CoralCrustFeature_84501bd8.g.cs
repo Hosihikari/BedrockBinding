@@ -61,4 +61,22 @@ public sealed unsafe partial class CoralCrustFeature
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlacerID_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_873621cf((void*)_handle);
+    }
+
+    public nint mTransaction
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_017ecbdc((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_017ecbdc((void*)_handle, (void*)value);
+    }
+
+    public short mUnknown
+    {
+        get => NativeMethods.TablePtr->hs_get_34c74969((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_34c74969((void*)_handle, value);
+    }
 }

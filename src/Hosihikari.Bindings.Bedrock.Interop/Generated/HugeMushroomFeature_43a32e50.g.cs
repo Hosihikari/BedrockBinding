@@ -37,6 +37,24 @@ public sealed unsafe partial class HugeMushroomFeature : global::System.IDisposa
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlacerID_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_6933b952((void*)_handle);
+    }
+
+    public nint mTransaction
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_360188a3((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_360188a3((void*)_handle, (void*)value);
+    }
+
+    public short mUnknown
+    {
+        get => NativeMethods.TablePtr->hs_get_745c017c((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_745c017c((void*)_handle, value);
+    }
+
     public static HugeMushroomFeature Create()
     {
         var handle = NativeMethods.TablePtr->hs_create_2bb2f988();

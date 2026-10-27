@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PositionTrackingId : global::System.IDisposable
+public sealed unsafe partial class PositionTrackingId
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,20 +37,58 @@ public sealed unsafe partial class PositionTrackingId : global::System.IDisposab
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static PositionTrackingId Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    public void Dispose()
+    public static global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingId INVALID_ID
     {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_e9a3162d((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingId((nint)NativeMethods.TablePtr->hs_get_0173e206(), false);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static PositionTrackingId Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static PositionTrackingId Create_a8c216ab(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static PositionTrackingId Create_e3a67632(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    public void fromTag(global::Hosihikari.Bindings.Bedrock.Interop.Tag? arg0)
+    {
+        NativeMethods.TablePtr->hs_method_5039c39a((void*)_handle, (void*)(arg0?.Handle ?? 0));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Tag? getTag()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_b2729690((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Tag((nint)__hs_handle) : null;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_73afdee0(nint id) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_100089e7(nint id) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public static uint sNextId
+    {
+        get => NativeMethods.TablePtr->hs_get_2413d800();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint toString_9bb78316() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public string toString_a5e4530a()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_a5e4530a((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public static PositionTrackingId Create_c4bda2da(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

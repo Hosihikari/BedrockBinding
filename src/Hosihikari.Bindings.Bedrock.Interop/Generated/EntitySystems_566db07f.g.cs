@@ -37,6 +37,12 @@ public sealed unsafe partial class EntitySystems : global::System.IDisposable
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_d5025d0d((void*)_handle);
+    }
+
     public static EntitySystems Create(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

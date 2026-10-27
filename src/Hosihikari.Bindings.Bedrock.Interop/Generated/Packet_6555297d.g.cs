@@ -37,17 +37,6 @@ public sealed unsafe partial class Packet : global::System.IDisposable
         return __hs_handle;
     }
 
-    public static Packet Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_e2e141ae();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new Packet((nint)handle);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static Packet Create(nint priority, nint reliability, nint clientSubId, bool compress) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");

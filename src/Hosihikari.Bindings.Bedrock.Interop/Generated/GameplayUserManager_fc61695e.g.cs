@@ -80,9 +80,9 @@ public sealed unsafe partial class GameplayUserManager
         return (nint)NativeMethods.TablePtr->hs_method_d6d229e2((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'GameplayUserManagerProxy' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void initializeWithGameplayUserManagerProxy(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'GameplayUserManagerProxy' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public bool isGameplayUserSuspended(nint arg0) =>

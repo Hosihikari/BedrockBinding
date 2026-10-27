@@ -52,13 +52,13 @@ public sealed unsafe partial class StubServerLocator : global::System.IDisposabl
     public static StubServerLocator Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public void addCustomServer_adbdc6f1(nint arg0, int arg1)
+    public void addCustomServer(global::Hosihikari.Bindings.Bedrock.Interop.AsynchronousIPResolver arg0, int arg1)
     {
-        NativeMethods.TablePtr->hs_method_adbdc6f1((void*)_handle, (void*)arg0, arg1);
+        NativeMethods.TablePtr->hs_method_adbdc6f1((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addCustomServer_a82a37fb(nint address, int port) =>
+    public void addCustomServer(nint address, int port) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void addCustomServer(string arg0, int arg1)

@@ -37,6 +37,12 @@ public sealed unsafe partial class Horse : global::System.IDisposable
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint filler_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_fb0e193b((void*)_handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static Horse Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
@@ -165,9 +171,9 @@ public sealed unsafe partial class Horse : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_e03a8714((void*)_handle, arg0);
     }
 
-    public static void setHorseFlag(nint arg0, nint arg1, int arg2, bool arg3)
+    public static void setHorseFlag(global::Hosihikari.Bindings.Bedrock.Interop.ActorDataHorseFlagComponent arg0, nint arg1, int arg2, bool arg3)
     {
-        NativeMethods.TablePtr->hs_method_5b3701ab((void*)arg0, (void*)arg1, arg2, arg3);
+        NativeMethods.TablePtr->hs_method_5b3701ab((void*)arg0.Handle, (void*)arg1, arg2, arg3);
     }
 
     public void setStanding(bool arg0)
@@ -185,9 +191,9 @@ public sealed unsafe partial class Horse : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_df8921ca((void*)_handle, (void*)arg0.Handle, arg1) != 0;
     }
 
-    public void updateEntitySpecificMolangVariables(nint arg0)
+    public void updateEntitySpecificMolangVariables(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0)
     {
-        NativeMethods.TablePtr->hs_method_e3dd3e0e((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_e3dd3e0e((void*)_handle, (void*)arg0.Handle);
     }
 
 

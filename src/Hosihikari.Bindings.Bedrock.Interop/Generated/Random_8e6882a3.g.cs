@@ -37,6 +37,12 @@ public sealed unsafe partial class Random : global::System.IDisposable
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_2bb705ad((void*)_handle);
+    }
+
     public static Random Create()
     {
         var handle = NativeMethods.TablePtr->hs_create_7491608f();
@@ -55,17 +61,6 @@ public sealed unsafe partial class Random : global::System.IDisposable
     public static Random Create(uint arg0, bool arg1)
     {
         var handle = NativeMethods.TablePtr->hs_create_1e8dd6b6(arg0, arg1);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new Random((nint)handle);
-    }
-
-    public static Random Create(ulong arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_1b75fd09(arg0);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

@@ -37,6 +37,12 @@ public sealed unsafe partial class Scheduler : global::System.IDisposable
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_c276cda9((void*)_handle);
+    }
+
     public static float AVERAGE_TASK_TOLERANCE
     {
         get => NativeMethods.TablePtr->hs_get_b4c5d969();

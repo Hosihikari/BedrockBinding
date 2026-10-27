@@ -252,9 +252,9 @@ public sealed unsafe partial class Agent : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Agent((nint)__hs_handle, false) : null;
     }
 
-    public void updateEntitySpecificMolangVariables(nint arg0)
+    public void updateEntitySpecificMolangVariables(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0)
     {
-        NativeMethods.TablePtr->hs_method_952fe538((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_952fe538((void*)_handle, (void*)arg0.Handle);
     }
 
 

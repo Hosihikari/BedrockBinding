@@ -307,9 +307,9 @@ public sealed unsafe partial class LevelData
         return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)NativeMethods.TablePtr->hs_method_51d7a8c8((void*)_handle), false);
     }
 
-    public nint getMinCompatibleClientVersion()
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameVersion getMinCompatibleClientVersion()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_3a84490d((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.GameVersion((nint)NativeMethods.TablePtr->hs_method_3a84490d((void*)_handle), false);
     }
 
     public bool getMultiplayerGameIntent()
@@ -851,9 +851,9 @@ public sealed unsafe partial class LevelData
         NativeMethods.TablePtr->hs_method_080352c1((void*)_handle);
     }
 
-    public void v1_read(nint arg0, int arg1)
+    public void v1_read(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.BitStream arg0, int arg1)
     {
-        NativeMethods.TablePtr->hs_method_3ced0eee((void*)_handle, (void*)arg0, arg1);
+        NativeMethods.TablePtr->hs_method_3ced0eee((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

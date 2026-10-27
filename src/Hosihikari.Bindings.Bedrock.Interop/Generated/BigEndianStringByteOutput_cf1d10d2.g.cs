@@ -63,6 +63,12 @@ public sealed unsafe partial class BigEndianStringByteOutput : global::System.ID
     }
 
 
+    public nint mBuffer
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e59ec178((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_e59ec178((void*)_handle, (void*)value);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

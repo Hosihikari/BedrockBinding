@@ -50,9 +50,9 @@ public sealed unsafe partial class PushableComponent
         NativeMethods.TablePtr->hs_method_b24edc06((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, nint arg1)
+    public void initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.PushableDescription arg1)
     {
-        NativeMethods.TablePtr->hs_method_4e44919b((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_4e44919b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public bool isPushable()

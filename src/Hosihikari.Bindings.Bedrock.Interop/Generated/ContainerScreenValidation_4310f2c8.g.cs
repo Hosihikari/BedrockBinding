@@ -91,9 +91,9 @@ public sealed unsafe partial class ContainerScreenValidation
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'ContainerScreenValidation' has no accessible destructor.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unordered_map<ContainerEnumName,std::shared_ptr<Container>,std::hash<ContainerEnumName>,std::equal_to<ContainerEnumName>,std::allocator<std::pair<ContainerEnumName const,std::shared_ptr<Container>>>>' is not a known bindable declaration.", false)]
     public static nint makeContainerScreenValidation_900265f3(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'ContainerScreenValidation' has no accessible destructor.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unordered_map<ContainerEnumName,std::shared_ptr<Container>,std::hash<ContainerEnumName>,std::equal_to<ContainerEnumName>,std::allocator<std::pair<ContainerEnumName const,std::shared_ptr<Container>>>>' is not a known bindable declaration.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public static nint makeContainerScreenValidation_29a1c101(nint screenContext, nint arg1, nint arg2) =>

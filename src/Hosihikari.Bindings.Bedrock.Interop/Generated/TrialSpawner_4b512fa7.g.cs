@@ -88,9 +88,10 @@ public sealed unsafe partial class TrialSpawner
         return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)NativeMethods.TablePtr->hs_method_1e1503d6((void*)_handle));
     }
 
-    public nint getOrCreateNextSpawnData(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.SpawnData? getOrCreateNextSpawnData(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_0cee4ec9((void*)_handle, (void*)arg0.Handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_0cee4ec9((void*)_handle, (void*)arg0.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.SpawnData((nint)__hs_handle, false) : null;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

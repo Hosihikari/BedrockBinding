@@ -37,8 +37,84 @@ public sealed unsafe partial class ScriptPackConfiguration : global::System.IDis
         return __hs_handle;
     }
 
+    public static ScriptPackConfiguration Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_6375b2e4();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptPackConfiguration((nint)handle);
+    }
+
+    public static ScriptPackConfiguration Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPackConfiguration arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_fbd4be78((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptPackConfiguration((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static ScriptPackConfiguration Create_8a0f11d9(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptPackPermissions getPermissions_0db13ddb()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptPackPermissions((nint)NativeMethods.TablePtr->hs_method_0db13ddb((void*)_handle), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getSecrets_31725230() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public nint getSecrets_c4116cd9()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_c4116cd9((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getVariables_e125d3ab() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public nint getVariables_a99e997f()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_a99e997f((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPackPermisions_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_8333cde7((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPackSecrets_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_7bbe5819((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPackVariables_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_6e3f08c3((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_b8553166(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign_aba37ae4(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ScriptPackConfiguration Create(nint arg0) =>
+    public static ScriptPackConfiguration Create_10c23305(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
 

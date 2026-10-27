@@ -63,9 +63,9 @@ public sealed unsafe partial class ItemRegistryRef
     public nint allowTagUpdate() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TagUpdateToken' requires --link-carrier or --virtual-dispatch.");
 
-    public void alterAvailableCreativeItems(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelData arg1)
+    public void alterAvailableCreativeItems(global::Hosihikari.Bindings.Bedrock.Interop.ActorInfoRegistry? arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelData arg1)
     {
-        NativeMethods.TablePtr->hs_method_d3dcaea0((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->hs_method_d3dcaea0((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle);
     }
 
     public bool canAddTags()
@@ -108,9 +108,10 @@ public sealed unsafe partial class ItemRegistryRef
         return NativeMethods.TablePtr->hs_method_e0a38074((void*)_handle);
     }
 
-    public nint getItemResponseFactory()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemEventResponseFactory? getItemResponseFactory()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_61a9dcfe((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_61a9dcfe((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ItemEventResponseFactory((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.HashedString getNameFromLegacyID(short arg0)

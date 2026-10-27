@@ -81,6 +81,12 @@ public sealed unsafe partial class ActorAnimationControllerGroup : global::Syste
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_bdbea03b((void*)_handle);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

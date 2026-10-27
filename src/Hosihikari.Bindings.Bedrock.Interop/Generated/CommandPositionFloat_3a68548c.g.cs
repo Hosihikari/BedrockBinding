@@ -37,6 +37,36 @@ public sealed unsafe partial class CommandPositionFloat : global::System.IDispos
         return __hs_handle;
     }
 
+    public bool mLocal
+    {
+        get => NativeMethods.TablePtr->hs_get_6633ee93((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_6633ee93((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOffset_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_65f7fff9((void*)_handle);
+    }
+
+    public bool mRelativeX
+    {
+        get => NativeMethods.TablePtr->hs_get_f1e9e2f3((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_f1e9e2f3((void*)_handle, value);
+    }
+
+    public bool mRelativeY
+    {
+        get => NativeMethods.TablePtr->hs_get_84ce355a((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_84ce355a((void*)_handle, value);
+    }
+
+    public bool mRelativeZ
+    {
+        get => NativeMethods.TablePtr->hs_get_3ee4ad57((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_3ee4ad57((void*)_handle, value);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

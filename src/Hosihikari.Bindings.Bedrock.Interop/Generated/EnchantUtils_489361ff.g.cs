@@ -46,9 +46,9 @@ public sealed unsafe partial class EnchantUtils
         return NativeMethods.TablePtr->hs_method_f36e0637((void*)arg0.Handle, arg1, arg2, arg3) != 0;
     }
 
-    public static bool applyEnchant(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, nint arg1, bool arg2)
+    public static bool applyEnchant(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, global::Hosihikari.Bindings.Bedrock.Interop.EnchantmentInstance arg1, bool arg2)
     {
-        return NativeMethods.TablePtr->hs_method_89dcab00((void*)arg0.Handle, (void*)arg1, arg2) != 0;
+        return NativeMethods.TablePtr->hs_method_89dcab00((void*)arg0.Handle, (void*)arg1.Handle, arg2) != 0;
     }
 
     public static int applyEnchant(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemEnchants arg1, bool arg2)
@@ -99,9 +99,9 @@ public sealed unsafe partial class EnchantUtils
         NativeMethods.TablePtr->hs_method_40668309((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance generateEnchantedBook_c290bb8d(nint arg0)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance generateEnchantedBook(global::Hosihikari.Bindings.Bedrock.Interop.EnchantmentInstance arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_c290bb8d((void*)arg0));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_c290bb8d((void*)arg0.Handle));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'std::pair<EnchantmentInstance,int>' is not supported.", false)]
@@ -120,9 +120,9 @@ public sealed unsafe partial class EnchantUtils
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'EnchantmentInstance' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public static void getCurses(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'EnchantmentInstance' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     public static float getDamageReduction(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Mob arg1)
     {

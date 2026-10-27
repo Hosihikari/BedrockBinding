@@ -52,10 +52,6 @@ public sealed unsafe partial class ConnectionRequest : global::System.IDisposabl
         return new ConnectionRequest((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'cricket::IceMessage' has no generated wrapper.", false)]
-    public static ConnectionRequest Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'cricket::IceMessage' has no generated wrapper.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ConnectionRequest Create_b7f1e252(nint rawToken, nint certificateString) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");

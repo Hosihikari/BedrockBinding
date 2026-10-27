@@ -86,9 +86,9 @@ public sealed unsafe partial class Witch : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_3cfa7f55((void*)_handle);
     }
 
-    public void updateEntitySpecificMolangVariables(nint arg0)
+    public void updateEntitySpecificMolangVariables(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0)
     {
-        NativeMethods.TablePtr->hs_method_3d8eb3ff((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_3d8eb3ff((void*)_handle, (void*)arg0.Handle);
     }
 
 

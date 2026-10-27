@@ -74,9 +74,9 @@ public sealed unsafe partial class JigsawBlock : global::System.IDisposable
         }
     }
 
-    public static bool canAttach(nint arg0, nint arg1)
+    public static bool canAttach(global::Hosihikari.Bindings.Bedrock.Interop.JigsawBlockInfo arg0, global::Hosihikari.Bindings.Bedrock.Interop.JigsawBlockInfo arg1)
     {
-        return NativeMethods.TablePtr->hs_method_ab66b049((void*)arg0, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_ab66b049((void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     public bool canBeUsedInCommands(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0)

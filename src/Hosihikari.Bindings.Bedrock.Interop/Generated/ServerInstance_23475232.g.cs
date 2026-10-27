@@ -38,6 +38,12 @@ public sealed unsafe partial class ServerInstance
     }
 
     // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_9c3f3c08((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
     public static nint SERVER_MAX_DELAY_BEFORE_SLOWDOWN_Address
     {
         get => (nint)NativeMethods.TablePtr->hs_get_2c05afb6();
@@ -110,9 +116,10 @@ public sealed unsafe partial class ServerInstance
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ServerScriptManager((nint)__hs_handle, false) : null;
     }
 
-    public nint getScriptingEngine()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ScriptEngine? getScriptingEngine()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_9f421042((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_9f421042((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ScriptEngine((nint)__hs_handle, false) : null;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemRegistryRef' requires --link-carrier or --virtual-dispatch.", false)]

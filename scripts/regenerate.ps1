@@ -13,9 +13,10 @@ param(
     [string]$TargetModule = "bedrock_server",
     [string]$GeneratorRoot = "",
     [string]$AbiRoot = "",
-    # The symbol stage reads the whole PDB and takes an hour once the class set is large.
-    # Reuse the shard from the previous run while iterating on later stages.
+    # The symbol stage reads the whole PDB and takes an hour once the class set is large,
+    # and the merge takes minutes; both can be reused while iterating on the emitter.
     [switch]$SkipSymbols,
+    [switch]$SkipMerge,
     [string]$Output = "artifacts/regenerated"
 )
 
@@ -98,12 +99,19 @@ if (-not (Test-Path (Join-Path $HeaderIr "ir-manifest.json"))) {
         -SkipBuild
 }
 
-& python (Join-Path $GeneratorRoot "frontend\merge-symbol-ir.py") `
-    --symbol $SymbolIr `
-    --header $HeaderIr `
-    --output $MergedIr `
-    $(if ($ClassesFile) { @("--classes-file", $ClassesFile) } else { @("--classes", $Classes) })
-if ($LASTEXITCODE -ne 0) { throw "merge-symbol-ir.py exited with $LASTEXITCODE" }
+if ($SkipMerge) {
+    if (-not (Test-Path (Join-Path $MergedIr "ir-manifest.json"))) {
+        throw "-SkipMerge was set but $MergedIr has no ir-manifest.json."
+    }
+    Write-Output "Reusing the merged IR under $MergedIr."
+} else {
+    & python (Join-Path $GeneratorRoot "frontend\merge-symbol-ir.py") `
+        --symbol $SymbolIr `
+        --header $HeaderIr `
+        --output $MergedIr `
+        $(if ($ClassesFile) { @("--classes-file", $ClassesFile) } else { @("--classes", $Classes) })
+    if ($LASTEXITCODE -ne 0) { throw "merge-symbol-ir.py exited with $LASTEXITCODE" }
+}
 
 dotnet run --project (Join-Path $GeneratorRoot "src\Hosihikari.Bindings.Generator\Hosihikari.Bindings.Generator.csproj") -c Release -- `
     emit (Join-Path $MergedIr "ir-manifest.json") $MergedIr $Emitted `

@@ -37,6 +37,118 @@ public sealed unsafe partial class RepeaterCapacitor : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public bool mAllowPowerDown
+    {
+        get => NativeMethods.TablePtr->hs_get_f5921b46((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_f5921b46((void*)_handle, value);
+    }
+
+    public bool mAllowPowerUp
+    {
+        get => NativeMethods.TablePtr->hs_get_70b67157((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_70b67157((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mChunkPosition_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b305f5ca((void*)_handle);
+    }
+
+    public long mCircuitComponentType_816a9c17
+    {
+        get => NativeMethods.TablePtr->hs_get_e6f1a34f((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_e6f1a34f((void*)_handle, value);
+    }
+
+    public bool mConsumePowerAnyDirection
+    {
+        get => NativeMethods.TablePtr->hs_get_0f93f8dc((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_0f93f8dc((void*)_handle, value);
+    }
+
+    public sbyte mDirection
+    {
+        get => NativeMethods.TablePtr->hs_get_3d688595((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_3d688595((void*)_handle, value);
+    }
+
+    public bool mIgnoreFirstUpdate
+    {
+        get => NativeMethods.TablePtr->hs_get_d777cc1f((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_d777cc1f((void*)_handle, value);
+    }
+
+    public bool mIsFirstTime
+    {
+        get => NativeMethods.TablePtr->hs_get_02b966ae((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_02b966ae((void*)_handle, value);
+    }
+
+    public bool mNeedsUpdate
+    {
+        get => NativeMethods.TablePtr->hs_get_5399c274((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_5399c274((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_3cec5884((void*)_handle);
+    }
+
+    public bool mRemoved
+    {
+        get => NativeMethods.TablePtr->hs_get_5acf7672((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_5acf7672((void*)_handle, value);
+    }
+
+    public bool mShouldEvaluate
+    {
+        get => NativeMethods.TablePtr->hs_get_f34fa978((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_f34fa978((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSources_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_85c4b734((void*)_handle);
+    }
+
+    public int mStrength
+    {
+        get => NativeMethods.TablePtr->hs_get_886b556f((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_886b556f((void*)_handle, value);
+    }
+
+    public long mCircuitComponentType_45c7a919
+    {
+        get => NativeMethods.TablePtr->hs_get_7887ac38((void*)_handle);
+    }
+
+    public bool mAttachedAllowed
+    {
+        get => NativeMethods.TablePtr->hs_get_c1fffa58((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_c1fffa58((void*)_handle, value);
+    }
+
+    public long mCircuitComponentType_1d3a7ceb
+    {
+        get => NativeMethods.TablePtr->hs_get_9e7691d4((void*)_handle);
+    }
+
+    public int mNextStrength
+    {
+        get => NativeMethods.TablePtr->hs_get_89a03206((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_89a03206((void*)_handle, value);
+    }
+
+    public bool mStopPower
+    {
+        get => NativeMethods.TablePtr->hs_get_6cfed296((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_6cfed296((void*)_handle, value);
+    }
+
     public static RepeaterCapacitor Create()
     {
         var handle = NativeMethods.TablePtr->hs_create_e97b36de();
@@ -78,7 +190,7 @@ public sealed unsafe partial class RepeaterCapacitor : global::System.IDisposabl
         return NativeMethods.TablePtr->hs_method_1a54a5bf((void*)_handle);
     }
 
-    public long mCircuitComponentType
+    public long mCircuitComponentType_233baeb4
     {
         get => NativeMethods.TablePtr->hs_get_6d784485((void*)_handle);
     }

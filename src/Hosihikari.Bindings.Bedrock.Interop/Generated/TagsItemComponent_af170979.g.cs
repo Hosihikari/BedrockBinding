@@ -37,10 +37,6 @@ public sealed unsafe partial class TagsItemComponent
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static TagsItemComponent Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
     public void _initializeComponent()
     {
         NativeMethods.TablePtr->hs_method_178bc58e((void*)_handle);
@@ -56,10 +52,6 @@ public sealed unsafe partial class TagsItemComponent
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_81480878() =>
+    public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_5daca211() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

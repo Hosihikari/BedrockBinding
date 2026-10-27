@@ -128,9 +128,9 @@ public sealed unsafe partial class StructurePoolElement
         }
     }
 
-    public void handleJigsawBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings arg2)
+    public void handleJigsawBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.JigsawBlockInfo arg1, global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings arg2)
     {
-        NativeMethods.TablePtr->hs_method_1a91d9df((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle);
+        NativeMethods.TablePtr->hs_method_1a91d9df((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
     public bool isValid()
