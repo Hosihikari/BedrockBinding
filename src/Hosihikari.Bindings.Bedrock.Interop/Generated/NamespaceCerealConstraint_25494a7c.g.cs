@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class NamespaceCerealConstraint : global::System.IDisposable
+public sealed unsafe partial class NamespaceCerealConstraint
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -45,10 +45,9 @@ public sealed unsafe partial class NamespaceCerealConstraint : global::System.ID
     public static NamespaceCerealConstraint Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.ConstraintDescription description()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.ConstraintDescription((nint)NativeMethods.TablePtr->hs_method_ac4c5364((void*)_handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'cereal::internal::ConstraintDescription' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint description() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'cereal::internal::ConstraintDescription' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint disallowNamespace(nint arg0) =>
@@ -81,18 +80,11 @@ public sealed unsafe partial class NamespaceCerealConstraint : global::System.ID
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_bdd8be05() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_25494a7c((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_b03d9537() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SimpleBlockVolume : global::System.IDisposable
+public sealed unsafe partial class SimpleBlockVolume
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,35 +41,21 @@ public sealed unsafe partial class SimpleBlockVolume : global::System.IDisposabl
     public static SimpleBlockVolume Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static SimpleBlockVolume Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_50eb018d((void*)arg0.Handle, (void*)arg1.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static SimpleBlockVolume Create_50eb018d(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-        return new SimpleBlockVolume((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static SimpleBlockVolume Create_2fcf9392(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static SimpleBlockVolume Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static SimpleBlockVolume Create_fdc7ef72(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    public static SimpleBlockVolume Create(global::Hosihikari.Bindings.Bedrock.Interop.SimpleBlockVolume arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_fdc7ef72((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new SimpleBlockVolume((nint)handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static SimpleBlockVolume Create_679f671b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'SimpleBlockVolumeIterator' requires --link-carrier or --virtual-dispatch.", false)]
     public nint begin() =>
@@ -172,27 +158,19 @@ public sealed unsafe partial class SimpleBlockVolume : global::System.IDisposabl
         NativeMethods.TablePtr->hs_method_5c748653((void*)_handle, (void*)arg0.Handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.SimpleBlockVolume translated_24af7d13(nint arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.SimpleBlockVolume((nint)NativeMethods.TablePtr->hs_method_24af7d13((void*)_handle, (void*)arg0));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'SimpleBlockVolume' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint translated_24af7d13(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'SimpleBlockVolume' requires --link-carrier or --virtual-dispatch.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_ab19bcdc() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static SimpleBlockVolume Create_9a3b750b(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_bcd77c50((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_773de861() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RakDataOutput : global::System.IDisposable
+public sealed unsafe partial class RakDataOutput
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,28 +37,12 @@ public sealed unsafe partial class RakDataOutput : global::System.IDisposable
         return __hs_handle;
     }
 
-    public nint mBitStream
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_65599815((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_65599815((void*)_handle, (void*)value);
-    }
-
     public void writeBytes(nint arg0, ulong arg1)
     {
         NativeMethods.TablePtr->hs_method_bdf1f570((void*)_handle, (void*)arg0, arg1);
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_559c6741((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

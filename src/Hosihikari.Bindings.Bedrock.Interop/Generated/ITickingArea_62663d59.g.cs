@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ITickingArea
+public sealed partial class ITickingArea
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -125,10 +125,9 @@ public sealed unsafe partial class ITickingArea
     public void remove(nint levelStorage) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag serialize()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)NativeMethods.TablePtr->hs_method_8b5136b1((void*)_handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CompoundTag' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint serialize() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CompoundTag' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void setEntityFound() =>

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CreativeItemEntry : global::System.IDisposable
+public sealed unsafe partial class CreativeItemEntry
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,20 +47,13 @@ public sealed unsafe partial class CreativeItemEntry : global::System.IDisposabl
     public static CreativeItemEntry Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static CreativeItemEntry Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static CreativeItemEntry Create_295fab20(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    public static CreativeItemEntry Create(global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemEntry arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_882f66d5((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CreativeItemEntry((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static CreativeItemEntry Create_882f66d5(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.TypedServerNetId_CreativeItemNetIdTag_unsigned_int_0_ getCreativeNetId_d313b399()
     {
@@ -91,17 +84,7 @@ public sealed unsafe partial class CreativeItemEntry : global::System.IDisposabl
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_06f2aa30((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

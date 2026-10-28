@@ -516,10 +516,9 @@ public sealed unsafe partial class Core
     public static nint getStorageAreaForPath(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.FileStorageArea_Nested.StorageAreaSpaceInfo getStorageAreaSpaceInfo_83105260()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.FileStorageArea_Nested.StorageAreaSpaceInfo((nint)NativeMethods.TablePtr->hs_method_83105260((void*)_handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::FileStorageArea::StorageAreaSpaceInfo' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getStorageAreaSpaceInfo_83105260() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::FileStorageArea::StorageAreaSpaceInfo' requires --link-carrier or --virtual-dispatch.");
 
     public ulong getTotalSize()
     {

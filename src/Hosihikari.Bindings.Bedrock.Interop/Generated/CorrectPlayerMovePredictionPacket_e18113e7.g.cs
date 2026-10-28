@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CorrectPlayerMovePredictionPacket : global::System.IDisposable
+public sealed unsafe partial class CorrectPlayerMovePredictionPacket
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -64,36 +64,6 @@ public sealed unsafe partial class CorrectPlayerMovePredictionPacket : global::S
     public nint getName_923f85e9() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public bool mOnGround
-    {
-        get => NativeMethods.TablePtr->hs_get_f9815df7((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_f9815df7((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPos_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_10a16600((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPosDelta_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_dccf6fb8((void*)_handle);
-    }
-
-    public ulong mTick
-    {
-        get => NativeMethods.TablePtr->hs_get_d2c7573e((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_d2c7573e((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mVehicleRotation_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_04dbf753((void*)_handle);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
@@ -103,7 +73,13 @@ public sealed unsafe partial class CorrectPlayerMovePredictionPacket : global::S
         NativeMethods.TablePtr->hs_method_8d556e9a((void*)_handle, (void*)arg0.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_ccc1bced() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_e901c176() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
     public byte mClientSubId
     {
@@ -144,18 +120,5 @@ public sealed unsafe partial class CorrectPlayerMovePredictionPacket : global::S
     {
         get => NativeMethods.TablePtr->hs_get_82187692((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_82187692((void*)_handle, value);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_e18113e7((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

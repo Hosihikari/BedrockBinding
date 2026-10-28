@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BiomeDecorationFeature : global::System.IDisposable
+public sealed partial class BiomeDecorationFeature
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,107 +41,27 @@ public sealed unsafe partial class BiomeDecorationFeature : global::System.IDisp
     public static BiomeDecorationFeature Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static BiomeDecorationFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.BiomeDecorationFeature arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_3ac27472((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static BiomeDecorationFeature Create_3ac27472(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-        return new BiomeDecorationFeature((nint)handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static BiomeDecorationFeature Create_4c7b9f34(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    public int mCoordinateEvalOrder
-    {
-        get => NativeMethods.TablePtr->hs_get_9b74cde4((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_9b74cde4((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mFeature_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_ad65a3b6((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mIdentifier_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_25f6b04e((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mIterations_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_2a6b8d15((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPlacementPass_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_ead55548((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mScatterChance_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_b1595e4e((void*)_handle);
-    }
-
-    public int mUnknown2
-    {
-        get => NativeMethods.TablePtr->hs_get_a7e0f5e8((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_a7e0f5e8((void*)_handle, value);
-    }
-
-    public int mUnknown3
-    {
-        get => NativeMethods.TablePtr->hs_get_8f6fcfb1((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_8f6fcfb1((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mX_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_af61cd26((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mY_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_bca3efbe((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mZ_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_396ebc81((void*)_handle);
-    }
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_73a6914a() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static BiomeDecorationFeature Create_38bfccf7(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_c63b2544((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_6944f47b() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

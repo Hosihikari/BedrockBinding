@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class WorldSessionEndPoint : global::System.IDisposable
+public sealed unsafe partial class WorldSessionEndPoint
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,19 +47,12 @@ public sealed unsafe partial class WorldSessionEndPoint : global::System.IDispos
     public static WorldSessionEndPoint Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static WorldSessionEndPoint Create(global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_29bebe9e((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new WorldSessionEndPoint((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static WorldSessionEndPoint Create_29bebe9e(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WorldSessionEndPoint Create(nint arg0) =>
+    public static WorldSessionEndPoint Create_040d8271(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void flush()
@@ -89,18 +82,5 @@ public sealed unsafe partial class WorldSessionEndPoint : global::System.IDispos
     public void setEnabled(bool arg0)
     {
         NativeMethods.TablePtr->hs_method_74304046((void*)_handle, arg0);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_43cfb96a((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ItemStackRequestActionHandler : global::System.IDisposable
+public sealed unsafe partial class ItemStackRequestActionHandler
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,16 +41,9 @@ public sealed unsafe partial class ItemStackRequestActionHandler : global::Syste
     public static ItemStackRequestActionHandler Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static ItemStackRequestActionHandler Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackNetManagerServer arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_86e550c4((void*)arg0.Handle, (void*)arg1.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ItemStackRequestActionHandler((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ItemStackRequestActionHandler Create(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ItemStackRequestActionHandler Create(nint arg0) =>
@@ -119,12 +112,6 @@ public sealed unsafe partial class ItemStackRequestActionHandler : global::Syste
     public nint endRequest(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::tuple<ItemStackNetResult,std::vector<ItemStackResponseContainerInfo,std::allocator<ItemStackResponseContainerInfo>>>' requires --link-carrier or --virtual-dispatch.");
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint filler_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_bd73c392((void*)_handle);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint getFilteredStrings_c4fd06ab(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
@@ -157,12 +144,6 @@ public sealed unsafe partial class ItemStackRequestActionHandler : global::Syste
         return NativeMethods.TablePtr->hs_method_e92c0d17((void*)_handle) != 0;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPlayer_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_08a3ca25((void*)_handle);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
@@ -170,17 +151,4 @@ public sealed unsafe partial class ItemStackRequestActionHandler : global::Syste
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'ItemInstance' is not supported.", false)]
     public nint tryCraft(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'ItemInstance' is not supported.");
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_6cab78f5((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LevelContainerManagerModel : global::System.IDisposable
+public sealed unsafe partial class LevelContainerManagerModel
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,27 +41,13 @@ public sealed unsafe partial class LevelContainerManagerModel : global::System.I
     public static LevelContainerManagerModel Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static LevelContainerManagerModel Create(sbyte arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg2)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_a5962970(arg0, (void*)arg1.Handle, (void*)arg2.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static LevelContainerManagerModel Create(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-        return new LevelContainerManagerModel((nint)handle);
-    }
-
-    public static LevelContainerManagerModel Create(sbyte arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, int arg3)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_eba701e5(arg0, (void*)arg1.Handle, (void*)arg2.Handle, arg3);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new LevelContainerManagerModel((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static LevelContainerManagerModel Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static LevelContainerManagerModel Create(nint arg0) =>
@@ -110,17 +96,7 @@ public sealed unsafe partial class LevelContainerManagerModel : global::System.I
         NativeMethods.TablePtr->hs_method_35076e21((void*)_handle, arg0, (void*)arg1.Handle, arg2);
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_a10c71e6((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

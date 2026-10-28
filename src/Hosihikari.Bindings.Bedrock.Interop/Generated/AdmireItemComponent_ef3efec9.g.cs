@@ -59,10 +59,9 @@ public sealed unsafe partial class AdmireItemComponent
         return new global::Hosihikari.Bindings.Bedrock.Interop.Tick((nint)NativeMethods.TablePtr->hs_method_46aa93a2((void*)_handle), false);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef getItemOwnerRef()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef((nint)NativeMethods.TablePtr->hs_method_436c3100((void*)_handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'WeakEntityRef' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getItemOwnerRef() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'WeakEntityRef' requires --link-carrier or --virtual-dispatch.");
 
     public bool isAdmiring()
     {

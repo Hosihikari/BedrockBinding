@@ -41,9 +41,9 @@ public sealed unsafe partial class LegacyOnDigTriggerItemComponent
     public static LegacyOnDigTriggerItemComponent Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static LegacyOnDigTriggerItemComponent Create_d138c2c9(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static LegacyOnDigTriggerItemComponent Create_876d2d02(nint arg0) =>

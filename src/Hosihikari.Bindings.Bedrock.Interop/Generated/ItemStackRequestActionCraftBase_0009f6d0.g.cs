@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ItemStackRequestActionCraftBase : global::System.IDisposable
+public sealed partial class ItemStackRequestActionCraftBase
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,23 +37,7 @@ public sealed unsafe partial class ItemStackRequestActionCraftBase : global::Sys
         return __hs_handle;
     }
 
-    public byte mActionType
-    {
-        get => NativeMethods.TablePtr->hs_get_40940a4c((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_40940a4c((void*)_handle, value);
-    }
-
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_0009f6d0((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

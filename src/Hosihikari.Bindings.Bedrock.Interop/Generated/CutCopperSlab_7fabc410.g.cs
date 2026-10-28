@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CutCopperSlab : global::System.IDisposable
+public sealed unsafe partial class CutCopperSlab
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -46,62 +46,20 @@ public sealed unsafe partial class CutCopperSlab : global::System.IDisposable
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CutCopperSlab Create(nint nameId, int id, bool fullSize, nint baseSlab, nint arg4, nint arg5) =>
+    public static CutCopperSlab Create_ea650756(nint nameId, int id, bool fullSize, nint baseSlab, nint arg4, nint arg5) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CutCopperSlab Create(nint nameId, int id, bool fullSize, nint baseSlab, nint arg4, nint arg5, nint arg6, nint arg7) =>
+    public static CutCopperSlab Create_695d8314(nint nameId, int id, bool fullSize, nint baseSlab, nint arg4, nint arg5, nint arg6, nint arg7) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static CutCopperSlab Create(string arg0, int arg1, bool arg2, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg3, int arg4, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg5)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            var handle = NativeMethods.TablePtr->hs_create_c4d74b6e(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, (void*)arg3.Handle, arg4, (void*)arg5.Handle);
-            if (handle == null)
-            {
-                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-            }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static CutCopperSlab Create_c4d74b6e(nint arg0, int arg1, bool arg2, nint arg3, nint arg4, nint arg5) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-            return new CutCopperSlab((nint)handle);
-        }
-    }
-
-    public static CutCopperSlab Create(string arg0, int arg1, bool arg2, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg3, int arg4, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg5, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg6, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg7)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            var handle = NativeMethods.TablePtr->hs_create_dddbfe50(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, (void*)arg3.Handle, arg4, (void*)arg5.Handle, (void*)arg6.Handle, (void*)arg7.Handle);
-            if (handle == null)
-            {
-                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-            }
-
-            return new CutCopperSlab((nint)handle);
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static CutCopperSlab Create_dddbfe50(nint arg0, int arg1, bool arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public void onLightningHit(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
     {
@@ -128,17 +86,7 @@ public sealed unsafe partial class CutCopperSlab : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_cb2c0b56((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2) != 0;
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_7fabc410((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

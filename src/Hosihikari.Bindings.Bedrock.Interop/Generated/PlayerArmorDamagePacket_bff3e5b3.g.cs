@@ -111,10 +111,10 @@ public sealed unsafe partial class PlayerArmorDamagePacket : global::System.IDis
         get => (nint)NativeMethods.TablePtr->hs_get_5c1dd4c9((void*)_handle);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSlots_Address
+    public byte mSlots
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_d5dd1bfa((void*)_handle);
+        get => NativeMethods.TablePtr->hs_get_d5dd1bfa((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_d5dd1bfa((void*)_handle, value);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

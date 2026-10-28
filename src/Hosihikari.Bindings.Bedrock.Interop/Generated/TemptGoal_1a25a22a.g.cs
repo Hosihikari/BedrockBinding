@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TemptGoal : global::System.IDisposable
+public sealed unsafe partial class TemptGoal
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,20 +41,13 @@ public sealed unsafe partial class TemptGoal : global::System.IDisposable
     public static TemptGoal Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static TemptGoal Create(nint arg0, float arg1, nint arg2, nint arg3, nint arg4, bool arg5, float arg6, bool arg7, bool arg8) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    public static TemptGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.TemptGoal arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_47913d01((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new TemptGoal((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static TemptGoal Create_47913d01(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public void appendDebugInfo_5eb1cdc6(nint arg0) =>
@@ -93,21 +86,11 @@ public sealed unsafe partial class TemptGoal : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_4d5017bf((void*)_handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static TemptGoal Create(nint arg0) =>
+    public static TemptGoal Create_e19a9ce7(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_1a25a22a((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
 }

@@ -322,10 +322,9 @@ public sealed unsafe partial class Item
     public nint getAuxValuesDescription_70068a36() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color getBaseColor(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_method_e2cab0d5((void*)_handle, (void*)arg0.Handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getBaseColor(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.");
 
     public int getBlockShape()
     {
@@ -343,10 +342,9 @@ public sealed unsafe partial class Item
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ICameraItemComponent((nint)__hs_handle, false) : null;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color getColor(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg1)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_method_5f540f07((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getColor(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'CommandName' is not supported.", false)]
     public nint getCommandNames() =>
@@ -568,10 +566,9 @@ public sealed unsafe partial class Item
         return new global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion((nint)NativeMethods.TablePtr->hs_method_05c8be76((void*)_handle), false);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color getSecondaryColor(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_method_ef1a8217((void*)_handle, (void*)arg0.Handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getSecondaryColor(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.");
 
     public string getSerializedName_66281912()
     {

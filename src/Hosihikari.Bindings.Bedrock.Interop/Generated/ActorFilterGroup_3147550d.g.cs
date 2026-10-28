@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorFilterGroup : global::System.IDisposable
+public sealed unsafe partial class ActorFilterGroup
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -79,18 +79,11 @@ public sealed unsafe partial class ActorFilterGroup : global::System.IDisposable
     public nint operator_assign_c8952199(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_5003fc2a() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_3147550d((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_df689d7f() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SplashPotionItem : global::System.IDisposable
+public sealed unsafe partial class SplashPotionItem
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -120,17 +120,7 @@ public sealed unsafe partial class SplashPotionItem : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->hs_method_4ee5fcdd((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle), false);
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_a7d0a2b0((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

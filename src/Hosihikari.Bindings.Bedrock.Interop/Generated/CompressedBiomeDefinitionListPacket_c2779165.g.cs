@@ -54,9 +54,9 @@ public sealed unsafe partial class CompressedBiomeDefinitionListPacket : global:
         return new CompressedBiomeDefinitionListPacket((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
     public static CompressedBiomeDefinitionListPacket Create_065a3a69(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static CompressedBiomeDefinitionListPacket Create_8d02b5db(nint arg0) =>

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class WeakEntityRef : global::System.IDisposable
+public sealed unsafe partial class WeakEntityRef
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,9 +41,9 @@ public sealed unsafe partial class WeakEntityRef : global::System.IDisposable
     public static WeakEntityRef Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static WeakEntityRef Create_75c802fd(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static WeakEntityRef Create_a90bfa75(nint arg0) =>
@@ -74,7 +74,13 @@ public sealed unsafe partial class WeakEntityRef : global::System.IDisposable
     public bool operator_equal_138612bb(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_42f24c1d() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_abd91cb4() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mEntity_Address
@@ -86,18 +92,5 @@ public sealed unsafe partial class WeakEntityRef : global::System.IDisposable
     public nint mRegistry_Address
     {
         get => (nint)NativeMethods.TablePtr->hs_get_58a61039((void*)_handle);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_1f43eab8((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

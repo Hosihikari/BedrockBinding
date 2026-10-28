@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Agent : global::System.IDisposable
+public sealed unsafe partial class Agent
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,26 +37,13 @@ public sealed unsafe partial class Agent : global::System.IDisposable
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint filler_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_e82f10b2((void*)_handle);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static Agent Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static Agent Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup? arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg1, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg2)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_3d473858((void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, (void*)arg2.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new Agent((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static Agent Create(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static Agent Create(nint arg0) =>
@@ -112,10 +99,9 @@ public sealed unsafe partial class Agent : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_d2d462f2((void*)_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color getNameTagTextColor()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_method_0232d2a7((void*)_handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getNameTagTextColor() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.");
 
     public int getSelectedSlot()
     {
@@ -257,17 +243,7 @@ public sealed unsafe partial class Agent : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_952fe538((void*)_handle, (void*)arg0.Handle);
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_56f14721((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

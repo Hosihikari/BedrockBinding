@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DragonStrafePlayerDefinition : global::System.IDisposable
+public sealed unsafe partial class DragonStrafePlayerDefinition
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,16 +37,9 @@ public sealed unsafe partial class DragonStrafePlayerDefinition : global::System
         return __hs_handle;
     }
 
-    public static DragonStrafePlayerDefinition Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_4788e550();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new DragonStrafePlayerDefinition((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static DragonStrafePlayerDefinition Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static DragonStrafePlayerDefinition Create(nint arg0) =>
@@ -84,17 +77,7 @@ public sealed unsafe partial class DragonStrafePlayerDefinition : global::System
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_9392c894((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

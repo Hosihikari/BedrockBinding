@@ -81,10 +81,9 @@ public sealed unsafe partial class ChunkBlockPos : global::System.IDisposable
     public ushort toLegacyIndex() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Pos toPos()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Pos((nint)NativeMethods.TablePtr->hs_method_af7356b0((void*)_handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Pos' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint toPos() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Pos' requires --link-carrier or --virtual-dispatch.");
 
     public sbyte x
     {

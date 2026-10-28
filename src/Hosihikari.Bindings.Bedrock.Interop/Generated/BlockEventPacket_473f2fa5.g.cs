@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockEventPacket : global::System.IDisposable
+public sealed unsafe partial class BlockEventPacket
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,27 +37,13 @@ public sealed unsafe partial class BlockEventPacket : global::System.IDisposable
         return __hs_handle;
     }
 
-    public static BlockEventPacket Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_06335c23();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static BlockEventPacket Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-        return new BlockEventPacket((nint)handle);
-    }
-
-    public static BlockEventPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, int arg1, int arg2)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_c6347bf8((void*)arg0.Handle, arg1, arg2);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new BlockEventPacket((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static BlockEventPacket Create(nint arg0, int arg1, int arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static BlockEventPacket Create(nint arg0) =>
@@ -82,24 +68,6 @@ public sealed unsafe partial class BlockEventPacket : global::System.IDisposable
     public nint getName_c5c09a17() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public int mB0
-    {
-        get => NativeMethods.TablePtr->hs_get_6f56cf30((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_6f56cf30((void*)_handle, value);
-    }
-
-    public int mB1
-    {
-        get => NativeMethods.TablePtr->hs_get_bb691ddf((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_bb691ddf((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPos_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_2fbe008c((void*)_handle);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
@@ -109,7 +77,13 @@ public sealed unsafe partial class BlockEventPacket : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_f2cbd0ca((void*)_handle, (void*)arg0.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_2fa84ba4() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_ab274ad3() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
     public byte mClientSubId
     {
@@ -150,18 +124,5 @@ public sealed unsafe partial class BlockEventPacket : global::System.IDisposable
     {
         get => NativeMethods.TablePtr->hs_get_f89793a4((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_f89793a4((void*)_handle, value);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_473f2fa5((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

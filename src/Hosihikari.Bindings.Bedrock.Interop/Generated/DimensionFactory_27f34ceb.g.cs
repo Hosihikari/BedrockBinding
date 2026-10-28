@@ -45,9 +45,9 @@ public sealed unsafe partial class DimensionFactory
     public static DimensionFactory Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ILevel>>' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static DimensionFactory Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ILevel>>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint create(nint arg0) =>
@@ -81,24 +81,6 @@ public sealed unsafe partial class DimensionFactory
     public void initializeDimension(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0)
     {
         NativeMethods.TablePtr->hs_method_ca89f89a((void*)_handle, (void*)arg0.Handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mDimensionFactory_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_bec727c5((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mLevel_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_4e8eb69e((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mScheduler_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_da14d627((void*)_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

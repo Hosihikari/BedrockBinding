@@ -57,22 +57,4 @@ public sealed unsafe partial class BasaltPillarFeature
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPlacerID_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_c7b31cc1((void*)_handle);
-    }
-
-    public nint mTransaction
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_3fcf690e((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_3fcf690e((void*)_handle, (void*)value);
-    }
-
-    public short mUnknown
-    {
-        get => NativeMethods.TablePtr->hs_get_c3d8875a((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_c3d8875a((void*)_handle, value);
-    }
 }

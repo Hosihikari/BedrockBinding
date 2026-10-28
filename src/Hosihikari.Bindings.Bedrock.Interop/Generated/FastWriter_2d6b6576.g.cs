@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Json_Nested;
 
-public sealed unsafe partial class FastWriter
+public sealed partial class FastWriter
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,24 +41,6 @@ public sealed unsafe partial class FastWriter
     public static FastWriter Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint document__Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_60a62b82((void*)_handle);
-    }
-
-    public bool dropNullPlaceholders_
-    {
-        get => NativeMethods.TablePtr->hs_get_98ece699((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_98ece699((void*)_handle, value);
-    }
-
-    public bool omitEndingLineFeed_
-    {
-        get => NativeMethods.TablePtr->hs_get_6233df0d((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_6233df0d((void*)_handle, value);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint write(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
@@ -66,12 +48,6 @@ public sealed unsafe partial class FastWriter
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void writeValue(nint value) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public bool yamlCompatibilityEnabled_
-    {
-        get => NativeMethods.TablePtr->hs_get_48c60e87((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_48c60e87((void*)_handle, value);
-    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>

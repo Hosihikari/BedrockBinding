@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SmokerBlockActor : global::System.IDisposable
+public sealed unsafe partial class SmokerBlockActor
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -89,19 +89,12 @@ public sealed unsafe partial class SmokerBlockActor : global::System.IDisposable
     public static SmokerBlockActor Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static SmokerBlockActor Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_c9d665da((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new SmokerBlockActor((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static SmokerBlockActor Create_c9d665da(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SmokerBlockActor Create(nint arg0) =>
+    public static SmokerBlockActor Create_f92e2578(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public string getName_330e799b()
@@ -117,17 +110,4 @@ public sealed unsafe partial class SmokerBlockActor : global::System.IDisposable
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_dcb73e17((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
 }

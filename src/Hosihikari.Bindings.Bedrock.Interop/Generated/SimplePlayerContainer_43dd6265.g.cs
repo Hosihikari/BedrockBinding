@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SimplePlayerContainer : global::System.IDisposable
+public sealed unsafe partial class SimplePlayerContainer
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -90,33 +90,12 @@ public sealed unsafe partial class SimplePlayerContainer : global::System.IDispo
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SimplePlayerContainer Create(nint player, nint name, bool customName, int size, nint containerType) =>
+    public static SimplePlayerContainer Create_db105f5b(nint player, nint name, bool customName, int size, nint containerType) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static SimplePlayerContainer Create(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, string arg1, bool arg2, int arg3, sbyte arg4)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            var handle = NativeMethods.TablePtr->hs_create_ebba2f7e((void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3, arg4);
-            if (handle == null)
-            {
-                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-            }
-
-            return new SimplePlayerContainer((nint)handle);
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static SimplePlayerContainer Create_ebba2f7e(nint arg0, nint arg1, bool arg2, int arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static SimplePlayerContainer Create(nint arg0) =>
@@ -131,17 +110,7 @@ public sealed unsafe partial class SimplePlayerContainer : global::System.IDispo
         NativeMethods.TablePtr->hs_method_f6013ed6((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_43dd6265((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

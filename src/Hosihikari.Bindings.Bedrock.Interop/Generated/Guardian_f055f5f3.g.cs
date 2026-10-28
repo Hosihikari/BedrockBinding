@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Guardian : global::System.IDisposable
+public sealed unsafe partial class Guardian
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,12 +37,6 @@ public sealed unsafe partial class Guardian : global::System.IDisposable
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint filler_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_7e1cad17((void*)_handle);
-    }
-
     public static int ATTACK_TIME
     {
         get => NativeMethods.TablePtr->hs_get_3ca9ccbd();
@@ -57,16 +51,9 @@ public sealed unsafe partial class Guardian : global::System.IDisposable
     public static Guardian Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static Guardian Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup? arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg1, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg2)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_4760e2fd((void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, (void*)arg2.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new Guardian((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static Guardian Create(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static Guardian Create(nint arg0) =>
@@ -142,17 +129,7 @@ public sealed unsafe partial class Guardian : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_ffcac706((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_f055f5f3((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

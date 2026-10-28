@@ -11,9 +11,9 @@ Hosihikari 绑定项目的 **Bedrock / MCAPI** 互操作面：生成的、贴近
 ## 当前状态
 
 - Interop：`src/Hosihikari.Bindings.Bedrock.Interop/Generated/` 下 4,500 个生成的 C# 文件。
-- 绑定垫片：`native/BindingShim/generated/win-x64-server/bedrock/` 与 `native/BindingShim/generated/linux-x64-server/bedrock/` 各 32,239 个函数。
-- 覆盖：两个配置合计绑定 10,338 个声明与 113,084 个成员。
-- `scripts/classes-1.21.3.txt` 选出当前公开类集。LeviLamina 头补充之外的类贡献符号与 vtable 方法；其字段与构造在补上 layout 头之前保持 stub。
+- 绑定垫片：`native/BindingShim/generated/win-x64-server/bedrock/` 与 `native/BindingShim/generated/linux-x64-server/bedrock/` 各 27,723 个函数。
+- 覆盖：两个配置合计绑定 10,338 个声明与 112,322 个成员。
+- `scripts/classes-1.21.3.txt` 选出当前公开类集。LeviLamina 头补充之外的类贡献符号与 vtable 方法。字段与构造只在布局可证明时保留：v0.13.5 头文件只为 1.21.3 互操作面的一部分类声明了数据成员，生成器没还原的那些类按 clang 的空定义算出的尺寸远小于真实对象，宁可留作 stub 也不据此分配。
 
 shim 以 `--symbol-dispatch` 模式发射。支持的 ABI：
 

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class WorldGenerator : global::System.IDisposable
+public sealed unsafe partial class WorldGenerator
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -43,54 +43,6 @@ public sealed unsafe partial class WorldGenerator : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->hs_get_1a69fbe3((void*)_handle);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint filler_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_d4ca672a((void*)_handle);
-    }
-
-    public int mChunkSide
-    {
-        get => NativeMethods.TablePtr->hs_get_237d3feb((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_237d3feb((void*)_handle, value);
-    }
-
-    public nint mDimension
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_ee09dfa2((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_ee09dfa2((void*)_handle, (void*)value);
-    }
-
-    public nint mLevel
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_ee36fa88((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_ee36fa88((void*)_handle, (void*)value);
-    }
-
-    public nint mLevelChunkBuilderData
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_32782b5f((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_32782b5f((void*)_handle, (void*)value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mOwnedParent_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_b14676f4((void*)_handle);
-    }
-
-    public nint mParent
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_29a39e26((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_29a39e26((void*)_handle, (void*)value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mShuttingDown_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_a1b1a411((void*)_handle);
-    }
-
     public static ulong TICKING_QUEUE_PASS_LIMIT
     {
         get => NativeMethods.TablePtr->hs_get_6a30fba2();
@@ -100,23 +52,16 @@ public sealed unsafe partial class WorldGenerator : global::System.IDisposable
     public static WorldGenerator Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static WorldGenerator Create(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_2f5c429d((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static WorldGenerator Create_2f5c429d(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-        return new WorldGenerator((nint)handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static WorldGenerator Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WorldGenerator Create(nint arg0) =>
+    public static WorldGenerator Create_37967fed(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void addHardcodedSpawnAreas(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
@@ -177,12 +122,9 @@ public sealed unsafe partial class WorldGenerator : global::System.IDisposable
     public nint getBlockVolumeDimensions() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public short? getPreliminarySurfaceLevel(global::Hosihikari.Bindings.Bedrock.Interop.DividedPos2d_4_ arg0)
-    {
-        var __hs_hasValue = false;
-        var __hs_value = NativeMethods.TablePtr->hs_method_f71e9fe7((void*)_handle, (void*)arg0.Handle, &__hs_hasValue);
-        return __hs_hasValue ? __hs_value : (short?)null;
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public nint getPreliminarySurfaceLevel_f71e9fe7(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.StructureFeatureRegistry getStructureFeatureRegistry()
     {
@@ -197,36 +139,6 @@ public sealed unsafe partial class WorldGenerator : global::System.IDisposable
     public bool isStructureFeatureTypeAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, sbyte arg1)
     {
         return NativeMethods.TablePtr->hs_method_1eed8d03((void*)_handle, (void*)arg0.Handle, arg1) != 0;
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mHardcodedSpawnTypes_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_a74aaf77((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSpinLock_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_d8cf1769((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mStructureFeatureRegistry_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_9619aaf9((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mUnknown1_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_36b94f61((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mUnknown2_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_9ca4c1df((void*)_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -246,18 +158,11 @@ public sealed unsafe partial class WorldGenerator : global::System.IDisposable
     public void prepareHeights(nint box, nint chunkPos, bool factorInBeardsAndShavers) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_6a50705b() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_20d4ba67((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_06c45046() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

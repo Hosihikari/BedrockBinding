@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class IntArrayTag : global::System.IDisposable
+public sealed unsafe partial class IntArrayTag
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -93,17 +93,7 @@ public sealed unsafe partial class IntArrayTag : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_50da8793((void*)_handle, (void*)arg0.Handle);
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_f42db2fe((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

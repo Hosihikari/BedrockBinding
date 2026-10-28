@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class NewExecuteCommand : global::System.IDisposable
+public sealed unsafe partial class NewExecuteCommand
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -66,16 +66,9 @@ public sealed unsafe partial class NewExecuteCommand : global::System.IDisposabl
         set => NativeMethods.TablePtr->hs_set_fd37832c((void*)_handle, value);
     }
 
-    public static NewExecuteCommand Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_e6f5c64e();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new NewExecuteCommand((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static NewExecuteCommand Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static NewExecuteCommand Create(nint arg0) =>
@@ -99,17 +92,7 @@ public sealed unsafe partial class NewExecuteCommand : global::System.IDisposabl
         NativeMethods.TablePtr->hs_method_0e3f6627((void*)arg0.Handle, arg1);
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_2faf2370((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

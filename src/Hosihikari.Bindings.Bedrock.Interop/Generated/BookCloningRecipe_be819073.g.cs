@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BookCloningRecipe : global::System.IDisposable
+public sealed unsafe partial class BookCloningRecipe
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -46,33 +46,12 @@ public sealed unsafe partial class BookCloningRecipe : global::System.IDisposabl
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BookCloningRecipe Create(nint arg0, nint arg1) =>
+    public static BookCloningRecipe Create_98d5b197(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static BookCloningRecipe Create(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg1)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            var handle = NativeMethods.TablePtr->hs_create_39ee2214(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle);
-            if (handle == null)
-            {
-                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-            }
-
-            return new BookCloningRecipe((nint)handle);
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static BookCloningRecipe Create_39ee2214(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID ID
     {
@@ -113,71 +92,7 @@ public sealed unsafe partial class BookCloningRecipe : global::System.IDisposabl
         return NativeMethods.TablePtr->hs_method_31590eed((void*)_handle);
     }
 
-
-    public int mHeight
-    {
-        get => NativeMethods.TablePtr->hs_get_4f8903cd((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_4f8903cd((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mMyId_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_82237549((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mMyIngredients_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_2226be50((void*)_handle);
-    }
-
-    public int mPriority
-    {
-        get => NativeMethods.TablePtr->hs_get_874aab9c((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_874aab9c((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mRecipeId_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_2a2754a2((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mRecipeNetId_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_467c1e67((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mTag_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_83c1c398((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mUnlockingRequirement_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_22861a78((void*)_handle);
-    }
-
-    public int mWidth
-    {
-        get => NativeMethods.TablePtr->hs_get_514b54fa((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_514b54fa((void*)_handle, value);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_be819073((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

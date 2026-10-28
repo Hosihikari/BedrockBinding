@@ -83,10 +83,9 @@ public sealed unsafe partial class TrialSpawner
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Mob((nint)__hs_handle, false) : null;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag createUpdatePacket()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)NativeMethods.TablePtr->hs_method_1e1503d6((void*)_handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CompoundTag' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint createUpdatePacket() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CompoundTag' requires --link-carrier or --virtual-dispatch.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.SpawnData? getOrCreateNextSpawnData(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0)
     {

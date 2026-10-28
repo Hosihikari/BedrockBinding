@@ -299,10 +299,9 @@ public sealed unsafe partial class ItemStackBase : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_62733b18((void*)_handle), false);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color getColor()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_method_b9c76575((void*)_handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getColor() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ItemComponent? getComponent(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
     {

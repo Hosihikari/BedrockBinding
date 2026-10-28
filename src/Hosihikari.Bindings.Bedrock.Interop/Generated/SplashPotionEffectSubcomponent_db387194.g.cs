@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SplashPotionEffectSubcomponent : global::System.IDisposable
+public sealed unsafe partial class SplashPotionEffectSubcomponent
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,16 +37,9 @@ public sealed unsafe partial class SplashPotionEffectSubcomponent : global::Syst
         return __hs_handle;
     }
 
-    public static SplashPotionEffectSubcomponent Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_4fa31452();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new SplashPotionEffectSubcomponent((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static SplashPotionEffectSubcomponent Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static SplashPotionEffectSubcomponent Create(nint arg0) =>
@@ -86,17 +79,7 @@ public sealed unsafe partial class SplashPotionEffectSubcomponent : global::Syst
         NativeMethods.TablePtr->hs_method_8624ad1c((void*)_handle, (void*)arg0.Handle);
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_db387194((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ExploreOutskirtsDefinition : global::System.IDisposable
+public sealed unsafe partial class ExploreOutskirtsDefinition
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,16 +37,9 @@ public sealed unsafe partial class ExploreOutskirtsDefinition : global::System.I
         return __hs_handle;
     }
 
-    public static ExploreOutskirtsDefinition Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_04e30d19();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ExploreOutskirtsDefinition((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ExploreOutskirtsDefinition Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ExploreOutskirtsDefinition Create(nint arg0) =>
@@ -84,17 +77,7 @@ public sealed unsafe partial class ExploreOutskirtsDefinition : global::System.I
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_66a122cf((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

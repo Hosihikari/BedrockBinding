@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SpawnChanceSubcomponent : global::System.IDisposable
+public sealed unsafe partial class SpawnChanceSubcomponent
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,16 +37,9 @@ public sealed unsafe partial class SpawnChanceSubcomponent : global::System.IDis
         return __hs_handle;
     }
 
-    public static SpawnChanceSubcomponent Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_93e07b35();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new SpawnChanceSubcomponent((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static SpawnChanceSubcomponent Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static SpawnChanceSubcomponent Create(nint arg0) =>
@@ -76,17 +69,7 @@ public sealed unsafe partial class SpawnChanceSubcomponent : global::System.IDis
         NativeMethods.TablePtr->hs_method_184765d8((void*)_handle, (void*)arg0.Handle);
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_7057930c((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

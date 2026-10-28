@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CrafterBlockActor : global::System.IDisposable
+public sealed unsafe partial class CrafterBlockActor
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -89,19 +89,12 @@ public sealed unsafe partial class CrafterBlockActor : global::System.IDisposabl
     public static CrafterBlockActor Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static CrafterBlockActor Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_2a201a33((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CrafterBlockActor((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static CrafterBlockActor Create_2a201a33(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CrafterBlockActor Create(nint arg0) =>
+    public static CrafterBlockActor Create_3109da6f(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public bool canPushInItem(int arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg2)
@@ -165,17 +158,4 @@ public sealed unsafe partial class CrafterBlockActor : global::System.IDisposabl
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public bool tryMoveItemsIntoContainer(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_9ff3d84d((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
 }

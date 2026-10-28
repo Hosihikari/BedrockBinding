@@ -43,54 +43,6 @@ public sealed unsafe partial class LegacyChunkStorage
         get => (nint)NativeMethods.TablePtr->hs_get_ef46e2bb((void*)_handle);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint filler_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_3f943de4((void*)_handle);
-    }
-
-    public int mChunkSide
-    {
-        get => NativeMethods.TablePtr->hs_get_665de9e4((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_665de9e4((void*)_handle, value);
-    }
-
-    public nint mDimension
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_86edeb70((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_86edeb70((void*)_handle, (void*)value);
-    }
-
-    public nint mLevel
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_5520aa3e((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_5520aa3e((void*)_handle, (void*)value);
-    }
-
-    public nint mLevelChunkBuilderData
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_c4b9e4d9((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_c4b9e4d9((void*)_handle, (void*)value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mOwnedParent_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_a733ad13((void*)_handle);
-    }
-
-    public nint mParent
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_0059178a((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_0059178a((void*)_handle, (void*)value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mShuttingDown_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_74a88929((void*)_handle);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static LegacyChunkStorage Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
@@ -99,9 +51,9 @@ public sealed unsafe partial class LegacyChunkStorage
     public static LegacyChunkStorage Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static LegacyChunkStorage Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<LevelChunk,LevelChunkFinalDeleter>' is not a known bindable declaration.", false)]
     public void acquireDiscarded(nint arg0) =>

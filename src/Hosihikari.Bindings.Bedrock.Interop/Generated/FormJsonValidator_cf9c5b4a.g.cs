@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FormJsonValidator
+public sealed partial class FormJsonValidator
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -45,45 +45,37 @@ public sealed unsafe partial class FormJsonValidator
     public static FormJsonValidator Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.JsonValidator_Nested.Property getContentItemProperty(global::Hosihikari.Bindings.Bedrock.Interop.JsonValidator_Nested.Property arg0, global::Hosihikari.Bindings.Bedrock.Interop.JsonValidator_Nested.Property arg1, global::Hosihikari.Bindings.Bedrock.Interop.JsonValidator_Nested.Property arg2, global::Hosihikari.Bindings.Bedrock.Interop.JsonValidator_Nested.Property arg3, global::Hosihikari.Bindings.Bedrock.Interop.JsonValidator_Nested.Property arg4, global::Hosihikari.Bindings.Bedrock.Interop.JsonValidator_Nested.Property arg5)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.JsonValidator_Nested.Property((nint)NativeMethods.TablePtr->hs_method_5813f618((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4.Handle, (void*)arg5.Handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'JsonValidator::Property' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint getContentItemProperty(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'JsonValidator::Property' requires --link-carrier or --virtual-dispatch.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.JsonValidator_Nested.Property getControlLockedProperty()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.JsonValidator_Nested.Property((nint)NativeMethods.TablePtr->hs_method_d6393253());
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'JsonValidator::Property' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint getControlLockedProperty() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'JsonValidator::Property' requires --link-carrier or --virtual-dispatch.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.JsonValidator_Nested.Property getDropdownProperty(bool arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.JsonValidator_Nested.Property((nint)NativeMethods.TablePtr->hs_method_fdfb7f16(arg0));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'JsonValidator::Property' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint getDropdownProperty(bool arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'JsonValidator::Property' requires --link-carrier or --virtual-dispatch.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.JsonValidator_Nested.Property getLabelProperty()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.JsonValidator_Nested.Property((nint)NativeMethods.TablePtr->hs_method_51541141());
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'JsonValidator::Property' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint getLabelProperty() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'JsonValidator::Property' requires --link-carrier or --virtual-dispatch.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.JsonValidator_Nested.Property getSliderProperty(bool arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.JsonValidator_Nested.Property((nint)NativeMethods.TablePtr->hs_method_9b920d21(arg0));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'JsonValidator::Property' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint getSliderProperty(bool arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'JsonValidator::Property' requires --link-carrier or --virtual-dispatch.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.JsonValidator_Nested.Property getStepSliderProperty(bool arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.JsonValidator_Nested.Property((nint)NativeMethods.TablePtr->hs_method_2354e665(arg0));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'JsonValidator::Property' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint getStepSliderProperty(bool arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'JsonValidator::Property' requires --link-carrier or --virtual-dispatch.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.JsonValidator_Nested.Property getTextInputProperty(bool arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.JsonValidator_Nested.Property((nint)NativeMethods.TablePtr->hs_method_4798df8f(arg0));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'JsonValidator::Property' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint getTextInputProperty(bool arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'JsonValidator::Property' requires --link-carrier or --virtual-dispatch.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.JsonValidator_Nested.Property getToggleProperty(bool arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.JsonValidator_Nested.Property((nint)NativeMethods.TablePtr->hs_method_0554d091(arg0));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'JsonValidator::Property' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint getToggleProperty(bool arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'JsonValidator::Property' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

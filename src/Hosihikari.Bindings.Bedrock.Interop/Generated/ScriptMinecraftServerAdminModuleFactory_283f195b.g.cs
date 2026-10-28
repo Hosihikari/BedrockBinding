@@ -51,9 +51,9 @@ public sealed unsafe partial class ScriptMinecraftServerAdminModuleFactory
     public static ScriptMinecraftServerAdminModuleFactory Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<ScriptPackConfigurationManager>' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static ScriptMinecraftServerAdminModuleFactory Create_721f6abf(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<ScriptPackConfigurationManager>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ScriptMinecraftServerAdminModuleFactory Create_c9e3a97a(nint arg0) =>

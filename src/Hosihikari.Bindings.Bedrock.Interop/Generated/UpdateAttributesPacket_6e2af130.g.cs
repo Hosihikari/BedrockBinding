@@ -89,26 +89,9 @@ public sealed unsafe partial class UpdateAttributesPacket : global::System.IDisp
         return new UpdateAttributesPacket((nint)handle);
     }
 
-    public static UpdateAttributesPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstanceHandle[] arg1)
-    {
-        var __hs_vectorItems1 = arg1;
-        var __hs_vectorHandles1 = new nint[__hs_vectorItems1?.Length ?? 0];
-        for (var __hs_i1 = 0; __hs_i1 < __hs_vectorHandles1.Length; __hs_i1++)
-        {
-            __hs_vectorHandles1[__hs_i1] = __hs_vectorItems1![__hs_i1]?.Handle ?? 0;
-        }
-        fixed (nint* __hs_vectorHandleData1 = __hs_vectorHandles1)
-        {
-            var __hs_vectorData1 = (void**)__hs_vectorHandleData1;
-            var handle = NativeMethods.TablePtr->hs_create_6380b4a1((void*)arg0.Handle, __hs_vectorData1, (nuint)(arg1?.Length ?? 0));
-            if (handle == null)
-            {
-                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-            }
-
-            return new UpdateAttributesPacket((nint)handle);
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public static UpdateAttributesPacket Create(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static UpdateAttributesPacket Create(nint arg0) =>

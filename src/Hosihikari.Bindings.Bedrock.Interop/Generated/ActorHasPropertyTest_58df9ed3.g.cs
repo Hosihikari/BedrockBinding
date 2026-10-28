@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorHasPropertyTest : global::System.IDisposable
+public sealed unsafe partial class ActorHasPropertyTest
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -69,17 +69,7 @@ public sealed unsafe partial class ActorHasPropertyTest : global::System.IDispos
         return NativeMethods.TablePtr->hs_method_0a4b8e26((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_58df9ed3((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

@@ -79,10 +79,9 @@ public sealed unsafe partial class BlockVolume : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_3207a346((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Pos getDimensions()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Pos((nint)NativeMethods.TablePtr->hs_method_da741fec((void*)_handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Pos' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getDimensions() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Pos' requires --link-carrier or --virtual-dispatch.");
 
     public uint getIndexBounds()
     {

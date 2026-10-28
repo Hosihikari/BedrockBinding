@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EnderChestContainer : global::System.IDisposable
+public sealed unsafe partial class EnderChestContainer
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -85,16 +85,9 @@ public sealed unsafe partial class EnderChestContainer : global::System.IDisposa
         get => (nint)NativeMethods.TablePtr->hs_get_0a517eb1((void*)_handle);
     }
 
-    public static EnderChestContainer Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_b7a1cf98();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new EnderChestContainer((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static EnderChestContainer Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static EnderChestContainer Create(nint arg0) =>
@@ -134,17 +127,7 @@ public sealed unsafe partial class EnderChestContainer : global::System.IDisposa
         NativeMethods.TablePtr->hs_method_628be830((void*)_handle, (void*)arg0.Handle);
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_628770ac((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

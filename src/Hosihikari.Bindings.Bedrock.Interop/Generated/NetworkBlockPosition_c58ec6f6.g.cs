@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class NetworkBlockPosition : global::System.IDisposable
+public sealed partial class NetworkBlockPosition
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,72 +35,5 @@ public sealed unsafe partial class NetworkBlockPosition : global::System.IDispos
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
-    }
-
-    public int b
-    {
-        get => NativeMethods.TablePtr->hs_get_38ac79c4((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_38ac79c4((void*)_handle, value);
-    }
-
-    public int g
-    {
-        get => NativeMethods.TablePtr->hs_get_17245a0c((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_17245a0c((void*)_handle, value);
-    }
-
-    public int p
-    {
-        get => NativeMethods.TablePtr->hs_get_b4af3bba((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_b4af3bba((void*)_handle, value);
-    }
-
-    public int r
-    {
-        get => NativeMethods.TablePtr->hs_get_0124ae1e((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_0124ae1e((void*)_handle, value);
-    }
-
-    public int s
-    {
-        get => NativeMethods.TablePtr->hs_get_798193e7((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_798193e7((void*)_handle, value);
-    }
-
-    public int t
-    {
-        get => NativeMethods.TablePtr->hs_get_701a5bc7((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_701a5bc7((void*)_handle, value);
-    }
-
-    public int x
-    {
-        get => NativeMethods.TablePtr->hs_get_c9286862((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_c9286862((void*)_handle, value);
-    }
-
-    public int y
-    {
-        get => NativeMethods.TablePtr->hs_get_411c2902((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_411c2902((void*)_handle, value);
-    }
-
-    public int z
-    {
-        get => NativeMethods.TablePtr->hs_get_9d42e55d((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_9d42e55d((void*)_handle, value);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_c58ec6f6((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

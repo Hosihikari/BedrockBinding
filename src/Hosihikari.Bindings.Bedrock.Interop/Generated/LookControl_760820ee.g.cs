@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LookControl : global::System.IDisposable
+public sealed unsafe partial class LookControl
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,16 +37,9 @@ public sealed unsafe partial class LookControl : global::System.IDisposable
         return __hs_handle;
     }
 
-    public static LookControl Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_11aa33e4();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new LookControl((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static LookControl Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static LookControl Create(nint arg0) =>
@@ -66,18 +59,11 @@ public sealed unsafe partial class LookControl : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_84afcfd2((void*)_handle, (void*)arg0.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_48507bb8() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_760820ee((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_9b1c3ee8() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

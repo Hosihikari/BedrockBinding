@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AquiferNoises : global::System.IDisposable
+public sealed partial class AquiferNoises
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,17 +41,7 @@ public sealed unsafe partial class AquiferNoises : global::System.IDisposable
     public static AquiferNoises Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_48ea971d((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

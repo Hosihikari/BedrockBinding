@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LegacyForestFoliageFeature : global::System.IDisposable
+public sealed unsafe partial class LegacyForestFoliageFeature
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,38 +37,13 @@ public sealed unsafe partial class LegacyForestFoliageFeature : global::System.I
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPlacerID_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_d1004ebe((void*)_handle);
-    }
-
-    public nint mTransaction
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_6592b432((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_6592b432((void*)_handle, (void*)value);
-    }
-
-    public short mUnknown
-    {
-        get => NativeMethods.TablePtr->hs_get_919a384d((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_919a384d((void*)_handle, value);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static LegacyForestFoliageFeature Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static LegacyForestFoliageFeature Create(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.FeatureRegistry arg1)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_60f5d666(arg0, (void*)arg1.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new LegacyForestFoliageFeature((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static LegacyForestFoliageFeature Create(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static LegacyForestFoliageFeature Create(nint arg0) =>
@@ -83,17 +58,7 @@ public sealed unsafe partial class LegacyForestFoliageFeature : global::System.I
         return NativeMethods.TablePtr->hs_method_801cc3d6((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_22c8d0a2((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

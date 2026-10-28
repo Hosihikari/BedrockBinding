@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class IntTag : global::System.IDisposable
+public sealed unsafe partial class IntTag
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,38 +37,18 @@ public sealed unsafe partial class IntTag : global::System.IDisposable
         return __hs_handle;
     }
 
-    public static IntTag Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_0b060990();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static IntTag Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-        return new IntTag((nint)handle);
-    }
-
-    public static IntTag Create(int arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_ef2f8efc(arg0);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new IntTag((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static IntTag Create(int arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Tag? copy()
     {
         var __hs_handle = NativeMethods.TablePtr->hs_method_e3dd03c4((void*)_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Tag((nint)__hs_handle) : null;
-    }
-
-    public int data
-    {
-        get => NativeMethods.TablePtr->hs_get_5eda7381((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_5eda7381((void*)_handle, value);
     }
 
     public bool equals(global::Hosihikari.Bindings.Bedrock.Interop.Tag arg0)
@@ -113,18 +93,11 @@ public sealed unsafe partial class IntTag : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_c11d7520((void*)_handle, (void*)arg0.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_d3137b0b() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_4aa40039((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_1e84ee74() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

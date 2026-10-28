@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class NetherFireFeature : global::System.IDisposable
+public sealed unsafe partial class NetherFireFeature
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,24 +37,6 @@ public sealed unsafe partial class NetherFireFeature : global::System.IDisposabl
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPlacerID_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_2e1d65e1((void*)_handle);
-    }
-
-    public nint mTransaction
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_53beabbc((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_53beabbc((void*)_handle, (void*)value);
-    }
-
-    public short mUnknown
-    {
-        get => NativeMethods.TablePtr->hs_get_482d77c8((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_482d77c8((void*)_handle, value);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static NetherFireFeature Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
@@ -72,17 +54,7 @@ public sealed unsafe partial class NetherFireFeature : global::System.IDisposabl
         return NativeMethods.TablePtr->hs_method_2caa56f8((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_00096416((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

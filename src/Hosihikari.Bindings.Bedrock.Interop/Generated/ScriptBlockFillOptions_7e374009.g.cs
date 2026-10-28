@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
 
-public sealed unsafe partial class ScriptBlockFillOptions : global::System.IDisposable
+public sealed partial class ScriptBlockFillOptions
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,17 +37,7 @@ public sealed unsafe partial class ScriptBlockFillOptions : global::System.IDisp
         return __hs_handle;
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_7e374009((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

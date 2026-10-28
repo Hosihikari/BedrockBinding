@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Crypto.Hash;
 
-public sealed unsafe partial class Hash
+public sealed partial class Hash
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -52,18 +52,6 @@ public sealed unsafe partial class Hash
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint getUUID() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mHash_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_1683ec12((void*)_handle);
-    }
-
-    public int mHashType
-    {
-        get => NativeMethods.TablePtr->hs_get_faa26736((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_faa26736((void*)_handle, value);
-    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void reset() =>

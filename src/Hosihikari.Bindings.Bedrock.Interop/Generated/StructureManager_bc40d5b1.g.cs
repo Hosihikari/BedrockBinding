@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class StructureManager : global::System.IDisposable
+public sealed unsafe partial class StructureManager
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -57,19 +57,12 @@ public sealed unsafe partial class StructureManager : global::System.IDisposable
     public static StructureManager Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static StructureManager Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_33e4bfd8((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new StructureManager((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static StructureManager Create_33e4bfd8(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructureManager Create(nint arg0) =>
+    public static StructureManager Create_c250d278(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -379,48 +372,6 @@ public sealed unsafe partial class StructureManager : global::System.IDisposable
         }
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mLegacyStructureRepository_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_10094122((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPackManager_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_923db166((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mRepositoryMutex_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_ea639b17((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mStructurePlacementQueue_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_ef0307ac((void*)_handle);
-    }
-
-    public uint mStructurePlacementSaveCounter
-    {
-        get => NativeMethods.TablePtr->hs_get_b53f62ff((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_b53f62ff((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mStructureRepository_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_dea6fc0f((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mUnknownBlockRegistry_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_4e77ae3a((void*)_handle);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
@@ -457,17 +408,7 @@ public sealed unsafe partial class StructureManager : global::System.IDisposable
     public nint tryPlaceStructureInWorld(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'CommandArea' has no generated wrapper.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_bc40d5b1((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

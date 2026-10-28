@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SemVersionConstraint : global::System.IDisposable
+public sealed unsafe partial class SemVersionConstraint
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,25 +37,17 @@ public sealed unsafe partial class SemVersionConstraint : global::System.IDispos
         return __hs_handle;
     }
 
-    public static SemVersionConstraint Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_0d843f9b();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new SemVersionConstraint((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static SemVersionConstraint Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static SemVersionConstraint Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.ConstraintDescription description()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.ConstraintDescription((nint)NativeMethods.TablePtr->hs_method_85e318d6((void*)_handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'cereal::internal::ConstraintDescription' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint description() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'cereal::internal::ConstraintDescription' requires --link-carrier or --virtual-dispatch.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.SemVersionConstraint min(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg0)
     {
@@ -66,18 +58,11 @@ public sealed unsafe partial class SemVersionConstraint : global::System.IDispos
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_9b4a061f() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_258770cc((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_415b22be() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

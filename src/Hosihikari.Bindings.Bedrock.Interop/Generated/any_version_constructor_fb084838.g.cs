@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SemVersion_Nested;
 
-public sealed unsafe partial class any_version_constructor : global::System.IDisposable
+public sealed partial class any_version_constructor
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,18 +35,5 @@ public sealed unsafe partial class any_version_constructor : global::System.IDis
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_fb084838((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

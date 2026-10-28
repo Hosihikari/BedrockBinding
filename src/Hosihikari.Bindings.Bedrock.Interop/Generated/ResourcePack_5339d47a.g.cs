@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ResourcePack : global::System.IDisposable
+public sealed unsafe partial class ResourcePack
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -53,16 +53,9 @@ public sealed unsafe partial class ResourcePack : global::System.IDisposable
         get => new global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->hs_get_d6c2093e(), false);
     }
 
-    public static ResourcePack Create(global::Hosihikari.Bindings.Bedrock.Interop.Pack arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_6c547223((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ResourcePack((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ResourcePack Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.PathBuffer_std__basic_string_char__ TEXTURES_LIST_PATH
     {
@@ -199,78 +192,6 @@ public sealed unsafe partial class ResourcePack : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_e9a82501((void*)_handle) != 0;
     }
 
-    public bool mError
-    {
-        get => NativeMethods.TablePtr->hs_get_4a831694((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_4a831694((void*)_handle, value);
-    }
-
-    public bool mHidden
-    {
-        get => NativeMethods.TablePtr->hs_get_08e1e50d((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_08e1e50d((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mIconPath_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_bb5c47a9((void*)_handle);
-    }
-
-    public bool mIsBaseGamePack
-    {
-        get => NativeMethods.TablePtr->hs_get_aaa55e93((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_aaa55e93((void*)_handle, value);
-    }
-
-    public bool mIsSlicePack
-    {
-        get => NativeMethods.TablePtr->hs_get_c3737763((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_c3737763((void*)_handle, value);
-    }
-
-    public double mLoadTime
-    {
-        get => NativeMethods.TablePtr->hs_get_4b727bba((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_4b727bba((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPack_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_94d207c7((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPackReport_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_6bf6b1c5((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mResourceSignature_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_558babcf((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSubPacks_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_e98d909b((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSubResourcePacks_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_18c6fc60((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSubpackAccessStrategy_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_84293223((void*)_handle);
-    }
-
     public void setAsSlicePack()
     {
         NativeMethods.TablePtr->hs_method_09b4cb87((void*)_handle);
@@ -314,18 +235,11 @@ public sealed unsafe partial class ResourcePack : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_64263ea9((void*)_handle, (void*)arg0);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_2a61cedb() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_5339d47a((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_b322b1a0() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

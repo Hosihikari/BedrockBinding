@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorDimensionTransferProxy : global::System.IDisposable
+public sealed unsafe partial class ActorDimensionTransferProxy
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,16 +37,9 @@ public sealed unsafe partial class ActorDimensionTransferProxy : global::System.
         return __hs_handle;
     }
 
-    public static ActorDimensionTransferProxy Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_d1e32b9e();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ActorDimensionTransferProxy((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ActorDimensionTransferProxy Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ActorDimensionTransferProxy Create(nint arg0) =>
@@ -70,17 +63,7 @@ public sealed unsafe partial class ActorDimensionTransferProxy : global::System.
         NativeMethods.TablePtr->hs_method_a011cbe6((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_dc7f141a((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

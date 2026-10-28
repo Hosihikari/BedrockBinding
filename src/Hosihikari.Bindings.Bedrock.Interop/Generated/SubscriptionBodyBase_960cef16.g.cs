@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.PubSub.Detail;
 
-public sealed unsafe partial class SubscriptionBodyBase : global::System.IDisposable
+public sealed partial class SubscriptionBodyBase
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -53,57 +53,11 @@ public sealed unsafe partial class SubscriptionBodyBase : global::System.IDispos
     public void _disconnect() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mContext_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_6a27c308((void*)_handle);
-    }
-
-    public nint mDisconnector
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_adf5b128((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_adf5b128((void*)_handle, (void*)value);
-    }
-
-    public int mGroup
-    {
-        get => NativeMethods.TablePtr->hs_get_91a83b5d((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_91a83b5d((void*)_handle, value);
-    }
-
-    public nint mNext
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_2c2d4300((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_2c2d4300((void*)_handle, (void*)value);
-    }
-
-    public nint mPrev
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_bbcbdc3c((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_bbcbdc3c((void*)_handle, (void*)value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mStrongSelf_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_9ced0e5c((void*)_handle);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_960cef16((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

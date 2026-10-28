@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AddActorPacket : global::System.IDisposable
+public sealed unsafe partial class AddActorPacket
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,30 +37,16 @@ public sealed unsafe partial class AddActorPacket : global::System.IDisposable
         return __hs_handle;
     }
 
-    public static AddActorPacket Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_7b05f5c7();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static AddActorPacket Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-        return new AddActorPacket((nint)handle);
-    }
-
-    public static AddActorPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_766452a6((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new AddActorPacket((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static AddActorPacket Create_766452a6(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AddActorPacket Create(nint arg0) =>
+    public static AddActorPacket Create_7a3c3e03(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -82,90 +68,6 @@ public sealed unsafe partial class AddActorPacket : global::System.IDisposable
     public nint getName_d8b16a7f() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mAttributeHandles_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_426b90a8((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mAttributes_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_df6353ed((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mData_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_6a1f4276((void*)_handle);
-    }
-
-    public nint mEntityData
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_70f89b24((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_70f89b24((void*)_handle, (void*)value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mEntityId_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_ae094824((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mLinks_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_ed780a3a((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPos_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_a95ba06a((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mRot_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_bd7de147((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mRuntimeId_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_cb9c38d6((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSynchedProperties_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_a7270634((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mType_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_5b88e2ce((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mVelocity_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_0203ec70((void*)_handle);
-    }
-
-    public float mYBodyRotation
-    {
-        get => NativeMethods.TablePtr->hs_get_ade99db9((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_ade99db9((void*)_handle, value);
-    }
-
-    public float mYHeadRotation
-    {
-        get => NativeMethods.TablePtr->hs_get_f4a84cb5((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_f4a84cb5((void*)_handle, value);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
@@ -175,59 +77,11 @@ public sealed unsafe partial class AddActorPacket : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_1858d41c((void*)_handle, (void*)arg0.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_d06cc3ff() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-
-    public byte mClientSubId
-    {
-        get => NativeMethods.TablePtr->hs_get_a0a6abdd((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_a0a6abdd((void*)_handle, value);
-    }
-
-    public int mCompressible
-    {
-        get => NativeMethods.TablePtr->hs_get_eacbde82((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_eacbde82((void*)_handle, value);
-    }
-
-    public nint mHandler
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_ca6582c2((void*)_handle);
-    }
-
-    public bool mIsHandled
-    {
-        get => NativeMethods.TablePtr->hs_get_e7e66a54((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_e7e66a54((void*)_handle, value);
-    }
-
-    public int mPriority
-    {
-        get => NativeMethods.TablePtr->hs_get_8977b5dd((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_8977b5dd((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mReceiveTimepoint_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_e9ce775a((void*)_handle);
-    }
-
-    public int mReliability
-    {
-        get => NativeMethods.TablePtr->hs_get_9859eee6((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_9859eee6((void*)_handle, value);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_9b1a6a44((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_f9509ebd() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

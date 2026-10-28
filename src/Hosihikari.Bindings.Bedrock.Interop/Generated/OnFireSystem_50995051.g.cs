@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class OnFireSystem : global::System.IDisposable
+public sealed unsafe partial class OnFireSystem
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -67,18 +67,5 @@ public sealed unsafe partial class OnFireSystem : global::System.IDisposable
     public static void stopFire(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {
         NativeMethods.TablePtr->hs_method_354405a0((void*)arg0.Handle);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_50995051((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

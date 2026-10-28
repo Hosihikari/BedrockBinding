@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BastionFeature : global::System.IDisposable
+public sealed unsafe partial class BastionFeature
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -45,16 +45,9 @@ public sealed unsafe partial class BastionFeature : global::System.IDisposable
     public static BastionFeature Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static BastionFeature Create(uint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg1)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_63c5276c(arg0, (void*)arg1.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new BastionFeature((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static BastionFeature Create(uint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public bool getNearestGeneratedFeature(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5, nint arg6) =>
@@ -74,6 +67,9 @@ public sealed unsafe partial class BastionFeature : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_199a4b04((void*)_handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mActiveBlueprintCreateCount_Address
@@ -145,18 +141,5 @@ public sealed unsafe partial class BastionFeature : global::System.IDisposable
     {
         get => NativeMethods.TablePtr->hs_get_90e0845f((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_90e0845f((void*)_handle, value);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_81b6150a((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EnderChestBlockActor : global::System.IDisposable
+public sealed unsafe partial class EnderChestBlockActor
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -90,33 +90,12 @@ public sealed unsafe partial class EnderChestBlockActor : global::System.IDispos
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EnderChestBlockActor Create(nint type, nint id, nint renderId, nint pos) =>
+    public static EnderChestBlockActor Create_6b06560a(nint type, nint id, nint renderId, nint pos) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static EnderChestBlockActor Create(int arg0, string arg1, int arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            var handle = NativeMethods.TablePtr->hs_create_73c0aecc(arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, (void*)arg3.Handle);
-            if (handle == null)
-            {
-                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-            }
-
-            return new EnderChestBlockActor((nint)handle);
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static EnderChestBlockActor Create_73c0aecc(nint arg0, nint arg1, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static EnderChestBlockActor Create(nint arg0) =>
@@ -155,17 +134,4 @@ public sealed unsafe partial class EnderChestBlockActor : global::System.IDispos
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_b75486f8((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
 }

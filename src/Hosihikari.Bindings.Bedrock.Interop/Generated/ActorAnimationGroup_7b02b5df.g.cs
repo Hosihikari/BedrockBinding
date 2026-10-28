@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorAnimationGroup : global::System.IDisposable
+public sealed unsafe partial class ActorAnimationGroup
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,16 +37,9 @@ public sealed unsafe partial class ActorAnimationGroup : global::System.IDisposa
         return __hs_handle;
     }
 
-    public static ActorAnimationGroup Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_5ebdcc5b();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ActorAnimationGroup((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ActorAnimationGroup Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ActorAnimationGroup Create(nint arg0) =>
@@ -108,23 +101,13 @@ public sealed unsafe partial class ActorAnimationGroup : global::System.IDisposa
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
         get => (nint)NativeMethods.TablePtr->hs_get_0bc4cb8d((void*)_handle);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_7b02b5df((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

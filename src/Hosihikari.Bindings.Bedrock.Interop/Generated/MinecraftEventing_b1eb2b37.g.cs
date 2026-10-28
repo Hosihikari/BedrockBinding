@@ -218,71 +218,30 @@ public sealed unsafe partial class MinecraftEventing
         NativeMethods.TablePtr->hs_method_9da359e4((void*)_handle, arg0, arg1);
     }
 
-    public void fireClubsEngagementEvent(int arg0, int arg1, nint arg2, global::Hosihikari.Bindings.Bedrock.Interop.Realms.RealmId arg3, string arg4)
-    {
-        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
-        scoped global::System.Span<byte> __hs_stringBytes4;
-        if (__hs_stringByteCount4 <= 256)
-        {
-            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
-        }
-        else
-        {
-            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
-        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
-        {
-            NativeMethods.TablePtr->hs_method_4ce45022((void*)_handle, arg0, arg1, (void*)arg2, (void*)arg3.Handle, __hs_stringData4, (nuint)__hs_stringByteCount4);
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public void fireClubsEngagementEvent_4ce45022(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void fireClubsEngagementEvent(nint action, nint engagementTargetType, nint target, nint realmId, nint clubId) =>
+    public void fireClubsEngagementEvent_082cc6cd(nint action, nint engagementTargetType, nint target, nint realmId, nint clubId) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void fireClubsOpenFeedScreenEvent(nint source, nint realmId, nint clubId, int unreadPosts) =>
+    public void fireClubsOpenFeedScreenEvent_4d5e55db(nint source, nint realmId, nint clubId, int unreadPosts) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void fireClubsOpenFeedScreenEvent(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Realms.RealmId arg1, string arg2, int arg3)
-    {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
-        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-        {
-            NativeMethods.TablePtr->hs_method_7bfee1c0((void*)_handle, arg0, (void*)arg1.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3);
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public void fireClubsOpenFeedScreenEvent_7bfee1c0(nint arg0, nint arg1, nint arg2, int arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public void fireCodeCommandButtonPressed()
     {
         NativeMethods.TablePtr->hs_method_ea0b3a63((void*)_handle);
     }
 
-    public void fireCommandParseTableTelemetry(bool arg0, global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing_Nested.CommandParseTableEntry[] arg1)
-    {
-        var __hs_vectorItems1 = arg1;
-        var __hs_vectorHandles1 = new nint[__hs_vectorItems1?.Length ?? 0];
-        for (var __hs_i1 = 0; __hs_i1 < __hs_vectorHandles1.Length; __hs_i1++)
-        {
-            __hs_vectorHandles1[__hs_i1] = __hs_vectorItems1![__hs_i1]?.Handle ?? 0;
-        }
-        fixed (nint* __hs_vectorHandleData1 = __hs_vectorHandles1)
-        {
-            var __hs_vectorData1 = (void**)__hs_vectorHandleData1;
-            NativeMethods.TablePtr->hs_method_a1a2673c((void*)_handle, arg0, __hs_vectorData1, (nuint)(arg1?.Length ?? 0));
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public void fireCommandParseTableTelemetry(bool arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void fireCourseButtonPressed(nint courseTitle, nint courseId) =>

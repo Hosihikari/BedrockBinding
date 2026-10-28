@@ -45,10 +45,9 @@ public sealed unsafe partial class PropertyGroupManager
     public static PropertyGroupManager Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag getActorPropertyDataTag(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)NativeMethods.TablePtr->hs_method_3dceb40c((void*)_handle, (void*)arg0.Handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CompoundTag' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getActorPropertyDataTag(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CompoundTag' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint getAllPropertyGroups_17d1aed1() =>

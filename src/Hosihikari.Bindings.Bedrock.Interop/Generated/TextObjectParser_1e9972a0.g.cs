@@ -164,10 +164,9 @@ public sealed unsafe partial class TextObjectParser
     public static bool textObjectFromJson_5bd2c370(nint root, nint parsedObject, nint errorMsg) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static bool textObjectFromJsonServer(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.TextObjectRoot arg1, global::Hosihikari.Bindings.Bedrock.Interop.TextObjectParser_Nested.ServerData arg2, global::Hosihikari.Bindings.Bedrock.Interop.TextObjectParser_Nested.ErrorLocalization arg3)
-    {
-        return NativeMethods.TablePtr->hs_method_9ac9b6f5((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle) != 0;
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public static bool textObjectFromJsonServer(nint arg0, nint arg1, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public static bool textObjectFromJsonString_4e64681a(nint jsonAsString, nint parsedObject, nint errorMsg) =>

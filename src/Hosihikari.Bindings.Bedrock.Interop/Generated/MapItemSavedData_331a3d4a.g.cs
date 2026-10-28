@@ -163,10 +163,9 @@ public sealed unsafe partial class MapItemSavedData
         return NativeMethods.TablePtr->hs_method_e743f30e((void*)_handle, (void*)arg0.Handle, arg1) != 0;
     }
 
-    public bool isChunkAllEmpty(global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData_Nested.ChunkBounds arg0)
-    {
-        return NativeMethods.TablePtr->hs_method_1d37fe9a((void*)_handle, (void*)arg0.Handle) != 0;
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public bool isChunkAllEmpty(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public bool isFullyExplored()
     {

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DispenserBlockActor : global::System.IDisposable
+public sealed unsafe partial class DispenserBlockActor
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -89,30 +89,16 @@ public sealed unsafe partial class DispenserBlockActor : global::System.IDisposa
     public static DispenserBlockActor Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static DispenserBlockActor Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_d4e7b9bc((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static DispenserBlockActor Create_d4e7b9bc(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-        return new DispenserBlockActor((nint)handle);
-    }
-
-    public static DispenserBlockActor Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, int arg1)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_467bf72f((void*)arg0.Handle, arg1);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new DispenserBlockActor((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static DispenserBlockActor Create(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DispenserBlockActor Create(nint arg0) =>
+    public static DispenserBlockActor Create_12313fc9(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Container? getContainer_1d3fa30d()
@@ -193,18 +179,5 @@ public sealed unsafe partial class DispenserBlockActor : global::System.IDisposa
     public void stopOpen(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
     {
         NativeMethods.TablePtr->hs_method_5e507de8((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_11719375((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

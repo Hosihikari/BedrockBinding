@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FlatWorldGenerator : global::System.IDisposable
+public sealed unsafe partial class FlatWorldGenerator
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -43,68 +43,13 @@ public sealed unsafe partial class FlatWorldGenerator : global::System.IDisposab
         get => (nint)NativeMethods.TablePtr->hs_get_566a9fc8((void*)_handle);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint filler_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_6d7cb951((void*)_handle);
-    }
-
-    public int mChunkSide
-    {
-        get => NativeMethods.TablePtr->hs_get_2951d541((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_2951d541((void*)_handle, value);
-    }
-
-    public nint mDimension
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_dabe4f8b((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_dabe4f8b((void*)_handle, (void*)value);
-    }
-
-    public nint mLevel
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_afc39854((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_afc39854((void*)_handle, (void*)value);
-    }
-
-    public nint mLevelChunkBuilderData
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_c47fe75f((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_c47fe75f((void*)_handle, (void*)value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mOwnedParent_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_af37b3e3((void*)_handle);
-    }
-
-    public nint mParent
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_d0fb9072((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_d0fb9072((void*)_handle, (void*)value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mShuttingDown_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_160124f1((void*)_handle);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static FlatWorldGenerator Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static FlatWorldGenerator Create(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0, uint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg2)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_86df0dc2((void*)arg0.Handle, arg1, (void*)arg2.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new FlatWorldGenerator((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static FlatWorldGenerator Create(nint arg0, uint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static FlatWorldGenerator Create(nint arg0) =>
@@ -152,29 +97,6 @@ public sealed unsafe partial class FlatWorldGenerator : global::System.IDisposab
         NativeMethods.TablePtr->hs_method_0505e18b((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
-    public nint mBiome
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_922458d5((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mBiomeSource_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_1cde44fb((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPrototype_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_5865fde5((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPrototypeBlocks_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_d56ddf96((void*)_handle);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
@@ -195,48 +117,5 @@ public sealed unsafe partial class FlatWorldGenerator : global::System.IDisposab
     public void prepareHeights(global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1, bool arg2)
     {
         NativeMethods.TablePtr->hs_method_907f129c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mHardcodedSpawnTypes_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_bd7ae0d9((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSpinLock_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_c754fea2((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mStructureFeatureRegistry_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_8642eb40((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mUnknown1_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_19d443e4((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mUnknown2_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_155df0b3((void*)_handle);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_05b62e5d((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

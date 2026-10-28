@@ -47,12 +47,6 @@ public sealed unsafe partial class DoubleTag
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Tag((nint)__hs_handle) : null;
     }
 
-    public double data
-    {
-        get => NativeMethods.TablePtr->hs_get_77fe864e((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_77fe864e((void*)_handle, value);
-    }
-
     public bool equals(global::Hosihikari.Bindings.Bedrock.Interop.Tag arg0)
     {
         return NativeMethods.TablePtr->hs_method_f17af26d((void*)_handle, (void*)arg0.Handle) != 0;

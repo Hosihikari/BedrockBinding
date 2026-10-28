@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LevelListener : global::System.IDisposable
+public sealed unsafe partial class LevelListener
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -198,18 +198,11 @@ public sealed unsafe partial class LevelListener : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_5efb75f4((void*)_handle, (void*)arg0, (void*)(arg1?.Handle ?? 0), (void*)(arg2?.Handle ?? 0), (void*)arg3);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_fc2db749() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_064288fe((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_08a167a2() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

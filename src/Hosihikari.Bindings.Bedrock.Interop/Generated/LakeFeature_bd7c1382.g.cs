@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LakeFeature : global::System.IDisposable
+public sealed unsafe partial class LakeFeature
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,53 +37,17 @@ public sealed unsafe partial class LakeFeature : global::System.IDisposable
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPlacerID_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_8876e274((void*)_handle);
-    }
-
-    public nint mTransaction
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_8601567b((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_8601567b((void*)_handle, (void*)value);
-    }
-
-    public short mUnknown
-    {
-        get => NativeMethods.TablePtr->hs_get_efa43543((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_efa43543((void*)_handle, value);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static LakeFeature Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static LakeFeature Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static LakeFeature Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mBlock_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_3db38174((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mEmptyBlock_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_9263feda((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mXoroshiroPositionalRandomFactory_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_fb6e5bd5((void*)_handle);
-    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
@@ -94,17 +58,7 @@ public sealed unsafe partial class LakeFeature : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_b651ef80((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_bd7c1382((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

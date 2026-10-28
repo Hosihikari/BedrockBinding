@@ -151,10 +151,10 @@ public sealed unsafe partial class PlayerAuthInputPacket : global::System.IDispo
         get => (nint)NativeMethods.TablePtr->hs_get_748a96bb((void*)_handle);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mInputData_Address
+    public ulong mInputData
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_a5a70dfb((void*)_handle);
+        get => NativeMethods.TablePtr->hs_get_a5a70dfb((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_a5a70dfb((void*)_handle, value);
     }
 
     public int mInputMode

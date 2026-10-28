@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GetInteractionPositionForBlockNode : global::System.IDisposable
+public sealed unsafe partial class GetInteractionPositionForBlockNode
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,16 +37,9 @@ public sealed unsafe partial class GetInteractionPositionForBlockNode : global::
         return __hs_handle;
     }
 
-    public static GetInteractionPositionForBlockNode Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_629d5af9();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new GetInteractionPositionForBlockNode((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static GetInteractionPositionForBlockNode Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static GetInteractionPositionForBlockNode Create(nint arg0) =>
@@ -65,17 +58,7 @@ public sealed unsafe partial class GetInteractionPositionForBlockNode : global::
         return NativeMethods.TablePtr->hs_method_c5bf058a((void*)_handle, (void*)arg0.Handle);
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_2ecf05ab((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

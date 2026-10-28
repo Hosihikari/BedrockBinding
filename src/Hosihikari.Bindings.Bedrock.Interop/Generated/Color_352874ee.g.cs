@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.mce;
 
-public sealed unsafe partial class Color : global::System.IDisposable
+public sealed unsafe partial class Color
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -326,17 +326,4 @@ public sealed unsafe partial class Color : global::System.IDisposable
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint toVec3() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_352874ee((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
 }

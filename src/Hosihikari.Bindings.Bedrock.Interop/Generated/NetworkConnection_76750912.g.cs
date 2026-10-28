@@ -95,10 +95,10 @@ public sealed unsafe partial class NetworkConnection : global::System.IDisposabl
         get => (nint)NativeMethods.TablePtr->hs_get_edd71e2e((void*)_handle);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPausedChannels_Address
+    public byte mPausedChannels
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_b47fb6ca((void*)_handle);
+        get => NativeMethods.TablePtr->hs_get_b47fb6ca((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_b47fb6ca((void*)_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.

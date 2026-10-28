@@ -59,71 +59,61 @@ public sealed unsafe partial class SubChunkRelighter
         NativeMethods.TablePtr->hs_method_b55f0104((void*)_handle, (void*)arg0.Handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.SubChunk? _getAbsorption(global::Hosihikari.Bindings.Bedrock.Interop.SubChunkLightIndex arg0, nint arg1)
-    {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_8e4c3e2b((void*)_handle, (void*)arg0.Handle, (void*)arg1);
-        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.SubChunk((nint)__hs_handle, false) : null;
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public nint _getAbsorption(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public void _propagateBlockLight()
     {
         NativeMethods.TablePtr->hs_method_b070ee4c((void*)_handle);
     }
 
-    public void _propagateBlockLight(global::Hosihikari.Bindings.Bedrock.Interop.SubChunkLightIndex arg0, byte arg1)
-    {
-        NativeMethods.TablePtr->hs_method_220d10b5((void*)_handle, (void*)arg0.Handle, arg1);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public void _propagateBlockLight(nint arg0, byte arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public void _propagateSkyLight()
     {
         NativeMethods.TablePtr->hs_method_016b1f3e((void*)_handle);
     }
 
-    public void _propagateSkyLight(global::Hosihikari.Bindings.Bedrock.Interop.SubChunkLightIndex arg0, byte arg1)
-    {
-        NativeMethods.TablePtr->hs_method_a5f822d4((void*)_handle, (void*)arg0.Handle, arg1);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public void _propagateSkyLight(nint arg0, byte arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public void _propagateSubtractiveBlockLight()
     {
         NativeMethods.TablePtr->hs_method_d559be45((void*)_handle);
     }
 
-    public void _propagateSubtractiveBlockLight(global::Hosihikari.Bindings.Bedrock.Interop.SubChunkLightIndex arg0, byte arg1)
-    {
-        NativeMethods.TablePtr->hs_method_851de039((void*)_handle, (void*)arg0.Handle, arg1);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public void _propagateSubtractiveBlockLight(nint arg0, byte arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public void _propagateSubtractiveSkyLight()
     {
         NativeMethods.TablePtr->hs_method_8762b4bb((void*)_handle);
     }
 
-    public void _propagateSubtractiveSkyLight(global::Hosihikari.Bindings.Bedrock.Interop.SubChunkLightIndex arg0, byte arg1)
-    {
-        NativeMethods.TablePtr->hs_method_17fe2252((void*)_handle, (void*)arg0.Handle, arg1);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public void _propagateSubtractiveSkyLight(nint arg0, byte arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    public void _setLightHelper(global::Hosihikari.Bindings.Bedrock.Interop.SubChunkLightIndex arg0, global::Hosihikari.Bindings.Bedrock.Interop.Brightness arg1, global::Hosihikari.Bindings.Bedrock.Interop.Brightness arg2, global::Hosihikari.Bindings.Bedrock.Interop.Brightness arg3, global::Hosihikari.Bindings.Bedrock.Interop.Brightness arg4, uint arg5, uint arg6)
-    {
-        NativeMethods.TablePtr->hs_method_94850f20((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4.Handle, arg5, arg6);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public void _setLightHelper(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, uint arg5, uint arg6) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    public void _setPropagatedBlockLightValue(global::Hosihikari.Bindings.Bedrock.Interop.SubChunkLightIndex arg0, byte arg1)
-    {
-        NativeMethods.TablePtr->hs_method_1be9e717((void*)_handle, (void*)arg0.Handle, arg1);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public void _setPropagatedBlockLightValue(nint arg0, byte arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    public void _setPropagatedSkyLightValue(global::Hosihikari.Bindings.Bedrock.Interop.SubChunkLightIndex arg0, byte arg1)
-    {
-        NativeMethods.TablePtr->hs_method_ab06ef3b((void*)_handle, (void*)arg0.Handle, arg1);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public void _setPropagatedSkyLightValue(nint arg0, byte arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    public void _setSkyLight(global::Hosihikari.Bindings.Bedrock.Interop.SubChunkLightIndex arg0, global::Hosihikari.Bindings.Bedrock.Interop.Brightness arg1, global::Hosihikari.Bindings.Bedrock.Interop.Brightness arg2, global::Hosihikari.Bindings.Bedrock.Interop.Brightness arg3, global::Hosihikari.Bindings.Bedrock.Interop.Brightness arg4)
-    {
-        NativeMethods.TablePtr->hs_method_16f69951((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4.Handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public void _setSkyLight(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::bitset<196608>' requires --link-carrier or --virtual-dispatch.", false)]
     public static nint computeAllSubChunkBorderBitsExceptTheOuterEdgeOfComputationBits() =>

@@ -136,17 +136,9 @@ public sealed unsafe partial class BaseAttributeMap
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance((nint)__hs_handle, false) : null;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstanceHandle[] getSyncableAttributes()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_1dfc2be8((void*)_handle);
-        var __hs_items = (void**)__hs_view.Data;
-        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstanceHandle>() : new global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstanceHandle[checked((int)__hs_view.Size)];
-        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
-        {
-            __hs_result[__hs_i] = new global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstanceHandle((nint)__hs_items[__hs_i]);
-        }
-        return __hs_result;
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'AttributeInstanceHandle' is not supported.", false)]
+    public nint getSyncableAttributes() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'AttributeInstanceHandle' is not supported.");
 
     public void inheritFrom(global::Hosihikari.Bindings.Bedrock.Interop.BaseAttributeMap arg0)
     {

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.PubSub.PriorityDeferredSubscriptionHub_Nested;
 
-public sealed unsafe partial class DequeuedEntry : global::System.IDisposable
+public sealed partial class DequeuedEntry
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,17 +37,7 @@ public sealed unsafe partial class DequeuedEntry : global::System.IDisposable
         return __hs_handle;
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_5dbe88b8((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

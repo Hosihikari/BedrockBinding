@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AddVolumeEntityPacket : global::System.IDisposable
+public sealed unsafe partial class AddVolumeEntityPacket
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,9 +41,9 @@ public sealed unsafe partial class AddVolumeEntityPacket : global::System.IDispo
     public static AddVolumeEntityPacket Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static AddVolumeEntityPacket Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static AddVolumeEntityPacket Create(nint arg0) =>
@@ -68,54 +68,6 @@ public sealed unsafe partial class AddVolumeEntityPacket : global::System.IDispo
     public nint getName_c7810211() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mComponents_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_a8652ccb((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mDimensionType_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_5f812bac((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mEngineVersion_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_cc1aeb58((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mEntityNetId_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_199dae87((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mInstanceName_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_84c92af1((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mJsonIdentifier_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_0d531b37((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mMaxBounds_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_000aa8d6((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mMinBounds_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_00fb7fa4((void*)_handle);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
@@ -125,7 +77,13 @@ public sealed unsafe partial class AddVolumeEntityPacket : global::System.IDispo
         NativeMethods.TablePtr->hs_method_d223bc75((void*)_handle, (void*)arg0.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_cb025fd4() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_563a84c6() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
     public byte mClientSubId
     {
@@ -166,18 +124,5 @@ public sealed unsafe partial class AddVolumeEntityPacket : global::System.IDispo
     {
         get => NativeMethods.TablePtr->hs_get_f5e73207((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_f5e73207((void*)_handle, value);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_7b64d8a2((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

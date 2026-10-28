@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ChunkRecyclerTelemetryData : global::System.IDisposable
+public sealed unsafe partial class ChunkRecyclerTelemetryData
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -43,16 +43,9 @@ public sealed unsafe partial class ChunkRecyclerTelemetryData : global::System.I
         get => (nint)NativeMethods.TablePtr->hs_get_326c2cbe((void*)_handle);
     }
 
-    public static ChunkRecyclerTelemetryData Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_dd9d1cdf();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ChunkRecyclerTelemetryData((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ChunkRecyclerTelemetryData Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ChunkRecyclerTelemetryData Create(nint arg0) =>
@@ -92,17 +85,7 @@ public sealed unsafe partial class ChunkRecyclerTelemetryData : global::System.I
         NativeMethods.TablePtr->hs_method_e41efbac((void*)_handle, (void*)arg0.Handle);
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_a9c11e3a((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

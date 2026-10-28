@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ResourceLoadManager : global::System.IDisposable
+public sealed unsafe partial class ResourceLoadManager
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -84,17 +84,7 @@ public sealed unsafe partial class ResourceLoadManager : global::System.IDisposa
     public static void queueChild_f3758fdf(nint arg0, nint arg1, uint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'TaskResult' is not supported.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_42902229((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

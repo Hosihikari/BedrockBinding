@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class XoroshiroPositionalRandomFactory : global::System.IDisposable
+public sealed unsafe partial class XoroshiroPositionalRandomFactory
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -79,36 +79,17 @@ public sealed unsafe partial class XoroshiroPositionalRandomFactory : global::Sy
     public nint forStringImpl_aa7466e6(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'XoroshiroRandom' requires --link-carrier or --virtual-dispatch.");
 
-    public ulong mSeedHi
-    {
-        get => NativeMethods.TablePtr->hs_get_1b9275a6((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_1b9275a6((void*)_handle, value);
-    }
-
-    public ulong mSeedLo
-    {
-        get => NativeMethods.TablePtr->hs_get_560cb56a((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_560cb56a((void*)_handle, value);
-    }
-
     // The native field type is not projected; this is the address of the field storage.
     public static nint mThreadLocalDigest_Address
     {
         get => (nint)NativeMethods.TablePtr->hs_get_069d5897();
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_98819f90() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_bcbc5012((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_2557f060() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

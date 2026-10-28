@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SurfaceLevelCache : global::System.IDisposable
+public sealed partial class SurfaceLevelCache
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,44 +41,27 @@ public sealed unsafe partial class SurfaceLevelCache : global::System.IDisposabl
     public static SurfaceLevelCache Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static SurfaceLevelCache Create(global::Hosihikari.Bindings.Bedrock.Interop.DividedPos2d_4_ arg0, global::Hosihikari.Bindings.Bedrock.Interop.IPreliminarySurfaceProvider arg1, ulong arg2)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_f212b15b((void*)arg0.Handle, (void*)arg1.Handle, arg2);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new SurfaceLevelCache((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static SurfaceLevelCache Create(nint arg0, nint arg1, ulong arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static SurfaceLevelCache Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public short? getPreliminarySurfaceLevel(global::Hosihikari.Bindings.Bedrock.Interop.DividedPos2d_4_ arg0)
-    {
-        var __hs_hasValue = false;
-        var __hs_value = NativeMethods.TablePtr->hs_method_434892ea((void*)_handle, (void*)arg0.Handle, &__hs_hasValue);
-        return __hs_hasValue ? __hs_value : (short?)null;
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public nint getPreliminarySurfaceLevel_434892ea(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_787a8ad7() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_70658180((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_74573e02() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

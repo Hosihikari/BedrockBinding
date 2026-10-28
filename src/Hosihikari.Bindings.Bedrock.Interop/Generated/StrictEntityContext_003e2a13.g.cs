@@ -59,16 +59,9 @@ public sealed unsafe partial class StrictEntityContext : global::System.IDisposa
         return new StrictEntityContext((nint)handle);
     }
 
-    public static StrictEntityContext Create(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.EntityId arg1)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_1b57a806((void*)arg0.Handle, (void*)arg1.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new StrictEntityContext((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public static StrictEntityContext Create(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public static StrictEntityContext Create(nint arg0) =>

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BeehiveBlockActor : global::System.IDisposable
+public sealed unsafe partial class BeehiveBlockActor
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -89,17 +89,7 @@ public sealed unsafe partial class BeehiveBlockActor : global::System.IDisposabl
         return NativeMethods.TablePtr->hs_method_34fedc0e((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_7e2f50d1((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

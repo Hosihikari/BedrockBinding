@@ -41,9 +41,9 @@ public sealed unsafe partial class LootItemMatchToolCondition
     public static LootItemMatchToolCondition Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'IntRange' is not copy-constructible.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static LootItemMatchToolCondition Create_b33deb8c(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'IntRange' is not copy-constructible.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static LootItemMatchToolCondition Create_cc8400c0(nint count, nint durability, nint itemName, nint enchantments) =>

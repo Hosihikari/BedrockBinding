@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PlayerScoreboardEventListener : global::System.IDisposable
+public sealed unsafe partial class PlayerScoreboardEventListener
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,16 +37,9 @@ public sealed unsafe partial class PlayerScoreboardEventListener : global::Syste
         return __hs_handle;
     }
 
-    public static PlayerScoreboardEventListener Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_8e7f495c();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new PlayerScoreboardEventListener((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static PlayerScoreboardEventListener Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static PlayerScoreboardEventListener Create(nint arg0) =>
@@ -55,12 +48,6 @@ public sealed unsafe partial class PlayerScoreboardEventListener : global::Syste
     public global::Hosihikari.Bindings.Bedrock.Interop.SubscribedObjectives getPlayerSubscriptions(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.SubscribedObjectives((nint)NativeMethods.TablePtr->hs_method_55dd2cfe((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle), false);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSubscribedObjectives_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_0bb2cb7a((void*)_handle);
     }
 
     public int onScoreChanged(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, string arg1, int arg2)
@@ -95,17 +82,7 @@ public sealed unsafe partial class PlayerScoreboardEventListener : global::Syste
         NativeMethods.TablePtr->hs_method_d943444c((void*)_handle, (void*)arg0.Handle);
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_0d8c9cff((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class StringByteOutput : global::System.IDisposable
+public sealed unsafe partial class StringByteOutput
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,28 +41,12 @@ public sealed unsafe partial class StringByteOutput : global::System.IDisposable
     public static StringByteOutput Create(nint str) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public nint mBuffer
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_f328835c((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_f328835c((void*)_handle, (void*)value);
-    }
-
     public void writeBytes(nint arg0, ulong arg1)
     {
         NativeMethods.TablePtr->hs_method_41083085((void*)_handle, (void*)arg0, arg1);
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_ae451fd5((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

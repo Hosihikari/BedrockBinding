@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CreativeGroupInfo : global::System.IDisposable
+public sealed unsafe partial class CreativeGroupInfo
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,16 +47,9 @@ public sealed unsafe partial class CreativeGroupInfo : global::System.IDisposabl
     public static CreativeGroupInfo Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static CreativeGroupInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.CreativeGroupInfo arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_4fde6179((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CreativeGroupInfo((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static CreativeGroupInfo Create_4fde6179(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public void addCreativeItem(global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemEntry? arg0)
     {
@@ -67,21 +60,11 @@ public sealed unsafe partial class CreativeGroupInfo : global::System.IDisposabl
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static CreativeGroupInfo Create(nint arg0) =>
+    public static CreativeGroupInfo Create_e56f4953(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_0e18ded0((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
 }

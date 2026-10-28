@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MultiRecipe
+public sealed partial class MultiRecipe
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -49,9 +49,9 @@ public sealed unsafe partial class MultiRecipe
     public static MultiRecipe Create_fdcfcf17(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static MultiRecipe Create_bde25396(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
@@ -60,58 +60,4 @@ public sealed unsafe partial class MultiRecipe
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    public int mHeight
-    {
-        get => NativeMethods.TablePtr->hs_get_7319b763((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_7319b763((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mMyId_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_dee2378a((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mMyIngredients_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_0e44ec7a((void*)_handle);
-    }
-
-    public int mPriority
-    {
-        get => NativeMethods.TablePtr->hs_get_116d0281((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_116d0281((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mRecipeId_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_20db6846((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mRecipeNetId_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_0065149e((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mTag_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_43b8f5c1((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mUnlockingRequirement_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_578728e7((void*)_handle);
-    }
-
-    public int mWidth
-    {
-        get => NativeMethods.TablePtr->hs_get_88b0119f((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_88b0119f((void*)_handle, value);
-    }
 }

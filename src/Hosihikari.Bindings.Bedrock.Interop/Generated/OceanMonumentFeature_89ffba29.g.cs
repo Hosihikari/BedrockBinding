@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class OceanMonumentFeature : global::System.IDisposable
+public sealed unsafe partial class OceanMonumentFeature
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -45,16 +45,9 @@ public sealed unsafe partial class OceanMonumentFeature : global::System.IDispos
     public static OceanMonumentFeature Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static OceanMonumentFeature Create(uint arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_10661a98(arg0);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new OceanMonumentFeature((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static OceanMonumentFeature Create(uint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public bool getNearestGeneratedFeature(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5, nint arg6) =>
@@ -84,6 +77,9 @@ public sealed unsafe partial class OceanMonumentFeature : global::System.IDispos
         return NativeMethods.TablePtr->hs_method_c7b8fda6((void*)_handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mActiveBlueprintCreateCount_Address
@@ -155,18 +151,5 @@ public sealed unsafe partial class OceanMonumentFeature : global::System.IDispos
     {
         get => NativeMethods.TablePtr->hs_get_5b205b6b((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_5b205b6b((void*)_handle, value);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_89ffba29((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

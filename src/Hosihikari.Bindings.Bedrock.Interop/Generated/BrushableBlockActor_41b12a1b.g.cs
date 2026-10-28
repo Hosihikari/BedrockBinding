@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BrushableBlockActor : global::System.IDisposable
+public sealed unsafe partial class BrushableBlockActor
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,16 +41,9 @@ public sealed unsafe partial class BrushableBlockActor : global::System.IDisposa
     public static BrushableBlockActor Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static BrushableBlockActor Create(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, int arg2)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_38455722((void*)arg0.Handle, (void*)arg1.Handle, arg2);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new BrushableBlockActor((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static BrushableBlockActor Create(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static BrushableBlockActor Create(nint arg0) =>
@@ -180,18 +173,5 @@ public sealed unsafe partial class BrushableBlockActor : global::System.IDisposa
     public nint mTransactionContextStack_Address
     {
         get => (nint)NativeMethods.TablePtr->hs_get_4e8242bc((void*)_handle);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_41b12a1b((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

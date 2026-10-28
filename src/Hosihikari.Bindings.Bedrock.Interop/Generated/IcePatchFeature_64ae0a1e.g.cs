@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class IcePatchFeature : global::System.IDisposable
+public sealed unsafe partial class IcePatchFeature
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,24 +37,6 @@ public sealed unsafe partial class IcePatchFeature : global::System.IDisposable
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPlacerID_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_1ed6642e((void*)_handle);
-    }
-
-    public nint mTransaction
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_badbcb57((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_badbcb57((void*)_handle, (void*)value);
-    }
-
-    public short mUnknown
-    {
-        get => NativeMethods.TablePtr->hs_get_4334c4e9((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_4334c4e9((void*)_handle, value);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static IcePatchFeature Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
@@ -63,16 +45,9 @@ public sealed unsafe partial class IcePatchFeature : global::System.IDisposable
     public static IcePatchFeature Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static IcePatchFeature Create(int arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_a63284dc(arg0);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new IcePatchFeature((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static IcePatchFeature Create(int arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
@@ -83,17 +58,7 @@ public sealed unsafe partial class IcePatchFeature : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_19578010((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_64ae0a1e((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

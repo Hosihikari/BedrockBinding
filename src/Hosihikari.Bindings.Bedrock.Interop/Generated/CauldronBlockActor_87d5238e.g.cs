@@ -37,10 +37,9 @@ public sealed unsafe partial class CauldronBlockActor
         return __hs_handle;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color getColor()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_method_90b0a41d((void*)_handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getColor() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Container? getContainer_cff27af7()
     {
@@ -59,10 +58,9 @@ public sealed unsafe partial class CauldronBlockActor
         return NativeMethods.TablePtr->hs_method_a49293bc((void*)_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color getCustomColor()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_method_2bfd1c84((void*)_handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getCustomColor() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ItemStack getItem(int arg0)
     {
@@ -74,10 +72,9 @@ public sealed unsafe partial class CauldronBlockActor
         return NativeMethods.TablePtr->hs_method_58797e1c((void*)_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color getMixDyeColor()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_method_244e4ce0((void*)_handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getMixDyeColor() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.");
 
     public string getName()
     {
@@ -85,10 +82,9 @@ public sealed unsafe partial class CauldronBlockActor
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color getPotionColor()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_method_d4800ed1((void*)_handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getPotionColor() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.");
 
     public int getPotionType()
     {

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ChestBlockActor : global::System.IDisposable
+public sealed unsafe partial class ChestBlockActor
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -42,33 +42,12 @@ public sealed unsafe partial class ChestBlockActor : global::System.IDisposable
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ChestBlockActor Create(nint type, nint id, nint renderId, nint pos, bool isTrapped) =>
+    public static ChestBlockActor Create_8532beee(nint type, nint id, nint renderId, nint pos, bool isTrapped) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static ChestBlockActor Create(int arg0, string arg1, int arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3, bool arg4)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            var handle = NativeMethods.TablePtr->hs_create_8b42f8ed(arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, (void*)arg3.Handle, arg4);
-            if (handle == null)
-            {
-                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-            }
-
-            return new ChestBlockActor((nint)handle);
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ChestBlockActor Create_8b42f8ed(nint arg0, nint arg1, nint arg2, nint arg3, bool arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ChestBlockActor Create(nint arg0) =>
@@ -340,7 +319,13 @@ public sealed unsafe partial class ChestBlockActor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_aec3fb0c((void*)_handle, (void*)arg0.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_b08d5f50() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_7c4e3941() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mContainerRuntimeId_Address
@@ -388,18 +373,5 @@ public sealed unsafe partial class ChestBlockActor : global::System.IDisposable
     public nint mTransactionContextStack_Address
     {
         get => (nint)NativeMethods.TablePtr->hs_get_f4d4cac3((void*)_handle);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_988ded7c((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

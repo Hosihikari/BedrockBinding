@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AddPlayerPacket : global::System.IDisposable
+public sealed unsafe partial class AddPlayerPacket
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,30 +37,16 @@ public sealed unsafe partial class AddPlayerPacket : global::System.IDisposable
         return __hs_handle;
     }
 
-    public static AddPlayerPacket Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_7ba26955();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static AddPlayerPacket Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-        return new AddPlayerPacket((nint)handle);
-    }
-
-    public static AddPlayerPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_65457ee6((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new AddPlayerPacket((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static AddPlayerPacket Create_65457ee6(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AddPlayerPacket Create(nint arg0) =>
+    public static AddPlayerPacket Create_4aaea7ad(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -82,113 +68,6 @@ public sealed unsafe partial class AddPlayerPacket : global::System.IDisposable
     public nint getName_feec80cd() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mAbilities_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_2d9e2de5((void*)_handle);
-    }
-
-    public int mBuildPlatform
-    {
-        get => NativeMethods.TablePtr->hs_get_faf8fce7((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_faf8fce7((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mCarriedItem_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_1aa7e81b((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mDeviceId_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_476e22d2((void*)_handle);
-    }
-
-    public nint mEntityData
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_6869fd1c((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mEntityId_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_4652621c((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mLinks_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_77b98945((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mName_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_28426579((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPlatformOnlineId_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_483dcb53((void*)_handle);
-    }
-
-    public int mPlayerGameType
-    {
-        get => NativeMethods.TablePtr->hs_get_079a1422((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_079a1422((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPos_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_59e45f35((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mRot_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_065652aa((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mRuntimeId_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_23f3d1e1((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSynchedProperties_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_d6843dd1((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mUnpack_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_fa2eb9c4((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mUuid_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_be706ccc((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mVelocity_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_c52208b9((void*)_handle);
-    }
-
-    public float mYHeadRot
-    {
-        get => NativeMethods.TablePtr->hs_get_1f199c06((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_1f199c06((void*)_handle, value);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
@@ -198,59 +77,11 @@ public sealed unsafe partial class AddPlayerPacket : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_d773d4a7((void*)_handle, (void*)arg0.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_fdf05ec9() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-
-    public byte mClientSubId
-    {
-        get => NativeMethods.TablePtr->hs_get_d9b6743d((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_d9b6743d((void*)_handle, value);
-    }
-
-    public int mCompressible
-    {
-        get => NativeMethods.TablePtr->hs_get_7c97b7d9((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_7c97b7d9((void*)_handle, value);
-    }
-
-    public nint mHandler
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_ee2a97b9((void*)_handle);
-    }
-
-    public bool mIsHandled
-    {
-        get => NativeMethods.TablePtr->hs_get_3abb708f((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_3abb708f((void*)_handle, value);
-    }
-
-    public int mPriority
-    {
-        get => NativeMethods.TablePtr->hs_get_1d17f8a2((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_1d17f8a2((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mReceiveTimepoint_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_8524a37b((void*)_handle);
-    }
-
-    public int mReliability
-    {
-        get => NativeMethods.TablePtr->hs_get_c8717d57((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_c8717d57((void*)_handle, value);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_2c36a335((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_ec659463() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ServerLocator : global::System.IDisposable
+public sealed partial class ServerLocator
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -93,18 +93,11 @@ public sealed unsafe partial class ServerLocator : global::System.IDisposable
     public void update() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_d7b6082a() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_c083245b((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_660ed399() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

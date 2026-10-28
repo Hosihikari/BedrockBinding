@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested;
 
-public sealed unsafe partial class ScriptEngine : global::System.IDisposable
+public sealed partial class ScriptEngine
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -129,17 +129,7 @@ public sealed unsafe partial class ScriptEngine : global::System.IDisposable
     public void stopProfiler(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_e1ad7547((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

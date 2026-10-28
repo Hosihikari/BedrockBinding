@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.VillageManager_Nested;
 
-public sealed unsafe partial class VillageInfo : global::System.IDisposable
+public sealed partial class VillageInfo
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,17 +37,7 @@ public sealed unsafe partial class VillageInfo : global::System.IDisposable
         return __hs_handle;
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_d3a6af1d((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

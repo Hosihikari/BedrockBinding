@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DirectionalProducerComponent : global::System.IDisposable
+public sealed unsafe partial class DirectionalProducerComponent
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -121,16 +121,9 @@ public sealed unsafe partial class DirectionalProducerComponent : global::System
         set => NativeMethods.TablePtr->hs_set_92f1e099((void*)_handle, value);
     }
 
-    public static DirectionalProducerComponent Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_d8595af8();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new DirectionalProducerComponent((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static DirectionalProducerComponent Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static DirectionalProducerComponent Create(nint arg0) =>
@@ -145,11 +138,14 @@ public sealed unsafe partial class DirectionalProducerComponent : global::System
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void setAllowedConnections(ulong arg0)
+    public void setAllowedConnections(byte arg0)
     {
         NativeMethods.TablePtr->hs_method_25837dfb((void*)_handle, arg0);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     public bool mAttachedAllowed
     {
@@ -172,18 +168,5 @@ public sealed unsafe partial class DirectionalProducerComponent : global::System
     {
         get => NativeMethods.TablePtr->hs_get_30febb2e((void*)_handle) != 0;
         set => NativeMethods.TablePtr->hs_set_30febb2e((void*)_handle, value);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_6cb5d0d9((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

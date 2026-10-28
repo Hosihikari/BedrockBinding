@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class NetworkStatistics : global::System.IDisposable
+public sealed unsafe partial class NetworkStatistics
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,19 +37,13 @@ public sealed unsafe partial class NetworkStatistics : global::System.IDisposabl
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mControlBlock_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_60a89a63((void*)_handle);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static NetworkStatistics Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<NetworkDebugManager>>' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static NetworkStatistics Create_da4801cb(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<NetworkDebugManager>>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static NetworkStatistics Create(nint arg0) =>
@@ -130,18 +124,11 @@ public sealed unsafe partial class NetworkStatistics : global::System.IDisposabl
         NativeMethods.TablePtr->hs_method_09cecfdc((void*)_handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_4f7f2015() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_a7393373((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_d153504e() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

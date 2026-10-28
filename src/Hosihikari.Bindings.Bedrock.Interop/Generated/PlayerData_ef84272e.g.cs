@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities;
 
-public sealed unsafe partial class PlayerData
+public sealed partial class PlayerData
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -60,12 +60,6 @@ public sealed unsafe partial class PlayerData
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public bool isTeacher() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPlayer_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_6a365f9c((void*)_handle);
-    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

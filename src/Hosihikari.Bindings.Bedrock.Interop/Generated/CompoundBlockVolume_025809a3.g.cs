@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CompoundBlockVolume : global::System.IDisposable
+public sealed unsafe partial class CompoundBlockVolume
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -43,27 +43,13 @@ public sealed unsafe partial class CompoundBlockVolume : global::System.IDisposa
         get => (nint)NativeMethods.TablePtr->hs_get_a52a855b((void*)_handle);
     }
 
-    public static CompoundBlockVolume Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_b9b8c2ef();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static CompoundBlockVolume Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-        return new CompoundBlockVolume((nint)handle);
-    }
-
-    public static CompoundBlockVolume Create(global::Hosihikari.Bindings.Bedrock.Interop.CompoundBlockVolume arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_291cf8ed((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new CompoundBlockVolume((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static CompoundBlockVolume Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public static void bindType(nint arg0)
     {
@@ -158,17 +144,7 @@ public sealed unsafe partial class CompoundBlockVolume : global::System.IDisposa
         return NativeMethods.TablePtr->hs_method_43cdd892((void*)_handle);
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_025809a3((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

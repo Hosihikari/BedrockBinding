@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class NetherFortressFeature : global::System.IDisposable
+public sealed unsafe partial class NetherFortressFeature
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -45,16 +45,9 @@ public sealed unsafe partial class NetherFortressFeature : global::System.IDispo
     public static NetherFortressFeature Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static NetherFortressFeature Create(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg1)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_92d32f60((void*)arg0, (void*)arg1.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new NetherFortressFeature((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static NetherFortressFeature Create(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public void initMobSpawnTypes(nint arg0)
     {
@@ -70,6 +63,9 @@ public sealed unsafe partial class NetherFortressFeature : global::System.IDispo
         return NativeMethods.TablePtr->hs_method_f6360cd4((void*)_handle) != 0;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mActiveBlueprintCreateCount_Address
@@ -141,18 +137,5 @@ public sealed unsafe partial class NetherFortressFeature : global::System.IDispo
     {
         get => NativeMethods.TablePtr->hs_get_9ba32890((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_9ba32890((void*)_handle, value);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_9ce9392e((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

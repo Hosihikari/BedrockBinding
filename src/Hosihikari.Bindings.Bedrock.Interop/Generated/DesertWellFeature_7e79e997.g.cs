@@ -57,22 +57,4 @@ public sealed unsafe partial class DesertWellFeature
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPlacerID_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_fb81654c((void*)_handle);
-    }
-
-    public nint mTransaction
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_fd47c0db((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_fd47c0db((void*)_handle, (void*)value);
-    }
-
-    public short mUnknown
-    {
-        get => NativeMethods.TablePtr->hs_get_91e910ea((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_91e910ea((void*)_handle, value);
-    }
 }

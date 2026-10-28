@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FlowerFeature : global::System.IDisposable
+public sealed unsafe partial class FlowerFeature
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,48 +37,17 @@ public sealed unsafe partial class FlowerFeature : global::System.IDisposable
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPlacerID_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_2fa03111((void*)_handle);
-    }
-
-    public nint mTransaction
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_85c9aa05((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_85c9aa05((void*)_handle, (void*)value);
-    }
-
-    public short mUnknown
-    {
-        get => NativeMethods.TablePtr->hs_get_c03fed0f((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_c03fed0f((void*)_handle, value);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static FlowerFeature Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static FlowerFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_af0e62e1((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new FlowerFeature((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static FlowerFeature Create_af0e62e1(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FlowerFeature Create(nint arg0) =>
+    public static FlowerFeature Create_7c92811f(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mBlock_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_4f2b7788((void*)_handle);
-    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
@@ -89,17 +58,7 @@ public sealed unsafe partial class FlowerFeature : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_1acd8e0a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_a69589c7((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

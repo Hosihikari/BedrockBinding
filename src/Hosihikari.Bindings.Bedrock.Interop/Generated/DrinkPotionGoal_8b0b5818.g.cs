@@ -41,9 +41,9 @@ public sealed unsafe partial class DrinkPotionGoal
     public static DrinkPotionGoal Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'DrinkPotionData' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static DrinkPotionGoal Create(nint arg0, float arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'DrinkPotionData' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static DrinkPotionGoal Create(nint arg0) =>

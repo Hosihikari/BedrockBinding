@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Dimension : global::System.IDisposable
+public sealed unsafe partial class Dimension
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -43,12 +43,6 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->hs_get_6aeaa669((void*)_handle);
     }
 
-    public int CIRCUIT_TICK_RATE
-    {
-        get => NativeMethods.TablePtr->hs_get_c99bed8a((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_c99bed8a((void*)_handle, value);
-    }
-
     public static int CurrentLimboEntitiesVersion
     {
         get => NativeMethods.TablePtr->hs_get_d81230d6();
@@ -59,33 +53,12 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Dimension Create(nint level, nint dimId, nint heightRange, nint callbackContext, nint name) =>
+    public static Dimension Create_afaa01f9(nint level, nint dimId, nint heightRange, nint callbackContext, nint name) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static Dimension Create(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange arg2, global::Hosihikari.Bindings.Bedrock.Interop.Scheduler arg3, string arg4)
-    {
-        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
-        scoped global::System.Span<byte> __hs_stringBytes4;
-        if (__hs_stringByteCount4 <= 256)
-        {
-            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
-        }
-        else
-        {
-            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
-        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
-        {
-            var handle = NativeMethods.TablePtr->hs_create_eb30ec52((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, __hs_stringData4, (nuint)__hs_stringByteCount4);
-            if (handle == null)
-            {
-                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-            }
-
-            return new Dimension((nint)handle);
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static Dimension Create_eb30ec52(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static Dimension Create(nint arg0) =>
@@ -245,10 +218,9 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockSource((nint)NativeMethods.TablePtr->hs_method_b5238d5f((void*)_handle), false);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color getBrightnessDependentFogColor(global::Hosihikari.Bindings.Bedrock.Interop.mce.Color arg0, float arg1)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_method_4686bf9b((void*)_handle, (void*)arg0.Handle, arg1));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getBrightnessDependentFogColor(nint arg0, float arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.DimensionBrightnessRamp getBrightnessRamp()
     {
@@ -534,330 +506,6 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
     public bool levelChunkNeedsUpgrade(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mActorChunkTransferQueue_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_179739f8((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mActorIDEntityIDMap_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_22625f41((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mActorUnloadedChunkTransferQueue_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_9d240eac((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mBlockSource_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_967b45dc((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mBlocksChangedBySubChunkMap_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_fe7a9d67((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mChunkBuildOrderPolicy_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_5371ddeb((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mChunkGenTaskGroup_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_2a34e1d2((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mChunkLoadActionList_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_c67aa470((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mChunkSource_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_273f2ba6((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mCircuitSystem_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_e5d8369a((void*)_handle);
-    }
-
-    public int mCircuitSystemTickRate
-    {
-        get => NativeMethods.TablePtr->hs_get_83997c04((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_83997c04((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mClientScriptDimension_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_862a54b7((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mDefaultBrightness_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_14fd8e09((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mDelayActionList_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_d5925cf2((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mDimensionBrightnessRamp_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_ac8d21ce((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mDispatcher_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_56d8171b((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mDisplayEntities_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_f36c749a((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mEntitiesToMoveChunks_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_c23ec18e((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mFeatureTerrainAdjustments_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_003ee8cc((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mGameEventDispatcher_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_98cfee95((void*)_handle);
-    }
-
-    public bool mHasCeiling
-    {
-        get => NativeMethods.TablePtr->hs_get_f3fd66be((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_f3fd66be((void*)_handle, value);
-    }
-
-    public bool mHasSkylight
-    {
-        get => NativeMethods.TablePtr->hs_get_3d03cf86((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_3d03cf86((void*)_handle, value);
-    }
-
-    public bool mHasWeather
-    {
-        get => NativeMethods.TablePtr->hs_get_af728333((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_af728333((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mHeightRange_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_cf72d317((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mId_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_2386ebe4((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mLastPruneTime_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_8f607501((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mLevel_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_ad7c6985((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mLevelChunkBuilderData_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_4980b54f((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mLevelChunkGarbageCollector_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_bf039882((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mLightTextureImageBuilder_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_c389e1af((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mLimboEntities_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_c9edc4a7((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mMobsPerChunkSurface_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_c5ef8795((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mMobsPerChunkUnderground_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_9c40dc5b((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mName_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_1f6619b5((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mNextPruneTime_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_3baee52a((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPlayersToReplicate_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_7a0fc448((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPostProcessingManager_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_a62946e7((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mReplicationStructures_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_c12e0550((void*)_handle);
-    }
-
-    public bool mRunChunkGenWatchDog
-    {
-        get => NativeMethods.TablePtr->hs_get_d677f755((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_d677f755((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mRuntimeLightingManager_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_b3d40eef((void*)_handle);
-    }
-
-    public short mSeaLevel
-    {
-        get => NativeMethods.TablePtr->hs_get_343327bf((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_343327bf((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSeasons_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_515f8d72((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSkyDarken_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_4427d7fc((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSubChunkInterlocker_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_f03b1449((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mTargetMetaData_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_ec268f66((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mTaskGroup_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_f6a95201((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mTemporaryPlayerIds_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_9a820e5d((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mTickingAreaList_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_21a2d1ea((void*)_handle);
-    }
-
-    public bool mUltraWarm
-    {
-        get => NativeMethods.TablePtr->hs_get_00160b60((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_00160b60((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mVillageManager_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_d6d3bdeb((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mWeather_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_13663b77((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mWireframeQueue_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_86a83174((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mWitherIDs_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_1defbe5f((void*)_handle);
-    }
-
-    public nint mWorldGenerator
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_81c1fd28((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_81c1fd28((void*)_handle, (void*)value);
-    }
-
     public bool mayRespawnViaBed()
     {
         return NativeMethods.TablePtr->hs_method_e9f09722((void*)_handle) != 0;
@@ -1061,18 +709,11 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
     public void upgradeLevelChunk(nint source, nint lc, nint generatedChunk) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_d8efaf5c() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_0ec03f79((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_54a34988() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

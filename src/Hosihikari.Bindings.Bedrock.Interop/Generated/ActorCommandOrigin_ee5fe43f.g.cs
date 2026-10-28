@@ -141,10 +141,9 @@ public sealed unsafe partial class ActorCommandOrigin : global::System.IDisposab
         set => NativeMethods.TablePtr->hs_set_6e6dd837((void*)_handle, (void*)value);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag serialize()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)NativeMethods.TablePtr->hs_method_1ed1446f((void*)_handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CompoundTag' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint serialize() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CompoundTag' requires --link-carrier or --virtual-dispatch.");
 
 
     // The native field type is not projected; this is the address of the field storage.

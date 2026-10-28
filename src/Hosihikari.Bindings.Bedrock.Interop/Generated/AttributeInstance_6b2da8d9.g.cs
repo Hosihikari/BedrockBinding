@@ -75,10 +75,9 @@ public sealed unsafe partial class AttributeInstance
         return NativeMethods.TablePtr->hs_method_2a63d93d((void*)_handle, arg0);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstanceHandle getHandle()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstanceHandle((nint)NativeMethods.TablePtr->hs_method_c6feebf3((void*)_handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'AttributeInstanceHandle' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getHandle() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'AttributeInstanceHandle' requires --link-carrier or --virtual-dispatch.");
 
     public float getMaxValue()
     {

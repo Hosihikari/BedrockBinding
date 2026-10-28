@@ -48,7 +48,7 @@ public sealed unsafe partial class HurtArmorPacket : global::System.IDisposable
         return new HurtArmorPacket((nint)handle);
     }
 
-    public static HurtArmorPacket Create(int arg0, int arg1, ulong arg2)
+    public static HurtArmorPacket Create(int arg0, int arg1, byte arg2)
     {
         var handle = NativeMethods.TablePtr->hs_create_23c56b7b(arg0, arg1, arg2);
         if (handle == null)
@@ -82,10 +82,10 @@ public sealed unsafe partial class HurtArmorPacket : global::System.IDisposable
     public nint getName_daa04dc0() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mArmorSlots_Address
+    public byte mArmorSlots
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_f35fab21((void*)_handle);
+        get => NativeMethods.TablePtr->hs_get_f35fab21((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_f35fab21((void*)_handle, value);
     }
 
     public int mCause

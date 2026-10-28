@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SubChunkPos : global::System.IDisposable
+public sealed unsafe partial class SubChunkPos
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -52,16 +52,9 @@ public sealed unsafe partial class SubChunkPos : global::System.IDisposable
         get => new global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPos((nint)NativeMethods.TablePtr->hs_get_e11b9d47(), false);
     }
 
-    public static SubChunkPos Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_13b3c78f((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new SubChunkPos((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static SubChunkPos Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPos ZERO
     {
@@ -124,18 +117,5 @@ public sealed unsafe partial class SubChunkPos : global::System.IDisposable
     {
         get => NativeMethods.TablePtr->hs_get_159e3d3f((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_159e3d3f((void*)_handle, value);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_aa9c8e5d((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

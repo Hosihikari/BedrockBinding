@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class UpdatePlayerGameTypePacket : global::System.IDisposable
+public sealed unsafe partial class UpdatePlayerGameTypePacket
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -78,27 +78,13 @@ public sealed unsafe partial class UpdatePlayerGameTypePacket : global::System.I
         set => NativeMethods.TablePtr->hs_set_9bd8892e((void*)_handle, value);
     }
 
-    public static UpdatePlayerGameTypePacket Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_2be5e707();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static UpdatePlayerGameTypePacket Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-        return new UpdatePlayerGameTypePacket((nint)handle);
-    }
-
-    public static UpdatePlayerGameTypePacket Create(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg1, ulong arg2)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_f85c89b0(arg0, (void*)arg1.Handle, arg2);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new UpdatePlayerGameTypePacket((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static UpdatePlayerGameTypePacket Create(nint arg0, nint arg1, ulong arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static UpdatePlayerGameTypePacket Create(nint arg0) =>
@@ -123,24 +109,6 @@ public sealed unsafe partial class UpdatePlayerGameTypePacket : global::System.I
     public nint getName_f82b27bf() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public int mPlayerGameType
-    {
-        get => NativeMethods.TablePtr->hs_get_95ff9b70((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_95ff9b70((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mTargetPlayer_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_52459e1a((void*)_handle);
-    }
-
-    public int mTick
-    {
-        get => NativeMethods.TablePtr->hs_get_90969f91((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_90969f91((void*)_handle, value);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
@@ -150,18 +118,11 @@ public sealed unsafe partial class UpdatePlayerGameTypePacket : global::System.I
         NativeMethods.TablePtr->hs_method_783ffdc3((void*)_handle, (void*)arg0.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_da2135c7() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_f19942ef((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_8c006e8b() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

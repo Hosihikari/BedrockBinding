@@ -37,60 +37,6 @@ public sealed unsafe partial class ShapedChemistryRecipe
         return __hs_handle;
     }
 
-    public int mHeight
-    {
-        get => NativeMethods.TablePtr->hs_get_e5140913((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_e5140913((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mMyId_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_3a4f0512((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mMyIngredients_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_51705e6f((void*)_handle);
-    }
-
-    public int mPriority
-    {
-        get => NativeMethods.TablePtr->hs_get_91eec485((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_91eec485((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mRecipeId_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_1f577ecb((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mRecipeNetId_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_dde4a87f((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mTag_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_41456cd7((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mUnlockingRequirement_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_c73a48ef((void*)_handle);
-    }
-
-    public int mWidth
-    {
-        get => NativeMethods.TablePtr->hs_get_9b720b43((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_9b720b43((void*)_handle, value);
-    }
-
     public static global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID ID
     {
         get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->hs_get_25a7431b(), false);

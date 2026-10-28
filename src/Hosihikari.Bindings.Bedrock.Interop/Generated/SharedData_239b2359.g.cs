@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities;
 
-public sealed unsafe partial class SharedData
+public sealed partial class SharedData
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -52,11 +52,6 @@ public sealed unsafe partial class SharedData
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint isGameRuleEnabled(nint rule) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public nint mLevel
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_d9533fa7((void*)_handle);
-    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

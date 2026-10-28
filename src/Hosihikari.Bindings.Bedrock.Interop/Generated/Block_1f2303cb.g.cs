@@ -107,15 +107,13 @@ public sealed unsafe partial class Block : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_4c070167((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance asItemInstance(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_a7e2db60((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint asItemInstance(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance asItemInstance(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, bool arg2)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_d8455376((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint asItemInstance(nint arg0, nint arg1, bool arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.");
 
     public bool attack(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
     {
@@ -411,10 +409,9 @@ public sealed unsafe partial class Block : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_2d371e39((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy_Nested.HorizontalDirectionBits getConnectedDirections(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy_Nested.HorizontalDirectionBits((nint)NativeMethods.TablePtr->hs_method_11f19134((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'BlockLegacy::HorizontalDirectionBits' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getConnectedDirections(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'BlockLegacy::HorizontalDirectionBits' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public short getData() =>
@@ -515,10 +512,9 @@ public sealed unsafe partial class Block : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Brightness((nint)NativeMethods.TablePtr->hs_method_b88d9808((void*)_handle));
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color getMapColor(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_method_4f2e7e5b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getMapColor(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Material getMaterial()
     {

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class VarIntDataOutput : global::System.IDisposable
+public sealed unsafe partial class VarIntDataOutput
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -40,12 +40,6 @@ public sealed unsafe partial class VarIntDataOutput : global::System.IDisposable
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static VarIntDataOutput Create(nint bs) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public nint mStream
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_f738c827((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_f738c827((void*)_handle, (void*)value);
-    }
 
     public void writeByte(sbyte arg0)
     {
@@ -128,18 +122,11 @@ public sealed unsafe partial class VarIntDataOutput : global::System.IDisposable
     public void writeString(nint v) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_33752bd6() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_0f780ffa((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_a3af7a91() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Int64Tag : global::System.IDisposable
+public sealed unsafe partial class Int64Tag
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,27 +37,14 @@ public sealed unsafe partial class Int64Tag : global::System.IDisposable
         return __hs_handle;
     }
 
-    public static Int64Tag Create(long arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_ace5ff02(arg0);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new Int64Tag((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static Int64Tag Create(long arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Tag? copy()
     {
         var __hs_handle = NativeMethods.TablePtr->hs_method_d0f84f01((void*)_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Tag((nint)__hs_handle) : null;
-    }
-
-    public long data
-    {
-        get => NativeMethods.TablePtr->hs_get_f8219e48((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_f8219e48((void*)_handle, value);
     }
 
     public bool equals(global::Hosihikari.Bindings.Bedrock.Interop.Tag arg0)
@@ -102,17 +89,7 @@ public sealed unsafe partial class Int64Tag : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_1bb52a9b((void*)_handle, (void*)arg0.Handle);
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_a561df51((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RakNetConnector : global::System.IDisposable
+public sealed unsafe partial class RakNetConnector
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,16 +47,9 @@ public sealed unsafe partial class RakNetConnector : global::System.IDisposable
     public static RakNetConnector Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static RakNetConnector Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNetConnector_Nested.ConnectionCallbacks arg0, global::Hosihikari.Bindings.Bedrock.Interop.RakPeerHelper_Nested.IPSupportInterface arg1, nint arg2, nint arg3)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_110702b0((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new RakNetConnector((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static RakNetConnector Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static RakNetConnector Create(nint arg0) =>
@@ -127,10 +120,9 @@ public sealed unsafe partial class RakNetConnector : global::System.IDisposable
     public nint getLocalIps_523dc206() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Connector_Nested.NatPunchInfo getNatPunchInfo()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Connector_Nested.NatPunchInfo((nint)NativeMethods.TablePtr->hs_method_3f103b9a((void*)_handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Connector::NatPunchInfo' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getNatPunchInfo() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Connector::NatPunchInfo' requires --link-carrier or --virtual-dispatch.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier getNetworkIdentifier()
     {
@@ -253,18 +245,11 @@ public sealed unsafe partial class RakNetConnector : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_ef40a776((void*)_handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_fd921a98() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_bd68ef5d((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_e37290cf() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

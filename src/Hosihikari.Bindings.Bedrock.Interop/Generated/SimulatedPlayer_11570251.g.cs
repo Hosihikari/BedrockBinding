@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SimulatedPlayer : global::System.IDisposable
+public sealed unsafe partial class SimulatedPlayer
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,12 +37,6 @@ public sealed unsafe partial class SimulatedPlayer : global::System.IDisposable
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint filler_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_fe3e963c((void*)_handle);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static SimulatedPlayer Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
@@ -51,9 +45,9 @@ public sealed unsafe partial class SimulatedPlayer : global::System.IDisposable
     public static SimulatedPlayer Create_800acd0b(nint level, nint packetSender, nint network, nint clientCacheMirror, nint playerGameType, nint owner, nint subid, nint arg7, nint uuid, nint deviceId, nint certificate, int maxChunkRadius, bool enableItemStackNetManager, nint entityContext) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static SimulatedPlayer Create_ec241e9b(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7, nint arg8, nint arg9, nint arg10, int arg11, bool arg12, nint arg13) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static SimulatedPlayer Create(nint arg0) =>
@@ -376,17 +370,7 @@ public sealed unsafe partial class SimulatedPlayer : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.SimulatedPlayer((nint)__hs_handle, false) : null;
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_11570251((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

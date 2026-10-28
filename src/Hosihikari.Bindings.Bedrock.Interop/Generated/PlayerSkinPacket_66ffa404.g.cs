@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PlayerSkinPacket : global::System.IDisposable
+public sealed unsafe partial class PlayerSkinPacket
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -78,16 +78,9 @@ public sealed unsafe partial class PlayerSkinPacket : global::System.IDisposable
         set => NativeMethods.TablePtr->hs_set_c89f197a((void*)_handle, value);
     }
 
-    public static PlayerSkinPacket Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_ef06dc61();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new PlayerSkinPacket((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static PlayerSkinPacket Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static PlayerSkinPacket Create(nint arg0) =>
@@ -112,30 +105,6 @@ public sealed unsafe partial class PlayerSkinPacket : global::System.IDisposable
     public nint getName_297787cf() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mLocalizedNewSkinName_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_51ff6c8f((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mLocalizedOldSkinName_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_2f09d368((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSkin_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_04292876((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mUUID_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_7d2c3099((void*)_handle);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
@@ -153,18 +122,11 @@ public sealed unsafe partial class PlayerSkinPacket : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_cb1360dd((void*)_handle, (void*)arg0.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_3d55b5e4() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_66ffa404((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_51048000() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

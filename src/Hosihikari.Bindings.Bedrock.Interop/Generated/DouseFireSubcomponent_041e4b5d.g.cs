@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DouseFireSubcomponent : global::System.IDisposable
+public sealed unsafe partial class DouseFireSubcomponent
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,16 +37,9 @@ public sealed unsafe partial class DouseFireSubcomponent : global::System.IDispo
         return __hs_handle;
     }
 
-    public static DouseFireSubcomponent Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_c70f9a25();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new DouseFireSubcomponent((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static DouseFireSubcomponent Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static DouseFireSubcomponent Create(nint arg0) =>
@@ -81,17 +74,7 @@ public sealed unsafe partial class DouseFireSubcomponent : global::System.IDispo
         NativeMethods.TablePtr->hs_method_8518f277((void*)_handle, (void*)arg0.Handle);
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_041e4b5d((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

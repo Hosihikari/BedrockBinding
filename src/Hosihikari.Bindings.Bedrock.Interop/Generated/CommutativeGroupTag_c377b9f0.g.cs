@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ll.math;
 
-public sealed partial class CommutativeGroupTag
+public sealed unsafe partial class CommutativeGroupTag : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,5 +35,18 @@ public sealed partial class CommutativeGroupTag
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_c377b9f0((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class NetworkSessionOwner : global::System.IDisposable
+public sealed unsafe partial class NetworkSessionOwner
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -43,16 +43,9 @@ public sealed unsafe partial class NetworkSessionOwner : global::System.IDisposa
         get => (nint)NativeMethods.TablePtr->hs_get_0332fa13((void*)_handle);
     }
 
-    public static NetworkSessionOwner Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_f2433854();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new NetworkSessionOwner((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static NetworkSessionOwner Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static NetworkSessionOwner Create(nint arg0) =>
@@ -82,17 +75,7 @@ public sealed unsafe partial class NetworkSessionOwner : global::System.IDisposa
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_0c2779fc((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

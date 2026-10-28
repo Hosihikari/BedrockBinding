@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LegacySmallMushroomsFeature : global::System.IDisposable
+public sealed unsafe partial class LegacySmallMushroomsFeature
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,41 +37,16 @@ public sealed unsafe partial class LegacySmallMushroomsFeature : global::System.
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPlacerID_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_ff49fd86((void*)_handle);
-    }
-
-    public nint mTransaction
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_ea7cd19e((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_ea7cd19e((void*)_handle, (void*)value);
-    }
-
-    public short mUnknown
-    {
-        get => NativeMethods.TablePtr->hs_get_6787f550((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_6787f550((void*)_handle, value);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static LegacySmallMushroomsFeature Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static LegacySmallMushroomsFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.FeatureRegistry arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_e7ee1938((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new LegacySmallMushroomsFeature((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static LegacySmallMushroomsFeature Create_e7ee1938(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LegacySmallMushroomsFeature Create(nint arg0) =>
+    public static LegacySmallMushroomsFeature Create_da437d4b(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -83,17 +58,7 @@ public sealed unsafe partial class LegacySmallMushroomsFeature : global::System.
         return NativeMethods.TablePtr->hs_method_1f8d087f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_b8d3e131((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

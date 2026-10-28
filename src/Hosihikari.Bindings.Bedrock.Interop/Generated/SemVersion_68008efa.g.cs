@@ -66,16 +66,9 @@ public sealed unsafe partial class SemVersion : global::System.IDisposable
         return new SemVersion((nint)handle);
     }
 
-    public static SemVersion Create(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion_Nested.any_version_constructor arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_2983a251((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new SemVersion((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public static SemVersion Create_2983a251(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static SemVersion Create(ushort major, ushort minor, ushort patch, nint preRelease, nint buildMeta) =>
@@ -260,7 +253,7 @@ public sealed unsafe partial class SemVersion : global::System.IDisposable
 
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static SemVersion Create(nint arg0) =>
+    public static SemVersion Create_4582ecaf(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
 

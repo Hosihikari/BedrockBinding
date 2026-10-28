@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AmphibiousMoveControl : global::System.IDisposable
+public sealed unsafe partial class AmphibiousMoveControl
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,16 +37,9 @@ public sealed unsafe partial class AmphibiousMoveControl : global::System.IDispo
         return __hs_handle;
     }
 
-    public static AmphibiousMoveControl Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_c6c38497();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new AmphibiousMoveControl((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static AmphibiousMoveControl Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static AmphibiousMoveControl Create(nint arg0) =>
@@ -61,17 +54,7 @@ public sealed unsafe partial class AmphibiousMoveControl : global::System.IDispo
         NativeMethods.TablePtr->hs_method_d39290e4((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_8182c777((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

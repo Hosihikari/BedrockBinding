@@ -57,22 +57,4 @@ public sealed unsafe partial class CactusFeature
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPlacerID_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_9b888307((void*)_handle);
-    }
-
-    public nint mTransaction
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_312ea49c((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_312ea49c((void*)_handle, (void*)value);
-    }
-
-    public short mUnknown
-    {
-        get => NativeMethods.TablePtr->hs_get_8c6425d6((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_8c6425d6((void*)_handle, value);
-    }
 }

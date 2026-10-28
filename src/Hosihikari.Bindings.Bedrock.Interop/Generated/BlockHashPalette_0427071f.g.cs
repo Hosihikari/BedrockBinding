@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockHashPalette : global::System.IDisposable
+public sealed unsafe partial class BlockHashPalette
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,19 +41,12 @@ public sealed unsafe partial class BlockHashPalette : global::System.IDisposable
     public static BlockHashPalette Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static BlockHashPalette Create(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_4714da2a((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new BlockHashPalette((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static BlockHashPalette Create_4714da2a(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockHashPalette Create(nint arg0) =>
+    public static BlockHashPalette Create_59b2410a(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void appendBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0)
@@ -75,6 +68,9 @@ public sealed unsafe partial class BlockHashPalette : global::System.IDisposable
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockFromNetworkId_Address
@@ -104,18 +100,5 @@ public sealed unsafe partial class BlockHashPalette : global::System.IDisposable
     public nint mNameLookup_Address
     {
         get => (nint)NativeMethods.TablePtr->hs_get_243fd577((void*)_handle);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_0427071f((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BannerPattern : global::System.IDisposable
+public sealed unsafe partial class BannerPattern
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,16 +47,9 @@ public sealed unsafe partial class BannerPattern : global::System.IDisposable
     public static BannerPattern Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static BannerPattern Create(global::Hosihikari.Bindings.Bedrock.Interop.BannerPattern arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_49511c8f((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new BannerPattern((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static BannerPattern Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
     public static nint CREEPER_NAME_ID
@@ -226,24 +219,17 @@ public sealed unsafe partial class BannerPattern : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle, false) : null;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_0905318b() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_3f1a7d4b() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
         get => (nint)NativeMethods.TablePtr->hs_get_e20205cf((void*)_handle);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_eba7750b((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

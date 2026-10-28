@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AddActorBasePacket : global::System.IDisposable
+public sealed partial class AddActorBasePacket
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,58 +37,7 @@ public sealed unsafe partial class AddActorBasePacket : global::System.IDisposab
         return __hs_handle;
     }
 
-
-    public byte mClientSubId
-    {
-        get => NativeMethods.TablePtr->hs_get_3b1644a2((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_3b1644a2((void*)_handle, value);
-    }
-
-    public int mCompressible
-    {
-        get => NativeMethods.TablePtr->hs_get_e2ba5654((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_e2ba5654((void*)_handle, value);
-    }
-
-    public nint mHandler
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_1da3ded5((void*)_handle);
-    }
-
-    public bool mIsHandled
-    {
-        get => NativeMethods.TablePtr->hs_get_d7ef2936((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_d7ef2936((void*)_handle, value);
-    }
-
-    public int mPriority
-    {
-        get => NativeMethods.TablePtr->hs_get_3682ba58((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_3682ba58((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mReceiveTimepoint_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_f3eaf5ac((void*)_handle);
-    }
-
-    public int mReliability
-    {
-        get => NativeMethods.TablePtr->hs_get_22837351((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_22837351((void*)_handle, value);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_4520a547((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

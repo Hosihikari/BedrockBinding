@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BonusChestFeature : global::System.IDisposable
+public sealed unsafe partial class BonusChestFeature
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -54,35 +54,7 @@ public sealed unsafe partial class BonusChestFeature : global::System.IDisposabl
         return NativeMethods.TablePtr->hs_method_4711206a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPlacerID_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_5623cba5((void*)_handle);
-    }
-
-    public nint mTransaction
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_68496b29((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_68496b29((void*)_handle, (void*)value);
-    }
-
-    public short mUnknown
-    {
-        get => NativeMethods.TablePtr->hs_get_6a896062((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_6a896062((void*)_handle, value);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_6440fe39((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

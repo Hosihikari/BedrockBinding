@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EncryptedNetworkPeer : global::System.IDisposable
+public sealed unsafe partial class EncryptedNetworkPeer
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -113,24 +113,17 @@ public sealed unsafe partial class EncryptedNetworkPeer : global::System.IDispos
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_e4f76714() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_f05feb43() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPeer_Address
     {
         get => (nint)NativeMethods.TablePtr->hs_get_bb8a427a((void*)_handle);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_cb416ba2((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

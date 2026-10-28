@@ -41,16 +41,9 @@ public sealed unsafe partial class BlockPalette : global::System.IDisposable
     public static BlockPalette Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static BlockPalette Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPalette_Nested.ConstructorToken arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_e6b89f89((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new BlockPalette((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public static BlockPalette Create_e6b89f89(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public static BlockPalette Create(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0)
     {
@@ -64,7 +57,7 @@ public sealed unsafe partial class BlockPalette : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockPalette Create(nint arg0) =>
+    public static BlockPalette Create_e5414e4b(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void appendBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0)

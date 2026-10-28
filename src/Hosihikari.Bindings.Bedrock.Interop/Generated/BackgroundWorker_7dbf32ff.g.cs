@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BackgroundWorker : global::System.IDisposable
+public sealed unsafe partial class BackgroundWorker
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -45,33 +45,12 @@ public sealed unsafe partial class BackgroundWorker : global::System.IDisposable
     public static BackgroundWorker Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static BackgroundWorker Create(string arg0, bool arg1, nint arg2, ulong? arg3, int? arg4, global::Hosihikari.Bindings.Bedrock.Interop.WorkerPool arg5, bool arg6)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            var handle = NativeMethods.TablePtr->hs_create_63b39c4d(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, (void*)arg2, arg3 ?? default(ulong), arg4 ?? default(int), (void*)arg5.Handle, arg6, arg3.HasValue, arg4.HasValue);
-            if (handle == null)
-            {
-                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-            }
-
-            return new BackgroundWorker((nint)handle);
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static BackgroundWorker Create_63b39c4d(nint arg0, bool arg1, nint arg2, nint arg3, nint arg4, nint arg5, bool arg6) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BackgroundWorker Create(nint name, bool async, nint priority, nint coreAffinity, nint idealCore, nint workerPool, bool suppressProfiling) =>
+    public static BackgroundWorker Create_31e19793(nint name, bool async, nint priority, nint coreAffinity, nint idealCore, nint workerPool, bool suppressProfiling) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -131,18 +110,11 @@ public sealed unsafe partial class BackgroundWorker : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_0d7ccdd0((void*)_handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_cf3ff45e() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_7dbf32ff((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_fa4fc017() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

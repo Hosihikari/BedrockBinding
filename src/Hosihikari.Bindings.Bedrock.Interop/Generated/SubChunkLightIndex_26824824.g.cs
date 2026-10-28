@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SubChunkLightIndex : global::System.IDisposable
+public sealed partial class SubChunkLightIndex
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -40,17 +40,4 @@ public sealed unsafe partial class SubChunkLightIndex : global::System.IDisposab
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static SubChunkLightIndex Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_26824824((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
 }

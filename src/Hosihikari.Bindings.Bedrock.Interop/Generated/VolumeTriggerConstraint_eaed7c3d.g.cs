@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class VolumeTriggerConstraint
+public sealed partial class VolumeTriggerConstraint
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -45,10 +45,9 @@ public sealed unsafe partial class VolumeTriggerConstraint
     public static VolumeTriggerConstraint Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.ConstraintDescription description()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.ConstraintDescription((nint)NativeMethods.TablePtr->hs_method_fb851605((void*)_handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'cereal::internal::ConstraintDescription' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint description() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'cereal::internal::ConstraintDescription' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

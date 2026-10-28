@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class JukeboxBlockActor : global::System.IDisposable
+public sealed unsafe partial class JukeboxBlockActor
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -89,19 +89,12 @@ public sealed unsafe partial class JukeboxBlockActor : global::System.IDisposabl
     public static JukeboxBlockActor Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static JukeboxBlockActor Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_c9109f8c((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new JukeboxBlockActor((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static JukeboxBlockActor Create_c9109f8c(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static JukeboxBlockActor Create(nint arg0) =>
+    public static JukeboxBlockActor Create_3bf7106d(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public bool canPullOutItem(int arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg2)
@@ -202,18 +195,5 @@ public sealed unsafe partial class JukeboxBlockActor : global::System.IDisposabl
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
     {
         NativeMethods.TablePtr->hs_method_ade2dbac((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_7b964026((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

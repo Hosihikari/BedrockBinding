@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class WorldBlockTarget : global::System.IDisposable
+public sealed unsafe partial class WorldBlockTarget
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,16 +41,9 @@ public sealed unsafe partial class WorldBlockTarget : global::System.IDisposable
     public static WorldBlockTarget Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static WorldBlockTarget Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.WorldGenContext arg1)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_97e48d4b((void*)arg0.Handle, (void*)arg1.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new WorldBlockTarget((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static WorldBlockTarget Create(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static WorldBlockTarget Create(nint arg0) =>
@@ -161,24 +154,6 @@ public sealed unsafe partial class WorldBlockTarget : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_8101e247((void*)_handle) != 0;
     }
 
-    public bool mBlockSimpleIsAllowed
-    {
-        get => NativeMethods.TablePtr->hs_get_61d50971((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_61d50971((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mBlockSource_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_74d77368((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mWorldGenContext_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_a8b0891e((void*)_handle);
-    }
-
     public bool mayPlace(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1)
     {
         return NativeMethods.TablePtr->hs_method_bce95c18((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
@@ -214,17 +189,7 @@ public sealed unsafe partial class WorldBlockTarget : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)__hs_handle, false) : null;
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_7efa8bbe((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

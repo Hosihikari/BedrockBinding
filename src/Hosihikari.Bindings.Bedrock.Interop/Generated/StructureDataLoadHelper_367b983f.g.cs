@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class StructureDataLoadHelper : global::System.IDisposable
+public sealed unsafe partial class StructureDataLoadHelper
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,16 +37,9 @@ public sealed unsafe partial class StructureDataLoadHelper : global::System.IDis
         return __hs_handle;
     }
 
-    public static StructureDataLoadHelper Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg3, byte arg4, byte arg5, global::Hosihikari.Bindings.Bedrock.Interop.Level arg6)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_dc7eea2c((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, arg4, arg5, (void*)arg6.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new StructureDataLoadHelper((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static StructureDataLoadHelper Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public int getType()
     {
@@ -147,70 +140,12 @@ public sealed unsafe partial class StructureDataLoadHelper : global::System.IDis
         return NativeMethods.TablePtr->hs_method_666b6790((void*)_handle, arg0);
     }
 
-    public nint mLevel
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_eaf95e41((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_eaf95e41((void*)_handle, (void*)value);
-    }
-
-    public byte mMirror
-    {
-        get => NativeMethods.TablePtr->hs_get_6d7c3052((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_6d7c3052((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mOldIDToNewID_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_71f1cc35((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mOwner_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_057b6b51((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPivot_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_ee7a74d7((void*)_handle);
-    }
-
-    public byte mRotation
-    {
-        get => NativeMethods.TablePtr->hs_get_e0d92fe9((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_e0d92fe9((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mStructurePlacementLocation_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_fdc7da83((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mStructureWorldOrigin_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_d1bf04a2((void*)_handle);
-    }
-
     public bool shouldResetTime()
     {
         return NativeMethods.TablePtr->hs_method_147b10c3((void*)_handle) != 0;
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_367b983f((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

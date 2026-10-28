@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PhotoTransferPacket : global::System.IDisposable
+public sealed unsafe partial class PhotoTransferPacket
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -78,16 +78,9 @@ public sealed unsafe partial class PhotoTransferPacket : global::System.IDisposa
         set => NativeMethods.TablePtr->hs_set_4463d83b((void*)_handle, value);
     }
 
-    public static PhotoTransferPacket Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_9f20cdd6();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new PhotoTransferPacket((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static PhotoTransferPacket Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static PhotoTransferPacket Create(nint arg0) =>
@@ -112,48 +105,6 @@ public sealed unsafe partial class PhotoTransferPacket : global::System.IDisposa
     public nint getName_88ddf597() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mBookId_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_07729d61((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mNewPhotoName_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_ea0efd41((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mOwnerId_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_2b2b409b((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPhotoData_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_04a25c4c((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPhotoName_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_cc4786d3((void*)_handle);
-    }
-
-    public int mSourceType
-    {
-        get => NativeMethods.TablePtr->hs_get_c2c7dc77((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_c2c7dc77((void*)_handle, value);
-    }
-
-    public int mType
-    {
-        get => NativeMethods.TablePtr->hs_get_a0c55c37((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_a0c55c37((void*)_handle, value);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
@@ -163,18 +114,11 @@ public sealed unsafe partial class PhotoTransferPacket : global::System.IDisposa
         NativeMethods.TablePtr->hs_method_9d902b49((void*)_handle, (void*)arg0.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_074f2e3a() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_57f23ef2((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_fb9df45f() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

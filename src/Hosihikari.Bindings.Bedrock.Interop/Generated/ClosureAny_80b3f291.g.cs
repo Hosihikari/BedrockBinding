@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested;
 
-public sealed unsafe partial class ClosureAny : global::System.IDisposable
+public sealed partial class ClosureAny
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -77,17 +77,7 @@ public sealed unsafe partial class ClosureAny : global::System.IDisposable
     public bool valid() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_80b3f291((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

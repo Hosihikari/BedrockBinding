@@ -48,16 +48,9 @@ public sealed unsafe partial class ChunkLocalNoiseCache : global::System.IDispos
         return new ChunkLocalNoiseCache((nint)handle);
     }
 
-    public static ChunkLocalNoiseCache Create(global::Hosihikari.Bindings.Bedrock.Interop.DividedPos2d_4_ arg0, int arg1)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_04eeadea((void*)arg0.Handle, arg1);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ChunkLocalNoiseCache((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public static ChunkLocalNoiseCache Create(nint arg0, int arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ChunkLocalNoiseCache Create(nint arg0) =>

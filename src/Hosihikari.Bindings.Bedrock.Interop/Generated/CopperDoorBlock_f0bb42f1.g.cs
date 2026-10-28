@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CopperDoorBlock : global::System.IDisposable
+public sealed unsafe partial class CopperDoorBlock
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -46,62 +46,20 @@ public sealed unsafe partial class CopperDoorBlock : global::System.IDisposable
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CopperDoorBlock Create(nint arg0, int arg1, nint arg2, nint arg3, nint arg4) =>
+    public static CopperDoorBlock Create_a1e3477a(nint arg0, int arg1, nint arg2, nint arg3, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CopperDoorBlock Create(nint arg0, int arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6) =>
+    public static CopperDoorBlock Create_84400ebc(nint arg0, int arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static CopperDoorBlock Create(string arg0, int arg1, int arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg4)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            var handle = NativeMethods.TablePtr->hs_create_48874f47(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, arg3, (void*)arg4.Handle);
-            if (handle == null)
-            {
-                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-            }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static CopperDoorBlock Create_48874f47(nint arg0, int arg1, nint arg2, nint arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-            return new CopperDoorBlock((nint)handle);
-        }
-    }
-
-    public static CopperDoorBlock Create(string arg0, int arg1, int arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg4, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg5, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg6)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            var handle = NativeMethods.TablePtr->hs_create_4a3d4737(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, arg3, (void*)arg4.Handle, (void*)arg5.Handle, (void*)arg6.Handle);
-            if (handle == null)
-            {
-                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-            }
-
-            return new CopperDoorBlock((nint)handle);
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static CopperDoorBlock Create_4a3d4737(nint arg0, int arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public void onLightningHit(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
     {
@@ -128,17 +86,7 @@ public sealed unsafe partial class CopperDoorBlock : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_b95696cb((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2) != 0;
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_f0bb42f1((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

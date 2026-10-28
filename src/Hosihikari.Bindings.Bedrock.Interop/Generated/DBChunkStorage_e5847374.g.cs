@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DBChunkStorage : global::System.IDisposable
+public sealed unsafe partial class DBChunkStorage
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -43,54 +43,6 @@ public sealed unsafe partial class DBChunkStorage : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->hs_get_efe7a462((void*)_handle);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint filler_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_17989c14((void*)_handle);
-    }
-
-    public int mChunkSide
-    {
-        get => NativeMethods.TablePtr->hs_get_cf6e17f1((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_cf6e17f1((void*)_handle, value);
-    }
-
-    public nint mDimension
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_756d5cfe((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_756d5cfe((void*)_handle, (void*)value);
-    }
-
-    public nint mLevel
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_b558970e((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_b558970e((void*)_handle, (void*)value);
-    }
-
-    public nint mLevelChunkBuilderData
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_5f6ee2cc((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_5f6ee2cc((void*)_handle, (void*)value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mOwnedParent_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_d1825ac4((void*)_handle);
-    }
-
-    public nint mParent
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_5d7dd5f4((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_5d7dd5f4((void*)_handle, (void*)value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mShuttingDown_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_000e9a30((void*)_handle);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static DBChunkStorage Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
@@ -99,9 +51,9 @@ public sealed unsafe partial class DBChunkStorage : global::System.IDisposable
     public static DBChunkStorage Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static DBChunkStorage Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public static nint _deserializeChunkActorStorageKeys_03f10a77(nint arg0) =>
@@ -253,17 +205,7 @@ public sealed unsafe partial class DBChunkStorage : global::System.IDisposable
     public void writeEntityChunkTransfersToUnloadedChunk(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'ActorUnloadedChunkTransferEntry' is not supported.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_e5847374((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

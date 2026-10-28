@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BossEventSubscriptionManagerImpl : global::System.IDisposable
+public sealed unsafe partial class BossEventSubscriptionManagerImpl
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,16 +37,9 @@ public sealed unsafe partial class BossEventSubscriptionManagerImpl : global::Sy
         return __hs_handle;
     }
 
-    public static BossEventSubscriptionManagerImpl Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_df5798ff();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new BossEventSubscriptionManagerImpl((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static BossEventSubscriptionManagerImpl Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static BossEventSubscriptionManagerImpl Create(nint arg0) =>
@@ -78,17 +71,4 @@ public sealed unsafe partial class BossEventSubscriptionManagerImpl : global::Sy
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.", false)]
     public nint subscribeToBossEvent_d1c4ddea(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.");
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_5dfde9db((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
 }

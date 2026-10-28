@@ -37,16 +37,9 @@ public sealed unsafe partial class EntityContext : global::System.IDisposable
         return __hs_handle;
     }
 
-    public static EntityContext Create(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.EntityId arg1)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_da5f883f((void*)arg0.Handle, (void*)arg1.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new EntityContext((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public static EntityContext Create(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry _registry()
     {

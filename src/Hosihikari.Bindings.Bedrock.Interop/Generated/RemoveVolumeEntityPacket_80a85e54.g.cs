@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RemoveVolumeEntityPacket : global::System.IDisposable
+public sealed unsafe partial class RemoveVolumeEntityPacket
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -82,19 +82,12 @@ public sealed unsafe partial class RemoveVolumeEntityPacket : global::System.IDi
     public static RemoveVolumeEntityPacket Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static RemoveVolumeEntityPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_2ef31300((void*)arg0.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new RemoveVolumeEntityPacket((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static RemoveVolumeEntityPacket Create_2ef31300(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RemoveVolumeEntityPacket Create(nint arg0) =>
+    public static RemoveVolumeEntityPacket Create_fc365ae0(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -116,12 +109,6 @@ public sealed unsafe partial class RemoveVolumeEntityPacket : global::System.IDi
     public nint getName_2608bb28() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mDimensionType_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_59b5fd71((void*)_handle);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
@@ -131,18 +118,11 @@ public sealed unsafe partial class RemoveVolumeEntityPacket : global::System.IDi
         NativeMethods.TablePtr->hs_method_5aa83a69((void*)_handle, (void*)arg0.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_6c9fc95d() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_80a85e54((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_13775147() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

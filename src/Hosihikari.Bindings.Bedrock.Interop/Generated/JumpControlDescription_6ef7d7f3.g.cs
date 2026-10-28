@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class JumpControlDescription : global::System.IDisposable
+public sealed unsafe partial class JumpControlDescription
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -58,18 +58,11 @@ public sealed unsafe partial class JumpControlDescription : global::System.IDisp
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_25d0c7a5() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_6ef7d7f3((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_399f7e95() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

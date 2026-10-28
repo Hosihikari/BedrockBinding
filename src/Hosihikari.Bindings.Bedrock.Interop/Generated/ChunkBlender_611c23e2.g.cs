@@ -64,10 +64,9 @@ public sealed unsafe partial class ChunkBlender
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Biome((nint)__hs_handle, false) : null;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.OverworldGeneratorMultinoise_Nested.BlockGenerationResult tryMoveWaterEdges(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.OverworldGeneratorMultinoise_Nested.BlockGenerationResult arg1)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.OverworldGeneratorMultinoise_Nested.BlockGenerationResult((nint)NativeMethods.TablePtr->hs_method_76c47f76((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'OverworldGeneratorMultinoise::BlockGenerationResult const' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint tryMoveWaterEdges(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'OverworldGeneratorMultinoise::BlockGenerationResult const' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_e0a7c407() =>

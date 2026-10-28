@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class StructurePoolBlockPredicateCappedArcheologyBlockReplacement : global::System.IDisposable
+public sealed unsafe partial class StructurePoolBlockPredicateCappedArcheologyBlockReplacement
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -46,19 +46,12 @@ public sealed unsafe partial class StructurePoolBlockPredicateCappedArcheologyBl
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructurePoolBlockPredicateCappedArcheologyBlockReplacement Create(nint arg0, ulong arg1, nint placement) =>
+    public static StructurePoolBlockPredicateCappedArcheologyBlockReplacement Create_edd57702(nint arg0, ulong arg1, nint placement) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static StructurePoolBlockPredicateCappedArcheologyBlockReplacement Create(nint arg0, ulong arg1, int arg2)
-    {
-        var handle = NativeMethods.TablePtr->hs_create_70580ffb((void*)arg0, arg1, arg2);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new StructurePoolBlockPredicateCappedArcheologyBlockReplacement((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static StructurePoolBlockPredicateCappedArcheologyBlockReplacement Create_70580ffb(nint arg0, ulong arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public bool finalize(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg1)
     {
@@ -69,17 +62,7 @@ public sealed unsafe partial class StructurePoolBlockPredicateCappedArcheologyBl
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_c4eb75f6((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

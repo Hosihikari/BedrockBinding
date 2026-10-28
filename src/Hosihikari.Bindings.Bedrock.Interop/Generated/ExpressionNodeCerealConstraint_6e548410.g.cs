@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ExpressionNodeCerealConstraint : global::System.IDisposable
+public sealed unsafe partial class ExpressionNodeCerealConstraint
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -45,10 +45,9 @@ public sealed unsafe partial class ExpressionNodeCerealConstraint : global::Syst
     public static ExpressionNodeCerealConstraint Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.ConstraintDescription description()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.ConstraintDescription((nint)NativeMethods.TablePtr->hs_method_f09c665f((void*)_handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'cereal::internal::ConstraintDescription' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint description() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'cereal::internal::ConstraintDescription' requires --link-carrier or --virtual-dispatch.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNodeCerealConstraint disallowSideEffects(bool arg0)
     {
@@ -89,18 +88,11 @@ public sealed unsafe partial class ExpressionNodeCerealConstraint : global::Syst
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_d4d70c73() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_6e548410((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_f6c5c126() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

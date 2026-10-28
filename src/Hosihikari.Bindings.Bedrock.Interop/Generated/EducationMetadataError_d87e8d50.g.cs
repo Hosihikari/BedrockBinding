@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EducationMetadataError : global::System.IDisposable
+public sealed unsafe partial class EducationMetadataError
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -57,6 +57,9 @@ public sealed unsafe partial class EducationMetadataError : global::System.IDisp
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mErrorParameters_Address
@@ -74,18 +77,5 @@ public sealed unsafe partial class EducationMetadataError : global::System.IDisp
     {
         get => NativeMethods.TablePtr->hs_get_fdb4c1b7((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_fdb4c1b7((void*)_handle, value);
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_d87e8d50((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

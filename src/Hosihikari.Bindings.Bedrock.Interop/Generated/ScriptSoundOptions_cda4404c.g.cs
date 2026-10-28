@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
 
-public sealed unsafe partial class ScriptSoundOptions : global::System.IDisposable
+public sealed partial class ScriptSoundOptions
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,18 +35,5 @@ public sealed unsafe partial class ScriptSoundOptions : global::System.IDisposab
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_cda4404c((void*)_handle);
-            }
-
-            _handle = 0;
-        }
     }
 }

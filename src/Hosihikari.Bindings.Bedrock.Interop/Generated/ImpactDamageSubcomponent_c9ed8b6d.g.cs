@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ImpactDamageSubcomponent : global::System.IDisposable
+public sealed unsafe partial class ImpactDamageSubcomponent
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,16 +37,9 @@ public sealed unsafe partial class ImpactDamageSubcomponent : global::System.IDi
         return __hs_handle;
     }
 
-    public static ImpactDamageSubcomponent Create()
-    {
-        var handle = NativeMethods.TablePtr->hs_create_c6e61fa4();
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ImpactDamageSubcomponent((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ImpactDamageSubcomponent Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ImpactDamageSubcomponent Create(nint arg0) =>
@@ -76,17 +69,7 @@ public sealed unsafe partial class ImpactDamageSubcomponent : global::System.IDi
         NativeMethods.TablePtr->hs_method_1cd98f0b((void*)_handle, (void*)arg0.Handle);
     }
 
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_c9ed8b6d((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

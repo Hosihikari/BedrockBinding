@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock;
 
-public sealed unsafe partial class FilePickerManagerImpl : global::System.IDisposable
+public sealed partial class FilePickerManagerImpl
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -56,17 +56,4 @@ public sealed unsafe partial class FilePickerManagerImpl : global::System.IDispo
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint pickDirectory(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_38700d63((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
 }
