@@ -15,7 +15,7 @@
     <Authors>Hosihikari</Authors>
     <Description>Generated native-style .NET Interop for the Bedrock Dedicated Server (MCAPI) surface, dispatched by RVA and vtable slot.</Description>
     <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/Hosihikari/BedrockBinding</RepositoryUrl>
+    <RepositoryUrl>https://github.com/HosihikariProjection/BedrockBinding</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>minecraft;bedrock;bds;mcapi;interop;hosihikari</PackageTags>
   </PropertyGroup>
