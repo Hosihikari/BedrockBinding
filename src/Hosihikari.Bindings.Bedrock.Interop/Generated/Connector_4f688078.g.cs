@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Connector
+public sealed unsafe partial class Connector : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,12 +41,19 @@ public sealed unsafe partial class Connector
     public static Connector Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Connector Create_82168512(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static Connector Create(global::Hosihikari.Bindings.Bedrock.Interop.Connector_Nested.ConnectionCallbacks arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_82168512((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Connector((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Connector Create_2a80e48e(nint arg0) =>
+    public static Connector Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void addConnectionStateListener(global::Hosihikari.Bindings.Bedrock.Interop.Connector_Nested.ConnectionStateListener? arg0)
@@ -168,7 +175,17 @@ public sealed unsafe partial class Connector
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_4f688078((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

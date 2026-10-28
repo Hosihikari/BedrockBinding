@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ChunkPerformanceData
+public sealed unsafe partial class ChunkPerformanceData : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -43,9 +43,16 @@ public sealed unsafe partial class ChunkPerformanceData
         get => (nint)NativeMethods.TablePtr->hs_get_3e224b75((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ChunkPerformanceData Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ChunkPerformanceData Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_020f5425();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChunkPerformanceData((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ChunkPerformanceData Create(nint arg0) =>
@@ -65,7 +72,17 @@ public sealed unsafe partial class ChunkPerformanceData
         NativeMethods.TablePtr->hs_method_7649f1c5((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_fa76f3a7((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

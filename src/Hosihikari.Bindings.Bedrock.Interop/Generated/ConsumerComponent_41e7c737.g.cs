@@ -37,90 +37,6 @@ public sealed unsafe partial class ConsumerComponent : global::System.IDisposabl
         return __hs_handle;
     }
 
-    public bool mAllowPowerDown
-    {
-        get => NativeMethods.TablePtr->hs_get_d557d78a((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_d557d78a((void*)_handle, value);
-    }
-
-    public bool mAllowPowerUp
-    {
-        get => NativeMethods.TablePtr->hs_get_e184e7fd((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_e184e7fd((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mChunkPosition_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_240b6dd3((void*)_handle);
-    }
-
-    public long mCircuitComponentType_6215a2b6
-    {
-        get => NativeMethods.TablePtr->hs_get_91a5c365((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_91a5c365((void*)_handle, value);
-    }
-
-    public bool mConsumePowerAnyDirection
-    {
-        get => NativeMethods.TablePtr->hs_get_b191951a((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_b191951a((void*)_handle, value);
-    }
-
-    public sbyte mDirection
-    {
-        get => NativeMethods.TablePtr->hs_get_f6bdd6aa((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_f6bdd6aa((void*)_handle, value);
-    }
-
-    public bool mIgnoreFirstUpdate
-    {
-        get => NativeMethods.TablePtr->hs_get_2973c4fa((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_2973c4fa((void*)_handle, value);
-    }
-
-    public bool mIsFirstTime
-    {
-        get => NativeMethods.TablePtr->hs_get_a57dada9((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_a57dada9((void*)_handle, value);
-    }
-
-    public bool mNeedsUpdate
-    {
-        get => NativeMethods.TablePtr->hs_get_5a319503((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_5a319503((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPos_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_bc147dd8((void*)_handle);
-    }
-
-    public bool mRemoved
-    {
-        get => NativeMethods.TablePtr->hs_get_5f041f51((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_5f041f51((void*)_handle, value);
-    }
-
-    public bool mShouldEvaluate
-    {
-        get => NativeMethods.TablePtr->hs_get_c13bc52c((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_c13bc52c((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSources_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_668c6343((void*)_handle);
-    }
-
-    public int mStrength
-    {
-        get => NativeMethods.TablePtr->hs_get_5aedd3b6((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_5aedd3b6((void*)_handle, value);
-    }
-
     public static ConsumerComponent Create()
     {
         var handle = NativeMethods.TablePtr->hs_create_22b2b048();
@@ -160,41 +76,6 @@ public sealed unsafe partial class ConsumerComponent : global::System.IDisposabl
     public bool isSecondaryPowered()
     {
         return NativeMethods.TablePtr->hs_method_38402254((void*)_handle) != 0;
-    }
-
-    public bool mAcceptHalfPulse
-    {
-        get => NativeMethods.TablePtr->hs_get_257bb311((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_257bb311((void*)_handle, value);
-    }
-
-    public bool mAcceptSameDirection
-    {
-        get => NativeMethods.TablePtr->hs_get_d541f6e8((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_d541f6e8((void*)_handle, value);
-    }
-
-    public long mCircuitComponentType_12aa1fca
-    {
-        get => NativeMethods.TablePtr->hs_get_502db797((void*)_handle);
-    }
-
-    public bool mPromotedToProducer
-    {
-        get => NativeMethods.TablePtr->hs_get_2ec0491b((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_2ec0491b((void*)_handle, value);
-    }
-
-    public bool mPropagatePower
-    {
-        get => NativeMethods.TablePtr->hs_get_8d59ff25((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_8d59ff25((void*)_handle, value);
-    }
-
-    public bool mSecondaryPowered
-    {
-        get => NativeMethods.TablePtr->hs_get_b1fb2664((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_b1fb2664((void*)_handle, value);
     }
 
 

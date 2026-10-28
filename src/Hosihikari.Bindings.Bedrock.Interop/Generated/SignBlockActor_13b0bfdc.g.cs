@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SignBlockActor
+public sealed unsafe partial class SignBlockActor : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,12 +41,33 @@ public sealed unsafe partial class SignBlockActor
     public static SignBlockActor Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static SignBlockActor Create_b05e5664(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static SignBlockActor Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, int arg1, string arg2)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            var handle = NativeMethods.TablePtr->hs_create_b05e5664((void*)arg0.Handle, arg1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new SignBlockActor((nint)handle);
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SignBlockActor Create_de06908d(nint pos, nint blockActorType, nint arg2) =>
+    public static SignBlockActor Create(nint pos, nint blockActorType, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
@@ -163,9 +184,9 @@ public sealed unsafe partial class SignBlockActor
         NativeMethods.TablePtr->hs_method_1cbc923c((void*)_handle, arg0, arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void setMessageForServerScripingOnly_abe5b296(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void setMessageForServerScripingOnly_071c9e44(nint side, nint message, nint ownerID) =>
@@ -253,11 +274,18 @@ public sealed unsafe partial class SignBlockActor
         NativeMethods.TablePtr->hs_method_b0b884a9((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_f0681404() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_b56896f4() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_13b0bfdc((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

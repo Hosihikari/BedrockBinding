@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ServerNetworkHandler
+public sealed unsafe partial class ServerNetworkHandler : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -51,9 +51,9 @@ public sealed unsafe partial class ServerNetworkHandler
     public static ServerNetworkHandler Create_37392c0f(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7, nint arg8, int arg9, nint arg10, nint arg11, int arg12, nint arg13, nint arg14, nint arg15, nint arg16, nint arg17, nint arg18, nint arg19, nint arg20, nint arg21, nint arg22) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<TextFilteringProcessor>' is not a known bindable declaration.", false)]
     public static ServerNetworkHandler Create_d55636b0(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7, nint arg8, int arg9, nint arg10, nint arg11, int arg12, nint arg13, nint arg14, nint arg15, nint arg16, nint arg17, nint arg18, nint arg19, nint arg20, nint arg21, nint arg22) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<TextFilteringProcessor>' is not a known bindable declaration.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ServerNetworkHandler Create(nint arg0) =>
@@ -920,11 +920,18 @@ public sealed unsafe partial class ServerNetworkHandler
         NativeMethods.TablePtr->hs_method_0ee93722((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_11841b06() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_bc93ab04() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_ab2d589c((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

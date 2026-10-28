@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockGeometryDescription
+public sealed unsafe partial class BlockGeometryDescription : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,17 +37,38 @@ public sealed unsafe partial class BlockGeometryDescription
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BlockGeometryDescription Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static BlockGeometryDescription Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_1c213d43();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BlockGeometryDescription Create_cbf38b54(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new BlockGeometryDescription((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BlockGeometryDescription Create_dd24a567(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static BlockGeometryDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_cbf38b54((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockGeometryDescription((nint)handle);
+    }
+
+    public static BlockGeometryDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockGeometryDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_dd24a567((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockGeometryDescription((nint)handle);
+    }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.HashedString CROSS_GEO_NAME
     {
@@ -135,11 +156,18 @@ public sealed unsafe partial class BlockGeometryDescription
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_88110cfa() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_2e0b3a99() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_3b0ea49e((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

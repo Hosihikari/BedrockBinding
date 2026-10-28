@@ -41,9 +41,9 @@ public sealed unsafe partial class VexCopyOwnerTargetGoal
     public static VexCopyOwnerTargetGoal Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'MobDescriptor' is not supported.", false)]
     public static VexCopyOwnerTargetGoal Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'MobDescriptor' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static VexCopyOwnerTargetGoal Create(nint arg0) =>

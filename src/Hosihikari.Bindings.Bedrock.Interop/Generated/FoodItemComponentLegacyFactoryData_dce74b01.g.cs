@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class FoodItemComponentLegacyFactoryData
+public sealed unsafe partial class FoodItemComponentLegacyFactoryData : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,16 @@ public sealed partial class FoodItemComponentLegacyFactoryData
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static FoodItemComponentLegacyFactoryData Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static FoodItemComponentLegacyFactoryData Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_006a5c67();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FoodItemComponentLegacyFactoryData((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static FoodItemComponentLegacyFactoryData Create(nint arg0) =>
@@ -53,7 +60,17 @@ public sealed partial class FoodItemComponentLegacyFactoryData
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_dce74b01((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

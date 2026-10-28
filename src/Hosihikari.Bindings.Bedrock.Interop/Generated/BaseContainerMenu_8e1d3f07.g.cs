@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BaseContainerMenu
+public sealed unsafe partial class BaseContainerMenu : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -94,7 +94,17 @@ public sealed unsafe partial class BaseContainerMenu
         NativeMethods.TablePtr->hs_method_51e16494((void*)_handle, arg0, arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_8e1d3f07((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

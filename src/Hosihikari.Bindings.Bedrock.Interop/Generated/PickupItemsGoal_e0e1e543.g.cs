@@ -41,9 +41,9 @@ public sealed unsafe partial class PickupItemsGoal
     public static PickupItemsGoal Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public static PickupItemsGoal Create(nint arg0, float arg1, bool arg2, int arg3, int arg4, float arg5, bool arg6, bool arg7, int arg8, bool arg9, bool arg10, nint arg11) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static PickupItemsGoal Create(nint arg0) =>

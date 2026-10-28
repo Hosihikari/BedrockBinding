@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ChargeableItemComponentLegacyFactoryData
+public sealed unsafe partial class ChargeableItemComponentLegacyFactoryData : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,13 +37,27 @@ public sealed unsafe partial class ChargeableItemComponentLegacyFactoryData
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ChargeableItemComponentLegacyFactoryData Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ChargeableItemComponentLegacyFactoryData Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_208ae462();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ChargeableItemComponentLegacyFactoryData Create_686c6756(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new ChargeableItemComponentLegacyFactoryData((nint)handle);
+    }
+
+    public static ChargeableItemComponentLegacyFactoryData Create(global::Hosihikari.Bindings.Bedrock.Interop.ChargeableItemComponentLegacyFactoryData arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_686c6756((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChargeableItemComponentLegacyFactoryData((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static void bindType(nint arg0, nint arg1, nint arg2) =>
@@ -62,15 +76,22 @@ public sealed unsafe partial class ChargeableItemComponentLegacyFactoryData
     public nint operator_assign_ed0ba2f4(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_3e44a502() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ChargeableItemComponentLegacyFactoryData Create_fe6bc463(nint arg0) =>
+    public static ChargeableItemComponentLegacyFactoryData Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_2c25f8dd() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_926d8e47((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

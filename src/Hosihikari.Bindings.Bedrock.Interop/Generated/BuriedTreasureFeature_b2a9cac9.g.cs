@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BuriedTreasureFeature
+public sealed unsafe partial class BuriedTreasureFeature : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -45,9 +45,16 @@ public sealed unsafe partial class BuriedTreasureFeature
     public static BuriedTreasureFeature Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BuriedTreasureFeature Create(uint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static BuriedTreasureFeature Create(uint arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_7b9c6b0c(arg0);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BuriedTreasureFeature((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public bool getNearestGeneratedFeature(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5, nint arg6) =>
@@ -57,9 +64,6 @@ public sealed unsafe partial class BuriedTreasureFeature
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mActiveBlueprintCreateCount_Address
@@ -131,5 +135,18 @@ public sealed unsafe partial class BuriedTreasureFeature
     {
         get => NativeMethods.TablePtr->hs_get_61effd79((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_61effd79((void*)_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_b2a9cac9((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

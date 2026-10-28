@@ -37,54 +37,6 @@ public sealed unsafe partial class SparseContainer
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mContainerRuntimeId_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_376a4704((void*)_handle);
-    }
-
-    public sbyte mContainerType
-    {
-        get => NativeMethods.TablePtr->hs_get_01ebd5a8((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_01ebd5a8((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mContentChangeListeners_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_4bd3f353((void*)_handle);
-    }
-
-    public bool mCustomName
-    {
-        get => NativeMethods.TablePtr->hs_get_e5c8c9b0((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_e5c8c9b0((void*)_handle, value);
-    }
-
-    public sbyte mGameplayContainerType
-    {
-        get => NativeMethods.TablePtr->hs_get_56f2524b((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_56f2524b((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mName_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_8393a285((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSizeChangeListeners_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_aba5c9b6((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mTransactionContextStack_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_9a58ea5b((void*)_handle);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static SparseContainer Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");

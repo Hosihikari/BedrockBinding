@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BannerBlockActor
+public sealed unsafe partial class BannerBlockActor : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -154,7 +154,17 @@ public sealed unsafe partial class BannerBlockActor
         NativeMethods.TablePtr->hs_method_a2dc2359((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_e8e15a66((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

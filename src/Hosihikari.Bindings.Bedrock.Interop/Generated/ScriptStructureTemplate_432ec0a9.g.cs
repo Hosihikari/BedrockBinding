@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
 
-public sealed partial class ScriptStructureTemplate
+public sealed unsafe partial class ScriptStructureTemplate : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -96,4 +96,17 @@ public sealed partial class ScriptStructureTemplate
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint setBlockPermutation(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_432ec0a9((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

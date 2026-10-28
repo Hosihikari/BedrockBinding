@@ -53,18 +53,6 @@ public sealed unsafe partial class ServerScriptManager : global::System.IDisposa
     public void addModuleFilter(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint filler_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_48c23ce0((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint filler1_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_49ed7c3e((void*)_handle);
-    }
-
     public global::Hosihikari.Bindings.Bedrock.Interop.ScriptBlockCustomComponentsRegistry getBlockCustomComponentRegistry()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptBlockCustomComponentsRegistry((nint)NativeMethods.TablePtr->hs_method_cf50dc8e((void*)_handle), false);
@@ -78,12 +66,6 @@ public sealed unsafe partial class ServerScriptManager : global::System.IDisposa
     public global::Hosihikari.Bindings.Bedrock.Interop.ScriptSettings getScriptSettings()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptSettings((nint)NativeMethods.TablePtr->hs_method_99b5228d((void*)_handle), false);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mFormPromiseTracker_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_a0844b1a((void*)_handle);
     }
 
     public int onEvent_b30263b0(nint arg0)

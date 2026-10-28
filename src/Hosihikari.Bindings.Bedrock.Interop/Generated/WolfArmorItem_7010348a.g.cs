@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class WolfArmorItem
+public sealed unsafe partial class WolfArmorItem : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -58,12 +58,33 @@ public sealed unsafe partial class WolfArmorItem
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WolfArmorItem Create_b58c03a2(nint arg0, short arg1, nint arg2) =>
+    public static WolfArmorItem Create(nint arg0, short arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static WolfArmorItem Create_12b4811c(nint arg0, short arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static WolfArmorItem Create(string arg0, short arg1, nint arg2)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->hs_create_12b4811c(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, (void*)arg2);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new WolfArmorItem((nint)handle);
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public void appendFormattedHovertext_54ecfe7c(nint arg0, nint arg1, nint arg2, bool arg3) =>
@@ -140,7 +161,17 @@ public sealed unsafe partial class WolfArmorItem
         NativeMethods.TablePtr->hs_method_37001e1d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_7010348a((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

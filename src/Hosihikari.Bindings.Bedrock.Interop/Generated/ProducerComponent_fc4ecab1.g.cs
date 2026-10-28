@@ -37,90 +37,6 @@ public sealed unsafe partial class ProducerComponent : global::System.IDisposabl
         return __hs_handle;
     }
 
-    public bool mAllowPowerDown
-    {
-        get => NativeMethods.TablePtr->hs_get_2ed00976((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_2ed00976((void*)_handle, value);
-    }
-
-    public bool mAllowPowerUp
-    {
-        get => NativeMethods.TablePtr->hs_get_0605bfc9((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_0605bfc9((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mChunkPosition_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_b1475702((void*)_handle);
-    }
-
-    public long mCircuitComponentType_16e9f2ab
-    {
-        get => NativeMethods.TablePtr->hs_get_4b106acd((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_4b106acd((void*)_handle, value);
-    }
-
-    public bool mConsumePowerAnyDirection
-    {
-        get => NativeMethods.TablePtr->hs_get_f72cdc4d((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_f72cdc4d((void*)_handle, value);
-    }
-
-    public sbyte mDirection
-    {
-        get => NativeMethods.TablePtr->hs_get_44799853((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_44799853((void*)_handle, value);
-    }
-
-    public bool mIgnoreFirstUpdate
-    {
-        get => NativeMethods.TablePtr->hs_get_cf546009((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_cf546009((void*)_handle, value);
-    }
-
-    public bool mIsFirstTime
-    {
-        get => NativeMethods.TablePtr->hs_get_7cc5b61b((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_7cc5b61b((void*)_handle, value);
-    }
-
-    public bool mNeedsUpdate
-    {
-        get => NativeMethods.TablePtr->hs_get_6d2f176a((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_6d2f176a((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPos_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_5ad3fe28((void*)_handle);
-    }
-
-    public bool mRemoved
-    {
-        get => NativeMethods.TablePtr->hs_get_3bf39d77((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_3bf39d77((void*)_handle, value);
-    }
-
-    public bool mShouldEvaluate
-    {
-        get => NativeMethods.TablePtr->hs_get_1ffbcae8((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_1ffbcae8((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSources_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_ae4f5480((void*)_handle);
-    }
-
-    public int mStrength
-    {
-        get => NativeMethods.TablePtr->hs_get_327bb1fd((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_327bb1fd((void*)_handle, value);
-    }
-
     public static ProducerComponent Create()
     {
         var handle = NativeMethods.TablePtr->hs_create_9f355e17();
@@ -155,29 +71,6 @@ public sealed unsafe partial class ProducerComponent : global::System.IDisposabl
     public long getCircuitComponentType()
     {
         return NativeMethods.TablePtr->hs_method_944bc20d((void*)_handle);
-    }
-
-    public bool mAttachedAllowed
-    {
-        get => NativeMethods.TablePtr->hs_get_eb7db712((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_eb7db712((void*)_handle, value);
-    }
-
-    public long mCircuitComponentType_c5d702a7
-    {
-        get => NativeMethods.TablePtr->hs_get_6da5d82a((void*)_handle);
-    }
-
-    public int mNextStrength
-    {
-        get => NativeMethods.TablePtr->hs_get_84f43e0e((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_84f43e0e((void*)_handle, value);
-    }
-
-    public bool mStopPower
-    {
-        get => NativeMethods.TablePtr->hs_get_b0b5dbd0((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_b0b5dbd0((void*)_handle, value);
     }
 
     public void setStopPower(bool arg0)

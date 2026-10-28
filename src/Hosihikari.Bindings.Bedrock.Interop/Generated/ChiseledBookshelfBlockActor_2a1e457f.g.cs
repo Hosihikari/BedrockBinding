@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ChiseledBookshelfBlockActor
+public sealed unsafe partial class ChiseledBookshelfBlockActor : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,12 +41,19 @@ public sealed unsafe partial class ChiseledBookshelfBlockActor
     public static ChiseledBookshelfBlockActor Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ChiseledBookshelfBlockActor Create_71f5374c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ChiseledBookshelfBlockActor Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_71f5374c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChiseledBookshelfBlockActor((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ChiseledBookshelfBlockActor Create_7daf7b7e(nint arg0) =>
+    public static ChiseledBookshelfBlockActor Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public bool addItemToFirstEmptySlot(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
@@ -165,55 +172,17 @@ public sealed unsafe partial class ChiseledBookshelfBlockActor
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ChiseledBookshelfBlockActor((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mContainerRuntimeId_Address
+    public void Dispose()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_c0c8c2a3((void*)_handle);
-    }
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_2a1e457f((void*)_handle);
+            }
 
-    public sbyte mContainerType
-    {
-        get => NativeMethods.TablePtr->hs_get_bd5b40e2((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_bd5b40e2((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mContentChangeListeners_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_c8002478((void*)_handle);
-    }
-
-    public bool mCustomName
-    {
-        get => NativeMethods.TablePtr->hs_get_fdb42146((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_fdb42146((void*)_handle, value);
-    }
-
-    public sbyte mGameplayContainerType
-    {
-        get => NativeMethods.TablePtr->hs_get_fd94d563((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_fd94d563((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mName_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_b63ee62c((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSizeChangeListeners_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_d7119413((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mTransactionContextStack_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_f7b5ada7((void*)_handle);
+            _handle = 0;
+        }
     }
 }

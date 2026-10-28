@@ -37,54 +37,6 @@ public sealed unsafe partial class CraftingContainer : global::System.IDisposabl
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mContainerRuntimeId_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_069b774e((void*)_handle);
-    }
-
-    public sbyte mContainerType
-    {
-        get => NativeMethods.TablePtr->hs_get_cb04a53c((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_cb04a53c((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mContentChangeListeners_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_7df7a080((void*)_handle);
-    }
-
-    public bool mCustomName
-    {
-        get => NativeMethods.TablePtr->hs_get_4d5b5e90((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_4d5b5e90((void*)_handle, value);
-    }
-
-    public sbyte mGameplayContainerType
-    {
-        get => NativeMethods.TablePtr->hs_get_af674787((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_af674787((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mName_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_644eff35((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSizeChangeListeners_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_01e4ebce((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mTransactionContextStack_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_339e9304((void*)_handle);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static CraftingContainer Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
@@ -122,18 +74,6 @@ public sealed unsafe partial class CraftingContainer : global::System.IDisposabl
     public int getMaxStackSize()
     {
         return NativeMethods.TablePtr->hs_method_b99a63ae((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mItems_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_558768fa((void*)_handle);
-    }
-
-    public int mWidth
-    {
-        get => NativeMethods.TablePtr->hs_get_472c670d((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_472c670d((void*)_handle, value);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

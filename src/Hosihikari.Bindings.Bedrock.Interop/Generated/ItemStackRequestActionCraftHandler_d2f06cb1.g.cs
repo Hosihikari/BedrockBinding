@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ItemStackRequestActionCraftHandler
+public sealed unsafe partial class ItemStackRequestActionCraftHandler : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,9 +41,16 @@ public sealed unsafe partial class ItemStackRequestActionCraftHandler
     public static ItemStackRequestActionCraftHandler Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ItemStackRequestActionCraftHandler Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ItemStackRequestActionCraftHandler Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionHandler arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_af3b777b((void*)arg0.Handle, (void*)arg1.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemStackRequestActionCraftHandler((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ItemStackRequestActionCraftHandler Create(nint arg0) =>
@@ -113,7 +120,17 @@ public sealed unsafe partial class ItemStackRequestActionCraftHandler
         return NativeMethods.TablePtr->hs_method_43f4ea3a((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_d2f06cb1((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

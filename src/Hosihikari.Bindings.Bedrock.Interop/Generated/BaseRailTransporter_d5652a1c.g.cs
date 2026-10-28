@@ -37,90 +37,6 @@ public sealed unsafe partial class BaseRailTransporter
         return __hs_handle;
     }
 
-    public bool mAllowPowerDown
-    {
-        get => NativeMethods.TablePtr->hs_get_9e849137((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_9e849137((void*)_handle, value);
-    }
-
-    public bool mAllowPowerUp
-    {
-        get => NativeMethods.TablePtr->hs_get_fba7dcf6((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_fba7dcf6((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mChunkPosition_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_bf500d29((void*)_handle);
-    }
-
-    public long mCircuitComponentType_cf26f616
-    {
-        get => NativeMethods.TablePtr->hs_get_12e909ba((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_12e909ba((void*)_handle, value);
-    }
-
-    public bool mConsumePowerAnyDirection
-    {
-        get => NativeMethods.TablePtr->hs_get_1321d094((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_1321d094((void*)_handle, value);
-    }
-
-    public sbyte mDirection
-    {
-        get => NativeMethods.TablePtr->hs_get_a0d3e5be((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_a0d3e5be((void*)_handle, value);
-    }
-
-    public bool mIgnoreFirstUpdate
-    {
-        get => NativeMethods.TablePtr->hs_get_890943c6((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_890943c6((void*)_handle, value);
-    }
-
-    public bool mIsFirstTime
-    {
-        get => NativeMethods.TablePtr->hs_get_da2a2e9d((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_da2a2e9d((void*)_handle, value);
-    }
-
-    public bool mNeedsUpdate
-    {
-        get => NativeMethods.TablePtr->hs_get_54f6de6b((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_54f6de6b((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPos_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_c3e66ab1((void*)_handle);
-    }
-
-    public bool mRemoved
-    {
-        get => NativeMethods.TablePtr->hs_get_af6b9be7((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_af6b9be7((void*)_handle, value);
-    }
-
-    public bool mShouldEvaluate
-    {
-        get => NativeMethods.TablePtr->hs_get_d95f3ad8((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_d95f3ad8((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSources_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_57b054c2((void*)_handle);
-    }
-
-    public int mStrength
-    {
-        get => NativeMethods.TablePtr->hs_get_742e7d2e((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_742e7d2e((void*)_handle, value);
-    }
-
     public bool addSource(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph arg0, nint arg1, nint arg2, nint arg3)
     {
         return NativeMethods.TablePtr->hs_method_b096569a((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2, (void*)arg3) != 0;
@@ -139,17 +55,6 @@ public sealed unsafe partial class BaseRailTransporter
     public long getCircuitComponentType()
     {
         return NativeMethods.TablePtr->hs_method_c8ec4f2c((void*)_handle);
-    }
-
-    public long mCircuitComponentType_fcaf7595
-    {
-        get => NativeMethods.TablePtr->hs_get_bfa98e97((void*)_handle);
-    }
-
-    public int mRailType
-    {
-        get => NativeMethods.TablePtr->hs_get_441e7b29((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_441e7b29((void*)_handle, value);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

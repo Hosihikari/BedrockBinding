@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class StructurePoolBlockPredicateBlockMatchRandom
+public sealed unsafe partial class StructurePoolBlockPredicateBlockMatchRandom : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,9 +41,16 @@ public sealed unsafe partial class StructurePoolBlockPredicateBlockMatchRandom
     public static StructurePoolBlockPredicateBlockMatchRandom Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static StructurePoolBlockPredicateBlockMatchRandom Create(nint arg0, float arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static StructurePoolBlockPredicateBlockMatchRandom Create(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, float arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_4d7a0da0((void*)arg0.Handle, arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructurePoolBlockPredicateBlockMatchRandom((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static StructurePoolBlockPredicateBlockMatchRandom Create(nint arg0) =>
@@ -67,7 +74,17 @@ public sealed unsafe partial class StructurePoolBlockPredicateBlockMatchRandom
         return NativeMethods.TablePtr->hs_method_da7014e4((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_30626c2d((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

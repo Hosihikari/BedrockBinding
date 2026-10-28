@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockMaterialInstancesDescription
+public sealed unsafe partial class BlockMaterialInstancesDescription : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,21 +41,49 @@ public sealed unsafe partial class BlockMaterialInstancesDescription
     public static BlockMaterialInstancesDescription Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BlockMaterialInstancesDescription Create_751f52ca(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static BlockMaterialInstancesDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockMaterialInstancesDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_751f52ca((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+        return new BlockMaterialInstancesDescription((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public static BlockMaterialInstancesDescription Create_b410f09e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockMaterialInstancesDescription Create_ba0a51b1(nint textureName, nint arg1, bool arg2, bool faceDimming) =>
+    public static BlockMaterialInstancesDescription Create(nint textureName, nint arg1, bool arg2, bool faceDimming) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BlockMaterialInstancesDescription Create_6784cafc(nint arg0, nint arg1, bool arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static BlockMaterialInstancesDescription Create(string arg0, int arg1, bool arg2, bool arg3)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->hs_create_6784cafc(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, arg3);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new BlockMaterialInstancesDescription((nint)handle);
+        }
+    }
 
     public static string NameID
     {
@@ -115,15 +143,22 @@ public sealed unsafe partial class BlockMaterialInstancesDescription
     public nint operator_assign_0a821e61(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_d2648e5d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static BlockMaterialInstancesDescription Create_e1cd296b(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_098f1390() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_a0c019d2((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

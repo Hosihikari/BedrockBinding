@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockComponentDescription
+public sealed unsafe partial class BlockComponentDescription : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -110,11 +110,18 @@ public sealed unsafe partial class BlockComponentDescription
         NativeMethods.TablePtr->hs_method_1111657e((void*)arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_78c5c249() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_2c526376() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_e8b6ca18((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

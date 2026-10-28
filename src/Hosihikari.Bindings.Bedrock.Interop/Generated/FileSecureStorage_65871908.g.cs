@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FileSecureStorage
+public sealed unsafe partial class FileSecureStorage : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,12 +41,19 @@ public sealed unsafe partial class FileSecureStorage
     public static FileSecureStorage Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static FileSecureStorage Create_181e08c7(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static FileSecureStorage Create(nint arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.ISecureStorageKeySystem? arg2, nint arg3, global::Hosihikari.Bindings.Bedrock.Interop.FileSecureStorage_Nested.StorageSystem? arg4)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_181e08c7((void*)arg0, (void*)arg1, (void*)(arg2?.Handle ?? 0), (void*)arg3, (void*)(arg4?.Handle ?? 0));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FileSecureStorage((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FileSecureStorage Create_b980f48f(nint arg0, nint arg1, nint arg2, nint arg3, nint storage) =>
+    public static FileSecureStorage Create(nint arg0, nint arg1, nint arg2, nint arg3, nint storage) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
@@ -170,7 +177,17 @@ public sealed unsafe partial class FileSecureStorage
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_65871908((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

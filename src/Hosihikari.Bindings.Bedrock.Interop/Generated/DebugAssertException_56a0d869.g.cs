@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DebugAssertException
+public sealed unsafe partial class DebugAssertException : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,13 +41,27 @@ public sealed unsafe partial class DebugAssertException
     public static DebugAssertException Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static DebugAssertException Create_1c8591ff(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static DebugAssertException Create(global::Hosihikari.Bindings.Bedrock.Interop.DebugAssertException arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_1c8591ff((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static DebugAssertException Create(nint arg0, nint arg1, int arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new DebugAssertException((nint)handle);
+    }
+
+    public static DebugAssertException Create(nint arg0, nint arg1, int arg2, nint arg3, nint arg4)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_d0ee7de5((void*)arg0, (void*)arg1, arg2, (void*)arg3, (void*)arg4);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DebugAssertException((nint)handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public static nint WHAT_Address
@@ -64,15 +78,22 @@ public sealed unsafe partial class DebugAssertException
         return (nint)NativeMethods.TablePtr->hs_method_de77e040((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_d0d7ff55() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static DebugAssertException Create_27fed55d(nint arg0) =>
+    public static DebugAssertException Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_230aca33() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_56a0d869((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

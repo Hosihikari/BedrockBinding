@@ -99,9 +99,10 @@ public sealed unsafe partial class EnchantUtils
         NativeMethods.TablePtr->hs_method_40668309((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint generateEnchantedBook_c290bb8d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance generateEnchantedBook(global::Hosihikari.Bindings.Bedrock.Interop.EnchantmentInstance arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_c290bb8d((void*)arg0.Handle));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'std::pair<EnchantmentInstance,int>' is not supported.", false)]
     public static nint getAvailableEnchantmentResults(nint arg0, int arg1, bool arg2) =>

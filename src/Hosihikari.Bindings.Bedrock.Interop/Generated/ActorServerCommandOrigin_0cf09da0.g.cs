@@ -87,9 +87,10 @@ public sealed unsafe partial class ActorServerCommandOrigin
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CompoundTag' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint serialize() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CompoundTag' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag serialize()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)NativeMethods.TablePtr->hs_method_893988a3((void*)_handle));
+    }
 
     public void setTargetOther(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0)
     {

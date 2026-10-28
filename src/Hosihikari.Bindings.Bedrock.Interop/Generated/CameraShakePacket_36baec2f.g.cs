@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CameraShakePacket
+public sealed unsafe partial class CameraShakePacket : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,21 +37,42 @@ public sealed unsafe partial class CameraShakePacket
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static CameraShakePacket Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static CameraShakePacket Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_d69277dd();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static CameraShakePacket Create_ef9bfaaf(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new CameraShakePacket((nint)handle);
+    }
+
+    public static CameraShakePacket Create(int arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_ef9bfaaf(arg0);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CameraShakePacket((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CameraShakePacket Create_23fad358(nint arg0) =>
+    public static CameraShakePacket Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static CameraShakePacket Create(float arg0, float arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static CameraShakePacket Create(float arg0, float arg1, int arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_c811b645(arg0, arg1, arg2);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CameraShakePacket((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint _read_b2a946f1(nint stream) =>
@@ -81,13 +102,7 @@ public sealed unsafe partial class CameraShakePacket
         NativeMethods.TablePtr->hs_method_049e96aa((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_b74cbc5d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_b692edeb() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
     public byte mClientSubId
     {
@@ -128,5 +143,18 @@ public sealed unsafe partial class CameraShakePacket
     {
         get => NativeMethods.TablePtr->hs_get_453de876((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_453de876((void*)_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_36baec2f((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

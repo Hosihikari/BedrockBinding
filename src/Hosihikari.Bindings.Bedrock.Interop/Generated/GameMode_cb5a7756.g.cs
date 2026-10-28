@@ -41,9 +41,9 @@ public sealed unsafe partial class GameMode
     public static GameMode Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'IGameModeTimer' has no generated wrapper.", false)]
     public static GameMode Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'IGameModeTimer' has no generated wrapper.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static GameMode Create(nint arg0) =>

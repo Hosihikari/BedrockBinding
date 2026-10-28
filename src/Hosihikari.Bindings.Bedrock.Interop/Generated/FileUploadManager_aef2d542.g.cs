@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FileUploadManager
+public sealed unsafe partial class FileUploadManager : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -55,9 +55,16 @@ public sealed unsafe partial class FileUploadManager
     public static FileUploadManager Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static FileUploadManager Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static FileUploadManager Create(global::Hosihikari.Bindings.Bedrock.Interop.TaskGroup arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_f9b374e5((void*)arg0.Handle, arg1?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FileUploadManager((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static FileUploadManager Create(nint arg0) =>
@@ -127,7 +134,17 @@ public sealed unsafe partial class FileUploadManager
     public void uploadFileToRealmStorage(nint uploadId, nint path, int slotIndex, nint realmsGuid) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_aef2d542((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

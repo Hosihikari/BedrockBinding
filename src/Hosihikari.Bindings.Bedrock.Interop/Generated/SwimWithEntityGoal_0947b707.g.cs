@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SwimWithEntityGoal
+public sealed unsafe partial class SwimWithEntityGoal : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -87,7 +87,17 @@ public sealed unsafe partial class SwimWithEntityGoal
         NativeMethods.TablePtr->hs_method_f88b932a((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_0947b707((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

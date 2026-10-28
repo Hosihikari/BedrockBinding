@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SculkSensorBlockActor
+public sealed unsafe partial class SculkSensorBlockActor : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,20 +41,27 @@ public sealed unsafe partial class SculkSensorBlockActor
     public static SculkSensorBlockActor Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static SculkSensorBlockActor Create_ef6140ca(nint arg0, nint arg1, nint arg2, uint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static SculkSensorBlockActor Create_b4343aff(nint type, nint pos, nint id, uint arg3, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static SculkSensorBlockActor Create_24344d35(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static SculkSensorBlockActor Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_24344d35((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SculkSensorBlockActor((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SculkSensorBlockActor Create_3bf19a8c(nint arg0) =>
+    public static SculkSensorBlockActor Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public int getLatestReceivedVibrationFrequency()
@@ -86,7 +93,17 @@ public sealed unsafe partial class SculkSensorBlockActor
         NativeMethods.TablePtr->hs_method_ac258be8((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_2e810050((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

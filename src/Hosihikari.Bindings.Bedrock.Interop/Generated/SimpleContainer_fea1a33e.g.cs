@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SimpleContainer
+public sealed unsafe partial class SimpleContainer : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,54 +37,6 @@ public sealed unsafe partial class SimpleContainer
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mContainerRuntimeId_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_b80e22e9((void*)_handle);
-    }
-
-    public sbyte mContainerType
-    {
-        get => NativeMethods.TablePtr->hs_get_c46e23c6((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_c46e23c6((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mContentChangeListeners_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_d7d03386((void*)_handle);
-    }
-
-    public bool mCustomName
-    {
-        get => NativeMethods.TablePtr->hs_get_0b9d65d9((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_0b9d65d9((void*)_handle, value);
-    }
-
-    public sbyte mGameplayContainerType
-    {
-        get => NativeMethods.TablePtr->hs_get_7af8473c((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_7af8473c((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mName_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_dbbd3226((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSizeChangeListeners_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_99a1de04((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mTransactionContextStack_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_1800974d((void*)_handle);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static SimpleContainer Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
@@ -94,12 +46,33 @@ public sealed unsafe partial class SimpleContainer
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SimpleContainer Create_61c9bc51(nint name, bool customName, int size, nint containerType) =>
+    public static SimpleContainer Create(nint name, bool customName, int size, nint containerType) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static SimpleContainer Create_21175847(nint arg0, bool arg1, int arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static SimpleContainer Create(string arg0, bool arg1, int arg2, sbyte arg3)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->hs_create_21175847(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, arg3);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new SimpleContainer((nint)handle);
+        }
+    }
 
     public int getContainerSize()
     {
@@ -139,11 +112,18 @@ public sealed unsafe partial class SimpleContainer
         NativeMethods.TablePtr->hs_method_7f170fb5((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_db9f442b() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_d4f78847() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_fea1a33e((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

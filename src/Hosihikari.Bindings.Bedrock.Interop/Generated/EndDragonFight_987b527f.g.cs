@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EndDragonFight
+public sealed unsafe partial class EndDragonFight : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -51,12 +51,19 @@ public sealed unsafe partial class EndDragonFight
     public static EndDragonFight Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static EndDragonFight Create_48125bcc(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static EndDragonFight Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_48125bcc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EndDragonFight((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EndDragonFight Create_60968358(nint arg0) =>
+    public static EndDragonFight Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public static int GATEWAY_CHUNK_RADIUS
@@ -136,5 +143,18 @@ public sealed unsafe partial class EndDragonFight
     public void verifyExitPositions(global::Hosihikari.Bindings.Bedrock.Interop.EndGatewayBlockActor arg0)
     {
         NativeMethods.TablePtr->hs_method_07bb0735((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_987b527f((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

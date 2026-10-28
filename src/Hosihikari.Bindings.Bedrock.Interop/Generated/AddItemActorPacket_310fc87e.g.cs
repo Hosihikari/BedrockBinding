@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AddItemActorPacket
+public sealed unsafe partial class AddItemActorPacket : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,16 +37,30 @@ public sealed unsafe partial class AddItemActorPacket
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static AddItemActorPacket Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static AddItemActorPacket Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_7fecece2();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static AddItemActorPacket Create_b5403902(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new AddItemActorPacket((nint)handle);
+    }
+
+    public static AddItemActorPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemActor arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_b5403902((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AddItemActorPacket((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AddItemActorPacket Create_784f6af7(nint arg0) =>
+    public static AddItemActorPacket Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -77,7 +91,17 @@ public sealed unsafe partial class AddItemActorPacket
         NativeMethods.TablePtr->hs_method_ef708498((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_310fc87e((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

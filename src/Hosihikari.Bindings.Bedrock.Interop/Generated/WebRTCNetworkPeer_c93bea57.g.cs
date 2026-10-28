@@ -75,54 +75,6 @@ public sealed unsafe partial class WebRTCNetworkPeer : global::System.IDisposabl
         return NativeMethods.TablePtr->hs_method_54a5dd4e((void*)_handle) != 0;
     }
 
-    public bool mConnectionLost
-    {
-        get => NativeMethods.TablePtr->hs_get_ab7bb2be((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_ab7bb2be((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mNetherNetInstance_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_fada489d((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mNetherNetNetworkStatus_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_9f48b1ce((void*)_handle);
-    }
-
-    public uint mNumNetworkStatusUpdates
-    {
-        get => NativeMethods.TablePtr->hs_get_79af33a4((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_79af33a4((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mReadBuffers_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_e37549b7((void*)_handle);
-    }
-
-    public ulong mRemoteUserId
-    {
-        get => NativeMethods.TablePtr->hs_get_b72eaf65((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_b72eaf65((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSendBuffer_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_65cd2fca((void*)_handle);
-    }
-
-    public bool mWasConnected
-    {
-        get => NativeMethods.TablePtr->hs_get_2a37abee((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_2a37abee((void*)_handle, value);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");

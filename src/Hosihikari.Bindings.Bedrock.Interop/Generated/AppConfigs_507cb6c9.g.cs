@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AppConfigs
+public sealed unsafe partial class AppConfigs : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,16 @@ public sealed unsafe partial class AppConfigs
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static AppConfigs Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static AppConfigs Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_ea7bdea1();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AppConfigs((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static AppConfigs Create(nint arg0) =>
@@ -238,17 +245,24 @@ public sealed unsafe partial class AppConfigs
         return NativeMethods.TablePtr->hs_method_f44a924d((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_bf6d22ae() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_86bd3912() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
         get => (nint)NativeMethods.TablePtr->hs_get_ec5cbe43((void*)_handle);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_507cb6c9((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

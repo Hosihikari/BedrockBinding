@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Level
+public sealed unsafe partial class Level : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -60,9 +60,9 @@ public sealed unsafe partial class Level
     public static Level Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<LevelStorage>' is not a known bindable declaration.", false)]
     public static Level Create(nint arg0, nint arg1, nint arg2, bool arg3, nint arg4, nint arg5, nint arg6, nint arg7, nint arg8, nint arg9, nint arg10, nint arg11, nint arg12, nint arg13, bool arg14, bool arg15, nint arg16, nint arg17) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<LevelStorage>' is not a known bindable declaration.");
 
     public static string OVERWORLD_PLAYER_COUNT_TAG
     {
@@ -2182,11 +2182,18 @@ public sealed unsafe partial class Level
         return NativeMethods.TablePtr->hs_method_7fcc69a3((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_d97c798e() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_e0c5b6ab() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_fca5f4ed((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

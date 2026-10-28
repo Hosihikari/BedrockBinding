@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SkeletonHorseTrapGoal
+public sealed unsafe partial class SkeletonHorseTrapGoal : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,9 +41,16 @@ public sealed unsafe partial class SkeletonHorseTrapGoal
     public static SkeletonHorseTrapGoal Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static SkeletonHorseTrapGoal Create(nint arg0, int arg1, float arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static SkeletonHorseTrapGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.Horse arg0, int arg1, float arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_572c7f91((void*)arg0.Handle, arg1, arg2);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SkeletonHorseTrapGoal((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static SkeletonHorseTrapGoal Create(nint arg0) =>
@@ -76,7 +83,17 @@ public sealed unsafe partial class SkeletonHorseTrapGoal
         NativeMethods.TablePtr->hs_method_ed131862((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_b8d6ab3c((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

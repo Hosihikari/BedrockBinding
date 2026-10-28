@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
 
-public sealed partial class ScriptRGB
+public sealed unsafe partial class ScriptRGB : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -61,7 +61,17 @@ public sealed partial class ScriptRGB
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_52a5ac35((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

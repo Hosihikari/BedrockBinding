@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RecipeIngredient
+public sealed unsafe partial class RecipeIngredient : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -54,44 +54,114 @@ public sealed unsafe partial class RecipeIngredient
         get => new global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient((nint)NativeMethods.TablePtr->hs_get_f3ce3f44(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RecipeIngredient Create_99b54d26(nint arg0, ushort arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static RecipeIngredient Create(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, ushort arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_99b54d26((void*)arg0.Handle, arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RecipeIngredient Create_2b1cc2b6(nint arg0, ushort arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new RecipeIngredient((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RecipeIngredient Create_fefe4598(nint arg0, int arg1, ushort arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static RecipeIngredient Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy arg0, ushort arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_2b1cc2b6((void*)arg0.Handle, arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RecipeIngredient Create_680d632f(nint arg0, ushort arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new RecipeIngredient((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RecipeIngredient Create_7c45977f(nint arg0, ushort arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static RecipeIngredient Create(global::Hosihikari.Bindings.Bedrock.Interop.Item arg0, int arg1, ushort arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_fefe4598((void*)arg0.Handle, arg1, arg2);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RecipeIngredient Create_3f1c6d95(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new RecipeIngredient((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RecipeIngredient Create_db793b33(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static RecipeIngredient Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg0, ushort arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_680d632f((void*)arg0.Handle, arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+        return new RecipeIngredient((nint)handle);
+    }
+
+    public static RecipeIngredient Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemTag arg0, ushort arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_7c45977f((void*)arg0.Handle, arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RecipeIngredient((nint)handle);
+    }
+
+    public static RecipeIngredient Create(global::Hosihikari.Bindings.Bedrock.Interop.ReadOnlyBinaryStream arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_3f1c6d95((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RecipeIngredient((nint)handle);
+    }
+
+    public static RecipeIngredient Create(global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_db793b33((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RecipeIngredient((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public static RecipeIngredient Create_dd829df7(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RecipeIngredient Create_fb7ddab2(nint arg0, int arg1, ushort arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static RecipeIngredient Create(string arg0, int arg1, ushort arg2)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->hs_create_fb7ddab2(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new RecipeIngredient((nint)handle);
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RecipeIngredient Create_0e6294da(nint item, int auxValue, ushort stackSize) =>
+    public static RecipeIngredient Create(nint item, int auxValue, ushort stackSize) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void __autoclassinit2(ulong arg0)
@@ -107,15 +177,22 @@ public sealed unsafe partial class RecipeIngredient
     public nint operator_assign_44ae99ef(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_5797d63e() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static RecipeIngredient Create_0e7d31fc(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_80480ba1() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_9ec2b88f((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

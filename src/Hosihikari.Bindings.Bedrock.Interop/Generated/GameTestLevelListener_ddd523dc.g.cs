@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GameTestLevelListener
+public sealed unsafe partial class GameTestLevelListener : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -42,12 +42,19 @@ public sealed unsafe partial class GameTestLevelListener
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GameTestLevelListener Create_642b8a4d(nint arg0) =>
+    public static GameTestLevelListener Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static GameTestLevelListener Create_3a0c9412(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static GameTestLevelListener Create(global::Hosihikari.Bindings.Bedrock.Interop.gametest.GameTestTicker arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_3a0c9412((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameTestLevelListener((nint)handle);
+    }
 
     public int onEvent(nint arg0)
     {
@@ -62,4 +69,17 @@ public sealed unsafe partial class GameTestLevelListener
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_ddd523dc((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

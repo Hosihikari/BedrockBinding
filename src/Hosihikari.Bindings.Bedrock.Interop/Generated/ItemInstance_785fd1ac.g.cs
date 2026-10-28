@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ItemInstance
+public sealed unsafe partial class ItemInstance : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -42,36 +42,99 @@ public sealed unsafe partial class ItemInstance
         get => new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_get_46175cac(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ItemInstance Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ItemInstance Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_f5455602();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ItemInstance Create(nint arg0, int arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new ItemInstance((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ItemInstance Create(nint arg0, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ItemInstance Create(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_b4ee3bbc((void*)arg0.Handle, arg1, (void*)(arg2?.Handle ?? 0));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ItemInstance Create_1987e1ba(nint arg0, int arg1, int arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new ItemInstance((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ItemInstance Create_5c5da902(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ItemInstance Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy arg0, int arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_236f7651((void*)arg0.Handle, arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ItemInstance Create_06ba3c9f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new ItemInstance((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ItemInstance Create_9ef26809(nint arg0, int arg1, int arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ItemInstance Create(global::Hosihikari.Bindings.Bedrock.Interop.Item arg0, int arg1, int arg2, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg3)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_1987e1ba((void*)arg0.Handle, arg1, arg2, (void*)(arg3?.Handle ?? 0));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemInstance((nint)handle);
+    }
+
+    public static ItemInstance Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_5c5da902((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemInstance((nint)handle);
+    }
+
+    public static ItemInstance Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_06ba3c9f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemInstance((nint)handle);
+    }
+
+    public static ItemInstance Create(string arg0, int arg1, int arg2, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg3)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->hs_create_9ef26809(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, (void*)(arg3?.Handle ?? 0));
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new ItemInstance((nint)handle);
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ItemInstance Create_068fa77c(nint name, int count, int auxValue, nint _userData) =>
+    public static ItemInstance Create(nint name, int count, int auxValue, nint _userData) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void __autoclassinit2(ulong arg0)
@@ -79,13 +142,15 @@ public sealed unsafe partial class ItemInstance
         NativeMethods.TablePtr->hs_method_7734167d((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint clone() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance clone()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_d1bfe8a0((void*)_handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint fromTag(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance fromTag(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_adbb447a((void*)arg0.Handle));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint rhs) =>
@@ -124,17 +189,11 @@ public sealed unsafe partial class ItemInstance
     public void reinit(nint name, int count, int auxValue) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_66df652f() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ItemInstance Create_400e4bfa(nint arg0) =>
+    public static ItemInstance Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_845dc9d9() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
     public short mAuxValue
     {
@@ -223,5 +282,18 @@ public sealed unsafe partial class ItemInstance
     {
         get => NativeMethods.TablePtr->hs_get_c45b63c7((void*)_handle) != 0;
         set => NativeMethods.TablePtr->hs_set_c45b63c7((void*)_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_785fd1ac((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

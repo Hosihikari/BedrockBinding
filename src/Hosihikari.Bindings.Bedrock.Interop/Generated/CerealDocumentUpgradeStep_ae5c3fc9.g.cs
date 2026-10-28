@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CerealDocumentUpgradeStep
+public sealed unsafe partial class CerealDocumentUpgradeStep : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,13 +41,27 @@ public sealed unsafe partial class CerealDocumentUpgradeStep
     public static CerealDocumentUpgradeStep Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static CerealDocumentUpgradeStep Create_4eb2fe83(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static CerealDocumentUpgradeStep Create(global::Hosihikari.Bindings.Bedrock.Interop.CerealDocumentUpgradeStep arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_4eb2fe83((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static CerealDocumentUpgradeStep Create_4f831ea7(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new CerealDocumentUpgradeStep((nint)handle);
+    }
+
+    public static CerealDocumentUpgradeStep Create(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_4f831ea7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CerealDocumentUpgradeStep((nint)handle);
+    }
 
     public void addUpgrade(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
     {
@@ -77,15 +91,22 @@ public sealed unsafe partial class CerealDocumentUpgradeStep
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_becb3e29() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static CerealDocumentUpgradeStep Create_691ef0b5(nint arg0) =>
+    public static CerealDocumentUpgradeStep Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_5bfffb8b() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_ae5c3fc9((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

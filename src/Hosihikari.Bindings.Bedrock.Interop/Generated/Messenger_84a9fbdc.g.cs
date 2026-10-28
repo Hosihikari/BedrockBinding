@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.CodeBuilder_Nested;
 
-public sealed partial class Messenger
+public sealed unsafe partial class Messenger : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -180,4 +180,17 @@ public sealed partial class Messenger
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void tradeCompleted(nint player, nint trader, nint itemA, nint itemB, nint tradedFor, int traderEmeraldCount) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_84a9fbdc((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

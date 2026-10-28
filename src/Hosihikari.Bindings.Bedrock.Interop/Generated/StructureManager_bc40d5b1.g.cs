@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class StructureManager
+public sealed unsafe partial class StructureManager : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -57,12 +57,19 @@ public sealed unsafe partial class StructureManager
     public static StructureManager Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static StructureManager Create_33e4bfd8(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static StructureManager Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_33e4bfd8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureManager((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructureManager Create_c250d278(nint arg0) =>
+    public static StructureManager Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -408,7 +415,17 @@ public sealed unsafe partial class StructureManager
     public nint tryPlaceStructureInWorld(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'CommandArea' has no generated wrapper.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_bc40d5b1((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

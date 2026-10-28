@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class OverworldGenerator
+public sealed unsafe partial class OverworldGenerator : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,9 +47,16 @@ public sealed unsafe partial class OverworldGenerator
     public static OverworldGenerator Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static OverworldGenerator Create(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static OverworldGenerator Create(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0, bool arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_0b890bd6((void*)arg0.Handle, arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OverworldGenerator((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static OverworldGenerator Create(nint arg0) =>
@@ -120,7 +127,17 @@ public sealed unsafe partial class OverworldGenerator
         NativeMethods.TablePtr->hs_method_0171c80a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_1815eceb((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

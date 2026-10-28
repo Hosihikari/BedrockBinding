@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AttributeBuff
+public sealed unsafe partial class AttributeBuff : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -116,11 +116,18 @@ public sealed unsafe partial class AttributeBuff
         NativeMethods.TablePtr->hs_method_05e36984((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_c2bc1216() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_fb233510() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_5fbbd10f((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

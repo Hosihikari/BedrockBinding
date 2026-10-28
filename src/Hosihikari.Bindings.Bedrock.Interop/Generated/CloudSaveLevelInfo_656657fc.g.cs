@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CloudSaveLevelInfo
+public sealed unsafe partial class CloudSaveLevelInfo : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,13 +41,27 @@ public sealed unsafe partial class CloudSaveLevelInfo
     public static CloudSaveLevelInfo Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static CloudSaveLevelInfo Create_fb5f6885(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static CloudSaveLevelInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.CloudSaveLevelInfo arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_fb5f6885((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static CloudSaveLevelInfo Create_2c788b48(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new CloudSaveLevelInfo((nint)handle);
+    }
+
+    public static CloudSaveLevelInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_2c788b48((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CloudSaveLevelInfo((nint)handle);
+    }
 
     public bool hasInfo()
     {
@@ -63,15 +77,22 @@ public sealed unsafe partial class CloudSaveLevelInfo
         NativeMethods.TablePtr->hs_method_5f29097c((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_ab8572fb() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static CloudSaveLevelInfo Create_896a83e2(nint arg0) =>
+    public static CloudSaveLevelInfo Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_37f201ef() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_656657fc((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

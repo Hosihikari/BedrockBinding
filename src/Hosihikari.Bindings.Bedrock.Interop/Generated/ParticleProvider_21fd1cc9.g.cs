@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ParticleProvider
+public sealed unsafe partial class ParticleProvider : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,16 @@ public sealed unsafe partial class ParticleProvider
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ParticleProvider Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ParticleProvider Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_ff5e2166();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ParticleProvider((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ParticleProvider Create(nint arg0) =>
@@ -95,7 +102,17 @@ public sealed unsafe partial class ParticleProvider
         NativeMethods.TablePtr->hs_method_5baea9f8((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle, arg3);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_21fd1cc9((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

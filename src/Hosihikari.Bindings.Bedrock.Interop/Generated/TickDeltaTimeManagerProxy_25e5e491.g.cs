@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TickDeltaTimeManagerProxy
+public sealed unsafe partial class TickDeltaTimeManagerProxy : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,16 @@ public sealed unsafe partial class TickDeltaTimeManagerProxy
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static TickDeltaTimeManagerProxy Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static TickDeltaTimeManagerProxy Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_c69c03e8();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TickDeltaTimeManagerProxy((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static TickDeltaTimeManagerProxy Create(nint arg0) =>
@@ -59,7 +66,17 @@ public sealed unsafe partial class TickDeltaTimeManagerProxy
         NativeMethods.TablePtr->hs_method_eca765d5((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_25e5e491((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

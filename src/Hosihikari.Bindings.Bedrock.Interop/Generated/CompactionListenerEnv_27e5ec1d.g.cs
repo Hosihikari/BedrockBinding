@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class CompactionListenerEnv
+public sealed unsafe partial class CompactionListenerEnv : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -42,12 +42,19 @@ public sealed partial class CompactionListenerEnv
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CompactionListenerEnv Create_83b2818c(nint arg0) =>
+    public static CompactionListenerEnv Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static CompactionListenerEnv Create_d6782b4e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static CompactionListenerEnv Create(global::Hosihikari.Bindings.Bedrock.Interop.leveldb_Nested.Env? arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_d6782b4e((void*)(arg0?.Handle ?? 0));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CompactionListenerEnv((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: parameter type 'void (*)(void*)' is not supported.", false)]
     public void Schedule(nint arg0, nint arg1) =>
@@ -61,7 +68,17 @@ public sealed partial class CompactionListenerEnv
     public void setCompactionCallback(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_27e5ec1d((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

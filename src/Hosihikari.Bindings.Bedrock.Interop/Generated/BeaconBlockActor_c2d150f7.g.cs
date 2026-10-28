@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BeaconBlockActor
+public sealed unsafe partial class BeaconBlockActor : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,12 +41,19 @@ public sealed unsafe partial class BeaconBlockActor
     public static BeaconBlockActor Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BeaconBlockActor Create_6edecc48(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static BeaconBlockActor Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_6edecc48((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BeaconBlockActor((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BeaconBlockActor Create_f2c96e4e(nint arg0) =>
+    public static BeaconBlockActor Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void checkShapeAndAchievement(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
@@ -54,9 +61,10 @@ public sealed unsafe partial class BeaconBlockActor
         NativeMethods.TablePtr->hs_method_11943b43((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CompoundTag' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getBeaconData() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CompoundTag' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag getBeaconData()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)NativeMethods.TablePtr->hs_method_cd24fa80((void*)_handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Container? getContainer_aa1e9acd()
     {
@@ -168,55 +176,17 @@ public sealed unsafe partial class BeaconBlockActor
         NativeMethods.TablePtr->hs_method_ff0a5c2b((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mContainerRuntimeId_Address
+    public void Dispose()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_a0ad850e((void*)_handle);
-    }
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_c2d150f7((void*)_handle);
+            }
 
-    public sbyte mContainerType
-    {
-        get => NativeMethods.TablePtr->hs_get_10556748((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_10556748((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mContentChangeListeners_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_92d0662b((void*)_handle);
-    }
-
-    public bool mCustomName
-    {
-        get => NativeMethods.TablePtr->hs_get_bd225177((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_bd225177((void*)_handle, value);
-    }
-
-    public sbyte mGameplayContainerType
-    {
-        get => NativeMethods.TablePtr->hs_get_07541366((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_07541366((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mName_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_2590e433((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSizeChangeListeners_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_66a6a77b((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mTransactionContextStack_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_0709aec7((void*)_handle);
+            _handle = 0;
+        }
     }
 }

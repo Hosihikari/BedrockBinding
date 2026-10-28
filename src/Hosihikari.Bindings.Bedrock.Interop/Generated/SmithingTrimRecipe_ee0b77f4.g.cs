@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SmithingTrimRecipe
+public sealed unsafe partial class SmithingTrimRecipe : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -51,12 +51,33 @@ public sealed unsafe partial class SmithingTrimRecipe
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SmithingTrimRecipe Create_f442f4e5(nint recipeId, nint arg1, nint arg2, nint arg3, nint tag) =>
+    public static SmithingTrimRecipe Create(nint recipeId, nint arg1, nint arg2, nint arg3, nint tag) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static SmithingTrimRecipe Create_884bbbb8(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static SmithingTrimRecipe Create(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient arg1, global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient arg2, global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient arg3, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg4)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->hs_create_884bbbb8(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4.Handle);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new SmithingTrimRecipe((nint)handle);
+        }
+    }
 
     public nint assemble(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer arg0, nint arg1)
     {
@@ -92,7 +113,17 @@ public sealed unsafe partial class SmithingTrimRecipe
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_ee0b77f4((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class RegionHillsOperationNode
+public sealed unsafe partial class RegionHillsOperationNode : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -45,9 +45,16 @@ public sealed partial class RegionHillsOperationNode
     public static RegionHillsOperationNode Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RegionHillsOperationNode Create(uint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static RegionHillsOperationNode Create(uint arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1, global::Hosihikari.Bindings.Abi.SharedHandle? arg2, global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry arg3)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_f8e63b0d(arg0, arg1?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), arg2?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)arg3.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RegionHillsOperationNode((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint _allocateAndFill(ulong arg0, nint arg1, nint arg2) =>
@@ -61,7 +68,17 @@ public sealed partial class RegionHillsOperationNode
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_816ccc97((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

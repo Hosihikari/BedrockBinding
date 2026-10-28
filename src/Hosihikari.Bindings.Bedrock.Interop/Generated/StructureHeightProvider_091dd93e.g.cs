@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen;
 
-public sealed partial class StructureHeightProvider
+public sealed unsafe partial class StructureHeightProvider : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -65,7 +65,17 @@ public sealed partial class StructureHeightProvider
     public int sample(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_091dd93e((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

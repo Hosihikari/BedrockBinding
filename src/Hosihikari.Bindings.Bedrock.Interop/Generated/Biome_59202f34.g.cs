@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Biome
+public sealed unsafe partial class Biome : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -54,9 +54,16 @@ public sealed unsafe partial class Biome
     public static Biome Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Biome Create(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static Biome Create(int arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_7b4a6548(arg0);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Biome((nint)handle);
+    }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.mce.Color DEFAULT_FOG_COLOR
     {
@@ -242,7 +249,17 @@ public sealed unsafe partial class Biome
         NativeMethods.TablePtr->hs_method_c0da01a2((void*)_handle, (void*)arg0.Handle, (void*)arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_59202f34((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

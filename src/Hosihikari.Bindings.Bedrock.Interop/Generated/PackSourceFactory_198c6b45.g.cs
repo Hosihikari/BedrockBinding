@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PackSourceFactory
+public sealed unsafe partial class PackSourceFactory : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -42,12 +42,19 @@ public sealed unsafe partial class PackSourceFactory
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PackSourceFactory Create_1424db79(nint arg0) =>
+    public static PackSourceFactory Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PackSourceFactory Create_b2821054(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static PackSourceFactory Create(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_b2821054(arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PackSourceFactory((nint)handle);
+    }
 
     public void __autoclassinit2(ulong arg0)
     {
@@ -136,11 +143,18 @@ public sealed unsafe partial class PackSourceFactory
     public void setDynamicPackageRoot_ca6e97ec(nint path) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_94bf0772() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_c4cdf882() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_198c6b45((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

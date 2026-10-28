@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PillagerOutpostStart
+public sealed unsafe partial class PillagerOutpostStart : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,9 +41,16 @@ public sealed unsafe partial class PillagerOutpostStart
     public static PillagerOutpostStart Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PillagerOutpostStart Create(nint arg0, nint arg1, int arg2, int arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static PillagerOutpostStart Create(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, int arg2, int arg3)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_bd46f1f3((void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PillagerOutpostStart((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static PillagerOutpostStart Create(nint arg0) =>
@@ -58,9 +65,6 @@ public sealed unsafe partial class PillagerOutpostStart
         return NativeMethods.TablePtr->hs_method_0f378cdd((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBoundingBox_Address
@@ -84,5 +88,18 @@ public sealed unsafe partial class PillagerOutpostStart
     public nint mPieces_Address
     {
         get => (nint)NativeMethods.TablePtr->hs_get_be07533c((void*)_handle);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_50de00ae((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

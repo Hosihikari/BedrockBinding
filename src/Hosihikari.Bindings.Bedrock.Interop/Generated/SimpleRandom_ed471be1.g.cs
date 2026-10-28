@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SimpleRandom
+public sealed unsafe partial class SimpleRandom : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -45,9 +45,16 @@ public sealed unsafe partial class SimpleRandom
     public static SimpleRandom Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static SimpleRandom Create(long arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static SimpleRandom Create(long arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_818c40cf(arg0);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SimpleRandom((nint)handle);
+    }
 
     public void consumeCount(uint arg0)
     {
@@ -121,11 +128,18 @@ public sealed unsafe partial class SimpleRandom
         NativeMethods.TablePtr->hs_method_b3aa2be2((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_7ab0ca8c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_06d3aa69() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_ed471be1((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

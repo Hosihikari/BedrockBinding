@@ -45,9 +45,9 @@ public sealed unsafe partial class PlayerInventory
     public static PlayerInventory Create_8dfb634e(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static PlayerInventory Create_f41bf27c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? _getHudContainerManagerModel()
     {

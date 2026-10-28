@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class VanillaGameModuleServer
+public sealed unsafe partial class VanillaGameModuleServer : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,16 @@ public sealed unsafe partial class VanillaGameModuleServer
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static VanillaGameModuleServer Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static VanillaGameModuleServer Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_4c840e90();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VanillaGameModuleServer((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static VanillaGameModuleServer Create(nint arg0) =>
@@ -86,7 +93,17 @@ public sealed unsafe partial class VanillaGameModuleServer
         NativeMethods.TablePtr->hs_method_7aace2c2((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_7ebbca3a((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

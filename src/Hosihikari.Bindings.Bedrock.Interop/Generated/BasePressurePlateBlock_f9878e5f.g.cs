@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BasePressurePlateBlock
+public sealed unsafe partial class BasePressurePlateBlock : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -133,7 +133,17 @@ public sealed unsafe partial class BasePressurePlateBlock
         NativeMethods.TablePtr->hs_method_e32e49e2((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_f9878e5f((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

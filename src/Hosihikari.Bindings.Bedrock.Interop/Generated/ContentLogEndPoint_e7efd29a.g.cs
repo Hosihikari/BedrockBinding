@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ContentLogEndPoint
+public sealed unsafe partial class ContentLogEndPoint : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -43,9 +43,16 @@ public sealed unsafe partial class ContentLogEndPoint
         get => (nint)NativeMethods.TablePtr->hs_get_5ff30fb7((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ContentLogEndPoint Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ContentLogEndPoint Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_594e9dff();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ContentLogEndPoint((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ContentLogEndPoint Create(nint arg0) =>
@@ -60,11 +67,18 @@ public sealed unsafe partial class ContentLogEndPoint
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_19e2ec8b() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_b214038b() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_e7efd29a((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class StrongholdFeature
+public sealed unsafe partial class StrongholdFeature : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -46,9 +46,16 @@ public sealed unsafe partial class StrongholdFeature
     public static StrongholdFeature Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static StrongholdFeature Create(nint arg0, uint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static StrongholdFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.VillageFeature? arg0, uint arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_f8b69603((void*)(arg0?.Handle ?? 0), arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StrongholdFeature((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static StrongholdFeature Create(nint arg0) =>
@@ -71,9 +78,6 @@ public sealed unsafe partial class StrongholdFeature
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mActiveBlueprintCreateCount_Address
@@ -145,5 +149,18 @@ public sealed unsafe partial class StrongholdFeature
     {
         get => NativeMethods.TablePtr->hs_get_b4c96c4d((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_b4c96c4d((void*)_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_e727005e((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

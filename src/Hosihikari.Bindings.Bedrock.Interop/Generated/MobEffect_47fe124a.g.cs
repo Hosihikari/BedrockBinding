@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MobEffect
+public sealed unsafe partial class MobEffect : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -171,12 +171,61 @@ public sealed unsafe partial class MobEffect
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MobEffect Create_1ad3a4ec(uint arg0, nint arg1, nint arg2, bool arg3, int arg4, int arg5, nint arg6, bool arg7) =>
+    public static MobEffect Create(uint arg0, nint arg1, nint arg2, bool arg3, int arg4, int arg5, nint arg6, bool arg7) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MobEffect Create_82e404fa(uint arg0, nint arg1, nint arg2, bool arg3, int arg4, int arg5, nint arg6, bool arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static MobEffect Create(uint arg0, string arg1, string arg2, bool arg3, int arg4, int arg5, string arg6, bool arg7)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
+        var __hs_stringByteCount6 = global::System.Text.Encoding.UTF8.GetByteCount(arg6);
+        scoped global::System.Span<byte> __hs_stringBytes6;
+        if (__hs_stringByteCount6 <= 256)
+        {
+            __hs_stringBytes6 = stackalloc byte[__hs_stringByteCount6 == 0 ? 1 : __hs_stringByteCount6];
+        }
+        else
+        {
+            __hs_stringBytes6 = new byte[__hs_stringByteCount6];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg6, __hs_stringBytes6);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                fixed (byte* __hs_stringData6 = __hs_stringBytes6)
+                {
+                    var handle = NativeMethods.TablePtr->hs_create_82e404fa(arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, arg3, arg4, arg5, __hs_stringData6, (nuint)__hs_stringByteCount6, arg7);
+                    if (handle == null)
+                    {
+                        throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+                    }
+
+                    return new MobEffect((nint)handle);
+                }
+            }
+        }
+    }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect NIGHT_VISION
     {
@@ -432,11 +481,18 @@ public sealed unsafe partial class MobEffect
         return (nint)NativeMethods.TablePtr->hs_method_ad367292((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_4f84e3d5() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_34856cb7() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_47fe124a((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EatCarriedItemGoal
+public sealed unsafe partial class EatCarriedItemGoal : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -51,9 +51,16 @@ public sealed unsafe partial class EatCarriedItemGoal
     public static EatCarriedItemGoal Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static EatCarriedItemGoal Create(nint arg0, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static EatCarriedItemGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, int arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_eb8a1ccd((void*)arg0.Handle, arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EatCarriedItemGoal((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static EatCarriedItemGoal Create(nint arg0) =>
@@ -96,7 +103,17 @@ public sealed unsafe partial class EatCarriedItemGoal
         NativeMethods.TablePtr->hs_method_27d86616((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_42ea3da3((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

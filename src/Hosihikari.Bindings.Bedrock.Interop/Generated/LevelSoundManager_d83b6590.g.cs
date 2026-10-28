@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LevelSoundManager
+public sealed unsafe partial class LevelSoundManager : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -107,11 +107,18 @@ public sealed unsafe partial class LevelSoundManager
         NativeMethods.TablePtr->hs_method_6a5ace05((void*)_handle, (void*)arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_1752b0b6() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_14934ef1() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_d83b6590((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ContainerScreenValidation
+public sealed unsafe partial class ContainerScreenValidation : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,9 +41,9 @@ public sealed unsafe partial class ContainerScreenValidation
     public static ContainerScreenValidation Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unordered_map<ContainerEnumName,std::shared_ptr<Container>,std::hash<ContainerEnumName>,std::equal_to<ContainerEnumName>,std::allocator<std::pair<ContainerEnumName const,std::shared_ptr<Container>>>>' is not a known bindable declaration.", false)]
     public static ContainerScreenValidation Create_ae6d03b1(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unordered_map<ContainerEnumName,std::shared_ptr<Container>,std::hash<ContainerEnumName>,std::equal_to<ContainerEnumName>,std::allocator<std::pair<ContainerEnumName const,std::shared_ptr<Container>>>>' is not a known bindable declaration.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ContainerScreenValidation Create_f5adf1af(nint screenContext, nint arg1, nint arg2) =>
@@ -140,7 +140,17 @@ public sealed unsafe partial class ContainerScreenValidation
     public nint tryTransfer(nint arg0, nint arg1, int arg2, bool arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_4310f2c8((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

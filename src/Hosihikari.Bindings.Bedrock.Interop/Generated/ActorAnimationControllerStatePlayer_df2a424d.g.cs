@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorAnimationControllerStatePlayer
+public sealed unsafe partial class ActorAnimationControllerStatePlayer : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,9 +41,16 @@ public sealed unsafe partial class ActorAnimationControllerStatePlayer
     public static ActorAnimationControllerStatePlayer Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ActorAnimationControllerStatePlayer Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ActorAnimationControllerStatePlayer Create(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationControllerPlayer arg1, global::Hosihikari.Bindings.Abi.SharedHandle? arg2, global::Hosihikari.Bindings.Bedrock.Interop.AnimationComponent arg3, global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode arg4, nint arg5)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_ed01dfba((void*)arg0.Handle, (void*)arg1.Handle, arg2?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)arg3.Handle, (void*)arg4.Handle, (void*)arg5);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorAnimationControllerStatePlayer((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ActorAnimationControllerStatePlayer Create(nint arg0) =>
@@ -121,7 +128,17 @@ public sealed unsafe partial class ActorAnimationControllerStatePlayer
         NativeMethods.TablePtr->hs_method_4e379850((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_df2a424d((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

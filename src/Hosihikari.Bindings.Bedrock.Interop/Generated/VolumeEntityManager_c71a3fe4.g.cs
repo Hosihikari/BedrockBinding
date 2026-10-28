@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class VolumeEntityManager
+public sealed unsafe partial class VolumeEntityManager : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -79,7 +79,17 @@ public sealed unsafe partial class VolumeEntityManager
         NativeMethods.TablePtr->hs_method_0472fa25((void*)arg0, (void*)arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_c71a3fe4((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

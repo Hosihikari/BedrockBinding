@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class HopperBlockActor
+public sealed unsafe partial class HopperBlockActor : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,54 +37,6 @@ public sealed unsafe partial class HopperBlockActor
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mContainerRuntimeId_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_1925c843((void*)_handle);
-    }
-
-    public sbyte mContainerType
-    {
-        get => NativeMethods.TablePtr->hs_get_47e77084((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_47e77084((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mContentChangeListeners_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_d7fcb8cb((void*)_handle);
-    }
-
-    public bool mCustomName
-    {
-        get => NativeMethods.TablePtr->hs_get_fdab0d13((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_fdab0d13((void*)_handle, value);
-    }
-
-    public sbyte mGameplayContainerType
-    {
-        get => NativeMethods.TablePtr->hs_get_ff6e6a6d((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_ff6e6a6d((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mName_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_970d9e61((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSizeChangeListeners_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_a9efd8c8((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mTransactionContextStack_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_2e62da39((void*)_handle);
-    }
-
     public int mCooldownTime
     {
         get => NativeMethods.TablePtr->hs_get_886b0f7b((void*)_handle);
@@ -113,12 +65,19 @@ public sealed unsafe partial class HopperBlockActor
     public static HopperBlockActor Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static HopperBlockActor Create_0481cb8e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static HopperBlockActor Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_0481cb8e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HopperBlockActor((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static HopperBlockActor Create_4bb453cb(nint arg0) =>
+    public static HopperBlockActor Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public void checkForSmeltEverythingAchievement(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
@@ -235,5 +194,18 @@ public sealed unsafe partial class HopperBlockActor
     public void updateCooldownAfterMove(global::Hosihikari.Bindings.Bedrock.Interop.Tick arg0, int arg1)
     {
         NativeMethods.TablePtr->hs_method_67b73f9a((void*)_handle, (void*)arg0.Handle, arg1);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_1643f8ac((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

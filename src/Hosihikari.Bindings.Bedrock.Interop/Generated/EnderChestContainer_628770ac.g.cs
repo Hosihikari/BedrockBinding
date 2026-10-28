@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EnderChestContainer
+public sealed unsafe partial class EnderChestContainer : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,57 +37,16 @@ public sealed unsafe partial class EnderChestContainer
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mContainerRuntimeId_Address
+    public static EnderChestContainer Create()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_cec69b7c((void*)_handle);
-    }
+        var handle = NativeMethods.TablePtr->hs_create_b7a1cf98();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    public sbyte mContainerType
-    {
-        get => NativeMethods.TablePtr->hs_get_e4db9b69((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_e4db9b69((void*)_handle, value);
+        return new EnderChestContainer((nint)handle);
     }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mContentChangeListeners_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_8cdb6fcf((void*)_handle);
-    }
-
-    public bool mCustomName
-    {
-        get => NativeMethods.TablePtr->hs_get_137184fe((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_137184fe((void*)_handle, value);
-    }
-
-    public sbyte mGameplayContainerType
-    {
-        get => NativeMethods.TablePtr->hs_get_fd4d99b5((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_fd4d99b5((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mName_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_946a50f8((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSizeChangeListeners_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_a62d44f3((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mTransactionContextStack_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_0a517eb1((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static EnderChestContainer Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static EnderChestContainer Create(nint arg0) =>
@@ -127,7 +86,17 @@ public sealed unsafe partial class EnderChestContainer
         NativeMethods.TablePtr->hs_method_628be830((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_628770ac((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

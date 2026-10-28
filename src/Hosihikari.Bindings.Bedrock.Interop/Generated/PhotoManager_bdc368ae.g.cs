@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PhotoManager
+public sealed unsafe partial class PhotoManager : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,9 +41,16 @@ public sealed unsafe partial class PhotoManager
     public static PhotoManager Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PhotoManager Create(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static PhotoManager Create(nint arg0, bool arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_08b16934((void*)arg0, arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PhotoManager((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static PhotoManager Create(nint arg0) =>
@@ -108,7 +115,17 @@ public sealed unsafe partial class PhotoManager
         NativeMethods.TablePtr->hs_method_b02b1677((void*)_handle, (void*)arg0, (void*)(arg1?.Handle ?? 0), (void*)(arg2?.Handle ?? 0), (void*)arg3);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_bdc368ae((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

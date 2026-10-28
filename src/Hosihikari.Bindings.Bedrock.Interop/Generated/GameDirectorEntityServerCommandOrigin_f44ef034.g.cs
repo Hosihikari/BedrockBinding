@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GameDirectorEntityServerCommandOrigin
+public sealed unsafe partial class GameDirectorEntityServerCommandOrigin : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -59,12 +59,19 @@ public sealed unsafe partial class GameDirectorEntityServerCommandOrigin
     public static GameDirectorEntityServerCommandOrigin Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static GameDirectorEntityServerCommandOrigin Create_ddb453b5(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static GameDirectorEntityServerCommandOrigin Create(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_ddb453b5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameDirectorEntityServerCommandOrigin((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GameDirectorEntityServerCommandOrigin Create_e95e9fd3(nint arg0) =>
+    public static GameDirectorEntityServerCommandOrigin Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public bool canUseCommandsWithoutCheatsEnabled()
@@ -97,7 +104,17 @@ public sealed unsafe partial class GameDirectorEntityServerCommandOrigin
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_f44ef034((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

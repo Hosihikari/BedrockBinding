@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FilterTestGameRule
+public sealed unsafe partial class FilterTestGameRule : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -69,7 +69,17 @@ public sealed unsafe partial class FilterTestGameRule
         return NativeMethods.TablePtr->hs_method_287167a8((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_86f2988e((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RakNetServerLocator
+public sealed unsafe partial class RakNetServerLocator : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -45,9 +45,9 @@ public sealed unsafe partial class RakNetServerLocator
     public static RakNetServerLocator Create_874e0bd2(nint arg0, nint ipInterface, nint arg2, bool isServer, nint arg4, nint arg5, nint arg6, nint appPlatform, nint arg8) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<RakNet::RakPeerInterface,void (*)(RakNet::RakPeerInterface*)>' is not supported.", false)]
     public static RakNetServerLocator Create_8e62bd43(nint arg0, nint arg1, nint arg2, bool arg3, nint arg4, nint arg5, nint arg6, nint arg7, nint arg8) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<RakNet::RakPeerInterface,void (*)(RakNet::RakPeerInterface*)>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static RakNetServerLocator Create(nint arg0) =>
@@ -215,7 +215,17 @@ public sealed unsafe partial class RakNetServerLocator
         NativeMethods.TablePtr->hs_method_fc9118ad((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_256ba86e((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class TickingAreaList
+public sealed unsafe partial class TickingAreaList : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -53,11 +53,18 @@ public sealed partial class TickingAreaList
     public bool removeDistantEntityAreasAndCheckForRemoved(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_ede95dd6() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_84db1f00() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_b4455bf5((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

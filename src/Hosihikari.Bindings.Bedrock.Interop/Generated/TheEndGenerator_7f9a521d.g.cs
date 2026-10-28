@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TheEndGenerator
+public sealed unsafe partial class TheEndGenerator : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,9 +47,16 @@ public sealed unsafe partial class TheEndGenerator
     public static TheEndGenerator Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static TheEndGenerator Create(nint arg0, uint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static TheEndGenerator Create(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0, uint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Biome? arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_7c3a260c((void*)arg0.Handle, arg1, (void*)(arg2?.Handle ?? 0));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TheEndGenerator((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static TheEndGenerator Create(nint arg0) =>
@@ -122,5 +129,18 @@ public sealed unsafe partial class TheEndGenerator
     public void prepareHeights(global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1, bool arg2)
     {
         NativeMethods.TablePtr->hs_method_f6350357((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_7f9a521d((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

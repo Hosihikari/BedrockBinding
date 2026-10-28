@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DirectionalProducerComponent
+public sealed unsafe partial class DirectionalProducerComponent : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,93 +37,16 @@ public sealed unsafe partial class DirectionalProducerComponent
         return __hs_handle;
     }
 
-    public bool mAllowPowerDown
+    public static DirectionalProducerComponent Create()
     {
-        get => NativeMethods.TablePtr->hs_get_b46f0a1d((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_b46f0a1d((void*)_handle, value);
-    }
+        var handle = NativeMethods.TablePtr->hs_create_d8595af8();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    public bool mAllowPowerUp
-    {
-        get => NativeMethods.TablePtr->hs_get_2098db93((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_2098db93((void*)_handle, value);
+        return new DirectionalProducerComponent((nint)handle);
     }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mChunkPosition_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_d1c45545((void*)_handle);
-    }
-
-    public long mCircuitComponentType_f8d5d436
-    {
-        get => NativeMethods.TablePtr->hs_get_e1b1766d((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_e1b1766d((void*)_handle, value);
-    }
-
-    public bool mConsumePowerAnyDirection
-    {
-        get => NativeMethods.TablePtr->hs_get_8d888491((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_8d888491((void*)_handle, value);
-    }
-
-    public sbyte mDirection
-    {
-        get => NativeMethods.TablePtr->hs_get_a6c76571((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_a6c76571((void*)_handle, value);
-    }
-
-    public bool mIgnoreFirstUpdate
-    {
-        get => NativeMethods.TablePtr->hs_get_d9c357d2((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_d9c357d2((void*)_handle, value);
-    }
-
-    public bool mIsFirstTime
-    {
-        get => NativeMethods.TablePtr->hs_get_2a8b0ecc((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_2a8b0ecc((void*)_handle, value);
-    }
-
-    public bool mNeedsUpdate
-    {
-        get => NativeMethods.TablePtr->hs_get_645cfd7f((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_645cfd7f((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPos_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_ba2daf91((void*)_handle);
-    }
-
-    public bool mRemoved
-    {
-        get => NativeMethods.TablePtr->hs_get_123332af((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_123332af((void*)_handle, value);
-    }
-
-    public bool mShouldEvaluate
-    {
-        get => NativeMethods.TablePtr->hs_get_41929809((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_41929809((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSources_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_b35adc8f((void*)_handle);
-    }
-
-    public int mStrength
-    {
-        get => NativeMethods.TablePtr->hs_get_92f1e099((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_92f1e099((void*)_handle, value);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static DirectionalProducerComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static DirectionalProducerComponent Create(nint arg0) =>
@@ -143,30 +66,17 @@ public sealed unsafe partial class DirectionalProducerComponent
         NativeMethods.TablePtr->hs_method_25837dfb((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    public bool mAttachedAllowed
+    public void Dispose()
     {
-        get => NativeMethods.TablePtr->hs_get_0ec1b009((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_0ec1b009((void*)_handle, value);
-    }
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_6cb5d0d9((void*)_handle);
+            }
 
-    public long mCircuitComponentType_7ff56ae1
-    {
-        get => NativeMethods.TablePtr->hs_get_91100c27((void*)_handle);
-    }
-
-    public int mNextStrength
-    {
-        get => NativeMethods.TablePtr->hs_get_ab9eb604((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_ab9eb604((void*)_handle, value);
-    }
-
-    public bool mStopPower
-    {
-        get => NativeMethods.TablePtr->hs_get_30febb2e((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_30febb2e((void*)_handle, value);
+            _handle = 0;
+        }
     }
 }

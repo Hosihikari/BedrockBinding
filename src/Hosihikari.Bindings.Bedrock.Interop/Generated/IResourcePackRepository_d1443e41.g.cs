@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class IResourcePackRepository
+public sealed unsafe partial class IResourcePackRepository : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -263,11 +263,18 @@ public sealed unsafe partial class IResourcePackRepository
     public void untrackInvalidPack(nint packLocation) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_966c75aa() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_c1f7dc5d() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_d1443e41((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

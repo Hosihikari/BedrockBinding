@@ -49,9 +49,9 @@ public sealed unsafe partial class DarkOakLeavesBlock
     public static DarkOakLeavesBlock Create_f6d4496f(nint arg0, int arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'WeakPtr<BlockLegacy const>' is not a known bindable declaration.", false)]
     public static DarkOakLeavesBlock Create_2bcb847b(nint arg0, int arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'WeakPtr<BlockLegacy const>' is not a known bindable declaration.");
 
     public int getVariant(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0)
     {

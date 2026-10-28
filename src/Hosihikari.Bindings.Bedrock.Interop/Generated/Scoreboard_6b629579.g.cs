@@ -472,60 +472,6 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_e943f681((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mCriteria_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_64545a25((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mDisplayObjectives_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_910e4d67((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mIdentityDict_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_c2e308b9((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mIdentityRefs_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_13592327((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mObjectives_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_c53168c0((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPlayerListener_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_51ae9176((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mRegistry_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_817abed9((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mScoreboardEventCoordinator_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_ed5d892b((void*)_handle);
-    }
-
-    public bool mShouldUpdateUI
-    {
-        get => NativeMethods.TablePtr->hs_get_3970b370((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_3970b370((void*)_handle, value);
-    }
-
     public int modifyPlayerScore(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg1, global::Hosihikari.Bindings.Bedrock.Interop.Objective arg2, int arg3, byte arg4)
     {
         return NativeMethods.TablePtr->hs_method_9741f24d((void*)_handle, (void*)arg0, (void*)arg1.Handle, (void*)arg2.Handle, arg3, arg4);

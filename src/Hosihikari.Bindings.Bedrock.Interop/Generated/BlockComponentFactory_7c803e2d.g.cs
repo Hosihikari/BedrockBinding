@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockComponentFactory
+public sealed unsafe partial class BlockComponentFactory : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,12 +41,19 @@ public sealed unsafe partial class BlockComponentFactory
     public static BlockComponentFactory Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BlockComponentFactory Create_79bfd8e1(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static BlockComponentFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_79bfd8e1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockComponentFactory((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockComponentFactory Create_ccd6f834(nint arg0) =>
+    public static BlockComponentFactory Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public static nint getPropRegisteredCerealComponents_07f4de42(nint arg0)
@@ -70,5 +77,18 @@ public sealed unsafe partial class BlockComponentFactory
     public static void registerAllCerealDescriptions(nint arg0)
     {
         NativeMethods.TablePtr->hs_method_d060ef35((void*)arg0);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_7c803e2d((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FileSystemFileAccess
+public sealed unsafe partial class FileSystemFileAccess : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,12 +47,19 @@ public sealed unsafe partial class FileSystemFileAccess
     public static FileSystemFileAccess Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static FileSystemFileAccess Create_668e87e1(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static FileSystemFileAccess Create(int arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_668e87e1(arg0);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FileSystemFileAccess((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FileSystemFileAccess Create_83a85897(nint arg0) =>
+    public static FileSystemFileAccess Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public int fclose(nint arg0)
@@ -114,7 +121,17 @@ public sealed unsafe partial class FileSystemFileAccess
         NativeMethods.TablePtr->hs_method_da16cb11((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_bc4a007d((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

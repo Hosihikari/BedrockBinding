@@ -107,18 +107,6 @@ public sealed unsafe partial class ScriptPackConfigurationManager : global::Syst
         NativeMethods.TablePtr->hs_method_f2d07af1((void*)_handle);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mDefaultPackConfiguration_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_14545219((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPackConfigurations_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_53aa5652((void*)_handle);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");

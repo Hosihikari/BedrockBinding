@@ -4,7 +4,7 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$Exe,
     [string]$Elf = "",
-    [string]$LeviLaminaRoot = (Join-Path $PSScriptRoot "..\..\Third\LiteLoaderBDS"),
+    [string]$LeviLaminaRoot = "",
     [string]$HeaderIr = "",
     [string]$Classes = "Actor,BlockPos,BlockSource,ChunkPos,ItemStack,ItemStackBase,Level,Vec3,AppPlatform,ServerInstance,Player,Mob,Dimension,Block,Item,ItemRegistryRef,Container",
     [string]$ClassesFile = "",
@@ -13,12 +13,18 @@ param(
     [string]$TargetModule = "bedrock_server",
     [string]$GeneratorRoot = "",
     [string]$AbiRoot = "",
+    [string]$LlvmRoot = "$env:LOCALAPPDATA\Temp\hosihikari-llvm\clang+llvm-23.1.3-x86_64-pc-windows-msvc",
     # The symbol stage reads the whole PDB and takes an hour once the class set is large,
     # and the merge takes minutes; both can be reused while iterating on the emitter.
     [switch]$SkipSymbols,
     [switch]$SkipMerge,
+    [string]$ClassSizes = "",
+    [switch]$SkipClassSizes,
     [string]$Output = "artifacts/regenerated"
 )
+if ([string]::IsNullOrWhiteSpace($LeviLaminaRoot)) {
+    $LeviLaminaRoot = Join-Path $PSScriptRoot "..\..\Third\LiteLoaderBDS"
+}
 
 $ErrorActionPreference = "Stop"
 
@@ -99,6 +105,22 @@ if (-not (Test-Path (Join-Path $HeaderIr "ir-manifest.json"))) {
         -SkipBuild
 }
 
+# The deleting destructors carry the compiler's own sizeof for each class. They come from
+# the same carrier symbols as the rest of the surface, so the extraction runs as part of
+# the regeneration unless a caller supplies the map it already produced.
+if (-not $SkipClassSizes) {
+    if ([string]::IsNullOrWhiteSpace($ClassSizes)) {
+        $ClassSizes = Join-Path $Output "class-sizes.json"
+    }
+    if (-not (Test-Path $ClassSizes) -or -not $SkipMerge) {
+        & python (Join-Path $GeneratorRoot "frontend\extract-class-sizes.py") `
+            --pdb $Pdb --exe $Exe --output $ClassSizes --llvm-root $LlvmRoot
+        if ($LASTEXITCODE -ne 0) { throw "extract-class-sizes.py exited with $LASTEXITCODE" }
+    }
+} elseif ([string]::IsNullOrWhiteSpace($ClassSizes)) {
+    throw "-SkipClassSizes was set but no -ClassSizes map was given."
+}
+
 if ($SkipMerge) {
     if (-not (Test-Path (Join-Path $MergedIr "ir-manifest.json"))) {
         throw "-SkipMerge was set but $MergedIr has no ir-manifest.json."
@@ -109,6 +131,8 @@ if ($SkipMerge) {
         --symbol $SymbolIr `
         --header $HeaderIr `
         --output $MergedIr `
+        --class-sizes $ClassSizes `
+        --header-root $LeviLaminaRoot `
         $(if ($ClassesFile) { @("--classes-file", $ClassesFile) } else { @("--classes", $Classes) })
     if ($LASTEXITCODE -ne 0) { throw "merge-symbol-ir.py exited with $LASTEXITCODE" }
 }

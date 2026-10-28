@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ResourcePackManager
+public sealed unsafe partial class ResourcePackManager : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -51,9 +51,9 @@ public sealed unsafe partial class ResourcePackManager
     public static ResourcePackManager Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is not supported.", false)]
     public static ResourcePackManager Create_29c296ed(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ResourcePackManager Create_2362fc17(nint getPath, nint contentTierManager, bool needsToInitialize) =>
@@ -303,11 +303,18 @@ public sealed unsafe partial class ResourcePackManager
         NativeMethods.TablePtr->hs_method_771817f7((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_50f7b6c9() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_05a27c5e() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_f9d036e9((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BrushableBlockActor
+public sealed unsafe partial class BrushableBlockActor : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,9 +41,16 @@ public sealed unsafe partial class BrushableBlockActor
     public static BrushableBlockActor Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BrushableBlockActor Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static BrushableBlockActor Create(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, int arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_38455722((void*)arg0.Handle, (void*)arg1.Handle, arg2);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BrushableBlockActor((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static BrushableBlockActor Create(nint arg0) =>
@@ -127,51 +134,16 @@ public sealed unsafe partial class BrushableBlockActor
         NativeMethods.TablePtr->hs_method_f14ef31f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mContainerRuntimeId_Address
+    public void Dispose()
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_2c23bfb5((void*)_handle);
-    }
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_41b12a1b((void*)_handle);
+            }
 
-    public sbyte mContainerType
-    {
-        get => NativeMethods.TablePtr->hs_get_79cf35bf((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_79cf35bf((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mContentChangeListeners_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_df4d01b2((void*)_handle);
-    }
-
-    public bool mCustomName
-    {
-        get => NativeMethods.TablePtr->hs_get_c6471699((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_c6471699((void*)_handle, value);
-    }
-
-    public sbyte mGameplayContainerType
-    {
-        get => NativeMethods.TablePtr->hs_get_07ce60e4((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_07ce60e4((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mName_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_e26b149a((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSizeChangeListeners_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_eec0755a((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mTransactionContextStack_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_4e8242bc((void*)_handle);
+            _handle = 0;
+        }
     }
 }

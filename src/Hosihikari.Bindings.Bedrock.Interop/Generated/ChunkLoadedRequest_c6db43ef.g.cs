@@ -112,9 +112,10 @@ public sealed unsafe partial class ChunkLoadedRequest : global::System.IDisposab
         get => (nint)NativeMethods.TablePtr->hs_get_710ccc7c((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CompoundTag' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint serialize(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CompoundTag' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag serialize(int arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)NativeMethods.TablePtr->hs_method_32fc1cf3((void*)_handle, arg0));
+    }
 
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]

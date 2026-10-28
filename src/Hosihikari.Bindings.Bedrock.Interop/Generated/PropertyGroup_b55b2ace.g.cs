@@ -125,9 +125,10 @@ public sealed unsafe partial class PropertyGroup
         return NativeMethods.TablePtr->hs_method_dcecced9((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ListTag' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getNetworkSyncPropertyDescriptionsAsListTag() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ListTag' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ListTag getNetworkSyncPropertyDescriptionsAsListTag()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ListTag((nint)NativeMethods.TablePtr->hs_method_160d94ac((void*)_handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.PropertyMetadata? getPropertyMetadata(ulong arg0)
     {

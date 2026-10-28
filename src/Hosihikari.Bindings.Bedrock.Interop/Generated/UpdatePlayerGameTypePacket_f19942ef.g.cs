@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class UpdatePlayerGameTypePacket
+public sealed unsafe partial class UpdatePlayerGameTypePacket : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -78,13 +78,27 @@ public sealed unsafe partial class UpdatePlayerGameTypePacket
         set => NativeMethods.TablePtr->hs_set_9bd8892e((void*)_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static UpdatePlayerGameTypePacket Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static UpdatePlayerGameTypePacket Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_2be5e707();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static UpdatePlayerGameTypePacket Create(nint arg0, nint arg1, ulong arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new UpdatePlayerGameTypePacket((nint)handle);
+    }
+
+    public static UpdatePlayerGameTypePacket Create(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg1, ulong arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_f85c89b0(arg0, (void*)arg1.Handle, arg2);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UpdatePlayerGameTypePacket((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static UpdatePlayerGameTypePacket Create(nint arg0) =>
@@ -118,11 +132,18 @@ public sealed unsafe partial class UpdatePlayerGameTypePacket
         NativeMethods.TablePtr->hs_method_783ffdc3((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_da2135c7() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_8c006e8b() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_f19942ef((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

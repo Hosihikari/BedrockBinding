@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class OnUseOnItemComponent
+public sealed unsafe partial class OnUseOnItemComponent : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,13 +37,27 @@ public sealed unsafe partial class OnUseOnItemComponent
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static OnUseOnItemComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static OnUseOnItemComponent Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_56d04ecb();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static OnUseOnItemComponent Create_55983833(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new OnUseOnItemComponent((nint)handle);
+    }
+
+    public static OnUseOnItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.OnUseOnItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_55983833((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OnUseOnItemComponent((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void _initializeComponent() =>
@@ -90,15 +104,22 @@ public sealed unsafe partial class OnUseOnItemComponent
     public void writeSettings() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_af7bb8b3() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static OnUseOnItemComponent Create_a0c0a8fe(nint arg0) =>
+    public static OnUseOnItemComponent Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_588769a1() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_1ede674b((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

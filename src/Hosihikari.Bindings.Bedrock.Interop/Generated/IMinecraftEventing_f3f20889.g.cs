@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class IMinecraftEventing
+public sealed unsafe partial class IMinecraftEventing : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -60,11 +60,18 @@ public sealed unsafe partial class IMinecraftEventing
         NativeMethods.TablePtr->hs_method_5bc4321f((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_31bfc826() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_f0371a8b() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_f3f20889((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

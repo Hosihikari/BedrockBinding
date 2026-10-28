@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PositionTrackingDBClientRequestPacket
+public sealed unsafe partial class PositionTrackingDBClientRequestPacket : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -78,9 +78,16 @@ public sealed unsafe partial class PositionTrackingDBClientRequestPacket
         set => NativeMethods.TablePtr->hs_set_2fad9366((void*)_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PositionTrackingDBClientRequestPacket Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static PositionTrackingDBClientRequestPacket Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_f49b40fa();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PositionTrackingDBClientRequestPacket((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static PositionTrackingDBClientRequestPacket Create(nint arg0) =>
@@ -114,11 +121,18 @@ public sealed unsafe partial class PositionTrackingDBClientRequestPacket
         NativeMethods.TablePtr->hs_method_37a6d126((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_7eabe2be() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_dbc2a3ea() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_96a32923((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

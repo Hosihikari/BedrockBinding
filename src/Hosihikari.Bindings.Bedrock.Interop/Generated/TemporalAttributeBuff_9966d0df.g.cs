@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TemporalAttributeBuff
+public sealed unsafe partial class TemporalAttributeBuff : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,17 +41,45 @@ public sealed unsafe partial class TemporalAttributeBuff
     public static TemporalAttributeBuff Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static TemporalAttributeBuff Create_ef64c74a(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static TemporalAttributeBuff Create(global::Hosihikari.Bindings.Bedrock.Interop.TemporalAttributeBuff arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_ef64c74a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TemporalAttributeBuff((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TemporalAttributeBuff Create_977596f5(float amount, int duration, nint type, bool serialize, nint name) =>
+    public static TemporalAttributeBuff Create(float amount, int duration, nint type, bool serialize, nint name) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static TemporalAttributeBuff Create_9b6e26f4(float arg0, int arg1, nint arg2, bool arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static TemporalAttributeBuff Create(float arg0, int arg1, int arg2, bool arg3, string arg4)
+    {
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
+        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+        {
+            var handle = NativeMethods.TablePtr->hs_create_9b6e26f4(arg0, arg1, arg2, arg3, __hs_stringData4, (nuint)__hs_stringByteCount4);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new TemporalAttributeBuff((nint)handle);
+        }
+    }
 
     public float getBaseAmount()
     {
@@ -87,15 +115,22 @@ public sealed unsafe partial class TemporalAttributeBuff
         return NativeMethods.TablePtr->hs_method_cd7429a8((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_31e3f738() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static TemporalAttributeBuff Create_b933a550(nint arg0) =>
+    public static TemporalAttributeBuff Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_c13e23a3() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_9966d0df((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

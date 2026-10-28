@@ -45,9 +45,9 @@ public sealed unsafe partial class DeferredCompiledCommand
     public static DeferredCompiledCommand Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Command*>' is not a known bindable declaration.", false)]
     public static DeferredCompiledCommand Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Command*>' is not a known bindable declaration.");
 
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.MinecraftCommands arg0)
     {

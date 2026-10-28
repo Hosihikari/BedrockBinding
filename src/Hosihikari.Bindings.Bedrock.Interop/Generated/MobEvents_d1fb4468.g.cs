@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MobEvents
+public sealed unsafe partial class MobEvents : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -50,12 +50,19 @@ public sealed unsafe partial class MobEvents
     public static MobEvents Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MobEvents Create_7f2caa73(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static MobEvents Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_7f2caa73((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MobEvents((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MobEvents Create_b47b0eba(nint arg0) =>
+    public static MobEvents Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public bool areEventsEnabled()
@@ -141,7 +148,17 @@ public sealed unsafe partial class MobEvents
         NativeMethods.TablePtr->hs_method_e64e60ea((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_d1fb4468((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

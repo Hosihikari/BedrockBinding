@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DamageAbsorptionItemComponent
+public sealed unsafe partial class DamageAbsorptionItemComponent : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -42,12 +42,22 @@ public sealed unsafe partial class DamageAbsorptionItemComponent
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DamageAbsorptionItemComponent Create_0d4be902(nint arg0) =>
+    public static DamageAbsorptionItemComponent Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static DamageAbsorptionItemComponent Create_50adea9d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static DamageAbsorptionItemComponent Create(int[] arg0)
+    {
+        fixed (int* __hs_vectorData0 = arg0)
+        {
+            var handle = NativeMethods.TablePtr->hs_create_50adea9d(__hs_vectorData0, (nuint)(arg0?.Length ?? 0));
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new DamageAbsorptionItemComponent((nint)handle);
+        }
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public static nint VALID_SLOTS_Address
@@ -64,7 +74,17 @@ public sealed unsafe partial class DamageAbsorptionItemComponent
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_d235baf1((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

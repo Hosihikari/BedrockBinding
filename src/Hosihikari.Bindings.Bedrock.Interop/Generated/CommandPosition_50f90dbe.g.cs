@@ -109,9 +109,10 @@ public sealed unsafe partial class CommandPosition : global::System.IDisposable
         set => NativeMethods.TablePtr->hs_set_321097b9((void*)_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CompoundTag' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint serialize() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CompoundTag' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag serialize()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)NativeMethods.TablePtr->hs_method_85a87883((void*)_handle));
+    }
 
     public void Dispose()
     {

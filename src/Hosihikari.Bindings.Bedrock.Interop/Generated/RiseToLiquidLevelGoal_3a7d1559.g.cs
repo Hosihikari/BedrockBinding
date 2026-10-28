@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RiseToLiquidLevelGoal
+public sealed unsafe partial class RiseToLiquidLevelGoal : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,9 +41,16 @@ public sealed unsafe partial class RiseToLiquidLevelGoal
     public static RiseToLiquidLevelGoal Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static RiseToLiquidLevelGoal Create(nint arg0, float arg1, float arg2, float arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static RiseToLiquidLevelGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, float arg1, float arg2, float arg3)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_a5bba1dd((void*)arg0.Handle, arg1, arg2, arg3);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RiseToLiquidLevelGoal((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static RiseToLiquidLevelGoal Create(nint arg0) =>
@@ -71,7 +78,17 @@ public sealed unsafe partial class RiseToLiquidLevelGoal
         NativeMethods.TablePtr->hs_method_451e7217((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_3a7d1559((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

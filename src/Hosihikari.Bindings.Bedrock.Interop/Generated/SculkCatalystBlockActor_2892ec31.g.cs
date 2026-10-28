@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SculkCatalystBlockActor
+public sealed unsafe partial class SculkCatalystBlockActor : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,12 +41,19 @@ public sealed unsafe partial class SculkCatalystBlockActor
     public static SculkCatalystBlockActor Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static SculkCatalystBlockActor Create_1a30df11(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static SculkCatalystBlockActor Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_1a30df11((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SculkCatalystBlockActor((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SculkCatalystBlockActor Create_edefb842(nint arg0) =>
+    public static SculkCatalystBlockActor Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public static int TypeId
@@ -110,5 +117,18 @@ public sealed unsafe partial class SculkCatalystBlockActor
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
     {
         NativeMethods.TablePtr->hs_method_e889c777((void*)_handle, (void*)arg0.Handle);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_2892ec31((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

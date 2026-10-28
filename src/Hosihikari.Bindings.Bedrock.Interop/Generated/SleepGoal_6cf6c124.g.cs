@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SleepGoal
+public sealed unsafe partial class SleepGoal : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,9 +41,16 @@ public sealed unsafe partial class SleepGoal
     public static SleepGoal Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static SleepGoal Create(nint arg0, float arg1, float arg2, float arg3, bool arg4, float arg5, int arg6, float arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static SleepGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, float arg1, float arg2, float arg3, bool arg4, float arg5, int arg6, float arg7)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_76c72b48((void*)arg0.Handle, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SleepGoal((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static SleepGoal Create(nint arg0) =>
@@ -86,7 +93,17 @@ public sealed unsafe partial class SleepGoal
         NativeMethods.TablePtr->hs_method_e6befb35((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_6cf6c124((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockActorDataPacket
+public sealed unsafe partial class BlockActorDataPacket : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,17 +37,31 @@ public sealed unsafe partial class BlockActorDataPacket
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BlockActorDataPacket Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static BlockActorDataPacket Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_d242b02f();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+        return new BlockActorDataPacket((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static BlockActorDataPacket Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BlockActorDataPacket Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static BlockActorDataPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockActorDataPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_11432669((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockActorDataPacket((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint _read_dc3a45c7(nint stream) =>
@@ -77,9 +91,6 @@ public sealed unsafe partial class BlockActorDataPacket
         NativeMethods.TablePtr->hs_method_609ad6f7((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     public byte mClientSubId
     {
@@ -120,5 +131,18 @@ public sealed unsafe partial class BlockActorDataPacket
     {
         get => NativeMethods.TablePtr->hs_get_e6d9d946((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_e6d9d946((void*)_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_e634600a((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

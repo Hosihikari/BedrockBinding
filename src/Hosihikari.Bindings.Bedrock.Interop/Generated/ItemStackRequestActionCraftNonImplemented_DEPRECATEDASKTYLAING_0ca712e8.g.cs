@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class ItemStackRequestActionCraftNonImplemented_DEPRECATEDASKTYLAING
+public sealed unsafe partial class ItemStackRequestActionCraftNonImplemented_DEPRECATEDASKTYLAING : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,16 @@ public sealed partial class ItemStackRequestActionCraftNonImplemented_DEPRECATED
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ItemStackRequestActionCraftNonImplemented_DEPRECATEDASKTYLAING Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ItemStackRequestActionCraftNonImplemented_DEPRECATEDASKTYLAING Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_a004498f();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemStackRequestActionCraftNonImplemented_DEPRECATEDASKTYLAING((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ItemStackRequestActionCraftNonImplemented_DEPRECATEDASKTYLAING Create(nint arg0) =>
@@ -53,7 +60,17 @@ public sealed partial class ItemStackRequestActionCraftNonImplemented_DEPRECATED
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_0ca712e8((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

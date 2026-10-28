@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class DiggerItemComponentLegacyFactoryData
+public sealed unsafe partial class DiggerItemComponentLegacyFactoryData : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,13 +37,27 @@ public sealed partial class DiggerItemComponentLegacyFactoryData
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static DiggerItemComponentLegacyFactoryData Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static DiggerItemComponentLegacyFactoryData Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_8d1bbdbf();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static DiggerItemComponentLegacyFactoryData Create_e7aeb97a(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new DiggerItemComponentLegacyFactoryData((nint)handle);
+    }
+
+    public static DiggerItemComponentLegacyFactoryData Create(global::Hosihikari.Bindings.Bedrock.Interop.DiggerItemComponentLegacyFactoryData arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_e7aeb97a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DiggerItemComponentLegacyFactoryData((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static void bindType(nint arg0, nint arg1, nint arg2) =>
@@ -57,15 +71,22 @@ public sealed partial class DiggerItemComponentLegacyFactoryData
     public nint operator_assign_c7db1bf1(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_43ab097e() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static DiggerItemComponentLegacyFactoryData Create_c7e7c085(nint arg0) =>
+    public static DiggerItemComponentLegacyFactoryData Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_ca6d8239() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_986660aa((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

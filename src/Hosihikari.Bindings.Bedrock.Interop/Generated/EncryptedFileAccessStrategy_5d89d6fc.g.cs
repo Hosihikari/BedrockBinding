@@ -41,9 +41,9 @@ public sealed unsafe partial class EncryptedFileAccessStrategy
     public static EncryptedFileAccessStrategy Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'std::unordered_map<Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::hash<Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,std::equal_to<Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,std::allocator<std::pair<Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>> const,std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>' is abstract or not copy-constructible.", false)]
     public static EncryptedFileAccessStrategy Create_199f4008(nint arg0, nint arg1, nint arg2, bool arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::unordered_map<Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::hash<Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,std::equal_to<Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,std::allocator<std::pair<Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>> const,std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>>' is abstract or not copy-constructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static EncryptedFileAccessStrategy Create(nint arg0) =>

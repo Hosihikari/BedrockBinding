@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class XoroshiroPositionalRandomFactory
+public sealed unsafe partial class XoroshiroPositionalRandomFactory : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -72,12 +72,27 @@ public sealed unsafe partial class XoroshiroPositionalRandomFactory
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint forStringImpl_a0d2b487(nint s) =>
+    public nint forStringImpl(nint s) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'XoroshiroRandom' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint forStringImpl_aa7466e6(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'XoroshiroRandom' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.XoroshiroRandom forStringImpl(string arg0)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.XoroshiroRandom((nint)NativeMethods.TablePtr->hs_method_aa7466e6((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0));
+        }
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public static nint mThreadLocalDigest_Address
@@ -85,11 +100,18 @@ public sealed unsafe partial class XoroshiroPositionalRandomFactory
         get => (nint)NativeMethods.TablePtr->hs_get_069d5897();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_98819f90() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_2557f060() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_bcbc5012((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

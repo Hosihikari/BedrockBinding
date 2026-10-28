@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ScriptMinecraftServerUIModuleFactory
+public sealed unsafe partial class ScriptMinecraftServerUIModuleFactory : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -52,9 +52,16 @@ public sealed unsafe partial class ScriptMinecraftServerUIModuleFactory
         get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->hs_get_c5d58f84(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptMinecraftServerUIModuleFactory Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ScriptMinecraftServerUIModuleFactory Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_eb37fd0c();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptMinecraftServerUIModuleFactory((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ScriptMinecraftServerUIModuleFactory Create(nint arg0) =>
@@ -78,7 +85,17 @@ public sealed unsafe partial class ScriptMinecraftServerUIModuleFactory
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_2ff7027c((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

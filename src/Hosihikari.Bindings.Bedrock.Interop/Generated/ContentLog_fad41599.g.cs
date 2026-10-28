@@ -91,12 +91,6 @@ public sealed unsafe partial class ContentLog : global::System.IDisposable
     public void log(bool arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type '...' is not supported.");
 
-    public bool mEnabled
-    {
-        get => NativeMethods.TablePtr->hs_get_2c9f2783((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_2c9f2783((void*)_handle, value);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");

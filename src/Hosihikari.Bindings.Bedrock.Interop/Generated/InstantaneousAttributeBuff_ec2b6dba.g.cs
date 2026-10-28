@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class InstantaneousAttributeBuff
+public sealed unsafe partial class InstantaneousAttributeBuff : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -45,13 +45,27 @@ public sealed unsafe partial class InstantaneousAttributeBuff
     public static InstantaneousAttributeBuff Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static InstantaneousAttributeBuff Create_35f02d1b(float arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static InstantaneousAttributeBuff Create(float arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_35f02d1b(arg0, (void*)arg1.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static InstantaneousAttributeBuff Create_b1096cea(float arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new InstantaneousAttributeBuff((nint)handle);
+    }
+
+    public static InstantaneousAttributeBuff Create(float arg0, int arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_b1096cea(arg0, arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InstantaneousAttributeBuff((nint)handle);
+    }
 
     public bool isInstantaneous()
     {
@@ -67,11 +81,18 @@ public sealed unsafe partial class InstantaneousAttributeBuff
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_c102a8d0() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_8e0ca822() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_ec2b6dba((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

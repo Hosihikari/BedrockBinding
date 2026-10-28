@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class XoroshiroRandom
+public sealed unsafe partial class XoroshiroRandom : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -117,11 +117,18 @@ public sealed unsafe partial class XoroshiroRandom
         NativeMethods.TablePtr->hs_method_52cbe441((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_0e3d9800() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_ad1eeae4() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_ee364c9f((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

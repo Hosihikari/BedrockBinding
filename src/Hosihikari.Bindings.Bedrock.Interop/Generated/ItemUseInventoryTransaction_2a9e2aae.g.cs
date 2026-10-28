@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ItemUseInventoryTransaction
+public sealed unsafe partial class ItemUseInventoryTransaction : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -53,9 +53,16 @@ public sealed unsafe partial class ItemUseInventoryTransaction
     public static ItemUseInventoryTransaction Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ItemUseInventoryTransaction Create_f4879594(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ItemUseInventoryTransaction Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemUseInventoryTransaction arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_f4879594((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemUseInventoryTransaction((nint)handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public static nint actionTypeMap_Address
@@ -115,15 +122,22 @@ public sealed unsafe partial class ItemUseInventoryTransaction
         NativeMethods.TablePtr->hs_method_17f5f2e0((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_0995a923() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ItemUseInventoryTransaction Create_e61aa52f(nint arg0) =>
+    public static ItemUseInventoryTransaction Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_ad3a7e53() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_2a9e2aae((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

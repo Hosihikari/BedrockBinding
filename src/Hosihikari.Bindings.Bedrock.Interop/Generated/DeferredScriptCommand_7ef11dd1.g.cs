@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DeferredScriptCommand
+public sealed unsafe partial class DeferredScriptCommand : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -45,9 +45,9 @@ public sealed unsafe partial class DeferredScriptCommand
     public static DeferredScriptCommand Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::Promise<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptCommandResult>,ScriptModuleMinecraft::ScriptCommandError,void>' is not a known bindable declaration.", false)]
     public static DeferredScriptCommand Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::Promise<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptCommandResult>,ScriptModuleMinecraft::ScriptCommandError,void>' is not a known bindable declaration.");
 
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.MinecraftCommands arg0)
     {
@@ -58,7 +58,17 @@ public sealed unsafe partial class DeferredScriptCommand
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_7ef11dd1((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

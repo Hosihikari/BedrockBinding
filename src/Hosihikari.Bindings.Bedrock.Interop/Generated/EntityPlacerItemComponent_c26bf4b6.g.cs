@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EntityPlacerItemComponent
+public sealed unsafe partial class EntityPlacerItemComponent : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,13 +37,27 @@ public sealed unsafe partial class EntityPlacerItemComponent
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static EntityPlacerItemComponent Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static EntityPlacerItemComponent Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_5c2ce1d6();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static EntityPlacerItemComponent Create_19ba9563(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new EntityPlacerItemComponent((nint)handle);
+    }
+
+    public static EntityPlacerItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.EntityPlacerItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_19ba9563((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EntityPlacerItemComponent((nint)handle);
+    }
 
     public void _initializeComponent()
     {
@@ -101,15 +115,22 @@ public sealed unsafe partial class EntityPlacerItemComponent
     public void writeSettings() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_e86e0c34() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static EntityPlacerItemComponent Create_850e942f(nint arg0) =>
+    public static EntityPlacerItemComponent Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_64d39ad1() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_c26bf4b6((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

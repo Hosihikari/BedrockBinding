@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class UPNPInterface
+public sealed unsafe partial class UPNPInterface : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,9 +47,16 @@ public sealed unsafe partial class UPNPInterface
     public static UPNPInterface Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static UPNPInterface Create_42de78a8(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static UPNPInterface Create_42de78a8(nint arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_42de78a8((void*)arg0);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UPNPInterface((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static UPNPInterface Create_14ae2aae(nint arg0) =>
@@ -67,5 +74,18 @@ public sealed unsafe partial class UPNPInterface
     public void tick()
     {
         NativeMethods.TablePtr->hs_method_9c5cf3e9((void*)_handle);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_37d89bc5((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

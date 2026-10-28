@@ -45,9 +45,9 @@ public sealed unsafe partial class LayEggGoal
     public static LayEggGoal Create_00e5115f(nint mob, float speedModifier, int searchRange, int searchHeight, float goalRadius, nint targetBlocks, nint arg6, bool arg7, bool arg8, float arg9, nint arg10, nint onLay, nint arg12) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public static LayEggGoal Create_8f7f3170(nint arg0, float arg1, int arg2, int arg3, float arg4, nint arg5, nint arg6, bool arg7, bool arg8, float arg9, nint arg10, nint arg11, nint arg12) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static LayEggGoal Create(nint arg0) =>

@@ -164,18 +164,6 @@ public sealed unsafe partial class GameRules : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_8eab998f((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mGameRules_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_6c5130d0((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mWorldPolicies_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_283b92bf((void*)_handle);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint nameToGameRuleIndex(nint name) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");

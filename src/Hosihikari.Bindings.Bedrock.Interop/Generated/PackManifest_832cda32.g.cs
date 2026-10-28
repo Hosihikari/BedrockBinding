@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PackManifest
+public sealed unsafe partial class PackManifest : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -50,13 +50,27 @@ public sealed unsafe partial class PackManifest
     public static PackManifest Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PackManifest Create_7b36355b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static PackManifest Create(int arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_7b36355b(arg0);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static PackManifest Create_a6e3e48a(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new PackManifest((nint)handle);
+    }
+
+    public static PackManifest Create(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_a6e3e48a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PackManifest((nint)handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public static nint STRING_TO_PACK_SCOPE_Address
@@ -400,15 +414,22 @@ public sealed unsafe partial class PackManifest
         NativeMethods.TablePtr->hs_method_423f374c((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_42fba859() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static PackManifest Create_8475aa4f(nint arg0) =>
+    public static PackManifest Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_086ac8d8() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_832cda32((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

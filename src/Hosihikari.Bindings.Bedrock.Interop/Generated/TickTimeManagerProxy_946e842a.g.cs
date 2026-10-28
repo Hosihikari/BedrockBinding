@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TickTimeManagerProxy
+public sealed unsafe partial class TickTimeManagerProxy : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,12 +41,19 @@ public sealed unsafe partial class TickTimeManagerProxy
     public static TickTimeManagerProxy Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static TickTimeManagerProxy Create_0feb2100(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static TickTimeManagerProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelData arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_0feb2100((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TickTimeManagerProxy((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TickTimeManagerProxy Create_8e387e9e(nint arg0) =>
+    public static TickTimeManagerProxy Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Tick getCurrentTick()
@@ -78,7 +85,17 @@ public sealed unsafe partial class TickTimeManagerProxy
         return NativeMethods.TablePtr->hs_method_bb21c5a7((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_946e842a((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

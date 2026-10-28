@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TaskQueueImpl
+public sealed unsafe partial class TaskQueueImpl : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -84,9 +84,16 @@ public sealed unsafe partial class TaskQueueImpl
     public uint Release() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static TaskQueueImpl Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static TaskQueueImpl Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_9236ee8a();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TaskQueueImpl((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static TaskQueueImpl Create(nint arg0) =>
@@ -112,7 +119,17 @@ public sealed unsafe partial class TaskQueueImpl
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_a5c8e9ac((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

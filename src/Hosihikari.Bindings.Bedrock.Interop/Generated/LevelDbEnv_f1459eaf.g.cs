@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LevelDbEnv
+public sealed unsafe partial class LevelDbEnv : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -119,9 +119,16 @@ public sealed unsafe partial class LevelDbEnv
         return NativeMethods.TablePtr->hs_method_4c63d045((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static LevelDbEnv Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static LevelDbEnv Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_f879c899();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelDbEnv((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static LevelDbEnv Create(nint arg0) =>
@@ -214,11 +221,18 @@ public sealed unsafe partial class LevelDbEnv
         get => new global::Hosihikari.Bindings.Bedrock.Interop.LevelDbEnv((nint)NativeMethods.TablePtr->hs_get_359e2d1a(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_9ce5bf67() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_6d30f4a0() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_f1459eaf((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

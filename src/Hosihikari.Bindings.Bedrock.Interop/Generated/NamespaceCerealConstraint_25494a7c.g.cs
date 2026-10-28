@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class NamespaceCerealConstraint
+public sealed unsafe partial class NamespaceCerealConstraint : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -80,11 +80,18 @@ public sealed unsafe partial class NamespaceCerealConstraint
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_bdd8be05() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_b03d9537() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_25494a7c((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

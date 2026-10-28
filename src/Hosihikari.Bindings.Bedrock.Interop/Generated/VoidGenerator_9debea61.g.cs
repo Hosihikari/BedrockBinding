@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class VoidGenerator
+public sealed unsafe partial class VoidGenerator : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,12 +47,19 @@ public sealed unsafe partial class VoidGenerator
     public static VoidGenerator Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static VoidGenerator Create_58be9c12(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static VoidGenerator Create(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_58be9c12((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VoidGenerator((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VoidGenerator Create_c1fa3668(nint arg0) =>
+    public static VoidGenerator Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos findSpawnPosition()
@@ -99,5 +106,18 @@ public sealed unsafe partial class VoidGenerator
     public void prepareHeights(global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1, bool arg2)
     {
         NativeMethods.TablePtr->hs_method_45f80f91((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_9debea61((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

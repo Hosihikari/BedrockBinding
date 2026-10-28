@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ShipwreckFeature
+public sealed unsafe partial class ShipwreckFeature : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,9 +41,16 @@ public sealed unsafe partial class ShipwreckFeature
     public static ShipwreckFeature Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ShipwreckFeature Create(nint arg0, uint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ShipwreckFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.OceanMonumentFeature arg0, uint arg1, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_7b75e7ed((void*)arg0.Handle, arg1, (void*)arg2.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ShipwreckFeature((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ShipwreckFeature Create(nint arg0) =>
@@ -62,9 +69,6 @@ public sealed unsafe partial class ShipwreckFeature
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mActiveBlueprintCreateCount_Address
@@ -136,5 +140,18 @@ public sealed unsafe partial class ShipwreckFeature
     {
         get => NativeMethods.TablePtr->hs_get_f3b7d34d((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_f3b7d34d((void*)_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_66f10468((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

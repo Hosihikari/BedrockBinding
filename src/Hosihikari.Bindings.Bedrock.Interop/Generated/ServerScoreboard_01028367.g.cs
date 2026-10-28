@@ -37,60 +37,6 @@ public sealed unsafe partial class ServerScoreboard : global::System.IDisposable
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mCriteria_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_06da9b58((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mDisplayObjectives_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_c21539b2((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mIdentityDict_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_1d1b1b8e((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mIdentityRefs_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_143829ce((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mObjectives_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_e0f279d8((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mPlayerListener_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_e8023f29((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mRegistry_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_76eb6e3e((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mScoreboardEventCoordinator_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_91d24ef8((void*)_handle);
-    }
-
-    public bool mShouldUpdateUI
-    {
-        get => NativeMethods.TablePtr->hs_get_15940e24((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_15940e24((void*)_handle, value);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static ServerScoreboard Create(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
@@ -181,72 +127,6 @@ public sealed unsafe partial class ServerScoreboard : global::System.IDisposable
     public void intializeWithActorManager(global::Hosihikari.Bindings.Bedrock.Interop.ActorManager arg0)
     {
         NativeMethods.TablePtr->hs_method_da4c0627((void*)_handle, (void*)arg0.Handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mClearDisplayObjectiveLevelCallback_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_27e4adbc((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mIdentityUpdatedLevelCallback_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_3daa9af5((void*)_handle);
-    }
-
-    public bool mIsDirty
-    {
-        get => NativeMethods.TablePtr->hs_get_d0a357cb((void*)_handle) != 0;
-        set => NativeMethods.TablePtr->hs_set_d0a357cb((void*)_handle, value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mLastUniqueSBID_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_f88e41c3((void*)_handle);
-    }
-
-    public nint mLevelStorage
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_7f8b643f((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_7f8b643f((void*)_handle, (void*)value);
-    }
-
-    public nint mPacketSender
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_14ccad6c((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_14ccad6c((void*)_handle, (void*)value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSaveTimer_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_4358a29a((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mScoreChangedLevelCallback_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_70cd370b((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mScoreRemovedLevelCallback_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_3a8bafe3((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mSetDisplayObjectiveLevelCallback_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_8faf5360((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mTrackedObjectives_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_722ed925((void*)_handle);
     }
 
     public void onObjectiveAdded(global::Hosihikari.Bindings.Bedrock.Interop.Objective arg0)

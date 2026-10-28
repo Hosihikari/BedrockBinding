@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ScriptTickListener
+public sealed unsafe partial class ScriptTickListener : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,9 +41,16 @@ public sealed unsafe partial class ScriptTickListener
     public static ScriptTickListener Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScriptTickListener Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ScriptTickListener Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ScriptEngine arg0, global::Hosihikari.Bindings.Bedrock.Interop.ScriptAsyncJobCoordinator arg1, global::Hosihikari.Bindings.Bedrock.Interop.ScriptFormPromiseTracker arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_11c8064d((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptTickListener((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ScriptTickListener Create(nint arg0) =>
@@ -67,4 +74,17 @@ public sealed unsafe partial class ScriptTickListener
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_c101af21((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

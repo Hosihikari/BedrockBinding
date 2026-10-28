@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MineshaftPiece
+public sealed unsafe partial class MineshaftPiece : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -80,7 +80,17 @@ public sealed unsafe partial class MineshaftPiece
         NativeMethods.TablePtr->hs_method_ebde2e0c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_fb891cb7((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

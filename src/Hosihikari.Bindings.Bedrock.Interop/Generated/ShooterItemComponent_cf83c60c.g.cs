@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ShooterItemComponent
+public sealed unsafe partial class ShooterItemComponent : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -41,13 +41,27 @@ public sealed unsafe partial class ShooterItemComponent
     public static ShooterItemComponent Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ShooterItemComponent Create_43c8c5ce(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ShooterItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.Puv.v1_20_50.ShooterItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_43c8c5ce((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ShooterItemComponent Create_82586418(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        return new ShooterItemComponent((nint)handle);
+    }
+
+    public static ShooterItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ShooterItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_82586418((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ShooterItemComponent((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public bool _canUseOn(nint arg0, nint arg1, nint arg2, byte arg3) =>
@@ -105,7 +119,17 @@ public sealed unsafe partial class ShooterItemComponent
     public void writeSettings() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_cf83c60c((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

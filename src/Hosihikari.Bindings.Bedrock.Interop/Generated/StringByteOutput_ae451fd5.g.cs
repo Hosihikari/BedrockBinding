@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class StringByteOutput
+public sealed unsafe partial class StringByteOutput : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -46,7 +46,17 @@ public sealed unsafe partial class StringByteOutput
         NativeMethods.TablePtr->hs_method_41083085((void*)_handle, (void*)arg0, arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_ae451fd5((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

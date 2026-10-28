@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ItemStackRequestActionCraftResults_DEPRECATEDASKTYLAING
+public sealed unsafe partial class ItemStackRequestActionCraftResults_DEPRECATEDASKTYLAING : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -49,9 +49,16 @@ public sealed unsafe partial class ItemStackRequestActionCraftResults_DEPRECATED
         set => NativeMethods.TablePtr->hs_set_e56e81b4((void*)_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ItemStackRequestActionCraftResults_DEPRECATEDASKTYLAING Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ItemStackRequestActionCraftResults_DEPRECATEDASKTYLAING Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_76f2eed9();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemStackRequestActionCraftResults_DEPRECATEDASKTYLAING((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ItemStackRequestActionCraftResults_DEPRECATEDASKTYLAING Create(nint arg0) =>
@@ -70,7 +77,17 @@ public sealed unsafe partial class ItemStackRequestActionCraftResults_DEPRECATED
         NativeMethods.TablePtr->hs_method_775e7e4c((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_dd9dfc21((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ClientboundCloseFormPacket
+public sealed unsafe partial class ClientboundCloseFormPacket : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -73,13 +73,7 @@ public sealed unsafe partial class ClientboundCloseFormPacket
         NativeMethods.TablePtr->hs_method_99719b97((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_d3458eb5() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_6d4534c7() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
     public byte mClientSubId
     {
@@ -120,5 +114,18 @@ public sealed unsafe partial class ClientboundCloseFormPacket
     {
         get => NativeMethods.TablePtr->hs_get_396b1f68((void*)_handle);
         set => NativeMethods.TablePtr->hs_set_396b1f68((void*)_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_b240ffe1((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

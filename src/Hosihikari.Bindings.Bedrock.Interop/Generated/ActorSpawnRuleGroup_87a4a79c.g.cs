@@ -90,12 +90,6 @@ public sealed unsafe partial class ActorSpawnRuleGroup : global::System.IDisposa
     public nint getRootKey_12ac5c3b() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mCategoryLookup_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_150d46f3((void*)_handle);
-    }
-
     public void offSetDelayByCurrentTick(global::Hosihikari.Bindings.Bedrock.Interop.Tick arg0)
     {
         NativeMethods.TablePtr->hs_method_dcb073ae((void*)_handle, (void*)arg0.Handle);

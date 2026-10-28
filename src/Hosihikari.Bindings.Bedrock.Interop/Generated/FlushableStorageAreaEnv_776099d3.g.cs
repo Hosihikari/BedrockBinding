@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FlushableStorageAreaEnv
+public sealed unsafe partial class FlushableStorageAreaEnv : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -45,9 +45,16 @@ public sealed unsafe partial class FlushableStorageAreaEnv
     public static FlushableStorageAreaEnv Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static FlushableStorageAreaEnv Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static FlushableStorageAreaEnv Create(global::Hosihikari.Bindings.Bedrock.Interop.leveldb_Nested.Env? arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_9e3e73a8((void*)(arg0?.Handle ?? 0), arg1?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FlushableStorageAreaEnv((nint)handle);
+    }
 
     public void flushToPermanentStorage()
     {
@@ -58,7 +65,17 @@ public sealed unsafe partial class FlushableStorageAreaEnv
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_776099d3((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

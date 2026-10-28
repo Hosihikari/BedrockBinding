@@ -41,9 +41,9 @@ public sealed unsafe partial class DefendTrustedTargetGoal
     public static DefendTrustedTargetGoal Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'MobDescriptor' is not supported.", false)]
     public static DefendTrustedTargetGoal Create(nint arg0, nint arg1, float arg2, int arg3, bool arg4, int arg5, nint arg6, nint arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'MobDescriptor' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static DefendTrustedTargetGoal Create(nint arg0) =>

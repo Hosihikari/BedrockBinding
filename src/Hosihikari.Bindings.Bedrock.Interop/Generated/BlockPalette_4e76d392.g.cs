@@ -102,36 +102,6 @@ public sealed unsafe partial class BlockPalette : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_df96e5f7((void*)_handle);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mBlockFromNetworkId_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_23f4a9f6((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mLegacyBlockStatesConversionWarningMutex_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_af8b799b((void*)_handle);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mLegacyBlockStatesConversionWarningSet_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_355bdfa5((void*)_handle);
-    }
-
-    public nint mLevel
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_ed9b68bb((void*)_handle);
-        set => NativeMethods.TablePtr->hs_set_ed9b68bb((void*)_handle, (void*)value);
-    }
-
-    // The native field type is not projected; this is the address of the field storage.
-    public nint mNameLookup_Address
-    {
-        get => (nint)NativeMethods.TablePtr->hs_get_758c401f((void*)_handle);
-    }
-
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FilterTestBiomeSnowCovered
+public sealed unsafe partial class FilterTestBiomeSnowCovered : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -64,7 +64,17 @@ public sealed unsafe partial class FilterTestBiomeSnowCovered
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_31bc4e83((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }
