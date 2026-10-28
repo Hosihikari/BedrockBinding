@@ -4,7 +4,7 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$Exe,
     [string]$Elf = "",
-    [string]$LeviLaminaRoot = "C:\Users\root\source\repos\hosihikari\LiteLoaderBDS",
+    [string]$LeviLaminaRoot = (Join-Path $PSScriptRoot "..\..\Third\LiteLoaderBDS"),
     [string]$HeaderIr = "",
     [string]$Classes = "Actor,BlockPos,BlockSource,ChunkPos,ItemStack,ItemStackBase,Level,Vec3,AppPlatform,ServerInstance,Player,Mob,Dimension,Block,Item,ItemRegistryRef,Container",
     [string]$ClassesFile = "",
