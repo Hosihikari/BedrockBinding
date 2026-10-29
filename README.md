@@ -33,7 +33,7 @@ Maps require named key/value types and matching hash/equality functors, which th
 
 ## Generate
 
-Regeneration requires the proprietary inputs that are not part of this repository: the 1.21.3.01 `bedrock_server.pdb`, `bedrock_server.exe`, and `bedrock_server_symbols.debug`, plus a LeviLamina v0.13.5 checkout for the header supplement and a generator built with LLVM 23.1.3.
+Regeneration requires the proprietary inputs that are not part of this repository: the 1.21.3.01 `bedrock_server.pdb`, `bedrock_server.exe`, and `bedrock_server_symbols.debug`, plus a LeviLamina v0.13.5 checkout for the header supplement and a generator built with LLVM 23.1.4.
 
 ```shell
 powershell -File scripts/regenerate.ps1 `

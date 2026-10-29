@@ -33,7 +33,7 @@ map 需要具名 key/value 类型与匹配的 hash/equality functor，符号流�
 
 ## 生成
 
-重新生成需要不属于本仓库的专有输入：1.21.3.01 的 `bedrock_server.pdb`、`bedrock_server.exe`、`bedrock_server_symbols.debug`，以及用于头文件补充的 LeviLamina v0.13.5 检出与 LLVM 23.1.3 构建的生成器。
+重新生成需要不属于本仓库的专有输入：1.21.3.01 的 `bedrock_server.pdb`、`bedrock_server.exe`、`bedrock_server_symbols.debug`，以及用于头文件补充的 LeviLamina v0.13.5 检出与 LLVM 23.1.4 构建的生成器。
 
 ```shell
 powershell -File scripts/regenerate.ps1 `
