@@ -46,13 +46,21 @@ public sealed unsafe partial class TextFilteringUtils
     public static TextFilteringUtils Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<PacketSender*>' is not a known bindable declaration.", false)]
-    public static bool checkChatFilteringEventsAndSendChatIfTextProcessorOffline(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<PacketSender*>' is not a known bindable declaration.");
+    public static bool checkChatFilteringEventsAndSendChatIfTextProcessorOffline(int[] arg0, global::Hosihikari.Bindings.Bedrock.Interop.PacketSender? arg1, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg2, nint arg3)
+    {
+        fixed (int* __hs_vectorData0 = arg0)
+        {
+            return NativeMethods.TablePtr->hs_method_5583070d((void*)(arg1?.Handle ?? 0), (void*)arg2.Handle, (void*)arg3, __hs_vectorData0, (nuint)(arg0?.Length ?? 0)) != 0;
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<PacketSender*>' is not a known bindable declaration.", false)]
-    public static void checkChatFilteringEventsAndSendToastIfClientWasMuted(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<PacketSender*>' is not a known bindable declaration.");
+    public static void checkChatFilteringEventsAndSendToastIfClientWasMuted(int[] arg0, global::Hosihikari.Bindings.Bedrock.Interop.PacketSender? arg1, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg2, nint arg3)
+    {
+        fixed (int* __hs_vectorData0 = arg0)
+        {
+            NativeMethods.TablePtr->hs_method_00a16f95((void*)(arg1?.Handle ?? 0), (void*)arg2.Handle, (void*)arg3, __hs_vectorData0, (nuint)(arg0?.Length ?? 0));
+        }
+    }
 
     public static bool findChatFilteringEvent(int[] arg0, int arg1)
     {

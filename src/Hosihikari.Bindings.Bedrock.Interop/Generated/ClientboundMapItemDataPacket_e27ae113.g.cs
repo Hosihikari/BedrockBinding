@@ -61,9 +61,16 @@ public sealed unsafe partial class ClientboundMapItemDataPacket : global::System
     public static ClientboundMapItemDataPacket Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<MapItemSavedData*>' is not a known bindable declaration.", false)]
-    public static ClientboundMapItemDataPacket Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<MapItemSavedData*>' is not a known bindable declaration.");
+    public static ClientboundMapItemDataPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData? arg0, global::Hosihikari.Bindings.Bedrock.Interop.Level arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_dfb4711b((void*)(arg0?.Handle ?? 0), (void*)arg1.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ClientboundMapItemDataPacket((nint)handle);
+    }
 
     public void __autoclassinit2(ulong arg0)
     {

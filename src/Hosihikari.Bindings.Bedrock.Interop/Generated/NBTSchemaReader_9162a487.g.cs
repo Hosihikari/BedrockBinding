@@ -43,12 +43,19 @@ public sealed unsafe partial class NBTSchemaReader : global::System.IDisposable
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static NBTSchemaReader Create_a22326d8(nint arg0) =>
+    public static NBTSchemaReader Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Tag const*>' is not a known bindable declaration.", false)]
-    public static NBTSchemaReader Create_8ed04945(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Tag const*>' is not a known bindable declaration.");
+    public static NBTSchemaReader Create(global::Hosihikari.Bindings.Bedrock.Interop.Tag? arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_8ed04945((void*)(arg0?.Handle ?? 0));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NBTSchemaReader((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<bool,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint asBool_d975f34b(nint arg0) =>

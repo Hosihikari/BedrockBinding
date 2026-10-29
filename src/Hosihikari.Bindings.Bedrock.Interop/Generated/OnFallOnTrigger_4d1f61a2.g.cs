@@ -46,9 +46,10 @@ public sealed unsafe partial class OnFallOnTrigger : global::System.IDisposable
     public static OnFallOnTrigger Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<BlockEvents::BlockFallOnEventComponent*>' is not a known bindable declaration.", false)]
-    public void finalize(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<BlockEvents::BlockFallOnEventComponent*>' is not a known bindable declaration.");
+    public void finalize(global::Hosihikari.Bindings.Bedrock.Interop.BlockEvents.BlockFallOnEventComponent? arg0)
+    {
+        NativeMethods.TablePtr->hs_method_ca805e49((void*)_handle, (void*)(arg0?.Handle ?? 0));
+    }
 
     public void onFallOn(nint arg0)
     {

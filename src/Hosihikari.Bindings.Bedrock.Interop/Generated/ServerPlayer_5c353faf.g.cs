@@ -59,9 +59,10 @@ public sealed unsafe partial class ServerPlayer : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_3a6c7996((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Actor*>' is not a known bindable declaration.", false)]
-    public void addActorToReplicationList(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Actor*>' is not a known bindable declaration.");
+    public void addActorToReplicationList(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, bool arg1)
+    {
+        NativeMethods.TablePtr->hs_method_32b1ca9e((void*)_handle, (void*)(arg0?.Handle ?? 0), arg1);
+    }
 
     public void aiStep()
     {

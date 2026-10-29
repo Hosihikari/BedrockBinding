@@ -96,9 +96,10 @@ public sealed unsafe partial class ContentLog : global::System.IDisposable
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<ContentLogEndPoint*>' is not a known bindable declaration.", false)]
-    public void unregisterEndPoint(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<ContentLogEndPoint*>' is not a known bindable declaration.");
+    public void unregisterEndPoint(global::Hosihikari.Bindings.Bedrock.Interop.ContentLogEndPoint? arg0)
+    {
+        NativeMethods.TablePtr->hs_method_653e8ad4((void*)_handle, (void*)(arg0?.Handle ?? 0));
+    }
 
     public void updateEnabledStatus()
     {

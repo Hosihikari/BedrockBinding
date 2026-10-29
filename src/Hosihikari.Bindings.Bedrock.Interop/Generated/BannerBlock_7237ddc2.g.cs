@@ -130,9 +130,10 @@ public sealed unsafe partial class BannerBlock : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_169c6d99((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<BannerBlockActor const*>' is not a known bindable declaration.", false)]
-    public static nint itemInstanceFromBlockEntity(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<BannerBlockActor const*>' is not a known bindable declaration.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance itemInstanceFromBlockEntity(global::Hosihikari.Bindings.Bedrock.Interop.BannerBlockActor? arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->hs_method_7f7fc68a((void*)(arg0?.Handle ?? 0)));
+    }
 
     public void neighborChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2)
     {

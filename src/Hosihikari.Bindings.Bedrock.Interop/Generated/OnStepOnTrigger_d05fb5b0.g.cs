@@ -46,9 +46,10 @@ public sealed unsafe partial class OnStepOnTrigger : global::System.IDisposable
     public static OnStepOnTrigger Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<BlockEvents::BlockStepOnEventComponent*>' is not a known bindable declaration.", false)]
-    public void finalize(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<BlockEvents::BlockStepOnEventComponent*>' is not a known bindable declaration.");
+    public void finalize(global::Hosihikari.Bindings.Bedrock.Interop.BlockEvents.BlockStepOnEventComponent? arg0)
+    {
+        NativeMethods.TablePtr->hs_method_c4786725((void*)_handle, (void*)(arg0?.Handle ?? 0));
+    }
 
     public void onStepOn(nint arg0)
     {

@@ -59301,6 +59301,22 @@ catch (...)
     return;
 }
 
+static void* hs_create_ab314a0e(void* arg0, void* arg1, bool arg2) try
+{
+    setLastError("symbol dispatch has no entry for bedrock:BackgroundTaskBase in linux-x64-server");
+    return nullptr;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void* hs_get_46b7b8d8() try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{664}, "_ZN18BackgroundTaskBase12gCurrentTaskE");
@@ -61884,6 +61900,31 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_method_7f7fc68a(void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{121121760}, "_ZN11BannerBlock27itemInstanceFromBlockEntityEN3gsl8not_nullIPK16BannerBlockActorEE");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(136), 16));
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(static_cast<void*>(hs_record), arg0);
+    return hs_record;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void hs_method_5fabe354(void* hs_self, void* arg0, void* arg1, void* arg2) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{121121408}, "_ZNK11BannerBlock15neighborChangedER11BlockSourceRK8BlockPosS4_");
@@ -62732,25 +62773,25 @@ catch (...)
     return;
 }
 
-static void* hs_get_705c02fc() try
+static std::int8_t hs_get_705c02fc() try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{146190808}, "_ZN13BannerPattern9BASE_NAMEE");
     if (hs_target == nullptr)
     {
         setLastError("symbol was not resolved");
-        return nullptr;
+        return 0;
     }
-    return hs_target;
+    return *reinterpret_cast<std::int8_t const*>(hs_target);
 }
 catch (std::exception const& hs_error)
 {
     setLastError(hs_error.what());
-    return nullptr;
+    return 0;
 }
 catch (...)
 {
     setLastError("unknown native exception");
-    return nullptr;
+    return 0;
 }
 
 static void* hs_create_49511c8f(void* arg0) try
@@ -62778,25 +62819,25 @@ catch (...)
     return nullptr;
 }
 
-static void* hs_get_b76626cc() try
+static std::int8_t hs_get_b76626cc() try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{146190816}, "_ZN13BannerPattern23SQUARE_TOP_LEFT_NAME_IDE");
     if (hs_target == nullptr)
     {
         setLastError("symbol was not resolved");
-        return nullptr;
+        return 0;
     }
-    return hs_target;
+    return *reinterpret_cast<std::int8_t const*>(hs_target);
 }
 catch (std::exception const& hs_error)
 {
     setLastError(hs_error.what());
-    return nullptr;
+    return 0;
 }
 catch (...)
 {
     setLastError("unknown native exception");
-    return nullptr;
+    return 0;
 }
 
 static std::uint8_t hs_method_7f3855bb(const char* arg0_data, std::size_t arg0_size, bool* hs_hasValue) try
@@ -70974,6 +71015,25 @@ catch (...)
     return nullptr;
 }
 
+static void hs_destroy_0301559b(void* hs_self) try
+{
+    auto const hs_dtor = hs_resolve(std::uintptr_t{0}, "");
+    using HsFn = void (*)(void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_dtor));
+    if (hs_fn != nullptr) { hs_fn(hs_self); }
+    hs_deallocate(hs_self, 16);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_destroy_b256d749(void* hs_self) try
 {
     auto const hs_dtor = hs_resolve(std::uintptr_t{138427776}, "_ZN7Bedrock6PubSub6Detail13PublisherBaseD2Ev");
@@ -77189,6 +77249,22 @@ catch (...)
 {
     setLastError("unknown native exception");
     return HosihikariStringView{nullptr, 0};
+}
+
+static void* hs_create_9f7e59b9(std::uint16_t arg0, void* arg1) try
+{
+    setLastError("symbol dispatch has no entry for bedrock:Block in linux-x64-server");
+    return nullptr;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static float hs_get_d7799e96() try
@@ -96827,6 +96903,29 @@ catch (...)
     return;
 }
 
+static void hs_method_caf4d272(void* hs_self, void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{127673808}, "_ZN27BlockQueuedTickingComponent8finalizeEN3gsl8not_nullIPN11BlockEvents29BlockQueuedTickEventComponentEEE");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, arg0);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static std::int32_t hs_method_619cd3fa(void* hs_self, void* arg0) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{127722368}, "_ZNK27BlockQueuedTickingComponent18getRandomTickDelayER6Random");
@@ -97008,6 +97107,29 @@ static void hs_destroy_7788d40e(void* hs_self) try
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_dtor));
     if (hs_fn != nullptr) { hs_fn(hs_self); }
     hs_deallocate(hs_self, 16);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_4e9d8dc2(void* hs_self, void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{127674096}, "_ZN27BlockRandomTickingComponent8finalizeEN3gsl8not_nullIPN11BlockEvents29BlockRandomTickEventComponentEEE");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, arg0);
 }
 catch (std::exception const& hs_error)
 {
@@ -140357,6 +140479,22 @@ catch (...)
     return;
 }
 
+static void* hs_create_2d38431d(void* arg0, void* arg1, std::int32_t arg2) try
+{
+    setLastError("symbol dispatch has no entry for bedrock:CircuitTrackingInfo in linux-x64-server");
+    return nullptr;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void* hs_get_b2c49bd0(void* hs_self) try
 {
     return const_cast<void*>(static_cast<void const*>(static_cast<unsigned char const*>(hs_self) + 96));
@@ -144417,6 +144555,22 @@ catch (...)
 }
 
 static void* hs_create_17c70af4() try
+{
+    setLastError("symbol dispatch has no entry for bedrock:ClientboundMapItemDataPacket in linux-x64-server");
+    return nullptr;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_dfb4711b(void* arg0, void* arg1) try
 {
     setLastError("symbol dispatch has no entry for bedrock:ClientboundMapItemDataPacket in linux-x64-server");
     return nullptr;
@@ -175533,6 +175687,29 @@ catch (...)
     return false;
 }
 
+static void hs_method_653e8ad4(void* hs_self, void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{138225584}, "_ZN10ContentLog18unregisterEndPointEN3gsl8not_nullIP18ContentLogEndPointEE");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, arg0);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_method_27ee4c70(void* hs_self) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{138226160}, "_ZN10ContentLog19updateEnabledStatusEv");
@@ -190637,25 +190814,25 @@ catch (...)
     return nullptr;
 }
 
-static void* hs_get_2da6c176() try
+static std::int8_t hs_get_2da6c176() try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{146550232}, "_ZN20DebugAssertException4WHATE");
     if (hs_target == nullptr)
     {
         setLastError("symbol was not resolved");
-        return nullptr;
+        return 0;
     }
-    return hs_target;
+    return *reinterpret_cast<std::int8_t const*>(hs_target);
 }
 catch (std::exception const& hs_error)
 {
     setLastError(hs_error.what());
-    return nullptr;
+    return 0;
 }
 catch (...)
 {
     setLastError("unknown native exception");
-    return nullptr;
+    return 0;
 }
 
 static void* hs_method_de77e040(void* hs_self) try
@@ -191494,6 +191671,35 @@ catch (...)
 {
     setLastError("unknown native exception");
     return 0;
+}
+
+static void* hs_method_0a2398a4(void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{120962160}, "_ZN17DecoratedPotBlock23getItemInstanceUserDataEN3gsl8not_nullIPK22DecoratedPotBlockActorEE");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    using HsTypedResult = std::unique_ptr<void, hs_unique_void_deleter>;
+    alignas(HsTypedResult) unsigned char hs_typedStorage[sizeof(HsTypedResult)];
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(static_cast<void*>(hs_typedStorage), arg0);
+    auto& hs_unique = *reinterpret_cast<HsTypedResult*>(hs_typedStorage);
+    void* hs_result = hs_unique.release();
+    hs_unique.~HsTypedResult();
+    return hs_result;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static bool hs_method_bde37b21(void* hs_self) try
@@ -199517,6 +199723,22 @@ catch (...)
 }
 
 static void* hs_create_e5821071(void* arg0) try
+{
+    setLastError("symbol dispatch has no entry for bedrock:DimensionDefinitionGroup in linux-x64-server");
+    return nullptr;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_dfa3b35e(void* arg0, void* arg1, bool arg2) try
 {
     setLastError("symbol dispatch has no entry for bedrock:DimensionDefinitionGroup in linux-x64-server");
     return nullptr;
@@ -257761,6 +257983,30 @@ catch (...)
     return;
 }
 
+static void hs_method_d8265ee3(void* hs_self, void* arg0, const char* arg1_data, std::size_t arg1_size, void* arg2, void* arg3) try
+{
+    std::basic_string<char> hs_str1(arg1_data, arg1_size);
+    auto const hs_target = hs_resolve(std::uintptr_t{74289136}, "_ZN22GameTestNetworkAdapter11rungametestEN3gsl8not_nullIP12PacketSenderEERKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEER9DimensionRKN8gametest14TestParametersE");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, void*, std::basic_string<char,std::char_traits<char>,std::allocator<char>> const&, void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, arg0, hs_str1, arg2, arg3);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_method_dbfc17dd() try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{48816224}, "_ZN14GameTestReport8bindTypeEv");
@@ -284213,6 +284459,29 @@ static void hs_method_b544acb0(void* hs_self, HosihikariSharedHandle arg0, bool 
     using HsFn = void (*)(void*, std::shared_ptr<void>, bool);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
     hs_fn(hs_self, hs_shared0, arg1);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_6a014342(void* hs_self, void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{137489376}, "_ZN17InternalTaskGroup12taskCompleteEN3gsl8not_nullIP18BackgroundTaskBaseEE");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, arg0);
 }
 catch (std::exception const& hs_error)
 {
@@ -321001,6 +321270,39 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_create_3a4d4765(void* arg0, void* arg1, void* arg2, std::int32_t arg3, std::int32_t arg4) try
+{
+    setLastError("symbol dispatch has no entry for bedrock:LegacyTelemetryEventPacket in linux-x64-server");
+    return nullptr;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_d7b20bc0(void* arg0, void* arg1, void* arg2, std::int32_t arg3, const char* arg4_data, std::size_t arg4_size, std::int32_t arg5, std::int32_t arg6) try
+{
+    std::basic_string<char> hs_str4(arg4_data, arg4_size);
+    setLastError("symbol dispatch has no entry for bedrock:LegacyTelemetryEventPacket in linux-x64-server");
+    return nullptr;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void* hs_create_75f72665(void* arg0, void* arg1) try
 {
     setLastError("symbol dispatch has no entry for bedrock:LegacyTelemetryEventPacket in linux-x64-server");
@@ -321066,6 +321368,54 @@ catch (...)
 }
 
 static void* hs_create_724401ae(void* arg0, void* arg1, bool arg2) try
+{
+    setLastError("symbol dispatch has no entry for bedrock:LegacyTelemetryEventPacket in linux-x64-server");
+    return nullptr;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_4d42afe6(void* arg0, void* arg1, std::int32_t arg2) try
+{
+    setLastError("symbol dispatch has no entry for bedrock:LegacyTelemetryEventPacket in linux-x64-server");
+    return nullptr;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_78a5b104(void* arg0, void* arg1) try
+{
+    setLastError("symbol dispatch has no entry for bedrock:LegacyTelemetryEventPacket in linux-x64-server");
+    return nullptr;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_1f20ddae(void* arg0, std::int32_t arg1, void* arg2) try
 {
     setLastError("symbol dispatch has no entry for bedrock:LegacyTelemetryEventPacket in linux-x64-server");
     return nullptr;
@@ -404447,6 +404797,22 @@ catch (...)
     return;
 }
 
+static void* hs_create_9bf429b7(void* arg0, void* arg1) try
+{
+    setLastError("symbol dispatch has no entry for bedrock:NBTLoader in linux-x64-server");
+    return nullptr;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void hs_destroy_9feacbe2(void* hs_self) try
 {
     void const* const hs_dtor = nullptr;
@@ -404537,6 +404903,22 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static void* hs_create_8ed04945(void* arg0) try
+{
+    setLastError("symbol dispatch has no entry for bedrock:NBTSchemaReader in linux-x64-server");
+    return nullptr;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static std::int32_t hs_method_ea529014(void* hs_self) try
@@ -428134,6 +428516,29 @@ catch (...)
     return;
 }
 
+static void hs_method_ca805e49(void* hs_self, void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{127672656}, "_ZN15OnFallOnTrigger8finalizeEN3gsl8not_nullIPN11BlockEvents25BlockFallOnEventComponentEEE");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, arg0);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_method_a4bb1176(void* hs_self, void* arg0) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{127737312}, "_ZNK15OnFallOnTrigger8onFallOnERN11BlockEvents16BlockFallOnEventE");
@@ -428640,6 +429045,29 @@ catch (...)
     return;
 }
 
+static void hs_method_c6b6adce(void* hs_self, void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{127674672}, "_ZN17OnInteractTrigger8finalizeEN3gsl8not_nullIPN11BlockEvents33BlockPlayerInteractEventComponentEEE");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, arg0);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_method_f130a359(void* hs_self, void* arg0) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{127737888}, "_ZNK17OnInteractTrigger10onInteractERN11BlockEvents24BlockPlayerInteractEventE");
@@ -428804,6 +429232,29 @@ catch (...)
     return;
 }
 
+static void hs_method_1579feb7(void* hs_self, void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{127672944}, "_ZN15OnPlacedTrigger8finalizeEN3gsl8not_nullIPN11BlockEvents24BlockPlaceEventComponentEEE");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, arg0);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_method_ea441e11(void* hs_self, void* arg0) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{127738624}, "_ZNK15OnPlacedTrigger7onPlaceERKN11BlockEvents15BlockPlaceEventE");
@@ -428893,6 +429344,29 @@ catch (...)
     return;
 }
 
+static void hs_method_5056d8f7(void* hs_self, void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{127674960}, "_ZN24OnPlayerDestroyedTrigger8finalizeEN3gsl8not_nullIPN11BlockEvents32BlockPlayerDestroyEventComponentEEE");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, arg0);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_method_e650acd1(void* hs_self, void* arg0) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{127738880}, "_ZNK24OnPlayerDestroyedTrigger15onPlayerDestroyERKN11BlockEvents23BlockPlayerDestroyEventE");
@@ -428970,6 +429444,29 @@ static void hs_destroy_ae03c0ef(void* hs_self) try
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_dtor));
     if (hs_fn != nullptr) { hs_fn(hs_self); }
     hs_deallocate(hs_self, 16);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_7a29b323(void* hs_self, void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{127674384}, "_ZN22OnPlayerPlacingTrigger8finalizeEN3gsl8not_nullIPN11BlockEvents32BlockPlayerPlacingEventComponentEEE");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, arg0);
 }
 catch (std::exception const& hs_error)
 {
@@ -429530,6 +430027,29 @@ catch (...)
     return;
 }
 
+static void hs_method_18cccba6(void* hs_self, void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{127673520}, "_ZN16OnStepOffTrigger8finalizeEN3gsl8not_nullIPN11BlockEvents26BlockStepOffEventComponentEEE");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, arg0);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_method_003c1abd(void* hs_self, void* arg0) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{127740320}, "_ZNK16OnStepOffTrigger9onStepOffERKN11BlockEvents17BlockStepOffEventE");
@@ -429607,6 +430127,29 @@ static void hs_destroy_d05fb5b0(void* hs_self) try
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_dtor));
     if (hs_fn != nullptr) { hs_fn(hs_self); }
     hs_deallocate(hs_self, 16);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_c4786725(void* hs_self, void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{127673232}, "_ZN15OnStepOnTrigger8finalizeEN3gsl8not_nullIPN11BlockEvents25BlockStepOnEventComponentEEE");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, arg0);
 }
 catch (std::exception const& hs_error)
 {
@@ -484542,6 +485085,22 @@ catch (...)
     return false;
 }
 
+static void hs_method_a6c38cd6(void* hs_self, void* arg0) try
+{
+    setLastError("symbol dispatch has no entry for bedrock:RakNet in linux-x64-server");
+    return;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static std::int32_t hs_method_fe533e12(void* hs_self, void* arg0) try
 {
     alignas(8) unsigned char hs_arg0Storage[152];
@@ -485222,6 +485781,22 @@ catch (...)
     return 0;
 }
 
+static void hs_method_98953228(void* arg0) try
+{
+    setLastError("symbol dispatch has no entry for bedrock:RakNet in linux-x64-server");
+    return;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void* hs_method_86254a49(void* hs_self, std::int32_t arg0) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{130916656}, "_ZN6RakNet7RakPeer17GetMyBoundAddressEi");
@@ -485270,6 +485845,22 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static void hs_method_56fc40a1(void* arg0) try
+{
+    setLastError("symbol dispatch has no entry for bedrock:RakNet in linux-x64-server");
+    return;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
 }
 
 static std::uint32_t hs_method_862295a8(void* hs_self) try
@@ -543288,6 +543879,29 @@ static void hs_method_3a6c7996(void* hs_self, void* arg0) try
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
     hs_fn(hs_self, arg0);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_32b1ca9e(void* hs_self, void* arg0, bool arg1) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{98676576}, "_ZN12ServerPlayer25addActorToReplicationListEN3gsl8not_nullIP5ActorEEb");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, void*, bool);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, arg0, arg1);
 }
 catch (std::exception const& hs_error)
 {
@@ -607388,6 +608002,29 @@ catch (...)
     return;
 }
 
+static void hs_method_64d8011d(void* hs_self, void* arg0) try
+{
+    auto const hs_target = hs_resolve(std::uintptr_t{137348928}, "_ZN9TaskGroup12taskCompleteEN3gsl8not_nullIP18BackgroundTaskBaseEE");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, arg0);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_method_dd6239d5(void* hs_self, HosihikariSharedHandle arg0) try
 {
     auto hs_shared0 = hs_shared_from_handle<void>(arg0);
@@ -611358,6 +611995,54 @@ static void hs_method_fb5196df(void* hs_self, void* arg0) try
     using HsFn = void (*)(void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
     hs_fn(hs_self, arg0);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static bool hs_method_5583070d(void* arg1, void* arg2, void* arg3, const std::int32_t* arg0_data, std::size_t arg0_count) try
+{
+    auto hs_vec0 = hs_make_vector<std::int32_t>(arg0_data, arg0_count);
+    auto const hs_target = hs_resolve(std::uintptr_t{110943824}, "_ZN18TextFilteringUtils57checkChatFilteringEventsAndSendChatIfTextProcessorOfflineERKNSt3__16vectorIN6Safety18TextFilteringEventENS0_9allocatorIS3_EEEEN3gsl8not_nullIP12PacketSenderEERK17NetworkIdentifierRK11SubClientId");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return false;
+    }
+    using HsFn = bool (*)(void*, void*, void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    return static_cast<bool>(hs_fn(static_cast<void*>(&hs_vec0), arg1, arg2, arg3));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return false;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return false;
+}
+
+static void hs_method_00a16f95(void* arg1, void* arg2, void* arg3, const std::int32_t* arg0_data, std::size_t arg0_count) try
+{
+    auto hs_vec0 = hs_make_vector<std::int32_t>(arg0_data, arg0_count);
+    auto const hs_target = hs_resolve(std::uintptr_t{110943120}, "_ZN18TextFilteringUtils52checkChatFilteringEventsAndSendToastIfClientWasMutedERKNSt3__16vectorIN6Safety18TextFilteringEventENS0_9allocatorIS3_EEEEN3gsl8not_nullIP12PacketSenderEERK17NetworkIdentifierRK11SubClientId");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, void*, void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(static_cast<void*>(&hs_vec0), arg1, arg2, arg3);
 }
 catch (std::exception const& hs_error)
 {
@@ -665404,6 +666089,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_5a6690ba,
     &hs_method_c6b9b952,
     &hs_destroy_2cd61f83,
+    &hs_create_ab314a0e,
     &hs_get_46b7b8d8,
     &hs_method_bd258a07,
     &hs_method_3b1b938d,
@@ -665519,6 +666205,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_c09a1ed7,
     &hs_method_f11c93e2,
     &hs_method_169c6d99,
+    &hs_method_7f7fc68a,
     &hs_method_5fabe354,
     &hs_method_d11226bf,
     &hs_method_c6c68686,
@@ -665942,6 +666629,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_16d11b10,
     &hs_destroy_38700d63,
     &hs_get_97f86a21,
+    &hs_destroy_0301559b,
     &hs_destroy_b256d749,
     &hs_destroy_960cef16,
     &hs_get_e02a3ba8,
@@ -666233,6 +666921,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_695aad2e,
     &hs_destroy_1f2303cb,
     &hs_get_4164fc3c,
+    &hs_create_9f7e59b9,
     &hs_get_d7799e96,
     &hs_method_fe61a42a,
     &hs_method_d5f400a2,
@@ -667113,6 +667802,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_62907cba,
     &hs_method_918971e8,
     &hs_destroy_463a5f79,
+    &hs_method_caf4d272,
     &hs_method_619cd3fa,
     &hs_method_265a8a49,
     &hs_destroy_97b18730,
@@ -667122,6 +667812,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_a0502198,
     &hs_method_646e9810,
     &hs_destroy_7788d40e,
+    &hs_method_4e9d8dc2,
     &hs_method_bdcb6ee9,
     &hs_destroy_a6a6409e,
     &hs_create_e4008eb8,
@@ -669180,6 +669871,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_52e70256,
     &hs_method_c9737e3f,
     &hs_destroy_3d2a70c2,
+    &hs_create_2d38431d,
     &hs_get_b2c49bd0,
     &hs_get_43022c11,
     &hs_get_2f2a053d,
@@ -669400,6 +670092,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_e25ea7e0,
     &hs_destroy_e27ae113,
     &hs_create_17c70af4,
+    &hs_create_dfb4711b,
     &hs_method_81732d00,
     &hs_method_2f0c36a9,
     &hs_method_bc07c841,
@@ -670936,6 +671629,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_e09d9a1b,
     &hs_method_e6e1b6fa,
     &hs_method_479b84f3,
+    &hs_method_653e8ad4,
     &hs_method_27ee4c70,
     &hs_destroy_e7efd29a,
     &hs_get_5ff30fb7,
@@ -671699,6 +672393,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_20fcdda6,
     &hs_method_1987f44a,
     &hs_method_7630f9a6,
+    &hs_method_0a2398a4,
     &hs_method_bde37b21,
     &hs_method_84a6bd42,
     &hs_method_52f95dfa,
@@ -672071,6 +672766,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_863f45ad,
     &hs_destroy_41c7bc0f,
     &hs_create_e5821071,
+    &hs_create_dfa3b35e,
     &hs_method_85416922,
     &hs_method_4041f715,
     &hs_get_fd27b16f,
@@ -674777,6 +675473,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_3a0c9412,
     &hs_method_5c955257,
     &hs_method_87a2477d,
+    &hs_method_d8265ee3,
     &hs_method_dbfc17dd,
     &hs_destroy_323e4a6b,
     &hs_create_bf02b901,
@@ -676061,6 +676758,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_a21b8543,
     &hs_method_d3fb5ce8,
     &hs_method_b544acb0,
+    &hs_method_6a014342,
     &hs_method_2057464d,
     &hs_method_c4d4362c,
     &hs_method_97b3643e,
@@ -677835,11 +678533,16 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_d5f579ad,
     &hs_create_773a9ac2,
     &hs_create_99e68260,
+    &hs_create_3a4d4765,
+    &hs_create_d7b20bc0,
     &hs_create_75f72665,
     &hs_create_f95b3c12,
     &hs_create_b0c8fa2e,
     &hs_create_67ac6dc0,
     &hs_create_724401ae,
+    &hs_create_4d42afe6,
+    &hs_create_78a5b104,
+    &hs_create_1f20ddae,
     &hs_create_54939a20,
     &hs_create_d55d803b,
     &hs_create_751d8a37,
@@ -681749,10 +682452,12 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_7e8298bf,
     &hs_method_005aee98,
     &hs_destroy_a1a8fb34,
+    &hs_create_9bf429b7,
     &hs_destroy_9feacbe2,
     &hs_method_8af14577,
     &hs_method_a0cac29b,
     &hs_destroy_9162a487,
+    &hs_create_8ed04945,
     &hs_method_ea529014,
     &hs_method_dda6c092,
     &hs_method_ce350880,
@@ -682873,6 +683578,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_df408447,
     &hs_method_9f3e935e,
     &hs_destroy_4d1f61a2,
+    &hs_method_ca805e49,
     &hs_method_a4bb1176,
     &hs_get_11aae5c5,
     &hs_method_b6c81340,
@@ -682895,6 +683601,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_1d812692,
     &hs_method_388e3276,
     &hs_destroy_f14e4b3c,
+    &hs_method_c6b6adce,
     &hs_method_f130a359,
     &hs_get_1d66944f,
     &hs_method_e9d4488b,
@@ -682902,14 +683609,17 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_a7c1157f,
     &hs_method_64ef9e2b,
     &hs_destroy_578e5123,
+    &hs_method_1579feb7,
     &hs_method_ea441e11,
     &hs_get_b720a9ca,
     &hs_method_f99e97fd,
     &hs_destroy_9aa37de4,
+    &hs_method_5056d8f7,
     &hs_method_e650acd1,
     &hs_get_e57eb397,
     &hs_method_6f444e84,
     &hs_destroy_ae03c0ef,
+    &hs_method_7a29b323,
     &hs_method_235e8a38,
     &hs_get_6877972b,
     &hs_method_e6251ee2,
@@ -682939,10 +683649,12 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_e8c87dbf,
     &hs_method_a5f0db81,
     &hs_destroy_9f42b130,
+    &hs_method_18cccba6,
     &hs_method_003c1abd,
     &hs_get_e5c1597b,
     &hs_method_e3ec7be4,
     &hs_destroy_d05fb5b0,
+    &hs_method_c4786725,
     &hs_method_c0a6257a,
     &hs_get_b6f4fbd7,
     &hs_method_2efbcf9a,
@@ -685563,6 +686275,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_1aab9cdf,
     &hs_method_e9d396bc,
     &hs_method_7a5a45c4,
+    &hs_method_a6c38cd6,
     &hs_method_fe533e12,
     &hs_method_7bf40d9e,
     &hs_method_d2c72e30,
@@ -685591,8 +686304,10 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_acd2d010,
     &hs_method_db05e9a1,
     &hs_method_7856529c,
+    &hs_method_98953228,
     &hs_method_86254a49,
     &hs_method_f643cae4,
+    &hs_method_56fc40a1,
     &hs_method_862295a8,
     &hs_method_b6fb83be,
     &hs_method_7e3085e3,
@@ -688357,6 +689072,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_0a5f9dbe,
     &hs_destroy_5c353faf,
     &hs_method_3a6c7996,
+    &hs_method_32b1ca9e,
     &hs_method_d83befe6,
     &hs_method_305a3105,
     &hs_method_12bc3c34,
@@ -691537,6 +692253,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_7b510509,
     &hs_method_817ee9a9,
     &hs_method_a6f55e84,
+    &hs_method_64d8011d,
     &hs_method_dd6239d5,
     &hs_destroy_a5c8e9ac,
     &hs_method_65090d00,
@@ -691746,6 +692463,8 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_7adaf41a,
     &hs_method_66637c27,
     &hs_method_fb5196df,
+    &hs_method_5583070d,
+    &hs_method_00a16f95,
     &hs_method_7dcfce5f,
     &hs_destroy_7ed22ca6,
     &hs_create_7151b5bc,

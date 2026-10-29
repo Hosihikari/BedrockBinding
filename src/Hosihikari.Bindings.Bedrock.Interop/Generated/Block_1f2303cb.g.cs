@@ -55,13 +55,20 @@ public sealed unsafe partial class Block : global::System.IDisposable
     public static Block Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<BlockLegacy*>' is not a known bindable declaration.", false)]
-    public static Block Create(ushort arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<BlockLegacy*>' is not a known bindable declaration.");
+    public static Block Create(ushort arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockLegacy? arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_9f7e59b9(arg0, (void*)(arg1?.Handle ?? 0));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<BlockLegacy*>' is not a known bindable declaration.", false)]
+        return new Block((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static Block Create(ushort arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<BlockLegacy*>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public static float SIZE_OFFSET
     {

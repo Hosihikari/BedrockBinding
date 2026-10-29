@@ -81,9 +81,10 @@ public sealed unsafe partial class InternalTaskGroup
         NativeMethods.TablePtr->hs_method_b544acb0((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<BackgroundTaskBase*>' is not a known bindable declaration.", false)]
-    public void taskComplete(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<BackgroundTaskBase*>' is not a known bindable declaration.");
+    public void taskComplete(global::Hosihikari.Bindings.Bedrock.Interop.BackgroundTaskBase? arg0)
+    {
+        NativeMethods.TablePtr->hs_method_6a014342((void*)_handle, (void*)(arg0?.Handle ?? 0));
+    }
 
     public void taskRegister(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
     {

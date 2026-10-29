@@ -46,9 +46,16 @@ public sealed unsafe partial class BackgroundTaskBase : global::System.IDisposab
     public static BackgroundTaskBase Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<IBackgroundTaskOwner*>' is not a known bindable declaration.", false)]
-    public static BackgroundTaskBase Create(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<IBackgroundTaskOwner*>' is not a known bindable declaration.");
+    public static BackgroundTaskBase Create(global::Hosihikari.Bindings.Bedrock.Interop.IBackgroundTaskOwner? arg0, global::Hosihikari.Bindings.Bedrock.Interop.TaskStartInfoBase arg1, bool arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_ab314a0e((void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, arg2);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BackgroundTaskBase((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::thread::id' is not a known bindable declaration.", false)]
     public bool canBeRunBy_a7423f83(nint arg0) =>

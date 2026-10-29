@@ -38,9 +38,16 @@ public sealed unsafe partial class CircuitTrackingInfo : global::System.IDisposa
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<BaseCircuitComponent*>' is not a known bindable declaration.", false)]
-    public static CircuitTrackingInfo Create(nint arg0, nint arg1, int arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<BaseCircuitComponent*>' is not a known bindable declaration.");
+    public static CircuitTrackingInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.BaseCircuitComponent? arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, int arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_2d38431d((void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, arg2);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CircuitTrackingInfo((nint)handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint m2ndNearest_Address

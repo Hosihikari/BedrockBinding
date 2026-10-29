@@ -46,9 +46,16 @@ public sealed unsafe partial class NBTLoader : global::System.IDisposable
     public static NBTLoader Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Tag const*>' is not a known bindable declaration.", false)]
-    public static NBTLoader Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Tag const*>' is not a known bindable declaration.");
+    public static NBTLoader Create(global::Hosihikari.Bindings.Bedrock.Interop.Tag? arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_9bf429b7((void*)(arg0?.Handle ?? 0), (void*)arg1.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NBTLoader((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

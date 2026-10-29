@@ -49,9 +49,16 @@ public sealed unsafe partial class DimensionDefinitionGroup : global::System.IDi
         return new DimensionDefinitionGroup((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ResourcePackManager*const' is not a known bindable declaration.", false)]
-    public static DimensionDefinitionGroup Create(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ResourcePackManager*const' is not a known bindable declaration.");
+    public static DimensionDefinitionGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager? arg1, bool arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_dfa3b35e((void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), arg2);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DimensionDefinitionGroup((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint getDimensionDefinition(nint arg0) =>

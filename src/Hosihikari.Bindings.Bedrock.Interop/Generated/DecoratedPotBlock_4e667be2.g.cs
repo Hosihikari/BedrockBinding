@@ -100,9 +100,11 @@ public sealed unsafe partial class DecoratedPotBlock : global::System.IDisposabl
         return NativeMethods.TablePtr->hs_method_7630f9a6((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<DecoratedPotBlockActor const*>' is not a known bindable declaration.", false)]
-    public static nint getItemInstanceUserData(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<DecoratedPotBlockActor const*>' is not a known bindable declaration.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? getItemInstanceUserData(global::Hosihikari.Bindings.Bedrock.Interop.DecoratedPotBlockActor? arg0)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_0a2398a4((void*)(arg0?.Handle ?? 0));
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'ItemStack' is not supported.", false)]
     public static nint getSherdItems(nint arg0) =>

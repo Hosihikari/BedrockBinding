@@ -110,13 +110,41 @@ public sealed unsafe partial class LegacyTelemetryEventPacket : global::System.I
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Mob const*>' is not a known bindable declaration.", false)]
-    public static LegacyTelemetryEventPacket Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Mob const*>' is not a known bindable declaration.");
+    public static LegacyTelemetryEventPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1, global::Hosihikari.Bindings.Bedrock.Interop.Mob? arg2, int arg3, int arg4)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_3a4d4765((void*)(arg0?.Handle ?? 0), (void*)(arg1?.Handle ?? 0), (void*)(arg2?.Handle ?? 0), arg3, arg4);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Mob const*>' is not a known bindable declaration.", false)]
-    public static LegacyTelemetryEventPacket Create_d7b20bc0(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, int arg5, nint arg6) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Mob const*>' is not a known bindable declaration.");
+        return new LegacyTelemetryEventPacket((nint)handle);
+    }
+
+    public static LegacyTelemetryEventPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1, global::Hosihikari.Bindings.Bedrock.Interop.Mob? arg2, int arg3, string arg4, int arg5, int arg6)
+    {
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
+        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+        {
+            var handle = NativeMethods.TablePtr->hs_create_d7b20bc0((void*)(arg0?.Handle ?? 0), (void*)(arg1?.Handle ?? 0), (void*)(arg2?.Handle ?? 0), arg3, __hs_stringData4, (nuint)__hs_stringByteCount4, arg5, arg6);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new LegacyTelemetryEventPacket((nint)handle);
+        }
+    }
 
     public static LegacyTelemetryEventPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1)
     {
@@ -173,17 +201,38 @@ public sealed unsafe partial class LegacyTelemetryEventPacket : global::System.I
         return new LegacyTelemetryEventPacket((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Actor const*>' is not a known bindable declaration.", false)]
-    public static LegacyTelemetryEventPacket Create(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Actor const*>' is not a known bindable declaration.");
+    public static LegacyTelemetryEventPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg1, int arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_4d42afe6((void*)(arg0?.Handle ?? 0), (void*)(arg1?.Handle ?? 0), arg2);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Mob const*>' is not a known bindable declaration.", false)]
-    public static LegacyTelemetryEventPacket Create_78a5b104(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Mob const*>' is not a known bindable declaration.");
+        return new LegacyTelemetryEventPacket((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Actor const*>' is not a known bindable declaration.", false)]
-    public static LegacyTelemetryEventPacket Create(nint arg0, int arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Actor const*>' is not a known bindable declaration.");
+    public static LegacyTelemetryEventPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, global::Hosihikari.Bindings.Bedrock.Interop.Mob? arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_78a5b104((void*)(arg0?.Handle ?? 0), (void*)(arg1?.Handle ?? 0));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacyTelemetryEventPacket((nint)handle);
+    }
+
+    public static LegacyTelemetryEventPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_1f20ddae((void*)(arg0?.Handle ?? 0), arg1, (void*)(arg2?.Handle ?? 0));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacyTelemetryEventPacket((nint)handle);
+    }
 
     public static LegacyTelemetryEventPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.Player? arg0, int arg1, int arg2, int arg3, bool arg4)
     {
@@ -251,7 +300,7 @@ public sealed unsafe partial class LegacyTelemetryEventPacket : global::System.I
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LegacyTelemetryEventPacket Create_1eeca60a(nint arg0, nint arg1) =>
+    public static LegacyTelemetryEventPacket Create(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
@@ -259,7 +308,7 @@ public sealed unsafe partial class LegacyTelemetryEventPacket : global::System.I
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LegacyTelemetryEventPacket Create_824f5589(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, int arg5, nint arg6) =>
+    public static LegacyTelemetryEventPacket Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, int arg5, nint arg6) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]

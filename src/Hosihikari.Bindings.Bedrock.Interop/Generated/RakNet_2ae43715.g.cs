@@ -261,9 +261,10 @@ public sealed unsafe partial class RakNet
         return NativeMethods.TablePtr->hs_method_7a5a45c4((void*)_handle, (void*)arg0, arg1, arg2) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'unsigned int*const' is not a known bindable declaration.", false)]
-    public void GenerateFromFrequencyTable_a6c38cd6(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'unsigned int*const' is not a known bindable declaration.");
+    public void GenerateFromFrequencyTable_a6c38cd6(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_a6c38cd6((void*)_handle, (void*)arg0);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'RakNet::uint24_t' requires --link-carrier or --virtual-dispatch.", false)]
     public nint GetAndIncrementNextDatagramSequenceNumber() =>
@@ -411,9 +412,10 @@ public sealed unsafe partial class RakNet
         return NativeMethods.TablePtr->hs_method_7856529c((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::NetworkAdapter*const' is not a known bindable declaration.", false)]
-    public static void GetMyAdapters_98953228(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::NetworkAdapter*const' is not a known bindable declaration.");
+    public static void GetMyAdapters(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.NetworkAdapter? arg0)
+    {
+        NativeMethods.TablePtr->hs_method_98953228((void*)(arg0?.Handle ?? 0));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress GetMyBoundAddress(int arg0)
     {
@@ -425,9 +427,10 @@ public sealed unsafe partial class RakNet
         return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakNetGUID((nint)NativeMethods.TablePtr->hs_method_f643cae4((void*)_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'RakNet::SystemAddress*const' is not a known bindable declaration.", false)]
-    public static void GetMyIP_56fc40a1(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'RakNet::SystemAddress*const' is not a known bindable declaration.");
+    public static void GetMyIP(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress? arg0)
+    {
+        NativeMethods.TablePtr->hs_method_56fc40a1((void*)(arg0?.Handle ?? 0));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'RakNet::uint24_t' requires --link-carrier or --virtual-dispatch.", false)]
     public nint GetNextDatagramSequenceNumber() =>

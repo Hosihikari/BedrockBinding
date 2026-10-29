@@ -38,10 +38,9 @@ public sealed unsafe partial class BannerPattern : global::System.IDisposable
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint BASE_NAME_Address
+    public static sbyte BASE_NAME
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_705c02fc();
+        get => NativeMethods.TablePtr->hs_get_705c02fc();
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
@@ -73,10 +72,9 @@ public sealed unsafe partial class BannerPattern : global::System.IDisposable
         set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint SQUARE_TOP_LEFT_NAME_ID_Address
+    public static sbyte SQUARE_TOP_LEFT_NAME_ID
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_b76626cc();
+        get => NativeMethods.TablePtr->hs_get_b76626cc();
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

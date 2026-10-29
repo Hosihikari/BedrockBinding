@@ -64,10 +64,9 @@ public sealed unsafe partial class DebugAssertException : global::System.IDispos
         return new DebugAssertException((nint)handle);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint WHAT_Address
+    public static sbyte WHAT
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_2da6c176();
+        get => NativeMethods.TablePtr->hs_get_2da6c176();
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
