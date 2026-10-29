@@ -104,14 +104,10 @@ public sealed unsafe partial class PackAccessStrategy : global::System.IDisposab
     public nint getStrategyType() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public nint getSubPath_7460e95e()
+    public nint getSubPath()
     {
         return (nint)NativeMethods.TablePtr->hs_method_7460e95e((void*)_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getSubPath_7ed84413() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public bool hasAsset(nint packRelativePath, bool trustedContentOnly, bool arg2) =>

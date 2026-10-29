@@ -54,22 +54,14 @@ public sealed unsafe partial class BinaryStream : global::System.IDisposable
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: constructors do not accept mutable string references.", false)]
-    public static BinaryStream Create_a4b2a2e4(nint arg0, bool arg1) =>
+    public static BinaryStream Create(nint arg0, bool arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors do not accept mutable string references.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BinaryStream Create_5ef5ca28(nint buffer, bool copyBuffer) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public string getAndReleaseData_054ae187()
+    public string getAndReleaseData()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_054ae187((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getAndReleaseData_d3c42da5() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public nint mBuffer_0daa8bdb
     {

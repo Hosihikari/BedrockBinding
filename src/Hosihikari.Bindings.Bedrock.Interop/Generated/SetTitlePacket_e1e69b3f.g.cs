@@ -123,10 +123,6 @@ public sealed unsafe partial class SetTitlePacket : global::System.IDisposable
         return new SetTitlePacket((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SetTitlePacket Create(nint type, nint titleText) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static SetTitlePacket Create(int arg0, string arg1)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -172,15 +168,11 @@ public sealed unsafe partial class SetTitlePacket : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_50a4ba8c((void*)_handle);
     }
 
-    public string getName_8b4d5aae()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_8b4d5aae((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_ce5a259f() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int mFadeInTime
     {

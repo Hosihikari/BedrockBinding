@@ -58,10 +58,6 @@ public sealed unsafe partial class EatBlockDefinition : global::System.IDisposab
         NativeMethods.TablePtr->hs_method_7563b720((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void buildSchema(nint name, nint root) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static void buildSchema(string arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

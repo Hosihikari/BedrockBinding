@@ -163,18 +163,10 @@ public sealed unsafe partial class Mob : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_a7f8c57c((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _logMobComponentInitializationError_a1923a82(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void addPassenger(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {
         NativeMethods.TablePtr->hs_method_e3996a38((void*)_handle, (void*)arg0.Handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addSpeedModifier(nint attributeID, nint attributeName, float speedModifier) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void addSpeedModifier(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0, string arg1, float arg2)
     {
@@ -221,12 +213,8 @@ public sealed unsafe partial class Mob : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void buildDebugInfo_4451a531(nint arg0) =>
+    public void buildDebugInfo(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void buildDebugInfo_54b76cc1(nint @out) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public float calcMoveRelativeSpeed(int arg0)
     {

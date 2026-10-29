@@ -77,10 +77,6 @@ public sealed unsafe partial class BlockStateCommandParam : global::System.IDisp
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockStateCommandParam Create(nint state, nint value, nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'std::pair<HashedString,int>' is not supported.", false)]
     public nint getNameAndValue(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::pair<HashedString,int>' is not supported.");

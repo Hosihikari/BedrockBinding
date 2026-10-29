@@ -57,10 +57,6 @@ public sealed unsafe partial class BlockMaterialInstancesDescription : global::S
     public static BlockMaterialInstancesDescription Create_b410f09e(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockMaterialInstancesDescription Create(nint textureName, nint arg1, bool arg2, bool faceDimming) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static BlockMaterialInstancesDescription Create(string arg0, int arg1, bool arg2, bool arg3)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -106,11 +102,7 @@ public sealed unsafe partial class BlockMaterialInstancesDescription : global::S
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_158e3cf6() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getName_88385cfd()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_88385cfd((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

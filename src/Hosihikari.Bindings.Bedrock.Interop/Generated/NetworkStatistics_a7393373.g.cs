@@ -75,10 +75,6 @@ public sealed unsafe partial class NetworkStatistics : global::System.IDisposabl
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void dataReceivedFrom(nint source, nint data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void dataSentTo(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, string arg1)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -102,15 +98,11 @@ public sealed unsafe partial class NetworkStatistics : global::System.IDisposabl
     public void dataSentTo(nint target, nint data) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public string getVerboseInfo_4106be8e()
+    public string getVerboseInfo()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_4106be8e((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getVerboseInfo_68d7a5c1() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

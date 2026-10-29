@@ -46,12 +46,8 @@ public sealed unsafe partial class LegacyPackIdVersion
     public static LegacyPackIdVersion Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LegacyPackIdVersion Create_ea9ad2d5(nint id, nint version) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static LegacyPackIdVersion Create_ac206ed4(nint arg0, nint arg1) =>
+    public static LegacyPackIdVersion Create(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion getUpgradedPackId()

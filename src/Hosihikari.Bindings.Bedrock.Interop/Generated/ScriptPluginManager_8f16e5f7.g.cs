@@ -90,12 +90,8 @@ public sealed unsafe partial class ScriptPluginManager
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ScriptPluginManagerResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint runAll_4ededb00(nint arg0) =>
+    public nint runAll(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ScriptPluginManagerResult' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint runAll_b586a2c3(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_f8ed0259() =>

@@ -109,12 +109,8 @@ public sealed unsafe partial class ArmorTrim
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public static void appendUpgradeHoverText_c18b6f40(nint arg0, nint arg1, nint arg2) =>
+    public static void appendUpgradeHoverText(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void appendUpgradeHoverText_6d23f0b0(nint stack, nint level, nint hovertext) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.HashedString getMaterialId()
     {

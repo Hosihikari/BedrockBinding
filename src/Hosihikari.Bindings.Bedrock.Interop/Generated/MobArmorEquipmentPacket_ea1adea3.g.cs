@@ -73,15 +73,11 @@ public sealed unsafe partial class MobArmorEquipmentPacket : global::System.IDis
         return NativeMethods.TablePtr->hs_method_b3105449((void*)_handle);
     }
 
-    public string getName_09907ef5()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_09907ef5((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_448624d5() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFeet_Address

@@ -66,10 +66,6 @@ public sealed unsafe partial class HumanoidArmorItem : global::System.IDisposabl
     public static HumanoidArmorItem Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static HumanoidArmorItem Create(nint arg0, short arg1, nint arg2, int arg3, nint arg4, bool arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static HumanoidArmorItem Create(string arg0, short arg1, global::Hosihikari.Bindings.Bedrock.Interop.HumanoidArmorItem_Nested.ArmorMaterial arg2, int arg3, int arg4, bool arg5)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -116,12 +112,8 @@ public sealed unsafe partial class HumanoidArmorItem : global::System.IDisposabl
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void appendFormattedHovertext_c699c9eb(nint arg0, nint arg1, nint arg2, bool arg3) =>
+    public void appendFormattedHovertext(nint arg0, nint arg1, nint arg2, bool arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void appendFormattedHovertext_63d59a62(nint arg0, nint arg1, nint arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int buildIdAux(short arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg1)
     {

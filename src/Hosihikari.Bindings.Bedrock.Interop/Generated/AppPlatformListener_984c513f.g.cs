@@ -112,10 +112,6 @@ public sealed unsafe partial class AppPlatformListener : global::System.IDisposa
         NativeMethods.TablePtr->hs_method_e73b8924((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void onClipboardCopy(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void onClipboardCopy(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -134,10 +130,6 @@ public sealed unsafe partial class AppPlatformListener : global::System.IDisposa
             NativeMethods.TablePtr->hs_method_52a410cf((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void onClipboardPaste(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void onClipboardPaste(string arg0)
     {

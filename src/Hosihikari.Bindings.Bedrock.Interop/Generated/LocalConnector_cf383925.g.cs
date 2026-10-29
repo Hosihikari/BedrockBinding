@@ -82,17 +82,13 @@ public sealed unsafe partial class LocalConnector : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_e8fe53f1((void*)_handle);
     }
 
-    public string getLocalIp_3475834c()
+    public string getLocalIp()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_3475834c((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getLocalIp_ecd007ff() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string[] getLocalIps_53b1ec63()
+    public string[] getLocalIps()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_53b1ec63((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
@@ -103,10 +99,6 @@ public sealed unsafe partial class LocalConnector : global::System.IDisposable
         }
         return __hs_result;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getLocalIps_12dc0938() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Connector::NatPunchInfo' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getNatPunchInfo() =>
@@ -168,10 +160,6 @@ public sealed unsafe partial class LocalConnector : global::System.IDisposable
     {
         NativeMethods.TablePtr->hs_method_f46b4542((void*)_handle, arg0);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void startNatPunchingClient(nint address, ushort port) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void startNatPunchingClient(string arg0, ushort arg1)
     {

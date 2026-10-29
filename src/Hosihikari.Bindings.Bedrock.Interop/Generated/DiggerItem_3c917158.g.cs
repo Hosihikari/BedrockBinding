@@ -46,17 +46,9 @@ public sealed unsafe partial class DiggerItem : global::System.IDisposable
     public static DiggerItem Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DiggerItem Create_abf2b4d0(nint name, short id, int attackDamage, nint tier, nint blocks) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void appendFormattedHovertext_163ed41c(nint arg0, nint arg1, nint arg2, bool arg3) =>
+    public void appendFormattedHovertext(nint arg0, nint arg1, nint arg2, bool arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void appendFormattedHovertext_a0995f78(nint stack, nint level, nint hovertext, bool showCategory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int getAttackDamage()
     {

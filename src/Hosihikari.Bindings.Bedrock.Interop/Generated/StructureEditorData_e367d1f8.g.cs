@@ -103,15 +103,11 @@ public sealed unsafe partial class StructureEditorData : global::System.IDisposa
         return new StructureEditorData((nint)handle);
     }
 
-    public string getAnimationModeAsString_6c048699()
+    public string getAnimationModeAsString()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_6c048699((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getAnimationModeAsString_ef87ffcb() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public float getAnimationSeconds()
     {
@@ -183,11 +179,7 @@ public sealed unsafe partial class StructureEditorData : global::System.IDisposa
         return NativeMethods.TablePtr->hs_method_000b48e3((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getStructureName_a1ce3fe0() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getStructureName_958fb8f4()
+    public string getStructureName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_958fb8f4((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

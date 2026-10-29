@@ -63,10 +63,6 @@ public sealed unsafe partial class RakNetConnector : global::System.IDisposable
     public static RakNetConnector Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _changeNatState_4e46a800(nint newState, int port, nint statusDescription) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void addConnectionStateListener(global::Hosihikari.Bindings.Bedrock.Interop.Connector_Nested.ConnectionStateListener? arg0)
     {
         NativeMethods.TablePtr->hs_method_7d001904((void*)_handle, (void*)(arg0?.Handle ?? 0));
@@ -102,17 +98,13 @@ public sealed unsafe partial class RakNetConnector : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_975c10ee((void*)_handle);
     }
 
-    public string getLocalIp_714fb3e1()
+    public string getLocalIp()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_714fb3e1((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getLocalIp_6a16074a() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string[] getLocalIps_62ea1fe0()
+    public string[] getLocalIps()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_62ea1fe0((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
@@ -123,10 +115,6 @@ public sealed unsafe partial class RakNetConnector : global::System.IDisposable
         }
         return __hs_result;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getLocalIps_523dc206() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Connector::NatPunchInfo' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getNatPunchInfo() =>
@@ -224,10 +212,6 @@ public sealed unsafe partial class RakNetConnector : global::System.IDisposable
     {
         NativeMethods.TablePtr->hs_method_547448ca((void*)_handle, arg0);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void startNatPunchingClient(nint address, ushort port) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void startNatPunchingClient(string arg0, ushort arg1)
     {

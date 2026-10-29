@@ -68,10 +68,6 @@ public sealed unsafe partial class ItemStackRequestAction : global::System.IDisp
         return NativeMethods.TablePtr->hs_method_55646554((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getActionTypeName(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static string getActionTypeName(byte arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_f4b866d8(arg0);

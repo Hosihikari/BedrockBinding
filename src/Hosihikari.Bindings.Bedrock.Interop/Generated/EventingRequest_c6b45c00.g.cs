@@ -47,20 +47,12 @@ public sealed partial class EventingRequest
     public static EventingRequest Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint addPersonaEmotePlayed_e807ae32(nint arg0, bool arg1, int arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventingRequest' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint addPersonaEmotePlayed_266a9a50(nint arg0, bool arg1, int arg2) =>
+    public static nint addPersonaEmotePlayed(nint arg0, bool arg1, int arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventingRequest' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint addPlayerActionComparisonFailure_7d79061f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventingRequest' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint addPlayerActionComparisonFailure_3360e780(nint arg0) =>
+    public static nint addPlayerActionComparisonFailure(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventingRequest' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventingRequest' requires --link-carrier or --virtual-dispatch.", false)]

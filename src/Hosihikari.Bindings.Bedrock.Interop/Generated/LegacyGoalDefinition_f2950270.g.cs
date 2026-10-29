@@ -50,19 +50,11 @@ public sealed unsafe partial class LegacyGoalDefinition
     public static LegacyGoalDefinition Create_7a7eae83(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint _getPOITypeFromString_a476a589(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static global::Hosihikari.Bindings.Bedrock.Interop.Goal? createGoal(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, global::Hosihikari.Bindings.Bedrock.Interop.LegacyGoalDefinition arg1)
     {
         var __hs_handle = NativeMethods.TablePtr->hs_method_7c8e9300((void*)arg0.Handle, (void*)arg1.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Goal((nint)__hs_handle) : null;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool goalExists(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static bool goalExists(string arg0)
     {

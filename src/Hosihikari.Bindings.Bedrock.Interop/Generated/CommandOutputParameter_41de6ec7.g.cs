@@ -141,14 +141,6 @@ public sealed unsafe partial class CommandOutputParameter : global::System.IDisp
         return new CommandOutputParameter((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CommandOutputParameter Create_f8975370(nint text) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CommandOutputParameter Create_411380cd(nint strings) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static CommandOutputParameter Create(float arg0)
     {
         var handle = NativeMethods.TablePtr->hs_create_e2e4a52c(arg0);

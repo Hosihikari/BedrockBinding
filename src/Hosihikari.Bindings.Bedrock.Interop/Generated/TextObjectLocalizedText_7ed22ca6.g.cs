@@ -43,7 +43,7 @@ public sealed unsafe partial class TextObjectLocalizedText : global::System.IDis
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TextObjectLocalizedText Create_d0f63fd1(nint arg0) =>
+    public static TextObjectLocalizedText Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public static TextObjectLocalizedText Create(string arg0)
@@ -71,24 +71,16 @@ public sealed unsafe partial class TextObjectLocalizedText : global::System.IDis
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TextObjectLocalizedText Create_200028eb(nint text) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value asJsonValue()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value((nint)NativeMethods.TablePtr->hs_method_07d58df0((void*)_handle));
     }
 
-    public string asString_af5339bb()
+    public string asString()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_af5339bb((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint asString_85b78773() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

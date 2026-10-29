@@ -46,10 +46,6 @@ public sealed unsafe partial class MapItem : global::System.IDisposable
     public static MapItem Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MapItem Create(nint itemName, short itemId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static MapItem Create(string arg0, short arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -139,12 +135,8 @@ public sealed unsafe partial class MapItem : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void appendFormattedHovertext_53ab2c75(nint arg0, nint arg1, nint arg2, bool arg3) =>
+    public void appendFormattedHovertext(nint arg0, nint arg1, nint arg2, bool arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void appendFormattedHovertext_894d9b34(nint stack, nint level, nint hovertext, bool showCategory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void blockTick(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2)
     {
@@ -156,10 +148,6 @@ public sealed unsafe partial class MapItem : global::System.IDisposable
         var __hs_view = NativeMethods.TablePtr->hs_method_40273859((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint buildDescriptionId(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static bool doesDisplayPlayerMarkers(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
     {
@@ -219,17 +207,9 @@ public sealed unsafe partial class MapItem : global::System.IDisposable
     public static bool sampleMapData(nint arg0, int arg1, nint arg2, nint arg3, int arg4, int arg5, nint arg6, nint arg7, nint arg8) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'MapSample' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void serializeMapData_2c365bba(nint mapSamples, nint output) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'MapSample' is not supported.", false)]
-    public static void serializeMapData_e5373611(nint arg0, nint arg1) =>
+    public static void serializeMapData(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'MapSample' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint setIconInfo(nint name, int id) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Item setIconInfo(string arg0, int arg1)
     {

@@ -50,10 +50,6 @@ public sealed unsafe partial class EntityRegistry
     public static EntityRegistry Create_afba56df(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EntityRegistry Create_3a91c3a3(nint identifier) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public global::Hosihikari.Bindings.Abi.SharedHandle? getWeakRef()
     {
         var __hs_shared = NativeMethods.TablePtr->hs_method_e4e0e05e((void*)_handle);

@@ -49,10 +49,6 @@ public sealed unsafe partial class PackSettings : global::System.IDisposable
         return new PackSettings((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _initPackSetting_f1f32f28(nint name, nint value) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value getAllSettings()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value((nint)NativeMethods.TablePtr->hs_method_059af990((void*)_handle), false);

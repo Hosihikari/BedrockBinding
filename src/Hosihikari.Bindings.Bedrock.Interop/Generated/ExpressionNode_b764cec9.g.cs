@@ -125,19 +125,11 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool _getQueryFunctionAccessor_81fc572e(nint arg, nint functionName, nint molangVersion, nint functionReturnType, nint querySetId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public bool _hasDisallowedQueryPtrs_e5859285(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public bool _readNextToken_c10af752(nint expression, nint idSet, nint molangVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _setExpressionStringWithoutRelink_f0c28fd7(nint expressionString) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -184,14 +176,6 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Experiments((nint)NativeMethods.TablePtr->hs_method_7d8a8cc0(), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getExpressionString_5abf4e23() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getExpressionString_775eee58() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public string getExpressionString_1459129d()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_1459129d((void*)_handle);
@@ -225,16 +209,8 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public bool getTreeString_5631b420(nint arg0, bool arg1) =>
+    public bool getTreeString(nint arg0, bool arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool getTreeString_c3952488(nint dest, bool sideEffectsReturnZero) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool hasDisallowedQueries(nint allowedQueries) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool hasDisallowedQueries(string[] arg0)
     {
@@ -355,20 +331,12 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
     public bool parse_96e0e3e2(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'HashedString const' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint queryFunctionAccessorFromString_1e927c67(nint functionName, nint molangVersion, nint functionReturnType, bool missingIsOkay_returnNullIfSo) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
-    public static nint queryFunctionAccessorFromString_85005a2d(nint arg0, nint arg1, nint arg2, bool arg3) =>
+    public static nint queryFunctionAccessorFromString(nint arg0, nint arg1, nint arg2, bool arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint registerQueryFunction_e46c204a(nint queryFunctionName, nint accessor, nint documentation, nint returnType, nint querySetIdentifier, ulong minArgumentCount, ulong maxArgumentCount, nint experiments) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'MolangScriptArg const&' is not supported.", false)]
-    public static nint registerQueryFunction_0d0ce659(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, ulong arg5, ulong arg6, nint arg7) =>
+    public static nint registerQueryFunction(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, ulong arg5, ulong arg6, nint arg7) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'MolangScriptArg const&' is not supported.");
 
     public static void setExperiments(global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg0)
@@ -376,12 +344,8 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_059d0e7c((void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void unregisterQueryFunction_8810018a(nint queryFunctionName, nint querySetIdentifier) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static void unregisterQueryFunction_c40ff759(nint arg0, nint arg1) =>
+    public static void unregisterQueryFunction(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
 

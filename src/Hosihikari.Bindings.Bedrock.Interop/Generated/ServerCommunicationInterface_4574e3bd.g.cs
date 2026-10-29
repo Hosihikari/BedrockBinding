@@ -46,10 +46,6 @@ public sealed unsafe partial class ServerCommunicationInterface
     public static ServerCommunicationInterface Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void communicate_b3cfdceb(nint method, nint @params) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static global::Hosihikari.Bindings.Bedrock.Interop.ServerCommunicationInterface? create(global::Hosihikari.Bindings.Bedrock.Interop.NetworkAddress arg0)
     {
         var __hs_handle = NativeMethods.TablePtr->hs_method_c6da2e60((void*)arg0.Handle);
@@ -58,10 +54,6 @@ public sealed unsafe partial class ServerCommunicationInterface
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void sendBandwidthMetric(ulong connectionTotalBytesReceived, ulong connectionTotalBytesSent, ulong playerDeltaBytesReceived, ulong playerDeltaBytesSent, nint xuid) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void sendBandwidthMetric(ulong arg0, ulong arg1, ulong arg2, ulong arg3, string arg4)

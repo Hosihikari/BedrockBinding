@@ -50,14 +50,6 @@ public sealed unsafe partial class DedicatedServerGameTestRunner
     public static DedicatedServerGameTestRunner Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _runTestGroup_7b86ea60(nint tags) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool _writeFile_12e05b61(nint fileName, nint contents) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public bool isDone()
     {
         return NativeMethods.TablePtr->hs_method_de0cee0d((void*)_handle) != 0;

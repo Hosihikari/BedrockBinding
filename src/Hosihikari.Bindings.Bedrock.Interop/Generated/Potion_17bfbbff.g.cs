@@ -336,29 +336,13 @@ public sealed unsafe partial class Potion
         get => (nint)NativeMethods.TablePtr->hs_get_435b0aa1();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _getDescriptionIdCombiningStrings_018fdf40(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _getDescriptionIdSingleString_c396a545(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void appendFormattedPotionText_e9b09b98(nint arg0, nint arg1, nint arg2, nint arg3, float arg4) =>
+    public void appendFormattedPotionText(nint arg0, nint arg1, nint arg2, nint arg3, float arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void appendFormattedPotionText_210752e7(nint hovertext, nint potionType, nint potionVariant, nint player, float timeMod) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public static void appendMobEffectText_27f0ea06(nint arg0, nint arg1, uint arg2, int arg3, nint arg4) =>
+    public static void appendMobEffectText(nint arg0, nint arg1, uint arg2, int arg3, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void appendMobEffectText_805bc2cb(nint arg0, nint arg1, uint arg2, int arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static string effectDurationToString(int arg0, float arg1, global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance arg2)
     {
@@ -366,19 +350,11 @@ public sealed unsafe partial class Potion
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint effectDurationToString(nint arg0, float arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static string effectPotencyToString(global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_7f09c9f1((void*)arg0.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint effectPotencyToString(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static string getBasePotion(int arg0)
     {
@@ -386,11 +362,7 @@ public sealed unsafe partial class Potion
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getBasePotion(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getDescriptionId_8adf0d9d()
+    public string getDescriptionId()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_8adf0d9d((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -401,14 +373,6 @@ public sealed unsafe partial class Potion
         var __hs_view = NativeMethods.TablePtr->hs_method_c89aa666((void*)_handle, arg0);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getDescriptionId_664353d7() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getDescriptionId(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance getMobEffect()
     {
@@ -450,10 +414,6 @@ public sealed unsafe partial class Potion
             return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getPotencyDescription(nint arg0, float arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public static nint getPotencyDescription(nint arg0, float arg1, nint arg2, nint arg3) =>
@@ -503,15 +463,11 @@ public sealed unsafe partial class Potion
     public nint getPotionVariant_15d51a98() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public string getPrefix_1dd8d3c0()
+    public string getPrefix()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_1dd8d3c0((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getPrefix_edd4311f() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static void initPotions(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg1)
     {

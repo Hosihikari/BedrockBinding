@@ -65,11 +65,7 @@ public sealed unsafe partial class PlaySoundResponse
         NativeMethods.TablePtr->hs_method_e6f16e20((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_0d2cd06d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getName_0d8526c6()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_0d8526c6((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

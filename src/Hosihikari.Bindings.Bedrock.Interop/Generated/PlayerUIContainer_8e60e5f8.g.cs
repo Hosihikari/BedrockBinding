@@ -46,10 +46,6 @@ public sealed unsafe partial class PlayerUIContainer : global::System.IDisposabl
     public static PlayerUIContainer Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerUIContainer Create(nint name, bool customName, int size) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static PlayerUIContainer Create(string arg0, bool arg1, int arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

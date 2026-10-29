@@ -90,12 +90,8 @@ public sealed unsafe partial class Raid
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void appendDebugInfo_977c349d(nint arg0) =>
+    public void appendDebugInfo(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void appendDebugInfo_5fb4bd16(nint infoString) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public float getBossBarFilledFraction()
     {

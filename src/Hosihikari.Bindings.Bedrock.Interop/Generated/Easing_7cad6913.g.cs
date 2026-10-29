@@ -50,10 +50,6 @@ public sealed unsafe partial class Easing
     public static nint getEasingFunc(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getStringFromEasingType(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static string getStringFromEasingType(int arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_4f34c3e1(arg0);

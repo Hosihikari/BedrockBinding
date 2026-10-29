@@ -46,12 +46,8 @@ public sealed unsafe partial class ChunkLoadedRequest : global::System.IDisposab
     public static ChunkLoadedRequest Create_6cc83235(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ChunkLoadedRequest Create_5824e39b(nint tickingAreaName, nint requestAction, bool allowNonPlayerTicking) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static ChunkLoadedRequest Create_795643c9(nint arg0, nint arg1, bool arg2) =>
+    public static ChunkLoadedRequest Create(nint arg0, nint arg1, bool arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public int areAllChunksLoaded(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0, global::Hosihikari.Bindings.Bedrock.Interop.Tick arg1)
@@ -69,12 +65,8 @@ public sealed unsafe partial class ChunkLoadedRequest : global::System.IDisposab
         return NativeMethods.TablePtr->hs_method_28f027e0((void*)arg0.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint load_b866f6e5(nint key, nint tag, nint loader, nint dimensionPrefix) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'DeserializedChunkLoadedRequest' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint load_2ebb013f(nint arg0, nint arg1, nint arg2, nint arg3) =>
+    public static nint load(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'DeserializedChunkLoadedRequest' requires --link-carrier or --virtual-dispatch.");
 
     public bool mAllowNonTickingPlayerAndTickingAreaChunks

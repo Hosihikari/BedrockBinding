@@ -95,15 +95,11 @@ public sealed unsafe partial class BossComponent : global::System.IDisposable
     public nint getLastPlayerUpdate_85002c6d() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public string getName_4c6aa7e6()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_4c6aa7e6((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_3269155c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int getOverlay()
     {
@@ -255,10 +251,6 @@ public sealed unsafe partial class BossComponent : global::System.IDisposable
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void setLastPlayerUpdate_eb75193e(nint lastUpdate) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setName(nint owner, nint name) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setName(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, string arg1)

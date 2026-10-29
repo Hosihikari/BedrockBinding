@@ -96,11 +96,7 @@ public sealed unsafe partial class SerializedSkin : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_b841a90d((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_fd3f5a18() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getName_25161fb5()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_25161fb5((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

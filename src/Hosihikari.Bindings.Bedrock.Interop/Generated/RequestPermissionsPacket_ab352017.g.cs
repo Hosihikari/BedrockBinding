@@ -108,15 +108,11 @@ public sealed unsafe partial class RequestPermissionsPacket : global::System.IDi
         return NativeMethods.TablePtr->hs_method_ecefac1c((void*)_handle);
     }
 
-    public string getName_7ea92cbe()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_7ea92cbe((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_3c4f4b3f() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public sbyte getPlayerPermissions()
     {

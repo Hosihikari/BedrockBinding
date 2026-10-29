@@ -50,26 +50,6 @@ public sealed unsafe partial class TickingAreasManager
     public static TickingAreasManager Create_3a4f4000(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _addArea_18cecdc8(nint dimensionId, nint name, nint bounds, bool isCircle, nint arg4, bool arg5, nint loadMode, nint levelStorage) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _findUsableDefaultName_01cc005c(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool _hasPendingTickingAreaNamed_28c40e4f(nint name, nint dimensionAreas) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint addArea(nint dimensionId, nint name, nint min, nint max, nint arg4, bool arg5, nint loadMode, nint levelStorage) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint addArea(nint dimensionId, nint name, nint center, int radius, nint arg4, bool arg5, nint loadMode, nint levelStorage) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public int addArea(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3, int arg4, bool arg5, int arg6, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg7)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -142,12 +122,8 @@ public sealed unsafe partial class TickingAreasManager
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.", false)]
-    public nint getPendingStandaloneAreaDescriptionsByName_e86fef6c(nint arg0, nint arg1) =>
+    public nint getPendingStandaloneAreaDescriptionsByName(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getPendingStandaloneAreaDescriptionsByName_d3210e03(nint dimensionId, nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.", false)]
     public nint getPendingStandaloneAreaDescriptionsByPosition(nint arg0, nint arg1) =>
@@ -162,10 +138,6 @@ public sealed unsafe partial class TickingAreasManager
     {
         return NativeMethods.TablePtr->hs_method_4eba1f62((void*)_handle) != 0;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void loadArea(nint key, nint tag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void loadArea(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg1)
     {
@@ -211,24 +183,16 @@ public sealed unsafe partial class TickingAreasManager
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.", false)]
-    public nint removePendingAreaByName_8ac9f86e(nint arg0, nint arg1, nint arg2) =>
+    public nint removePendingAreaByName(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint removePendingAreaByName_e1852375(nint dimensionId, nint name, nint levelStorage) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.", false)]
     public nint removePendingAreaByPosition(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.", false)]
-    public nint setPendingAreaLoadModeByName_cc316afb(nint arg0, nint arg1, nint arg2, nint arg3) =>
+    public nint setPendingAreaLoadModeByName(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint setPendingAreaLoadModeByName_8a72aedc(nint dimensionId, nint name, nint loadMode, nint levelStorage) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.", false)]
     public nint setPendingAreaLoadModeByPosition(nint arg0, nint arg1, nint arg2, nint arg3) =>

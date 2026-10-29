@@ -46,10 +46,6 @@ public sealed unsafe partial class BehaviorData
     public static BehaviorData Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void copyData(nint from, nint to, nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void copyData(string arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.BehaviorData arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -82,10 +78,6 @@ public sealed unsafe partial class BehaviorData
             }
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool hasDataOfType(nint strId, nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool hasDataOfType(string arg0, int arg1)
     {

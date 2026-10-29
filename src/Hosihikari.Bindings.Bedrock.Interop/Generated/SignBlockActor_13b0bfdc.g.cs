@@ -68,10 +68,6 @@ public sealed unsafe partial class SignBlockActor : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SignBlockActor Create(nint pos, nint blockActorType, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static SignBlockActor Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
@@ -80,10 +76,6 @@ public sealed unsafe partial class SignBlockActor : global::System.IDisposable
         var __hs_view = NativeMethods.TablePtr->hs_method_da612f90((void*)_handle, (void*)arg0.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getImmersiveReaderText(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool getIsGlowing(int arg0)
     {
@@ -99,10 +91,6 @@ public sealed unsafe partial class SignBlockActor : global::System.IDisposable
     {
         return NativeMethods.TablePtr->hs_method_8abca500((void*)_handle) != 0;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getMessage(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public string getMessage(int arg0)
     {
@@ -141,10 +129,6 @@ public sealed unsafe partial class SignBlockActor : global::System.IDisposable
         }
         return __hs_result;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getUgcStrings(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool isStringMessage(int arg0)
     {
@@ -186,12 +170,8 @@ public sealed unsafe partial class SignBlockActor : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void setMessageForServerScripingOnly_abe5b296(nint arg0, nint arg1, nint arg2) =>
+    public void setMessageForServerScripingOnly(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setMessageForServerScripingOnly_071c9e44(nint side, nint message, nint ownerID) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setMessageForServerScripingOnly(int arg0, string arg1, string arg2)
     {
@@ -226,18 +206,10 @@ public sealed unsafe partial class SignBlockActor : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setMessageForServerScripingOnly_677f1d14(nint side, nint message, nint ownerID) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void setSignTextColor(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.mce.Color arg1)
     {
         NativeMethods.TablePtr->hs_method_f46619da((void*)_handle, arg0, (void*)arg1.Handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setUgcStrings(nint tag, nint list) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setUgcStrings(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, string[] arg1)
     {

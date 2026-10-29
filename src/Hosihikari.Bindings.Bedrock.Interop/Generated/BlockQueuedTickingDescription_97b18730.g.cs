@@ -67,11 +67,7 @@ public sealed unsafe partial class BlockQueuedTickingDescription : global::Syste
         NativeMethods.TablePtr->hs_method_81da81cb((void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_b8ec0ff3() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getName_a0502198()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_a0502198((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

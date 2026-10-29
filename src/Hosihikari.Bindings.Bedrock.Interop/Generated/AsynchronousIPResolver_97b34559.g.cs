@@ -50,25 +50,13 @@ public sealed unsafe partial class AsynchronousIPResolver
     public static AsynchronousIPResolver Create_84300720(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AsynchronousIPResolver Create_35760f32(nint url) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public string getIp_171883c0()
+    public string getIp()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_171883c0((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getIp_fe020d9d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getOriginalUrl_c77eed10() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getOriginalUrl_af2ebf1f()
+    public string getOriginalUrl()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_af2ebf1f((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

@@ -70,10 +70,6 @@ public sealed unsafe partial class ProjectileFactory
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint createSubcomponent(nint trigger, nint engineVersion, nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static void initFactory()
     {
         NativeMethods.TablePtr->hs_method_528c41d5();

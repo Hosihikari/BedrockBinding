@@ -42,10 +42,6 @@ public sealed unsafe partial class RandomizableBlockActorFillingContainer : glob
     public static RandomizableBlockActorFillingContainer Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RandomizableBlockActorFillingContainer Create(nint blockEntityType, nint id, nint pos, int numTotalSlots, nint containerType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static RandomizableBlockActorFillingContainer Create(int arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, int arg3, sbyte arg4)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);

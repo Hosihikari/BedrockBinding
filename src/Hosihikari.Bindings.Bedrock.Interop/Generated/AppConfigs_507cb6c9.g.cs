@@ -109,33 +109,21 @@ public sealed unsafe partial class AppConfigs : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_4d5ee2c1((void*)_handle);
     }
 
-    public string getFeedbackURL_9cfc900f()
+    public string getFeedbackURL()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_9cfc900f((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getFeedbackURL_355dfba2() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getHelpCenterURL_3d921eca()
+    public string getHelpCenterURL()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_3d921eca((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getHelpCenterURL_a510eb61() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'IScreenCapabilities' has no accessible destructor.", false)]
-    public nint getScreenCapabilities_99614d11(nint arg0) =>
+    public nint getScreenCapabilities(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'IScreenCapabilities' has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getScreenCapabilities_ac815c00(nint screenName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool isChatScreenAllowed()
     {

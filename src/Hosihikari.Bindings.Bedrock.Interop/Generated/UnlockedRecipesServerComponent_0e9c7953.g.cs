@@ -87,10 +87,6 @@ public sealed unsafe partial class UnlockedRecipesServerComponent
         NativeMethods.TablePtr->hs_method_c5de265d((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addUnlockedRecipe(nint recipeId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void addUnlockedRecipe(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -172,10 +168,6 @@ public sealed unsafe partial class UnlockedRecipesServerComponent
         return NativeMethods.TablePtr->hs_method_a9212adb((void*)_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool isRecipeUnlocked(nint recipeId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public bool isRecipeUnlocked(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -222,10 +214,6 @@ public sealed unsafe partial class UnlockedRecipesServerComponent
     {
         NativeMethods.TablePtr->hs_method_dcffc37b((void*)_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void removeUnlockedRecipe(nint recipeId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void removeUnlockedRecipe(string arg0)
     {

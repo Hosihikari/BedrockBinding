@@ -94,10 +94,6 @@ public sealed unsafe partial class PlayerStartItemCooldownPacket : global::Syste
     public static PlayerStartItemCooldownPacket Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerStartItemCooldownPacket Create(nint arg0, int durationTicks) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static PlayerStartItemCooldownPacket Create(string arg0, int arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -132,15 +128,11 @@ public sealed unsafe partial class PlayerStartItemCooldownPacket : global::Syste
         return NativeMethods.TablePtr->hs_method_d069fffe((void*)_handle);
     }
 
-    public string getName_5db50b21()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_5db50b21((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_0fd05078() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int mDurationTicks
     {

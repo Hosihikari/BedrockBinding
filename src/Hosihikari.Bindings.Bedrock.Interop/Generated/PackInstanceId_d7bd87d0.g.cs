@@ -71,10 +71,6 @@ public sealed unsafe partial class PackInstanceId : global::System.IDisposable
     public static PackInstanceId Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PackInstanceId Create(nint packId, nint subpackName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static PackInstanceId Create(global::Hosihikari.Bindings.Bedrock.Interop.PackInstanceId arg0)
     {
         var handle = NativeMethods.TablePtr->hs_create_f4c26b98((void*)arg0.Handle);

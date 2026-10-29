@@ -46,10 +46,6 @@ public sealed unsafe partial class HorseArmorItem : global::System.IDisposable
     public static HorseArmorItem Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static HorseArmorItem Create(nint name, int id, int icon, nint tier) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static HorseArmorItem Create(string arg0, int arg1, int arg2, int arg3)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -76,12 +72,8 @@ public sealed unsafe partial class HorseArmorItem : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void appendFormattedHovertext_a8c569ed(nint arg0, nint arg1, nint arg2, bool arg3) =>
+    public void appendFormattedHovertext(nint arg0, nint arg1, nint arg2, bool arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void appendFormattedHovertext_aecf3f99(nint stack, nint level, nint hovertext, bool showCategory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void clearColor(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg0)
     {

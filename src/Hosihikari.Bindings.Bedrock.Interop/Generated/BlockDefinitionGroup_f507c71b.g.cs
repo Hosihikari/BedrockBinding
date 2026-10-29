@@ -50,14 +50,6 @@ public sealed unsafe partial class BlockDefinitionGroup
     public static BlockDefinitionGroup Create_d41b68bc(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool _parseComponents_2393c067(nint arg0, nint arg1, nint blockIdentifier, nint engineVersion, nint arg4, nint experiments) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _stringToCreativeItemCategory_426b68b6(nint str) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void buildBlockSchema(global::Hosihikari.Bindings.Bedrock.Interop.BlockComponentFactory arg0)
     {
         NativeMethods.TablePtr->hs_method_568989bf((void*)_handle, (void*)arg0.Handle);
@@ -131,10 +123,6 @@ public sealed unsafe partial class BlockDefinitionGroup
             }
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint loadResource(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void loadResources(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockComponentFactory arg1, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg2)
     {

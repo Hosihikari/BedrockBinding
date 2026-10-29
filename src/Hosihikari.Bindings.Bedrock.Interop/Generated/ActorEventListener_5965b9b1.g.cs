@@ -79,12 +79,8 @@ public sealed unsafe partial class ActorEventListener
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint onActorDefinitionEvent_039c4575(nint actor, nint @event, nint modifiers) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public nint onActorDefinitionEvent_a7057d24(nint arg0, nint arg1, nint arg2) =>
+    public nint onActorDefinitionEvent(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     public int onActorMobInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1, int arg2)

@@ -55,14 +55,6 @@ public sealed unsafe partial class InternalComponentRegistry
     public static InternalComponentRegistry Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint _getComponentScope_9310f3d0(nint tag, nint componentName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint _getOrCreateComponentScope_7b1c97ca(nint tag, nint componentName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void addComponentSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1)
     {
         NativeMethods.TablePtr->hs_method_d252ec60((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);

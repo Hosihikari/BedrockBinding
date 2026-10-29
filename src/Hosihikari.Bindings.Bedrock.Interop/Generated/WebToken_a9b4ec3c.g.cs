@@ -63,22 +63,6 @@ public sealed unsafe partial class WebToken : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WebToken Create(nint token) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint _DERToBinary_3f0a9a4c(nint derSignature, int outputLength) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _parse_18c18d24(nint value, nint data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _signatureToDER_82488214() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::variant<PublicKeySignatureType,CertificateThumbprintSignatureType>' is not a known bindable declaration.", false)]
     public static nint createFromData(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<PublicKeySignatureType,CertificateThumbprintSignatureType>' is not a known bindable declaration.");
@@ -113,19 +97,11 @@ public sealed unsafe partial class WebToken : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->hs_get_c5353a96((void*)_handle);
     }
 
-    public string toString_6d255590()
+    public string toString()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_6d255590((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint toString_a1807ab4() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool verifyWithIncludedKey(nint trustedKeys) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool verifyWithIncludedKey(string[] arg0)
     {

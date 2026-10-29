@@ -71,10 +71,6 @@ public sealed unsafe partial class BackgroundWorker : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BackgroundWorker Create(nint name, bool async, nint priority, nint coreAffinity, nint idealCore, nint workerPool, bool suppressProfiling) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint _runOneTask_f36091b2() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");

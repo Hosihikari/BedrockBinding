@@ -46,10 +46,6 @@ public sealed unsafe partial class ItemStackNetResultMap
     public static ItemStackNetResultMap Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getItemStackNetResultName(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static string getItemStackNetResultName(sbyte arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_012a5a93(arg0);

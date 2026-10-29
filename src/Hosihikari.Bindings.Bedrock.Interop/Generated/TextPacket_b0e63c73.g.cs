@@ -90,10 +90,6 @@ public sealed unsafe partial class TextPacket : global::System.IDisposable
         return new TextPacket((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TextPacket Create_99757d9d(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5, nint arg6, nint arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public void __autoclassinit2(ulong arg0)
     {
         NativeMethods.TablePtr->hs_method_4675669e((void*)_handle, arg0);
@@ -107,10 +103,6 @@ public sealed unsafe partial class TextPacket : global::System.IDisposable
     {
         return NativeMethods.TablePtr->hs_method_f67ae888((void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint createAnnouncement(nint author, nint message, nint xuid, nint platformId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.TextPacket createAnnouncement(string arg0, string arg1, string arg2, string arg3)
     {
@@ -172,10 +164,6 @@ public sealed unsafe partial class TextPacket : global::System.IDisposable
             }
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint createChat(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.TextPacket createChat(string arg0, string arg1, string? arg2, string arg3, string arg4)
     {
@@ -252,10 +240,6 @@ public sealed unsafe partial class TextPacket : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint createJukeboxPopup(nint message, nint @params) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static global::Hosihikari.Bindings.Bedrock.Interop.TextPacket createJukeboxPopup(string arg0, string[] arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -296,10 +280,6 @@ public sealed unsafe partial class TextPacket : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint createRawJsonObjectMessage(nint rawJson) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static global::Hosihikari.Bindings.Bedrock.Interop.TextPacket createRawJsonObjectMessage(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -321,10 +301,6 @@ public sealed unsafe partial class TextPacket : global::System.IDisposable
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public static nint createRawMessage(nint msg) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint createSystemMessage(nint message) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.TextPacket createSystemMessage(string arg0)
@@ -379,10 +355,6 @@ public sealed unsafe partial class TextPacket : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint createTextObjectMessage(nint resolvedTextObject, nint fromXuid, nint fromPlatformId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static global::Hosihikari.Bindings.Bedrock.Interop.TextPacket createTextObjectWhisperMessage(global::Hosihikari.Bindings.Bedrock.Interop.ResolvedTextObject arg0, string arg1, string arg2)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -415,14 +387,6 @@ public sealed unsafe partial class TextPacket : global::System.IDisposable
             }
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint createTextObjectWhisperMessage_3f92fc44(nint resolvedTextObject, nint xuid, nint platformId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint createTextObjectWhisperMessage_1792e874(nint message, nint xuid, nint platformId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.TextPacket createTextObjectWhisperMessage(string arg0, string arg1, string arg2)
     {
@@ -471,10 +435,6 @@ public sealed unsafe partial class TextPacket : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint createTranslated(nint message, nint @params) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static global::Hosihikari.Bindings.Bedrock.Interop.TextPacket createTranslated(string arg0, string[] arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -514,10 +474,6 @@ public sealed unsafe partial class TextPacket : global::System.IDisposable
             }
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint createTranslatedAnnouncement(nint author, nint message, nint xuid, nint platformId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.TextPacket createTranslatedAnnouncement(string arg0, string arg1, string arg2, string arg3)
     {
@@ -579,10 +535,6 @@ public sealed unsafe partial class TextPacket : global::System.IDisposable
             }
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint createWhisper(nint author, nint message, nint xuid, nint platformId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.TextPacket createWhisper(string arg0, string arg1, string arg2, string arg3)
     {
@@ -650,15 +602,11 @@ public sealed unsafe partial class TextPacket : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_35e97222((void*)_handle);
     }
 
-    public string getName_32308108()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_32308108((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_c791855b() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

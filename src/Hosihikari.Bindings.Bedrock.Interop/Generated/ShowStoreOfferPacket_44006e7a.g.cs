@@ -114,15 +114,11 @@ public sealed unsafe partial class ShowStoreOfferPacket : global::System.IDispos
         return NativeMethods.TablePtr->hs_method_91a4d36c((void*)_handle);
     }
 
-    public string getName_bf2a3a06()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_bf2a3a06((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_306a8c95() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOfferId_Address

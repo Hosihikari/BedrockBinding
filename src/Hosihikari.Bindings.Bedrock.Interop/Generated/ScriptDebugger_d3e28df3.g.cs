@@ -50,10 +50,6 @@ public sealed unsafe partial class ScriptDebugger
     public static ScriptDebugger Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _sanitizeHostName_e27c3965(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public bool checkConnections()
     {
         return NativeMethods.TablePtr->hs_method_6f785f7a((void*)_handle) != 0;
@@ -63,10 +59,6 @@ public sealed unsafe partial class ScriptDebugger
     {
         NativeMethods.TablePtr->hs_method_1ba21a61((void*)_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool connect(nint host, ushort port) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool connect(string arg0, ushort arg1)
     {
@@ -144,10 +136,6 @@ public sealed unsafe partial class ScriptDebugger
     {
         NativeMethods.TablePtr->hs_method_cd6ac8ed((void*)_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void stopProfiler(nint savePath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void stopProfiler(string arg0)
     {

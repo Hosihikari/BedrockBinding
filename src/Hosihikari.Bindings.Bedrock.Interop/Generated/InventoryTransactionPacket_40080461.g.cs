@@ -66,15 +66,11 @@ public sealed unsafe partial class InventoryTransactionPacket : global::System.I
         return NativeMethods.TablePtr->hs_method_58395d2e((void*)_handle);
     }
 
-    public string getName_0d4e6afe()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_0d4e6afe((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_ac196315() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool mIsClientSide
     {

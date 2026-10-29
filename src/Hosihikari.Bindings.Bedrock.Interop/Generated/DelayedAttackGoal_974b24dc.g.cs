@@ -63,12 +63,8 @@ public sealed unsafe partial class DelayedAttackGoal : global::System.IDisposabl
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void appendDebugInfo_d7765308(nint arg0) =>
+    public void appendDebugInfo(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void appendDebugInfo_a18de0f3(nint str) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool canContinueToUse()
     {

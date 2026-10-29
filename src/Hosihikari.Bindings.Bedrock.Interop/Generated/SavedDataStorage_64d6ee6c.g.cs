@@ -63,10 +63,6 @@ public sealed unsafe partial class SavedDataStorage : global::System.IDisposable
         set => NativeMethods.TablePtr->hs_set_74b0c77e((void*)_handle, (void*)value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool loadAndSet(nint inoutData, nint id) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public bool loadAndSet(global::Hosihikari.Bindings.Bedrock.Interop.SavedData arg0, string arg1)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -100,10 +96,6 @@ public sealed unsafe partial class SavedDataStorage : global::System.IDisposable
     {
         get => (nint)NativeMethods.TablePtr->hs_get_8d8819f8((void*)_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void set(nint id, nint data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void set(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.SavedData arg1)
     {

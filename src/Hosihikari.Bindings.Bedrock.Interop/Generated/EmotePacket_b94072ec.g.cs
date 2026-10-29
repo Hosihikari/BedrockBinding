@@ -62,15 +62,11 @@ public sealed unsafe partial class EmotePacket : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_be8f08ec((void*)_handle);
     }
 
-    public string getName_b9a255df()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_b9a255df((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_04dbd839() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public byte mFlags
     {

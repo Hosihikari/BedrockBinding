@@ -63,10 +63,6 @@ public sealed unsafe partial class PrivateKeyManager : global::System.IDisposabl
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint computeSecret(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public bool isValid()
     {
         return NativeMethods.TablePtr->hs_method_4c95df14((void*)_handle) != 0;

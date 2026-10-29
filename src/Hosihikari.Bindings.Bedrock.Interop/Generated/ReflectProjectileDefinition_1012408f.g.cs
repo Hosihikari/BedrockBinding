@@ -46,10 +46,6 @@ public sealed unsafe partial class ReflectProjectileDefinition
     public static ReflectProjectileDefinition Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _addProjectileToReflect_3f7e2c67(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
     {
         NativeMethods.TablePtr->hs_method_e0aa7a97(arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));

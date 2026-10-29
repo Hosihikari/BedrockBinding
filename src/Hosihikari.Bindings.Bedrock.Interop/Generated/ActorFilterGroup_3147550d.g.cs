@@ -46,22 +46,6 @@ public sealed unsafe partial class ActorFilterGroup : global::System.IDisposable
     public static ActorFilterGroup Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool _addLegacyFilter_3ae8e7ec(nint name, nint legacy, nint filterInput) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool _handleUnknownMember_69e4dc80(nint name, nint jsonVal) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool _processLegacyArray_860ac823(nint name, nint jsonVal, nint legacy) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool _processLegacyMember_a1387db3(nint name, nint jsonVal, nint legacy) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public bool evaluateActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
         return NativeMethods.TablePtr->hs_method_340475d4((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;

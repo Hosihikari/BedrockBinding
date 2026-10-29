@@ -175,11 +175,7 @@ public sealed unsafe partial class HashedString : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_9933a4fd((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getString_ee8c2da4() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getString_d409a2d8()
+    public string getString()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_d409a2d8((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

@@ -110,10 +110,6 @@ public sealed unsafe partial class LevelEventCoordinator : global::System.IDispo
         NativeMethods.TablePtr->hs_method_81f73b43((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void sendLevelWeatherChanged(nint arg0, bool arg1, bool arg2, bool arg3, bool arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void sendLevelWeatherChanged(string arg0, bool arg1, bool arg2, bool arg3, bool arg4)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

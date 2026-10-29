@@ -68,10 +68,6 @@ public sealed unsafe partial class FileSystemFileAccess : global::System.IDispos
         return NativeMethods.TablePtr->hs_method_5edc6422((void*)_handle, (void*)arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint fopen(nint filePath, nint mode) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public nint fopen(nint arg0, string arg1)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);

@@ -70,11 +70,7 @@ public sealed unsafe partial class StructureTemplatePool
     public static nint create_69204704(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getFallback_68bdf4cc() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getFallback_ef759762()
+    public string getFallback()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_ef759762((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -85,11 +81,7 @@ public sealed unsafe partial class StructureTemplatePool
         return NativeMethods.TablePtr->hs_method_90cc21e0((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_eeba154c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getName_7d60790a()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_7d60790a((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

@@ -90,12 +90,8 @@ public sealed unsafe partial class UpdateTradePacket : global::System.IDisposabl
         return new UpdateTradePacket((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static UpdateTradePacket Create_74c91749(nint containerID, nint type, int size, nint displayName, nint tag, nint entityID, nint playerID, int traderTier, bool useNewTradeScreen, bool usingEconomyTrade) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static UpdateTradePacket Create_1f3e1cb1(nint arg0, nint arg1, int arg2, nint arg3, nint arg4, nint arg5, nint arg6, int arg7, bool arg8, bool arg9) =>
+    public static UpdateTradePacket Create(nint arg0, nint arg1, int arg2, nint arg3, nint arg4, nint arg5, nint arg6, int arg7, bool arg8, bool arg9) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
@@ -111,15 +107,11 @@ public sealed unsafe partial class UpdateTradePacket : global::System.IDisposabl
         return NativeMethods.TablePtr->hs_method_0900d45d((void*)_handle);
     }
 
-    public string getName_059b4688()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_059b4688((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_dd18de32() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public sbyte mContainerId
     {

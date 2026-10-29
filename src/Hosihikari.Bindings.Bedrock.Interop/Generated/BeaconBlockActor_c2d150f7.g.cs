@@ -94,15 +94,11 @@ public sealed unsafe partial class BeaconBlockActor : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_3ae5ded2((void*)_handle);
     }
 
-    public string getName_662894ac()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_662894ac((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_b30adeef() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool hasAlphaLayer()
     {

@@ -119,15 +119,11 @@ public sealed unsafe partial class SetPlayerInventoryOptionsPacket : global::Sys
         return (nint)NativeMethods.TablePtr->hs_method_52550281((void*)_handle);
     }
 
-    public string getName_f5692aa5()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_f5692aa5((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_7d205978() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int mCraftingLayout
     {

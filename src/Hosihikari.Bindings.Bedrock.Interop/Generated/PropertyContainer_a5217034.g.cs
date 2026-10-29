@@ -50,10 +50,6 @@ public sealed unsafe partial class PropertyContainer
     public static PropertyContainer Create(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool _trySetEnumIndexByString_4d38168b(ulong arg0, nint value) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void addAdditionalSaveDataToCompoundTag(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {
         NativeMethods.TablePtr->hs_method_9ead9bed((void*)_handle, (void*)arg0.Handle);

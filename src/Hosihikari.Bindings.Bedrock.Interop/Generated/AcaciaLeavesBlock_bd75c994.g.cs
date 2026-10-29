@@ -46,12 +46,8 @@ public sealed unsafe partial class AcaciaLeavesBlock
     public static AcaciaLeavesBlock Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AcaciaLeavesBlock Create_db1f15aa(nint arg0, int arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'WeakPtr<BlockLegacy const>' is not a known bindable declaration.", false)]
-    public static AcaciaLeavesBlock Create_16c52744(nint arg0, int arg1, nint arg2) =>
+    public static AcaciaLeavesBlock Create(nint arg0, int arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'WeakPtr<BlockLegacy const>' is not a known bindable declaration.");
 
     public int getVariant(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0)

@@ -65,12 +65,8 @@ public sealed unsafe partial class ClientboundDebugRendererPacket : global::Syst
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static ClientboundDebugRendererPacket Create_56c76f8d(nint arg0, nint arg1, nint arg2, nint arg3) =>
+    public static ClientboundDebugRendererPacket Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ClientboundDebugRendererPacket Create_8f007cec(nint text, nint color, nint position, nint duration) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint _read_33d40b54(nint stream) =>
@@ -81,15 +77,11 @@ public sealed unsafe partial class ClientboundDebugRendererPacket : global::Syst
         return NativeMethods.TablePtr->hs_method_51fdd32c((void*)_handle);
     }
 
-    public string getName_25af7160()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_25af7160((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_4fb09952() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDebugMarkerData_Address

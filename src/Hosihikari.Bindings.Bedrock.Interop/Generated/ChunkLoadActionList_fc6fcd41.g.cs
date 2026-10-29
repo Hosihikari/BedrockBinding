@@ -46,25 +46,9 @@ public sealed unsafe partial class ChunkLoadActionList
     public static ChunkLoadActionList Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _addChunkLoadedRequest_d87201b3(nint chunkLoadedRequest, nint dimensionPrefix, nint chunksLoadedStatus, nint levelStorage) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _saveRequest_1676b59b(nint request, nint dimensionPrefix, nint chunkRequestListType, nint levelStorage) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addChunkLoadedRequest_5d4e6c1b(nint chunkLoadedRequest, nint dimensionPrefix, nint chunksLoadedStatus, nint levelStorage) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ChunkLoadedRequest' is not copy-constructible.", false)]
-    public void addChunkLoadedRequest_d22d53df(nint arg0, nint arg1, nint arg2, nint arg3) =>
+    public void addChunkLoadedRequest(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ChunkLoadedRequest' is not copy-constructible.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void loadRequests(nint storage, nint loader, nint dimensionPrefix) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void loadRequests(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg0, global::Hosihikari.Bindings.Bedrock.Interop.ICommandOriginLoader arg1, string arg2)
     {
@@ -85,10 +69,6 @@ public sealed unsafe partial class ChunkLoadActionList
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void onChunkLoaded(nint levelStorage, nint source, nint arg2, nint lc, nint currentTick) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void onChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource arg1, string arg2, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg3, global::Hosihikari.Bindings.Bedrock.Interop.Tick arg4)
     {
         var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
@@ -107,10 +87,6 @@ public sealed unsafe partial class ChunkLoadActionList
             NativeMethods.TablePtr->hs_method_ba392385((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)arg3.Handle, (void*)arg4.Handle);
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void onStaticTickingAreaAdded(nint levelStorage, nint dimension, nint name, nint currentTick) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void onStaticTickingAreaAdded(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg0, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg1, string arg2, global::Hosihikari.Bindings.Bedrock.Interop.Tick arg3)
     {

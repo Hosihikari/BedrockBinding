@@ -168,14 +168,6 @@ public sealed unsafe partial class LevelStorage
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getServerId(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getServerId(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint getState() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
@@ -191,7 +183,7 @@ public sealed unsafe partial class LevelStorage
     public bool isShuttingDown() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public string[] loadAllPlayerIDs_a4183ab3(bool arg0)
+    public string[] loadAllPlayerIDs(bool arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_a4183ab3((void*)_handle, arg0);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
@@ -202,10 +194,6 @@ public sealed unsafe partial class LevelStorage
         }
         return __hs_result;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint loadAllPlayerIDs_337e2e86(bool includeLocalPlayer) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public bool loadData_c497e0b5(nint arg0, nint arg1, nint arg2) =>
@@ -271,11 +259,7 @@ public sealed unsafe partial class LevelStorage
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint saveData_248777c3(nint key, nint tag, nint category) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint saveData_33ac6a81(nint key, nint data, nint category) =>
+    public nint saveData(nint key, nint data, nint category) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? saveData(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, int arg2)

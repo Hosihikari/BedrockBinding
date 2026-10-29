@@ -97,10 +97,6 @@ public sealed unsafe partial class InventoryTransaction : global::System.IDispos
         return (nint)NativeMethods.TablePtr->hs_method_732b92e2((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getInventoryTransactionErrorName(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static string getInventoryTransactionErrorName(int arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_9f3ef06c(arg0);

@@ -51,7 +51,7 @@ public sealed unsafe partial class FogCommandComponent
         NativeMethods.TablePtr->hs_method_3d7803d6((void*)_handle, (void*)arg0.Handle);
     }
 
-    public string[] getFogSettingsStack_bc56fa42()
+    public string[] getFogSettingsStack()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_bc56fa42((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
@@ -64,19 +64,11 @@ public sealed unsafe partial class FogCommandComponent
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getFogSettingsStack_8c07c837() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign_b44a88a7(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign_dec4ffb5(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool popFogSetting(nint userProvidedId) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool popFogSetting(string arg0)
@@ -97,10 +89,6 @@ public sealed unsafe partial class FogCommandComponent
             return NativeMethods.TablePtr->hs_method_86d6de18((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool pushFogSetting(nint fogId, nint userProvidedId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool pushFogSetting(string arg0, string arg1)
     {
@@ -139,10 +127,6 @@ public sealed unsafe partial class FogCommandComponent
     {
         NativeMethods.TablePtr->hs_method_fe1c2725((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool removeFogSettings(nint userProvidedId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool removeFogSettings(string arg0)
     {

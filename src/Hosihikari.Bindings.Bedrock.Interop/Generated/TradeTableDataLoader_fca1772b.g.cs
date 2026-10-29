@@ -51,12 +51,8 @@ public sealed partial class TradeTableDataLoader
     public static TradeTableDataLoader Create_eb29924d(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint load_785a0868(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Puv::LoadResult<TradeTableData>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint load_0122febf(nint arg0) =>
+    public nint load(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Puv::LoadResult<TradeTableData>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

@@ -51,10 +51,6 @@ public sealed unsafe partial class SmithingTrimRecipe : global::System.IDisposab
     public static SmithingTrimRecipe Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SmithingTrimRecipe Create(nint recipeId, nint arg1, nint arg2, nint arg3, nint tag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static SmithingTrimRecipe Create(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient arg1, global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient arg2, global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient arg3, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg4)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

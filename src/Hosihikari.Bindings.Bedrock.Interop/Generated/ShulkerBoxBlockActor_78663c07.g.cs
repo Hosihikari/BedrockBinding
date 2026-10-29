@@ -47,10 +47,6 @@ public sealed unsafe partial class ShulkerBoxBlockActor : global::System.IDispos
     public static ShulkerBoxBlockActor Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ShulkerBoxBlockActor Create(nint type, nint id, nint renderId, nint pos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static ShulkerBoxBlockActor Create(int arg0, string arg1, int arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -90,15 +86,11 @@ public sealed unsafe partial class ShulkerBoxBlockActor : global::System.IDispos
         return NativeMethods.TablePtr->hs_method_c0e0ad69((void*)_handle);
     }
 
-    public string getName_91b62cc4()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_91b62cc4((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_61bca58a() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static bool itemAllowedInSlot(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg1, int arg2)
     {

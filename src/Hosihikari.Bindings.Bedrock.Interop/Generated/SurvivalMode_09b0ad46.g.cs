@@ -57,10 +57,6 @@ public sealed unsafe partial class SurvivalMode : global::System.IDisposable
     public static SurvivalMode Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _messagePlayers_461403f2(nint message) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public bool attack(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {
         return NativeMethods.TablePtr->hs_method_5c0fdc67((void*)_handle, (void*)arg0.Handle) != 0;

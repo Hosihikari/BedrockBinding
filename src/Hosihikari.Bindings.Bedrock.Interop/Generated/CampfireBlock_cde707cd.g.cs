@@ -46,10 +46,6 @@ public sealed unsafe partial class CampfireBlock : global::System.IDisposable
     public static CampfireBlock Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CampfireBlock Create(nint nameId, int id, bool spawnRandomParticles, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static CampfireBlock Create(string arg0, int arg1, bool arg2, bool arg3)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

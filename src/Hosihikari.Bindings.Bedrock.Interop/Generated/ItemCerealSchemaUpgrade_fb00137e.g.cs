@@ -42,12 +42,8 @@ public sealed unsafe partial class ItemCerealSchemaUpgrade : global::System.IDis
     public static ItemCerealSchemaUpgrade Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ItemCerealSchemaUpgrade Create_0b5e64f7(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static ItemCerealSchemaUpgrade Create_d1b780ba(nint arg0, nint arg1, nint arg2) =>
+    public static ItemCerealSchemaUpgrade Create(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]

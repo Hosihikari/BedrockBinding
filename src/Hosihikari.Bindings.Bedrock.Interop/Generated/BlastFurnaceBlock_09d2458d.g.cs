@@ -46,10 +46,6 @@ public sealed unsafe partial class BlastFurnaceBlock : global::System.IDisposabl
     public static BlastFurnaceBlock Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlastFurnaceBlock Create(nint nameId, int id, bool lit) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static BlastFurnaceBlock Create(string arg0, int arg1, bool arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

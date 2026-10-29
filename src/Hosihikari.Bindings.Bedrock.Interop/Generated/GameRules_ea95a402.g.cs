@@ -114,10 +114,6 @@ public sealed unsafe partial class GameRules : global::System.IDisposable
     public static nint _getMarketplaceGameRulesDefaultMap_d8bd2ec4() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _registerRule_e4f6e6c3(nint name, nint rule) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public global::Hosihikari.Bindings.Bedrock.Interop.GameRulesChangedPacket? createAllGameRulesPacket()
     {
         var __hs_handle = NativeMethods.TablePtr->hs_method_817b7aee((void*)_handle);
@@ -164,10 +160,6 @@ public sealed unsafe partial class GameRules : global::System.IDisposable
     {
         return NativeMethods.TablePtr->hs_method_8eab998f((void*)_handle, (void*)arg0.Handle) != 0;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint nameToGameRuleIndex(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId nameToGameRuleIndex(string arg0)
     {

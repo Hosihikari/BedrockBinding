@@ -61,10 +61,6 @@ public sealed unsafe partial class AllowList : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_5350251e((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool isAllowed(nint uuid, nint xuid) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public bool isAllowed(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0, string arg1)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -83,10 +79,6 @@ public sealed unsafe partial class AllowList : global::System.IDisposable
             return NativeMethods.TablePtr->hs_method_a7b09f07((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool isIgnoringPlayerLimit(nint uuid, nint xuid) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool isIgnoringPlayerLimit(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0, string arg1)
     {
@@ -109,10 +101,6 @@ public sealed unsafe partial class AllowList : global::System.IDisposable
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool removeByName(nint name) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool removeByName(string arg0)
@@ -138,10 +126,6 @@ public sealed unsafe partial class AllowList : global::System.IDisposable
     {
         NativeMethods.TablePtr->hs_method_047f6045((void*)_handle, (void*)arg0.Handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void tryUpdateEntries(nint uuid, nint xuid, nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void tryUpdateEntries(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0, string arg1, string arg2)
     {

@@ -68,10 +68,6 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
         NativeMethods.TablePtr->hs_method_36e2955d((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool createBackupCopyOfWorld(nint levelId, nint newLeveId, nint newName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public bool createBackupCopyOfWorld(string arg0, string arg1, string arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -120,24 +116,12 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'LevelLooseFileStorage' has no accessible destructor.", false)]
-    public nint createLevelLooseStorage_aa9ff954(nint arg0, nint arg1, nint arg2) =>
+    public nint createLevelLooseStorage(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'LevelLooseFileStorage' has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint createLevelLooseStorage_d18dc3f6(nint levelId, nint contentIdentity, nint keyProvider) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint createLevelStorage_0527cd58(nint scheduler, nint levelId, nint contentIdentity, nint keyProvider, nint writeFlushInterval, nint levelDbEnv, nint arg6) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<LevelDbEnv>>' is not a known bindable declaration.", false)]
     public nint createLevelStorage_df713fdf(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<LevelDbEnv>>' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void deleteLevel(nint levelId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void deleteLevel(string arg0)
     {
@@ -158,32 +142,20 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
         }
     }
 
-    public string getBasePath_fc5921b1()
+    public string getBasePath()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_fc5921b1((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getBasePath_4c1b828c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getLevelDatFoundPath_4c8f96bf(nint arg0)
+    public string getLevelDatFoundPath(nint arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_4c8f96bf((void*)_handle, (void*)arg0);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getLevelDatFoundPath_aeb9e53f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getLevelData_55efd56a(nint levelId, nint levelDataOut) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getLevelData_700dc9c0(nint arg0, nint arg1) =>
+    public nint getLevelData(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is not supported.", false)]
@@ -194,11 +166,7 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
     public void getLevelList_f919cb17(nint paths) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_e188b28d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getName_95982f9b()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_95982f9b((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -224,10 +192,6 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getPathToLevel(nint levelId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public string getPathToLevelInfo(string arg0, bool arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -247,14 +211,6 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
             return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getPathToLevelInfo(nint levelId, bool forceInfo) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool isBetaRetailLevel(nint levelId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool isBetaRetailLevel(string arg0)
     {
@@ -287,10 +243,6 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool renameLevel(nint levelId, nint newLevelName) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool renameLevel(string arg0, string arg1)
@@ -326,10 +278,6 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void renameLevel(nint levelData, nint fullPath, nint newLevelName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void renameLevel(global::Hosihikari.Bindings.Bedrock.Interop.LevelData arg0, nint arg1, string arg2)
     {
         var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
@@ -348,10 +296,6 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
             NativeMethods.TablePtr->hs_method_e16c691d((void*)_handle, (void*)arg0.Handle, (void*)arg1, __hs_stringData2, (nuint)__hs_stringByteCount2);
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void saveLevelData(nint levelId, nint data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void saveLevelData(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelData arg1)
     {

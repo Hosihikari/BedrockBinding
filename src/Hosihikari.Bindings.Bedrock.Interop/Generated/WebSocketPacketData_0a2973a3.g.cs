@@ -43,11 +43,7 @@ public sealed unsafe partial class WebSocketPacketData : global::System.IDisposa
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WebSocketPacketData Create_3d2852a3(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static WebSocketPacketData Create_068da82f(nint ip) =>
+    public static WebSocketPacketData Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public static WebSocketPacketData Create(string arg0)

@@ -96,15 +96,11 @@ public sealed unsafe partial class RefreshEntitlementsPacket
         return NativeMethods.TablePtr->hs_method_7e83dccc((void*)_handle);
     }
 
-    public string getName_6f3043f4()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_6f3043f4((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_78a806af() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

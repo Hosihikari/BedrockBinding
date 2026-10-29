@@ -60,10 +60,6 @@ public sealed unsafe partial class PackLoadError : global::System.IDisposable
     public static PackLoadError Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PackLoadError Create(nint errorType, nint errorParam) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static PackLoadError Create(int arg0, string[] arg1)
     {
         var __hs_vectorItems1 = arg1 ?? global::System.Array.Empty<string>();

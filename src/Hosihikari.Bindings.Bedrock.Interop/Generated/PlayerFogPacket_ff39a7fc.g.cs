@@ -91,10 +91,6 @@ public sealed unsafe partial class PlayerFogPacket : global::System.IDisposable
     public static PlayerFogPacket Create_2bce2f54(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlayerFogPacket Create_6f38f161(nint fogStack) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint _read_78273491(nint stream) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
@@ -104,15 +100,11 @@ public sealed unsafe partial class PlayerFogPacket : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_fa0dfc0e((void*)_handle);
     }
 
-    public string getName_fbe4fe6d()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_fbe4fe6d((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_f1a74f4f() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFogStack_Address

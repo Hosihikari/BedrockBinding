@@ -46,10 +46,6 @@ public sealed unsafe partial class SignBlock : global::System.IDisposable
     public static SignBlock Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SignBlock Create(nint nameId, int id, bool onGround, nint signType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static SignBlock Create(string arg0, int arg1, bool arg2, int arg3)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

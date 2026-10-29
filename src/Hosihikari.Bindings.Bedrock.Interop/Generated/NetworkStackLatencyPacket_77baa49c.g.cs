@@ -55,15 +55,11 @@ public sealed unsafe partial class NetworkStackLatencyPacket
         return NativeMethods.TablePtr->hs_method_50c66736((void*)_handle);
     }
 
-    public string getName_8ae56a28()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_8ae56a28((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_efcfa62b() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCreateTime_Address

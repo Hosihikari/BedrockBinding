@@ -47,20 +47,12 @@ public sealed partial class ResolvedItemIconInfo
     public static ResolvedItemIconInfo Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ResolvedItemIconInfo Create_b50be0ed(nint name, float u0, float u1, float v0, float v1, ushort arg5, ushort arg6) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ResolvedItemIconInfo Create_695573a9(nint name, int frame, nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ResolvedItemIconInfo Create_dcce3263(nint arg0, float arg1, float arg2, float arg3, float arg4, ushort arg5, ushort arg6) =>
+    public static ResolvedItemIconInfo Create(nint arg0, float arg1, float arg2, float arg3, float arg4, ushort arg5, ushort arg6) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ResolvedItemIconInfo Create_85543ebb(nint arg0, int arg1, nint arg2) =>
+    public static ResolvedItemIconInfo Create(nint arg0, int arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]

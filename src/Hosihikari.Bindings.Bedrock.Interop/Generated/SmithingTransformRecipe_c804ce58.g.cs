@@ -51,12 +51,8 @@ public sealed unsafe partial class SmithingTransformRecipe : global::System.IDis
     public static SmithingTransformRecipe Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SmithingTransformRecipe Create_054d2713(nint recipeId, nint arg1, nint arg2, nint arg3, nint resultItem, nint tag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static SmithingTransformRecipe Create_8e25fe26(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
+    public static SmithingTransformRecipe Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
     public nint assemble(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer arg0, global::Hosihikari.Bindings.Bedrock.Interop.CraftingContext arg1)

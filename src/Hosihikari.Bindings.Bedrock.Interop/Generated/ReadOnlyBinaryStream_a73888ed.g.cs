@@ -46,10 +46,6 @@ public sealed unsafe partial class ReadOnlyBinaryStream : global::System.IDispos
     public static ReadOnlyBinaryStream Create_4496d7fb(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ReadOnlyBinaryStream Create(nint buffer, bool copyBuffer) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static ReadOnlyBinaryStream Create(string arg0, bool arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -78,10 +74,6 @@ public sealed unsafe partial class ReadOnlyBinaryStream : global::System.IDispos
     [global::System.Obsolete("BindingShim cannot project this member: rvalue string references are not supported by symbol dispatch.", false)]
     public static ReadOnlyBinaryStream Create_14e6a044(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: rvalue string references are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ReadOnlyBinaryStream Create_41da9186(nint buffer) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public bool canReadBool()
     {

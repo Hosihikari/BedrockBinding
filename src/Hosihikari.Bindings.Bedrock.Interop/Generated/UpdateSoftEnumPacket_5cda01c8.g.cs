@@ -90,10 +90,6 @@ public sealed unsafe partial class UpdateSoftEnumPacket : global::System.IDispos
         return new UpdateSoftEnumPacket((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static UpdateSoftEnumPacket Create(nint type, nint enumName, nint values) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static UpdateSoftEnumPacket Create(sbyte arg0, string arg1, string[] arg2)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -153,15 +149,11 @@ public sealed unsafe partial class UpdateSoftEnumPacket : global::System.IDispos
         return NativeMethods.TablePtr->hs_method_3b441066((void*)_handle);
     }
 
-    public string getName_f39c2a2f()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_f39c2a2f((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_24d4f88a() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mEnumName_Address

@@ -54,18 +54,6 @@ public sealed unsafe partial class EncryptedFileAccessStrategy
     public static EncryptedFileAccessStrategy Create_eac2f8b3(nint resourceLocation, nint contentIdentity, nint keyProvider, bool canRecurse, nint assetSet) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool _getContentIdentityFromEncryptedStream_6761f5a6(nint stream, nint contentIdentity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _getContentsFile_61af2e79() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void _transformStream_837aa84b(nint stream, nint key, ulong offset) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy? createSubPack(nint arg0)
     {
         var __hs_handle = NativeMethods.TablePtr->hs_method_51fd1fc1((void*)_handle, (void*)arg0);
@@ -83,12 +71,8 @@ public sealed unsafe partial class EncryptedFileAccessStrategy
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public bool getAsset_30a31ada(nint arg0, nint arg1, bool arg2) =>
+    public bool getAsset(nint arg0, nint arg1, bool arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool getAsset_f1a1d59f(nint packRelativePath, nint result, bool trustedContentOnly) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool hasAsset(nint arg0, bool arg1, bool arg2)
     {
@@ -137,10 +121,6 @@ public sealed unsafe partial class EncryptedFileAccessStrategy
             return NativeMethods.TablePtr->hs_method_dfcbd540((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool writeAsset(nint packRelativePath, nint fileContent) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>

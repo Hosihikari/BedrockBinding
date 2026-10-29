@@ -92,24 +92,16 @@ public sealed unsafe partial class TextObjectLocalizedTextWithParams : global::S
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TextObjectLocalizedTextWithParams Create(nint text, nint @params) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value asJsonValue()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value((nint)NativeMethods.TablePtr->hs_method_f6bda884((void*)_handle));
     }
 
-    public string asString_a176693f()
+    public string asString()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_a176693f((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint asString_19e5e9fc() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

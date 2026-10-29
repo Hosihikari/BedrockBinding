@@ -113,10 +113,6 @@ public sealed unsafe partial class CreativeItemRegistry : global::System.IDispos
         get => (nint)NativeMethods.TablePtr->hs_get_0753d75c();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint newCreativeCategory(nint name, nint category) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemGroupCategory? newCreativeCategory(string arg0, int arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

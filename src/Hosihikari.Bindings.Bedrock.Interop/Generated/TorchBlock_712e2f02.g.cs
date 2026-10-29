@@ -58,10 +58,6 @@ public sealed unsafe partial class TorchBlock : global::System.IDisposable
     public static TorchBlock Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TorchBlock Create(nint nameId, int id, nint mat) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static TorchBlock Create(string arg0, int arg1, uint arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

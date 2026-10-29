@@ -46,12 +46,8 @@ public sealed unsafe partial class StrippedLogBlock
     public static StrippedLogBlock Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StrippedLogBlock Create_f45cc59f(nint nameId, int id, nint mapColors) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'LogBlockMapColors' is abstract or not copy-constructible.", false)]
-    public static StrippedLogBlock Create_cdc4acc4(nint arg0, int arg1, nint arg2) =>
+    public static StrippedLogBlock Create(nint arg0, int arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'LogBlockMapColors' is abstract or not copy-constructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.", false)]

@@ -50,14 +50,6 @@ public sealed unsafe partial class MapItemSavedData
     public static MapItemSavedData Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _addDecoration_10eccc78(nint type, nint level, nint key, nint position, nint label, nint color) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _updateTrackedPlayerDecorations_3a796413(nint region, nint player, nint decorationPos, nint decorationLabel, nint decorationColor, nint dimensionID, nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public global::Hosihikari.Bindings.Abi.SharedHandle? addTrackedMapEntity(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1)
     {
         var __hs_shared = NativeMethods.TablePtr->hs_method_4825aaa3((void*)_handle, (void*)arg0.Handle, arg1);
@@ -131,10 +123,6 @@ public sealed unsafe partial class MapItemSavedData
         var __hs_view = NativeMethods.TablePtr->hs_method_229b4f08((void*)arg0.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getSerializationKey(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getTrackedMapEntity(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {

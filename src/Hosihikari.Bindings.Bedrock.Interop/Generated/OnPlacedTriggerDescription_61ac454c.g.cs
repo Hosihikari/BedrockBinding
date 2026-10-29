@@ -63,11 +63,7 @@ public sealed unsafe partial class OnPlacedTriggerDescription
     public void buildSchema(nint componentSchema, nint factory) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_ecec1c1f() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getName_f99e97fd()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_f99e97fd((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

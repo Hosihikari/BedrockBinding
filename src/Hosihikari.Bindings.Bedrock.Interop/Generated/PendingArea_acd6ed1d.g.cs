@@ -50,12 +50,8 @@ public sealed unsafe partial class PendingArea
     public nint getDescription() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TickingAreaDescription' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint load_a72f9dbb(nint key, nint tag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PendingArea' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint load_0336aa03(nint arg0, nint arg1) =>
+    public static nint load(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PendingArea' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

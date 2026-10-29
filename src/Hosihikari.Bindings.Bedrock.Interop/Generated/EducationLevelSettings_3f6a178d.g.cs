@@ -69,12 +69,8 @@ public sealed unsafe partial class EducationLevelSettings : global::System.IDisp
         return new EducationLevelSettings((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getCommandOverrideFunctor_f23d33af() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.", false)]
-    public nint getCommandOverrideFunctor_2cf1863f() =>
+    public nint getCommandOverrideFunctor() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.");
 
     // The native field type is not projected; this is the address of the field storage.

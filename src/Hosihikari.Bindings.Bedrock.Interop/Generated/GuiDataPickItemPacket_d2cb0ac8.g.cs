@@ -53,10 +53,6 @@ public sealed unsafe partial class GuiDataPickItemPacket : global::System.IDispo
     public static GuiDataPickItemPacket Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GuiDataPickItemPacket Create(nint name, nint effect, nint slot) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static GuiDataPickItemPacket Create(string arg0, string arg1, nint arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -105,15 +101,11 @@ public sealed unsafe partial class GuiDataPickItemPacket : global::System.IDispo
         return NativeMethods.TablePtr->hs_method_a2e2ccbc((void*)_handle);
     }
 
-    public string getName_e8f00c71()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_e8f00c71((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_a7be8aad() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mItemEffectName_Address

@@ -66,15 +66,11 @@ public sealed unsafe partial class Command : global::System.IDisposable
     public void execute(nint origin, nint output) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public string getCommandName_dafa531f()
+    public string getCommandName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_dafa531f((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getCommandName_afa34a6b() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool hasFlag(global::Hosihikari.Bindings.Bedrock.Interop.CommandFlag arg0)
     {

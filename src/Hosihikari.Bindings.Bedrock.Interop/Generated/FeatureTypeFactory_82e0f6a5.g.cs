@@ -57,10 +57,6 @@ public sealed unsafe partial class FeatureTypeFactory : global::System.IDisposab
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool processFeature(nint arg0, bool arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public bool processFeature(global::Hosihikari.Bindings.Bedrock.Interop.IWorldRegistriesProvider arg0, bool arg1, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg2, string arg3, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg4, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg5)
     {
         var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);

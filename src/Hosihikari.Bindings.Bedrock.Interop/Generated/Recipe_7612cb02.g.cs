@@ -98,11 +98,7 @@ public sealed unsafe partial class Recipe : global::System.IDisposable
     public nint getNetId_e6b3b1ef() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getRecipeId_9216cf06() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getRecipeId_65e10bd0()
+    public string getRecipeId()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_65e10bd0((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

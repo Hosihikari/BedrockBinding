@@ -94,10 +94,6 @@ public sealed unsafe partial class ChalkboardBlockActor : global::System.IDispos
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ChalkboardBlockActor((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint createChalkboard(nint creator, nint region, nint basePos, nint boardSize, byte face, int dir, bool isOnGround, nint instance, nint text) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static global::Hosihikari.Bindings.Bedrock.Interop.ChalkboardBlockActor? createChalkboard(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, int arg3, byte arg4, int arg5, bool arg6, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg7, string arg8)
     {
         var __hs_stringByteCount8 = global::System.Text.Encoding.UTF8.GetByteCount(arg8);
@@ -129,10 +125,6 @@ public sealed unsafe partial class ChalkboardBlockActor : global::System.IDispos
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getImmersiveReaderText(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public bool getLocked()
     {
         return NativeMethods.TablePtr->hs_method_76b63a43((void*)_handle) != 0;
@@ -143,11 +135,7 @@ public sealed unsafe partial class ChalkboardBlockActor : global::System.IDispos
         return NativeMethods.TablePtr->hs_method_8e59a5e2((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getText_486c44cf() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getText_7d3bc8f5()
+    public string getText()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_7d3bc8f5((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -170,10 +158,6 @@ public sealed unsafe partial class ChalkboardBlockActor : global::System.IDispos
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getUgcStrings(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void load(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
     {
         NativeMethods.TablePtr->hs_method_c5b071c3((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
@@ -193,10 +177,6 @@ public sealed unsafe partial class ChalkboardBlockActor : global::System.IDispos
         return NativeMethods.TablePtr->hs_method_e269ea27((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setText(nint text) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void setText(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -215,10 +195,6 @@ public sealed unsafe partial class ChalkboardBlockActor : global::System.IDispos
             NativeMethods.TablePtr->hs_method_43932ddc((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setUgcStrings(nint tag, nint list) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setUgcStrings(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, string[] arg1)
     {

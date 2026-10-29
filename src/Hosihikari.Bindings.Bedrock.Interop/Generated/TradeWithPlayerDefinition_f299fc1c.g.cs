@@ -46,10 +46,6 @@ public sealed unsafe partial class TradeWithPlayerDefinition : global::System.ID
     public static TradeWithPlayerDefinition Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void buildSchema(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static void buildSchema(string arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

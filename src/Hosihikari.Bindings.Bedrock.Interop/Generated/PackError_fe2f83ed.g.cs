@@ -38,10 +38,6 @@ public sealed unsafe partial class PackError : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PackError Create(nint packErrorType, nint errorParam) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static PackError Create(int arg0, string[] arg1)
     {
         var __hs_vectorItems1 = arg1 ?? global::System.Array.Empty<string>();
@@ -74,11 +70,7 @@ public sealed unsafe partial class PackError : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getErrorParameters_3ddf0f30() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public nint getErrorParameters_e8c63681()
+    public nint getErrorParameters()
     {
         return (nint)NativeMethods.TablePtr->hs_method_e8c63681((void*)_handle);
     }
@@ -87,15 +79,11 @@ public sealed unsafe partial class PackError : global::System.IDisposable
     public nint getEventErrorMessageMap() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public string getLocErrorMessage_66787f5b()
+    public string getLocErrorMessage()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_66787f5b((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getLocErrorMessage_92016ed9() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint getLocErrorMessageMap() =>

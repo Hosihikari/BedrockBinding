@@ -46,14 +46,6 @@ public sealed unsafe partial class DedicatedServerGameTestRunnerListener
     public static DedicatedServerGameTestRunnerListener Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _addTestResult_628028b9(nint arg0, nint result, nint error) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint _getTestNameWithRotation_09d34ece(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void onTestFailed(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance arg0)
     {
         NativeMethods.TablePtr->hs_method_143e0b1f((void*)_handle, (void*)arg0.Handle);

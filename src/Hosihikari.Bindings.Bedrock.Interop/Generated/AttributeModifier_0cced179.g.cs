@@ -60,14 +60,6 @@ public sealed unsafe partial class AttributeModifier : global::System.IDisposabl
         return new AttributeModifier((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AttributeModifier Create(nint id, nint name, float amount, nint operation, nint operand, bool serializable) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AttributeModifier Create(nint id, nint name, float amount, int operation, int operand, bool serializable) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static AttributeModifier Create_d9bb923d(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0, string arg1, float arg2, int arg3, int arg4, bool arg5)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -128,11 +120,7 @@ public sealed unsafe partial class AttributeModifier : global::System.IDisposabl
         return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->hs_method_4f8a8fc9((void*)_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_32dc1447() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getName_3d2f7068()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_3d2f7068((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

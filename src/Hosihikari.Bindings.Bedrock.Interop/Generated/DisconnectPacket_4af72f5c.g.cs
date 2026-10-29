@@ -42,10 +42,6 @@ public sealed unsafe partial class DisconnectPacket : global::System.IDisposable
     public static DisconnectPacket Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DisconnectPacket Create(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static DisconnectPacket Create(int arg0, string arg1, bool arg2)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -84,15 +80,11 @@ public sealed unsafe partial class DisconnectPacket : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_f97562e0((void*)_handle);
     }
 
-    public string getName_83ef0257()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_83ef0257((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_4e1d52d7() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMessage_Address

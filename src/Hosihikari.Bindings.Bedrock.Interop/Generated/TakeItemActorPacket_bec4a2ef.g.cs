@@ -114,15 +114,11 @@ public sealed unsafe partial class TakeItemActorPacket : global::System.IDisposa
         return NativeMethods.TablePtr->hs_method_8a46390d((void*)_handle);
     }
 
-    public string getName_aaa52ebb()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_aaa52ebb((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_e6a9658d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mActorId_Address

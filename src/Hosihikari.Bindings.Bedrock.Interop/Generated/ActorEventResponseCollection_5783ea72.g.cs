@@ -46,10 +46,6 @@ public sealed unsafe partial class ActorEventResponseCollection
     public static ActorEventResponseCollection Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint buildSchema(nint name, nint version, nint factory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static global::Hosihikari.Bindings.Abi.SharedHandle? buildSchema(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, nint arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

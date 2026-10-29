@@ -190,15 +190,11 @@ public sealed unsafe partial class ItemDescriptor : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)__hs_handle, false) : null;
     }
 
-    public string getFullName_e669f8fe()
+    public string getFullName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_e669f8fe((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getFullName_373fb121() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public ulong getHash()
     {
@@ -226,25 +222,17 @@ public sealed unsafe partial class ItemDescriptor : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_5a5fc1f8((void*)_handle);
     }
 
-    public string getRawNameId_2d8a1401()
+    public string getRawNameId()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_2d8a1401((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getRawNameId_cf1d532a() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getSerializedNameAndAux_ddb1f7f0()
+    public string getSerializedNameAndAux()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_ddb1f7f0((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getSerializedNameAndAux_1f0e4618() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool isDefinedAsItemName()
     {

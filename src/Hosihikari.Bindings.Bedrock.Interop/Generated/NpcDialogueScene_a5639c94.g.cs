@@ -52,12 +52,8 @@ public sealed partial class NpcDialogueScene
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'NpcDialogueScene' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint parse_b305a14b(nint arg0, nint arg1, int arg2) =>
+    public static nint parse(nint arg0, nint arg1, int arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'NpcDialogueScene' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint parse_8f91bd53(nint arg0, nint fileName, int packCommandVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_dea1af10() =>

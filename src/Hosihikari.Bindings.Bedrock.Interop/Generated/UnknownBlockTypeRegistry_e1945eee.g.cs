@@ -52,10 +52,6 @@ public sealed unsafe partial class UnknownBlockTypeRegistry
     public static UnknownBlockTypeRegistry Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _registerBlock_f3bbcb1a(nint name, ulong serIdHash) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public global::Hosihikari.Bindings.Bedrock.Interop.Block getUnknownBlock(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_674fbf4f((void*)_handle, (void*)arg0.Handle), false);

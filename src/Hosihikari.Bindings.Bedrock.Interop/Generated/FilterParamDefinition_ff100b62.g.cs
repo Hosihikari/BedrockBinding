@@ -44,20 +44,12 @@ public sealed partial class FilterParamDefinition
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static FilterParamDefinition Create_969e1256(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
+    public static FilterParamDefinition Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static FilterParamDefinition Create_358b7a05(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
+    public static FilterParamDefinition Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FilterParamDefinition Create_b385b617(nint type, nint requirement, nint description, nint def, nint stringMap) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FilterParamDefinition Create_59d2965b(nint type, nint requirement, nint description, nint opt, nint def, nint stringMap) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static FilterParamDefinition Create(nint arg0) =>

@@ -51,18 +51,6 @@ public sealed unsafe partial class Recipes
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool _loadSmithingTransform_f1c62e7d(nint objData, nint engineVersion, nint recipeId, nint tags) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool _loadSmithingTrim_b496e99c(nint objData, nint engineVersion, nint recipeId, nint tags) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _loadUnlockingRequirementFromJson_ad31c3e6(nint obj, nint engineVersion, nint recipeId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public static nint _normalizeRectangularRecipe_77e1a932(nint rows) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
@@ -71,11 +59,11 @@ public sealed unsafe partial class Recipes
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe,std::default_delete<ShapedRecipe>>' is not supported.", false)]
-    public void addShapedRecipe_a0c270ce(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, int arg7, nint arg8, nint arg9, nint arg10, bool arg11) =>
+    public void addShapedRecipe(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, int arg7, nint arg8, nint arg9, nint arg10, bool arg11) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe,std::default_delete<ShapedRecipe>>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe,std::default_delete<ShapedRecipe>>' is not supported.", false)]
-    public void addShapedRecipe_49718ea9(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, int arg6, nint arg7, nint arg8, nint arg9, bool arg10) =>
+    public void addShapedRecipe(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, int arg6, nint arg7, nint arg8, nint arg9, bool arg10) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe,std::default_delete<ShapedRecipe>>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe,std::default_delete<ShapedRecipe>>' is not supported.", false)]
@@ -90,41 +78,13 @@ public sealed unsafe partial class Recipes
     public void addShapedRecipe_d9245876(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, int arg5, nint arg6, nint arg7, nint arg8, bool arg9) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe,std::default_delete<ShapedRecipe>>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addShapedRecipe_9a04cacd(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, int arg7, nint arg8, nint arg9, nint arg10, bool arg11) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addShapedRecipe_98a72da1(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, int arg6, nint arg7, nint arg8, nint arg9, bool arg10) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addShapedRecipe_fe478727(nint recipeId, nint result, nint r0, nint r1, nint r2, int types, nint tags, nint priority, nint constructor, bool arg9) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addShapedRecipe_f07865c7(nint recipeId, nint result, nint r0, nint r1, nint r2, int types, nint tags, nint priority, nint constructor, bool arg9) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addShapedRecipe_5e24a46f(nint recipeId, nint result, nint r0, nint r1, nint r2, int types, nint tags, nint priority, nint constructor, bool arg9) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapelessRecipe,std::default_delete<ShapelessRecipe>>' is not supported.", false)]
-    public void addShapelessRecipe_f4b7b7df(nint arg0, nint arg1, nint arg2, nint arg3, int arg4, nint arg5, nint arg6, nint arg7) =>
+    public void addShapelessRecipe(nint arg0, nint arg1, nint arg2, nint arg3, int arg4, nint arg5, nint arg6, nint arg7) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapelessRecipe,std::default_delete<ShapelessRecipe>>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addShapelessRecipe_d7dc0043(nint arg0, nint arg1, nint arg2, nint arg3, int arg4, nint arg5, nint arg6, nint arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void addShulkerBoxRecipe_02bb1ae2(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
+    public void addShulkerBoxRecipe(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addShulkerBoxRecipe_640e5223(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void clearRecipes()
     {
@@ -132,12 +92,8 @@ public sealed unsafe partial class Recipes
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,Json::Value>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint extractRecipeObjInfo_dd9c0f62(nint arg0) =>
+    public nint extractRecipeObjInfo(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,Json::Value>' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint extractRecipeObjInfo_3b615e6c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void forEachRecipeFor_bc90c0a0(nint arg0, nint arg1) =>
@@ -186,10 +142,6 @@ public sealed unsafe partial class Recipes
     {
         NativeMethods.TablePtr->hs_method_d8d3bc3a((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool loadRecipe(nint arg0, nint arg1, nint arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool loadRecipe(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg2, bool arg3)
     {

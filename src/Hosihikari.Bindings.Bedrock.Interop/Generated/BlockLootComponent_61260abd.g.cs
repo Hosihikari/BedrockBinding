@@ -46,11 +46,7 @@ public sealed unsafe partial class BlockLootComponent : global::System.IDisposab
     public static BlockLootComponent Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getLootTable_5baf2ede() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getLootTable_9b0216e8()
+    public string getLootTable()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_9b0216e8((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

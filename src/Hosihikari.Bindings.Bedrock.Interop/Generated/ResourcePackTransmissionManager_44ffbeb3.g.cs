@@ -55,10 +55,6 @@ public sealed unsafe partial class ResourcePackTransmissionManager
         NativeMethods.TablePtr->hs_method_fb3d6990((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getResourcePackUploadManager(nint packetSender, nint source, nint resourceName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackFileUploadManager getResourcePackUploadManager(global::Hosihikari.Bindings.Bedrock.Interop.PacketSender arg0, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg1, string arg2)
     {
         var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);

@@ -66,15 +66,11 @@ public sealed unsafe partial class BiomeDefinitionListPacket : global::System.ID
         return NativeMethods.TablePtr->hs_method_6c3d8f3f((void*)_handle);
     }
 
-    public string getName_580a8358()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_580a8358((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_18be7895() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBiomeData_Address

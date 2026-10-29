@@ -63,12 +63,8 @@ public sealed unsafe partial class BlockDefinition
         NativeMethods.TablePtr->hs_method_afb6350c((void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint upgradeJson_505ad90e(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::pair<bool,SemVersion>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint upgradeJson_b39ae409(nint arg0, nint arg1, nint arg2, nint arg3) =>
+    public static nint upgradeJson(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::pair<bool,SemVersion>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

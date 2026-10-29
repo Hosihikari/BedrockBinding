@@ -57,10 +57,6 @@ public sealed unsafe partial class CaveSpider : global::System.IDisposable
     public static CaveSpider Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void getDebugText_204d1cbd(nint outputInfo) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public float getModelScale()
     {
         return NativeMethods.TablePtr->hs_method_fd0ec969((void*)_handle);

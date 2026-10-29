@@ -46,17 +46,9 @@ public sealed unsafe partial class ActorSkeletalAnimation
     public static ActorSkeletalAnimation Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorSkeletalAnimation Create_40a4e6b6(nint name, nint sourceFilePathWithExtension) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ActorSkeletalAnimation Create_c67c75f3(nint arg0, nint arg1) =>
+    public static ActorSkeletalAnimation Create(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint addActorEvent(float time, nint @event, nint commandVersion, nint molangVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationEvent addActorEvent(float arg0, string arg1, int arg2, int arg3)
     {
@@ -76,10 +68,6 @@ public sealed unsafe partial class ActorSkeletalAnimation
             return new global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationEvent((nint)NativeMethods.TablePtr->hs_method_4b9b6aba((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3), false);
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint addBoneAnimation(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BoneAnimation addBoneAnimation(string arg0)
     {

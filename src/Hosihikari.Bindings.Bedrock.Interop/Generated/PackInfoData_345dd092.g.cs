@@ -38,10 +38,6 @@ public sealed unsafe partial class PackInfoData : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PackInfoData Create(nint guid, nint version, ulong packSize, nint contentKey, nint subpackName, nint contentIdentity, bool hasScripts, bool isRayTracingCapable) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static PackInfoData Create(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, ulong arg2, string arg3, string arg4, global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity arg5, bool arg6, bool arg7)
     {
         var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);

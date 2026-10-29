@@ -53,10 +53,6 @@ public sealed unsafe partial class AgentActionEventPacket : global::System.IDisp
     public static AgentActionEventPacket Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AgentActionEventPacket Create(nint requestId, nint action, nint response) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static AgentActionEventPacket Create(string arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -91,15 +87,11 @@ public sealed unsafe partial class AgentActionEventPacket : global::System.IDisp
         return NativeMethods.TablePtr->hs_method_29cc4e6f((void*)_handle);
     }
 
-    public string getName_ca979a12()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_ca979a12((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_82202c29() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

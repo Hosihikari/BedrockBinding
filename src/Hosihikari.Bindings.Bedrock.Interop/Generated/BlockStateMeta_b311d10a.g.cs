@@ -65,11 +65,7 @@ public sealed unsafe partial class BlockStateMeta
         return NativeMethods.TablePtr->hs_method_f24b4cde((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_01429d86() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getName_08987758()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_08987758((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -80,11 +76,7 @@ public sealed unsafe partial class BlockStateMeta
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockState((nint)NativeMethods.TablePtr->hs_method_ce035c59((void*)_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getString_0890cf57(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getString_deb176fd(int arg0)
+    public string getString(int arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_deb176fd((void*)_handle, arg0);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

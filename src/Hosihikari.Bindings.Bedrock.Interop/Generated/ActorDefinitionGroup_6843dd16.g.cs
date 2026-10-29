@@ -61,15 +61,7 @@ public sealed unsafe partial class ActorDefinitionGroup : global::System.IDispos
     public nint _loadActorDefinition_adf7f8bc(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, bool arg6, nint arg7) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool _loadDefinitionFromJSON_96ff7e2f(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, bool arg7, nint arg8) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _loadTemplates_27e275e4(nint level, nint @base, nint deserializeDataParams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string[] buildActorEventList_c58fe9ce()
+    public string[] buildActorEventList()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_c58fe9ce((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
@@ -81,16 +73,8 @@ public sealed unsafe partial class ActorDefinitionGroup : global::System.IDispos
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint buildActorEventList_4c0cfe50() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void forEachComponentOf_d57f0768(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static void forEachComponentOf_629c9632(nint arg0, nint arg1, nint arg2) =>
+    public static void forEachComponentOf(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ActorComponentFactory? getComponentFactory()
@@ -100,20 +84,12 @@ public sealed unsafe partial class ActorDefinitionGroup : global::System.IDispos
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public static bool loadActorDefinitionIdentifier_63ac0d83(nint arg0, nint arg1, nint arg2) =>
+    public static bool loadActorDefinitionIdentifier(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool loadActorDefinitionIdentifier_dcfedfa1(nint root, nint formatVersion, nint identifier) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public static bool loadActorDefinitionRuntimeIdentifier_e94ce2b2(nint arg0, nint arg1, nint arg2) =>
+    public static bool loadActorDefinitionRuntimeIdentifier(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool loadActorDefinitionRuntimeIdentifier_56911140(nint root, nint formatVersion, nint runtimeIdentifier) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
@@ -124,20 +100,12 @@ public sealed unsafe partial class ActorDefinitionGroup : global::System.IDispos
         NativeMethods.TablePtr->hs_method_d4ec7576((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint tryGetDefinition_ef042212(nint definitionId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorDefinitionPtr' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint tryGetDefinition_3d619e1d(nint arg0) =>
+    public nint tryGetDefinition(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorDefinitionPtr' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint tryGetDefinitionGroup_a7a52a8a(nint @base, nint definitionId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorDefinitionPtr' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint tryGetDefinitionGroup_78144cae(nint arg0, nint arg1) =>
+    public nint tryGetDefinitionGroup(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorDefinitionPtr' requires --link-carrier or --virtual-dispatch.");
 
     public static bool tryReadEntityResourceFile(global::Hosihikari.Bindings.Bedrock.Interop.PackInstance arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg2)

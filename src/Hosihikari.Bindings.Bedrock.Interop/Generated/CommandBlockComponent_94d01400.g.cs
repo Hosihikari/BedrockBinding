@@ -80,10 +80,6 @@ public sealed unsafe partial class CommandBlockComponent
         NativeMethods.TablePtr->hs_method_dc896f88((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void onCommandBlockUpdate(nint owner, nint command, bool trackOutput, nint name, int tickDelay, bool executeOnFirstTick) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void onCommandBlockUpdate(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, string arg1, bool arg2, string arg3, int arg4, bool arg5)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -134,10 +130,6 @@ public sealed unsafe partial class CommandBlockComponent
     {
         NativeMethods.TablePtr->hs_method_dc113998((void*)_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setLastOutput(nint owner, nint lastOutput) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setLastOutput(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, string arg1)
     {

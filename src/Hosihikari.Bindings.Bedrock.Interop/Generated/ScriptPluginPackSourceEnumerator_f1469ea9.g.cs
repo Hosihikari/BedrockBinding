@@ -46,12 +46,8 @@ public sealed unsafe partial class ScriptPluginPackSourceEnumerator : global::Sy
     public static ScriptPluginPackSourceEnumerator Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptPluginPackSourceEnumerator Create_8646eca5(nint arg0, nint packStack) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public static ScriptPluginPackSourceEnumerator Create_965e9a3c(nint arg0, nint arg1) =>
+    public static ScriptPluginPackSourceEnumerator Create(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

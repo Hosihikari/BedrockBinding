@@ -114,15 +114,11 @@ public sealed unsafe partial class SetDefaultGameTypePacket : global::System.IDi
         return NativeMethods.TablePtr->hs_method_f62135dc((void*)_handle);
     }
 
-    public string getName_5f0dc3f3()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_5f0dc3f3((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_b9db0269() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int mDefaultGameType
     {

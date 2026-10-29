@@ -42,12 +42,8 @@ public sealed unsafe partial class SneezeGoal
     public static SneezeGoal Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SneezeGoal Create_c9072ffd(nint mob, float cooldownTime, float probability, float dropItemChance, nint lootTable, nint sneezeSound, nint preSneezeSound, float prepareTime, nint reactMobFilters, float reactWithin) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public static SneezeGoal Create_d266763e(nint arg0, float arg1, float arg2, float arg3, nint arg4, nint arg5, nint arg6, float arg7, nint arg8, float arg9) =>
+    public static SneezeGoal Create(nint arg0, float arg1, float arg2, float arg3, nint arg4, nint arg5, nint arg6, float arg7, nint arg8, float arg9) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
@@ -55,12 +51,8 @@ public sealed unsafe partial class SneezeGoal
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void appendDebugInfo_720ddab3(nint arg0) =>
+    public void appendDebugInfo(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void appendDebugInfo_1fd9eddd(nint str) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool canContinueToUse()
     {

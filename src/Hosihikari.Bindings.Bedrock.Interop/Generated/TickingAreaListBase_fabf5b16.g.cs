@@ -95,10 +95,6 @@ public sealed unsafe partial class TickingAreaListBase : global::System.IDisposa
     public nint getStandaloneTickingAreaDescriptions() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool hasTickingAreaNamed(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public bool hasTickingAreaNamed(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

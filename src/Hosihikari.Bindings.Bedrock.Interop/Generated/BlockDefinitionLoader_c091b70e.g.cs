@@ -43,24 +43,16 @@ public sealed partial class BlockDefinitionLoader
     public static BlockDefinitionLoader Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockDefinitionLoader Create_c0399cda(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BlockDefinitionLoader Create_e39c61b1(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5) =>
+    public static BlockDefinitionLoader Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static BlockDefinitionLoader Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint load_bfa7143a(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Puv::LoadResult<BlockDefinition>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint load_97811fff(nint arg0) =>
+    public nint load(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Puv::LoadResult<BlockDefinition>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

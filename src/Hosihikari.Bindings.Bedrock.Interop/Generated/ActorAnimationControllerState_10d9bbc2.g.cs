@@ -61,10 +61,6 @@ public sealed unsafe partial class ActorAnimationControllerState
         NativeMethods.TablePtr->hs_method_a9059bf4((void*)_handle, arg0, arg1);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint addEntryActorEvent(float time, nint @event, nint commandVersion, nint molangVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationEvent addEntryActorEvent(float arg0, string arg1, int arg2, int arg3)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -83,10 +79,6 @@ public sealed unsafe partial class ActorAnimationControllerState
             return new global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationEvent((nint)NativeMethods.TablePtr->hs_method_8e184fb6((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3), false);
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint addExitActorEvent(float time, nint @event, nint commandVersion, nint molangVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationEvent addExitActorEvent(float arg0, string arg1, int arg2, int arg3)
     {
@@ -116,10 +108,6 @@ public sealed unsafe partial class ActorAnimationControllerState
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ActorSoundEffect((nint)NativeMethods.TablePtr->hs_method_501f92c0((void*)_handle), false);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addTransition(nint stateName, nint expression, nint molangVersion, bool createEvenIfAlreadyExists) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void addTransition(string arg0, string arg1, int arg2, bool arg3)
     {
@@ -153,10 +141,6 @@ public sealed unsafe partial class ActorAnimationControllerState
             }
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint addVariable(nint variableName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.StateAnimationVariable addVariable(string arg0)
     {

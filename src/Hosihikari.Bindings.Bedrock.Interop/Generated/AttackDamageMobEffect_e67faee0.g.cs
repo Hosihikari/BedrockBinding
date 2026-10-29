@@ -46,10 +46,6 @@ public sealed unsafe partial class AttackDamageMobEffect : global::System.IDispo
     public static AttackDamageMobEffect Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AttackDamageMobEffect Create(int id, nint resourceName, nint locName, bool isHarmful, int color, int icon) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static AttackDamageMobEffect Create(int arg0, string arg1, string arg2, bool arg3, int arg4, int arg5)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);

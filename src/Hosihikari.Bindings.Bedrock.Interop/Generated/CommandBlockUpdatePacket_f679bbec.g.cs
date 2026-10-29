@@ -69,15 +69,11 @@ public sealed unsafe partial class CommandBlockUpdatePacket : global::System.IDi
         return NativeMethods.TablePtr->hs_method_eeb4f4a0((void*)_handle);
     }
 
-    public string getName_cbab41e2()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_cbab41e2((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_4bb70931() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockPos_Address

@@ -84,11 +84,7 @@ public sealed unsafe partial class ResourcePack : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_0a2234d4((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getFolderName_eb8accc9() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getFolderName_e171f191()
+    public string getFolderName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_e171f191((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -120,12 +116,8 @@ public sealed unsafe partial class ResourcePack : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public bool getResource_e86b27b3(nint arg0, nint arg1, int arg2) =>
+    public bool getResource(nint arg0, nint arg1, int arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool getResource_7a5febde(nint resourceName, nint resourceStream, int subpackIndex) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation getResourceLocation()
     {
@@ -137,19 +129,11 @@ public sealed unsafe partial class ResourcePack : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_a8e4a34b((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getSubpackFolderName_bbec9e6b(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getSubpackFolderName_e8b87031(int arg0)
+    public string getSubpackFolderName(int arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_e8b87031((void*)_handle, arg0);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public int getSubpackIndex(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int getSubpackIndex(string arg0)
     {
@@ -214,10 +198,6 @@ public sealed unsafe partial class ResourcePack : global::System.IDisposable
     {
         NativeMethods.TablePtr->hs_method_f2c89e40((void*)_handle, arg0);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setLocale(nint code) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setLocale(string arg0)
     {

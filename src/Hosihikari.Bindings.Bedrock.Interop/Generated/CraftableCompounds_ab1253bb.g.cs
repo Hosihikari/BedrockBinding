@@ -53,10 +53,6 @@ public sealed unsafe partial class CraftableCompounds : global::System.IDisposab
     public static CraftableCompounds Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _getCompoundId_8a23d6aa(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public nint getComponents(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg0)
     {
         return (nint)NativeMethods.TablePtr->hs_method_b0c3387f((void*)_handle, (void*)arg0.Handle);

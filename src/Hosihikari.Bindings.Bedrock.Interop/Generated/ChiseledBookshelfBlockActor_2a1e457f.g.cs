@@ -109,15 +109,11 @@ public sealed unsafe partial class ChiseledBookshelfBlockActor : global::System.
         return NativeMethods.TablePtr->hs_method_86090de3((void*)_handle);
     }
 
-    public string getName_3e59d83d()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_3e59d83d((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_6f3dd06f() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool isEmpty()
     {

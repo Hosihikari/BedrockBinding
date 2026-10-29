@@ -53,10 +53,6 @@ public sealed unsafe partial class TemporalAttributeBuff : global::System.IDispo
         return new TemporalAttributeBuff((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TemporalAttributeBuff Create(float amount, int duration, nint type, bool serialize, nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static TemporalAttributeBuff Create(float arg0, int arg1, int arg2, bool arg3, string arg4)
     {
         var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);

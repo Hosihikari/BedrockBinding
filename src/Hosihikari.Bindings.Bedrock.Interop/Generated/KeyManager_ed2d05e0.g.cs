@@ -46,10 +46,6 @@ public sealed unsafe partial class KeyManager : global::System.IDisposable
     public static KeyManager Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static KeyManager Create(nint publicKey, nint system) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static KeyManager Create(string arg0, int arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -75,15 +71,11 @@ public sealed unsafe partial class KeyManager : global::System.IDisposable
         }
     }
 
-    public string getPublicKey_5b3613cd()
+    public string getPublicKey()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_5b3613cd((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getPublicKey_0b814ed0() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool isValid()
     {

@@ -79,12 +79,8 @@ public sealed unsafe partial class ServerFileChunkUploader
         return NativeMethods.TablePtr->hs_method_3a1a3a94((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void initFileUploader_a4ea75bb(nint uploadId, nint file, int chunkSize, nint uploadOptions, nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void initFileUploader_3114f152(nint arg0, nint arg1, int arg2, nint arg3, nint arg4) =>
+    public void initFileUploader(nint arg0, nint arg1, int arg2, nint arg3, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

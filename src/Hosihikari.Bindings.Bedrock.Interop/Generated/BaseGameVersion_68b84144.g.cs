@@ -102,19 +102,11 @@ public sealed unsafe partial class BaseGameVersion : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.SemVersion((nint)NativeMethods.TablePtr->hs_method_047f7df4((void*)_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint asString_2187c314() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string asString_a31af8ad()
+    public string asString()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_a31af8ad((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint fromString(nint source, nint output) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static int fromString(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg1)
     {

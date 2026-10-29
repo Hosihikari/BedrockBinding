@@ -60,15 +60,11 @@ public sealed unsafe partial class RaidBossComponent
         return NativeMethods.TablePtr->hs_method_0841a5b5((void*)_handle);
     }
 
-    public string getName_ebfdf74b()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_ebfdf74b((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_60b7f08c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID getOwnerUniqueID()
     {

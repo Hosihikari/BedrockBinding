@@ -43,7 +43,7 @@ public sealed unsafe partial class TextObjectText : global::System.IDisposable
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TextObjectText Create_4617f966(nint arg0) =>
+    public static TextObjectText Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public static TextObjectText Create(string arg0)
@@ -71,18 +71,10 @@ public sealed unsafe partial class TextObjectText : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TextObjectText Create_b5958245(nint text) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value asJsonValue()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value((nint)NativeMethods.TablePtr->hs_method_58ce2cc3((void*)_handle));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint asJsonValue(nint textField) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value asJsonValue(string arg0)
     {
@@ -103,15 +95,11 @@ public sealed unsafe partial class TextObjectText : global::System.IDisposable
         }
     }
 
-    public string asString_644456aa()
+    public string asString()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_644456aa((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint asString_767acae0() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

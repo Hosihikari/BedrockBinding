@@ -42,10 +42,6 @@ public sealed unsafe partial class SimplePlayerContainer : global::System.IDispo
     public static SimplePlayerContainer Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SimplePlayerContainer Create(nint player, nint name, bool customName, int size, nint containerType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static SimplePlayerContainer Create(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, string arg1, bool arg2, int arg3, sbyte arg4)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);

@@ -51,10 +51,6 @@ public sealed unsafe partial class EndCityPieces
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint _createPiece_70319ecf(nint structureManager, nint parent, nint offset, nint templateName, nint rotation, bool overwrite) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public static bool _recursiveChildren_d42696e3(nint structureManager, nint generators, nint type, int newGenDepth, nint parent, nint offset, nint pieces, nint random) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 

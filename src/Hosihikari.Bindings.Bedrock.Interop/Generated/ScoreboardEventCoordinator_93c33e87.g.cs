@@ -84,10 +84,6 @@ public sealed unsafe partial class ScoreboardEventCoordinator : global::System.I
     public static ScoreboardEventCoordinator Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void sendOnObjectiveAdded(nint objective) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void sendOnObjectiveAdded(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -106,10 +102,6 @@ public sealed unsafe partial class ScoreboardEventCoordinator : global::System.I
             NativeMethods.TablePtr->hs_method_21621ae8((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void sendOnObjectiveRemoved(nint objective) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void sendOnObjectiveRemoved(string arg0)
     {
@@ -148,10 +140,6 @@ public sealed unsafe partial class ScoreboardEventCoordinator : global::System.I
             NativeMethods.TablePtr->hs_method_25fd3ce1((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2);
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void sendOnScoreChanged(nint id, nint objective, int score) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void sendOnScoreboardIdentityRemoved(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0)
     {

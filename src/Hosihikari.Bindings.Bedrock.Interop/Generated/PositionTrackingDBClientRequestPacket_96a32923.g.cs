@@ -103,15 +103,11 @@ public sealed unsafe partial class PositionTrackingDBClientRequestPacket : globa
         return NativeMethods.TablePtr->hs_method_183f5989((void*)_handle);
     }
 
-    public string getName_d2426cb6()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_d2426cb6((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_1e6d8194() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

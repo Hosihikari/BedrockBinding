@@ -223,14 +223,6 @@ public sealed unsafe partial class Parser
         NativeMethods.TablePtr->hs_method_259f525b((void*)arg0.Handle, (void*)arg1, (void*)arg2, arg3);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void parse_545d0567(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void parse_42871f80(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static void serialize(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1, nint arg2)
     {
         NativeMethods.TablePtr->hs_method_d7d781c1((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);

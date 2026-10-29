@@ -82,10 +82,6 @@ public sealed unsafe partial class Skeleton : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_d4891775((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void getDebugText_e8c9fea4(nint outputInfo) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void normalTick()
     {
         NativeMethods.TablePtr->hs_method_d4a9086e((void*)_handle);

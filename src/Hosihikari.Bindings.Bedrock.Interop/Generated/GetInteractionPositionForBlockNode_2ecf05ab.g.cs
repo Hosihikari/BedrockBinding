@@ -57,10 +57,6 @@ public sealed unsafe partial class GetInteractionPositionForBlockNode : global::
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint parseFacingNameFromString_6c7c71fe(nint facingString) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public int tick(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {
         return NativeMethods.TablePtr->hs_method_c5bf058a((void*)_handle, (void*)arg0.Handle);

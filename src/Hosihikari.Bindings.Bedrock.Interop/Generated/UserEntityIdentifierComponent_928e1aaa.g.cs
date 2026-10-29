@@ -43,16 +43,12 @@ public sealed unsafe partial class UserEntityIdentifierComponent : global::Syste
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static UserEntityIdentifierComponent Create_0de51531(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
+    public static UserEntityIdentifierComponent Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public static UserEntityIdentifierComponent Create_18b9dad3(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static UserEntityIdentifierComponent Create_d5be4cd9(nint arg0, nint clientSubId, nint arg2, nint arg3, nint certificate) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static UserEntityIdentifierComponent Create_4120289b(nint arg0) =>

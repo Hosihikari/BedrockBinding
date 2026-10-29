@@ -67,15 +67,7 @@ public sealed unsafe partial class ScriptPackConfigurationManager : global::Syst
     public static ScriptPackConfigurationManager Create_e2967760(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is abstract or not copy-constructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptPackConfigurationManager Create_bba88904(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getConfigPath_231974a2() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public nint getConfigPath_adf34090()
+    public nint getConfigPath()
     {
         return (nint)NativeMethods.TablePtr->hs_method_adf34090((void*)_handle);
     }
@@ -98,10 +90,6 @@ public sealed unsafe partial class ScriptPackConfigurationManager : global::Syst
             return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptPackConfiguration((nint)NativeMethods.TablePtr->hs_method_578c9e02((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getPackConfiguration(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void loadPackConfigs()
     {

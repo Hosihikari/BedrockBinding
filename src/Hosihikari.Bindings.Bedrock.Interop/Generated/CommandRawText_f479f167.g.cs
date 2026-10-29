@@ -38,11 +38,7 @@ public sealed unsafe partial class CommandRawText
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getText_0da7e563() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getText_b1fbdb4d()
+    public string getText()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_b1fbdb4d((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

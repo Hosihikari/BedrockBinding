@@ -82,11 +82,7 @@ public sealed unsafe partial class GameVersion : global::System.IDisposable
         return new GameVersion((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint asString_f0c46f73() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string asString_bf65c6f4()
+    public string asString()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_bf65c6f4((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

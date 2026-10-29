@@ -65,14 +65,6 @@ public sealed unsafe partial class RealmsStoriesGameplayEventListener : global::
     public static nint _playerXuidsToString_a4e4d2a0(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _publishEventForRealmsService_549164c7(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _publishWorldEventFirstOrOtherTime_d5e03ca9(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ActorAcquiredItemEvent arg0)
     {
         return NativeMethods.TablePtr->hs_method_a2e9e54f((void*)_handle, (void*)arg0.Handle);

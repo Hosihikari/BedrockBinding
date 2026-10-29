@@ -94,10 +94,6 @@ public sealed unsafe partial class ResourcePackChunkDataPacket : global::System.
     public static ResourcePackChunkDataPacket Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ResourcePackChunkDataPacket Create(nint name, int chunkID, ulong byteOffset, nint data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static ResourcePackChunkDataPacket Create(string arg0, int arg1, ulong arg2, byte[] arg3)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -135,15 +131,11 @@ public sealed unsafe partial class ResourcePackChunkDataPacket : global::System.
         return NativeMethods.TablePtr->hs_method_af3314c8((void*)_handle);
     }
 
-    public string getName_1ab76acb()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_1ab76acb((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_89755bf4() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public ulong mByteOffset
     {

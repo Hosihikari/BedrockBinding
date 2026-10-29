@@ -119,15 +119,11 @@ public sealed unsafe partial class HopperBlockActor : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_a61cea02((void*)_handle);
     }
 
-    public string getName_733173b2()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_733173b2((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_8abbc159() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool isAttachedToChestAndFurnace(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
     {

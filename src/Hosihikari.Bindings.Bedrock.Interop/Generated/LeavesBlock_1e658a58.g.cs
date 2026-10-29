@@ -48,11 +48,7 @@ public sealed partial class LeavesBlock
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static LeavesBlock Create_7ea0f735(nint nameId, int id, nint sapling) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static LeavesBlock Create_966ebd07(nint arg0, int arg1, nint arg2) =>
+    public static LeavesBlock Create(nint arg0, int arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
     [global::System.Obsolete("BindingShim does not expose this member.", false)]

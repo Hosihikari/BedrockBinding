@@ -60,19 +60,11 @@ public sealed unsafe partial class PlayerListManager
         return (nint)NativeMethods.TablePtr->hs_method_005546e0((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getPlayerPlatformOnlineId(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public string getPlayerPlatformOnlineId(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_58a2a3fa((void*)_handle, (void*)arg0.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getPlayerXUID(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public string getPlayerXUID(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0)
     {

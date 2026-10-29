@@ -62,10 +62,6 @@ public sealed unsafe partial class WritableBookItem
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getInteractText(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
@@ -78,10 +74,6 @@ public sealed unsafe partial class WritableBookItem
     {
         return NativeMethods.TablePtr->hs_method_03aee51f((void*)_handle) != 0;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void signBook(nint book, nint title, nint author, nint xuid) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static void signBook(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, string arg1, string arg2, string arg3)
     {

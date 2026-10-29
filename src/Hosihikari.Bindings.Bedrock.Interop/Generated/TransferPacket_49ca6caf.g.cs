@@ -94,10 +94,6 @@ public sealed unsafe partial class TransferPacket : global::System.IDisposable
     public static TransferPacket Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TransferPacket Create(nint serverAddress, int serverPort) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static TransferPacket Create(string arg0, int arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -132,15 +128,11 @@ public sealed unsafe partial class TransferPacket : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_9e3d65ae((void*)_handle);
     }
 
-    public string getName_48f1ae20()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_48f1ae20((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_f3b7abfe() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mServerAddress_Address

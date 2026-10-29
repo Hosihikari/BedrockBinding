@@ -77,10 +77,6 @@ public sealed unsafe partial class StructureAnimationAction : global::System.IDi
     public static StructureAnimationAction Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructureAnimationAction Create(nint structureSettings, nint dimensionType, nint loadPosition, nint fullName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static StructureAnimationAction Create(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
@@ -96,12 +92,8 @@ public sealed unsafe partial class StructureAnimationAction : global::System.IDi
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'StructureAnimationAction' has no accessible destructor.", false)]
-    public static nint load_a44fbd51(nint arg0, nint arg1) =>
+    public static nint load(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'StructureAnimationAction' has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint load_9357fc5e(nint tag, nint dimensionPrefix) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

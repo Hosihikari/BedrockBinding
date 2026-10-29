@@ -82,10 +82,6 @@ public sealed unsafe partial class NewExecuteCommand : global::System.IDisposabl
     public static NewExecuteCommand Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _getScoreFromSelectorOnObjective_091c35bf(nint scoreboard, nint selector, nint objectiveName, nint origin, nint output) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput arg1)
     {
         NativeMethods.TablePtr->hs_method_95b44af2((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);

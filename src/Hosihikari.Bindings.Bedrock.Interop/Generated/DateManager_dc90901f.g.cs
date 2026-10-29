@@ -52,15 +52,11 @@ public sealed unsafe partial class DateManager
     public static DateManager Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static string getCurrentTimestampFileName_1107627d()
+    public static string getCurrentTimestampFileName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_1107627d();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getCurrentTimestampFileName_81853420() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'tm' requires --link-carrier or --virtual-dispatch.", false)]
     public static nint getRealDateTime(nint arg0) =>
@@ -119,14 +115,6 @@ public sealed unsafe partial class DateManager
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint toString(nint time, nint outputType, nint format) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint toString_547bba76(nint time, nint format) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static string toString_DateTime_a9a6b2cb(nint arg0, int arg1)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_a9a6b2cb((void*)arg0, arg1);
@@ -138,14 +126,6 @@ public sealed unsafe partial class DateManager
         var __hs_view = NativeMethods.TablePtr->hs_method_c3a6835c((void*)arg0, arg1);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint toString_DateTime_1f644f58(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint toString_DateTime_9cbb4e27(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>

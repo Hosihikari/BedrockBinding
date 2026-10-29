@@ -61,10 +61,6 @@ public sealed unsafe partial class DynamicPropertiesDefinition
         get => NativeMethods.TablePtr->hs_get_d3ab20da();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool _canMergeDefinitions_64a6b1c1(nint other, nint identifier, ulong arg2, nint error) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void clear()
     {
         NativeMethods.TablePtr->hs_method_cc17fe39((void*)_handle);
@@ -79,12 +75,8 @@ public sealed unsafe partial class DynamicPropertiesDefinition
         NativeMethods.TablePtr->hs_method_ff0e52ee((void*)arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint defineProperty_554b3412(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public nint defineProperty_58c930ed(nint arg0, nint arg1) =>
+    public nint defineProperty(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -111,10 +103,6 @@ public sealed unsafe partial class DynamicPropertiesDefinition
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint tryGetPropertyDefinition(nint identifier) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public string? tryMergeDefinitions(global::Hosihikari.Bindings.Bedrock.Interop.DynamicPropertiesDefinition arg0, string arg1, ulong arg2)
     {
         var __hs_hasValue = false;
@@ -135,10 +123,6 @@ public sealed unsafe partial class DynamicPropertiesDefinition
             return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint tryMergeDefinitions(nint other, nint identifier, ulong arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_a04c33d7() =>

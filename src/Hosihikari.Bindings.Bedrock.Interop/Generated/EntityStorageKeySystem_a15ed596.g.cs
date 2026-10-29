@@ -46,19 +46,11 @@ public sealed unsafe partial class EntityStorageKeySystem
     public static EntityStorageKeySystem Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static string generateStorageKey_ce1e7059(long arg0)
+    public static string generateStorageKey(long arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_ce1e7059(arg0);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint generateStorageKey_47c9dd16(long arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool getIsDirtySinceSerialization(nint entity, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static bool getIsDirtySinceSerialization(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, string arg1)
     {
@@ -87,10 +79,6 @@ public sealed unsafe partial class EntityStorageKeySystem
     {
         NativeMethods.TablePtr->hs_method_f37aff0b((void*)arg0.Handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void setLastSerializedState(nint entity, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static void setLastSerializedState(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, string arg1)
     {

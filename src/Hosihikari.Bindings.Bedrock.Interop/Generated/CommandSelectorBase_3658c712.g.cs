@@ -40,14 +40,10 @@ public sealed unsafe partial class CommandSelectorBase : global::System.IDisposa
 
     public const ulong Unlimited = 4294967295;
 
-    public void addFamilyFilter_3f829b2c(nint arg0)
+    public void addFamilyFilter(nint arg0)
     {
         NativeMethods.TablePtr->hs_method_3f829b2c((void*)_handle, (void*)arg0);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addFamilyFilter_b50f6e14(nint filter) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void addFilter(nint arg0) =>
@@ -57,10 +53,6 @@ public sealed unsafe partial class CommandSelectorBase : global::System.IDisposa
     {
         NativeMethods.TablePtr->hs_method_5292bd6f((void*)_handle, (void*)arg0);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addHasItemFilter(nint itemName, nint auxValue, nint quantity, nint equipmentSlot, nint slot) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void addHasItemFilter(string arg0, int? arg1, global::Hosihikari.Bindings.Bedrock.Interop.CommandIntegerRange arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.CommandIntegerRange arg4)
     {
@@ -86,52 +78,32 @@ public sealed unsafe partial class CommandSelectorBase : global::System.IDisposa
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'HasPermissionFilter' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'std::variant<CommandRationalRange,bool,std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is abstract or not copy-constructible.", false)]
-    public void addHasPropertyFilter_b6567837(nint arg0, bool arg1, nint arg2) =>
+    public void addHasPropertyFilter(nint arg0, bool arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::variant<CommandRationalRange,bool,std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is abstract or not copy-constructible.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addHasPropertyFilter_cd57e183(nint arg0, bool arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void addLevelFilter(nint arg0)
     {
         NativeMethods.TablePtr->hs_method_5f953bd6((void*)_handle, (void*)arg0);
     }
 
-    public void addNameFilter_d5a0aaed(nint arg0)
+    public void addNameFilter(nint arg0)
     {
         NativeMethods.TablePtr->hs_method_d5a0aaed((void*)_handle, (void*)arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addNameFilter_26a5e327(nint filter) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addScoreFilter_5dc9bddb(nint objName, nint range, nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void addScoreFilter_4cc757f9(nint arg0, nint arg1, nint arg2) =>
+    public void addScoreFilter(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void addTagFilter_3545681e(nint arg0)
+    public void addTagFilter(nint arg0)
     {
         NativeMethods.TablePtr->hs_method_3545681e((void*)_handle, (void*)arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addTagFilter_a82bbb42(nint filter) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void addTypeFilter_fbf978ab(nint arg0)
+    public void addTypeFilter(nint arg0)
     {
         NativeMethods.TablePtr->hs_method_fbf978ab((void*)_handle, (void*)arg0);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addTypeFilter_26d6a170(nint filter) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void addXRotationFilter(nint arg0)
     {
@@ -143,27 +115,15 @@ public sealed unsafe partial class CommandSelectorBase : global::System.IDisposa
         NativeMethods.TablePtr->hs_method_6040b10c((void*)_handle, (void*)arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool compareName_cf7e7154(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public bool compile_d9d45c81(nint arg0, nint arg1) =>
+    public bool compile(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool compile_b3db9947(nint origin, nint error) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getName_c4765f75()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_c4765f75((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_699b21a6() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int getOrder()
     {
@@ -326,10 +286,6 @@ public sealed unsafe partial class CommandSelectorBase : global::System.IDisposa
     {
         NativeMethods.TablePtr->hs_method_b9e29dd3((void*)_handle, arg0);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setExplicitIdSelector(nint playerName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setExplicitIdSelector(string arg0)
     {

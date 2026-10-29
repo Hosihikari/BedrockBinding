@@ -61,18 +61,10 @@ public sealed unsafe partial class MolangDescriptor
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'MolangDescriptor' has no accessible destructor.", false)]
-    public static nint fromExpressionTag_84ef897d(nint arg0, nint arg1) =>
+    public static nint fromExpressionTag(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'MolangDescriptor' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint fromExpressionTag_d816aaea(nint tagExpression, nint molangVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getFullName_ae6fb801() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getFullName_fb584604()
+    public string getFullName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_fb584604((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

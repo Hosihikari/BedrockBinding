@@ -71,15 +71,11 @@ public sealed unsafe partial class CrafterBlockActor : global::System.IDisposabl
         return NativeMethods.TablePtr->hs_method_87422bed((void*)_handle);
     }
 
-    public string getName_e636327c()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_e636327c((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_36983570() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool isSlotDisabled(int arg0)
     {

@@ -114,15 +114,11 @@ public sealed unsafe partial class SetCommandsEnabledPacket : global::System.IDi
         return NativeMethods.TablePtr->hs_method_8ab42f7e((void*)_handle);
     }
 
-    public string getName_36a96f1d()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_36a96f1d((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_1487989f() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool mCommandsEnabled
     {

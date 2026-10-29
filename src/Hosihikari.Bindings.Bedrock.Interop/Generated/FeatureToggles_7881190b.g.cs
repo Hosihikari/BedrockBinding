@@ -63,10 +63,6 @@ public sealed unsafe partial class FeatureToggles : global::System.IDisposable
     public static FeatureToggles Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _registerFeature_3b2cca39(nint arg0, nint featureID, nint locName, nint saveName, bool defaultValue, nint dependencyFeatureID, nint setup, nint @lock) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public global::Hosihikari.Bindings.Bedrock.Interop.Option? get(int arg0)
     {
         var __hs_handle = NativeMethods.TablePtr->hs_method_a1d2dcfb((void*)_handle, arg0);

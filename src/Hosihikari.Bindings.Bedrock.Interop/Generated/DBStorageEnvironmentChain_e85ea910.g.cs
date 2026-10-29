@@ -78,10 +78,6 @@ public sealed unsafe partial class DBStorageEnvironmentChain
     public nint isChainValid(bool arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool isContentKeyValid(nint rootEnv, nint dbPath, nint contentIdentity, nint contentKey, nint storageArea) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static bool isContentKeyValid(global::Hosihikari.Bindings.Bedrock.Interop.leveldb_Nested.Env? arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity arg2, string arg3, global::Hosihikari.Bindings.Abi.SharedHandle? arg4)
     {
         var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);

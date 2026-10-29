@@ -42,10 +42,6 @@ public sealed unsafe partial class TaskGroup : global::System.IDisposable
     public static TaskGroup Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TaskGroup Create(nint workers, nint context, nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static TaskGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.WorkerPool arg0, global::Hosihikari.Bindings.Bedrock.Interop.Scheduler arg1, string arg2)
     {
         var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);

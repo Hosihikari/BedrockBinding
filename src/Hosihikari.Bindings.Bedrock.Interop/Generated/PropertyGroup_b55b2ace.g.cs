@@ -56,46 +56,10 @@ public sealed unsafe partial class PropertyGroup
     public static PropertyGroup Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _addBoolProperty_d13f7cd2(nint name, bool arg1, bool defaultValue) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _addEnumIndexProperty_6f782e2f(nint name, bool arg1, ulong defaultValue, nint enumValues) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _addFloatProperty_7c578af2(nint name, bool arg1, float defaultValue, float arg3, float rangeMax) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _addIntProperty_7866ac0f(nint name, bool arg1, int defaultValue, int arg3, int rangeMax) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _addPropertyMetadata_4d81660a(nint name, bool arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _getFriendlyJsonTypeString_20aa09d7(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool _loadPropertyFromJson_1e061408(nint name, nint arg1, nint molangVersion, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool _tryGetClientSync_e6aababf(nint propertyName, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public bool getDefaultBoolValue(ulong arg0, global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg1)
     {
         return NativeMethods.TablePtr->hs_method_f09e8fdb((void*)_handle, arg0, (void*)arg1.Handle) != 0;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public ulong getDefaultEnumIndexValue(ulong arg0, nint renderParams, nint propertyName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public ulong getDefaultEnumIndexValue(ulong arg0, global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg1, string arg2)
     {
@@ -141,10 +105,6 @@ public sealed unsafe partial class PropertyGroup
     {
         return NativeMethods.TablePtr->hs_method_edecb34d((void*)_handle) != 0;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool isValidEnumEntry(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static bool isValidEnumEntry(string arg0)
     {

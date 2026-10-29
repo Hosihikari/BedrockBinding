@@ -84,11 +84,7 @@ public sealed unsafe partial class SynchedActorDataEntityWrapper : global::Syste
         return NativeMethods.TablePtr->hs_method_2bcd5d5a((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getString_2abc57dd(ushort arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getString_912f97b9(ushort arg0)
+    public string getString(ushort arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_912f97b9((void*)_handle, arg0);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

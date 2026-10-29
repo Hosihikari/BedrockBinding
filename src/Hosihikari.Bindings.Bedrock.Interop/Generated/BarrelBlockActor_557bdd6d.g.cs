@@ -46,15 +46,11 @@ public sealed unsafe partial class BarrelBlockActor
     public static BarrelBlockActor Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public string getName_b8b829a3()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_b8b829a3((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_64d23df3() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void onPlace(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
     {

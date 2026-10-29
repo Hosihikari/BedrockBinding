@@ -83,21 +83,13 @@ public sealed unsafe partial class PackReport : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation((nint)NativeMethods.TablePtr->hs_method_c9377be1((void*)_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getOriginalName_df21bb2d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getOriginalName_1ea36d8f()
+    public string getOriginalName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_1ea36d8f((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getOriginalVersion_d1e8340c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getOriginalVersion_888c0933()
+    public string getOriginalVersion()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_888c0933((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -201,10 +193,6 @@ public sealed unsafe partial class PackReport : global::System.IDisposable
     {
         NativeMethods.TablePtr->hs_method_c23404f1((void*)_handle, (void*)arg0.Handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setOriginalIdentity(nint originalName, nint originalVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setOriginalIdentity(string arg0, string arg1)
     {

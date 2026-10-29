@@ -46,10 +46,6 @@ public sealed unsafe partial class TerrainShaper
     public static TerrainShaper Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint buildErosionOffsetSpline_d6ff211c(nint name, float arg1, float arg2, float arg3, float arg4, float arg5, float arg6, bool arg7, bool arg8) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TerrainShaper' requires --link-carrier or --virtual-dispatch.", false)]
     public static nint buildOverworld() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TerrainShaper' requires --link-carrier or --virtual-dispatch.");
@@ -71,9 +67,5 @@ public sealed unsafe partial class TerrainShaper
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint ridgeSpline_59cdb2b2(nint name, float arg1, float low, float arg3, float high, float arg5, float arg6) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 }

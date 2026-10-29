@@ -50,11 +50,7 @@ public sealed unsafe partial class SubpackInfoCollection
     public void addSubpackInfo(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getSubpackFolderName_25afdcbc(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getSubpackFolderName_b15e6ded(int arg0)
+    public string getSubpackFolderName(int arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_b15e6ded((void*)_handle, arg0);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

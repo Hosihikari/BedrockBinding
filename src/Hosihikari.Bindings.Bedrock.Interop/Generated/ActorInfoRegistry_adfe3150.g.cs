@@ -51,10 +51,6 @@ public sealed unsafe partial class ActorInfoRegistry
         return new global::Hosihikari.Bindings.Bedrock.Interop.ActorInfo((nint)NativeMethods.TablePtr->hs_method_055fea6c((void*)_handle, arg0), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public uint getActorInfoId_e8c16591(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public uint getActorInfoId(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -74,7 +70,7 @@ public sealed unsafe partial class ActorInfoRegistry
         }
     }
 
-    public uint getActorInfoId_fc12e339(nint arg0)
+    public uint getActorInfoId(nint arg0)
     {
         return NativeMethods.TablePtr->hs_method_fc12e339((void*)_handle, (void*)arg0);
     }
@@ -103,10 +99,6 @@ public sealed unsafe partial class ActorInfoRegistry
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool isSpawnEggAvailable(nint identifier) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
@@ -133,8 +125,4 @@ public sealed unsafe partial class ActorInfoRegistry
             NativeMethods.TablePtr->hs_method_f8d38613((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setSpawnEggAvailable(nint identifier, bool val) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 }

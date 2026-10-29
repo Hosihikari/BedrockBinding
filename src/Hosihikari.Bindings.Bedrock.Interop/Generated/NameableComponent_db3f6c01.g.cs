@@ -51,10 +51,6 @@ public sealed unsafe partial class NameableComponent
         return NativeMethods.TablePtr->hs_method_bd7fa8c8((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void nameEntity(nint owner, nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void nameEntity(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, string arg1)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);

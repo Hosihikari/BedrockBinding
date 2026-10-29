@@ -76,10 +76,6 @@ public sealed unsafe partial class BuoyancyComponent
         NativeMethods.TablePtr->hs_method_51482910((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void loadData(nint data, nint engineVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void loadData(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

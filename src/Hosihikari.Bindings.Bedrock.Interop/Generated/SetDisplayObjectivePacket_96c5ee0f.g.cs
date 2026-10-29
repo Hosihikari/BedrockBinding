@@ -94,10 +94,6 @@ public sealed unsafe partial class SetDisplayObjectivePacket : global::System.ID
     public static SetDisplayObjectivePacket Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SetDisplayObjectivePacket Create(nint displaySlotName, nint objectiveName, nint dispalyName, nint criteriaName, nint order) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static SetDisplayObjectivePacket Create(string arg0, string arg1, string arg2, string arg3, byte arg4)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -174,15 +170,11 @@ public sealed unsafe partial class SetDisplayObjectivePacket : global::System.ID
         return NativeMethods.TablePtr->hs_method_0a6fb3c8((void*)_handle);
     }
 
-    public string getName_13716fbc()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_13716fbc((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_a7a04df3() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCriteriaName_Address

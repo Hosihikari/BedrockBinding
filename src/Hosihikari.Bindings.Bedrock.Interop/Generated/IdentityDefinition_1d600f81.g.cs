@@ -67,11 +67,7 @@ public sealed unsafe partial class IdentityDefinition : global::System.IDisposab
         return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->hs_method_b66def81((void*)_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getFakePlayerName_dadc76f2() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getFakePlayerName_1f97bc1a()
+    public string getFakePlayerName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_1f97bc1a((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -81,12 +77,8 @@ public sealed unsafe partial class IdentityDefinition : global::System.IDisposab
     public nint getIdentityType_7d559cd1() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_e6b59a52(nint playerNameResolver) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> const&' is not supported.", false)]
-    public nint getName_26e3f6ff(nint arg0) =>
+    public nint getName(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> const&' is not supported.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId getPlayerId()

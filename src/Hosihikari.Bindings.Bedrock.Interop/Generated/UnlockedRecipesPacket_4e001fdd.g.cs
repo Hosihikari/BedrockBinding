@@ -95,12 +95,8 @@ public sealed unsafe partial class UnlockedRecipesPacket : global::System.IDispo
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
-    public static UnlockedRecipesPacket Create_466d3fb0(nint arg0, nint arg1) =>
+    public static UnlockedRecipesPacket Create(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static UnlockedRecipesPacket Create_1b87f8af(nint arg0, nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint _read_c6b498e6(nint stream) =>
@@ -111,15 +107,11 @@ public sealed unsafe partial class UnlockedRecipesPacket : global::System.IDispo
         return NativeMethods.TablePtr->hs_method_3c7b54a9((void*)_handle);
     }
 
-    public string getName_2ec107a0()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_2ec107a0((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_7e0cd0c5() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int mPacketType
     {

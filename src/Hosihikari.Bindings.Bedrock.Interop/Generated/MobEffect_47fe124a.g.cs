@@ -171,10 +171,6 @@ public sealed unsafe partial class MobEffect : global::System.IDisposable
     public static MobEffect Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MobEffect Create(uint arg0, nint arg1, nint arg2, bool arg3, int arg4, int arg5, nint arg6, bool arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static MobEffect Create(uint arg0, string arg1, string arg2, bool arg3, int arg4, int arg5, string arg6, bool arg7)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -329,10 +325,6 @@ public sealed unsafe partial class MobEffect : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getByName(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffect? getByName(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -358,11 +350,7 @@ public sealed unsafe partial class MobEffect : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->hs_method_cf3f0326((void*)_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getDescriptionId_285b2b9a() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getDescriptionId_19aad129()
+    public string getDescriptionId()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_19aad129((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -378,26 +366,18 @@ public sealed unsafe partial class MobEffect : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_f2290e83((void*)_handle);
     }
 
-    public static string getNameById_2f92a7bd(uint arg0)
+    public static string getNameById(uint arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_2f92a7bd(arg0);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getNameById_20dc673d(uint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.HashedString getParticleEffect(bool arg0)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_20802b4d((void*)_handle, arg0), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getResourceName_d621c7d3() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getResourceName_c0176cad()
+    public string getResourceName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_c0176cad((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

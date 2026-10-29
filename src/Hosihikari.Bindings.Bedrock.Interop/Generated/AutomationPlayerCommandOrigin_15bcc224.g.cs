@@ -42,10 +42,6 @@ public sealed unsafe partial class AutomationPlayerCommandOrigin : global::Syste
     public static AutomationPlayerCommandOrigin Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AutomationPlayerCommandOrigin Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static AutomationPlayerCommandOrigin Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID arg0, global::Hosihikari.Bindings.Bedrock.Interop.Level arg1, string arg2, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg3)
     {
         var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
@@ -73,10 +69,6 @@ public sealed unsafe partial class AutomationPlayerCommandOrigin : global::Syste
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static AutomationPlayerCommandOrigin Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AutomationPlayerCommandOrigin Create(nint requestId, nint origin) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public static AutomationPlayerCommandOrigin Create(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1)
@@ -110,26 +102,18 @@ public sealed unsafe partial class AutomationPlayerCommandOrigin : global::Syste
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin((nint)__hs_handle) : null;
     }
 
-    public string getName_dac0242c()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_dac0242c((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_522fef09() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public sbyte getOriginType()
     {
         return NativeMethods.TablePtr->hs_method_d1ce3c72((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getRequestId_1d540c32() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getRequestId_4a4a2c76()
+    public string getRequestId()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_4a4a2c76((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

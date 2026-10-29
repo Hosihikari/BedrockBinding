@@ -42,10 +42,6 @@ public sealed unsafe partial class EnderChestBlockActor : global::System.IDispos
     public static EnderChestBlockActor Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EnderChestBlockActor Create(nint type, nint id, nint renderId, nint pos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static EnderChestBlockActor Create(int arg0, string arg1, int arg2, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg3)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -90,15 +86,11 @@ public sealed unsafe partial class EnderChestBlockActor : global::System.IDispos
         return NativeMethods.TablePtr->hs_method_be73cf02((void*)_handle, arg0, arg1, (void*)arg2.Handle) != 0;
     }
 
-    public string getName_48680b43()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_48680b43((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_9bcb52af() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void openBy(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)
     {

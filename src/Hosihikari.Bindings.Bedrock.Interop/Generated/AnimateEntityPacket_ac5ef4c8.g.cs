@@ -53,10 +53,6 @@ public sealed unsafe partial class AnimateEntityPacket : global::System.IDisposa
     public static AnimateEntityPacket Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AnimateEntityPacket Create(nint arg0, nint animation, nint arg2, float blendOutTime, nint stopExpression, nint arg5, nint controller) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static AnimateEntityPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorRuntimeID[] arg0, string arg1, string arg2, float arg3, string arg4, int arg5, string arg6)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -143,15 +139,11 @@ public sealed unsafe partial class AnimateEntityPacket : global::System.IDisposa
         return NativeMethods.TablePtr->hs_method_a2bdc0a3((void*)_handle);
     }
 
-    public string getName_74b79440()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_74b79440((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_ce1bbea0() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mAnimation_Address

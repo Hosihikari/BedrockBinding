@@ -71,19 +71,7 @@ public sealed unsafe partial class CameraPresets : global::System.IDisposable
         return new CameraPresets((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void _loadJsonFiles_a148c538(nint resourcePackManager, nint path, nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _parseAndLoadCameraList_8e52f95c(nint fileData, nint engineVersion, nint filename) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _parseAndLoadCameraPreset_3a01586e(nint fileData, nint engineVersion, nint filename) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string[] buildCameraPresetList_50d83d30()
+    public string[] buildCameraPresetList()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_50d83d30((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
@@ -94,14 +82,6 @@ public sealed unsafe partial class CameraPresets : global::System.IDisposable
         }
         return __hs_result;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint buildCameraPresetList_efbd658e() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getCameraPresetIndex(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public uint? getCameraPresetIndex(string arg0)
     {
@@ -128,10 +108,6 @@ public sealed unsafe partial class CameraPresets : global::System.IDisposable
     {
         return (nint)NativeMethods.TablePtr->hs_method_aa054314((void*)_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool isAllowedEaseTarget(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static bool isAllowedEaseTarget(string arg0)
     {

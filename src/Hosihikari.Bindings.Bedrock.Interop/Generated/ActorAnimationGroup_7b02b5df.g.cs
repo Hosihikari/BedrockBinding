@@ -63,10 +63,6 @@ public sealed unsafe partial class ActorAnimationGroup : global::System.IDisposa
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void loadActorAnimation(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5, nint arg6) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void loadActorAnimation(string arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.PackStats arg2, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg3, int arg4, bool arg5, string arg6)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

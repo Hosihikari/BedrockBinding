@@ -51,11 +51,7 @@ public sealed unsafe partial class UseAnimationUtils
         NativeMethods.TablePtr->hs_method_7963cb01((void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getStringMapping_baf0fa4c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static nint getStringMapping_cd68ce2e()
+    public static nint getStringMapping()
     {
         return (nint)NativeMethods.TablePtr->hs_method_cd68ce2e();
     }

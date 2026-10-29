@@ -138,12 +138,8 @@ public sealed unsafe partial class PackSourceFactory : global::System.IDisposabl
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is not a known bindable declaration.", false)]
-    public void setDynamicPackageRoot_e0625fab(nint arg0) =>
+    public void setDynamicPackageRoot(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathBuffer<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setDynamicPackageRoot_ca6e97ec(nint path) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
 
     public void Dispose()

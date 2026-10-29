@@ -299,22 +299,6 @@ public sealed unsafe partial class LegacyTelemetryEventPacket : global::System.I
     public static LegacyTelemetryEventPacket Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LegacyTelemetryEventPacket Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LegacyTelemetryEventPacket Create(nint arg0, nint arg1, int arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LegacyTelemetryEventPacket Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, int arg5, nint arg6) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LegacyTelemetryEventPacket Create(nint arg0, nint arg1, int arg2, int arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public void __autoclassinit2(ulong arg0)
     {
         NativeMethods.TablePtr->hs_method_d9269da7((void*)_handle, arg0);
@@ -329,15 +313,11 @@ public sealed unsafe partial class LegacyTelemetryEventPacket : global::System.I
         return NativeMethods.TablePtr->hs_method_83edad77((void*)_handle);
     }
 
-    public string getName_d4e9a883()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_d4e9a883((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_7baf4724() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mEventData_Address

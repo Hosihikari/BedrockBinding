@@ -52,20 +52,12 @@ public sealed partial class JournaledFile
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::Path' is not a known bindable declaration.", false)]
-    public static nint findBackupPath_5a2493d6(nint arg0) =>
+    public static nint findBackupPath(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::Path' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint findBackupPath_45172488(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::Path' is not a known bindable declaration.", false)]
-    public static nint findReadPath_cdc8d03a(nint arg0) =>
+    public static nint findReadPath(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::Path' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint findReadPath_82df12d2(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::Path' is not a known bindable declaration.", false)]
     public static bool isOldFile(nint arg0) =>
@@ -80,12 +72,8 @@ public sealed partial class JournaledFile
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::Path' is not a known bindable declaration.", false)]
-    public static void populateImportantFiles_82bb1257(nint arg0, nint arg1) =>
+    public static void populateImportantFiles(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::Path' is not a known bindable declaration.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void populateImportantFiles_69863111(nint fileName, nint importantFiles) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
     public static nint replaceHeadFileWithBackup(nint arg0) =>

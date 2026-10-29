@@ -42,12 +42,8 @@ public sealed unsafe partial class ScopedGameTestTickingArea
     public static ScopedGameTestTickingArea Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScopedGameTestTickingArea Create_ca7059a3(nint dimension, nint bounds, nint structureName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ScopedGameTestTickingArea Create_676ac77b(nint arg0, nint arg1, nint arg2) =>
+    public static ScopedGameTestTickingArea Create(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]

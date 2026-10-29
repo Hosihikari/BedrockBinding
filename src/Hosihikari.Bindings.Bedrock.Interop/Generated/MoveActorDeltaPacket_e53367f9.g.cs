@@ -73,15 +73,11 @@ public sealed unsafe partial class MoveActorDeltaPacket : global::System.IDispos
         return NativeMethods.TablePtr->hs_method_73f34bee((void*)_handle);
     }
 
-    public string getName_01481acb()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_01481acb((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_31423281() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMoveData_Address

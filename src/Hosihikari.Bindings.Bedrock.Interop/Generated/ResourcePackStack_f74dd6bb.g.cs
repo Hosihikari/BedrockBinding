@@ -77,10 +77,6 @@ public sealed unsafe partial class ResourcePackStack : global::System.IDisposabl
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getPackTelemetryNamesWithVersion(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void getSplitStacks(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackStack arg0, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackStack arg1)
     {
         NativeMethods.TablePtr->hs_method_d06c3dd3((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);

@@ -47,18 +47,10 @@ public sealed unsafe partial class Motif
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Motif Create_b6f7efa6(nint arg0, int arg1, int arg2, nint arg3, bool arg4, bool arg5) =>
+    public static Motif Create(nint arg0, int arg1, int arg2, nint arg3, bool arg4, bool arg5) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Motif Create_b1af37dc(nint arg0, int arg1, int arg2, nint arg3, bool arg4, bool arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_8e955565() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getName_92ddb042()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_92ddb042((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

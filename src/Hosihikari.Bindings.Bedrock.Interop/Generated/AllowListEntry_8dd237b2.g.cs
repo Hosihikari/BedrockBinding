@@ -64,10 +64,6 @@ public sealed unsafe partial class AllowListEntry : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AllowListEntry Create(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static AllowListEntry Create(nint name, nint xuid, nint uuid, bool ignoresPlayerLimit) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 

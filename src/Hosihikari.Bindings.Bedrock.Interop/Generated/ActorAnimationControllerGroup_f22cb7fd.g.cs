@@ -53,10 +53,6 @@ public sealed unsafe partial class ActorAnimationControllerGroup : global::Syste
     public static ActorAnimationControllerGroup Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _loadActorAnimationController_83d1d0e0(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorAnimationControllerPtr' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getActorAnimationController(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorAnimationControllerPtr' requires --link-carrier or --virtual-dispatch.");

@@ -75,10 +75,6 @@ public sealed unsafe partial class ServerCommand
     public static ServerCommand Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void kickPlayerDueToFlooding_6a1c2437(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static global::Hosihikari.Bindings.Bedrock.Interop.Minecraft mGame
     {
         get => new global::Hosihikari.Bindings.Bedrock.Interop.Minecraft((nint)NativeMethods.TablePtr->hs_get_43b10fd6(), false);
@@ -86,10 +82,6 @@ public sealed unsafe partial class ServerCommand
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool tryToFilterTextWithRemoteFilter_9b70c5c0(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

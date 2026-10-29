@@ -69,10 +69,6 @@ public sealed unsafe partial class TrialSpawner
     public nint _doPlayerScan_94d08997(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint _getRandomLootTableItems_e03942a1(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void applyUpdatePacket(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1)
     {
         NativeMethods.TablePtr->hs_method_274d56a7((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);

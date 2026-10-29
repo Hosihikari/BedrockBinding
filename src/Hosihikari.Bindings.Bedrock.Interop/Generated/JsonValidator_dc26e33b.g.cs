@@ -75,8 +75,4 @@ public sealed unsafe partial class JsonValidator
             return NativeMethods.TablePtr->hs_method_1580d1bf((void*)arg0.Handle, (void*)arg1.Handle, __hs_vectorData2, (nuint)(arg2?.Length ?? 0)) != 0;
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool validate(nint rootProp, nint rootData, nint errors) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 }

@@ -142,10 +142,6 @@ public sealed unsafe partial class Abilities : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->hs_get_6c920773((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint nameToAbilityIndex(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static short nameToAbilityIndex(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

@@ -92,10 +92,6 @@ public sealed unsafe partial class ServerInstance : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void disconnectAllClientsWithMessage(nint msg) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public bool enableItemStackNetManager()
     {
         return NativeMethods.TablePtr->hs_method_b5a043a5((void*)_handle) != 0;

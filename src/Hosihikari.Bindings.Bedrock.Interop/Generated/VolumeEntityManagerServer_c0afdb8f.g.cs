@@ -56,16 +56,8 @@ public sealed unsafe partial class VolumeEntityManagerServer : global::System.ID
     public static VolumeEntityManagerServer Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _findUsableName_c8f39788(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint createVolume_c60cd3d6(nint levelStorage, nint packetSender, nint arg2, nint arg3, nint arg4, nint dimensionType, nint arg6) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::pair<VolumeEntityManagerServer::CreateVolumeResult,StackRefResult<EntityContext>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint createVolume_65985e90(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6) =>
+    public nint createVolume(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::pair<VolumeEntityManagerServer::CreateVolumeResult,StackRefResult<EntityContext>>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'WeakRef<EntityContext>' is not supported.", false)]

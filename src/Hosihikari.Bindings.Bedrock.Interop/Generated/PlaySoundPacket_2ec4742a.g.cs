@@ -119,10 +119,6 @@ public sealed unsafe partial class PlaySoundPacket : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PlaySoundPacket Create(nint name, nint pos, float volume, float pitch) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint _read_f81ad776(nint stream) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
@@ -132,15 +128,11 @@ public sealed unsafe partial class PlaySoundPacket : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_c6778fec((void*)_handle);
     }
 
-    public string getName_d1b90ab5()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_d1b90ab5((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_a1743e69() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mName_Address

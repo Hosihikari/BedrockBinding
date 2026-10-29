@@ -94,10 +94,6 @@ public sealed unsafe partial class ScriptMessagePacket : global::System.IDisposa
     public static ScriptMessagePacket Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptMessagePacket Create(nint messageId, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static ScriptMessagePacket Create(string arg0, string arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -146,35 +142,23 @@ public sealed unsafe partial class ScriptMessagePacket : global::System.IDisposa
         return NativeMethods.TablePtr->hs_method_c062b127((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getMessageId_4acb9b90() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getMessageId_6a7b4539()
+    public string getMessageId()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_6a7b4539((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getMessageValue_9cf60630() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getMessageValue_a0f7dd8c()
+    public string getMessageValue()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_a0f7dd8c((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string getName_c6a9c6b4()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_c6a9c6b4((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_09ef2561() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMessageId_Address

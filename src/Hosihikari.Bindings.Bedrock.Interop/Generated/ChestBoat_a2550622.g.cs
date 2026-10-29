@@ -62,15 +62,11 @@ public sealed unsafe partial class ChestBoat : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_2d4eadf6((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
-    public string getEntityLocNameString_46dd2b68()
+    public string getEntityLocNameString()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_46dd2b68((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getEntityLocNameString_ac94a373() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void kill()
     {

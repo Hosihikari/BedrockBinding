@@ -94,12 +94,8 @@ public sealed unsafe partial class StructureTemplateDataResponsePacket : global:
     public static StructureTemplateDataResponsePacket Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructureTemplateDataResponsePacket Create_37345f43(nint structureName, nint structureTag, nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static StructureTemplateDataResponsePacket Create_aea625f8(nint arg0, nint arg1, nint arg2) =>
+    public static StructureTemplateDataResponsePacket Create(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -111,15 +107,11 @@ public sealed unsafe partial class StructureTemplateDataResponsePacket : global:
         return NativeMethods.TablePtr->hs_method_3982b4e6((void*)_handle);
     }
 
-    public string getName_91dc3dd7()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_91dc3dd7((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_699172b4() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int mResponseType
     {

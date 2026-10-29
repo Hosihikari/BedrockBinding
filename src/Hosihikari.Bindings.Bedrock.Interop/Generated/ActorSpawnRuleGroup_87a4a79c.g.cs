@@ -60,10 +60,6 @@ public sealed unsafe partial class ActorSpawnRuleGroup : global::System.IDisposa
         return NativeMethods.TablePtr->hs_method_f9c722b7((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public int getDelayEnd(nint id) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public int getDelayEnd(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -83,22 +79,10 @@ public sealed unsafe partial class ActorSpawnRuleGroup : global::System.IDisposa
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getFileType_eb6eba44() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getRootKey_12ac5c3b() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void offSetDelayByCurrentTick(global::Hosihikari.Bindings.Bedrock.Interop.Tick arg0)
     {
         NativeMethods.TablePtr->hs_method_dcb073ae((void*)_handle, (void*)arg0.Handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool processPopulationControl_422e62f2(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void readResourceFiles_e0ac98af(nint arg0, nint arg1, nint arg2) =>

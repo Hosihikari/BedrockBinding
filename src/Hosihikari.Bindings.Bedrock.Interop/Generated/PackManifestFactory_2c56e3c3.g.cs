@@ -115,10 +115,6 @@ public sealed unsafe partial class PackManifestFactory : global::System.IDisposa
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint contentKeyLookup(nint packIdentity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public global::Hosihikari.Bindings.Bedrock.Interop.PackManifest? create(global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy arg0, global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg1, global::Hosihikari.Bindings.Bedrock.Interop.PackReport arg2, global::Hosihikari.Bindings.Bedrock.Interop.SubpackInfoCollection? arg3)
     {
         var __hs_handle = NativeMethods.TablePtr->hs_method_46757b16((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)(arg3?.Handle ?? 0));
@@ -126,12 +122,8 @@ public sealed unsafe partial class PackManifestFactory : global::System.IDisposa
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public nint create_a062ff64(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
+    public nint create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint create_80daa6c6(nint accessStrategy, nint manifestContent, nint report, nint arg3, nint subpackInfoStack) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public static nint mAlternateContentKeys_Address

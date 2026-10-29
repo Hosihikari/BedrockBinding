@@ -47,12 +47,8 @@ public sealed partial class MobSpawnHerdInfo
     public static MobSpawnHerdInfo Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MobSpawnHerdInfo Create_f4dc3389(uint min, uint max, nint initialEvent, uint initialEventCount, nint herdEvent, uint herdEventSkipCount) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static MobSpawnHerdInfo Create_2974e424(uint arg0, uint arg1, nint arg2, uint arg3, nint arg4, uint arg5) =>
+    public static MobSpawnHerdInfo Create(uint arg0, uint arg1, nint arg2, uint arg3, nint arg4, uint arg5) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

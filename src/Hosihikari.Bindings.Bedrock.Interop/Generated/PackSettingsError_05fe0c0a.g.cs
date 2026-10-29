@@ -61,11 +61,7 @@ public sealed unsafe partial class PackSettingsError : global::System.IDisposabl
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PackSettingsError Create_b1f02304(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PackSettingsError Create_0e990483(nint errorParam) =>
+    public static PackSettingsError Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public static PackSettingsError Create(string[] arg0)
@@ -104,15 +100,11 @@ public sealed unsafe partial class PackSettingsError : global::System.IDisposabl
     public nint getEventErrorMessageMap_832a7ee1() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public string getLocErrorMessage_1fb98982()
+    public string getLocErrorMessage()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_1fb98982((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getLocErrorMessage_64c60a5d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint getLocErrorMessageMap_e876f2c3() =>

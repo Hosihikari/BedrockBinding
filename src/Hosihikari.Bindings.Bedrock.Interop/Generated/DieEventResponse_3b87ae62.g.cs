@@ -65,11 +65,7 @@ public sealed unsafe partial class DieEventResponse
         NativeMethods.TablePtr->hs_method_d86eb0e6((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_54273d01() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getName_54450ebb()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_54450ebb((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

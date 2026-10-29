@@ -91,11 +91,7 @@ public sealed unsafe partial class ServerToClientHandshakePacket : global::Syste
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ServerToClientHandshakePacket Create_fbdcc70f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ServerToClientHandshakePacket Create_208ab479(nint webTokenData) =>
+    public static ServerToClientHandshakePacket Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public static ServerToClientHandshakePacket Create(string arg0)
@@ -132,15 +128,11 @@ public sealed unsafe partial class ServerToClientHandshakePacket : global::Syste
         return NativeMethods.TablePtr->hs_method_9d70e6cc((void*)_handle);
     }
 
-    public string getName_2ee43fc5()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_2ee43fc5((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_4e7c0b27() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mData_Address

@@ -46,10 +46,6 @@ public sealed unsafe partial class TestSummaryDisplayer
     public static TestSummaryDisplayer Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _say_e6daeb0e(nint text, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void onTestFailed(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance arg0)
     {
         NativeMethods.TablePtr->hs_method_66637c27((void*)_handle, (void*)arg0.Handle);

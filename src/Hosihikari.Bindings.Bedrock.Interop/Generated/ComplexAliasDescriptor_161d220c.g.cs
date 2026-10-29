@@ -43,11 +43,7 @@ public sealed unsafe partial class ComplexAliasDescriptor : global::System.IDisp
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ComplexAliasDescriptor Create_3c313c99(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ComplexAliasDescriptor Create_01b9f241(nint fullName) =>
+    public static ComplexAliasDescriptor Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public static ComplexAliasDescriptor Create(string arg0)
@@ -93,11 +89,7 @@ public sealed unsafe partial class ComplexAliasDescriptor : global::System.IDisp
     public bool forEachItemUntil(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getFullName_61ce02e0() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getFullName_611dfa9e()
+    public string getFullName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_611dfa9e((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

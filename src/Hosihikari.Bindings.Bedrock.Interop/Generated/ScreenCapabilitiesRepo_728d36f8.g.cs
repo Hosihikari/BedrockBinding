@@ -48,12 +48,8 @@ public sealed partial class ScreenCapabilitiesRepo
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'IScreenCapabilities' has no accessible destructor.", false)]
-    public nint get_5df1d80a(nint arg0) =>
+    public nint get(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'IScreenCapabilities' has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint get_23a27c23(nint screenName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

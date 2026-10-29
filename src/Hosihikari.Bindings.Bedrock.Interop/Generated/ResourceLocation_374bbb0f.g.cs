@@ -76,24 +76,16 @@ public sealed unsafe partial class ResourceLocation : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation((nint)NativeMethods.TablePtr->hs_method_b97ea2d7(), false);
     }
 
-    public string getFullPath_fb65e6ae()
+    public string getFullPath()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_fb65e6ae((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getFullPath_0d8dcc2a() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public nint getRelativePath_980f8811()
+    public nint getRelativePath()
     {
         return (nint)NativeMethods.TablePtr->hs_method_980f8811((void*)_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getRelativePath_87e184b8() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int mFileSystem
     {
@@ -124,14 +116,10 @@ public sealed unsafe partial class ResourceLocation : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_5d94e621((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void setRelativePath_4c7266c2(nint arg0)
+    public void setRelativePath(nint arg0)
     {
         NativeMethods.TablePtr->hs_method_4c7266c2((void*)_handle, (void*)arg0);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setRelativePath_c60cb0b7(nint path) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
 
     public void Dispose()

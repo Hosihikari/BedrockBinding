@@ -66,10 +66,6 @@ public sealed unsafe partial class NpcDialogueStorage
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getScene_80a35e51(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void init(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0)
     {
         NativeMethods.TablePtr->hs_method_67a435ce((void*)_handle, (void*)arg0.Handle);
@@ -77,10 +73,6 @@ public sealed unsafe partial class NpcDialogueStorage
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool parseFile(nint fileData, nint fileName, nint packCommandVersion) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool parseFile(string arg0, string arg1, int arg2)

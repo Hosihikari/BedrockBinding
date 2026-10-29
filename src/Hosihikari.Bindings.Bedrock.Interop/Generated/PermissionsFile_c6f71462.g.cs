@@ -76,14 +76,6 @@ public sealed unsafe partial class PermissionsFile
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getXUIDsByPermission(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool isPermissionsSet(nint xuid, nint permission) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public bool isPermissionsSet(string arg0, sbyte arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -111,10 +103,6 @@ public sealed unsafe partial class PermissionsFile
     {
         NativeMethods.TablePtr->hs_method_12cdec8b((void*)_handle, (void*)arg0.Handle, arg1);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void persistPlayerPermissionsToDisk(nint xuid, nint permission) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void persistPlayerPermissionsToDisk(string arg0, sbyte arg1)
     {

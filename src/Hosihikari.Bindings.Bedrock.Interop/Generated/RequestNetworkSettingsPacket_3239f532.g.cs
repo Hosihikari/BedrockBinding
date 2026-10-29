@@ -103,15 +103,11 @@ public sealed unsafe partial class RequestNetworkSettingsPacket : global::System
         return NativeMethods.TablePtr->hs_method_a30521cf((void*)_handle);
     }
 
-    public string getName_4c3f9874()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_4c3f9874((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_8c0b2ec5() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int mClientNetworkVersion
     {

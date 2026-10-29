@@ -110,10 +110,6 @@ public sealed unsafe partial class PermissionsHandler : global::System.IDisposab
         set => NativeMethods.TablePtr->hs_set_1a97871b((void*)_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint playerPermissionLevelFromString(nint s) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static sbyte playerPermissionLevelFromString(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -133,15 +129,11 @@ public sealed unsafe partial class PermissionsHandler : global::System.IDisposab
         }
     }
 
-    public static string playerPermissionLevelToString_36b8683b(nint arg0)
+    public static string playerPermissionLevelToString(nint arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_36b8683b((void*)arg0);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint playerPermissionLevelToString_dc0cf691(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setCommandPermissions(byte arg0)
     {

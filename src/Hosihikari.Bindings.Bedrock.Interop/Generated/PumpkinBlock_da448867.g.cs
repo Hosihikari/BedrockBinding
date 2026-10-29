@@ -46,10 +46,6 @@ public sealed unsafe partial class PumpkinBlock : global::System.IDisposable
     public static PumpkinBlock Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static PumpkinBlock Create(nint nameId, int id, bool lit, bool carved) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static PumpkinBlock Create(string arg0, int arg1, bool arg2, bool arg3)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

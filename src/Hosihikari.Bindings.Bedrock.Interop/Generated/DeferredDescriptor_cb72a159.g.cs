@@ -60,11 +60,7 @@ public sealed unsafe partial class DeferredDescriptor
     public static nint deserialize_8aafda43(nint stream) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getFullName_383afb7c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getFullName_73c8332b()
+    public string getFullName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_73c8332b((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

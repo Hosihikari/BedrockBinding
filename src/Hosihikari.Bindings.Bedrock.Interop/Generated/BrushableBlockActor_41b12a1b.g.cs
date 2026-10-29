@@ -77,10 +77,6 @@ public sealed unsafe partial class BrushableBlockActor : global::System.IDisposa
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getLootTableFromVariant(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public int getMaxStackSize()
     {
         return NativeMethods.TablePtr->hs_method_5073c754((void*)_handle);

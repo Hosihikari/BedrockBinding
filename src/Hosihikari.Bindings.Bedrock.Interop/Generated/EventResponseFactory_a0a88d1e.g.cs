@@ -57,10 +57,6 @@ public sealed unsafe partial class EventResponseFactory : global::System.IDispos
     public void initSchema() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void initSchema(nint schemaName, nint version) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void initSchema(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

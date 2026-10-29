@@ -114,15 +114,11 @@ public sealed unsafe partial class SyncActorPropertyPacket : global::System.IDis
         return NativeMethods.TablePtr->hs_method_7e19f151((void*)_handle);
     }
 
-    public string getName_5db59032()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_5db59032((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_a7c1c82a() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPropertyData_Address

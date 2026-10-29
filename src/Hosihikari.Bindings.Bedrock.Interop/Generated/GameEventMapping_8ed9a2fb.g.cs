@@ -66,10 +66,6 @@ public sealed unsafe partial class GameEventMapping
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint creatorNameToEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     // The native field type is not projected; this is the address of the field storage.
     public static nint mExposedGameEvents_Address
     {

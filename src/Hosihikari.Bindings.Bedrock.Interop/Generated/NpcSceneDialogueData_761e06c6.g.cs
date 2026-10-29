@@ -42,12 +42,8 @@ public sealed unsafe partial class NpcSceneDialogueData : global::System.IDispos
     public static NpcSceneDialogueData Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static NpcSceneDialogueData Create_1dd4a4a4(nint npc, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public static NpcSceneDialogueData Create_5d190ec7(nint arg0, nint arg1) =>
+    public static NpcSceneDialogueData Create(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
@@ -83,31 +79,19 @@ public sealed unsafe partial class NpcSceneDialogueData : global::System.IDispos
         return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->hs_method_8caa148f((void*)_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getDialogueText_07c73dbb() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getDialogueText_b36a5c71()
+    public string getDialogueText()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_b36a5c71((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getNameRawText_5de5640d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getNameRawText_231c769f()
+    public string getNameRawText()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_231c769f((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getNameText_c12372d7() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getNameText_c27a62bd()
+    public string getNameText()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_c27a62bd((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -117,11 +101,7 @@ public sealed unsafe partial class NpcSceneDialogueData : global::System.IDispos
     public nint getRawDialogueText() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getSceneName_b2f82baf() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getSceneName_bf729884()
+    public string getSceneName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_bf729884((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

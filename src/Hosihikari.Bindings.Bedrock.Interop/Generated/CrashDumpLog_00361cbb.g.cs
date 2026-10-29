@@ -161,10 +161,6 @@ public sealed unsafe partial class CrashDumpLog
         NativeMethods.TablePtr->hs_method_de1edb74((void*)arg0, arg1, (void*)arg2, (void*)arg3);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void setBehaviorPackIds(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static void setBehaviorPackIds(string[] arg0)
     {
         var __hs_vectorItems0 = arg0 ?? global::System.Array.Empty<string>();
@@ -190,10 +186,6 @@ public sealed unsafe partial class CrashDumpLog
             NativeMethods.TablePtr->hs_method_24dd79da(__hs_vectorData0, (nuint)(arg0?.Length ?? 0));
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool setDeviceSessionID(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static bool setDeviceSessionID(string arg0)
     {

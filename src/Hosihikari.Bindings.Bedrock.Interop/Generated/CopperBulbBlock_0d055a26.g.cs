@@ -46,14 +46,6 @@ public sealed unsafe partial class CopperBulbBlock : global::System.IDisposable
     public static CopperBulbBlock Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CopperBulbBlock Create(nint arg0, int arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CopperBulbBlock Create(nint arg0, int arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static CopperBulbBlock Create(string arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.Brightness arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg4)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

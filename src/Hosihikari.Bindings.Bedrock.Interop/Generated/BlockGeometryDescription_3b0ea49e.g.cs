@@ -112,11 +112,7 @@ public sealed unsafe partial class BlockGeometryDescription : global::System.IDi
     public void buildSchema(nint componentSchema, nint factory) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_58f2cf71() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getName_7ca7b1d3()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_7ca7b1d3((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

@@ -67,17 +67,13 @@ public sealed unsafe partial class TextObjectRoot : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value((nint)NativeMethods.TablePtr->hs_method_7202b606((void*)_handle));
     }
 
-    public string asString_604907dd()
+    public string asString()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_604907dd((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint asString_11675051() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string[] asStringVector_ec79fa72()
+    public string[] asStringVector()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_ec79fa72((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
@@ -88,10 +84,6 @@ public sealed unsafe partial class TextObjectRoot : global::System.IDisposable
         }
         return __hs_result;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint asStringVector_cff24aa4() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void clear()
     {

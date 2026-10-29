@@ -38,10 +38,6 @@ public sealed unsafe partial class SpawnGroupData : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SpawnGroupData Create(nint identifier, nint spawnRules) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static SpawnGroupData Create(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -72,11 +68,7 @@ public sealed unsafe partial class SpawnGroupData : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_be269d5e((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getIdentifier_52ee4bd9() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getIdentifier_c6e01d6e()
+    public string getIdentifier()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_c6e01d6e((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

@@ -91,12 +91,8 @@ public sealed unsafe partial class StartGamePacket : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
-    public static StartGamePacket Create_aafeb965(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5, nint arg6, nint arg7, nint arg8, nint arg9, nint arg10, nint arg11, nint arg12, bool arg13, nint arg14, nint arg15, nint arg16, nint arg17, ulong arg18, int arg19, ulong arg20) =>
+    public static StartGamePacket Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5, nint arg6, nint arg7, nint arg8, nint arg9, nint arg10, nint arg11, nint arg12, bool arg13, nint arg14, nint arg15, nint arg16, nint arg17, ulong arg18, int arg19, ulong arg20) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StartGamePacket Create_a01e8a82(nint arg0, nint settings, nint entityId, nint runtimeId, nint entityGameType, bool enableItemStackNetManager, nint pos, nint rot, nint levelId, nint levelName, nint premiumTemplateContentIdentity, nint multiplayerCorrelationId, nint blockDefinitionGroup, bool isTrial, nint arg14, nint movementSettings, nint arg16, nint worldTemplateId, ulong levelCurrentTime, int enchantmentSeed, ulong arg20) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static StartGamePacket Create(nint arg0) =>
@@ -111,15 +107,11 @@ public sealed unsafe partial class StartGamePacket : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_933b0686((void*)_handle);
     }
 
-    public string getName_bc7fc271()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_bc7fc271((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_2108ab0f() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool mBlockNetworkIdsAreHashes
     {

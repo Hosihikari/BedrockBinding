@@ -43,12 +43,8 @@ public sealed unsafe partial class SculkSensorBlockActor : global::System.IDispo
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static SculkSensorBlockActor Create_ef6140ca(nint arg0, nint arg1, nint arg2, uint arg3, nint arg4) =>
+    public static SculkSensorBlockActor Create(nint arg0, nint arg1, nint arg2, uint arg3, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SculkSensorBlockActor Create_b4343aff(nint type, nint pos, nint id, uint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public static SculkSensorBlockActor Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
     {

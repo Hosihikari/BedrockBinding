@@ -87,10 +87,6 @@ public sealed unsafe partial class SurfaceMaterialAdjustmentAttributes : global:
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void parseExpressionNodeFloat(nint tag, nint tagName, nint arg2, nint node, float defaultValue) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
 
     public void Dispose()
     {

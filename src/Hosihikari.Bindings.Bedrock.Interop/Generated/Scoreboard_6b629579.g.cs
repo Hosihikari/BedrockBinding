@@ -91,10 +91,6 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
     public static Scoreboard Create_c108aceb(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint addObjective(nint name, nint displayName, nint criteria) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public global::Hosihikari.Bindings.Bedrock.Interop.Objective? addObjective(string arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.ObjectiveCriteria arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -128,10 +124,6 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
             }
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addScoreListener(nint arg0, nint objective) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void addScoreListener(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, string arg1)
     {
@@ -176,10 +168,6 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
             }
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint clearDisplayObjective(nint displaySlotName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Objective? clearDisplayObjective(string arg0)
     {
@@ -230,10 +218,6 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint createScoreboardId(nint fakePlayer) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void forEachIdentityRef(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
@@ -241,10 +225,6 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void forEachObjective(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getCriteria(nint criteriaName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ObjectiveCriteria? getCriteria(string arg0)
     {
@@ -266,7 +246,7 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
         }
     }
 
-    public string[] getCriteriaNames_c87aa4bc()
+    public string[] getCriteriaNames()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_c87aa4bc((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
@@ -278,22 +258,14 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getCriteriaNames_7a062315() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public global::Hosihikari.Bindings.Bedrock.Interop.ObjectiveCriteria getDefaultCriteria()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ObjectiveCriteria((nint)NativeMethods.TablePtr->hs_method_eef4aa2b((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'PlayerScore' is not supported.", false)]
-    public nint getDisplayInfoFiltered_92190ffa(nint arg0) =>
+    public nint getDisplayInfoFiltered(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'PlayerScore' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getDisplayInfoFiltered_9f68f6c9(nint displaySlot) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.DisplayObjective? getDisplayObjective(string arg0)
     {
@@ -315,11 +287,7 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getDisplayObjective(nint displaySlotName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string[] getDisplayObjectiveSlotNames_4ff9cbf8()
+    public string[] getDisplayObjectiveSlotNames()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_4ff9cbf8((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
@@ -331,17 +299,9 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getDisplayObjectiveSlotNames_2d8eaafe() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'ScoreInfo' is not supported.", false)]
     public nint getIdScores(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'ScoreInfo' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getObjective(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Objective? getObjective(string arg0)
     {
@@ -363,7 +323,7 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
         }
     }
 
-    public string[] getObjectiveNames_2efe5c6d()
+    public string[] getObjectiveNames()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_2efe5c6d((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
@@ -374,10 +334,6 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
         }
         return __hs_result;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getObjectiveNames_18d35b53() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public nint[] getObjectives_70bf0684()
     {
@@ -433,10 +389,6 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
             return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId((nint)NativeMethods.TablePtr->hs_method_74260eb1((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getScoreboardId(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef? getScoreboardIdentityRef(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0)
     {
@@ -551,10 +503,6 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint registerScoreboardIdentity(nint scoreboardId, nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public bool removeObjective(global::Hosihikari.Bindings.Bedrock.Interop.Objective? arg0)
     {
         return NativeMethods.TablePtr->hs_method_1eaee96a((void*)_handle, (void*)(arg0?.Handle ?? 0)) != 0;
@@ -578,10 +526,6 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
             NativeMethods.TablePtr->hs_method_6181be72((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void removeScoreListener(nint player, nint objective) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool resetPlayerScore(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0, global::Hosihikari.Bindings.Bedrock.Interop.Objective arg1)
     {
@@ -612,10 +556,6 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.DisplayObjective((nint)__hs_handle, false) : null;
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint setDisplayObjective(nint displaySlotName, nint objective, nint order) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setPacketSender(global::Hosihikari.Bindings.Bedrock.Interop.PacketSender? arg0)
     {

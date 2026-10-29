@@ -223,10 +223,6 @@ public sealed unsafe partial class ContainerComponent : global::System.IDisposab
     public void serverInitItemStackIds(int arg0, int arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setCustomName(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void setCustomName(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -250,10 +246,6 @@ public sealed unsafe partial class ContainerComponent : global::System.IDisposab
     {
         return NativeMethods.TablePtr->hs_method_e35b9a8c((void*)_handle, arg0, (void*)arg1.Handle) != 0;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setLootTable(nint lootTable, int lootTableSeed) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setLootTable(string arg0, int arg1)
     {

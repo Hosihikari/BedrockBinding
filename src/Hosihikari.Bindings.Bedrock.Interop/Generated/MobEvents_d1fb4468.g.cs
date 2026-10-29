@@ -76,10 +76,6 @@ public sealed unsafe partial class MobEvents : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.MobEvent((nint)NativeMethods.TablePtr->hs_method_6afb5cb9((void*)_handle, arg0), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getIndexFromName(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public int getIndexFromName(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

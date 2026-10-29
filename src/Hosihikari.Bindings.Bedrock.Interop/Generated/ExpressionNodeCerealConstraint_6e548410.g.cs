@@ -55,10 +55,6 @@ public sealed unsafe partial class ExpressionNodeCerealConstraint : global::Syst
         return new global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNodeCerealConstraint((nint)NativeMethods.TablePtr->hs_method_c566f300((void*)_handle, arg0), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint onlyAllowQueries(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNodeCerealConstraint onlyAllowQueries(string[] arg0)
     {
         var __hs_vectorItems0 = arg0 ?? global::System.Array.Empty<string>();

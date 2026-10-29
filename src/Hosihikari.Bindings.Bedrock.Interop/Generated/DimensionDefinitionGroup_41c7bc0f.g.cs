@@ -60,10 +60,6 @@ public sealed unsafe partial class DimensionDefinitionGroup : global::System.IDi
         return new DimensionDefinitionGroup((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getDimensionDefinition(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public global::Hosihikari.Bindings.Bedrock.Interop.DimensionDefinitionGroup_Nested.DimensionDefinition? getDimensionDefinition(string arg0)
     {
         var __hs_hasValue = false;
@@ -95,10 +91,6 @@ public sealed unsafe partial class DimensionDefinitionGroup : global::System.IDi
     {
         get => (nint)NativeMethods.TablePtr->hs_get_fd27b16f((void*)_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool tryAddDimensionDefinitionByString(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool tryAddDimensionDefinitionByString(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0, string arg1)
     {

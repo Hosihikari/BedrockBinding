@@ -57,12 +57,8 @@ public sealed unsafe partial class MinecraftCommands : global::System.IDisposabl
     public static MinecraftCommands Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint compileCommand_76ce57bf(nint commandStr, nint origin, nint commandVersion, nint onParserError) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public nint compileCommand_0e0ad2e5(nint arg0, nint arg1, nint arg2, nint arg3) =>
+    public nint compileCommand(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]

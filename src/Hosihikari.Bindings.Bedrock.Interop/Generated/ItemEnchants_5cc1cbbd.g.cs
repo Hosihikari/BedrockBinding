@@ -76,7 +76,7 @@ public sealed unsafe partial class ItemEnchants
     public nint getAllEnchants() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'EnchantmentInstance' is not supported.");
 
-    public string[] getEnchantNames_7a9cad8f()
+    public string[] getEnchantNames()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_7a9cad8f((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
@@ -87,10 +87,6 @@ public sealed unsafe partial class ItemEnchants
         }
         return __hs_result;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getEnchantNames_d785dbd3() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EnchantmentInstance' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getEnchantment(nint arg0) =>

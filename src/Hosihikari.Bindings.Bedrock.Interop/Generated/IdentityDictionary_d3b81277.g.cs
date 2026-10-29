@@ -100,10 +100,6 @@ public sealed unsafe partial class IdentityDictionary : global::System.IDisposab
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getScoreboardId(nint fakePlayerName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     // The native field type is not projected; this is the address of the field storage.
     public nint mEntities_Address
     {
@@ -157,10 +153,6 @@ public sealed unsafe partial class IdentityDictionary : global::System.IDisposab
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint registerIdentity(nint scoreboardId, nint fakePlayerName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public bool shouldConvertFakePlayer(global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId arg0, string arg1)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -179,10 +171,6 @@ public sealed unsafe partial class IdentityDictionary : global::System.IDisposab
             return NativeMethods.TablePtr->hs_method_a0c0ec33((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool shouldConvertFakePlayer(nint playerId, nint displayName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
 
     public void Dispose()

@@ -54,10 +54,6 @@ public sealed unsafe partial class DisplayObjective : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.DisplayObjective((nint)NativeMethods.TablePtr->hs_method_85f8d2f3((void*)arg0.Handle, (void*)arg1.Handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getBelowNameStringForId(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public string getBelowNameStringForId(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_d8461ba9((void*)_handle, (void*)arg0.Handle);

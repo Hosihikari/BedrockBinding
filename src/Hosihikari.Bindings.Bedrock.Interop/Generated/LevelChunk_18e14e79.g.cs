@@ -836,28 +836,16 @@ public sealed unsafe partial class LevelChunk
         return NativeMethods.TablePtr->hs_method_26c82700((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void serializeEntities_ea10b928(nint entities, nint arg1, nint buffer, bool arg3, nint arg4, nint arg5, nint arg6) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void serializeEntities_1c6a749a(nint arg0, bool arg1, nint arg2, nint arg3, nint arg4) =>
+    public void serializeEntities(nint arg0, bool arg1, nint arg2, nint arg3, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void serializeEntities_fb2ba78e(nint buffer, bool arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public static void serializeEntities_331c93a4(nint arg0, nint arg1, nint arg2, bool arg3, nint arg4, nint arg5, nint arg6) =>
+    public static void serializeEntities(nint arg0, nint arg1, nint arg2, bool arg3, nint arg4, nint arg5, nint arg6) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void serializeEntityRemovals_291e54c8(nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public void serializeEntityRemovals_9ab77ef3(nint arg0) =>
+    public void serializeEntityRemovals(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public void serializeFinalization(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput arg0)
@@ -977,10 +965,6 @@ public sealed unsafe partial class LevelChunk
             NativeMethods.TablePtr->hs_method_cddf133f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setPendingEntities(nint entitiesData) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'std::vector<short,std::allocator<short>>' has no generated wrapper.", false)]
     public void setPreWorldGenHeightMap_692b6d8c(nint arg0) =>

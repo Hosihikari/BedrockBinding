@@ -78,20 +78,12 @@ public sealed unsafe partial class LevelSummary
     public static LevelSummary Create_b0d04be2(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelSummary Create_3ff4775b(nint levelId, nint levelData, nint levelDirectory, nint levelInfoDirectory, bool isBetaRetailLevel) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelSummary Create_3505eca9(nint arg0, nint arg1, long arg2, nint arg3, bool arg4, nint arg5, nint arg6, int arg7, ulong arg8, bool arg9, bool arg10, bool arg11, nint arg12, bool arg13, nint arg14, nint arg15, nint arg16, nint arg17, nint arg18, nint arg19, nint arg20, bool arg21, nint arg22, nint arg23, nint arg24, nint arg25, nint arg26) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static LevelSummary Create_aa661553(nint arg0, nint arg1, nint arg2, nint arg3, bool arg4) =>
+    public static LevelSummary Create(nint arg0, nint arg1, nint arg2, nint arg3, bool arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static LevelSummary Create_9d607655(nint arg0, nint arg1, long arg2, nint arg3, bool arg4, nint arg5, nint arg6, int arg7, ulong arg8, bool arg9, bool arg10, bool arg11, nint arg12, bool arg13, nint arg14, nint arg15, nint arg16, nint arg17, nint arg18, nint arg19, nint arg20, bool arg21, nint arg22, nint arg23, nint arg24, nint arg25, nint arg26) =>
+    public static LevelSummary Create(nint arg0, nint arg1, long arg2, nint arg3, bool arg4, nint arg5, nint arg6, int arg7, ulong arg8, bool arg9, bool arg10, bool arg11, nint arg12, bool arg13, nint arg14, nint arg15, nint arg16, nint arg17, nint arg18, nint arg19, nint arg20, bool arg21, nint arg22, nint arg23, nint arg24, nint arg25, nint arg26) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.PathBuffer_std__basic_string_char__ WORLD_ICON_FILENAME
@@ -99,25 +91,17 @@ public sealed unsafe partial class LevelSummary
         get => new global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->hs_get_ff016d7e(), false);
     }
 
-    public static string buildCustomIconPath_77442c4e(nint arg0)
+    public static string buildCustomIconPath(nint arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_77442c4e((void*)arg0);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint buildCustomIconPath_28b20e37(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static string buildWorldIconPath_a5854f42(nint arg0)
+    public static string buildWorldIconPath(nint arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_a5854f42((void*)arg0);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint buildWorldIconPath_256f9197(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
@@ -132,10 +116,6 @@ public sealed unsafe partial class LevelSummary
     {
         NativeMethods.TablePtr->hs_method_e36a664f((void*)_handle, (void*)arg0);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint setName(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelSummary setName(string arg0)
     {

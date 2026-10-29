@@ -77,10 +77,6 @@ public sealed unsafe partial class MinecraftGameTest : global::System.IDisposabl
         NativeMethods.TablePtr->hs_method_157b0299((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void onLevelDestruction(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void onLevelDestruction(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -139,10 +135,6 @@ public sealed unsafe partial class MinecraftGameTest : global::System.IDisposabl
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::shared_ptr<gametest::IGameTestListener>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint runTest(nint arg0, nint dimension, nint @params) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint runTest_3ccb96c0(nint arg0, nint dimension, nint @params, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
@@ -151,10 +143,6 @@ public sealed unsafe partial class MinecraftGameTest : global::System.IDisposabl
         var __hs_view = NativeMethods.TablePtr->hs_method_0624d3d9((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2 ?? default(byte), arg2.HasValue);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint runTestAt(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint runTests_1237c43a(nint dimension, nint @params) =>

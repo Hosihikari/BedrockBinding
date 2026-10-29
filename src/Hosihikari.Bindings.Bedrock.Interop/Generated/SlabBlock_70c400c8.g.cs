@@ -46,10 +46,6 @@ public sealed unsafe partial class SlabBlock : global::System.IDisposable
     public static SlabBlock Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SlabBlock Create(nint nameId, int id, bool _fullsize, nint mat, nint baseSlab) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static SlabBlock Create(string arg0, int arg1, bool arg2, global::Hosihikari.Bindings.Bedrock.Interop.Material arg3, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg4)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

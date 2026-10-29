@@ -47,12 +47,8 @@ public sealed partial class OverloadSyntaxInformation
     public static OverloadSyntaxInformation Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static OverloadSyntaxInformation Create_31861cf5(nint _text, uint _start, uint _end) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static OverloadSyntaxInformation Create_74597ae2(nint arg0, uint arg1, uint arg2) =>
+    public static OverloadSyntaxInformation Create(nint arg0, uint arg1, uint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

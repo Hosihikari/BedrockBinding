@@ -38,12 +38,8 @@ public sealed unsafe partial class CommandContext : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CommandContext Create_b4e18405(nint command, nint origin, int version) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static CommandContext Create_ead0dce8(nint arg0, nint arg1, int arg2) =>
+    public static CommandContext Create(nint arg0, nint arg1, int arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin getCommandOrigin()

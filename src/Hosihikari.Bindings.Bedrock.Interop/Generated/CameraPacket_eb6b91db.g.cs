@@ -73,15 +73,11 @@ public sealed unsafe partial class CameraPacket : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_565d0283((void*)_handle);
     }
 
-    public string getName_4619b1dc()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_4619b1dc((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_14a12507() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCameraId_Address

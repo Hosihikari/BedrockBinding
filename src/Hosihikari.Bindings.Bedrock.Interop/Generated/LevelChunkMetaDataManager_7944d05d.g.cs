@@ -52,10 +52,6 @@ public sealed unsafe partial class LevelChunkMetaDataManager
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void inferInitialMetaDataAfterDeserialization(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static void inferInitialMetaDataAfterDeserialization(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 arg1, int arg2, string arg3, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg4, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange arg5, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg6, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkMetaData arg7)
     {
         var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
@@ -79,10 +75,6 @@ public sealed unsafe partial class LevelChunkMetaDataManager
     {
         NativeMethods.TablePtr->hs_method_2b2c1267((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint initializeLevelChunkMetaData(nint arg0, nint arg1, nint arg2, bool arg3, nint arg4, nint arg5, nint arg6) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static global::Hosihikari.Bindings.Abi.SharedHandle? initializeLevelChunkMetaData(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange arg2, bool arg3, global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 arg4, int arg5, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg6)
     {

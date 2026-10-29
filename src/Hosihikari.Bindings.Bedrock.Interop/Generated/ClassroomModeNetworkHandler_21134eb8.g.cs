@@ -63,10 +63,6 @@ public sealed unsafe partial class ClassroomModeNetworkHandler : global::System.
     public static ClassroomModeNetworkHandler Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _connect_4583ef15(nint address) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public bool allowIncomingPacketId(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, int arg1)
     {
         return NativeMethods.TablePtr->hs_method_0ee5a1b9((void*)_handle, (void*)arg0.Handle, arg1) != 0;

@@ -48,12 +48,8 @@ public sealed partial class POIBlueprint
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static POIBlueprint Create_8e5bbd16(nint arg0, nint arg1, float arg2, bool arg3, ulong arg4, ulong arg5, nint arg6, nint arg7, nint arg8) =>
+    public static POIBlueprint Create(nint arg0, nint arg1, float arg2, bool arg3, ulong arg4, ulong arg5, nint arg6, nint arg7, nint arg8) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static POIBlueprint Create_96a684b3(nint name, nint type, float radius, bool useBoundingBox, ulong capacity, ulong weight, nint soundEvent, nint initEvent, nint endEvent) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

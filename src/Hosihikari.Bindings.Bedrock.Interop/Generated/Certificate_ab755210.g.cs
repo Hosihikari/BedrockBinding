@@ -49,26 +49,14 @@ public sealed unsafe partial class Certificate : global::System.IDisposable
         return new Certificate((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint createWebToken_4c2f7699(nint signer, long notBeforeDate, long expirationDate, nint identityPublicKey, bool isCertificateAuthority, nint extraData) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static nint createWrappedCertificate_c2ef4dc8(nint arg0, long arg1, long arg2, nint arg3, bool arg4, nint arg5, nint arg6) =>
+    public static nint createWrappedCertificate(nint arg0, long arg1, long arg2, nint arg3, bool arg4, nint arg5, nint arg6) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint createWrappedCertificate_b72e3697(nint signer, long notBeforeDate, long expirationDate, nint identityPublicKey, bool isCertificateAuthority, nint extraData, nint parentCertificate) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public long getExpirationDate()
     {
         return NativeMethods.TablePtr->hs_method_5f383c70((void*)_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getExtraData(nint key, nint defaultValue) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value getExtraData(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1)
     {
@@ -89,15 +77,11 @@ public sealed unsafe partial class Certificate : global::System.IDisposable
         }
     }
 
-    public string getIdentityPublicKey_d8b2107d()
+    public string getIdentityPublicKey()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_d8b2107d((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getIdentityPublicKey_a5d69c20() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public long getNotBeforeDate()
     {
@@ -132,15 +116,11 @@ public sealed unsafe partial class Certificate : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->hs_get_2fce10c1((void*)_handle);
     }
 
-    public string toString_c57cefb7()
+    public string toString()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_c57cefb7((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint toString_c345d804() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool validate(long arg0, bool arg1)
     {

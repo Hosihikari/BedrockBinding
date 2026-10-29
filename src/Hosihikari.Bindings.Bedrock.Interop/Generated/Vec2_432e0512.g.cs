@@ -93,25 +93,17 @@ public sealed unsafe partial class Vec2 : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Vec2((nint)NativeMethods.TablePtr->hs_method_d3a6bb5e((void*)arg0.Handle, arg1));
     }
 
-    public string toJsonString_f5a8ee64()
+    public string toJsonString()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_f5a8ee64((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint toJsonString_16e5188b() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string toString_e9c75dbf()
+    public string toString()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_e9c75dbf((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint toString_ba5f8fc4() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public float b
     {

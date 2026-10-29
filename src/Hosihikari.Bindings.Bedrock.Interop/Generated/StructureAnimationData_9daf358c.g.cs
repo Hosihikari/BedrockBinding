@@ -47,12 +47,8 @@ public sealed unsafe partial class StructureAnimationData
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static StructureAnimationData Create_69a82eed(nint arg0, ulong arg1, nint arg2, nint arg3, byte arg4, nint arg5) =>
+    public static StructureAnimationData Create(nint arg0, ulong arg1, nint arg2, nint arg3, byte arg4, nint arg5) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructureAnimationData Create_c73b43b8(nint cmdArea, ulong tickQueued, nint structureName, nint structureSettings, byte structureVersion, nint placementPos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public bool allBlocksPlaced()
     {
@@ -84,11 +80,7 @@ public sealed unsafe partial class StructureAnimationData
         return NativeMethods.TablePtr->hs_method_e4536c65((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getStructureName_c6658d8c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getStructureName_ed440802()
+    public string getStructureName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_ed440802((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -114,12 +106,8 @@ public sealed unsafe partial class StructureAnimationData
         return NativeMethods.TablePtr->hs_method_bac8b011((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint load_2cdcb4ef(nint key, nint tag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'StructureAnimationData' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint load_0f17360b(nint arg0, nint arg1) =>
+    public static nint load(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'StructureAnimationData' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

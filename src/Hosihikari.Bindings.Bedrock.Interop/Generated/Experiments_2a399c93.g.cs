@@ -76,27 +76,19 @@ public sealed unsafe partial class Experiments
         NativeMethods.TablePtr->hs_method_e4ee8d7b((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getExperimentTextID(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static string getExperimentTextID(int arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_63f9fcea(arg0);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string getExperimentsActiveAsJSONList_279386cf()
+    public string getExperimentsActiveAsJSONList()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_279386cf((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getExperimentsActiveAsJSONList_d97d690a() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string[] getExperimentsActiveForTelemetry_23f45a42()
+    public string[] getExperimentsActiveForTelemetry()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_23f45a42((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
@@ -108,20 +100,12 @@ public sealed unsafe partial class Experiments
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getExperimentsActiveForTelemetry_7bfe780b() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void getTagData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
     {
         NativeMethods.TablePtr->hs_method_1942ba59((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getToggleNames_eba6fbb6() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public static nint getToggleNames_6df953d1()
+    public static nint getToggleNames()
     {
         return (nint)NativeMethods.TablePtr->hs_method_6df953d1();
     }

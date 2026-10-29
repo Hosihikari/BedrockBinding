@@ -46,10 +46,6 @@ public sealed unsafe partial class EquipmentTableDefinition
     public static EquipmentTableDefinition Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _setLootTable_fae149e8(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
     {
         NativeMethods.TablePtr->hs_method_9d46608e(arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));

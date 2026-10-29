@@ -82,10 +82,6 @@ public sealed unsafe partial class StructurePoolBlockTagPredicateBlockTagStringM
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructurePoolBlockTagPredicateBlockTagStringMatches Create(nint block, nint tag, nint value) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static StructurePoolBlockTagPredicateBlockTagStringMatches Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 

@@ -53,10 +53,6 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
     public static Dimension Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Dimension Create(nint level, nint dimId, nint heightRange, nint callbackContext, nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static Dimension Create(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg1, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange arg2, global::Hosihikari.Bindings.Bedrock.Interop.Scheduler arg3, string arg4)
     {
         var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
@@ -112,12 +108,8 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void addActorUnloadedChunkTransferToQueue_955393e8(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
+    public void addActorUnloadedChunkTransferToQueue(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addActorUnloadedChunkTransferToQueue_63cfe71c(nint arg0, nint arg1, nint dimId, nint arg3, nint entityTag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void addPlayerToReplication(global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef arg0)
     {
@@ -549,10 +541,6 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_9ccb06da((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void onLevelDestruction(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void onLevelDestruction(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -571,10 +559,6 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
             NativeMethods.TablePtr->hs_method_eec30a74((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void onStaticTickingAreaAdded(nint tickingAreaName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void onStaticTickingAreaAdded(string arg0)
     {
@@ -692,12 +676,8 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void transferEntityToUnloadedChunk_acd50d15(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
+    public void transferEntityToUnloadedChunk(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void transferEntityToUnloadedChunk_3025cc48(nint arg0, nint arg1, nint dimId, nint arg3, nint entityTag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void tryGarbageCollectStructures()
     {

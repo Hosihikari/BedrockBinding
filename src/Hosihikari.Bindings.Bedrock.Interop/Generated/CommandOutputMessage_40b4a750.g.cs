@@ -57,10 +57,6 @@ public sealed unsafe partial class CommandOutputMessage : global::System.IDispos
     public static CommandOutputMessage Create_5dcc154f(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CommandOutputMessage Create(nint type, nint msgId, nint @params) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static CommandOutputMessage Create(int arg0, string arg1, string[] arg2)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -107,21 +103,13 @@ public sealed unsafe partial class CommandOutputMessage : global::System.IDispos
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getMessageId_063d0599() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getMessageId_29cc454c()
+    public string getMessageId()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_29cc454c((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getParams_f27cfc2c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public nint getParams_b81e4c97()
+    public nint getParams()
     {
         return (nint)NativeMethods.TablePtr->hs_method_b81e4c97((void*)_handle);
     }

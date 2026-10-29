@@ -46,15 +46,11 @@ public sealed unsafe partial class ResolvedTextObject
     public static ResolvedTextObject Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public string getAsJsonString_7cef5ebf()
+    public string getAsJsonString()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_7cef5ebf((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getAsJsonString_19c89f35() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value getJson()
     {

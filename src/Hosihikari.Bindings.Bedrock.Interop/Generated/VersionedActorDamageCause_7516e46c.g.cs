@@ -47,12 +47,8 @@ public sealed unsafe partial class VersionedActorDamageCause
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static VersionedActorDamageCause Create_8e1d4f79(nint arg0, nint arg1, nint arg2, nint arg3) =>
+    public static VersionedActorDamageCause Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static VersionedActorDamageCause Create_bcab1d27(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public int getCause()
     {
@@ -66,11 +62,7 @@ public sealed unsafe partial class VersionedActorDamageCause
         return __hs_hasValue ? __hs_value : (byte?)null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_9b8b5b16() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getName_03060bb5()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_03060bb5((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

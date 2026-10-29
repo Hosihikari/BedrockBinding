@@ -43,15 +43,11 @@ public sealed unsafe partial class CommandParameterData : global::System.IDispos
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CommandParameterData Create_202c9c59(nint typeIndex, nint parser, nint name, nint paramType, nint enumNameOrPostfix, nint subchain, int offset, bool optional, int flagOffset) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static CommandParameterData Create(nint typeIndex, nint parser, nint name, nint type, nint enumNameOrPostfix, int offset, bool optional, int flagOffset) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: parameter type 'bool (CommandRegistry::*)(void*,CommandRegistry::ParseToken const&,CommandOrigin const&,int,std::basic_string<char,std::char_traits<char>,std::allocator<char>>&,std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>&) const' is not supported.", false)]
-    public static CommandParameterData Create_62335021(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, int arg6, bool arg7, int arg8) =>
+    public static CommandParameterData Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, int arg6, bool arg7, int arg8) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'bool (CommandRegistry::*)(void*,CommandRegistry::ParseToken const&,CommandOrigin const&,int,std::basic_string<char,std::char_traits<char>,std::allocator<char>>&,std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>&) const' is not supported.");
 
     public static CommandParameterData Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandParameterData arg0)

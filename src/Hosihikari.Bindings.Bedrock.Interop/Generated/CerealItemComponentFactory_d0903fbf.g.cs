@@ -46,10 +46,6 @@ public sealed unsafe partial class CerealItemComponentFactory
     public static CerealItemComponentFactory Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint constructItemComponent(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static global::Hosihikari.Bindings.Abi.SharedHandle? constructItemComponent(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -70,12 +66,8 @@ public sealed unsafe partial class CerealItemComponentFactory
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void deprecateComponentStartingFromVersion_cd1f0118(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static void deprecateComponentStartingFromVersion_c495b575(nint arg0, nint arg1, nint arg2) =>
+    public static void deprecateComponentStartingFromVersion(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -113,8 +105,4 @@ public sealed unsafe partial class CerealItemComponentFactory
             return NativeMethods.TablePtr->hs_method_eb459a25(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, arg2, (void*)arg3.Handle, (void*)arg4.Handle) != 0;
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool validateCerealComponent(nint arg0, nint arg1, bool arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 }

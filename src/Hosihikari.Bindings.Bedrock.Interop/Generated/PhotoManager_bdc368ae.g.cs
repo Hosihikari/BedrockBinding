@@ -57,18 +57,10 @@ public sealed unsafe partial class PhotoManager : global::System.IDisposable
     public static PhotoManager Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _getPhotoStoragePath_b6545d60() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void createPhotoStorage()
     {
         NativeMethods.TablePtr->hs_method_f4c4ed59((void*)_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void createScreenshotsFolder(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void createScreenshotsFolder(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.AppPlatform arg1)
     {
@@ -98,14 +90,10 @@ public sealed unsafe partial class PhotoManager : global::System.IDisposable
     public nint getPictureTakenConnector() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    public nint getScreenshotsFolder_9d2ddbb6()
+    public nint getScreenshotsFolder()
     {
         return (nint)NativeMethods.TablePtr->hs_method_9d2ddbb6((void*)_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getScreenshotsFolder_34433f4a() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

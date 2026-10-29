@@ -50,10 +50,6 @@ public sealed unsafe partial class BegGoal
     public static BegGoal Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void appendDebugInfo_aac7dbc8(nint str) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public bool canContinueToUse()
     {
         return NativeMethods.TablePtr->hs_method_125688b2((void*)_handle) != 0;

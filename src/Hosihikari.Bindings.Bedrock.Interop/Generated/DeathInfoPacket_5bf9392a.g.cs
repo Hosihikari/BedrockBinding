@@ -53,10 +53,6 @@ public sealed unsafe partial class DeathInfoPacket : global::System.IDisposable
     public static DeathInfoPacket Create_f21e57e2(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static DeathInfoPacket Create_3b08e014(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static DeathInfoPacket Create_15c034c9(nint arg0)
     {
         var handle = NativeMethods.TablePtr->hs_create_15c034c9((void*)arg0);
@@ -77,15 +73,11 @@ public sealed unsafe partial class DeathInfoPacket : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_219a5808((void*)_handle);
     }
 
-    public string getName_bc561f29()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_bc561f29((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_04f688f9() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDeathCauseMessage_Address

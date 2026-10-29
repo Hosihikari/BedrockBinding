@@ -46,10 +46,6 @@ public sealed unsafe partial class BasePressurePlateBlock : global::System.IDisp
     public static BasePressurePlateBlock Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BasePressurePlateBlock Create_1651f5fa(nint nameId, int id, nint material) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public bool canSpawnOn(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0)
     {
         return NativeMethods.TablePtr->hs_method_c9af3f51((void*)_handle, (void*)(arg0?.Handle ?? 0)) != 0;

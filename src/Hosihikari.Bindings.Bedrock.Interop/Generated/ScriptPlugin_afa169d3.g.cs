@@ -57,17 +57,9 @@ public sealed unsafe partial class ScriptPlugin : global::System.IDisposable
         return new ScriptPlugin((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptPlugin Create_e0f12618(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static ScriptPlugin Create_5b9f61c4(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7) =>
+    public static ScriptPlugin Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _loadScript_df50c7d9(nint fileName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ModuleDescriptor getModuleDescriptor()
     {
@@ -79,12 +71,8 @@ public sealed unsafe partial class ScriptPlugin : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ScriptContext((nint)NativeMethods.TablePtr->hs_method_546165f3((void*)_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint onLoadScript_ec7ed49a(nint name, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::ScriptData' is not supported.", false)]
-    public nint onLoadScript_e9c8c769(nint arg0, nint arg1) =>
+    public nint onLoadScript(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::ScriptData' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

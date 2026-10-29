@@ -65,10 +65,6 @@ public sealed unsafe partial class RandomizableBlockActorContainerBase : global:
         return NativeMethods.TablePtr->hs_method_9e791a3d((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setLootTable(nint lootTable, int lootTableSeed) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void setLootTable(string arg0, int arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

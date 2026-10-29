@@ -50,11 +50,7 @@ public sealed unsafe partial class CustomComponentsItemComponent
     public static CustomComponentsItemComponent Create_149eb23e(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getComponentNames_13ac8546() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public nint getComponentNames_13cb91d6()
+    public nint getComponentNames()
     {
         return (nint)NativeMethods.TablePtr->hs_method_13cb91d6((void*)_handle);
     }

@@ -53,10 +53,6 @@ public sealed unsafe partial class GameTestResultsPacket : global::System.IDispo
     public static GameTestResultsPacket Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GameTestResultsPacket Create(nint arg0, nint error, bool succeeded) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static GameTestResultsPacket Create(string arg0, string arg1, bool arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -105,15 +101,11 @@ public sealed unsafe partial class GameTestResultsPacket : global::System.IDispo
         return NativeMethods.TablePtr->hs_method_8def16a0((void*)_handle);
     }
 
-    public string getName_56262eab()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_56262eab((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_8bdfcc7b() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mError_Address

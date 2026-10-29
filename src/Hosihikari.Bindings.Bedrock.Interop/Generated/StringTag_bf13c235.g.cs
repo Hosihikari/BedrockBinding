@@ -75,11 +75,7 @@ public sealed unsafe partial class StringTag : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StringTag Create_b84b11c8(nint str) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StringTag Create_5747b524(nint str) =>
+    public static StringTag Create(nint str) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Tag? copy()
@@ -111,15 +107,11 @@ public sealed unsafe partial class StringTag : global::System.IDisposable
     public nint load_fd0bb5ce(nint dis) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public string toString_d96696a6()
+    public string toString()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_d96696a6((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint toString_fd0b3057() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void write(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput arg0)
     {

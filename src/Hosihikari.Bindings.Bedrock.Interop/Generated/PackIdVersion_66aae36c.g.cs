@@ -60,19 +60,11 @@ public sealed unsafe partial class PackIdVersion : global::System.IDisposable
         return new PackIdVersion((nint)handle);
     }
 
-    public string asString_9a147f0a()
+    public string asString()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_9a147f0a((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint asString_fe0446be() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint fromString(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion fromString(string arg0)
     {

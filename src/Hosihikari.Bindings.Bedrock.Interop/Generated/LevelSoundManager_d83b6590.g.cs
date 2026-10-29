@@ -71,10 +71,6 @@ public sealed unsafe partial class LevelSoundManager : global::System.IDisposabl
         NativeMethods.TablePtr->hs_method_e2258dbf((void*)_handle, arg0, (void*)arg1.Handle, arg2, (void*)arg3.Handle, arg4, arg5);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void playSound_bbbba8c1(nint name, nint pos, float volume, float pitch) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void playSound(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, float arg2, float arg3)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

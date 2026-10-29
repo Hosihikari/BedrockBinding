@@ -141,15 +141,11 @@ public sealed unsafe partial class SubChunk
         NativeMethods.TablePtr->hs_method_4a1d9ea1((void*)_handle, arg0);
     }
 
-    public string recalculateHashAndSerialize_4fd438da(bool arg0)
+    public string recalculateHashAndSerialize(bool arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_4fd438da((void*)_handle, arg0);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint recalculateHashAndSerialize_587489fb(bool arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void reset(global::Hosihikari.Bindings.Bedrock.Interop.Block? arg0, bool arg1, bool arg2)
     {

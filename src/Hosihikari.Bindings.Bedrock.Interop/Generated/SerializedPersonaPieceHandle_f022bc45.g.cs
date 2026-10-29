@@ -38,10 +38,6 @@ public sealed unsafe partial class SerializedPersonaPieceHandle : global::System
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SerializedPersonaPieceHandle Create(nint pieceId, nint pieceType, nint packId, bool isDefaultPiece, nint productId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static SerializedPersonaPieceHandle Create(string arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg2, bool arg3, string arg4)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

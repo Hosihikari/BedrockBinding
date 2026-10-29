@@ -253,10 +253,6 @@ public sealed unsafe partial class Village
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _deleteOldDataIfNeeded_34189434(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void _findWeightedPOI_e109ff0d(nint unclaimedPOIStack, nint random, nint id) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
@@ -403,10 +399,6 @@ public sealed unsafe partial class Village
     {
         return NativeMethods.TablePtr->hs_method_3bd02a90((void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void loadDataByKey(nint key, nint tag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void loadDataByKey(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1)
     {

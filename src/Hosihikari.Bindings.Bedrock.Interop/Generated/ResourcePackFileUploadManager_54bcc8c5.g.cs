@@ -47,19 +47,7 @@ public sealed unsafe partial class ResourcePackFileUploadManager : global::Syste
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _uploadPackToRealmStorage_584388e6(nint uploadId, nint path, int slotIndex, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _uploadResourcePackFolder_f3da79d0(nint resourcePack, nint resourcePackLocation, nint resourceZipPath, nint uploadOptions) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void uploadFileToRealmStorage(nint uploadId, nint path, int slotIndex, nint realmsGuid) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void uploadFileToRealmStorage(string arg0, nint arg1, int arg2, string arg3)
@@ -94,10 +82,6 @@ public sealed unsafe partial class ResourcePackFileUploadManager : global::Syste
             }
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void uploadResourcePack(nint resourcePackName, nint resourceLocation, bool isZipped, bool isPremium, nint packType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void uploadResourcePack(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg1, bool arg2, bool arg3, sbyte arg4)
     {

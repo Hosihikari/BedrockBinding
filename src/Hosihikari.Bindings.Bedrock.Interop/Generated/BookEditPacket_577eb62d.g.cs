@@ -73,15 +73,11 @@ public sealed unsafe partial class BookEditPacket : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_719ec60a((void*)_handle);
     }
 
-    public string getName_53df44fc()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_53df44fc((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_bd5a0b64() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PageContent' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getPage() =>

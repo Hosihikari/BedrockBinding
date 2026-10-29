@@ -64,10 +64,6 @@ public sealed unsafe partial class Container : global::System.IDisposable
         return new Container((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Container Create(nint type, nint name, bool customName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static Container Create(sbyte arg0, string arg1, bool arg2)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
@@ -209,10 +205,6 @@ public sealed unsafe partial class Container : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_23cf7c03((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getContainerTypeId(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static sbyte getContainerTypeId(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -231,10 +223,6 @@ public sealed unsafe partial class Container : global::System.IDisposable
             return NativeMethods.TablePtr->hs_method_905e5c50(__hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getContainerTypeName(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static string getContainerTypeName(sbyte arg0)
     {
@@ -414,10 +402,6 @@ public sealed unsafe partial class Container : global::System.IDisposable
     {
         NativeMethods.TablePtr->hs_method_a2289dde((void*)_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setCustomName(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setCustomName(string arg0)
     {

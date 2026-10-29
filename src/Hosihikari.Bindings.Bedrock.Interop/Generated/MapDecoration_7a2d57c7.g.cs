@@ -49,10 +49,6 @@ public sealed unsafe partial class MapDecoration : global::System.IDisposable
         return new MapDecoration((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static MapDecoration Create(nint img, byte x, byte y, byte rot, nint label, nint color) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static MapDecoration Create(int arg0, sbyte arg1, sbyte arg2, sbyte arg3, string arg4, global::Hosihikari.Bindings.Bedrock.Interop.mce.Color arg5)
     {
         var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
@@ -87,11 +83,7 @@ public sealed unsafe partial class MapDecoration : global::System.IDisposable
     public nint getImg_60acc2f2() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getLabel_7f1bdf88() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getLabel_b9e806bd()
+    public string getLabel()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_b9e806bd((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

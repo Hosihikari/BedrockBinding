@@ -92,10 +92,6 @@ public sealed unsafe partial class Boat : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getExitTip(nint kind, nint mode, nint scheme) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public float getPassengerYRotation(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {
         return NativeMethods.TablePtr->hs_method_3bd6ed2d((void*)_handle, (void*)arg0.Handle);

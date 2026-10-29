@@ -55,10 +55,6 @@ public sealed unsafe partial class DenyList
     public nint getDuration_d39cf141(nint entry) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getMessage(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public string getMessage(global::Hosihikari.Bindings.Bedrock.Interop.DenyList_Nested.Entry arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_bd19be9b((void*)_handle, (void*)arg0.Handle);

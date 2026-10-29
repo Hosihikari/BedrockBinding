@@ -57,10 +57,6 @@ public sealed unsafe partial class GameRule : global::System.IDisposable
     public static GameRule Create_670fe7ce(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static GameRule Create(nint name, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static GameRule Create(string arg0, bool arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -116,21 +112,13 @@ public sealed unsafe partial class GameRule : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_f332c25f((void*)_handle);
     }
 
-    public string getLowercaseName_cb2b08b6()
+    public string getLowercaseName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_cb2b08b6((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getLowercaseName_ccad5927() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_142dc0c5() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getName_3c998ca8()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_3c998ca8((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

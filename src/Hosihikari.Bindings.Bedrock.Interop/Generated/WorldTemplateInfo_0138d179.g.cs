@@ -60,24 +60,16 @@ public sealed unsafe partial class WorldTemplateInfo
         return new global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplatePackManifest((nint)NativeMethods.TablePtr->hs_method_280bfa75((void*)_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getWorldName_83ece594() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getWorldName_6ce8da29()
+    public string getWorldName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_6ce8da29((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public nint getWorldPath_2ecd2814()
+    public nint getWorldPath()
     {
         return (nint)NativeMethods.TablePtr->hs_method_2ecd2814((void*)_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getWorldPath_b39bcf83() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool isVirtualCatalogItem()
     {

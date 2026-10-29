@@ -73,15 +73,11 @@ public sealed unsafe partial class AddItemActorPacket : global::System.IDisposab
         return NativeMethods.TablePtr->hs_method_6cc9ad01((void*)_handle);
     }
 
-    public string getName_ce67d3fc()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_ce67d3fc((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_e9ead531() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

@@ -62,15 +62,11 @@ public sealed unsafe partial class MobEffectPacket : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_7b30f80d((void*)_handle);
     }
 
-    public string getName_9b61306b()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_9b61306b((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_84bb2208() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int mEffectAmplifier
     {

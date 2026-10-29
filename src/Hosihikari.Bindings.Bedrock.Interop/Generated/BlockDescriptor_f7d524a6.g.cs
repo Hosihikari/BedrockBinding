@@ -58,12 +58,8 @@ public sealed unsafe partial class BlockDescriptor
     public static BlockDescriptor Create_b7839f4a(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BlockDescriptor Create_f79db98c(nint name, nint states) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static BlockDescriptor Create_b0bfae17(nint arg0, nint arg1) =>
+    public static BlockDescriptor Create(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public static string JSON_NAME_FIELD
@@ -110,12 +106,8 @@ public sealed unsafe partial class BlockDescriptor
     public static nint fromCompoundTag(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'BlockDescriptor' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint fromTagExpression_a61684f9(nint tagExpression, nint molangVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'BlockDescriptor' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint fromTagExpression_a27a110e(nint arg0, nint arg1) =>
+    public static nint fromTagExpression(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'BlockDescriptor' requires --link-carrier or --virtual-dispatch.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Block getBlockOrUnknownBlock()
@@ -127,11 +119,7 @@ public sealed unsafe partial class BlockDescriptor
     public nint getCompareType_ef776d7a() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getFullName_8c144340() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getFullName_9f4e07e0()
+    public string getFullName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_9f4e07e0((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -142,11 +130,7 @@ public sealed unsafe partial class BlockDescriptor
         return (nint)NativeMethods.TablePtr->hs_method_aae37bab((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getTagExpression_d74e3c9a() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getTagExpression_b342d9dc()
+    public string getTagExpression()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_b342d9dc((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

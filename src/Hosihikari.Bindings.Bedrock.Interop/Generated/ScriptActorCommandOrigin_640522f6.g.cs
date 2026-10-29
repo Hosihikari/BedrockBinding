@@ -49,12 +49,8 @@ public sealed unsafe partial class ScriptActorCommandOrigin : global::System.IDi
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
-    public static ScriptActorCommandOrigin Create_cb553b56(nint arg0, nint arg1, nint arg2) =>
+    public static ScriptActorCommandOrigin Create(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptActorCommandOrigin Create_0d3d8bf2(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ScriptActorCommandOrigin Create(nint arg0) =>

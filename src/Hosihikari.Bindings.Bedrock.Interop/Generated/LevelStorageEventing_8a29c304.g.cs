@@ -46,22 +46,14 @@ public sealed unsafe partial class LevelStorageEventing
     public static LevelStorageEventing Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LevelStorageEventing Create_4130342d(nint arg0, nint levelData, nint levelId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static LevelStorageEventing Create_5999bc0f(nint arg0, nint arg1, nint arg2) =>
+    public static LevelStorageEventing Create(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public void fireDBStorageError(nint arg0)
     {
         NativeMethods.TablePtr->hs_method_44381d8f((void*)_handle, (void*)arg0);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void fireEventWorldCorruptionCausedWorldShutdown(nint reason, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void fireEventWorldCorruptionCausedWorldShutdown(string arg0, bool? arg1)
     {

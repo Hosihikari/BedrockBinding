@@ -63,14 +63,6 @@ public sealed unsafe partial class DecoratedPotBlockActor : global::System.IDisp
     public static DecoratedPotBlockActor Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool _areDefaultSherds_40a61600(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint _tryGetSherdsFromItem_23d2400b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public int getContainerSize()
     {
         return NativeMethods.TablePtr->hs_method_cd1322c6((void*)_handle);
@@ -86,11 +78,7 @@ public sealed unsafe partial class DecoratedPotBlockActor : global::System.IDisp
         return NativeMethods.TablePtr->hs_method_c3bafa41((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getSherdNames_610ee2e3() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public nint getSherdNames_30482160()
+    public nint getSherdNames()
     {
         return (nint)NativeMethods.TablePtr->hs_method_30482160((void*)_handle);
     }
@@ -113,10 +101,6 @@ public sealed unsafe partial class DecoratedPotBlockActor : global::System.IDisp
     {
         return NativeMethods.TablePtr->hs_method_dcf8f99c((void*)_handle, (void*)arg0.Handle) != 0;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void saveSherdsToTag_eedb9376(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static void saveSherdsToTag(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, nint arg1, bool arg2)
     {
@@ -149,12 +133,8 @@ public sealed unsafe partial class DecoratedPotBlockActor : global::System.IDisp
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'std::array<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,4>' is not supported.", false)]
-    public static nint tryGetSherdsFromTag_ac8bdb0d(nint arg0) =>
+    public static nint tryGetSherdsFromTag(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::array<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,4>' is not supported.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint tryGetSherdsFromTag_31476cb4(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void Dispose()
     {

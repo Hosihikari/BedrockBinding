@@ -108,10 +108,6 @@ public sealed unsafe partial class FileUploadManager : global::System.IDisposabl
         NativeMethods.TablePtr->hs_method_044958cc((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void uploadFile(nint uploadId, nint filePath, bool autoStartUpload, nint uploadOptions) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void uploadFile(string arg0, nint arg1, bool arg2, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg3)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

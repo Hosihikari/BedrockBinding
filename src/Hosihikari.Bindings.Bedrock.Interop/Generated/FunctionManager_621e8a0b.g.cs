@@ -51,10 +51,6 @@ public sealed unsafe partial class FunctionManager : global::System.IDisposable
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void _processFunctionEntry_016e6b73(nint functionName, nint lines, nint errorList, nint commandVersion, nint registry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void _queueCommandsAfterCaller_003bb705(nint toQueue, nint origin) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
@@ -62,10 +58,6 @@ public sealed unsafe partial class FunctionManager : global::System.IDisposable
     {
         return NativeMethods.TablePtr->hs_method_0ec69c88((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getFunction(nint functionName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.FunctionEntry? getFunction(string arg0)
     {
@@ -87,15 +79,11 @@ public sealed unsafe partial class FunctionManager : global::System.IDisposable
         }
     }
 
-    public static string getFunctionNameFromPath_3ec0367d(nint arg0)
+    public static string getFunctionNameFromPath(nint arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_3ec0367d((void*)arg0);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getFunctionNameFromPath_3ac00007(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static int getQueueOrderForCommandVersion(int arg0)
     {

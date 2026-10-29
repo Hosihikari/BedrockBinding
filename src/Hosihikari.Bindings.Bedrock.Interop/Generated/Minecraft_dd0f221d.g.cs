@@ -94,10 +94,6 @@ public sealed unsafe partial class Minecraft : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void disconnectClient(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void earlyShutdownMainthread()
     {
         NativeMethods.TablePtr->hs_method_24062afb((void*)_handle);
@@ -226,10 +222,6 @@ public sealed unsafe partial class Minecraft : global::System.IDisposable
     {
         NativeMethods.TablePtr->hs_method_31c4607a((void*)_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void requestServerShutdown(nint message) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void requestServerShutdown(string arg0)
     {

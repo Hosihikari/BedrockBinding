@@ -71,18 +71,10 @@ public sealed unsafe partial class ActorAnimationController : global::System.IDi
     public static ActorAnimationController Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActorAnimationController Create(nint name, nint version, nint sourceFilePathWithExtension) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public nint addState(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
     {
         return (nint)NativeMethods.TablePtr->hs_method_39b0a103((void*)_handle, (void*)arg0.Handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public ulong findStateIndex(nint name, bool missingIsOkay, ulong defaultState) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public ulong findStateIndex(string arg0, bool arg1, ulong arg2)
     {

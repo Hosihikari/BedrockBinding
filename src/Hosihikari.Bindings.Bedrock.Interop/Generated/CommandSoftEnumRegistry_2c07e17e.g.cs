@@ -59,12 +59,8 @@ public sealed unsafe partial class CommandSoftEnumRegistry : global::System.IDis
         set => NativeMethods.TablePtr->hs_set_619db8a7((void*)_handle, (void*)value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void updateSoftEnum_f0303e13(nint type, nint enumName, nint values) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
-    public void updateSoftEnum_c3d66e55(nint arg0, nint arg1, nint arg2) =>
+    public void updateSoftEnum(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
 

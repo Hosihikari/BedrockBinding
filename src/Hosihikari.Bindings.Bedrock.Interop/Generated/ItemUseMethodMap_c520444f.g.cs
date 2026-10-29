@@ -46,10 +46,6 @@ public sealed unsafe partial class ItemUseMethodMap
     public static ItemUseMethodMap Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getItemUseMethodName(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static string getItemUseMethodName(int arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_00257c85(arg0);

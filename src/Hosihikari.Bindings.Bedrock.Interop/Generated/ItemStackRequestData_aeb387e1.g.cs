@@ -64,11 +64,7 @@ public sealed unsafe partial class ItemStackRequestData
     public nint getRequestId_951359e2() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getStringsToFilter_5ff350bc() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public nint getStringsToFilter_6e3a4192()
+    public nint getStringsToFilter()
     {
         return (nint)NativeMethods.TablePtr->hs_method_6e3a4192((void*)_handle);
     }

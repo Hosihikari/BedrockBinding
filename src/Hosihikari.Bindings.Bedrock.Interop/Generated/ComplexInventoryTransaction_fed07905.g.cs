@@ -82,10 +82,6 @@ public sealed unsafe partial class ComplexInventoryTransaction : global::System.
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ComplexInventoryTransaction((nint)__hs_handle) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getTransactionTypeName(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static string getTransactionTypeName(int arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_002f4e78(arg0);

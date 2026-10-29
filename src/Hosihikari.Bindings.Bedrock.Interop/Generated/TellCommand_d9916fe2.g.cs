@@ -75,10 +75,6 @@ public sealed unsafe partial class TellCommand
     public static TellCommand Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void _sendMessageToPlayer_fc966f09(nint player, nint message, nint sender, nint identity, nint level) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput arg1)
     {
         NativeMethods.TablePtr->hs_method_fec8e7b6((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);

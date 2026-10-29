@@ -46,10 +46,6 @@ public sealed unsafe partial class StructureHelpers
     public static StructureHelpers Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool createChest(nint piece, nint region, nint chunkBB, nint random, int x, int y, int z, byte direction, nint lootTable) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static bool createChest(global::Hosihikari.Bindings.Bedrock.Interop.StructurePiece arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg2, global::Hosihikari.Bindings.Bedrock.Interop.Random arg3, int arg4, int arg5, int arg6, byte arg7, string arg8)
     {
         var __hs_stringByteCount8 = global::System.Text.Encoding.UTF8.GetByteCount(arg8);
@@ -69,10 +65,6 @@ public sealed unsafe partial class StructureHelpers
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool createDispenser(nint piece, nint region, nint chunkBB, nint random, int x, int y, int z, int facing, nint lootTable) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static bool createDispenser(global::Hosihikari.Bindings.Bedrock.Interop.StructurePiece arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg2, global::Hosihikari.Bindings.Bedrock.Interop.Random arg3, int arg4, int arg5, int arg6, int arg7, string arg8)
     {
         var __hs_stringByteCount8 = global::System.Text.Encoding.UTF8.GetByteCount(arg8);
@@ -91,10 +83,6 @@ public sealed unsafe partial class StructureHelpers
             return NativeMethods.TablePtr->hs_method_0c5e8eb1((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, arg4, arg5, arg6, arg7, __hs_stringData8, (nuint)__hs_stringByteCount8) != 0;
         }
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool createMinecartChest(nint piece, nint region, nint chunkBB, nint random, int x, int y, int z, int direction, nint lootTable) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static bool createMinecartChest(global::Hosihikari.Bindings.Bedrock.Interop.StructurePiece arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg2, global::Hosihikari.Bindings.Bedrock.Interop.Random arg3, int arg4, int arg5, int arg6, int arg7, string arg8)
     {

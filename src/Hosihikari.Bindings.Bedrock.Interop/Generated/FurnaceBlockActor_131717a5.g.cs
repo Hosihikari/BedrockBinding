@@ -225,15 +225,11 @@ public sealed unsafe partial class FurnaceBlockActor : global::System.IDisposabl
         return NativeMethods.TablePtr->hs_method_a88617e6((void*)_handle);
     }
 
-    public string getName_62ef361c()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_62ef361c((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_f99e49a6() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int getStoredXP()
     {

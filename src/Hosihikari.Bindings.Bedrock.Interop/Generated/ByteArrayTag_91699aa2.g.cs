@@ -79,15 +79,11 @@ public sealed unsafe partial class ByteArrayTag : global::System.IDisposable
     public nint load_ab659f86(nint dis) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public string toString_fb871cf2()
+    public string toString()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_fb871cf2((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint toString_21b957b2() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void write(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput arg0)
     {

@@ -54,10 +54,6 @@ public sealed unsafe partial class GameTestNetworkAdapter
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void rungametest(nint packetSender, nint arg1, nint dimension, nint @params) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public void rungametest(global::Hosihikari.Bindings.Bedrock.Interop.PacketSender? arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg2, global::Hosihikari.Bindings.Bedrock.Interop.gametest.TestParameters arg3)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);

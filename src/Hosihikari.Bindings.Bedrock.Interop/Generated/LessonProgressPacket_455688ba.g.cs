@@ -49,10 +49,6 @@ public sealed unsafe partial class LessonProgressPacket : global::System.IDispos
         return new LessonProgressPacket((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static LessonProgressPacket Create(nint action, int score, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static LessonProgressPacket Create(int arg0, int arg1, string arg2)
     {
         var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
@@ -91,15 +87,11 @@ public sealed unsafe partial class LessonProgressPacket : global::System.IDispos
         return NativeMethods.TablePtr->hs_method_332f641d((void*)_handle);
     }
 
-    public string getName_36e4b1ed()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_36e4b1ed((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_7d76185e() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public int mAction
     {

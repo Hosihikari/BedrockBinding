@@ -54,15 +54,11 @@ public sealed unsafe partial class InMemoryFile
     public nint flushToDisk(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
 
-    public string getFilename_3c5b7a0d()
+    public string getFilename()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_3c5b7a0d((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getFilename_e8e7fa61() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public ulong getFlushSize()
     {
@@ -75,12 +71,8 @@ public sealed unsafe partial class InMemoryFile
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public bool isSafeToDelete_050a3b7c(nint arg0) =>
+    public bool isSafeToDelete(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool isSafeToDelete_cd591847(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void markForDelete()
     {

@@ -46,14 +46,6 @@ public sealed unsafe partial class CutCopperSlab : global::System.IDisposable
     public static CutCopperSlab Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CutCopperSlab Create(nint nameId, int id, bool fullSize, nint baseSlab, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CutCopperSlab Create(nint nameId, int id, bool fullSize, nint baseSlab, nint arg4, nint arg5, nint arg6, nint arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static CutCopperSlab Create(string arg0, int arg1, bool arg2, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg3, int arg4, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg5)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

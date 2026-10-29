@@ -66,10 +66,6 @@ public sealed unsafe partial class ActorAliasDescription : global::System.IDispo
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getAliasInfo(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public nint getJsonName()
     {
         return (nint)NativeMethods.TablePtr->hs_method_d1690e1a((void*)_handle);

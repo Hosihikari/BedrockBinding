@@ -71,10 +71,6 @@ public sealed unsafe partial class WorldHistoryPackSource : global::System.IDisp
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint generateHistoryFilePath(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public sbyte getPackOrigin()
     {
         return NativeMethods.TablePtr->hs_method_69c525da((void*)_handle);
@@ -85,14 +81,10 @@ public sealed unsafe partial class WorldHistoryPackSource : global::System.IDisp
         return NativeMethods.TablePtr->hs_method_39fa21ec((void*)_handle);
     }
 
-    public nint getPathToWorld_55b07d99()
+    public nint getPathToWorld()
     {
         return (nint)NativeMethods.TablePtr->hs_method_55b07d99((void*)_handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getPathToWorld_f26704d8() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackSourceReport' requires --link-carrier or --virtual-dispatch.", false)]
     public nint load(nint arg0, nint arg1) =>

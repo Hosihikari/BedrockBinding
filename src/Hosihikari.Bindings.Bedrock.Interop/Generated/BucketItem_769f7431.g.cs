@@ -46,10 +46,6 @@ public sealed unsafe partial class BucketItem : global::System.IDisposable
     public static BucketItem Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static BucketItem Create(nint name, int id, nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static BucketItem Create(string arg0, int arg1, int arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -86,10 +82,6 @@ public sealed unsafe partial class BucketItem : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint buildDescriptionId(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public bool canUseOnSimTick()
     {
         return NativeMethods.TablePtr->hs_method_127b0cd0((void*)_handle) != 0;
@@ -100,15 +92,11 @@ public sealed unsafe partial class BucketItem : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_464e797c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, (void*)arg3.Handle, arg4) != 0;
     }
 
-    public string getAuxValuesDescription_c20517db()
+    public string getAuxValuesDescription()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_c20517db((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getAuxValuesDescription_3c0e7493() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Brightness getLightEmission(int arg0)
     {
@@ -154,10 +142,6 @@ public sealed unsafe partial class BucketItem : global::System.IDisposable
     {
         NativeMethods.TablePtr->hs_method_92772738((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), arg2);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint setIconInfo(nint name, int id) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Item setIconInfo(string arg0, int arg1)
     {

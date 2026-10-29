@@ -44,10 +44,6 @@ public sealed unsafe partial class ServerCommandOrigin : global::System.IDisposa
         get => (nint)NativeMethods.TablePtr->hs_get_68370072((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ServerCommandOrigin Create(nint requestId, nint level, nint permission, nint dimensionType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static ServerCommandOrigin Create(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.ServerLevel arg1, byte arg2, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg3)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -107,15 +103,11 @@ public sealed unsafe partial class ServerCommandOrigin : global::System.IDisposa
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Level((nint)__hs_handle, false) : null;
     }
 
-    public string getName_a4def076()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_a4def076((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_350aab54() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public sbyte getOriginType()
     {
@@ -127,11 +119,7 @@ public sealed unsafe partial class ServerCommandOrigin : global::System.IDisposa
         return NativeMethods.TablePtr->hs_method_dba7724c((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getRequestId_3cbc412d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getRequestId_017b4de6()
+    public string getRequestId()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_017b4de6((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

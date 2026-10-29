@@ -71,10 +71,6 @@ public sealed unsafe partial class SemVersion : global::System.IDisposable
     public static SemVersion Create_2983a251(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SemVersion Create(ushort major, ushort minor, ushort patch, nint preRelease, nint buildMeta) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static SemVersion Create(ushort arg0, ushort arg1, ushort arg2, string arg3, string arg4)
     {
         var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(arg3);
@@ -114,11 +110,7 @@ public sealed unsafe partial class SemVersion : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint asString_616b2a4d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string asString_d1ecd681()
+    public string asString()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_d1ecd681((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -151,11 +143,7 @@ public sealed unsafe partial class SemVersion : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_d59e2621((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getPreRelease_7c12f9b9() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getPreRelease_db363009()
+    public string getPreRelease()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_db363009((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));

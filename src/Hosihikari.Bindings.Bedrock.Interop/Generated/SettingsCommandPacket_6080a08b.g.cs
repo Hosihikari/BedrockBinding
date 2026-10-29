@@ -98,11 +98,7 @@ public sealed unsafe partial class SettingsCommandPacket : global::System.IDispo
     public nint _read_2c23892e(nint stream) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getCommandString_bed8b049() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getCommandString_bb6ba595()
+    public string getCommandString()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_bb6ba595((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -113,15 +109,11 @@ public sealed unsafe partial class SettingsCommandPacket : global::System.IDispo
         return NativeMethods.TablePtr->hs_method_83536aa0((void*)_handle);
     }
 
-    public string getName_114d6d7e()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_114d6d7e((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_ff92dd7a() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool getSupressOutput()
     {

@@ -64,10 +64,6 @@ public sealed unsafe partial class RealmsStoriesData
         NativeMethods.TablePtr->hs_method_c94a2296((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getRealmEventInternalName(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static string getRealmEventInternalName(int arg0)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_b0186a95(arg0);
@@ -82,10 +78,6 @@ public sealed unsafe partial class RealmsStoriesData
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setPlayerRealmEventPublished(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void setPlayerRealmEventPublished(int arg0, string arg1)
@@ -111,10 +103,6 @@ public sealed unsafe partial class RealmsStoriesData
     {
         NativeMethods.TablePtr->hs_method_87319ef7((void*)_handle, arg0);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool wasPlayerRealmEventPublished(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public bool wasPlayerRealmEventPublished(int arg0, string arg1)
     {

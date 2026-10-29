@@ -57,10 +57,6 @@ public sealed unsafe partial class MoveThroughVillageGoal : global::System.IDisp
     public static MoveThroughVillageGoal Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void appendDebugInfo_5bf52bac(nint str) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public bool canContinueToUse()
     {
         return NativeMethods.TablePtr->hs_method_198c157c((void*)_handle) != 0;

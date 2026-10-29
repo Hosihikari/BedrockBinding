@@ -64,13 +64,9 @@ public sealed unsafe partial class PropertyBag
         return new global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value((nint)NativeMethods.TablePtr->hs_method_edbbee32((void*)_handle), false);
     }
 
-    public string toString_b5bf4810()
+    public string toString()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_b5bf4810((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint toString_7eb13351() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 }

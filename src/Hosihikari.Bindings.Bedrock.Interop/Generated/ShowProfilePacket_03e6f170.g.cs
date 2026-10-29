@@ -103,15 +103,11 @@ public sealed unsafe partial class ShowProfilePacket : global::System.IDisposabl
         return NativeMethods.TablePtr->hs_method_99769f08((void*)_handle);
     }
 
-    public string getName_0ec6bec5()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_0ec6bec5((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_ccf05526() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPlayerXiud_Address

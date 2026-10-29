@@ -77,14 +77,6 @@ public sealed unsafe partial class BlockStateGroup
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getBlockStateFromName(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool loadBlockStateFromJson(nint blockState, nint name, nint root) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     public static bool loadBlockStateFromJson(global::Hosihikari.Bindings.Bedrock.Interop.BlockStateDefinition arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg2)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);

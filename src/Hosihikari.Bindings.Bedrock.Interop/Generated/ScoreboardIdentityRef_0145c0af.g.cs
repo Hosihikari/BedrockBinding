@@ -53,12 +53,8 @@ public sealed unsafe partial class ScoreboardIdentityRef : global::System.IDispo
         return NativeMethods.TablePtr->hs_method_b8aac8f1((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_3dd21b59(nint playerNameResolver) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> const&' is not supported.", false)]
-    public nint getName_02da07e5(nint arg0) =>
+    public nint getName(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> const&' is not supported.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardId getPlayerId()

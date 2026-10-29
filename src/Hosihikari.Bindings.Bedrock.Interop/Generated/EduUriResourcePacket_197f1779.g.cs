@@ -73,15 +73,11 @@ public sealed unsafe partial class EduUriResourcePacket : global::System.IDispos
         return NativeMethods.TablePtr->hs_method_5d4b7a86((void*)_handle);
     }
 
-    public string getName_3e3a83cb()
+    public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_3e3a83cb((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getName_bf48a7f3() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mEduSharedUriResource_Address

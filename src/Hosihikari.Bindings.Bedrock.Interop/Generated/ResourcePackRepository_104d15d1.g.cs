@@ -117,45 +117,29 @@ public sealed unsafe partial class ResourcePackRepository : global::System.IDisp
         NativeMethods.TablePtr->hs_method_e4222d3a((void*)_handle, (void*)arg0.Handle);
     }
 
-    public string getBehaviorPacksPath_81a9adc9()
+    public string getBehaviorPacksPath()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_81a9adc9((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getBehaviorPacksPath_a73172ee() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getDevelopmentBehaviorPacksPath_16d019aa()
+    public string getDevelopmentBehaviorPacksPath()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_16d019aa((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getDevelopmentBehaviorPacksPath_7f877439() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getDevelopmentResourcePacksPath_e1c4fcfd()
+    public string getDevelopmentResourcePacksPath()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_e1c4fcfd((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getDevelopmentResourcePacksPath_5173e318() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getDevelopmentSkinPacksPath_6fa8543b()
+    public string getDevelopmentSkinPacksPath()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_6fa8543b((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getDevelopmentSkinPacksPath_c1cf8884() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ResourcePack? getEditorPack()
     {
@@ -178,15 +162,11 @@ public sealed unsafe partial class ResourcePackRepository : global::System.IDisp
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public string getKnownInvalidPacksPath_68aac250()
+    public string getKnownInvalidPacksPath()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_68aac250((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getKnownInvalidPacksPath_f5ad8b67() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public string getKnownPacksPath(int arg0)
     {
@@ -194,19 +174,11 @@ public sealed unsafe partial class ResourcePackRepository : global::System.IDisp
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getKnownPacksPath(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getKnownValidPacksPath_087390b0()
+    public string getKnownValidPacksPath()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_087390b0((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getKnownValidPacksPath_a6d0e30c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.PackSourceReport? getPackLoadingReport()
     {
@@ -302,40 +274,28 @@ public sealed unsafe partial class ResourcePackRepository : global::System.IDisp
     public void getResourcePacksByPackId(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
-    public string getResourcePacksPath_ddca04cb()
+    public string getResourcePacksPath()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_ddca04cb((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getResourcePacksPath_179488db() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public nint getServicePacks()
     {
         return (nint)NativeMethods.TablePtr->hs_method_4c0a03b9((void*)_handle);
     }
 
-    public string getSkinPacksPath_cf768c76()
+    public string getSkinPacksPath()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_cf768c76((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getSkinPacksPath_b503e78d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getTreatmentPacksPath_0945f53f()
+    public string getTreatmentPacksPath()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_0945f53f((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getTreatmentPacksPath_d62aec57() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ResourcePack? getVanillaPack()
     {

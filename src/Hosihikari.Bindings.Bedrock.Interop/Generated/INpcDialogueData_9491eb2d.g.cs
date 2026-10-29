@@ -46,11 +46,7 @@ public sealed unsafe partial class INpcDialogueData
     public static INpcDialogueData Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getRawDialogueText_ff69727e() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public string getRawDialogueText_98192db4()
+    public string getRawDialogueText()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_98192db4((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
