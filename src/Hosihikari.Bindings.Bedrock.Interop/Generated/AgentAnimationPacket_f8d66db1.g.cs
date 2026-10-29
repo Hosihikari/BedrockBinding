@@ -105,7 +105,6 @@ public sealed unsafe partial class AgentAnimationPacket : global::System.IDispos
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_10c439a2((void*)_handle);

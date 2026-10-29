@@ -83,12 +83,4 @@ public sealed unsafe partial class PlayerListEntry
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_d16e0e5b() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static PlayerListEntry Create_69aac199(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_be48856d() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

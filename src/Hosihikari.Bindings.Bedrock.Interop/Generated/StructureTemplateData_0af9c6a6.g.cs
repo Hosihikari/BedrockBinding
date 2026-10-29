@@ -152,7 +152,6 @@ public sealed unsafe partial class StructureTemplateData : global::System.IDispo
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

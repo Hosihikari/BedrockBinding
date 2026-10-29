@@ -93,7 +93,6 @@ public sealed unsafe partial class AddActorPacket : global::System.IDisposable
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_a0a6abdd((void*)_handle);

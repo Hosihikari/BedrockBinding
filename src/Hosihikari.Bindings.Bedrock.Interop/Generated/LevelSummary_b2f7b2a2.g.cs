@@ -159,12 +159,4 @@ public sealed unsafe partial class LevelSummary
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_0f6dfacf() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static LevelSummary Create_860bded6(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_1d221aca() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

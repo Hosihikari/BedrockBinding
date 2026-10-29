@@ -100,7 +100,6 @@ public sealed unsafe partial class BiomeDefinitionListPacket : global::System.ID
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_87ffae9b((void*)_handle);

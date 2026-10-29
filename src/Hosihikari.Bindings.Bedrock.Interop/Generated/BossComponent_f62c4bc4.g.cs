@@ -291,7 +291,6 @@ public sealed unsafe partial class BossComponent : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

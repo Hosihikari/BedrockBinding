@@ -54,12 +54,4 @@ public sealed partial class BreedableType
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_7c068f25() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static BreedableType Create_b4803b21(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_346213e1() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

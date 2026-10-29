@@ -58,12 +58,4 @@ public sealed unsafe partial class WorldPackHistory
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_d2750713() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static WorldPackHistory Create_cfdd2d55(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_a22f86f6() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

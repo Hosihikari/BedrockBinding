@@ -260,12 +260,4 @@ public sealed unsafe partial class Interaction
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_f38b62f7() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static Interaction Create_090ffa2e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_1e80e74a() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

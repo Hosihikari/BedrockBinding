@@ -269,7 +269,6 @@ public sealed unsafe partial class StructureTemplate : global::System.IDisposabl
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

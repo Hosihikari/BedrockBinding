@@ -152,7 +152,6 @@ public sealed unsafe partial class SetActorMotionPacket : global::System.IDispos
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

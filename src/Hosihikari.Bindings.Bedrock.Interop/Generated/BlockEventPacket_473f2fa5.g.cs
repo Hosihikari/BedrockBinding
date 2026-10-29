@@ -93,7 +93,6 @@ public sealed unsafe partial class BlockEventPacket : global::System.IDisposable
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_7440e323((void*)_handle);

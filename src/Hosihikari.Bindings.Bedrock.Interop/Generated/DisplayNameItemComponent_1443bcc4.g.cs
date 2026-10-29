@@ -67,7 +67,6 @@ public sealed unsafe partial class DisplayNameItemComponent : global::System.IDi
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

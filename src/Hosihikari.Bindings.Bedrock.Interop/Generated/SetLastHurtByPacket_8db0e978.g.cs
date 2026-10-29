@@ -140,7 +140,6 @@ public sealed unsafe partial class SetLastHurtByPacket : global::System.IDisposa
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

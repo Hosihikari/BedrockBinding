@@ -54,8 +54,4 @@ public sealed partial class LevelNotificationEvent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_c75b774b() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_6f518935() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

@@ -128,11 +128,6 @@ public sealed unsafe partial class GameVersion : global::System.IDisposable
     }
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static GameVersion Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-
     public void Dispose()
     {
         if (_handle != 0)

@@ -97,8 +97,4 @@ public sealed partial class MultipleTestTracker
         get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
         set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

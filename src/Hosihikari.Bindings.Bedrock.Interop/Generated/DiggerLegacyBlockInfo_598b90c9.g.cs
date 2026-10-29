@@ -58,8 +58,4 @@ public sealed unsafe partial class DiggerLegacyBlockInfo
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign_7ac66104(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static DiggerLegacyBlockInfo Create_916a0068(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

@@ -233,12 +233,4 @@ public sealed unsafe partial class JigsawEditorData
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_4579e713() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static JigsawEditorData Create_2044f6f2(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_1f8199e3() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

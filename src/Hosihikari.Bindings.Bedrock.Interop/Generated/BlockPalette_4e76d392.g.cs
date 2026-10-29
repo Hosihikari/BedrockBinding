@@ -113,7 +113,6 @@ public sealed unsafe partial class BlockPalette : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

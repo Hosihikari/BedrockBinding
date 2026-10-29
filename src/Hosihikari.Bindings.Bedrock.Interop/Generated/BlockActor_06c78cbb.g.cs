@@ -474,7 +474,6 @@ public sealed unsafe partial class BlockActor : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

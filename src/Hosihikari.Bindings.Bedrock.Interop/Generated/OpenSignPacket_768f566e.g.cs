@@ -105,7 +105,6 @@ public sealed unsafe partial class OpenSignPacket : global::System.IDisposable
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_8093bd14((void*)_handle);

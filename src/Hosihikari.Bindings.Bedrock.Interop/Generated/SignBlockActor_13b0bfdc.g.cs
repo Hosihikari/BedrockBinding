@@ -276,7 +276,6 @@ public sealed unsafe partial class SignBlockActor : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

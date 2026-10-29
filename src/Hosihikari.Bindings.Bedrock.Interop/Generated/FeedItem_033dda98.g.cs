@@ -62,12 +62,4 @@ public sealed unsafe partial class FeedItem
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_91a94ac3() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static FeedItem Create_128af3a5(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_6a32dc76() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

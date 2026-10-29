@@ -205,7 +205,6 @@ public sealed unsafe partial class AnimateEntityPacket : global::System.IDisposa
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_4bf8a171((void*)_handle);

@@ -57,7 +57,6 @@ public sealed unsafe partial class ItemStackRequestSlotInfo : global::System.IDi
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

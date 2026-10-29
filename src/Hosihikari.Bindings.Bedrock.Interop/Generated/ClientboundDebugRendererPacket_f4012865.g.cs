@@ -113,7 +113,6 @@ public sealed unsafe partial class ClientboundDebugRendererPacket : global::Syst
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_0504a049((void*)_handle);

@@ -230,10 +230,6 @@ public sealed unsafe partial class DebugInfoComponent : global::System.IDisposab
     }
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static DebugInfoComponent Create_5f9279c6(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
     public void Dispose()
     {
         if (_handle != 0)

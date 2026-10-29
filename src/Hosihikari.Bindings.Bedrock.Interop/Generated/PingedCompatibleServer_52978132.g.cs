@@ -62,12 +62,4 @@ public sealed partial class PingedCompatibleServer
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_2cd8cd4a() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static PingedCompatibleServer Create_8f1942e0(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_c0d46c09() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

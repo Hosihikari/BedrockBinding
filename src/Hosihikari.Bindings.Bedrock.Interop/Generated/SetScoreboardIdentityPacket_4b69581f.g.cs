@@ -133,7 +133,6 @@ public sealed unsafe partial class SetScoreboardIdentityPacket : global::System.
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

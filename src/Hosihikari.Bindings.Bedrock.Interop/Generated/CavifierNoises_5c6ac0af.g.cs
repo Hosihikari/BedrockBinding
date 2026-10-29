@@ -58,12 +58,4 @@ public sealed partial class CavifierNoises
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_104a4695() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static CavifierNoises Create_018c4da1(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_e095a254() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

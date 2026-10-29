@@ -202,7 +202,6 @@ public sealed unsafe partial class NpcRequestPacket : global::System.IDisposable
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_a9807341((void*)_handle);

@@ -98,8 +98,4 @@ public sealed unsafe partial class RopeSystem
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_a212f3fb() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_6ec309af() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

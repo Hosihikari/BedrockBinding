@@ -281,11 +281,6 @@ public sealed unsafe partial class CommandOutputParameter : global::System.IDisp
     }
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static CommandOutputParameter Create_27c0d58f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-
     public void Dispose()
     {
         if (_handle != 0)

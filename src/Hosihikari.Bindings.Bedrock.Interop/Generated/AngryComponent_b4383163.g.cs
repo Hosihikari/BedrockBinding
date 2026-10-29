@@ -126,8 +126,4 @@ public sealed unsafe partial class AngryComponent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_b7e95b8f() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_bf1dd326() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

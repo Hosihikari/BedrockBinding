@@ -115,7 +115,6 @@ public sealed unsafe partial class MapCreateLockedCopyPacket : global::System.ID
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_8cda2059((void*)_handle);

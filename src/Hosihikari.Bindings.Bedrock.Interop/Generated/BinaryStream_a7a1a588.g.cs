@@ -212,7 +212,6 @@ public sealed unsafe partial class BinaryStream : global::System.IDisposable
     }
 
 
-
     public nint mBuffer_adf1f0ce
     {
         get => (nint)NativeMethods.TablePtr->hs_get_1d58d920((void*)_handle);

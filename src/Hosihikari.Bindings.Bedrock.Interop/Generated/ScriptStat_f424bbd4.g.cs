@@ -74,12 +74,4 @@ public sealed unsafe partial class ScriptStat
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_1cd026e3() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ScriptStat Create_d4291cde(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_2d92c3ad() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

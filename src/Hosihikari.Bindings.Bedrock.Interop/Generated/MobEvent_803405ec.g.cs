@@ -86,12 +86,4 @@ public sealed unsafe partial class MobEvent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_1d132b3b() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static MobEvent Create_8dfff963(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_edea7cde() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

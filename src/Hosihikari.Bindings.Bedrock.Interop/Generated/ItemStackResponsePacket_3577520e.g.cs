@@ -97,7 +97,6 @@ public sealed unsafe partial class ItemStackResponsePacket : global::System.IDis
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_95554778((void*)_handle);

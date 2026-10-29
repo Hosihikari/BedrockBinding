@@ -111,7 +111,6 @@ public sealed unsafe partial class AgentActionEventPacket : global::System.IDisp
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_bf52f790((void*)_handle);

@@ -115,12 +115,4 @@ public sealed unsafe partial class LegacyGoalDefinition
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_dfe4395c() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static LegacyGoalDefinition Create_caf3e4a9(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_480ad8e6() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

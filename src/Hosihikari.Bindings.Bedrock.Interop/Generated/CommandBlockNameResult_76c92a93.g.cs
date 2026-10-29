@@ -105,7 +105,6 @@ public sealed unsafe partial class CommandBlockNameResult : global::System.IDisp
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

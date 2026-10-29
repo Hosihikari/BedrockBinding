@@ -158,11 +158,6 @@ public sealed unsafe partial class ChunkViewSource : global::System.IDisposable
     }
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ChunkViewSource Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-
     public void Dispose()
     {
         if (_handle != 0)

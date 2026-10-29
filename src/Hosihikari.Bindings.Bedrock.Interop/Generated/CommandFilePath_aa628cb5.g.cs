@@ -71,7 +71,6 @@ public sealed unsafe partial class CommandFilePath : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

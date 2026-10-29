@@ -122,7 +122,6 @@ public sealed unsafe partial class DisconnectPacket : global::System.IDisposable
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_a36a8aac((void*)_handle);

@@ -54,12 +54,4 @@ public sealed partial class BlockListEventMap
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_014b897c() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static BlockListEventMap Create_5bfb159b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_fc30761a() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

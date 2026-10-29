@@ -75,7 +75,6 @@ public sealed unsafe partial class ClientboundCloseFormPacket : global::System.I
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_2f30dd65((void*)_handle);

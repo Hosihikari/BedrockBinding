@@ -89,10 +89,6 @@ public sealed unsafe partial class Brightness : global::System.IDisposable
         set => NativeMethods.TablePtr->hs_set_3599f98e((void*)_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static Brightness Create_763eb996(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
     public void Dispose()
     {
         if (_handle != 0)

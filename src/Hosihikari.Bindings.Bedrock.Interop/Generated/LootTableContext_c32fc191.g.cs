@@ -102,8 +102,4 @@ public sealed unsafe partial class LootTableContext
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_bda2995f() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_63ab71ea() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

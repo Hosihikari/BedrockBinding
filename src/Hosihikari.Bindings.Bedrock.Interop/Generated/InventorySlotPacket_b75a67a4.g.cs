@@ -111,7 +111,6 @@ public sealed unsafe partial class InventorySlotPacket : global::System.IDisposa
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_dd75bfac((void*)_handle);

@@ -123,7 +123,6 @@ public sealed unsafe partial class MobArmorEquipmentPacket : global::System.IDis
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_98509a3f((void*)_handle);

@@ -156,7 +156,6 @@ public sealed unsafe partial class DecoratedPotBlockActor : global::System.IDisp
     public static nint tryGetSherdsFromTag_31476cb4(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-
     public void Dispose()
     {
         if (_handle != 0)

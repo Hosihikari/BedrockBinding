@@ -58,12 +58,4 @@ public sealed unsafe partial class GiveableTrigger
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_a07f00ca() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static GiveableTrigger Create_6d2eca28(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_f2fa88c9() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

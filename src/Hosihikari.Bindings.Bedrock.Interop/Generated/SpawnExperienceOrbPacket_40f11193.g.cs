@@ -146,7 +146,6 @@ public sealed unsafe partial class SpawnExperienceOrbPacket : global::System.IDi
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

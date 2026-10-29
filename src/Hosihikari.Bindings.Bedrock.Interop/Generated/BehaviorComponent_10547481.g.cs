@@ -62,8 +62,4 @@ public sealed partial class BehaviorComponent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_57891e25() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_decc0eec() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

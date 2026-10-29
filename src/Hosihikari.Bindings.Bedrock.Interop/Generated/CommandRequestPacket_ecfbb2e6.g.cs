@@ -111,7 +111,6 @@ public sealed unsafe partial class CommandRequestPacket : global::System.IDispos
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_5d2ebb64((void*)_handle);

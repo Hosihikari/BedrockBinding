@@ -76,12 +76,4 @@ public sealed unsafe partial class PackSourceReport
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_2be5915f() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static PackSourceReport Create_9c7df470(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_0bc609b2() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

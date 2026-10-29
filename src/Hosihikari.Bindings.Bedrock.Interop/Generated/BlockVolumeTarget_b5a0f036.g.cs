@@ -195,7 +195,6 @@ public sealed unsafe partial class BlockVolumeTarget : global::System.IDisposabl
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

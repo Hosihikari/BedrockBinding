@@ -354,7 +354,6 @@ public sealed unsafe partial class FurnaceBlockActor : global::System.IDisposabl
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

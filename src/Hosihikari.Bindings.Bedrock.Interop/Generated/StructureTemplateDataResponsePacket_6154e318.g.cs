@@ -153,7 +153,6 @@ public sealed unsafe partial class StructureTemplateDataResponsePacket : global:
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

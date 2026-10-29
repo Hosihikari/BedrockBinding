@@ -53,7 +53,6 @@ public sealed unsafe partial class HoverTextColorItemComponent : global::System.
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

@@ -152,7 +152,6 @@ public sealed unsafe partial class RespawnPacket : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

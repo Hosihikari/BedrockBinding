@@ -67,8 +67,4 @@ public sealed unsafe partial class WorldGenCache
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_0477ec52() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_8c02377f() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

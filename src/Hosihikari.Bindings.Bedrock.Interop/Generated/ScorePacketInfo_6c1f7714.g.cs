@@ -85,11 +85,6 @@ public sealed unsafe partial class ScorePacketInfo : global::System.IDisposable
     }
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ScorePacketInfo Create_034ca21e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-
     public void Dispose()
     {
         if (_handle != 0)

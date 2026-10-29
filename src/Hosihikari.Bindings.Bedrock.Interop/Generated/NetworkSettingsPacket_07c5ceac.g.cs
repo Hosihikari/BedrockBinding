@@ -105,7 +105,6 @@ public sealed unsafe partial class NetworkSettingsPacket : global::System.IDispo
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_0a2edcdb((void*)_handle);

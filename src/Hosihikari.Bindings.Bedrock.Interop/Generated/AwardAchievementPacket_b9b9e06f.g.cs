@@ -99,7 +99,6 @@ public sealed unsafe partial class AwardAchievementPacket : global::System.IDisp
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_4aea0f5e((void*)_handle);

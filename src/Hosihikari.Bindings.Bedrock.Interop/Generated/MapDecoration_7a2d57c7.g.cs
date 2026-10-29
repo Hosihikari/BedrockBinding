@@ -159,7 +159,6 @@ public sealed unsafe partial class MapDecoration : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

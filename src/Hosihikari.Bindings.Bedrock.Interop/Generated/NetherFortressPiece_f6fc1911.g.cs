@@ -120,7 +120,6 @@ public sealed unsafe partial class NetherFortressPiece : global::System.IDisposa
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

@@ -54,8 +54,4 @@ public sealed partial class NamedMolangScript
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_01153ee7() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_9c1678d4() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

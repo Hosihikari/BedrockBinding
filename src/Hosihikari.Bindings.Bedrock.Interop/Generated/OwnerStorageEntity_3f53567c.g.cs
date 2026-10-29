@@ -60,7 +60,6 @@ public sealed unsafe partial class OwnerStorageEntity : global::System.IDisposab
     public nint operator_assign_1c3b1500(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-
     public void Dispose()
     {
         if (_handle != 0)

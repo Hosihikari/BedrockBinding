@@ -153,7 +153,6 @@ public sealed unsafe partial class DimensionManager : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

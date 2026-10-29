@@ -95,10 +95,6 @@ public sealed unsafe partial class TemptGoal : global::System.IDisposable
     }
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static TemptGoal Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
     public void Dispose()
     {
         if (_handle != 0)

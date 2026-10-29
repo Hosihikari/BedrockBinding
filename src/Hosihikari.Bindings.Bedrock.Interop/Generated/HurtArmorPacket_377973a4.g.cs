@@ -111,7 +111,6 @@ public sealed unsafe partial class HurtArmorPacket : global::System.IDisposable
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_2803574a((void*)_handle);

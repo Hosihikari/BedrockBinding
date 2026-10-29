@@ -122,7 +122,6 @@ public sealed unsafe partial class LevelEventPacket : global::System.IDisposable
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_7d77eb58((void*)_handle);

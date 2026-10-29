@@ -125,8 +125,4 @@ public sealed unsafe partial class BuoyancyComponent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_e416f5f8() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_5a502a97() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

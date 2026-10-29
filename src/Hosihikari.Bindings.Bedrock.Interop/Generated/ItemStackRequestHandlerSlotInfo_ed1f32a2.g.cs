@@ -58,8 +58,4 @@ public sealed partial class ItemStackRequestHandlerSlotInfo
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_1a8e9a4f() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_f5a57b43() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

@@ -54,12 +54,4 @@ public sealed partial class TargetBlockHitEvent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_26645d35() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static TargetBlockHitEvent Create_77d0d836(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_055c09ac() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

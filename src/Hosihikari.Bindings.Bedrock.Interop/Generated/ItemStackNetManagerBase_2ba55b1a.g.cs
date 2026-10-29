@@ -127,7 +127,6 @@ public sealed unsafe partial class ItemStackNetManagerBase : global::System.IDis
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

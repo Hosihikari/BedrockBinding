@@ -140,7 +140,6 @@ public sealed unsafe partial class UpdateAdventureSettingsPacket : global::Syste
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

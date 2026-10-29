@@ -275,7 +275,6 @@ public sealed unsafe partial class StartGamePacket : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

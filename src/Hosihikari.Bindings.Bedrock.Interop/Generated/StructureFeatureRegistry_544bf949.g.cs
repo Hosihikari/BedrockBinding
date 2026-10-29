@@ -105,7 +105,6 @@ public sealed unsafe partial class StructureFeatureRegistry : global::System.IDi
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

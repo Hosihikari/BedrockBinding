@@ -99,7 +99,6 @@ public sealed unsafe partial class EduUriResourcePacket : global::System.IDispos
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_d8933a9d((void*)_handle);

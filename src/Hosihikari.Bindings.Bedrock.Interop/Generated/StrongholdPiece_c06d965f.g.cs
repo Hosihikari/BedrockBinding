@@ -114,8 +114,4 @@ public sealed unsafe partial class StrongholdPiece
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_b2682258() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_7e0e9f5f() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

@@ -205,12 +205,4 @@ public sealed unsafe partial class BlockDescriptor
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_adc3a4a3() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static BlockDescriptor Create_f7285051(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_50a211ce() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

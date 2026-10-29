@@ -87,7 +87,6 @@ public sealed unsafe partial class ClientCacheMissResponsePacket : global::Syste
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_022526e8((void*)_handle);

@@ -54,8 +54,4 @@ public sealed partial class ActorPathingData
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_7f1622b5() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_cd238fa0() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

@@ -117,7 +117,6 @@ public sealed unsafe partial class WebRTCNetworkPeer : global::System.IDisposabl
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

@@ -123,7 +123,6 @@ public sealed unsafe partial class PositionTrackingDBClientRequestPacket : globa
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

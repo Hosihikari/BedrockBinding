@@ -94,7 +94,6 @@ public sealed unsafe partial class ContentLogFileEndPoint : global::System.IDisp
         NativeMethods.TablePtr->hs_method_58e9432c((void*)_handle, arg0);
     }
 
-
     public void Dispose()
     {
         if (_handle != 0)

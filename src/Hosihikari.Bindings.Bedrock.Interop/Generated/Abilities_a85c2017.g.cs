@@ -199,10 +199,6 @@ public sealed unsafe partial class Abilities : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_535b0c9d((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static Abilities Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
     public void Dispose()
     {
         if (_handle != 0)

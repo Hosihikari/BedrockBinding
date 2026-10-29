@@ -59,8 +59,4 @@ public sealed unsafe partial class IPacketObserver
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_10264071() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_80da62fc() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

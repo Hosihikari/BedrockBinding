@@ -38,7 +38,6 @@ public sealed unsafe partial class FactorCalculationData : global::System.IDispo
         return __hs_handle;
     }
 
-
     public void Dispose()
     {
         if (_handle != 0)

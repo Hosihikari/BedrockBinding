@@ -66,8 +66,4 @@ public sealed partial class PackCapabilityRegistry
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_1144f331() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_2ce7af34() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

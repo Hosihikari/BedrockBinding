@@ -154,10 +154,6 @@ public sealed unsafe partial class StructureBlockUpdatePacket : global::System.I
     }
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static StructureBlockUpdatePacket Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
     public void Dispose()
     {
         if (_handle != 0)

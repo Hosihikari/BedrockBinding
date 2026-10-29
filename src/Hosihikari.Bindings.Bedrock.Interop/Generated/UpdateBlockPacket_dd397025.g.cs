@@ -79,12 +79,7 @@ public sealed unsafe partial class UpdateBlockPacket : global::System.IDisposabl
         set => NativeMethods.TablePtr->hs_set_3900066c((void*)_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint SHARE_WITH_HANDLER
-    {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-    }
+    public const bool SHARE_WITH_HANDLER = true;
 
     public static UpdateBlockPacket Create()
     {
@@ -155,7 +150,6 @@ public sealed unsafe partial class UpdateBlockPacket : global::System.IDisposabl
     {
         NativeMethods.TablePtr->hs_method_85249c65((void*)_handle, (void*)arg0.Handle);
     }
-
 
 
     public void Dispose()

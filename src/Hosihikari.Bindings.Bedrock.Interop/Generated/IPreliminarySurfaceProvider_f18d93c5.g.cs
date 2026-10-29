@@ -58,8 +58,4 @@ public sealed partial class IPreliminarySurfaceProvider
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_e3fad119() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_327370f0() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

@@ -58,8 +58,4 @@ public sealed unsafe partial class PersonaPiece
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_88a1edbc() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_5c677a6a() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

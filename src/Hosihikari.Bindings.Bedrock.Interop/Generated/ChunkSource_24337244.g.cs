@@ -311,7 +311,6 @@ public sealed unsafe partial class ChunkSource : global::System.IDisposable
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'ActorUnloadedChunkTransferEntry' is not supported.");
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

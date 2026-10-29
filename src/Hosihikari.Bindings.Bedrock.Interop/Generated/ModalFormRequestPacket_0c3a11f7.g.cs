@@ -123,7 +123,6 @@ public sealed unsafe partial class ModalFormRequestPacket : global::System.IDisp
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_1e2f666d((void*)_handle);

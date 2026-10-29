@@ -147,7 +147,6 @@ public sealed unsafe partial class WorkerPool : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

@@ -81,12 +81,4 @@ public sealed unsafe partial class IndexSet
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_a79a564b() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static IndexSet Create_6249bf56(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_9c754d2a() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

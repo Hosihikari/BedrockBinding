@@ -72,8 +72,4 @@ public sealed unsafe partial class CollisionShapes
     {
         NativeMethods.TablePtr->hs_method_e15bb3f7((void*)_handle, arg0);
     }
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static CollisionShapes Create_1f25c6f5(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

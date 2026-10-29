@@ -148,11 +148,6 @@ public sealed unsafe partial class NetworkItemStackDescriptor : global::System.I
     }
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static NetworkItemStackDescriptor Create_181a4021(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-
     public void Dispose()
     {
         if (_handle != 0)

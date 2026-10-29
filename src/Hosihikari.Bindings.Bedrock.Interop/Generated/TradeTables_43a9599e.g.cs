@@ -82,8 +82,4 @@ public sealed unsafe partial class TradeTables
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_976d8e69() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_089827eb() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

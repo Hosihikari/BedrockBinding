@@ -78,7 +78,6 @@ public sealed unsafe partial class StructureCache : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->hs_get_f3d5d983((void*)_handle);
     }
 
-
     public void Dispose()
     {
         if (_handle != 0)

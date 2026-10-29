@@ -122,12 +122,4 @@ public sealed unsafe partial class JumpControlComponent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_b1d86bfe() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static JumpControlComponent Create_0cd66b80(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_3c1ee4fa() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

@@ -99,7 +99,6 @@ public sealed unsafe partial class BlockEventDispatcherToken : global::System.ID
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

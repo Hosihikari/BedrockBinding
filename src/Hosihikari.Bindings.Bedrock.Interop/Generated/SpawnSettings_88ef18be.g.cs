@@ -76,11 +76,6 @@ public sealed unsafe partial class SpawnSettings : global::System.IDisposable
     }
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static SpawnSettings Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-
     public void Dispose()
     {
         if (_handle != 0)

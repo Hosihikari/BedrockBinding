@@ -103,7 +103,6 @@ public sealed unsafe partial class DebugEndPoint : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_f24b1579((void*)_handle, arg0);
     }
 
-
     public void Dispose()
     {
         if (_handle != 0)

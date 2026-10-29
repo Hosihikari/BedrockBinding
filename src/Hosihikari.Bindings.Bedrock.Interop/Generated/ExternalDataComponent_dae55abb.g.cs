@@ -54,8 +54,4 @@ public sealed partial class ExternalDataComponent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_d871f4a3() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_064e8c86() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

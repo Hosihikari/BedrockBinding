@@ -46,14 +46,6 @@ public sealed unsafe partial class InternalSystemInfo
     public void Destroy_8a752ef0() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static InternalSystemInfo Create_63ea6b38(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_4c62d423() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
     // The native field type is not projected; this is the address of the field storage.
     public nint mDependencies_Address
     {

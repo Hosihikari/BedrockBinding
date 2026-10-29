@@ -58,8 +58,4 @@ public sealed partial class LevelCache
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_0dc960d3() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_0cfe3f91() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

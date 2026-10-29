@@ -79,10 +79,6 @@ public sealed unsafe partial class WeakEntityRef
     public void Destroy_42f24c1d() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_abd91cb4() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
     // The native field type is not projected; this is the address of the field storage.
     public nint mEntity_Address
     {

@@ -54,8 +54,4 @@ public sealed partial class ActorHealthChangedEvent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_3b0ff353() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_1451a67a() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

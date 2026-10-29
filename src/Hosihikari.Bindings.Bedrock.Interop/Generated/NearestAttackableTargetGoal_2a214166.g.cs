@@ -90,7 +90,6 @@ public sealed unsafe partial class NearestAttackableTargetGoal : global::System.
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

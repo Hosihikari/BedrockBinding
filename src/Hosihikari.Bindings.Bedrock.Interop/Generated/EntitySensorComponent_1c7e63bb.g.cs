@@ -66,8 +66,4 @@ public sealed unsafe partial class EntitySensorComponent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_cfa78601() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_16b80e64() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

@@ -137,8 +137,4 @@ public sealed unsafe partial class Material
     {
         NativeMethods.TablePtr->hs_method_d38f0d7b();
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

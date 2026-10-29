@@ -138,7 +138,6 @@ public sealed unsafe partial class MolangVariable : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

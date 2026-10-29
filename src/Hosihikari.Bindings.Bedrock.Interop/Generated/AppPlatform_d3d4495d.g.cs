@@ -1619,7 +1619,6 @@ public sealed unsafe partial class AppPlatform : global::System.IDisposable
     }
 
 
-
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {

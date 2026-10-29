@@ -316,7 +316,6 @@ public sealed unsafe partial class LegacyTelemetryEventPacket : global::System.I
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_e129512c((void*)_handle);

@@ -122,7 +122,6 @@ public sealed unsafe partial class WorldTemplateManager : global::System.IDispos
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::PubSub::Subscription' requires --link-carrier or --virtual-dispatch.");
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

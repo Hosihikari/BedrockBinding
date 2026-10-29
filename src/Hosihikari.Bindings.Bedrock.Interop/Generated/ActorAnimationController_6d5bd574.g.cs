@@ -112,7 +112,6 @@ public sealed unsafe partial class ActorAnimationController : global::System.IDi
         NativeMethods.TablePtr->hs_method_a29cd8ac((void*)_handle);
     }
 
-
     public void Dispose()
     {
         if (_handle != 0)

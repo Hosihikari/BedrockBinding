@@ -54,12 +54,4 @@ public sealed partial class AliasInfoDescription
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_fe0b3f80() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static AliasInfoDescription Create_52912ea5(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_c2a8ef27() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

@@ -662,7 +662,6 @@ public sealed unsafe partial class ServerPlayer : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

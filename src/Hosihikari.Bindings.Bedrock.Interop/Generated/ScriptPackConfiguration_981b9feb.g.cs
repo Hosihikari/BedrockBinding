@@ -114,11 +114,6 @@ public sealed unsafe partial class ScriptPackConfiguration : global::System.IDis
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ScriptPackConfiguration Create_10c23305(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-
     public void Dispose()
     {
         if (_handle != 0)

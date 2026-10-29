@@ -128,7 +128,6 @@ public sealed unsafe partial class StructureBlockPalette : global::System.IDispo
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

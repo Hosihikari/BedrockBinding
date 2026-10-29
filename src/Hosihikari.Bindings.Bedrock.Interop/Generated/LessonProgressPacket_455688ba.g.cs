@@ -129,7 +129,6 @@ public sealed unsafe partial class LessonProgressPacket : global::System.IDispos
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_b5776ff6((void*)_handle);

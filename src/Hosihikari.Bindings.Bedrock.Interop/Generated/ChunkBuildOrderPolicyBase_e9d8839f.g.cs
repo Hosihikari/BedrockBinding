@@ -78,8 +78,4 @@ public sealed unsafe partial class ChunkBuildOrderPolicyBase
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_e2b456d4() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_6a9638ab() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

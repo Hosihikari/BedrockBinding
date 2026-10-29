@@ -81,8 +81,4 @@ public sealed unsafe partial class AreaAttackComponent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_5e154bf2() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_6c6d417c() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

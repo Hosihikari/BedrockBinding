@@ -191,7 +191,6 @@ public sealed unsafe partial class UpdateTradePacket : global::System.IDisposabl
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

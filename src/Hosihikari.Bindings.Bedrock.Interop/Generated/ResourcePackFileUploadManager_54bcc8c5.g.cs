@@ -119,7 +119,6 @@ public sealed unsafe partial class ResourcePackFileUploadManager : global::Syste
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

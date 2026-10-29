@@ -99,7 +99,6 @@ public sealed unsafe partial class OnScreenTextureAnimationPacket : global::Syst
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_e4dba42e((void*)_handle);

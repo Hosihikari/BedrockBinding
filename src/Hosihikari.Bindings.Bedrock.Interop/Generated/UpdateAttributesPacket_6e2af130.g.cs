@@ -145,7 +145,6 @@ public sealed unsafe partial class UpdateAttributesPacket : global::System.IDisp
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

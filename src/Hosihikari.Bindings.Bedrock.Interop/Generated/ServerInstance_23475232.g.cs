@@ -264,7 +264,6 @@ public sealed unsafe partial class ServerInstance : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

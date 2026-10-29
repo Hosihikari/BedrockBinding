@@ -170,7 +170,6 @@ public sealed unsafe partial class MinecraftGameTest : global::System.IDisposabl
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

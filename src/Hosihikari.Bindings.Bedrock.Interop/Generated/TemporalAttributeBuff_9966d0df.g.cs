@@ -117,11 +117,6 @@ public sealed unsafe partial class TemporalAttributeBuff : global::System.IDispo
     }
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static TemporalAttributeBuff Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-
     public void Dispose()
     {
         if (_handle != 0)

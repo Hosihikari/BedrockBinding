@@ -115,7 +115,6 @@ public sealed unsafe partial class EncryptedNetworkPeer : global::System.IDispos
     }
 
 
-
     // The native field type is not projected; this is the address of the field storage.
     public nint mPeer_Address
     {

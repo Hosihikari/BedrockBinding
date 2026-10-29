@@ -99,7 +99,6 @@ public sealed unsafe partial class ChunkRadiusUpdatedPacket : global::System.IDi
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_65c46070((void*)_handle);

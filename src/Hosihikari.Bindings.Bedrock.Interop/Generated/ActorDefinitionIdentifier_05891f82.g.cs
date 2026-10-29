@@ -405,11 +405,6 @@ public sealed unsafe partial class ActorDefinitionIdentifier : global::System.ID
     }
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ActorDefinitionIdentifier Create_12b4632c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-
     public void Dispose()
     {
         if (_handle != 0)

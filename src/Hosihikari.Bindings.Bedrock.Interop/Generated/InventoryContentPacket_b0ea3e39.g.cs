@@ -103,7 +103,6 @@ public sealed unsafe partial class InventoryContentPacket : global::System.IDisp
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_d05c6761((void*)_handle);

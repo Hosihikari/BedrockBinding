@@ -62,7 +62,6 @@ public sealed unsafe partial class IMinecraftEventing : global::System.IDisposab
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

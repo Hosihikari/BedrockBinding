@@ -132,7 +132,6 @@ public sealed unsafe partial class NetworkStatistics : global::System.IDisposabl
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

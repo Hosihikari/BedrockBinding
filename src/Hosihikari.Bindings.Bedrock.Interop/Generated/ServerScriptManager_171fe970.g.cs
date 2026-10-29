@@ -141,7 +141,6 @@ public sealed unsafe partial class ServerScriptManager : global::System.IDisposa
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

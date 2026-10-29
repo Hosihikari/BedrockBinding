@@ -58,12 +58,4 @@ public sealed unsafe partial class BlockMaterialInstanceProxy
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_5a0175ce() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static BlockMaterialInstanceProxy Create_0f4f1f53(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_c62a072e() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

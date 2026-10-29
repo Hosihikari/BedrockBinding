@@ -733,7 +733,6 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
 
-
     public bool mDirty
     {
         get => NativeMethods.TablePtr->hs_get_4f013145((void*)_handle) != 0;

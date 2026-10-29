@@ -52,7 +52,6 @@ public sealed unsafe partial class TagsItemComponent : global::System.IDisposabl
         return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_46c73b17(), false);
     }
 
-
     public void Dispose()
     {
         if (_handle != 0)

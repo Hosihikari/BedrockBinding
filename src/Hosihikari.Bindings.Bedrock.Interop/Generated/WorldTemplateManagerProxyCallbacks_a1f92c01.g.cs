@@ -54,8 +54,4 @@ public sealed partial class WorldTemplateManagerProxyCallbacks
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_e8d0eeb0() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_83b7f2f1() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

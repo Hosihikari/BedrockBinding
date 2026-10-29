@@ -64,7 +64,6 @@ public sealed unsafe partial class EnchantableItemComponent : global::System.IDi
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

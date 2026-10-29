@@ -102,7 +102,6 @@ public sealed unsafe partial class XoroshiroPositionalRandomFactory : global::Sy
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

@@ -119,11 +119,6 @@ public sealed unsafe partial class ChunkLoadedRequest : global::System.IDisposab
     }
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ChunkLoadedRequest Create_7524617e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-
     public void Dispose()
     {
         if (_handle != 0)

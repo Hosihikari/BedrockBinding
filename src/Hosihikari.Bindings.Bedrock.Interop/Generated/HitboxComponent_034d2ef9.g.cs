@@ -72,12 +72,4 @@ public sealed unsafe partial class HitboxComponent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_68ff9380() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static HitboxComponent Create_afbc2896(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_0b1c00b2() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

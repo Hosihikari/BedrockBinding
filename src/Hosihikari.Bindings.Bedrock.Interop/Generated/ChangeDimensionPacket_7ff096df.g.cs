@@ -111,7 +111,6 @@ public sealed unsafe partial class ChangeDimensionPacket : global::System.IDispo
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_2a0c218a((void*)_handle);

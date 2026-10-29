@@ -54,8 +54,4 @@ public sealed unsafe partial class RakWebSocketDataFrame
     {
         NativeMethods.TablePtr->hs_method_1260d611((void*)arg0.Handle, (void*)arg1, arg2, arg3, arg4, arg5);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

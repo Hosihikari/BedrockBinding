@@ -164,7 +164,6 @@ public sealed unsafe partial class TransferPacket : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

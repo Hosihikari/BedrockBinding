@@ -93,8 +93,4 @@ public sealed unsafe partial class PathfinderNode
     {
         NativeMethods.TablePtr->hs_method_50dfcc3f((void*)_handle, arg0);
     }
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static PathfinderNode Create_88a3ce87(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

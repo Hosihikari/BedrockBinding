@@ -103,7 +103,6 @@ public sealed unsafe partial class DeathInfoPacket : global::System.IDisposable
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_ee6951ae((void*)_handle);

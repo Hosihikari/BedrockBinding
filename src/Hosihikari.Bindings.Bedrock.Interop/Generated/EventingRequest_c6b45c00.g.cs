@@ -82,8 +82,4 @@ public sealed partial class EventingRequest
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_a768f4aa() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_7efbe62c() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

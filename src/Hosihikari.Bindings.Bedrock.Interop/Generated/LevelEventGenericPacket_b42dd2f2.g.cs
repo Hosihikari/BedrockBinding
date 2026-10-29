@@ -105,7 +105,6 @@ public sealed unsafe partial class LevelEventGenericPacket : global::System.IDis
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_8a3cfdcd((void*)_handle);

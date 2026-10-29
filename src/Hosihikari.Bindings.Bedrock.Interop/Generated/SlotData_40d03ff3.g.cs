@@ -58,8 +58,4 @@ public sealed unsafe partial class SlotData
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_c7b7abfa() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_0547980f() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

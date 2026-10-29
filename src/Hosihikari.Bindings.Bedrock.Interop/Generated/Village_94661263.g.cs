@@ -504,8 +504,4 @@ public sealed unsafe partial class Village
     {
         return NativeMethods.TablePtr->hs_method_92e752f6((void*)_handle, (void*)arg0.Handle, arg1) != 0;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

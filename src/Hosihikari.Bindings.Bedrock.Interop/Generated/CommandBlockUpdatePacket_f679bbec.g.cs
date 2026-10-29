@@ -161,11 +161,6 @@ public sealed unsafe partial class CommandBlockUpdatePacket : global::System.IDi
     }
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static CommandBlockUpdatePacket Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_380fdf1a((void*)_handle);

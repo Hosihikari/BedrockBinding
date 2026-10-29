@@ -86,8 +86,4 @@ public sealed unsafe partial class ItemRegistry
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_82f3347f() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_afa5bbae() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

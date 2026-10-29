@@ -66,8 +66,4 @@ public sealed partial class AutomationBehaviorTreeGroup
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_7a2626ec() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_e5301b49() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

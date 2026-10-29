@@ -81,7 +81,6 @@ public sealed unsafe partial class DimensionDataPacket : global::System.IDisposa
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_21ab9daa((void*)_handle);

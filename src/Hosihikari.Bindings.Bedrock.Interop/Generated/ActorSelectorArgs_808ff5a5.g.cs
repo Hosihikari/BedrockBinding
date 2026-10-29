@@ -83,12 +83,4 @@ public sealed partial class ActorSelectorArgs
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_94cf24f1() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ActorSelectorArgs Create_05b28980(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_0776894a() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

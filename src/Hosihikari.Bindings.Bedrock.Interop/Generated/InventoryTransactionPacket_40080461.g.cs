@@ -115,7 +115,6 @@ public sealed unsafe partial class InventoryTransactionPacket : global::System.I
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_8cfa265d((void*)_handle);

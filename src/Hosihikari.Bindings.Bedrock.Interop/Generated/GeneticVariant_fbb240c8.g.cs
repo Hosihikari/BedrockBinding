@@ -54,12 +54,4 @@ public sealed partial class GeneticVariant
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_8b15b248() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static GeneticVariant Create_41e772d6(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_b3aa3d26() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

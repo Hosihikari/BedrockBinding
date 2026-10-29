@@ -54,8 +54,4 @@ public sealed partial class ItemChargeEvent
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ItemChargeEvent Create_ae86af8c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

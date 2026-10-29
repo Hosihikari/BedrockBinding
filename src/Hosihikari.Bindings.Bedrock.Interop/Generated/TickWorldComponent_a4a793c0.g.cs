@@ -107,8 +107,4 @@ public sealed unsafe partial class TickWorldComponent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_0d6212a4() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_b626ce39() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

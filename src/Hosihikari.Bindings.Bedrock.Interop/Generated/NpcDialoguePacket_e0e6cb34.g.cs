@@ -156,7 +156,6 @@ public sealed unsafe partial class NpcDialoguePacket : global::System.IDisposabl
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_bb182cb0((void*)_handle);

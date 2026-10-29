@@ -76,12 +76,4 @@ public sealed unsafe partial class ComponentItemComponentData_v1_20_30
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_afeaa07d() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ComponentItemComponentData_v1_20_30 Create_bb843368(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_fd707e59() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

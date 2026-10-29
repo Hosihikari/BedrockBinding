@@ -224,7 +224,6 @@ public sealed unsafe partial class SetDisplayObjectivePacket : global::System.ID
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

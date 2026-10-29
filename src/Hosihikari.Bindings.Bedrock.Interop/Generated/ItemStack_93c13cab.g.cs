@@ -365,11 +365,6 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
     }
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ItemStack Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-
     public short mAuxValue
     {
         get => NativeMethods.TablePtr->hs_get_4a07b3f0((void*)_handle);

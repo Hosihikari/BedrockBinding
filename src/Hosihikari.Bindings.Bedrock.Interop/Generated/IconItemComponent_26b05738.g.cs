@@ -88,7 +88,6 @@ public sealed unsafe partial class IconItemComponent : global::System.IDisposabl
         }
     }
 
-
     public void Dispose()
     {
         if (_handle != 0)

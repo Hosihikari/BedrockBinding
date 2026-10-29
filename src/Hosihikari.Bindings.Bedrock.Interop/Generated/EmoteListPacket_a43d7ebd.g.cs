@@ -99,7 +99,6 @@ public sealed unsafe partial class EmoteListPacket : global::System.IDisposable
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_e2f93eb5((void*)_handle);

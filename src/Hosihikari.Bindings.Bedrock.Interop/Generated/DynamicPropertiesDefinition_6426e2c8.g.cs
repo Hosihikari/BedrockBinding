@@ -143,8 +143,4 @@ public sealed unsafe partial class DynamicPropertiesDefinition
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_a04c33d7() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_78a8a1f8() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

@@ -146,7 +146,6 @@ public sealed unsafe partial class ShowCreditsPacket : global::System.IDisposabl
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

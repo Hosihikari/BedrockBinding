@@ -58,8 +58,4 @@ public sealed unsafe partial class GeneDefinition
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_2708cc0f() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_44a70bb5() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

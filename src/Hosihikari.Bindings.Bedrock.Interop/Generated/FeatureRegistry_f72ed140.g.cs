@@ -381,7 +381,6 @@ public sealed unsafe partial class FeatureRegistry : global::System.IDisposable
     public void setSmallFeaturePasses_d856e525(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-
     public void Dispose()
     {
         if (_handle != 0)

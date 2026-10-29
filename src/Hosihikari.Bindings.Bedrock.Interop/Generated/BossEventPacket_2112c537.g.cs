@@ -170,7 +170,6 @@ public sealed unsafe partial class BossEventPacket : global::System.IDisposable
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_9506183e((void*)_handle);

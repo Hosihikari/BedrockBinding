@@ -116,7 +116,6 @@ public sealed unsafe partial class InteractPacket : global::System.IDisposable
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_bf29f68b((void*)_handle);

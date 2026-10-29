@@ -58,12 +58,4 @@ public sealed partial class ScriptGenerator
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_689757c5() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ScriptGenerator Create_942b930d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_5dd69cb0() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

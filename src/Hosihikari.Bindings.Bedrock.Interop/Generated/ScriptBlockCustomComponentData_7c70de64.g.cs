@@ -54,8 +54,4 @@ public sealed partial class ScriptBlockCustomComponentData
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_edf2adbf() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_49e34b8f() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

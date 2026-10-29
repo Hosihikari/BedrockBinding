@@ -88,7 +88,6 @@ public sealed unsafe partial class EducationSettingsPacket : global::System.IDis
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_a723f4a1((void*)_handle);

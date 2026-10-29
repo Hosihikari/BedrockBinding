@@ -104,7 +104,6 @@ public sealed unsafe partial class CameraShakePacket : global::System.IDisposabl
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_7fdccf46((void*)_handle);

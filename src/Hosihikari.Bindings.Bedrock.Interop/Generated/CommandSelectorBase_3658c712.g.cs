@@ -38,12 +38,7 @@ public sealed unsafe partial class CommandSelectorBase : global::System.IDisposa
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint Unlimited
-    {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-    }
+    public const ulong Unlimited = 4294967295;
 
     public void addFamilyFilter_3f829b2c(nint arg0)
     {
@@ -399,7 +394,6 @@ public sealed unsafe partial class CommandSelectorBase : global::System.IDisposa
     {
         NativeMethods.TablePtr->hs_method_aa540dfc((void*)_handle, arg0);
     }
-
 
 
     public void Dispose()

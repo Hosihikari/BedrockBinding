@@ -59,8 +59,4 @@ public sealed unsafe partial class BoneAnimationChannel
     {
         NativeMethods.TablePtr->hs_method_5ae5dc3c((void*)_handle);
     }
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static BoneAnimationChannel Create_ee2b8742(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

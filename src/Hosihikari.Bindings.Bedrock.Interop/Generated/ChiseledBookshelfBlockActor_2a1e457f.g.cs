@@ -173,7 +173,6 @@ public sealed unsafe partial class ChiseledBookshelfBlockActor : global::System.
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ChiseledBookshelfBlockActor((nint)__hs_handle, false) : null;
     }
 
-
     public void Dispose()
     {
         if (_handle != 0)

@@ -138,7 +138,6 @@ public sealed unsafe partial class NetherNetConnector : global::System.IDisposab
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

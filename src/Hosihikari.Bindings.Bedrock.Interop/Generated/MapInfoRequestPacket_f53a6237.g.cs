@@ -126,7 +126,6 @@ public sealed unsafe partial class MapInfoRequestPacket : global::System.IDispos
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_3dc0d875((void*)_handle);

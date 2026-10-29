@@ -78,7 +78,6 @@ public sealed unsafe partial class ItemStackRequestActionCraftResults_DEPRECATED
         NativeMethods.TablePtr->hs_method_775e7e4c((void*)_handle, (void*)arg0.Handle, arg1);
     }
 
-
     public void Dispose()
     {
         if (_handle != 0)

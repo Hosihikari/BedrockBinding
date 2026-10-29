@@ -54,12 +54,4 @@ public sealed partial class PlayerUseNameTagEvent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_9f64b61a() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static PlayerUseNameTagEvent Create_315a7ca5(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_a3df05f9() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

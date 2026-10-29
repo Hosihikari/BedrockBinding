@@ -105,7 +105,6 @@ public sealed unsafe partial class CompletedUsingItemPacket : global::System.IDi
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_ca82adf2((void*)_handle);

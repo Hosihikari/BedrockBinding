@@ -161,7 +161,6 @@ public sealed unsafe partial class MobEquipmentPacket : global::System.IDisposab
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_01ae44fb((void*)_handle);

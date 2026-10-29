@@ -68,8 +68,4 @@ public sealed unsafe partial class ResolvedTextObject
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_0cd38f69() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_5757df4c() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

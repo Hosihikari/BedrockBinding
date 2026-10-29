@@ -111,7 +111,6 @@ public sealed unsafe partial class NetworkChunkPublisherUpdatePacket : global::S
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_296e6198((void*)_handle);

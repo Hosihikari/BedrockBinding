@@ -116,7 +116,6 @@ public sealed unsafe partial class ActorEventPacket : global::System.IDisposable
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_acfecf4d((void*)_handle);

@@ -139,11 +139,6 @@ public sealed unsafe partial class BookEditPacket : global::System.IDisposable
     }
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static BookEditPacket Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_b93505ec((void*)_handle);

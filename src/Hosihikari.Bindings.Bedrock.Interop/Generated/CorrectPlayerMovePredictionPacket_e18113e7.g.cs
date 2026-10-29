@@ -75,7 +75,6 @@ public sealed unsafe partial class CorrectPlayerMovePredictionPacket : global::S
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_ef077028((void*)_handle);

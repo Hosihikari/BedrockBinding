@@ -280,7 +280,6 @@ public sealed unsafe partial class ContainerComponent : global::System.IDisposab
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

@@ -99,7 +99,6 @@ public sealed unsafe partial class MultiplayerSettingsPacket : global::System.ID
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_8724f202((void*)_handle);

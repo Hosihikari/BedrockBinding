@@ -177,7 +177,6 @@ public sealed unsafe partial class BeaconBlockActor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_ff0a5c2b((void*)_handle, (void*)arg0.Handle);
     }
 
-
     public void Dispose()
     {
         if (_handle != 0)

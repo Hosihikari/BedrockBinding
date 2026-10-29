@@ -191,7 +191,6 @@ public sealed unsafe partial class UpdateSoftEnumPacket : global::System.IDispos
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

@@ -177,7 +177,6 @@ public sealed unsafe partial class ClientboundMapItemDataPacket : global::System
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_268d094f((void*)_handle);

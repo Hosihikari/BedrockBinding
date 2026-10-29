@@ -146,7 +146,6 @@ public sealed unsafe partial class ShowStoreOfferPacket : global::System.IDispos
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

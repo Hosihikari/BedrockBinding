@@ -92,7 +92,6 @@ public sealed unsafe partial class ItemComponentPacket : global::System.IDisposa
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_7b6005e8((void*)_handle);

@@ -68,8 +68,4 @@ public sealed unsafe partial class LabTableReactionComponent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_8d71c40e() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_0825d5ed() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

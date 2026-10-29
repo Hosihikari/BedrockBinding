@@ -127,7 +127,6 @@ public sealed unsafe partial class StringTag : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

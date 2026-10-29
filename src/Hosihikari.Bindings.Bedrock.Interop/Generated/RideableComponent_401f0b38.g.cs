@@ -102,8 +102,4 @@ public sealed unsafe partial class RideableComponent
     {
         return NativeMethods.TablePtr->hs_method_56ef3d6d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

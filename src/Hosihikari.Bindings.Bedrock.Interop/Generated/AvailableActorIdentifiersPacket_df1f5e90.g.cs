@@ -100,7 +100,6 @@ public sealed unsafe partial class AvailableActorIdentifiersPacket : global::Sys
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_7155c106((void*)_handle);

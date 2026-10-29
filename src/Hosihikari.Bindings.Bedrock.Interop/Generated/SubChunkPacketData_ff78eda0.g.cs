@@ -38,7 +38,6 @@ public sealed unsafe partial class SubChunkPacketData : global::System.IDisposab
         return __hs_handle;
     }
 
-
     public void Dispose()
     {
         if (_handle != 0)

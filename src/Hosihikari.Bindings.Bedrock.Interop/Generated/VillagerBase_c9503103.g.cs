@@ -117,7 +117,6 @@ public sealed unsafe partial class VillagerBase : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

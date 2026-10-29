@@ -127,7 +127,6 @@ public sealed unsafe partial class RemoveVolumeEntityPacket : global::System.IDi
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

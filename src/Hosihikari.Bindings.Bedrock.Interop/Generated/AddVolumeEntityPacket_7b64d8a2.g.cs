@@ -79,7 +79,6 @@ public sealed unsafe partial class AddVolumeEntityPacket : global::System.IDispo
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_3f518052((void*)_handle);

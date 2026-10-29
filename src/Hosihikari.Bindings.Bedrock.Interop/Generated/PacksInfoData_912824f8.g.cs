@@ -96,7 +96,6 @@ public sealed unsafe partial class PacksInfoData : global::System.IDisposable
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-
     public void Dispose()
     {
         if (_handle != 0)

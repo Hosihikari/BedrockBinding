@@ -169,7 +169,6 @@ public sealed unsafe partial class MovePlayerPacket : global::System.IDisposable
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_29564d6c((void*)_handle);

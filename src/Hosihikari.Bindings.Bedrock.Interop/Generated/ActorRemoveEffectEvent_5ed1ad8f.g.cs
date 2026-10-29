@@ -54,12 +54,4 @@ public sealed partial class ActorRemoveEffectEvent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_985534c7() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ActorRemoveEffectEvent Create_f5a71e53(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_f2d0af97() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

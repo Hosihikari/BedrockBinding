@@ -88,8 +88,4 @@ public sealed unsafe partial class PositionTrackingId
         var __hs_view = NativeMethods.TablePtr->hs_method_a5e4530a((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static PositionTrackingId Create_c4bda2da(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

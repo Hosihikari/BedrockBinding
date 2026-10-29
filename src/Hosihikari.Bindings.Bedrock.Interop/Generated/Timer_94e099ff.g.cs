@@ -38,12 +38,7 @@ public sealed unsafe partial class Timer
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint MAX_TICKS_PER_UPDATE
-    {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-    }
+    public const int MAX_TICKS_PER_UPDATE = 10;
 
     [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
     public static nint MAX_TIME_PER_UPDATE

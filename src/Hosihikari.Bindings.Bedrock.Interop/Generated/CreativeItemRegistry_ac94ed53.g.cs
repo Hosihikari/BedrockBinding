@@ -178,7 +178,6 @@ public sealed unsafe partial class CreativeItemRegistry : global::System.IDispos
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

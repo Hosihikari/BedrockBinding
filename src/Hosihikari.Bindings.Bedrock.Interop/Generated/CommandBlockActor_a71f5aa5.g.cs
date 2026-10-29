@@ -224,7 +224,6 @@ public sealed unsafe partial class CommandBlockActor : global::System.IDisposabl
         return NativeMethods.TablePtr->hs_method_2bd78ffa((void*)_handle) != 0;
     }
 
-
     public void Dispose()
     {
         if (_handle != 0)

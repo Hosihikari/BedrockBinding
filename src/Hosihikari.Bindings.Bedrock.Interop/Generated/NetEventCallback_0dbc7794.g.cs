@@ -1199,7 +1199,6 @@ public sealed unsafe partial class NetEventCallback : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

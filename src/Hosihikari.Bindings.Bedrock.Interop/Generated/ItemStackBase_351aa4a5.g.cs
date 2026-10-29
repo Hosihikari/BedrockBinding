@@ -1321,11 +1321,6 @@ public sealed unsafe partial class ItemStackBase : global::System.IDisposable
     }
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ItemStackBase Create_470d12d1(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-
     public void Dispose()
     {
         if (_handle != 0)

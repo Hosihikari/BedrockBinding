@@ -122,7 +122,6 @@ public sealed unsafe partial class LabTablePacket : global::System.IDisposable
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_85462b73((void*)_handle);

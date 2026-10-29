@@ -62,8 +62,4 @@ public sealed partial class ServerPlayerCurrentMovementComponent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_3c79ea6b() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_401ae254() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

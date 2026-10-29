@@ -143,7 +143,6 @@ public sealed unsafe partial class GameTestResultsPacket : global::System.IDispo
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_de303c7a((void*)_handle);

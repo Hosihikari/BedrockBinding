@@ -79,7 +79,6 @@ public sealed unsafe partial class SpinLock : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

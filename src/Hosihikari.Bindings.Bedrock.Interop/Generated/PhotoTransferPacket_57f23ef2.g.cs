@@ -123,7 +123,6 @@ public sealed unsafe partial class PhotoTransferPacket : global::System.IDisposa
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

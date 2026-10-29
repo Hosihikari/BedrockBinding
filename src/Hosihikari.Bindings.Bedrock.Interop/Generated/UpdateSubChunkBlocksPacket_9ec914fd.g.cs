@@ -136,7 +136,6 @@ public sealed unsafe partial class UpdateSubChunkBlocksPacket : global::System.I
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

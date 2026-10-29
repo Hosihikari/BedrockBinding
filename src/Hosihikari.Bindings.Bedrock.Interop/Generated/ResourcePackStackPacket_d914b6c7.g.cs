@@ -163,7 +163,6 @@ public sealed unsafe partial class ResourcePackStackPacket : global::System.IDis
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

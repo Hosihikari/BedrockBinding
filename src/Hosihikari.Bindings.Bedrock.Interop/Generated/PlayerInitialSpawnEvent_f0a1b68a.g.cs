@@ -54,8 +54,4 @@ public sealed partial class PlayerInitialSpawnEvent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_ca9a045f() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_4206fc81() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

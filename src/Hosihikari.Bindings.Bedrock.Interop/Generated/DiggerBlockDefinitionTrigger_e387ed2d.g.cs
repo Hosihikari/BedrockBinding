@@ -54,12 +54,4 @@ public sealed partial class DiggerBlockDefinitionTrigger
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_83d11b12() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static DiggerBlockDefinitionTrigger Create_b933651b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_4a7eed06() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

@@ -63,12 +63,4 @@ public sealed unsafe partial class LevelChunkMetaData
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_aad504f1() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static LevelChunkMetaData Create_3a6e0e49(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_b1c483da() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

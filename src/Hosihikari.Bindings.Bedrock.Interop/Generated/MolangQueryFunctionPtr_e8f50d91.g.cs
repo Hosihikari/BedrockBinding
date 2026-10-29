@@ -56,7 +56,6 @@ public sealed unsafe partial class MolangQueryFunctionPtr : global::System.IDisp
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

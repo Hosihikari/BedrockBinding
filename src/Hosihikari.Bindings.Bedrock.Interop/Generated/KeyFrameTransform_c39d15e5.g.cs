@@ -101,12 +101,4 @@ public sealed unsafe partial class KeyFrameTransform
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_b252bca7() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static KeyFrameTransform Create_a0035504(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_26aef599() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

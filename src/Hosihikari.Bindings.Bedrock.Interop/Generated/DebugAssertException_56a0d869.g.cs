@@ -80,11 +80,6 @@ public sealed unsafe partial class DebugAssertException : global::System.IDispos
     }
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static DebugAssertException Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-
     public void Dispose()
     {
         if (_handle != 0)

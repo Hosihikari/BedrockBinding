@@ -105,7 +105,6 @@ public sealed unsafe partial class MeleeAttackGoal : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

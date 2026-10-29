@@ -135,7 +135,6 @@ public sealed unsafe partial class Command : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

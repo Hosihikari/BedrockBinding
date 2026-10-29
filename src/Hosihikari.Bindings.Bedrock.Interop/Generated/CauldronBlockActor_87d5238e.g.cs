@@ -146,7 +146,6 @@ public sealed unsafe partial class CauldronBlockActor : global::System.IDisposab
         NativeMethods.TablePtr->hs_method_b3b90e73((void*)_handle, (void*)arg0.Handle);
     }
 
-
     public void Dispose()
     {
         if (_handle != 0)

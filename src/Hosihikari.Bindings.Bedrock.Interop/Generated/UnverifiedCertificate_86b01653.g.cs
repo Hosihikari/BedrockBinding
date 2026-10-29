@@ -140,11 +140,6 @@ public sealed unsafe partial class UnverifiedCertificate : global::System.IDispo
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static UnverifiedCertificate Create_eee04299(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-
     public void Dispose()
     {
         if (_handle != 0)

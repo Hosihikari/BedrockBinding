@@ -58,12 +58,4 @@ public sealed partial class ItemUseOnEvent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_e8c2b811() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ItemUseOnEvent Create_787d149f(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_445e49a9() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

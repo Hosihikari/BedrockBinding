@@ -54,8 +54,4 @@ public sealed partial class PlayerGameModeChangeEvent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_73e9247c() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_e3a3e277() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

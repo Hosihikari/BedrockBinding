@@ -162,7 +162,6 @@ public sealed unsafe partial class FillingContainer : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

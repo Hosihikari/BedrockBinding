@@ -54,10 +54,6 @@ public sealed unsafe partial class AddActorBasePacket
     public void Destroy_c64b3767() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_e229e998() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_3b1644a2((void*)_handle);

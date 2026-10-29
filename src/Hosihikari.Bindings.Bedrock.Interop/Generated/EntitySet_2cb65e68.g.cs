@@ -66,8 +66,4 @@ public sealed unsafe partial class EntitySet
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign_ef41943c(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static EntitySet Create_ba80d7ed(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

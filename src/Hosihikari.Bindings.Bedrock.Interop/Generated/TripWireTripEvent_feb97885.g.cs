@@ -54,12 +54,4 @@ public sealed partial class TripWireTripEvent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_838638b8() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static TripWireTripEvent Create_43b57c9e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_5ad931dd() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

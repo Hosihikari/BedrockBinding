@@ -99,7 +99,6 @@ public sealed unsafe partial class MoveActorAbsolutePacket : global::System.IDis
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_bee869c1((void*)_handle);

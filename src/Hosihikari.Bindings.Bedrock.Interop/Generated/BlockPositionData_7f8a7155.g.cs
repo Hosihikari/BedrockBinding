@@ -38,7 +38,6 @@ public sealed unsafe partial class BlockPositionData : global::System.IDisposabl
         return __hs_handle;
     }
 
-
     public void Dispose()
     {
         if (_handle != 0)

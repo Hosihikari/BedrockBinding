@@ -88,12 +88,4 @@ public sealed unsafe partial class ResourceInformation
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_6879d8b7() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ResourceInformation Create_980163b4(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_d659a255() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

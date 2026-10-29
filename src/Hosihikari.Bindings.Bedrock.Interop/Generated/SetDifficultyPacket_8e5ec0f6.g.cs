@@ -145,7 +145,6 @@ public sealed unsafe partial class SetDifficultyPacket : global::System.IDisposa
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

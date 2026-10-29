@@ -107,7 +107,6 @@ public sealed unsafe partial class CameraPresetsPacket : global::System.IDisposa
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_cc03d9f4((void*)_handle);

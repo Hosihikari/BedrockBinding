@@ -117,7 +117,6 @@ public sealed unsafe partial class ContainerOpenPacket : global::System.IDisposa
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_51474905((void*)_handle);

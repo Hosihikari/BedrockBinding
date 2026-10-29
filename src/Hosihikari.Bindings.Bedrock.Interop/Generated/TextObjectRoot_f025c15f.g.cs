@@ -117,7 +117,6 @@ public sealed unsafe partial class TextObjectRoot : global::System.IDisposable
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ResolvedTextObject' requires --link-carrier or --virtual-dispatch.");
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

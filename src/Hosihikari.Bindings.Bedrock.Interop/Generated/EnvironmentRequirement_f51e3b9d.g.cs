@@ -58,8 +58,4 @@ public sealed unsafe partial class EnvironmentRequirement
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_0880b2c7() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_20fe926c() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

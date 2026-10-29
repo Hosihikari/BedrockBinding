@@ -48,7 +48,6 @@ public sealed unsafe partial class CooldownItemComponent : global::System.IDispo
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

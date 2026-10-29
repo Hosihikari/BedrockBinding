@@ -58,8 +58,4 @@ public sealed partial class IsSolidMobNearbyComponent
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign_1069d497(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static IsSolidMobNearbyComponent Create_ebdca4d2(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

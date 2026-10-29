@@ -58,12 +58,4 @@ public sealed partial class OreVeinifierNoises
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_0c7e79cf() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static OreVeinifierNoises Create_63adf5f2(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_f9c5ab6b() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

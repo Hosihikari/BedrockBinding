@@ -47,7 +47,6 @@ public sealed unsafe partial class DiggerItemComponent : global::System.IDisposa
         return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_5d341f0e(), false);
     }
 
-
     public void Dispose()
     {
         if (_handle != 0)

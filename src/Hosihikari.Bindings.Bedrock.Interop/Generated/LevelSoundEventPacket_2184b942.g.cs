@@ -147,7 +147,6 @@ public sealed unsafe partial class LevelSoundEventPacket : global::System.IDispo
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_fa87eabf((void*)_handle);

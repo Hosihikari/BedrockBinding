@@ -75,8 +75,4 @@ public sealed unsafe partial class ActorOwnerComponent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_80cc5aab() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_ec5d7c89() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

@@ -76,7 +76,6 @@ public sealed unsafe partial class CerealSchemaUpgrade : global::System.IDisposa
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

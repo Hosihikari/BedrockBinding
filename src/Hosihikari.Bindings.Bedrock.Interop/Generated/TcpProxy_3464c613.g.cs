@@ -94,8 +94,4 @@ public sealed partial class TcpProxy
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_0e894657() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_d476ed42() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

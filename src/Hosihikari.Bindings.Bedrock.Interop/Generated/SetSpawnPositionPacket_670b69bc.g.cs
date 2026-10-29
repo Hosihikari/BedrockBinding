@@ -169,7 +169,6 @@ public sealed unsafe partial class SetSpawnPositionPacket : global::System.IDisp
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

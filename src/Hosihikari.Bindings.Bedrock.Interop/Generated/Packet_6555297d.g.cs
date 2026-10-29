@@ -42,12 +42,7 @@ public sealed unsafe partial class Packet : global::System.IDisposable
     public static Packet Create(nint priority, nint reliability, nint clientSubId, bool compress) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint SHARE_WITH_HANDLER
-    {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-    }
+    public const bool SHARE_WITH_HANDLER = false;
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint _read(nint stream) =>
@@ -177,7 +172,6 @@ public sealed unsafe partial class Packet : global::System.IDisposable
     {
         NativeMethods.TablePtr->hs_method_b427b217((void*)_handle, arg0, (void*)arg1.Handle);
     }
-
 
 
     public void Dispose()

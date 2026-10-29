@@ -54,12 +54,4 @@ public sealed partial class ActorCarriedItemChangedEvent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_cc72547d() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ActorCarriedItemChangedEvent Create_f392d181(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_2a053d7c() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

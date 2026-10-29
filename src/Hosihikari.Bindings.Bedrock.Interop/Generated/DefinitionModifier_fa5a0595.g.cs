@@ -54,12 +54,4 @@ public sealed partial class DefinitionModifier
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_1b5644a6() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static DefinitionModifier Create_f4a2cc55(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_58bbdf51() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

@@ -92,7 +92,6 @@ public sealed unsafe partial class ScriptContentLogEndPoint : global::System.IDi
         NativeMethods.TablePtr->hs_method_394b7f9a((void*)_handle, arg0);
     }
 
-
     public void Dispose()
     {
         if (_handle != 0)

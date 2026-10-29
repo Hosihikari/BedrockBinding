@@ -168,7 +168,6 @@ public sealed unsafe partial class ResourcePackStack : global::System.IDisposabl
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

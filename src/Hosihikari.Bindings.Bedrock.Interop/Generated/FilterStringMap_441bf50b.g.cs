@@ -66,12 +66,4 @@ public sealed partial class FilterStringMap
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_338a453e() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static FilterStringMap Create_3819a34d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_ed0f7756() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

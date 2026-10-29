@@ -58,12 +58,7 @@ public sealed unsafe partial class PrioritizeSharedOwnership
         get => (nint)NativeMethods.TablePtr->hs_get_15a1c61c((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
-    public static nint mWaitForZeroBit
-    {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
-    }
+    public const ulong mWaitForZeroBit = 9223372036854775808;
 
     public ulong mWaitingWriterCount
     {

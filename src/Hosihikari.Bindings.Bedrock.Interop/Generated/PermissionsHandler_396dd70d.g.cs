@@ -153,10 +153,6 @@ public sealed unsafe partial class PermissionsHandler : global::System.IDisposab
         NativeMethods.TablePtr->hs_method_43e6e550((void*)_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static PermissionsHandler Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
     public void Dispose()
     {
         if (_handle != 0)

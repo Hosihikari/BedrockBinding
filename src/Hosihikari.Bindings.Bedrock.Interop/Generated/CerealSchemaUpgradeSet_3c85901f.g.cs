@@ -58,8 +58,4 @@ public sealed partial class CerealSchemaUpgradeSet
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_1599ffc1() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_76f8b7a7() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

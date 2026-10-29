@@ -90,12 +90,4 @@ public sealed unsafe partial class ClientInputLockComponent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_2e804454() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ClientInputLockComponent Create_59036eb6(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_dd2d2337() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

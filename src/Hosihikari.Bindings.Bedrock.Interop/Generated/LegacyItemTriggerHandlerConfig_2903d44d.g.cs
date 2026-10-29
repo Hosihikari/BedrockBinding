@@ -54,12 +54,4 @@ public sealed partial class LegacyItemTriggerHandlerConfig
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_b2dfb652() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static LegacyItemTriggerHandlerConfig Create_3554a896(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_dea0694d() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

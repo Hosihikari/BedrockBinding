@@ -87,8 +87,4 @@ public sealed unsafe partial class AngryDefinition
     {
         NativeMethods.TablePtr->hs_method_1630b905((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

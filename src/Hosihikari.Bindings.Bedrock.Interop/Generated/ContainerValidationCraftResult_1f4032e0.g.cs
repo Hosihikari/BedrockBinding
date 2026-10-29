@@ -58,8 +58,4 @@ public sealed partial class ContainerValidationCraftResult
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_bc50abe6() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_0d7e93eb() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

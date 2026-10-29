@@ -138,7 +138,6 @@ public sealed unsafe partial class AvailableCommandsPacket : global::System.IDis
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_35ef2f94((void*)_handle);

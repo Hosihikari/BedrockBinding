@@ -54,8 +54,4 @@ public sealed partial class DeserializeDataParams
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_b09215f4() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_1b5dff33() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

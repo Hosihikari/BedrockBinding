@@ -54,12 +54,4 @@ public sealed partial class SummonSpellData
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_0e5ee0ad() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static SummonSpellData Create_c7c5370a(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_47673669() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

@@ -94,7 +94,6 @@ public sealed unsafe partial class CreativeContentPacket : global::System.IDispo
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_87383f75((void*)_handle);

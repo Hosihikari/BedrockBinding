@@ -54,12 +54,4 @@ public sealed partial class BlockPatternEvent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_8f15cdc9() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static BlockPatternEvent Create_9c672ea6(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_ccfb2c80() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

@@ -81,7 +81,6 @@ public sealed unsafe partial class FeatureRegistryPacket : global::System.IDispo
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_183443f7((void*)_handle);

@@ -113,11 +113,6 @@ public sealed unsafe partial class DimensionDefinitionGroup : global::System.IDi
     }
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static DimensionDefinitionGroup Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-
     public void Dispose()
     {
         if (_handle != 0)

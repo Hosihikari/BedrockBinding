@@ -111,7 +111,6 @@ public sealed unsafe partial class MotionPredictionHintsPacket : global::System.
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_45ce1f96((void*)_handle);

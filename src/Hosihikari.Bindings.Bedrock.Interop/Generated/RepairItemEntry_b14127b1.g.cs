@@ -58,8 +58,4 @@ public sealed partial class RepairItemEntry
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_65595e4e() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_1125fd4a() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

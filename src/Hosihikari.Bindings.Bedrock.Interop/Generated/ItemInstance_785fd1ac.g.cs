@@ -191,11 +191,6 @@ public sealed unsafe partial class ItemInstance : global::System.IDisposable
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ItemInstance Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-
     public short mAuxValue
     {
         get => NativeMethods.TablePtr->hs_get_85045596((void*)_handle);

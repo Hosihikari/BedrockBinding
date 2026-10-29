@@ -87,7 +87,6 @@ public sealed unsafe partial class CodeBuilderPacket : global::System.IDisposabl
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_f53b54b6((void*)_handle);

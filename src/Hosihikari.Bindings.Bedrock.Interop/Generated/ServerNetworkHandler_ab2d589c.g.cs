@@ -923,7 +923,6 @@ public sealed unsafe partial class ServerNetworkHandler : global::System.IDispos
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

@@ -77,7 +77,6 @@ public sealed unsafe partial class Feature : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

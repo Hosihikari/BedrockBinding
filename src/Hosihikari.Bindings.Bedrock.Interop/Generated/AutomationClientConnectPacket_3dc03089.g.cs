@@ -92,7 +92,6 @@ public sealed unsafe partial class AutomationClientConnectPacket : global::Syste
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_e2027655((void*)_handle);

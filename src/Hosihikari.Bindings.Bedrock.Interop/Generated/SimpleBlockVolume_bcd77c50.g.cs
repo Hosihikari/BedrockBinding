@@ -179,11 +179,6 @@ public sealed unsafe partial class SimpleBlockVolume : global::System.IDisposabl
     }
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static SimpleBlockVolume Create_9a3b750b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-
     public void Dispose()
     {
         if (_handle != 0)

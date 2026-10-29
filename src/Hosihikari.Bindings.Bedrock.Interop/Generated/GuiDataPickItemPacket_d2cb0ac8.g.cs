@@ -143,7 +143,6 @@ public sealed unsafe partial class GuiDataPickItemPacket : global::System.IDispo
     }
 
 
-
     public byte mClientSubId
     {
         get => NativeMethods.TablePtr->hs_get_7580d167((void*)_handle);

@@ -130,7 +130,6 @@ public sealed unsafe partial class PackInfoData : global::System.IDisposable
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

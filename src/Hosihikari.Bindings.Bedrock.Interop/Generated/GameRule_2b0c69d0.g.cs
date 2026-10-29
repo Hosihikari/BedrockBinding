@@ -246,11 +246,6 @@ public sealed unsafe partial class GameRule : global::System.IDisposable
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static GameRule Create_1b01cd2c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-
     public void Dispose()
     {
         if (_handle != 0)

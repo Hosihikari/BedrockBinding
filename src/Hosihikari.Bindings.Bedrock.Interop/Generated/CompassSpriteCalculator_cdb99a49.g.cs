@@ -88,8 +88,4 @@ public sealed unsafe partial class CompassSpriteCalculator
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_061d6661() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_43d4f7b3() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

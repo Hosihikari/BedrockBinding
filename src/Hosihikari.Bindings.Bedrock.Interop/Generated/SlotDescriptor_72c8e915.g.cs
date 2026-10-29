@@ -58,12 +58,4 @@ public sealed unsafe partial class SlotDescriptor
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_bf569c58() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static SlotDescriptor Create_3d06442a(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_06f3c193() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

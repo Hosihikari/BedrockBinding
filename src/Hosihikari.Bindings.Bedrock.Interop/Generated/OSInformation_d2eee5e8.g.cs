@@ -54,8 +54,4 @@ public sealed partial class OSInformation
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_fc54b23b() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_582ff8f6() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

@@ -143,7 +143,6 @@ public sealed unsafe partial class UnlockedRecipesPacket : global::System.IDispo
     }
 
 
-
     public void Dispose()
     {
         if (_handle != 0)

@@ -54,8 +54,4 @@ public sealed partial class PlayerFormCloseEvent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy_b0f5f636() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_30e0f727() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }
