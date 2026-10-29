@@ -1,5 +1,7 @@
 # Hosihikari.Bindings.Bedrock
 
+[English](README.md) | [简体中文](README.zh_hans.md)
+
 The **Bedrock / MCAPI** interop surface for the Hosihikari projection: a generated native-style **Interop** and a symbol-dispatched native **binding shim**.
 
 ## Boundary
@@ -10,8 +12,8 @@ The **Bedrock / MCAPI** interop surface for the Hosihikari projection: a generat
 
 ## Current state
 
-- Interop: 6,434 generated C# files under `src/Hosihikari.Bindings.Bedrock.Interop/Generated/`.
-- 绑定垫片: 31,605 functions in each of `native/BindingShim/generated/win-x64-server/bedrock/` and `native/BindingShim/generated/linux-x64-server/bedrock/`.
+- Interop: 7,138 generated C# files under `src/Hosihikari.Bindings.Bedrock.Interop/Generated/`.
+- Binding Shim: 31,605 functions in each of `native/BindingShim/generated/win-x64-server/bedrock/` and `native/BindingShim/generated/linux-x64-server/bedrock/`.
 - Coverage: 14,274 declarations and 139,889 members bound across both configurations.
 - `scripts/classes-1.21.3.txt` selects the current public class set. Classes outside the LeviLamina header supplement contribute symbol and vtable methods. Layout sizes come from the carrier's deleting destructors, which hand the sized `operator delete` the compiler's own `sizeof(T)`; the v0.13.5 headers supply field offsets only where they prove a layout of that same size, so a class whose members the generator did not recover keeps its fields as stubs while its constructors still allocate the right amount.
 

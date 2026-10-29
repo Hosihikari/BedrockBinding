@@ -1,18 +1,20 @@
 # Hosihikari.Bindings.Bedrock
 
+[English](README.md) | [简体中文](README.zh_hans.md)
+
 Hosihikari 绑定项目的 **Bedrock / MCAPI** 互操作面：生成的、贴近原生风格的 **Interop** 与按符号分发的原生 **绑定垫片**。
 
 ## 边界
 
-- `Hosihikari.Bindings.Bedrock.Interop` 由 `HosihikariProjection/BindingGenerator` 从 Bedrock Dedicated Server **1.21.3.01** 的符号级 IR 生成，并合并 LeviLamina **v0.13.5** 头文件补充。它映照 MCAPI 声明：record 保留生成的包装类型，单层指针与引用返回变为类型化借用包装，`optional_ref<T>` 复用该路径，不受支持的成员保留带原因的 `NotSupportedException` stub。ABI 值类型与 shim 加载器来自 `HosihikariProjection/BindingAbi`。
+- `Hosihikari.Bindings.Bedrock.Interop` 由 `HosihikariProjection/BindingGenerator` 从 Bedrock Dedicated Server **1.21.3.01** 的符号级 IR 生成，并合并 LeviLamina **v0.13.5** 头文件补充。它映照 MCAPI 声明：record 保留生成的包装类型，枚举声明投影为携带头文件补充所还原枚举值的 C# 枚举，单层指针与引用返回变为类型化借用包装，`optional_ref<T>` 复用该路径，不受支持的成员保留带原因的 `NotSupportedException` stub；没有可用成员的类型保留类型身份并标记 `[Obsolete]`。ABI 值类型与 shim 加载器来自 `HosihikariProjection/BindingAbi`。
 - `native/BindingShim/` 是 C ABI 投影，自包含：不包含游戏头文件，也不链接 import library。直接成员在 Windows 上解析 `模块基址 + rva`，在 Linux 上解析 `模块基址 + address`；虚成员按每配置 vtable 槽索引。缺少地址时回退到 `GetProcAddress`/`dlsym` 与记录的符号。命名模块不存在时，Windows 与 Linux 会回退到进程主模块，因此 `bedrock_server.exe` 与 `bedrock_server_mod.exe` 都能工作。
 - 手写 Idiomatic 层延后；生成的 Interop 是当前公开的互操作面。
 
 ## 当前状态
 
-- Interop：`src/Hosihikari.Bindings.Bedrock.Interop/Generated/` 下 6,434 个生成的 C# 文件。
+- Interop：`src/Hosihikari.Bindings.Bedrock.Interop/Generated/` 下 7,138 个生成的 C# 文件。
 - 绑定垫片：`native/BindingShim/generated/win-x64-server/bedrock/` 与 `native/BindingShim/generated/linux-x64-server/bedrock/` 各 31,605 个函数。
-- 覆盖：两个配置合计绑定 14,274 个声明与 132,139 个成员。
+- 覆盖：两个配置合计绑定 14,274 个声明与 139,889 个成员。
 - `scripts/classes-1.21.3.txt` 选出当前公开类集。LeviLamina 头补充之外的类贡献符号与 vtable 方法。布局尺寸取自载体的删除析构函数：它把编译器自己的 `sizeof(T)` 交给有尺寸的 `operator delete`；v0.13.5 头文件只在能证明同样大小的布局时提供字段偏移，所以生成器没还原成员的类，字段保持 stub，构造函数仍按正确大小分配。
 
 shim 以 `--symbol-dispatch` 模式发射。支持的 ABI：
@@ -21,7 +23,7 @@ shim 以 `--symbol-dispatch` 模式发射。支持的 ABI：
 - `std::string` / `std::string_view` 的值与 const 引用；
 - 单层 `T*` / `T&`，以 `void*` 传递；
 - 按值 record：小的 `triviallyCopyable` record 走整数寄存器，较大 record 走栈上临时区与隐藏返回缓冲区；只有平凡析构的 record（`AABB`、`Vec2`、`Brightness`）按字节复制，但因用户提供的拷贝构造而对调用 ABI 非平凡，始终使用隐藏引用；非平凡析构 record 使用其拷贝构造与析构符号；
-- 类型未投影的字段以只读 `nint` 暴露字段存储地址，属性名为 `<field>_Address`；已知实例偏移与静态符号仍然可用；
+- 类型未投影的字段以只读 `nint` 暴露字段存储地址，属性名为 `<field>_Address`；已知实例偏移与静态符号仍然可用，无需假设字段 ABI；
 - `optional_ref<T>` 参数与返回使用存在标志；
 - `std::vector<T>` 参数与按值返回，元素支持标量/枚举、字符串、单层指针（以 `nint[]` 传入），或 layout 已知且平凡析构的 record；引用与指针 vector 返回仍是借用句柄；
 - `std::optional<T>` 参数与返回，支持标量、字符串与 trivially copyable record；record payload 使用 layout 兼容的 blob，返回的 record 成为拥有包装；
@@ -38,7 +40,8 @@ powershell -File scripts/regenerate.ps1 `
   -Pdb C:\path\to\bedrock_server.pdb `
   -Exe C:\path\to\bedrock_server.exe `
   -Elf C:\path\to\bedrock_server_symbols.debug `
-  -LeviLaminaRoot C:\path\to\LiteLoaderBDS
+  -LeviLaminaRoot C:\path\to\LiteLoaderBDS `
+  -ClassesFile scripts/classes-1.21.3.txt
 ```
 
 脚本写出符号 IR、生成或复用头文件补充、合并、发射两个配置，并更新 `src/`、`native/BindingShim/generated/` 与 `coverage/`。审查 diff 后运行 `python scripts/verify_generated.py`。
