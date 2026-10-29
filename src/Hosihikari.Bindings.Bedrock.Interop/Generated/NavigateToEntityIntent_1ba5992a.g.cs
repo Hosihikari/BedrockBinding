@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.sim;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class NavigateToEntityIntent
+public sealed unsafe partial class NavigateToEntityIntent
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,9 +46,10 @@ public sealed partial class NavigateToEntityIntent
     public static NavigateToEntityIntent Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint execute(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public int execute(global::Hosihikari.Bindings.Bedrock.Interop.SimulatedPlayer arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_bb8ee598((void*)_handle, (void*)arg0.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

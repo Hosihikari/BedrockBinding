@@ -44,7 +44,7 @@ public sealed unsafe partial class ScriptItemCustomComponentClosures : global::S
 
     public static ScriptItemCustomComponentClosures Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested.ScriptItemCustomComponentClosures arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_69535223((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->hs_create_eb6eeabd((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,41 +53,41 @@ public sealed unsafe partial class ScriptItemCustomComponentClosures : global::S
         return new ScriptItemCustomComponentClosures((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::InterfaceBinding' requires --link-carrier or --virtual-dispatch.", false)]
     public static nint bind() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::InterfaceBinding' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint getVersion() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::Closure<void (Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemCustomComponentBeforeDurabilityDamageEvent>)>' is not supported.", false)]
     public nint onBeforeDurabilityDamage() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::Closure<void (Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemCustomComponentBeforeDurabilityDamageEvent>)>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::Closure<void (Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemCustomComponentCompleteUseEvent>)>' is not supported.", false)]
     public nint onCompleteUse() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::Closure<void (Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemCustomComponentCompleteUseEvent>)>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::Closure<void (Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemCustomComponentConsumeEvent>)>' is not supported.", false)]
     public nint onConsume() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::Closure<void (Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemCustomComponentConsumeEvent>)>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::Closure<void (Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemCustomComponentHitEntityEvent>)>' is not supported.", false)]
     public nint onHitEntity() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::Closure<void (Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemCustomComponentHitEntityEvent>)>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::Closure<void (Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemCustomComponentMineBlockEvent>)>' is not supported.", false)]
     public nint onMineBlock() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::Closure<void (Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemCustomComponentMineBlockEvent>)>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::Closure<void (Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemCustomComponentUseEvent>)>' is not supported.", false)]
     public nint onUse() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::Closure<void (Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemCustomComponentUseEvent>)>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::Closure<void (Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemCustomComponentUseOnEvent>)>' is not supported.", false)]
     public nint onUseOn() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::Closure<void (Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemCustomComponentUseOnEvent>)>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign_eb7213dc(nint arg0) =>

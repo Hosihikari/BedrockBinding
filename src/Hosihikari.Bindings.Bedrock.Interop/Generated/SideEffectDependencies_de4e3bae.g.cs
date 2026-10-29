@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Interactions.Mining;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class SideEffectDependencies
+public sealed unsafe partial class SideEffectDependencies
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,17 +46,20 @@ public sealed partial class SideEffectDependencies
     public static SideEffectDependencies Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void creatorHook() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void creatorHook()
+    {
+        NativeMethods.TablePtr->hs_method_3906c697((void*)_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void legacyHurtAndBreak(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void legacyHurtAndBreak(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_c02dfda8((void*)_handle, arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void legacyMineBlock() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void legacyMineBlock()
+    {
+        NativeMethods.TablePtr->hs_method_754b1e6f((void*)_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

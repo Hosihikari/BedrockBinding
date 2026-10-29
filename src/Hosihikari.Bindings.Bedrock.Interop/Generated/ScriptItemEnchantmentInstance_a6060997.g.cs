@@ -47,19 +47,19 @@ public sealed partial class ScriptItemEnchantmentInstance
     public static ScriptItemEnchantmentInstance Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::InterfaceBindingBuilder<ScriptModuleMinecraft::ScriptItemEnchantmentInstance>' requires --link-carrier or --virtual-dispatch.", false)]
     public static nint bind() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::InterfaceBindingBuilder<ScriptModuleMinecraft::ScriptItemEnchantmentInstance>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::variant<EnchantmentInstance,ScriptModuleMinecraft::ScriptItemEnchantmentLevelOutOfBoundsError,ScriptModuleMinecraft::ScriptItemEnchantmentUnknownIdError,ScriptModuleMinecraft::ScriptItemEnchantmentTypeNotCompatibleError>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint tryResolveInstance(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<EnchantmentInstance,ScriptModuleMinecraft::ScriptItemEnchantmentLevelOutOfBoundsError,ScriptModuleMinecraft::ScriptItemEnchantmentUnknownIdError,ScriptModuleMinecraft::ScriptItemEnchantmentTypeNotCompatibleError>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
+    public void Destroy_ca990d29() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

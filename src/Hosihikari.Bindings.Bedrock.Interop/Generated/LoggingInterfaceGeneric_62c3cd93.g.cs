@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class LoggingInterfaceGeneric
+public sealed unsafe partial class LoggingInterfaceGeneric
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -51,13 +50,15 @@ public sealed partial class LoggingInterfaceGeneric
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public ulong threadId() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public ulong threadId()
+    {
+        return NativeMethods.TablePtr->hs_method_5eb46e77((void*)_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void writeToDebugger(nint area, nint level, nint message) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void writeToDebugger(nint arg0, int arg1, nint arg2)
+    {
+        NativeMethods.TablePtr->hs_method_db552f6e((void*)_handle, (void*)arg0, arg1, (void*)arg2);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>

@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ThreadUtil
+public sealed unsafe partial class ThreadUtil
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -51,19 +50,21 @@ public sealed partial class ThreadUtil
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void setCoreAffinity(nint nativeHandle, int idealCore, ulong desiredCoreMask) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static void setCoreAffinity_a09d977d(nint arg0, int arg1, ulong arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void setCurrentThreadCoreAffinity(int idealCore, ulong desiredCoreMask) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static void setCurrentThreadCoreAffinity(int arg0, ulong arg1)
+    {
+        NativeMethods.TablePtr->hs_method_95d81a86(arg0, arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void setCurrentThreadPriority(nint pri) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static void setCurrentThreadPriority(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.OSThreadPriority arg0)
+    {
+        NativeMethods.TablePtr->hs_method_73984331((void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void setThreadPriority(nint nativeHandle, nint pri) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static void setThreadPriority_ea91916a(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 }

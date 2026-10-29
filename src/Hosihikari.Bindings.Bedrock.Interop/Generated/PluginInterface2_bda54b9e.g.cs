@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class PluginInterface2
+public sealed unsafe partial class PluginInterface2
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,9 +46,10 @@ public sealed partial class PluginInterface2
     public static PluginInterface2 Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void SetRakPeerInterface(nint ptr) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void SetRakPeerInterface(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakPeerInterface? arg0)
+    {
+        NativeMethods.TablePtr->hs_method_abdea353((void*)_handle, (void*)(arg0?.Handle ?? 0));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

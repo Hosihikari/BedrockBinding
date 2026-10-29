@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ScriptBoundingBoxUtils
+public sealed unsafe partial class ScriptBoundingBoxUtils
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,47 +46,58 @@ public sealed partial class ScriptBoundingBoxUtils
     public static ScriptBoundingBoxUtils Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraft::ScriptBoundingBoxUtils>' requires --link-carrier or --virtual-dispatch.", false)]
     public static nint bind() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ClassBindingBuilder<ScriptModuleMinecraft::ScriptBoundingBoxUtils>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint createValid(nint min, nint max) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox createValid(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox((nint)NativeMethods.TablePtr->hs_method_8603603e((void*)arg0.Handle, (void*)arg1.Handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint dilate(nint box, nint size) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox dilate(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox((nint)NativeMethods.TablePtr->hs_method_2add6dd9((void*)arg0.Handle, (void*)arg1.Handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint expand(nint box, nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox expand(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg0, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox((nint)NativeMethods.TablePtr->hs_method_264fe42f((void*)arg0.Handle, (void*)arg1.Handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getCenter(nint box) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getCenter(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_536aab01((void*)arg0.Handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getIntersection(nint box, nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox? getIntersection(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg0, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg1)
+    {
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->hs_method_ff37668a((void*)arg0.Handle, (void*)arg1.Handle, &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox((nint)__hs_handle) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getSpan(nint box) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getSpan(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_a2d2e6b0((void*)arg0.Handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool intersects(nint box, nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static bool intersects(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg0, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_575994bb((void*)arg0.Handle, (void*)arg1.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool isInside(nint box, nint pos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static bool isInside(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_4695f499((void*)arg0.Handle, (void*)arg1.Handle) != 0;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint translate(nint box, nint delta) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox translate(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox((nint)NativeMethods.TablePtr->hs_method_c1de0c84((void*)arg0.Handle, (void*)arg1.Handle));
+    }
 }

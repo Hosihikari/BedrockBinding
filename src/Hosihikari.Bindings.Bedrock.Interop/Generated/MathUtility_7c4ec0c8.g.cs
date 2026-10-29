@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.mce;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class MathUtility
+public sealed unsafe partial class MathUtility
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,19 +46,20 @@ public sealed partial class MathUtility
     public static MathUtility Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool floatEqualsEpsilon(float a, float b, float epsilon) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static bool floatEqualsEpsilon(float arg0, float arg1, float arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_4017092d(arg0, arg1, arg2) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint generateRotationAroundPivotMat(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'glm::mat<4,4,float,0>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint generateRotationAroundPivotMat_8ee2fdd0(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'glm::mat<4,4,float,0>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint rotateVec2(nint arg0, float arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'glm::vec<2,float,0>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint rotateVec2_ce323890(nint arg0, float arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'glm::vec<2,float,0>' requires --link-carrier or --virtual-dispatch.");
 }

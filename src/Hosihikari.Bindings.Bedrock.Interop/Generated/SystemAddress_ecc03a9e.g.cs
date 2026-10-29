@@ -38,85 +38,118 @@ public sealed unsafe partial class SystemAddress : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void CopyPort(nint right) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void CopyPort(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0)
+    {
+        NativeMethods.TablePtr->hs_method_a466753f((void*)_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool EqualsExcludingPort(nint right) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool EqualsExcludingPort(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_2ed4903d((void*)_handle, (void*)arg0.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void FixForIPVersion(nint boundAddressToSocket) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void FixForIPVersion(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0)
+    {
+        NativeMethods.TablePtr->hs_method_bc288cb0((void*)_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool FromString(nint str, byte portDelineator, int ipVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool FromString(nint arg0, sbyte arg1, int arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_069f6f2a((void*)_handle, (void*)arg0, arg1, arg2) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool FromStringExplicitPort(nint str, ushort port, int ipVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool FromStringExplicitPort(nint arg0, ushort arg1, int arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_b6bb3190((void*)_handle, (void*)arg0, arg1, arg2) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public uint GetIPPROTO() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public uint GetIPPROTO()
+    {
+        return NativeMethods.TablePtr->hs_method_bc901f15((void*)_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint GetIPString() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public string GetIPString()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_629d200c((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public byte GetIPVersion() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public byte GetIPVersion()
+    {
+        return NativeMethods.TablePtr->hs_method_ac25620f((void*)_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public ushort GetPort() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public ushort GetPort()
+    {
+        return NativeMethods.TablePtr->hs_method_44906709((void*)_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public ushort GetPortNetworkOrder() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public ushort GetPortNetworkOrder()
+    {
+        return NativeMethods.TablePtr->hs_method_545db5e4((void*)_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool IsLinkLocalAddress() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool IsLinkLocalAddress()
+    {
+        return NativeMethods.TablePtr->hs_method_599bf261((void*)_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool IsLoopback() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool IsLoopback()
+    {
+        return NativeMethods.TablePtr->hs_method_03021c81((void*)_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool IsMulticastAddress() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool IsMulticastAddress()
+    {
+        return NativeMethods.TablePtr->hs_method_b94e68fa((void*)_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void SetPortHostOrder(ushort s) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void SetPortHostOrder(ushort arg0)
+    {
+        NativeMethods.TablePtr->hs_method_37e03c17((void*)_handle, arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void SetToLoopback(byte ipVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void SetToLoopback(byte arg0)
+    {
+        NativeMethods.TablePtr->hs_method_e59b6074((void*)_handle, arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SystemAddress Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static SystemAddress Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_695d6c4d();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static SystemAddress Create(nint str, ushort port) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new SystemAddress((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nuint ToInteger(nint sa) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static SystemAddress Create(nint arg0, ushort arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_3190959c((void*)arg0, arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint ToString(byte arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new SystemAddress((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void ToString(bool writePort, nint dest, byte portDelineator) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unsigned long' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nuint ToInteger(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unsigned long' requires --link-carrier or --virtual-dispatch.");
+
+    public string ToString(sbyte arg0)
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_2993fd17((void*)_handle, arg0);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public void ToString(bool arg0, nint arg1, sbyte arg2)
+    {
+        NativeMethods.TablePtr->hs_method_4f615c96((void*)_handle, arg0, (void*)arg1, arg2);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint address_Address

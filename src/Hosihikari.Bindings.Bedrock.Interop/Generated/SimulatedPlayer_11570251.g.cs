@@ -230,13 +230,15 @@ public sealed unsafe partial class SimulatedPlayer
         NativeMethods.TablePtr->hs_method_9d6152f0((void*)_handle, (void*)arg0.Handle, arg1, arg2);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ScriptModuleGameTest::ScriptNavigationResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint simulateNavigateToEntity(nint arg0, float arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ScriptModuleGameTest::ScriptNavigationResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest.ScriptNavigationResult simulateNavigateToEntity(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, float arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest.ScriptNavigationResult((nint)NativeMethods.TablePtr->hs_method_8b978d07((void*)_handle, (void*)arg0.Handle, arg1));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ScriptModuleGameTest::ScriptNavigationResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint simulateNavigateToLocation(nint arg0, float arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ScriptModuleGameTest::ScriptNavigationResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest.ScriptNavigationResult simulateNavigateToLocation(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, float arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest.ScriptNavigationResult((nint)NativeMethods.TablePtr->hs_method_ab1a4b29((void*)_handle, (void*)arg0.Handle, arg1));
+    }
 
     public void simulateNavigateToLocations(global::Hosihikari.Bindings.Bedrock.Interop.Vec3[] arg0, float arg1)
     {

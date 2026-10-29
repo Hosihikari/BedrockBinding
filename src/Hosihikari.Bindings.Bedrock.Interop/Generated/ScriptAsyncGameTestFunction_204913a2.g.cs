@@ -43,9 +43,9 @@ public sealed partial class ScriptAsyncGameTestFunction
     public static ScriptAsyncGameTestFunction Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptAsyncGameTestFunction Create(nint scope, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: parameter type 'Scripting::Closure<Scripting::Future<void> (Scripting::TypedObjectHandle<ScriptModuleGameTest::ScriptGameTestHelper>)>' is not supported.", false)]
+    public static ScriptAsyncGameTestFunction Create(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'Scripting::Closure<Scripting::Future<void> (Scripting::TypedObjectHandle<ScriptModuleGameTest::ScriptGameTestHelper>)>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ScriptAsyncGameTestFunction Create(nint arg0) =>
@@ -55,9 +55,9 @@ public sealed partial class ScriptAsyncGameTestFunction
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'gametest::IGameTestFunctionRunResult' has no accessible destructor.", false)]
     public nint run(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'gametest::IGameTestFunctionRunResult' has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>

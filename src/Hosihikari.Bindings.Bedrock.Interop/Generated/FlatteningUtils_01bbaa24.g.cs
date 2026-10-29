@@ -4,7 +4,8 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FlatteningUtils
+[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
+public sealed partial class FlatteningUtils
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,35 +38,4 @@ public sealed unsafe partial class FlatteningUtils
         _handle = 0;
         return __hs_handle;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static FlatteningUtils Create(int arg0, nint arg1, nint arg2, byte arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public void addValue(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
-    {
-        NativeMethods.TablePtr->hs_method_ec500ec2((void*)_handle, (void*)arg0.Handle);
-    }
-
-    public void match(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterNodeBuilder arg0, ulong arg1)
-    {
-        NativeMethods.TablePtr->hs_method_b72e2de7((void*)_handle, (void*)arg0.Handle, arg1);
-    }
-
-    public ulong valueCount()
-    {
-        return NativeMethods.TablePtr->hs_method_699093d2((void*)_handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_bc0dae96() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_9aa0cee1() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_935456d8() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class StructureSets
+public sealed unsafe partial class StructureSets
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,9 +46,10 @@ public sealed partial class StructureSets
     public static StructureSets Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void bootstrap(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static void bootstrap(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructureRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructureSetRegistry arg1, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg2, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg3)
+    {
+        NativeMethods.TablePtr->hs_method_88bc11ca((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

@@ -44,9 +44,10 @@ public sealed unsafe partial class Features : global::System.IDisposable
         set => NativeMethods.TablePtr->hs_set_a68271bd((void*)_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint strictMode() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Features strictMode()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Features((nint)NativeMethods.TablePtr->hs_method_25705af7());
+    }
 
     public bool strictRoot_
     {

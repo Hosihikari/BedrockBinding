@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Core_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class StorageAreasTree
+public sealed unsafe partial class StorageAreasTree
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,23 +46,27 @@ public sealed partial class StorageAreasTree
     public static StorageAreasTree Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getStorageArea(nint path) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.FileStorageArea? getStorageArea(nint arg0)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_6b479c1b((void*)_handle, (void*)arg0);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.FileStorageArea((nint)__hs_handle, false) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void insertStorageArea(nint storageArea) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void insertStorageArea(global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.FileStorageArea arg0)
+    {
+        NativeMethods.TablePtr->hs_method_051e80cc((void*)_handle, (void*)arg0.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void removeStorageArea(nint storageArea) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void removeStorageArea(global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.FileStorageArea arg0)
+    {
+        NativeMethods.TablePtr->hs_method_5a7b678a((void*)_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void teardown(nint teardownCallback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void teardown(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 }

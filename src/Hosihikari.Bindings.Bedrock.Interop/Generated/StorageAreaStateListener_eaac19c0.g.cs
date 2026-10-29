@@ -38,33 +38,48 @@ public sealed unsafe partial class StorageAreaStateListener : global::System.IDi
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StorageAreaStateListener Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static StorageAreaStateListener Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_9c014ee3();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StorageAreaStateListener((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static StorageAreaStateListener Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void initListener(nint fileStorageArea) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void initListener(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
+    {
+        NativeMethods.TablePtr->hs_method_c9cc098c((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
+
+    public void onCriticalDiskError(bool arg0, nint arg1)
+    {
+        NativeMethods.TablePtr->hs_method_b94ff794((void*)_handle, arg0, (void*)arg1);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void onCriticalDiskError(bool bSet, nint errorCode) =>
+    public void onExtendDiskSpace_874fc9e6(bool bSet, nint fileStorageAreaWeakPtr, ulong freeSpace, nint onHandledEventCallback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void onExtendDiskSpace(bool bSet, nint fileStorageAreaWeakPtr, ulong freeSpace, nint onHandledEventCallback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public void onExtendDiskSpace_57a42ce9(bool arg0, nint arg1, ulong arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void onLowDiskSpace(bool bSet) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void onLowDiskSpace(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_18779a6f((void*)_handle, arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void onOutOfDiskSpace(bool bSet) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void onOutOfDiskSpace(bool arg0)
+    {
+        NativeMethods.TablePtr->hs_method_8d940a79((void*)_handle, arg0);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

@@ -47,13 +47,13 @@ public sealed partial class ScriptBlockValidator
     public static ScriptBlockValidator Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError' is not supported.", false)]
     public nint getChunkAtPositionLoadedAndTickingError() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'ScriptModuleMinecraft::ScriptLocationInUnloadedChunkError' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError' is not supported.", false)]
     public nint getPositionWithinWorldBoundsError() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'ScriptModuleMinecraft::ScriptLocationOutOfWorldBoundsError' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

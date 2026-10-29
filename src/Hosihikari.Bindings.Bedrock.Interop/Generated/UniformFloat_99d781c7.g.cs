@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ValueProviders;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class UniformFloat
+public sealed unsafe partial class UniformFloat
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,9 +46,10 @@ public sealed partial class UniformFloat
     public static UniformFloat Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public float generateNext(nint random) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public float generateNext(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_5824f766((void*)_handle, (void*)arg0.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

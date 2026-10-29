@@ -40,7 +40,7 @@ public sealed unsafe partial class AddressOrGUID : global::System.IDisposable
 
     public static AddressOrGUID Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.AddressOrGUID arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_e2da400b((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->hs_create_aabdbaa5((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -49,17 +49,32 @@ public sealed unsafe partial class AddressOrGUID : global::System.IDisposable
         return new AddressOrGUID((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AddressOrGUID Create_6b19c97b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static AddressOrGUID Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakNetGUID arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_f216c84a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AddressOrGUID Create_6148e2ce(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new AddressOrGUID((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool IsUndefined() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static AddressOrGUID Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_070920a6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AddressOrGUID((nint)handle);
+    }
+
+    public bool IsUndefined()
+    {
+        return NativeMethods.TablePtr->hs_method_73c96481((void*)_handle) != 0;
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint adr_Address

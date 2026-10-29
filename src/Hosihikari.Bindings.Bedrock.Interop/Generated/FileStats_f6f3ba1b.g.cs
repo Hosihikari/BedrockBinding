@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Core_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class FileStats
+public sealed unsafe partial class FileStats
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -39,43 +38,50 @@ public sealed partial class FileStats
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static FileStats Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static FileStats Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addReadOperation(bool succeeded, ulong numBytesRead) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void addReadOperation(bool arg0, ulong arg1)
+    {
+        NativeMethods.TablePtr->hs_method_d345fdaf((void*)_handle, arg0, arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addReadWriteOperation(bool succeeded, ulong numBytesRead, ulong numBytesWritten) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void addReadWriteOperation(bool arg0, ulong arg1, ulong arg2)
+    {
+        NativeMethods.TablePtr->hs_method_9a3d2bb7((void*)_handle, arg0, arg1, arg2);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void addWriteOperation(bool succeeded, ulong numBytesWritten) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void addWriteOperation(bool arg0, ulong arg1)
+    {
+        NativeMethods.TablePtr->hs_method_9e6a35f0((void*)_handle, arg0, arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public ulong getAllocatedUsedFileSystemSize() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public ulong getAllocatedUsedFileSystemSize()
+    {
+        return NativeMethods.TablePtr->hs_method_40a11bc7((void*)_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public ulong getUsedFileSystemSize() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public ulong getUsedFileSystemSize()
+    {
+        return NativeMethods.TablePtr->hs_method_21069b1c((void*)_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void notifyChangeInFileSize(long changeInSize, long changeInAllocatedSize) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void notifyChangeInFileSize(long arg0, long arg1)
+    {
+        NativeMethods.TablePtr->hs_method_e917ce39((void*)_handle, arg0, arg1);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setFileSystemUsedSize(long newSize, long newAllocatedSize) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void setFileSystemUsedSize(long arg0, long arg1)
+    {
+        NativeMethods.TablePtr->hs_method_9caae8f1((void*)_handle, arg0, arg1);
+    }
 }

@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.JSONObject;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ParseHandler
+public sealed unsafe partial class ParseHandler
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -39,29 +38,35 @@ public sealed partial class ParseHandler
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool Bool(bool b) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool Bool(bool arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_2173e338((void*)_handle, arg0) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool Double(double d) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool Double(double arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_7b811cf9((void*)_handle, arg0) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool Int(int i) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool Int(int arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_866933e2((void*)_handle, arg0) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool Int64(long i) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool Int64(long arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_6391881f((void*)_handle, arg0) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool Key(nint str, uint length, bool copy) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool Key(nint arg0, uint arg1, bool arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_796b3596((void*)_handle, (void*)arg0, arg1, arg2) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool Null() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool Null()
+    {
+        return NativeMethods.TablePtr->hs_method_2eab8c4f((void*)_handle) != 0;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ParseHandler Create() =>
@@ -71,21 +76,20 @@ public sealed partial class ParseHandler
     public static ParseHandler Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool String(nint str, uint length, bool copy) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool String(nint arg0, uint arg1, bool arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_aaf57a1d((void*)_handle, (void*)arg0, arg1, arg2) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool Uint(uint u) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool Uint(uint arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_cefccbd1((void*)_handle, arg0) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool Uint64(ulong u) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool _addObjectOrArray(nint value) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool Uint64(ulong arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_113ee6ef((void*)_handle, arg0) != 0;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

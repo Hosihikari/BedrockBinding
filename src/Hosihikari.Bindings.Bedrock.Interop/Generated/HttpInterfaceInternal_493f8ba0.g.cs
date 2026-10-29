@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class HttpInterfaceInternal
+public sealed unsafe partial class HttpInterfaceInternal
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -51,9 +50,10 @@ public sealed partial class HttpInterfaceInternal
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void send(nint call, nint arg1, nint env) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void send(global::Hosihikari.Bindings.Bedrock.Interop.HC_CALL? arg0, global::Hosihikari.Bindings.Bedrock.Interop.XAsyncBlock? arg1, global::Hosihikari.Bindings.Bedrock.Interop.HC_PERFORM_ENV? arg2)
+    {
+        NativeMethods.TablePtr->hs_method_f2340d01((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)(arg1?.Handle ?? 0), (void*)(arg2?.Handle ?? 0));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>

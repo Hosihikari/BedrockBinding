@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ScriptScriptingEventListener
+public sealed unsafe partial class ScriptScriptingEventListener
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,12 +46,13 @@ public sealed partial class ScriptScriptingEventListener
     public static ScriptScriptingEventListener Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint onEvent_0354a7b7(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ScriptCommandMessageEvent arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_696770d2((void*)_handle, (void*)arg0.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint onEvent_33927000(nint @event) =>
+    public nint onEvent(nint @event) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

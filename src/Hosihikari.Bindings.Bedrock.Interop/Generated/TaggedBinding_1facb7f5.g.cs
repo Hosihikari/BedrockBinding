@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class TaggedBinding
+public sealed unsafe partial class TaggedBinding
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -39,31 +38,33 @@ public sealed partial class TaggedBinding
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static TaggedBinding Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static TaggedBinding Create(nint arg0) =>
+    public static TaggedBinding Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint beta() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static TaggedBinding Create_fb468ed2(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint onlyStable() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.TaggedBinding beta()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.TaggedBinding((nint)NativeMethods.TablePtr->hs_method_ec878a36((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.TaggedBinding onlyStable()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.TaggedBinding((nint)NativeMethods.TablePtr->hs_method_d259ea8f((void*)_handle), false);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'Scripting::MajorVersionLimit' is abstract or not copy-constructible.", false)]
     public nint release(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'Scripting::MajorVersionLimit' is abstract or not copy-constructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
+    public void Destroy_000037b4() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

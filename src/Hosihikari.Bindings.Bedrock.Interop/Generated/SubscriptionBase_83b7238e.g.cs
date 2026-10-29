@@ -38,13 +38,15 @@ public sealed unsafe partial class SubscriptionBase
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void disconnect() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void disconnect()
+    {
+        NativeMethods.TablePtr->hs_method_69ca24af((void*)_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void disconnect_async() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void disconnect_async()
+    {
+        NativeMethods.TablePtr->hs_method_763488ca((void*)_handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBody_Address

@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ScriptItemCustomComponentAsyncSignalCollection
+public sealed unsafe partial class ScriptItemCustomComponentAsyncSignalCollection : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -51,9 +50,10 @@ public sealed partial class ScriptItemCustomComponentAsyncSignalCollection
     public void clear() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void generateOrderDocumentation(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void generateOrderDocumentation(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ModuleDescriptor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1)
+    {
+        NativeMethods.TablePtr->hs_method_09aac5a8((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public bool onFlushBlockCustomComponentAfterEvents() =>
@@ -67,9 +67,10 @@ public sealed partial class ScriptItemCustomComponentAsyncSignalCollection
     public bool onFlushEditorExtensionContextAfterEvents() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool onFlushItemCustomComponentAfterEvents() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool onFlushItemCustomComponentAfterEvents()
+    {
+        return NativeMethods.TablePtr->hs_method_9b92190c((void*)_handle) != 0;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public bool onFlushSystemAfterEvents() =>
@@ -83,13 +84,15 @@ public sealed partial class ScriptItemCustomComponentAsyncSignalCollection
     public void onLevelTickEnd() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void onPostFlushAfterEvents() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void onPostFlushAfterEvents()
+    {
+        NativeMethods.TablePtr->hs_method_806fc2e0((void*)_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void onPreFlushAfterEvents() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void onPreFlushAfterEvents()
+    {
+        NativeMethods.TablePtr->hs_method_e1a168d4((void*)_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void onRunAsyncJobs() =>
@@ -107,7 +110,17 @@ public sealed partial class ScriptItemCustomComponentAsyncSignalCollection
     public void subscribeToItemForComponent(nint arg0, nint arg1, nint arg2, nint arg3, int arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_adfac0fb((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

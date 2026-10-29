@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class RNS2_Windows
+public sealed unsafe partial class RNS2_Windows
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -39,13 +38,15 @@ public sealed partial class RNS2_Windows
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint Bind(nint arg0, nint arg1, uint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public int Bind(nint arg0, nint arg1, uint arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_66ed00ac((void*)_handle, (void*)arg0, (void*)arg1, arg2);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint GetSocketLayerOverride() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public nint GetSocketLayerOverride()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_cc82fa02((void*)_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static RNS2_Windows Create() =>
@@ -55,9 +56,10 @@ public sealed partial class RNS2_Windows
     public static RNS2_Windows Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public int Send(nint arg0, nint arg1, uint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public int Send(nint arg0, nint arg1, uint arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_adb14cee((void*)_handle, (void*)arg0, (void*)arg1, arg2);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void SetMulticastInterface(int interfaceIndex) =>

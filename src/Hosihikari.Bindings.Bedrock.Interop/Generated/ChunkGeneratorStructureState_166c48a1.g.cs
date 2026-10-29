@@ -53,21 +53,30 @@ public sealed unsafe partial class ChunkGeneratorStructureState : global::System
         return new ChunkGeneratorStructureState((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint createFlat(long arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::shared_ptr<br::worldgen::StructureSet const>' is not supported.", false)]
+    public static nint createFlat_c603d680(long arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::shared_ptr<br::worldgen::StructureSet const>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint createNormal(long arg0, nint arg1, nint arg2) =>
+    public static nint createFlat_4400de1b(long arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint createVoid(long arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.ChunkGeneratorStructureState createNormal(long arg0, global::Hosihikari.Bindings.Bedrock.Interop.BiomeSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructureSetRegistry arg2)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.ChunkGeneratorStructureState((nint)NativeMethods.TablePtr->hs_method_3afa4893(arg0, (void*)arg1.Handle, (void*)arg2.Handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint findNearestStructureFeature(nint arg0, nint arg1, nint arg2, nint arg3, bool arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.ChunkGeneratorStructureState createVoid(long arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.ChunkGeneratorStructureState((nint)NativeMethods.TablePtr->hs_method_e0c9ffe6(arg0));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? findNearestStructureFeature(global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg0, sbyte arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.BiomeSource arg3, bool arg4)
+    {
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->hs_method_c33001e0((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle, (void*)arg3.Handle, arg4, &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
+    }
 
     public ulong mSeed
     {

@@ -46,13 +46,13 @@ public sealed unsafe partial class StructureSetRegistry : global::System.IDispos
     public static StructureSetRegistry Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint begin() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'entt::internal::dense_map_iterator<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<entt::internal::dense_map_node<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::shared_ptr<br::worldgen::StructureSet>>>>>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint begin_b9d1c3d4() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'entt::internal::dense_map_iterator<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<entt::internal::dense_map_node<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::shared_ptr<br::worldgen::StructureSet>>>>>>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint end() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'entt::internal::dense_map_iterator<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<entt::internal::dense_map_node<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::shared_ptr<br::worldgen::StructureSet>>>>>>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint end_4e504a43() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'entt::internal::dense_map_iterator<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<entt::internal::dense_map_node<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::shared_ptr<br::worldgen::StructureSet>>>>>>' requires --link-carrier or --virtual-dispatch.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mStructureSetMap_Address
@@ -64,13 +64,33 @@ public sealed unsafe partial class StructureSetRegistry : global::System.IDispos
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
+    public void record(string arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->hs_method_510ac264((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        }
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void record(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public ulong size() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public ulong size()
+    {
+        return NativeMethods.TablePtr->hs_method_4b736919((void*)_handle);
+    }
 
     public void Dispose()
     {

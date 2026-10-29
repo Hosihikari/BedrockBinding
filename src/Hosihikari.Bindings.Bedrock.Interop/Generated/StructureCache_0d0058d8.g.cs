@@ -38,33 +38,48 @@ public sealed unsafe partial class StructureCache : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static StructureCache Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static StructureCache Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_2121c7c9();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureCache((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static StructureCache Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint at(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? at(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_702e34dc((void*)_handle, (void*)arg0.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'std::vector<std::shared_ptr<br::worldgen::StructureInstance const>,std::allocator<std::shared_ptr<br::worldgen::StructureInstance const>>>' is not supported.", false)]
+    public nint collectGroupByStep_ab3dca35() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'std::vector<std::shared_ptr<br::worldgen::StructureInstance const>,std::allocator<std::shared_ptr<br::worldgen::StructureInstance const>>>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint collectGroupByStep() =>
+    public nint collectGroupByStep_83c3b39a() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void setInstanceForStructure(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void setInstanceForStructure(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.Structure arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg2)
+    {
+        NativeMethods.TablePtr->hs_method_52f2ec79((void*)_handle, (void*)arg0.Handle, arg1?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)arg2.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void tick() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void tick()
+    {
+        NativeMethods.TablePtr->hs_method_7586bff2((void*)_handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint unk_64_Address

@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class PlatformBootstrap_Win32
+public sealed unsafe partial class PlatformBootstrap_Win32
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,41 +46,54 @@ public sealed partial class PlatformBootstrap_Win32
     public static PlatformBootstrap_Win32 Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getAssetRoot() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public string getAssetRoot_97334b1f()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_97334b1f((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getSaveDataRoot() =>
+    public nint getAssetRoot_b962c056() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
+    public string getSaveDataRoot_b2caeb48()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_b2caeb48((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void initialize() =>
+    public nint getSaveDataRoot_b971dc28() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void initialize()
+    {
+        NativeMethods.TablePtr->hs_method_8e0872ee((void*)_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::PlatformBootstrap::CreateDirectoryResult' requires --link-carrier or --virtual-dispatch.", false)]
     public nint rawCreateDirectory(nint arg0, nint arg1, ulong arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::PlatformBootstrap::CreateDirectoryResult' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::PlatformBootstrap::LoadResult' requires --link-carrier or --virtual-dispatch.", false)]
     public nint rawLoadAssetFile(nint arg0, ulong arg1, nint arg2, nint arg3, ulong arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::PlatformBootstrap::LoadResult' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::PlatformBootstrap::LoadResult' requires --link-carrier or --virtual-dispatch.", false)]
     public nint rawLoadDataFile(nint arg0, ulong arg1, nint arg2, nint arg3, ulong arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::PlatformBootstrap::LoadResult' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::PlatformBootstrap::LoadResult' requires --link-carrier or --virtual-dispatch.", false)]
     public nint rawLoadFromCustomRoot(nint arg0, ulong arg1, nint arg2, nint arg3, ulong arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::PlatformBootstrap::LoadResult' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::PlatformBootstrap::SaveResult' requires --link-carrier or --virtual-dispatch.", false)]
     public nint rawSaveDataFile(nint arg0, ulong arg1, nint arg2, bool arg3, nint arg4, ulong arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::PlatformBootstrap::SaveResult' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>

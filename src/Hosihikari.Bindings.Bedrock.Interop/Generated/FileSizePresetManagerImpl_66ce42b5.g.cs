@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Core_Nested;
 
-public sealed unsafe partial class FileSizePresetManagerImpl : global::System.IDisposable
+public sealed unsafe partial class FileSizePresetManagerImpl
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -46,28 +46,18 @@ public sealed unsafe partial class FileSizePresetManagerImpl : global::System.ID
     public static FileSizePresetManagerImpl Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint checkFileInitialSize(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public ulong? checkFileInitialSize(nint arg0)
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->hs_method_af0c7bce((void*)_handle, (void*)arg0, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (ulong?)null;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Core::FileSizePresetToken' has no accessible destructor.", false)]
     public nint presetInitialSizeForFile(nint arg0, ulong arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_66ce42b5((void*)_handle);
-            }
-
-            _handle = 0;
-        }
-    }
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Core::FileSizePresetToken' has no accessible destructor.");
 }

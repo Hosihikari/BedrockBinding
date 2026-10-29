@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Social.Events;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class AchievementEventing
+public sealed unsafe partial class AchievementEventing
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -39,49 +38,58 @@ public sealed partial class AchievementEventing
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static AchievementEventing Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static AchievementEventing Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void AwardAchievement(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void AwardAchievement(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, int arg1)
+    {
+        NativeMethods.TablePtr->hs_method_6f53c1ef((void*)_handle, (void*)arg0.Handle, arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void BlockBroken(nint player, nint destroyedBlock, int method, int variantData, ushort auxType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void BlockBroken(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, int arg2, int arg3, ushort arg4)
+    {
+        NativeMethods.TablePtr->hs_method_240c6c06((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void CaravanChanged(nint mob, int caravanSize) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void CaravanChanged(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0, int arg1)
+    {
+        NativeMethods.TablePtr->hs_method_1816d5f0((void*)_handle, (void*)arg0.Handle, arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void ItemUsed(nint player, nint item, uint useMethod) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void ItemUsed(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg1, uint arg2)
+    {
+        NativeMethods.TablePtr->hs_method_79903c84((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void JukeboxUsed(nint player, nint disc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void JukeboxUsed(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg1)
+    {
+        NativeMethods.TablePtr->hs_method_bdceed91((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void MobEffectChanged(nint player, nint effectInstance, int change) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void MobEffectChanged(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance arg1, int arg2)
+    {
+        NativeMethods.TablePtr->hs_method_235cf969((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void PlayerBounced(nint player, nint block, int bounceHeight, int auxType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void PlayerBounced(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.Block arg1, int arg2, int arg3)
+    {
+        NativeMethods.TablePtr->hs_method_aac95aa2((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void PlayerTeleported(nint player, float metersTravelled, int cause, int sourceType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void PlayerTeleported(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, float arg1, int arg2, int arg3)
+    {
+        NativeMethods.TablePtr->hs_method_35077f07((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void PlayerTravelled(nint player, float metersTravelledSinceLastEvent, int travelMethodType, int newBiome) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void PlayerTravelled(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, float arg1, int arg2, int arg3)
+    {
+        NativeMethods.TablePtr->hs_method_f2a168cc((void*)_handle, (void*)arg0.Handle, arg1, arg2, arg3);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

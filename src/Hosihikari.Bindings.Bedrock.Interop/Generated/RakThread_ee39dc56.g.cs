@@ -39,9 +39,9 @@ public sealed partial class RakThread
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static int Create(nint arg0, nint arg1, int arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: parameter type 'unsigned int (*)(void*)' is not supported.", false)]
+    public static int Create_26fef121(nint arg0, nint arg1, int arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'unsigned int (*)(void*)' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static RakThread Create() =>

@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ReliabilityLayer
+public sealed unsafe partial class ReliabilityLayer
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -39,145 +38,86 @@ public sealed partial class ReliabilityLayer
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool AckTimeout(ulong curTime) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool AckTimeout(ulong arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_d381fb6d((void*)_handle, arg0) != 0;
+    }
+
+    public bool AreAcksWaiting()
+    {
+        return NativeMethods.TablePtr->hs_method_75379437((void*)_handle) != 0;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint AllocateFromInternalPacketPool() =>
+    public nint GetMessageNumberNodeByDatagramIndex_234de401(nint index, nint timeSent) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool AreAcksWaiting() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public nint GetStatistics(nint arg0)
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_ab464a40((void*)_handle, (void*)arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint BuildPacketFromSplitPacketList(nint splitPacketChannel, ulong time) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public uint GetTimeoutTime()
+    {
+        return NativeMethods.TablePtr->hs_method_a490beea((void*)_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint BuildPacketFromSplitPacketList(ushort splitPacketId, ulong time, nint s, nint systemAddress, nint rnr, nint updateBitStream) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool HandleSocketReceiveFromConnectedPlayer(nint arg0, uint arg1, global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg2, nint arg3, int arg4, global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakNetSocket2? arg5, global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakNetRandom? arg6, ulong arg7, global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.BitStream arg8)
+    {
+        return NativeMethods.TablePtr->hs_method_ee791592((void*)_handle, (void*)arg0, arg1, (void*)arg2.Handle, (void*)arg3, arg4, (void*)(arg5?.Handle ?? 0), (void*)(arg6?.Handle ?? 0), arg7, (void*)arg8.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void ClearPacketsAndDatagrams() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool IsDeadConnection()
+    {
+        return NativeMethods.TablePtr->hs_method_b258ec1e((void*)_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint CreateInternalPacketFromBitStream(nint bitStream, ulong time) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool IsOutgoingDataWaiting()
+    {
+        return NativeMethods.TablePtr->hs_method_6b5b1789((void*)_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void FreeInternalPacketData(nint internalPacket, nint file, uint line) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public uint Receive(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void FreeThreadSafeMemory() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint GetMessageNumberNodeByDatagramIndex(nint index, nint timeSent) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public ulong GetNextWeight(int priorityLevel) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint GetStatistics(nint rns) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public uint GetTimeoutTime() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool HandleSocketReceiveFromConnectedPlayer(nint buffer, uint length, nint systemAddress, nint messageHandlerList, int MTUSize, nint s, nint rnr, ulong timeRead, nint updateBitStream) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void InitializeVariables() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void InsertIntoSplitPacketList(nint internalPacket, ulong time) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool IsDeadConnection() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool IsOutgoingDataWaiting() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void PushDatagram() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void PushPacket(ulong time, nint internalPacket, bool isReliable) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public uint Receive(nint data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static ReliabilityLayer Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ReliabilityLayer Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void RemoveFromDatagramHistory(nint index) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void Reset(bool arg0, int arg1, bool arg2)
+    {
+        NativeMethods.TablePtr->hs_method_9af5dce3((void*)_handle, arg0, arg1, arg2);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public uint RemovePacketFromResendListAndDeleteOlderReliableSequenced(nint messageNumber, ulong time, nint messageHandlerList, nint systemAddress) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool Send(nint arg0, uint arg1, int arg2, int arg3, byte arg4, bool arg5, int arg6, ulong arg7, uint arg8)
+    {
+        return NativeMethods.TablePtr->hs_method_701d4544((void*)_handle, (void*)arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void Reset(bool resetVariables, int MTUSize, bool _useSecurity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void SetSplitMessageProgressInterval(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_03f34d8b((void*)_handle, arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool Send(nint data, uint numberOfBitsToSend, nint priority, nint reliability, byte orderingChannel, bool makeDataCopy, int MTUSize, ulong currentTime, uint receipt) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void SetTimeoutTime(uint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_0b643b2e((void*)_handle, arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void SendACKs(nint s, nint systemAddress, ulong time, nint rnr, nint updateBitStream) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void SetUnreliableTimeout(uint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_e1d2eabb((void*)_handle, arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void SendBitStream(nint s, nint systemAddress, nint bitStream, nint rnr, ulong currentTime) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void SetSplitMessageProgressInterval(int interval) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void SetTimeoutTime(uint time) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void SetUnreliableTimeout(uint timeoutMS) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void SplitPacket(nint internalPacket) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void Update(nint s, nint systemAddress, int MTUSize, ulong time, uint bitsPerSecondLimit, nint messageHandlerList, nint rnr, nint updateBitStream) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public uint WriteToBitStreamFromInternalPacket(nint bitStream, nint internalPacket, ulong curTime) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void Update(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakNetSocket2? arg0, global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress arg1, int arg2, ulong arg3, uint arg4, nint arg5, global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakNetRandom? arg6, global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.BitStream arg7)
+    {
+        NativeMethods.TablePtr->hs_method_cf06ebf7((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, arg2, arg3, arg4, (void*)arg5, (void*)(arg6?.Handle ?? 0), (void*)arg7.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

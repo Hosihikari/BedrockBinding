@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.npc;
 
-public sealed unsafe partial class ActionValue
+public sealed unsafe partial class ActionValue : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -66,11 +66,27 @@ public sealed unsafe partial class ActionValue
     public nint operator_assign_0cece026(nint newName) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
+    public string rawValue_b0c239ed()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_b0c239ed((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint rawValue() =>
+    public nint rawValue_59ab694f() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_9451997f((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

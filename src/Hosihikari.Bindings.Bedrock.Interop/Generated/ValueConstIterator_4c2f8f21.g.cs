@@ -38,8 +38,13 @@ public sealed unsafe partial class ValueConstIterator
         return __hs_handle;
     }
 
+    public void __autoclassinit2(ulong arg0)
+    {
+        NativeMethods.TablePtr->hs_method_c5ac0c86((void*)_handle, arg0);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
+    public void Destroy_444f513d() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     // The native field type is not projected; this is the address of the field storage.

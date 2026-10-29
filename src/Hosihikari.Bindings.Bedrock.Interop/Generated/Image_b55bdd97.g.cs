@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.mce;
 
-public sealed unsafe partial class Image
+public sealed unsafe partial class Image : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -50,13 +50,21 @@ public sealed unsafe partial class Image
     public static Image Create_ce54012e(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Image Create(uint w, uint h, nint format, nint usage) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static Image Create(uint arg0, uint arg1, int arg2, byte arg3)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_fb89ed27(arg0, arg1, arg2, arg3);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint clone() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        return new Image((nint)handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Image clone()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Image((nint)NativeMethods.TablePtr->hs_method_af2eadfd((void*)_handle));
+    }
 
     public int imageFormat
     {
@@ -64,9 +72,10 @@ public sealed unsafe partial class Image
         set => NativeMethods.TablePtr->hs_set_53b82650((void*)_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool isEmpty() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool isEmpty()
+    {
+        return NativeMethods.TablePtr->hs_method_df80fcf5((void*)_handle) != 0;
+    }
 
     public uint mDepth
     {
@@ -106,11 +115,22 @@ public sealed unsafe partial class Image
     public nint operator_assign_110bc7fb(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void resizeImageBytesToFitImageDescription() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void resizeImageBytesToFitImageDescription()
+    {
+        NativeMethods.TablePtr->hs_method_f510ac75((void*)_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_b55bdd97((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

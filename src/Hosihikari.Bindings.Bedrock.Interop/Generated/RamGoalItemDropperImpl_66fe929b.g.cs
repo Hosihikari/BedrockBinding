@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.RamAttackGoalUtils;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class RamGoalItemDropperImpl
+public sealed unsafe partial class RamGoalItemDropperImpl
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,21 +46,24 @@ public sealed partial class RamGoalItemDropperImpl
     public static RamGoalItemDropperImpl Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void checkForHornDropOnCollision(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void checkForHornDropOnCollision(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
+    {
+        NativeMethods.TablePtr->hs_method_36581359((void*)_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void dontDropHorn() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void dontDropHorn()
+    {
+        NativeMethods.TablePtr->hs_method_d803e8ff((void*)_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void tryDropHorn(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void tryDropHorn(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
+    {
+        NativeMethods.TablePtr->hs_method_2be1b394((void*)_handle, (void*)arg0.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>

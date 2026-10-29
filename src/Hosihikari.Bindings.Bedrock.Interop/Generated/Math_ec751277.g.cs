@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.mce;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class Math
+public sealed unsafe partial class Math
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,113 +46,137 @@ public sealed partial class Math
     public static Math Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static float absMax(float a, float b) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static float absMax(float arg0, float arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_bb6c395f(arg0, arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static float approach(float current, float target, float increment) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static float approach(float arg0, float arg1, float arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_9f1dca87(arg0, arg1, arg2);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static float approachDegrees(float current, float target, float increment) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static float approachDegrees(float arg0, float arg1, float arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_898ee606(arg0, arg1, arg2);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint atan(float x) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'mce::Radian' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint atan(float arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'mce::Radian' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint atan2(float dy, float dx) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'mce::Radian' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint atan2(float arg0, float arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'mce::Radian' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static int ceil(float v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static int ceil(float arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_6fd5234c(arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static float clamp(float arg0, float arg1, float arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static float clamp(float arg0, float arg1, float arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_a8201e26(arg0, arg1, arg2);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static int clamp(int arg0, int arg1, int arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static int clamp(int arg0, int arg1, int arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_d8f98d79(arg0, arg1, arg2);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static float clampRotate(float current, float target, float maxDelta) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static float clampRotate(float arg0, float arg1, float arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_c96c01da(arg0, arg1, arg2);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static float clampedLerp(float min, float max, float factor) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static float clampedLerp(float arg0, float arg1, float arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_28fdb1ac(arg0, arg1, arg2);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static double clampedMap(double arg0, double arg1, double arg2, double arg3, double arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static double clampedMap(double arg0, double arg1, double arg2, double arg3, double arg4)
+    {
+        return NativeMethods.TablePtr->hs_method_ea817fff(arg0, arg1, arg2, arg3, arg4);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static float clampedMap(float value, float arg1, float arg2, float arg3, float arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static float clampedMap(float arg0, float arg1, float arg2, float arg3, float arg4)
+    {
+        return NativeMethods.TablePtr->hs_method_5f780dcb(arg0, arg1, arg2, arg3, arg4);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static float cos(float f) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static float cos(float arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_90671ef0(arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static float cos(nint x) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public static float cos(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static float degreesDifferenceAbs(float angleA, float angleB) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static float degreesDifferenceAbs(float arg0, float arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_b6bdc2ab(arg0, arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool doubleEqualsEpsilon(double a, double b) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static bool doubleEqualsEpsilon(double arg0, double arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_b0ccc3e5(arg0, arg1) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static float fastInvSqrt(float x) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static float fastInvSqrt(float arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_d45b6e2a(arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static uint fastRandom() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static uint fastRandom()
+    {
+        return NativeMethods.TablePtr->hs_method_d9416420();
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool floatEqualsEpsilon(float a, float b, float limit) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static bool floatEqualsEpsilon(float arg0, float arg1, float arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_e5bbc7aa(arg0, arg1, arg2) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static int floor(float v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static int floor(float arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_106e3936(arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static float hermiteBlend(float t) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static float hermiteBlend(float arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_f227fba1(arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static float invSqrt(float x) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static float invSqrt(float arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_e7d2703d(arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static float inverseLerp(float min, float max, float value) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static float inverseLerp(float arg0, float arg1, float arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_c814aaab(arg0, arg1, arg2);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool isNan(double d) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static bool isNan(double arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_d95d196c(arg0) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool isNan(float f) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static bool isNan(float arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_9f3be6ff(arg0) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool isWrappedRotationEpsilonEqual(float arg0, float arg1, float epsilon) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static bool isWrappedRotationEpsilonEqual(float arg0, float arg1, float arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_b23377df(arg0, arg1, arg2) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static float lerpRotate(float from, float to, float a) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static float lerpRotate(float arg0, float arg1, float arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_faab9bab(arg0, arg1, arg2);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]
     public static nint mSin
@@ -169,47 +192,55 @@ public sealed partial class Math
         set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the static field has no symbol in the IR.");
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static float map(float value, float arg1, float arg2, float arg3, float arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static float map(float arg0, float arg1, float arg2, float arg3, float arg4)
+    {
+        return NativeMethods.TablePtr->hs_method_b118adcd(arg0, arg1, arg2, arg3, arg4);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void safeIncrement(nint i) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static void safeIncrement(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_60b22346((void*)arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static float signum(float a) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static float signum(float arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_9a9b9396(arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static float sin(float f) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static float sin(float arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_061df421(arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static float sin(nint x) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public static float sin(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static float snapRotationToCardinal(float deg) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static float snapRotationToCardinal(float arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_09068387(arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static float sqrt(float x) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static float sqrt(float arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_dedbd8eb(arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static float wrapDegrees(float input) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static float wrapDegrees(float arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_b50a8e83(arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint wrapDegrees(nint input) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'mce::Degree' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint wrapDegrees(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'mce::Degree' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static float wrapRadians(float angle) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static float wrapRadians(float arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_fe4f8c48(arg0);
+    }
 }

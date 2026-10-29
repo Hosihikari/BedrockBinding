@@ -38,13 +38,15 @@ public sealed unsafe partial class PrioritizeSharedOwnership
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void @lock() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void @lock()
+    {
+        NativeMethods.TablePtr->hs_method_3c679db7((void*)_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void lock_shared() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void lock_shared()
+    {
+        NativeMethods.TablePtr->hs_method_13fd78ee((void*)_handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMutex_Address
@@ -72,15 +74,18 @@ public sealed unsafe partial class PrioritizeSharedOwnership
         get => (nint)NativeMethods.TablePtr->hs_get_87242a01((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool try_lock() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool try_lock()
+    {
+        return NativeMethods.TablePtr->hs_method_3f75b371((void*)_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void unlock() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void unlock()
+    {
+        NativeMethods.TablePtr->hs_method_7a4a7976((void*)_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void unlock_shared() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void unlock_shared()
+    {
+        NativeMethods.TablePtr->hs_method_1c999482((void*)_handle);
+    }
 }

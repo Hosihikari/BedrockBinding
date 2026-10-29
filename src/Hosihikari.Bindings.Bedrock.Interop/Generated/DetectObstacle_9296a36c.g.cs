@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.AgentComponents;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class DetectObstacle
+public sealed unsafe partial class DetectObstacle
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -51,7 +50,8 @@ public sealed partial class DetectObstacle
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void setup(nint arg0, nint entity, nint dir) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static void setup(global::Hosihikari.Bindings.Bedrock.Interop.AgentComponents.DetectObstacle arg0, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg1, int arg2)
+    {
+        NativeMethods.TablePtr->hs_method_e36db0ed((void*)arg0.Handle, (void*)arg1.Handle, arg2);
+    }
 }

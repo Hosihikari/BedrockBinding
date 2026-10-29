@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class RakPeerInterface
+public sealed unsafe partial class RakPeerInterface
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -39,13 +38,16 @@ public sealed partial class RakPeerInterface
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void DestroyInstance(nint i) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static void DestroyInstance(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakPeerInterface? arg0)
+    {
+        NativeMethods.TablePtr->hs_method_4a8e7a5e((void*)(arg0?.Handle ?? 0));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint GetInstance() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakPeerInterface? GetInstance()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_9d5a8ba7();
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.RakPeerInterface((nint)__hs_handle, false) : null;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static RakPeerInterface Create() =>
@@ -60,6 +62,6 @@ public sealed partial class RakPeerInterface
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
+    public void Destroy_a53b52c6() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

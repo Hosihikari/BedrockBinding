@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ValueProviders;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ClampedNormalFloat
+public sealed unsafe partial class ClampedNormalFloat
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,13 +46,15 @@ public sealed partial class ClampedNormalFloat
     public static ClampedNormalFloat Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public float generateNext(nint random) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public float generateNext(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_e4477242((void*)_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static float generateNext(nint random, float arg1, float arg2, float min, float max) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static float generateNext(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0, float arg1, float arg2, float arg3, float arg4)
+    {
+        return NativeMethods.TablePtr->hs_method_2c5fbfb4((void*)arg0.Handle, arg1, arg2, arg3, arg4);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

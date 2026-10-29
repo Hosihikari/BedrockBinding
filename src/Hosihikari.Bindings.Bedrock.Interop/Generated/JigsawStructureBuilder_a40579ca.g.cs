@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class JigsawStructureBuilder
+public sealed unsafe partial class JigsawStructureBuilder : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,47 +46,104 @@ public sealed partial class JigsawStructureBuilder
     public static JigsawStructureBuilder Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint build() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.JigsawStructure build()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.JigsawStructure((nint)NativeMethods.TablePtr->hs_method_31f55e57((void*)_handle));
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.JigsawStructureBuilder create(string arg0, sbyte arg1)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.JigsawStructureBuilder((nint)NativeMethods.TablePtr->hs_method_b8e31e62(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1));
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public static nint create(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint dimensionPadding(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.JigsawStructureBuilder dimensionPadding(int arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.JigsawStructureBuilder((nint)NativeMethods.TablePtr->hs_method_629345ce((void*)_handle, arg0), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint maxDepth(byte arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.JigsawStructureBuilder maxDepth(sbyte arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.JigsawStructureBuilder((nint)NativeMethods.TablePtr->hs_method_af72172b((void*)_handle, arg0), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint maxDistanceFromCenter(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.JigsawStructureBuilder maxDistanceFromCenter(int arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.JigsawStructureBuilder((nint)NativeMethods.TablePtr->hs_method_c055e546((void*)_handle, arg0), false);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint poolAliases(nint arg0) =>
+    public nint poolAliases_b3e018ba(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint projectStartToHeightmap(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::shared_ptr<PoolAliasBinding>' is not supported.", false)]
+    public nint poolAliases_7010501b(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::shared_ptr<PoolAliasBinding>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.JigsawStructureBuilder projectStartToHeightmap(int arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.JigsawStructureBuilder((nint)NativeMethods.TablePtr->hs_method_262b90e6((void*)_handle, arg0), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public nint startHeight(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint startPool(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.JigsawStructureBuilder startPool(string arg0)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.JigsawStructureBuilder((nint)NativeMethods.TablePtr->hs_method_b4797231((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
+        }
+    }
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_a40579ca((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

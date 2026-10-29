@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.NoiseUtils;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class DelegatingRandom
+public sealed unsafe partial class DelegatingRandom
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -46,6 +45,47 @@ public sealed partial class DelegatingRandom
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static DelegatingRandom Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public void consumeCount(uint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_f1f54a82((void*)_handle, arg0);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.IRandom? fork()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_a187abce((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.IRandom((nint)__hs_handle) : null;
+    }
+
+    public bool nextBoolean()
+    {
+        return NativeMethods.TablePtr->hs_method_b19555be((void*)_handle) != 0;
+    }
+
+    public double nextDouble()
+    {
+        return NativeMethods.TablePtr->hs_method_4490024d((void*)_handle);
+    }
+
+    public double nextGaussianDouble()
+    {
+        return NativeMethods.TablePtr->hs_method_fe16eee2((void*)_handle);
+    }
+
+    public int nextInt()
+    {
+        return NativeMethods.TablePtr->hs_method_1929332a((void*)_handle);
+    }
+
+    public int nextInt(int arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_8d54b354((void*)_handle, arg0);
+    }
+
+    public long nextLong()
+    {
+        return NativeMethods.TablePtr->hs_method_9072a347((void*)_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

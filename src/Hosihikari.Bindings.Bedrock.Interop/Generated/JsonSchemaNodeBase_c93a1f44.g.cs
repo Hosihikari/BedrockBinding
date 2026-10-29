@@ -38,9 +38,16 @@ public sealed unsafe partial class JsonSchemaNodeBase : global::System.IDisposab
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static JsonSchemaNodeBase Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static JsonSchemaNodeBase Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_06a3f71e();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new JsonSchemaNodeBase((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static JsonSchemaNodeBase Create(nint arg0) =>
@@ -49,6 +56,7 @@ public sealed unsafe partial class JsonSchemaNodeBase : global::System.IDisposab
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
 
     public void Dispose()
     {

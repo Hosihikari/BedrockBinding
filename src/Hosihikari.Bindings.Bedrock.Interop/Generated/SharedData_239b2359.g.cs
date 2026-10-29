@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class SharedData
+public sealed unsafe partial class SharedData
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,13 +46,17 @@ public sealed partial class SharedData
     public static SharedData Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getChatRestrictionLevel() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public sbyte getChatRestrictionLevel()
+    {
+        return NativeMethods.TablePtr->hs_method_f4c65e8c((void*)_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint isGameRuleEnabled(nint rule) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool? isGameRuleEnabled(global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId arg0)
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->hs_method_ca849936((void*)_handle, (void*)arg0.Handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value != 0 : (bool?)null;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

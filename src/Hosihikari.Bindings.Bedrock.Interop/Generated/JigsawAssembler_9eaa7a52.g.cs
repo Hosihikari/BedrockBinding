@@ -48,8 +48,12 @@ public sealed partial class JigsawAssembler
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint construct(nint arg0, nint arg1, nint arg2, nint arg3, int arg4, nint arg5, nint arg6, int arg7, int arg8, nint arg9, nint arg10) =>
+    public static nint construct_a2ec6234(nint arg0, nint arg1, nint arg2, nint arg3, int arg4, nint arg5, nint arg6, int arg7, int arg8, nint arg9, nint arg10) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'br::worldgen::GenerationStub' is not supported.", false)]
+    public static nint construct_3a045d68(nint arg0, nint arg1, nint arg2, nint arg3, int arg4, nint arg5, nint arg6, int arg7, int arg8, nint arg9, nint arg10) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'br::worldgen::GenerationStub' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

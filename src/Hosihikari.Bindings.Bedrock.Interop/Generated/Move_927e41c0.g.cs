@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.AgentComponents;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class Move
+public sealed unsafe partial class Move
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -51,7 +50,8 @@ public sealed partial class Move
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void setup(nint move, nint entity, nint dir) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static void setup(global::Hosihikari.Bindings.Bedrock.Interop.AgentComponents.Move arg0, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg1, int arg2)
+    {
+        NativeMethods.TablePtr->hs_method_096b1b2a((void*)arg0.Handle, (void*)arg1.Handle, arg2);
+    }
 }

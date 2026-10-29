@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock;
 
-public sealed unsafe partial class EnableNonOwnerReferences
+public sealed unsafe partial class EnableNonOwnerReferences : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -38,13 +38,27 @@ public sealed unsafe partial class EnableNonOwnerReferences
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EnableNonOwnerReferences Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static EnableNonOwnerReferences Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_8e6e2e64();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static EnableNonOwnerReferences Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new EnableNonOwnerReferences((nint)handle);
+    }
+
+    public static EnableNonOwnerReferences Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.EnableNonOwnerReferences arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_ae2ab0d0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EnableNonOwnerReferences((nint)handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
@@ -56,7 +70,17 @@ public sealed unsafe partial class EnableNonOwnerReferences
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_c0bd1acf((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

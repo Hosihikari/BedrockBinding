@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ScriptGameTestSequence
+public sealed unsafe partial class ScriptGameTestSequence
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -52,34 +51,70 @@ public sealed partial class ScriptGameTestSequence
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint thenExecute(nint fn) =>
+    public nint thenExecute_ff2aba0a(nint fn) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint thenExecuteAfter(int tickDelay, nint fn) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::WeakTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestSequence>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint thenExecute_51e877b5(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::WeakTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestSequence>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint thenExecuteFor(int arg0, nint fn) =>
+    public nint thenExecuteAfter_f4fc44eb(int tickDelay, nint fn) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void thenFail(nint error) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::WeakTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestSequence>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint thenExecuteAfter_fe2a6008(int arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::WeakTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestSequence>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint thenIdle(int tickDelay) =>
+    public nint thenExecuteFor_d5e62303(int arg0, nint fn) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void thenSucceed() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::WeakTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestSequence>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint thenExecuteFor_80e46242(int arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::WeakTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestSequence>' requires --link-carrier or --virtual-dispatch.");
+
+    public void thenFail(string arg0)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->hs_method_ccd8d3c3((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::WeakTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestSequence>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint thenIdle(int arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::WeakTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestSequence>' requires --link-carrier or --virtual-dispatch.");
+
+    public void thenSucceed()
+    {
+        NativeMethods.TablePtr->hs_method_f269cc23((void*)_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint thenWait(nint fn) =>
+    public nint thenWait_5ba96cf8(nint fn) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::WeakTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestSequence>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint thenWait_2ebb1ec1(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::WeakTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestSequence>' requires --link-carrier or --virtual-dispatch.");
+
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint thenWaitAfter(int tickDelay, nint fn) =>
+    public nint thenWaitAfter_3132b1b7(int tickDelay, nint fn) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::WeakTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestSequence>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint thenWaitAfter_af68fca6(int arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::WeakTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestSequence>' requires --link-carrier or --virtual-dispatch.");
 }

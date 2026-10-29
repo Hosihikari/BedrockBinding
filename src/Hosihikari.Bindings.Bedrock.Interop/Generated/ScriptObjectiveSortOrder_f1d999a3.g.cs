@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ScriptObjectiveSortOrder
+public sealed unsafe partial class ScriptObjectiveSortOrder
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,19 +46,21 @@ public sealed partial class ScriptObjectiveSortOrder
     public static ScriptObjectiveSortOrder Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::EnumBindingBuilder<ScriptModuleMinecraft::ScriptObjectiveSortOrderType,ScriptModuleMinecraft::ScriptObjectiveSortOrderType>' requires --link-carrier or --virtual-dispatch.", false)]
     public static nint bind() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::EnumBindingBuilder<ScriptModuleMinecraft::ScriptObjectiveSortOrderType,ScriptModuleMinecraft::ScriptObjectiveSortOrderType>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint toObjectiveSortOrder(nint order) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static byte toObjectiveSortOrder(int arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_c41281a0(arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint toScriptObjectiveSortOrder(nint order) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static int toScriptObjectiveSortOrder(byte arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_ce817060(arg0);
+    }
 }

@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.DataStructures;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ByteQueue
+public sealed unsafe partial class ByteQueue
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -39,37 +38,43 @@ public sealed partial class ByteQueue
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static ByteQueue Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ByteQueue Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void Clear(nint file, uint line) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void Clear(nint arg0, uint arg1)
+    {
+        NativeMethods.TablePtr->hs_method_5affde1e((void*)_handle, (void*)arg0, arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public uint GetBytesWritten() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public uint GetBytesWritten()
+    {
+        return NativeMethods.TablePtr->hs_method_5867a2d0((void*)_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void IncrementReadOffset(uint length) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void IncrementReadOffset(uint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_34a0f04f((void*)_handle, arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint PeekContiguousBytes(nint outLength) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public nint PeekContiguousBytes(nint arg0)
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_69dd525c((void*)_handle, (void*)arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool ReadBytes(nint @out, uint maxLengthToRead, bool peek) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool ReadBytes(nint arg0, uint arg1, bool arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_a0a73f56((void*)_handle, (void*)arg0, arg1, arg2) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void WriteBytes(nint @in, uint length, nint file, uint line) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void WriteBytes(nint arg0, uint arg1, nint arg2, uint arg3)
+    {
+        NativeMethods.TablePtr->hs_method_f6ab62e4((void*)_handle, (void*)arg0, arg1, (void*)arg2, arg3);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

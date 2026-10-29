@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BlockTransformationSerializer;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class RotationBindingType
+public sealed unsafe partial class RotationBindingType
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -51,7 +50,8 @@ public sealed partial class RotationBindingType
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void rotationTypeFromVec3(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void rotationTypeFromVec3(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
+    {
+        NativeMethods.TablePtr->hs_method_5194249d((void*)_handle, (void*)arg0.Handle);
+    }
 }

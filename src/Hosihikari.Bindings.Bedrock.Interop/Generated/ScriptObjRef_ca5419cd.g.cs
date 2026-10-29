@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.QuickJS;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ScriptObjRef
+public sealed unsafe partial class ScriptObjRef
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,9 +46,10 @@ public sealed partial class ScriptObjRef
     public static ScriptObjRef Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void incRefToReturnToJS() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void incRefToReturnToJS()
+    {
+        NativeMethods.TablePtr->hs_method_a6d328b8((void*)_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign_2f2bd313(nint other) =>
@@ -59,11 +59,13 @@ public sealed partial class ScriptObjRef
     public nint operator_assign_8a2b85de(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void pin() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void pin()
+    {
+        NativeMethods.TablePtr->hs_method_ae853ab1((void*)_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void unpin() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void unpin()
+    {
+        NativeMethods.TablePtr->hs_method_5650d91a((void*)_handle);
+    }
 }

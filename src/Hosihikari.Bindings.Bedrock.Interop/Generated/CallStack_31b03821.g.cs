@@ -38,13 +38,9 @@ public sealed unsafe partial class CallStack : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CallStack Create_df778906(nint frame) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
     public static CallStack Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.CallStack arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_0e70066d((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->hs_create_e55e61a0((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,9 +49,13 @@ public sealed unsafe partial class CallStack : global::System.IDisposable
         return new CallStack((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CallStack Create_86ee67c6(nint frames) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static CallStack Create_0a4d3ef7(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public static CallStack Create_8cc1754b(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint vector_Address

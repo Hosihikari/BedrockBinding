@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.RandomScatteredLargeFeatureDetails;
 
-public sealed unsafe partial class ScatteredFeatureStart
+public sealed unsafe partial class ScatteredFeatureStart : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -42,9 +42,16 @@ public sealed unsafe partial class ScatteredFeatureStart
     public static ScatteredFeatureStart Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScatteredFeatureStart Create(nint source, short seaLevel, int chunkX, int chunkZ, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static ScatteredFeatureStart Create(global::Hosihikari.Bindings.Bedrock.Interop.BiomeSource arg0, short arg1, int arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.IPreliminarySurfaceProvider arg4)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_1dd201be((void*)arg0.Handle, arg1, arg2, arg3, (void*)arg4.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScatteredFeatureStart((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ScatteredFeatureStart Create(nint arg0) =>
@@ -54,9 +61,6 @@ public sealed unsafe partial class ScatteredFeatureStart
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBoundingBox_Address
@@ -80,5 +84,18 @@ public sealed unsafe partial class ScatteredFeatureStart
     public nint mPieces_Address
     {
         get => (nint)NativeMethods.TablePtr->hs_get_2b499a03((void*)_handle);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_0a5806be((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

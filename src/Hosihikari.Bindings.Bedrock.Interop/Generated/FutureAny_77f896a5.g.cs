@@ -38,17 +38,9 @@ public sealed unsafe partial class FutureAny : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FutureAny Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FutureAny Create(nint runtime, nint arg1, nint scope, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    public static FutureAny Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.FutureAny rhs)
+    public static FutureAny Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_ee358d03((void*)rhs.Handle);
+        var handle = NativeMethods.TablePtr->hs_create_90c1fce9();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -57,17 +49,34 @@ public sealed unsafe partial class FutureAny : global::System.IDisposable
         return new FutureAny((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static FutureAny Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.FutureAny arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_7fbb2131((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FutureAny((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Scripting::ContextId' is not a known bindable declaration.", false)]
+    public static FutureAny Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::ContextId' is not a known bindable declaration.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ResultAny' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getResult() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ResultAny' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool isPending() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool isPending()
+    {
+        return NativeMethods.TablePtr->hs_method_68619641((void*)_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool isRejected() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool isRejected()
+    {
+        return NativeMethods.TablePtr->hs_method_6f6c99cc((void*)_handle) != 0;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign_ebc39a2f(nint rhs) =>
@@ -77,9 +86,10 @@ public sealed unsafe partial class FutureAny : global::System.IDisposable
     public nint operator_assign_fa815deb(nint rhs) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool valid() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool valid()
+    {
+        return NativeMethods.TablePtr->hs_method_e9ff8c55((void*)_handle) != 0;
+    }
 
 
     public void Dispose()

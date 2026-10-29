@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.CodeBuilder_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class RequestInterpreter
+public sealed unsafe partial class RequestInterpreter
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -48,14 +47,11 @@ public sealed partial class RequestInterpreter
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static bool _parse(nint command, nint request) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void process(nint sender, nint header, nint body) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void process(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.CodeBuilder_Nested.RequestHeader arg1, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg2)
+    {
+        NativeMethods.TablePtr->hs_method_49395c6d((void*)_handle, (void*)arg0, (void*)arg1.Handle, (void*)arg2.Handle);
+    }
 }

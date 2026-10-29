@@ -42,17 +42,32 @@ public sealed unsafe partial class Parameter : global::System.IDisposable
     public static Parameter Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Parameter Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static Parameter Create(float arg0, float arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_7ceb8076(arg0, arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Parameter Create(float min, float max) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        return new Parameter((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint fromParameters(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static Parameter Create(nint arg0, nint arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_9de4d556((void*)arg0, (void*)arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Parameter((nint)handle);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter fromParameters(global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter arg0, global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->hs_method_d2b0727d((void*)arg0.Handle, (void*)arg1.Handle));
+    }
 
     public long mMax
     {

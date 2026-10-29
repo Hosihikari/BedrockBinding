@@ -42,21 +42,35 @@ public sealed unsafe partial class ScriptBlockCustomComponentPlayerPlaceBeforeEv
     public static ScriptBlockCustomComponentPlayerPlaceBeforeEvent Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
+    public static ScriptBlockCustomComponentPlayerPlaceBeforeEvent Create(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.WeakLifetimeScope arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_f52fcc33((void*)arg0, (void*)arg1.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptBlockCustomComponentPlayerPlaceBeforeEvent((nint)handle);
+    }
+
+    public static ScriptBlockCustomComponentPlayerPlaceBeforeEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested.ScriptBlockCustomComponentPlayerPlaceBeforeEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_872ef82d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptBlockCustomComponentPlayerPlaceBeforeEvent((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static ScriptBlockCustomComponentPlayerPlaceBeforeEvent Create_d3f01cd1(nint arg0) =>
+    public static ScriptBlockCustomComponentPlayerPlaceBeforeEvent Create_1c561047(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptBlockCustomComponentPlayerPlaceBeforeEvent Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptBlockCustomComponentPlayerPlaceBeforeEvent Create_1e894db2(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::ClassBinding' requires --link-carrier or --virtual-dispatch.", false)]
     public static nint bind() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ClassBinding' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign_1731a1ff(nint arg0) =>
@@ -66,9 +80,10 @@ public sealed unsafe partial class ScriptBlockCustomComponentPlayerPlaceBeforeEv
     public nint operator_assign_dcb9fd56(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void updateEngineEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void updateEngineEvent(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_f8c7f720((void*)_handle, (void*)arg0);
+    }
 
 
     public void Dispose()

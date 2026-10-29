@@ -44,7 +44,7 @@ public sealed unsafe partial class Structure : global::System.IDisposable
 
     public static Structure Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.Structure arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_924653e5((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->hs_create_53a7a5f7((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -57,9 +57,11 @@ public sealed unsafe partial class Structure : global::System.IDisposable
     public nint findValidGenerationPoint(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint generate(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? generate(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.GenerationContext arg0)
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_d1bd03b6((void*)_handle, (void*)arg0.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

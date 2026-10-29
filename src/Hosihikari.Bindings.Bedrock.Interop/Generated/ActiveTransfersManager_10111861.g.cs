@@ -44,53 +44,63 @@ public sealed unsafe partial class ActiveTransfersManager : global::System.IDisp
         get => (nint)NativeMethods.TablePtr->hs_get_580a6cd8((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ActiveTransfersManager Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static ActiveTransfersManager Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_e1a25bfa();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActiveTransfersManager((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ActiveTransfersManager Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void collectTrackingData() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void collectTrackingData()
+    {
+        NativeMethods.TablePtr->hs_method_fce4bd4e((void*)_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint dropBlobFor(nint client, ulong id) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? dropBlobFor(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0, ulong arg1)
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_method_ae6299d5((void*)_handle, (void*)arg0.Handle, arg1);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void enableCacheFor(nint client) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void enableCacheFor(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0)
+    {
+        NativeMethods.TablePtr->hs_method_7d1e0fed((void*)_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool isCacheEnabledFor(nint client) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool isCacheEnabledFor(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_d51d24a2((void*)_handle, (void*)arg0.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void onPeerDisconnected(nint client) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void onPeerDisconnected(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier arg0)
+    {
+        NativeMethods.TablePtr->hs_method_0a03fee4((void*)_handle, (void*)arg0.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint rememberBlob(ulong id, nint data, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ClientBlobCache::Server::TransferBuilder' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint startTransfer(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ClientBlobCache::Server::TransferBuilder' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint startTransfer(nint client) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ClientBlobCache::Server::TransferBuilder' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint tryStartTransfer(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ClientBlobCache::Server::TransferBuilder' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint tryStartTransfer(nint client) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void updateNetworkConditions(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void updateNetworkConditions(global::Hosihikari.Bindings.Bedrock.Interop.ServerNetworkSystem arg0)
+    {
+        NativeMethods.TablePtr->hs_method_d16c2207((void*)_handle, (void*)arg0.Handle);
+    }
 
 
     public void Dispose()

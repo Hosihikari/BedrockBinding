@@ -38,9 +38,16 @@ public sealed unsafe partial class RotationData : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static RotationData Create(nint x, nint y, nint originRot) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static RotationData Create(global::Hosihikari.Bindings.Bedrock.Interop.RelativeFloat arg0, global::Hosihikari.Bindings.Bedrock.Interop.RelativeFloat arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec2? arg2)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_3c91b657((void*)arg0.Handle, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0), arg2 is not null);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RotationData((nint)handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCommandOriginRotation_Address

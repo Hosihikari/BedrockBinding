@@ -38,29 +38,35 @@ public sealed unsafe partial class RakNetSocket2 : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint GetBoundAddress() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress GetBoundAddress()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress((nint)NativeMethods.TablePtr->hs_method_c6b40a2a((void*)_handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void GetMyAdapters(nint adapters) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static void GetMyAdapters(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.NetworkAdapter? arg0)
+    {
+        NativeMethods.TablePtr->hs_method_0a8707dd((void*)(arg0?.Handle ?? 0));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static void GetMyIP(nint addresses) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static void GetMyIP(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.SystemAddress? arg0)
+    {
+        NativeMethods.TablePtr->hs_method_8249548a((void*)(arg0?.Handle ?? 0));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint GetSocketType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public int GetSocketType()
+    {
+        return NativeMethods.TablePtr->hs_method_a65f2987((void*)_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public uint GetUserConnectionSocketIndex() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public uint GetUserConnectionSocketIndex()
+    {
+        return NativeMethods.TablePtr->hs_method_bdbd256d((void*)_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public bool IsBerkleySocket() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public bool IsBerkleySocket()
+    {
+        return NativeMethods.TablePtr->hs_method_177dfa0b((void*)_handle) != 0;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static RakNetSocket2 Create() =>
@@ -70,13 +76,15 @@ public sealed unsafe partial class RakNetSocket2 : global::System.IDisposable
     public static RakNetSocket2 Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void SetMulticastInterface(int interfaceIndex) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void SetMulticastInterface(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_c7fb62c7((void*)_handle, arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void SetUserConnectionSocketIndex(uint i) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void SetUserConnectionSocketIndex(uint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_c1f675da((void*)_handle, arg0);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void __unk_vfn_1() =>

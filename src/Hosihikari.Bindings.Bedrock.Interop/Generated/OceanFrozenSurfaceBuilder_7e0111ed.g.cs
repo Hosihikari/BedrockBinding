@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.VanillaSurfaceBuilders;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class OceanFrozenSurfaceBuilder
+public sealed unsafe partial class OceanFrozenSurfaceBuilder
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,13 +46,15 @@ public sealed partial class OceanFrozenSurfaceBuilder
     public static OceanFrozenSurfaceBuilder Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void buildSurfaceAt(nint parameters) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void buildSurfaceAt(global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.BuildParameters arg0)
+    {
+        NativeMethods.TablePtr->hs_method_8d9c1643((void*)_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public void init(nint arg0, uint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public void init(global::Hosihikari.Bindings.Bedrock.Interop.Biome arg0, uint arg1)
+    {
+        NativeMethods.TablePtr->hs_method_99881563((void*)_handle, (void*)arg0.Handle, arg1);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

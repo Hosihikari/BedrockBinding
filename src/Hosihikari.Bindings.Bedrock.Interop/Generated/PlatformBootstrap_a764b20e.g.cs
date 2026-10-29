@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class PlatformBootstrap
+public sealed unsafe partial class PlatformBootstrap
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -60,20 +59,21 @@ public sealed partial class PlatformBootstrap
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _rawCreateDirectory_std(nint path, nint arg1, ulong arg2) =>
+    public nint _rawCreateDirectory_std_aa2eb93f(nint path, nint arg1, ulong arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _rawLoadFile_cstdio(nint buffer, ulong bufferSize, nint root, nint path, nint arg4, ulong arg5) =>
+    public nint _rawLoadFile_cstdio_81c005ff(nint buffer, ulong bufferSize, nint root, nint path, nint arg4, ulong arg5) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _rawSaveFile_cstdio(nint buffer, ulong bufferSize, nint root, nint path, nint arg4, ulong arg5) =>
+    public nint _rawSaveFile_cstdio_1e34263f(nint buffer, ulong bufferSize, nint root, nint path, nint arg4, ulong arg5) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getSharedInstance() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PlatformBootstrap getSharedInstance()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PlatformBootstrap((nint)NativeMethods.TablePtr->hs_method_68c4e314(), false);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

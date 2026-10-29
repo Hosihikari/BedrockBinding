@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class StringAppendBuffer
+public sealed unsafe partial class StringAppendBuffer : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -63,9 +62,10 @@ public sealed partial class StringAppendBuffer
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public int overflow(int c) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public int overflow(int arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_e47331a3((void*)_handle, arg0);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public int pbackfail(int arg0) =>
@@ -103,11 +103,22 @@ public sealed partial class StringAppendBuffer
     public long xsgetn(nint arg0, long arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public long xsputn(nint s, long n) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+    public long xsputn(nint arg0, long arg1)
+    {
+        return NativeMethods.TablePtr->hs_method_e162b7f1((void*)_handle, (void*)arg0, arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_9ac3680e((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

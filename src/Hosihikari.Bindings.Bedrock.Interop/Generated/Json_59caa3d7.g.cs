@@ -4,7 +4,8 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Json
+[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
+public sealed partial class Json
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,129 +38,4 @@ public sealed unsafe partial class Json
         _handle = 0;
         return __hs_handle;
     }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Json Create_f2312b7f() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Json Create_2668f6a8() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Json Create_fec9b577(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Json Create_e1ea6e88(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Json Create_915dc17f() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Json Create_5ae67577(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Json Create_acdc7a2c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static Json Create_5e8c4c16(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
-
-    public void __autoclassinit2(ulong arg0)
-    {
-        NativeMethods.TablePtr->hs_method_ab5ef152((void*)_handle, arg0);
-    }
-
-    public string getFormattedErrorMessages()
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_ec13bfb4((void*)_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public nint memberName()
-    {
-        return (nint)NativeMethods.TablePtr->hs_method_efe347ab((void*)_handle);
-    }
-
-    public bool parse(nint arg0, ulong arg1, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg2, bool arg3)
-    {
-        return NativeMethods.TablePtr->hs_method_6ce5abc5((void*)_handle, (void*)arg0, arg1, (void*)arg2.Handle, arg3) != 0;
-    }
-
-    public bool parse(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1, bool arg2)
-    {
-        return NativeMethods.TablePtr->hs_method_a1c7b90b((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg2) != 0;
-    }
-
-    public bool parse(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1, bool arg2)
-    {
-        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
-        scoped global::System.Span<byte> __hs_stringBytes0;
-        if (__hs_stringByteCount0 <= 256)
-        {
-            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
-        }
-        else
-        {
-            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
-        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
-        {
-            return NativeMethods.TablePtr->hs_method_1c74ef69((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, arg2) != 0;
-        }
-    }
-
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Features strictMode()
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Features((nint)NativeMethods.TablePtr->hs_method_ee6dcbb6());
-    }
-
-    public string write(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg0)
-    {
-        var __hs_view = NativeMethods.TablePtr->hs_method_7e67c66b((void*)_handle, (void*)arg0.Handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
-    }
-
-    public void write(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1)
-    {
-        NativeMethods.TablePtr->hs_method_852acc85((void*)_handle, (void*)arg0, (void*)arg1.Handle);
-    }
-
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_61ad3318() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_fc5cdc09() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_1e741d68() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_c004d242() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_50f28cfb() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_637a026a() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_0c9ce411() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_aaba49cc() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }
