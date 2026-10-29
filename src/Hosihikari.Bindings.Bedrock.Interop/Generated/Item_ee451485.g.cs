@@ -127,9 +127,9 @@ public sealed unsafe partial class Item : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Item((nint)NativeMethods.TablePtr->hs_method_c85814ed((void*)_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::initializer_list<std::reference_wrapper<ItemTag const>>' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'std::reference_wrapper<ItemTag const>' is not supported.", false)]
     public nint addTags(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::initializer_list<std::reference_wrapper<ItemTag const>>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'std::reference_wrapper<ItemTag const>' is not supported.");
 
     public bool allowOffhand()
     {

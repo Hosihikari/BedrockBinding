@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class CrashDumpLogUtils
+public sealed unsafe partial class CrashDumpLogUtils
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -47,9 +46,13 @@ public sealed partial class CrashDumpLogUtils
     public static CrashDumpLogUtils Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::span<CrashDumpLogStringID const,-1>' is not a known bindable declaration.", false)]
-    public static nint getTagFromOptions_6c4cfe3d(ulong arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::span<CrashDumpLogStringID const,-1>' is not a known bindable declaration.");
+    public static int getTagFromOptions(ulong arg0, int[] arg1)
+    {
+        fixed (int* __hs_vectorData1 = arg1)
+        {
+            return NativeMethods.TablePtr->hs_method_6c4cfe3d(arg0, __hs_vectorData1, (nuint)(arg1?.Length ?? 0));
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public static nint getTagFromOptions_10a87dad(ulong arg0, nint options) =>

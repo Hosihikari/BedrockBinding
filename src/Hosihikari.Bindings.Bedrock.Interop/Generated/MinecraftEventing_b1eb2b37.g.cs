@@ -348,9 +348,9 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
     public void fireEduServiceRequestFailed_b57ef12e(nint serviceName, nint requestName, nint error, nint details) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'buffer_span<std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>>' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>' is not supported.", false)]
     public void fireEduServiceRequestFailed_9e3f4c1b(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'buffer_span<std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void fireEventAchievementReceived(nint title, nint description, nint achievementId) =>
@@ -1329,9 +1329,9 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
     public void fireEventEduServiceStatus_24ef6580(nint serviceName, nint requestName, int durationMS, nint details) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'buffer_span<std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>>' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>' is not supported.", false)]
     public void fireEventEduServiceStatus_7c3bf79b(nint arg0, nint arg1, int arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'buffer_span<std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>' is not supported.");
 
     public void fireEventEduiOSPurchaseTransaction(nint arg0)
     {
@@ -5497,9 +5497,9 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'buffer_span<std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>>' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>' is not supported.", false)]
     public void fireEventWorldLoadedClassroomCustomization_cf926a44(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'buffer_span<std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'std::pair<std::basic_string_view<char,std::char_traits<char>>,std::basic_string_view<char,std::char_traits<char>>>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void fireEventWorldLoadedClassroomCustomization_1f539f86(nint customization, nint details) =>

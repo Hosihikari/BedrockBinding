@@ -677,17 +677,17 @@ public sealed unsafe partial class ItemStackBase : global::System.IDisposable
     public bool isOneOfBlockInstances_3b2ff565(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::initializer_list<std::reference_wrapper<HashedString const>>' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'std::reference_wrapper<HashedString const>' is not supported.", false)]
     public bool isOneOfBlockInstances_2fc0c2fa(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::initializer_list<std::reference_wrapper<HashedString const>>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'std::reference_wrapper<HashedString const>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::reference_wrapper<HashedString const>' is not supported.", false)]
     public bool isOneOfBlockInstances_8ae51a74(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::reference_wrapper<HashedString const>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::initializer_list<std::reference_wrapper<HashedString const>>' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'std::reference_wrapper<HashedString const>' is not supported.", false)]
     public bool isOneOfInstances(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::initializer_list<std::reference_wrapper<HashedString const>>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'std::reference_wrapper<HashedString const>' is not supported.");
 
     public bool isPattern()
     {

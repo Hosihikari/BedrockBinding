@@ -61,9 +61,13 @@ public sealed unsafe partial class BiomeArea : global::System.IDisposable
     public bool containsAny_9436cd7a(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::span<unsigned long long const,-1>' is not a known bindable declaration.", false)]
-    public bool containsAny_bcf41a08(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::span<unsigned long long const,-1>' is not a known bindable declaration.");
+    public bool containsAny(ulong[] arg0)
+    {
+        fixed (ulong* __hs_vectorData0 = arg0)
+        {
+            return NativeMethods.TablePtr->hs_method_bcf41a08((void*)_handle, __hs_vectorData0, (nuint)(arg0?.Length ?? 0)) != 0;
+        }
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBiomes_Address

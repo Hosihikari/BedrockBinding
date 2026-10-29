@@ -217,9 +217,9 @@ public sealed unsafe partial class MapItemSavedData
         NativeMethods.TablePtr->hs_method_0d9edc46((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'buffer_span<unsigned int>' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
     public void setMapSection(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'buffer_span<unsigned int>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public void setOrigin(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg2, bool arg3, bool arg4, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg5)
     {

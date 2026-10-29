@@ -64,13 +64,13 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
     public static ExpressionNode Create_56ef19d1(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::span<HashedString const,-1>' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'HashedString const' is not supported.", false)]
     public static ExpressionNode Create_fb0b0560(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::span<HashedString const,-1>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'HashedString const' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::span<HashedString const,-1>' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'HashedString const' is not supported.", false)]
     public static ExpressionNode Create_d205a73f(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::span<HashedString const,-1>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'HashedString const' is not supported.");
 
     public static ExpressionNode Create(global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg arg0, int arg1)
     {
@@ -110,13 +110,13 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
         return new ExpressionNode((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::span<HashedString const,-1>' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'HashedString const' is not supported.", false)]
     public static ExpressionNode Create_c53c406c(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::span<HashedString const,-1>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'HashedString const' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::span<HashedString const,-1>' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'HashedString const' is not supported.", false)]
     public static ExpressionNode Create_b3133880(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::span<HashedString const,-1>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'HashedString const' is not supported.");
 
     // The native field type is not projected; this is the address of the field storage.
     public static nint _defaultUnknownQueryFunction_Address
@@ -351,9 +351,9 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
     public bool parse_9c1966ae(nint inputExpression, nint molangVersion, nint idSet) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::span<HashedString const,-1>' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'HashedString const' is not supported.", false)]
     public bool parse_96e0e3e2(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::span<HashedString const,-1>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'HashedString const' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public static nint queryFunctionAccessorFromString_1e927c67(nint functionName, nint molangVersion, nint functionReturnType, bool missingIsOkay_returnNullIfSo) =>

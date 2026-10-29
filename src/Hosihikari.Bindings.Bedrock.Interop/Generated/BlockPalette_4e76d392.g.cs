@@ -75,9 +75,9 @@ public sealed unsafe partial class BlockPalette : global::System.IDisposable
     public static nint convertLegacyBlock(nint arg0, ushort arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'BlockID' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'buffer_span_mut<Block const*>' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'BlockID' is not supported.", false)]
     public static bool convertLegacyBlocks(nint arg0, nint arg1, nint arg2, ulong arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'buffer_span_mut<Block const*>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'BlockID' is not supported.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Block getBlock(nint arg0)
     {

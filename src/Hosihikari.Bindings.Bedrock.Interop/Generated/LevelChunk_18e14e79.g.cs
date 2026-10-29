@@ -306,9 +306,9 @@ public sealed unsafe partial class LevelChunk
     public void finalizeSubChunkDeserialization_412270c9(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'buffer_span_mut<SubChunk>' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'SubChunk' is not supported.", false)]
     public void finalizeSubChunkDeserialization_f1392ae2(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'buffer_span_mut<SubChunk>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'SubChunk' is not supported.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? findExposedLightningRod(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1)
     {
@@ -407,9 +407,20 @@ public sealed unsafe partial class LevelChunk
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::span<gsl::not_null<Actor const*>,-1>' is not a known bindable declaration.", false)]
-    public void getEntities_5f47db28(nint arg0, nint arg1, nint arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::span<gsl::not_null<Actor const*>,-1>' is not a known bindable declaration.");
+    public void getEntities(nint[] arg0, global::Hosihikari.Bindings.Bedrock.Interop.AABB arg1, nint[] arg2, bool arg3)
+    {
+        var __hs_vectorItems0 = arg0 ?? global::System.Array.Empty<nint>();
+        fixed (nint* __hs_vectorHandleData0 = __hs_vectorItems0)
+        {
+            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
+            var __hs_vectorItems2 = arg2 ?? global::System.Array.Empty<nint>();
+            fixed (nint* __hs_vectorHandleData2 = __hs_vectorItems2)
+            {
+                var __hs_vectorData2 = (void**)__hs_vectorHandleData2;
+                NativeMethods.TablePtr->hs_method_5f47db28((void*)_handle, (void*)arg1.Handle, arg3, __hs_vectorData0, (nuint)(arg0?.Length ?? 0), __hs_vectorData2, (nuint)(arg2?.Length ?? 0));
+            }
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void getEntities_c7d284f8(nint ignoredEntities, nint bb, nint entities, bool useHitbox) =>
@@ -874,9 +885,9 @@ public sealed unsafe partial class LevelChunk
         NativeMethods.TablePtr->hs_method_c2123392((void*)_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'buffer_span<BlockID>' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'BlockID' is not supported.", false)]
     public void setAllLegacyBlockIDAndData(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'buffer_span<BlockID>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'BlockID' is not supported.");
 
     public void setBiome2d(global::Hosihikari.Bindings.Bedrock.Interop.Biome arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkBlockPos arg1)
     {

@@ -397,9 +397,21 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
     public nint fetchEntities_fcca690e(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::span<gsl::not_null<Actor const*>,-1>' is not a known bindable declaration.", false)]
-    public nint fetchEntities_943a9e10(nint arg0, nint arg1, bool arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::span<gsl::not_null<Actor const*>,-1>' is not a known bindable declaration.");
+    public nint[] fetchEntities(nint[] arg0, global::Hosihikari.Bindings.Bedrock.Interop.AABB arg1, bool arg2, bool arg3)
+    {
+        var __hs_vectorItems0 = arg0 ?? global::System.Array.Empty<nint>();
+        fixed (nint* __hs_vectorHandleData0 = __hs_vectorItems0)
+        {
+            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
+            var __hs_view = NativeMethods.TablePtr->hs_method_943a9e10((void*)_handle, (void*)arg1.Handle, arg2, arg3, __hs_vectorData0, (nuint)(arg0?.Length ?? 0));
+            var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
+            if (__hs_view.Size > 0)
+            {
+                new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
+            }
+            return __hs_result;
+        }
+    }
 
     public nint fetchEntities2(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.AABB arg1, bool arg2)
     {
@@ -854,9 +866,15 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_3ff9cd9a((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0)) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::span<gsl::not_null<Actor const*>,-1>' is not a known bindable declaration.", false)]
-    public bool isUnobstructedByEntities_7ba6d3f1(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::span<gsl::not_null<Actor const*>,-1>' is not a known bindable declaration.");
+    public bool isUnobstructedByEntities(global::Hosihikari.Bindings.Bedrock.Interop.AABB arg0, nint[] arg1)
+    {
+        var __hs_vectorItems1 = arg1 ?? global::System.Array.Empty<nint>();
+        fixed (nint* __hs_vectorHandleData1 = __hs_vectorItems1)
+        {
+            var __hs_vectorData1 = (void**)__hs_vectorHandleData1;
+            return NativeMethods.TablePtr->hs_method_7ba6d3f1((void*)_handle, (void*)arg0.Handle, __hs_vectorData1, (nuint)(arg1?.Length ?? 0)) != 0;
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public bool isUnobstructedByEntities_77ee9118(nint aabb, nint ignoreEntities) =>

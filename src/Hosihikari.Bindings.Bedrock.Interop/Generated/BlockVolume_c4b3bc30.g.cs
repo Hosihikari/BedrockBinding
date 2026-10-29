@@ -42,9 +42,21 @@ public sealed unsafe partial class BlockVolume : global::System.IDisposable
     public static BlockVolume Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'buffer_span_mut<Block const*>' is not a known bindable declaration.", false)]
-    public static BlockVolume Create(nint arg0, int arg1, int arg2, int arg3, nint arg4, int arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'buffer_span_mut<Block const*>' is not a known bindable declaration.");
+    public static BlockVolume Create(nint[] arg0, int arg1, int arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.Block arg4, int arg5)
+    {
+        var __hs_vectorItems0 = arg0 ?? global::System.Array.Empty<nint>();
+        fixed (nint* __hs_vectorHandleData0 = __hs_vectorItems0)
+        {
+            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
+            var handle = NativeMethods.TablePtr->hs_create_b0a0a103(arg1, arg2, arg3, (void*)arg4.Handle, arg5, __hs_vectorData0, (nuint)(arg0?.Length ?? 0));
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new BlockVolume((nint)handle);
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint begin_82d2c34f() =>

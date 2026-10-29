@@ -81,9 +81,9 @@ public sealed unsafe partial class StructureFeature : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_74c6e79e((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'buffer_span<ChunkPos>' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'ChunkPos' is not supported.", false)]
     public nint findFarAwayStructures(nint arg0, uint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'buffer_span<ChunkPos>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'ChunkPos' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static bool findNearestFeaturePositionBySpacing(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, int arg7, int arg8, int arg9, bool arg10, int arg11, bool arg12) =>
@@ -93,9 +93,9 @@ public sealed unsafe partial class StructureFeature : global::System.IDisposable
     public void foreachIntersectingStructureStart(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'buffer_span<ChunkPos>' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'ChunkPos' is not supported.", false)]
     public void garbageCollectBlueprints(nint arg0, uint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'buffer_span<ChunkPos>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'ChunkPos' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::pair<BlockPos const,Biome const*>' requires --link-carrier or --virtual-dispatch.", false)]
     public static nint getBiomeForFeatureGeneration(nint arg0, nint arg1, nint arg2) =>

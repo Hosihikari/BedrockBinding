@@ -115,9 +115,9 @@ public sealed unsafe partial class EntitySystems : global::System.IDisposable
     public void registerTickingSystem(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::span<Bedrock::typeid_t<SystemCategory> const,-1>' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'Bedrock::typeid_t<SystemCategory> const' is not supported.", false)]
     public void registerTickingSystem_735f09ec(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::span<Bedrock::typeid_t<SystemCategory> const,-1>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'Bedrock::typeid_t<SystemCategory> const' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void registerTickingSystem_04fc82b5(nint arg0, nint arg1, nint arg2, nint arg3) =>

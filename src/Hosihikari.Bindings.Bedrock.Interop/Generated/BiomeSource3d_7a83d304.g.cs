@@ -50,9 +50,13 @@ public sealed unsafe partial class BiomeSource3d
     public bool containsOnly_584265d3(int xo, int yo, int zo, int r, nint allowed) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::span<unsigned long long const,-1>' is not a known bindable declaration.", false)]
-    public bool containsOnly_23e230d8(int arg0, int arg1, int arg2, int arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::span<unsigned long long const,-1>' is not a known bindable declaration.");
+    public bool containsOnly(int arg0, int arg1, int arg2, int arg3, ulong[] arg4)
+    {
+        fixed (ulong* __hs_vectorData4 = arg4)
+        {
+            return NativeMethods.TablePtr->hs_method_23e230d8((void*)_handle, arg0, arg1, arg2, arg3, __hs_vectorData4, (nuint)(arg4?.Length ?? 0)) != 0;
+        }
+    }
 
     public void fillBiomes(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalNoiseCache arg1)
     {

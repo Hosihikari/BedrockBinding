@@ -96,6 +96,18 @@ void* hs_resolve(std::uintptr_t offset, const char* symbol)
 }
 
 
+struct HosihikariSpanView
+{
+    std::size_t size;
+    void const* data;
+};
+
+struct HosihikariInitListView
+{
+    void const* begin;
+    void const* end;
+};
+
 inline void* hs_allocate(std::size_t size, std::size_t align)
 {
     return align > 16
@@ -71015,25 +71027,6 @@ catch (...)
     return nullptr;
 }
 
-static void hs_destroy_0301559b(void* hs_self) try
-{
-    auto const hs_dtor = hs_resolve(std::uintptr_t{0}, "");
-    using HsFn = void (*)(void*);
-    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_dtor));
-    if (hs_fn != nullptr) { hs_fn(hs_self); }
-    hs_deallocate(hs_self, 16);
-}
-catch (std::exception const& hs_error)
-{
-    setLastError(hs_error.what());
-    return;
-}
-catch (...)
-{
-    setLastError("unknown native exception");
-    return;
-}
-
 static void hs_destroy_b256d749(void* hs_self) try
 {
     auto const hs_dtor = hs_resolve(std::uintptr_t{138427776}, "_ZN7Bedrock6PubSub6Detail13PublisherBaseD2Ev");
@@ -75453,6 +75446,23 @@ catch (...)
     return nullptr;
 }
 
+static bool hs_method_bcf41a08(void* hs_self, const std::uint64_t* arg0_data, std::size_t arg0_count) try
+{
+    HosihikariSpanView hs_vec0{ arg0_count, arg0_data };
+    setLastError("symbol dispatch has no entry for bedrock:BiomeArea in linux-x64-server");
+    return false;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return false;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return false;
+}
+
 static void* hs_get_0bf287c1(void* hs_self) try
 {
     return const_cast<void*>(static_cast<void const*>(static_cast<unsigned char const*>(hs_self) + 8));
@@ -76415,6 +76425,23 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static bool hs_method_23e230d8(void* hs_self, std::int32_t arg0, std::int32_t arg1, std::int32_t arg2, std::int32_t arg3, const std::uint64_t* arg4_data, std::size_t arg4_count) try
+{
+    HosihikariSpanView hs_vec4{ arg4_count, arg4_data };
+    setLastError("symbol dispatch has no entry for bedrock:BiomeSource3d in linux-x64-server");
+    return false;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return false;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return false;
 }
 
 static void hs_method_11cf7aaf(void* hs_self, void* arg0, void* arg1) try
@@ -98657,6 +98684,23 @@ catch (...)
     return HosihikariArrayView{nullptr, 0};
 }
 
+static HosihikariArrayView hs_method_943a9e10(void* hs_self, void* arg1, bool arg2, bool arg3, void* const* arg0_data, std::size_t arg0_count) try
+{
+    HosihikariSpanView hs_vec0{ arg0_count, arg0_data };
+    setLastError("symbol dispatch has no entry for bedrock:BlockSource in linux-x64-server");
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
+}
+
 static void* hs_method_d70b9775(void* hs_self, std::int32_t arg0, void* arg1, bool arg2) try
 {
     auto const hs_target = hs_resolve(std::uintptr_t{114757472}, "_ZN11BlockSource14fetchEntities2E9ActorTypeRK4AABBb");
@@ -100673,6 +100717,23 @@ static bool hs_method_3ff9cd9a(void* hs_self, void* arg0, void* arg1) try
     using HsFn = bool (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
     return static_cast<bool>(hs_fn(hs_self, arg0, arg1));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return false;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return false;
+}
+
+static bool hs_method_7ba6d3f1(void* hs_self, void* arg0, void* const* arg1_data, std::size_t arg1_count) try
+{
+    HosihikariSpanView hs_vec1{ arg1_count, arg1_data };
+    setLastError("symbol dispatch has no entry for bedrock:BlockSource in linux-x64-server");
+    return false;
 }
 catch (std::exception const& hs_error)
 {
@@ -104098,6 +104159,23 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static void* hs_create_b0a0a103(std::int32_t arg1, std::int32_t arg2, std::int32_t arg3, void* arg4, std::int32_t arg5, void* const* arg0_data, std::size_t arg0_count) try
+{
+    HosihikariInitListView hs_vec0{ arg0_data, arg0_data + arg0_count };
+    setLastError("symbol dispatch has no entry for bedrock:BlockVolume in linux-x64-server");
+    return nullptr;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static std::int16_t hs_method_7866143a(void* hs_self) try
@@ -183911,6 +183989,23 @@ catch (...)
     return;
 }
 
+static std::int32_t hs_method_6c4cfe3d(std::uint64_t arg0, const std::int32_t* arg1_data, std::size_t arg1_count) try
+{
+    HosihikariSpanView hs_vec1{ arg1_count, arg1_data };
+    setLastError("symbol dispatch has no entry for bedrock:CrashDumpLogUtils in linux-x64-server");
+    return 0;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return 0;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return 0;
+}
+
 static void hs_destroy_bff21f01(void* hs_self) try
 {
     auto const hs_dtor = hs_resolve(std::uintptr_t{79425280}, "_ZN17CreatePhotoPacketD2Ev");
@@ -245196,6 +245291,23 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static bool hs_method_9d9edcbb(void* hs_self, std::int32_t arg0, std::int32_t arg1, std::int32_t arg2, std::int32_t arg3, const std::uint64_t* arg4_data, std::size_t arg4_count) try
+{
+    HosihikariSpanView hs_vec4{ arg4_count, arg4_data };
+    setLastError("symbol dispatch has no entry for bedrock:FixedBiomeSource in linux-x64-server");
+    return false;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return false;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return false;
 }
 
 static void hs_method_79d7ad95(void* hs_self, void* arg0, void* arg1) try
@@ -332114,6 +332226,24 @@ static void hs_method_1815eb25(void* hs_self, std::int32_t arg0, void* arg1, boo
     using HsFn = void (*)(void*, std::int32_t, void*, void*, bool);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
     hs_fn(hs_self, arg0, arg1, static_cast<void*>(&hs_vec2), arg3);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_5f47db28(void* hs_self, void* arg1, bool arg3, void* const* arg0_data, std::size_t arg0_count, void* const* arg2_data, std::size_t arg2_count) try
+{
+    HosihikariSpanView hs_vec0{ arg0_count, arg0_data };
+    auto hs_vec2 = hs_make_vector<void*>(arg2_data, arg2_count);
+    setLastError("symbol dispatch has no entry for bedrock:LevelChunk in linux-x64-server");
+    return;
 }
 catch (std::exception const& hs_error)
 {
@@ -666629,7 +666759,6 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_16d11b10,
     &hs_destroy_38700d63,
     &hs_get_97f86a21,
-    &hs_destroy_0301559b,
     &hs_destroy_b256d749,
     &hs_destroy_960cef16,
     &hs_get_e02a3ba8,
@@ -666834,6 +666963,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_c0da01a2,
     &hs_destroy_f8ba77d0,
     &hs_create_bf641153,
+    &hs_method_bcf41a08,
     &hs_get_0bf287c1,
     &hs_get_b4cc873b,
     &hs_set_b4cc873b,
@@ -666883,6 +667013,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_5ac40106,
     &hs_method_16c15605,
     &hs_method_c3d7d5cc,
+    &hs_method_23e230d8,
     &hs_method_11cf7aaf,
     &hs_method_d1a30bca,
     &hs_method_cccb5fdf,
@@ -667881,6 +668012,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_9114ec4e,
     &hs_method_3bd88fcf,
     &hs_method_ca8eece7,
+    &hs_method_943a9e10,
     &hs_method_d70b9775,
     &hs_method_42963a3d,
     &hs_method_0174f0f2,
@@ -667968,6 +668100,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_f38eae3c,
     &hs_method_91e9c68d,
     &hs_method_3ff9cd9a,
+    &hs_method_7ba6d3f1,
     &hs_method_ab628798,
     &hs_method_7a6b783a,
     &hs_method_2fea58c5,
@@ -668120,6 +668253,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_e4c3446f,
     &hs_method_c8bc4afd,
     &hs_destroy_c4b3bc30,
+    &hs_create_b0a0a103,
     &hs_method_7866143a,
     &hs_method_3207a346,
     &hs_method_b21b3cad,
@@ -672013,6 +672147,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_105b0ac0,
     &hs_method_11babad2,
     &hs_method_bed7dacd,
+    &hs_method_6c4cfe3d,
     &hs_destroy_bff21f01,
     &hs_create_2671e9ef,
     &hs_method_f3adfbfe,
@@ -674872,6 +675007,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_513aa0ed,
     &hs_destroy_d0dbe886,
     &hs_create_86a051d4,
+    &hs_method_9d9edcbb,
     &hs_method_79d7ad95,
     &hs_method_47ab4b94,
     &hs_method_ba18e3cf,
@@ -679012,6 +679148,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_262ddd7d,
     &hs_method_6e3606e4,
     &hs_method_1815eb25,
+    &hs_method_5f47db28,
     &hs_method_fc7f7c33,
     &hs_method_3b22a6ed,
     &hs_method_de40744b,
