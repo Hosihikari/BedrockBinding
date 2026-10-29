@@ -42,9 +42,9 @@ public sealed unsafe partial class PublisherBase : global::System.IDisposable
     public static PublisherBase Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public static PublisherBase Create_143f35a9(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static PublisherBase Create_b05a6391(nint arg0) =>

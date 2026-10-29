@@ -43,9 +43,9 @@ public sealed partial class PropertyBinding
     public static PropertyBinding Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static PropertyBinding Create_e9bbfeeb(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static PropertyBinding Create_2dbff84a(nint arg0) =>

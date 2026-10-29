@@ -47,9 +47,9 @@ public sealed partial class WeakLifetimeScope
     public static WeakLifetimeScope Create_64b3f60a(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static WeakLifetimeScope Create_3b7e464b(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static WeakLifetimeScope Create_398f97fb(nint rhs) =>

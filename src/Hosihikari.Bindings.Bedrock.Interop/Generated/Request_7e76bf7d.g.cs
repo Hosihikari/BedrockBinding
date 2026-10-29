@@ -43,9 +43,9 @@ public sealed partial class Request
     public static Request Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static Request Create(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

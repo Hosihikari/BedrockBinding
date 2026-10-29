@@ -38,13 +38,13 @@ public sealed unsafe partial class DripstoneUtils
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint WindOffsetter() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static DripstoneUtils Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint WindOffsetter(int arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static DripstoneUtils Create(int arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos offset(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
     {

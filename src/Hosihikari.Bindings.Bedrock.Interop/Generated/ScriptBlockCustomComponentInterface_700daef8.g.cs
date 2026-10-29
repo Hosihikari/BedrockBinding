@@ -42,9 +42,9 @@ public sealed unsafe partial class ScriptBlockCustomComponentInterface : global:
     public static ScriptBlockCustomComponentInterface Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public static ScriptBlockCustomComponentInterface Create_6b64c80e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ScriptBlockCustomComponentInterface Create_f5af6b9c(nint arg0) =>

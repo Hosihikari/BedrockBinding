@@ -38,13 +38,13 @@ public sealed unsafe partial class BlockDescriptorSerializer
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint BlockDescriptorProxy(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static BlockDescriptorSerializer Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint BlockDescriptorProxy(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static BlockDescriptorSerializer Create(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
@@ -79,15 +79,15 @@ public sealed unsafe partial class BlockDescriptorSerializer
     public static nint toMap(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::map<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,Puv::v1_20_50::BlockDescriptor::Compound,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>> const,Puv::v1_20_50::BlockDescriptor::Compound>>>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _BlockDescriptorProxy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_415c7380() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _StatesProxy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_5292b4ca() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _TagsProxy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_f9030818() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

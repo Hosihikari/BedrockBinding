@@ -43,9 +43,9 @@ public sealed partial class JSONSchemaDef
     public static JSONSchemaDef Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static JSONSchemaDef Create_d52bcfd5(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static JSONSchemaDef Create(nint arg0, nint arg1) =>

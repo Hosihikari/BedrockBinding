@@ -46,9 +46,16 @@ public sealed unsafe partial class FutureAny : global::System.IDisposable
     public static FutureAny Create(nint runtime, nint arg1, nint scope, nint arg3, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static FutureAny Create(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static FutureAny Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.FutureAny rhs)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_ee358d03((void*)rhs.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FutureAny((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint getResult() =>

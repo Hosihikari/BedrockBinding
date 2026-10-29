@@ -38,13 +38,13 @@ public sealed unsafe partial class CerealHelpers
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint Member(nint arg0, nint arg1, bool arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static CerealHelpers Create(nint arg0, nint arg1, bool arg2, nint arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint Member(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static CerealHelpers Create(nint arg0, nint arg1, bool arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
@@ -56,15 +56,15 @@ public sealed unsafe partial class CerealHelpers
         return NativeMethods.TablePtr->hs_method_66236932((void*)_handle, (void*)arg0) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _IdentifierString() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_3d2a62a8() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _LocIdString() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_3fec62ca() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _Member() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_82d7601c() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

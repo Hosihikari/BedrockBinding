@@ -47,9 +47,9 @@ public sealed partial class ScriptContext
     public static ScriptContext Create(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static ScriptContext Create_ada7abc0(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ScriptContext Create_ec746304(nint arg0) =>

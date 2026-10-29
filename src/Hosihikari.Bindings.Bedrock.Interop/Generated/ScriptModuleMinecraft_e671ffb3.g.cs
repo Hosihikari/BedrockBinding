@@ -38,833 +38,833 @@ public sealed unsafe partial class ScriptModuleMinecraft
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint BaseScriptBlockComponent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint IScriptBlockProperty(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint IScriptBlockProperty(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptActor(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptActor(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptActorAddEffectBeforeEvent(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptActorComponent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptActorComponent(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptActorDamageSource(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptActorDieAfterEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptActorEventListener(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptActorEventSignalOptions_610aae64(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptActorEventSignalOptions_77f6caf8(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptActorFilter() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptActorFilter_1db7ee95(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptActorFilter_c33627c4(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptActorHitAfterEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptActorHurtAfterEvent_e01a107e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptActorHurtAfterEvent_fe7d247e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptActorIterator(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptActorQueryOptions_e9277611(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptActorQueryOptions_7ba11b32(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptActorRemoveBeforeEvent(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptActorType(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptAddRiderComponent(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptAgeableComponent(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlock(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlock(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockAreaSize(float arg0, float arg1, float arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockCustomComponentEntityFallOnAfterEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockCustomComponentEntityFallOnAfterEvent(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockCustomComponentInterface_d0d68e0c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockCustomComponentInterface_c55e91b8(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockCustomComponentOnPlaceAfterEvent(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockCustomComponentPlayerDestroyAfterEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockCustomComponentPlayerDestroyAfterEvent(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockCustomComponentPlayerInteractAfterEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockCustomComponentPlayerInteractAfterEvent(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockCustomComponentPlayerPlaceBeforeEvent(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockCustomComponentPlayerPlaceBeforeEvent_9a9dddde(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockCustomComponentPlayerPlaceBeforeEvent_ac6f7c3b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockCustomComponentRandomTickAfterEvent(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockCustomComponentStepOffAfterEvent(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockCustomComponentStepOnAfterEvent(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockCustomComponentTickAfterEvent(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockEventFilter_3f3ab42e(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockEventFilter_a0be47b3(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockEventListener(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockExplodedAfterEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockFiller(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockFilter() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockFilter_e7a67a3b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockFilter_d6f50401(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockInventoryComponent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockRaycastHit(nint arg0, nint arg1, byte arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockType(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBlockVolumeBase(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBoolBlockProperty(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBoolBlockProperty(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptBreathableComponent(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptCamera(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptChatSendAfterEvent(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptChatSendAfterEvent_3ec1bc3b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptChatSendAfterEvent_8b5bd70c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptChatSendBeforeEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptChunkValidator(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptCommandError(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptComponent(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptComponentTypeEnumBuilder(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptCompoundBlockVolumeItem_b7ac39be(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptCompoundBlockVolumeItem_ca33fcfb(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptContainer(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptContainerSlot(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptContainerSlot_df032e60(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptContainerSlot_b13eab4c(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptContainerWrapper(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptDataDrivenActorTriggerAfterEvent(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptDataDrivenActorTriggerAfterEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptDimension(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptDynamicPropertiesDefinition_b5f24fac(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptDynamicPropertiesDefinition_a4d4f2ad(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptEffects() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptEntityRaycastHit(nint arg0, float arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptEventCommandMessageAfterEvent_78bebaf1(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptEventCommandMessageAfterEvent_48cb9424(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptExplosionStartedAfterEvent(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptExplosionStartedAfterEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptFoodComponent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptHealableComponent(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptIntBlockProperty(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptIntBlockProperty(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptInvalidContainerSlotError() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptInvalidStructureError() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptInventoryComponent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptInventoryComponentContainer(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptInventoryComponentContainer(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemCompleteUseEvent(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemComponent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemComponentRegistry(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemCooldownComponent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemCustomComponentBeforeDurabilityDamageEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemCustomComponentClosures(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemCustomComponentCompleteUseEvent(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemCustomComponentConsumeEvent(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemCustomComponentMineBlockEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemCustomComponentMineBlockEvent(nint arg0, nint arg1, nint arg2, int arg3, int arg4, int arg5, nint arg6, nint arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemCustomComponentRegistry(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemCustomComponentSignalCollection() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemCustomComponentUseOnEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemDurabilityComponent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemEnchantmentComponent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemEnchantmentLevelOutOfBoundsError(nint arg0, nint arg1, int arg2, int arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemEnchantmentTypes() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemEnchantmentUnknownIdError() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemEventListener(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemStack_2de89f18(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemStack_a4acc866(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemStack(nint arg0, nint arg1, int arg2, int arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemStopUseOnAfterEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemUseAfterEvent(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemUseBeforeEvent(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemUseOnAfterEvent(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemUseOnAfterEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemUseOnBeforeEvent(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptItemUseOnBeforeEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptLeashableComponent(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptListBlockVolume() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptListBlockVolume_e30b8dc9(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptListBlockVolume_d55aa8b0(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptListBlockVolume_b2c6d9fc(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptListBlockVolume_97a684c8(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptLocationInUnloadedChunkError(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptLocationOutOfWorldBoundsError(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptLocationOutOfWorldBoundsError(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptMountTamingComponent(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptNpcComponent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptPlayAnimationOptions_29d57dad(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptPlayAnimationOptions_4e77d730(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptPlayer(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptPlayer(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptPlayerBreakBlockAfterEvent_664e9ee5(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptPlayerBreakBlockAfterEvent_116e6ff9(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptPlayerBreakBlockBeforeEvent(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptPlayerBreakBlockBeforeEvent_757d74d0(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptPlayerBreakBlockBeforeEvent_5d8c0b63(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptPlayerDimensionChangeAfterEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptPlayerInteractWithBlockAfterEvent_931bbace(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptPlayerInteractWithBlockAfterEvent_a0978f6a(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptPlayerInteractWithBlockAfterEvent(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptPlayerInteractWithEntityAfterEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptPlayerInteractWithEntityAfterEvent(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptPlayerInteractWithEntityBeforeEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptPlayerInventoryComponentContainer(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptPlayerIterator(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptPlayerJoinAfterEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptPlayerPlaceBlockBeforeEvent(nint arg0, nint arg1, nint arg2, byte arg3, nint arg4, nint arg5, nint arg6) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptPlayerPlaceBlockBeforeEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptProjectileHitBlockAfterEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptProjectileHitInfoAfterEvent(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptProjectileHitInfoAfterEvent_ba60a511(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptProjectileHitInfoAfterEvent_731335aa(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptPropertyRegistry(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptPropertyTargetSelectorOption(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptRGBA(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptRawMessageInterface(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptRawMessageScoreInterface_b2166e99(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptRawMessageScoreInterface_4205cd79(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptRideableComponent(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptScoreTargetSelectorOption() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptScoreboard(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptScoreboardIdentity(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptScoreboardListener(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptScoreboardObjective(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptScoreboardObjectiveDisplayOptions(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptScreenDisplay(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptServerMessageAfterEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptSimpleBlockVolume() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptSimpleBlockVolume(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptSimpleBlockVolume(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptStringBlockProperty(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptStringBlockProperty(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptStructureManager_05731994(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptStructureManager_7a332945(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptStructureManager(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptStructurePlaceOptions_23e10351(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptStructurePlaceOptions_d1c95eda(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptStructureTemplate(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptSystem(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptSystemAfterEvents(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptSystemAfterEvents(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptSystemBeforeEvents(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptSystemLevelEventListener(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptTameableComponent(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptTargetBlockHitAfterEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptTitleDisplayOptions_07320c4b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptTitleDisplayOptions_11ccdb14(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptTripWireTripAfterEvent(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptUnloadedChunksError(ulong arg0, ulong arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptV010Events(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptV010Events(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptWatchdogTerminateBeforeEvent(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptWorld(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptWorld(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptWorldAfterEvents(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptWorldBeforeEvents(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptWorldBeforeEvents(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ScriptWorldSoundOptions(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_3c784f83(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_c32501c7(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_f2ddf7a2(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_f3cae475(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_bbda411d(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_4a26852a(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_9c2166a4(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_a4db520c(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_003d8d5b(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_ebc7be0c(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create(nint arg0, nint arg1, bool arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_2d167935(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_92f523c7(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_2ce3f9a5() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_143e63f4(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_000dc2b0(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_93b56cea(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_fd67168f(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_5a577b8d(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_6d37faaf(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_2cccf064(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_de315309(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_a9fafc85(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_b862729c(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_cc484383(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_e8422ed0(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_d9ad185c(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_2880631c(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create(float arg0, float arg1, float arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_b7f51b28(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_253b7dce(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_2295e840(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_9e871830(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_c2e5fba4(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_f535d205(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_f884495d(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_ef734836(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_7062b46b(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_fb3ecf17(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_7ce8587f(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_eadfa9cf(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_f2ffa8c3(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_305b8f33(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_cba0b63b(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_c5a29fbd(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_ddf29c3e(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_e10ae587(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_0513e859(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_37f7a962(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_43782ab1(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_12502e98() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_21286ab8(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_33e4cdfc(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_1f8961de(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create(nint arg0, nint arg1, byte arg2, nint arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_37c1b520(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_676651f1(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_0451d295(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_f5dfbef1(nint arg0, nint arg1, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_9d077a52(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_8da6742e(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_542cdc21(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_822cf501(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_b1ff15b8(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_aa6e7897(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_7d5e1e48(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_d1e9a399(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_6378f7a6(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_de4d7222(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_7a710d6f(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_49d7110e(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_66011b8a(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_cd4cb13b(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_eb4767fa(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_cf27ec25(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_cd5af490(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_e080be8c(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_ce3faa72(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_c073502a(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_00125419(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_2cf77fe3(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_d037e783() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create(nint arg0, float arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_a1d4dfe0(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_e31a587c(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_8993f188(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_59e4bfa5(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_95c08853(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_703a0086(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_8a03cc1c(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_c16060ba(nint arg0, nint arg1, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_8ca7c53a() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_4e3d0a89() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_c2b8a7bf(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_783ae22f(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_0ddb143b(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_a55d66ba(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_41c14913(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_b47e5695(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_c752f4a1(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_d0b3e460(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_b5877f65(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_3ec58280(nint arg0, nint arg1, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_2cc122d3(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create(nint arg0, nint arg1, nint arg2, int arg3, int arg4, int arg5, nint arg6, nint arg7) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_a3dced8f(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_d4fbc53e() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_d8cf7020(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_df119938(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_763e7b75(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_3f4e7157(nint arg0, nint arg1, int arg2, int arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_eeadc4b3() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_55de9bc5() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_5827fd4e(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_da61b051(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_e330f50f(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_43528268(nint arg0, nint arg1, int arg2, int arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_8f8ca0d3(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_30d190c1(nint arg0, nint arg1, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_4f39d6d0(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_101c7a47(nint arg0, nint arg1, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_5e344fd5(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_b6b6c84f(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_02ba582a(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_7d965e5a(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_3b6941cf() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_d839b1e1(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_1f1b0688(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_7f1336ab(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_e80c4f9c(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_f349e60f(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_cbdc3920(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_e2576a21(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_5465dc41(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_9640f9fc(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_ccf0a194(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_2c77496b(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_deaf8cec(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_fd01f655(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_d00b4864(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_b22f0a97(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_ed3bf10e(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_8b458d6b(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_42b41b2b(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_f6454130(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_eea6c2e3(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_849abd9d(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_7a77525a(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_f2de5b2e(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_7907d188(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_6ac76c25(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_2325f0f1(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_f0a0e36e(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_483a448b(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create(nint arg0, nint arg1, nint arg2, byte arg3, nint arg4, nint arg5, nint arg6) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_a7065d4f(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_075648df(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_6b82026e(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_e1413880(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_862bde7d(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_c78a8c87(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_344ed8fd(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_052f6495(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_87012de9(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_8c07eac5(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_ad9a9cf1(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_72697639(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_f531afe3() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_a130828d(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_60cfb456(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_05d00aa6(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_9faeb3ee(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_8abf6768(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_f457bdbc(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_1ae684b7(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_76827f5b() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_20e7edfe(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_6eb858ef(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_c61e847a(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_ea9ad33c(nint arg0, nint arg1, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_72bd59f4(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_406dbf2c(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_86a40256(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_cf67c770(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_d3d7bb64(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_b6abadff(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_c20eb4f5(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_0a2aada8(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_804259ba(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_b8944e0d(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_347649d6(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_4906f267(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_064d72ae(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_ca92ca4a(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_12890d66(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_30a8d754(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create(ulong arg0, ulong arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_827bf7db(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_19599b22(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_36348fde(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_a707d7ca(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_135748c2(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_ff7b6fed(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_a3db9251(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_5533e72e(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static ScriptModuleMinecraft Create_fe352484(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public void _generateAllEffectsHandles(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.WeakLifetimeScope arg0)
     {
@@ -6115,419 +6115,419 @@ public sealed unsafe partial class ScriptModuleMinecraft
     public nint withState(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockPermutation>>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _BaseScriptBlockComponent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _EqualsComparison() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _IScriptBlockProperty() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _NotEqualsComparison() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _PropertyComponentRegistration() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptActor() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptActorAddEffectBeforeEvent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptActorApplyDamageByProjectileOptions() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptActorApplyDamageOptions() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptActorComponent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptActorDamageSource() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptActorDataDrivenTriggerEventSignalOptions() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptActorDieAfterEvent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptActorEventSignalOptions() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptActorFilter() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptActorHealthChangedAfterEvent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptActorHitAfterEvent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptActorHitBlockAfterEvent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptActorHitEntityAfterEvent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptActorHurtAfterEvent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptActorQueryOptions() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptActorRemoveAfterEvent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptAsyncEventList() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptAsyncSignalHandle() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptBlock() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptBlockCustomComponentInterface() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptBlockCustomComponentPlayerPlaceBeforeEvent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptBlockEvent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptBlockEventFilter() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptBlockFillOptions() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptBlockFiller() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptBlockFilter() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptBlockHitInformation() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptBlockPermutation() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptBlockRaycastHit() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptBlockRaycastOptions() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptBlockType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptBlockVolumeBase() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptBoolBlockProperty() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptCameraFadeOptions() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptCameraSetFacingOptions() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptChatSendAfterEvent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptChunkValidator() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptCommandError() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptComponent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptComponentTypeEnumBuilder() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptCompoundBlockVolume() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptCompoundBlockVolumeItem() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptDataDrivenActorTriggerAfterEvent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptDimensionLocation() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptEntityHitInformation() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptEntityRaycastHit() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptEntityRaycastOptions() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptEventCommandMessageAfterEvent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptEventMessageFilterOptions() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptIntBlockProperty() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptInvalidContainerSlotError() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptInvalidStructureError() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptInventoryComponentContainer() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptItemComponent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptItemCustomComponentAlreadyRegisteredError() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptItemCustomComponentAsyncSignalCollection() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptItemCustomComponentNameError() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptItemCustomComponentReloadNewComponentError() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptItemCustomComponentReloadNewEventError() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptItemCustomComponentReloadVersionError() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptItemCustomComponentSignalCollection() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptItemEnchantmentInstance() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptItemEnchantmentType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptItemEnchantmentUnknownIdError() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptItemStack() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptItemUseOnEvent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptLocationOutOfWorldBoundsError() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptMolangVariableMap() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptPlayAnimationOptions() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptPlayer() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptPlayerInteractEvent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptPlayerInventoryComponentContainer() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptPlayerJoinAfterEvent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptPlayerLeaveAfterEvent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptProjectileHitInfoAfterEvent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptRawMessageInterface() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptRawMessageScoreInterface() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptRawTextInterface() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptScoreboardIdentity() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptScoreboardObjective() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptScoreboardObjectiveDisplayOptions() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptScoreboardScoreInfo() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptServerMessageAfterEvent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptSimpleBlockVolume() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptStringBlockProperty() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptStructurePlaceOptions() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptSystemAfterEvents() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptSystemBeforeEvents() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptTeleportOptions() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptTitleDisplayOptions() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptUnloadedChunksError() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptV010Events() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptWorld() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptWorldAfterEvents() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptWorldBeforeEvents() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptWorldInitializeAfterEvent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ScriptWorldInitializeBeforeEvent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ValueParams() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_1718d529() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_83479a6e() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_82cac686() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_4727194d() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_11fdc7f2() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_585079e4() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_e0994686() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_8fe7d234() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_664e87a2() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_04a86641() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_c32acbc2() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_86b81366() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_2c52cb22() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_4711ddbf() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_2aa6c1f4() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_f36d3131() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_96255c1d() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_5bd9ec1e() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_7883d151() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_339f0bb9() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_5ec9aec8() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_df5dcba3() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_344b275f() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_7d829e88() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_bc079ccf() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_b1668c41() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_4bdc7666() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_63eb7609() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_af15089d() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_4c1ae6fd() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_045eae44() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_3c1d8001() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_6934ffc4() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_3350d279() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_36c84395() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_32872ae3() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_c47b862b() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_87bb5c78() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_3d881778() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_059e4152() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_6b486e22() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_0f623068() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_e45da405() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_1a9c302c() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_3e89230e() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_f6129340() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_a69aa98b() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_910ed3d5() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_38b06e58() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_6bbe5c2c() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_4d6f7522() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_8db6dfb1() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_c0a8f067() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_01ffcce9() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_e05e4ebc() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_e70796e0() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_41986f8a() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_c511f2f0() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_aefb1734() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_9fb4117b() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_0047b143() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_204f985e() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_822af6db() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_7859f2ef() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_11b1506d() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_f7e6f0ce() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_67b93911() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_00e3613b() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_7a02cff4() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_1670a075() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_55d8e2a2() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_e6ebcb0d() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_35929e6a() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_03ecdc5e() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_a6aa83b4() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_fc52da4d() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_ed48b6ab() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_a1330ad0() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_5eddc678() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_08edfcbd() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_be8c2fdc() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_93abe8bd() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_9192bd71() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_4602f878() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_6e5a4e25() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_08519d9d() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_2b152317() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_4841dee5() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_f19ebf13() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_e737b65f() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_307b4255() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_e9eb58ec() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_80d3ed7a() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_6328d06f() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_ddfcf47c() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_c1902bb9() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_f117d1a4() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_4d79c364() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_243f1db7() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_cf68d1f7() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_618db3e3() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_f718d58b() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_58de7e99() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_c40a1bf7() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

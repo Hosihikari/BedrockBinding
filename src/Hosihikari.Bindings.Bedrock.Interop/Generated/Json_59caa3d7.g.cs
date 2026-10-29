@@ -38,37 +38,37 @@ public sealed unsafe partial class Json
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint FastWriter() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static Json Create_f2312b7f() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint Reader() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static Json Create_2668f6a8() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint Reader(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static Json Create_fec9b577(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint StyledStreamWriter(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static Json Create_e1ea6e88(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint StyledWriter() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static Json Create_915dc17f() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ValueIterator_98883ef7(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static Json Create_5ae67577(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ValueIterator_a528168d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static Json Create_acdc7a2c(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ValueIteratorBase(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static Json Create_5e8c4c16(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public void __autoclassinit2(ulong arg0)
     {
@@ -131,35 +131,35 @@ public sealed unsafe partial class Json
         NativeMethods.TablePtr->hs_method_852acc85((void*)_handle, (void*)arg0, (void*)arg1.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _FastWriter() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy_61ad3318() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _Reader() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_fc5cdc09() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _StyledStreamWriter() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_1e741d68() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _StyledWriter() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_c004d242() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ValueConstIterator() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_50f28cfb() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ValueIterator() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_637a026a() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _ValueIteratorBase() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_0c9ce411() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _Writer() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_aaba49cc() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

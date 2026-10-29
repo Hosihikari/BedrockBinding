@@ -38,9 +38,9 @@ public sealed unsafe partial class UpdateBoundingBox
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint SystemParams(nint arg0, float arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static UpdateBoundingBox Create(nint arg0, float arg1, bool arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     public void singleTick(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg1)
     {

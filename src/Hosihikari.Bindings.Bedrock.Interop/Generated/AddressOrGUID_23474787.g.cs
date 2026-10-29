@@ -38,9 +38,16 @@ public sealed unsafe partial class AddressOrGUID : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static AddressOrGUID Create_e2da400b(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static AddressOrGUID Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet_Nested.AddressOrGUID arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_e2da400b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AddressOrGUID((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static AddressOrGUID Create_6b19c97b(nint arg0) =>

@@ -42,12 +42,19 @@ public sealed unsafe partial class Blob : global::System.IDisposable
     public static Blob Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Blob Create_90fbdc0f(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static Blob Create(global::Hosihikari.Bindings.Bedrock.Interop.mce.Blob other)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_90fbdc0f((void*)other.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Blob((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Blob Create_90765113(nint arg0) =>
+    public static Blob Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]

@@ -42,9 +42,16 @@ public sealed unsafe partial class ScriptDimension : global::System.IDisposable
     public static ScriptDimension Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptDimension Create(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static ScriptDimension Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested.ScriptDimension rhs)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_02d8e89c((void*)rhs.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptDimension((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint _spawnEntity(nint arg0, nint arg1, bool arg2) =>

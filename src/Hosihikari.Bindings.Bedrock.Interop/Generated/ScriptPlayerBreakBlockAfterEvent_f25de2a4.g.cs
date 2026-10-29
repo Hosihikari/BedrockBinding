@@ -42,9 +42,9 @@ public sealed unsafe partial class ScriptPlayerBreakBlockAfterEvent : global::Sy
     public static ScriptPlayerBreakBlockAfterEvent Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public static ScriptPlayerBreakBlockAfterEvent Create_e65e3ab4(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static ScriptPlayerBreakBlockAfterEvent Create_0d8edf99(nint arg0) =>

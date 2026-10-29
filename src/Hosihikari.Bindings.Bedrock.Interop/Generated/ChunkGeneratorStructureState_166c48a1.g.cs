@@ -42,9 +42,16 @@ public sealed unsafe partial class ChunkGeneratorStructureState : global::System
     public static ChunkGeneratorStructureState Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ChunkGeneratorStructureState Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static ChunkGeneratorStructureState Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.ChunkGeneratorStructureState arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_7346b301((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChunkGeneratorStructureState((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public static nint createFlat(long arg0, nint arg1, nint arg2) =>

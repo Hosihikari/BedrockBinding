@@ -42,9 +42,16 @@ public sealed unsafe partial class Structure : global::System.IDisposable
     public static Structure Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static Structure Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static Structure Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.Structure arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_924653e5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Structure((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint findValidGenerationPoint(nint arg0) =>

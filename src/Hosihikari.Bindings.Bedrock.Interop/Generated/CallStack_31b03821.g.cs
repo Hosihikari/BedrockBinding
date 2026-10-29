@@ -42,9 +42,16 @@ public sealed unsafe partial class CallStack : global::System.IDisposable
     public static CallStack Create_df778906(nint frame) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static CallStack Create_0e70066d(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static CallStack Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.CallStack arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_0e70066d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CallStack((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static CallStack Create_86ee67c6(nint frames) =>

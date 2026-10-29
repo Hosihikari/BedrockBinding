@@ -42,9 +42,16 @@ public sealed unsafe partial class ValueIteratorBase : global::System.IDisposabl
     public static ValueIteratorBase Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ValueIteratorBase Create(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static ValueIteratorBase Create(global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.ValueIteratorBase other)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_71c99f59((void*)other.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ValueIteratorBase((nint)handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint current__Address

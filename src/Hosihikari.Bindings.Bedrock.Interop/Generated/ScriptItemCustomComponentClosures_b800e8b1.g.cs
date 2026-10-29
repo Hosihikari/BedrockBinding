@@ -42,9 +42,16 @@ public sealed unsafe partial class ScriptItemCustomComponentClosures : global::S
     public static ScriptItemCustomComponentClosures Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
-    public static ScriptItemCustomComponentClosures Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+    public static ScriptItemCustomComponentClosures Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft_Nested.ScriptItemCustomComponentClosures arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_69535223((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptItemCustomComponentClosures((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public static nint bind() =>
