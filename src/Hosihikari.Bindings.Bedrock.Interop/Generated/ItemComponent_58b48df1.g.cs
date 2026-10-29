@@ -45,9 +45,9 @@ public sealed unsafe partial class ItemComponent
     public static ItemComponent Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? buildNetworkTag(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? buildNetworkTag(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_8567cf8f((void*)_handle, (void*)arg0);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_8567cf8f((void*)_handle, (void*)arg0.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
     }
 
@@ -61,9 +61,9 @@ public sealed unsafe partial class ItemComponent
         NativeMethods.TablePtr->hs_method_ec8c4b89((void*)_handle, (void*)arg0.Handle);
     }
 
-    public bool initializeFromNetwork(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, nint arg1)
+    public bool initializeFromNetwork(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg1)
     {
-        return NativeMethods.TablePtr->hs_method_c4464003((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_c4464003((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     public bool isNetworkComponent()

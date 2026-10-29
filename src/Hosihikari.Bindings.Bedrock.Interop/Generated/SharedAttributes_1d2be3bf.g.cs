@@ -37,58 +37,49 @@ public sealed unsafe partial class SharedAttributes
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint ABSORPTION_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute ABSORPTION
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_520e92da();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_520e92da(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint ATTACK_DAMAGE_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute ATTACK_DAMAGE
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_0909ca7b();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_0909ca7b(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint FOLLOW_RANGE_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute FOLLOW_RANGE
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_c5142c3d();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_c5142c3d(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint HEALTH_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute HEALTH
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_27e8dcc9();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_27e8dcc9(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint JUMP_STRENGTH_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute JUMP_STRENGTH
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_521b3784();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_521b3784(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint KNOCKBACK_RESISTANCE_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute KNOCKBACK_RESISTANCE
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_3634f2d6();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_3634f2d6(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint LAVA_MOVEMENT_SPEED_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute LAVA_MOVEMENT_SPEED
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_b41efb77();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_b41efb77(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint LUCK_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute LUCK
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_73bb3a23();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_73bb3a23(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint MOVEMENT_SPEED_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute MOVEMENT_SPEED
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_ca719a51();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_ca719a51(), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
@@ -99,10 +90,9 @@ public sealed unsafe partial class SharedAttributes
     public static SharedAttributes Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint UNDERWATER_MOVEMENT_SPEED_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute UNDERWATER_MOVEMENT_SPEED
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_0c43328c();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_0c43328c(), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

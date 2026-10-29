@@ -98,9 +98,9 @@ public sealed unsafe partial class BlockGeometryDescription : global::System.IDi
         }
     }
 
-    public static void bindType(nint arg0)
+    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        NativeMethods.TablePtr->hs_method_8b13b22f((void*)arg0);
+        NativeMethods.TablePtr->hs_method_8b13b22f((void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

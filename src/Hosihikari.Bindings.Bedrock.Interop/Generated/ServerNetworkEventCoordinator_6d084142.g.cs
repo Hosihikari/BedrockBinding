@@ -62,9 +62,9 @@ public sealed unsafe partial class ServerNetworkEventCoordinator
     public nint sendEvent(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'EventRef<MutableServerNetworkGameplayEvent<CoordinatorResult>>' is not a known bindable declaration.");
 
-    public void sendMessage(nint arg0)
+    public void sendMessage(global::Hosihikari.Bindings.Bedrock.Interop.MessageEvent arg0)
     {
-        NativeMethods.TablePtr->hs_method_6723767f((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_6723767f((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

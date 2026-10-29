@@ -90,9 +90,9 @@ public sealed unsafe partial class Blaze : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_2de4701b((void*)_handle);
     }
 
-    public void reloadHardcodedClient(int arg0, nint arg1)
+    public void reloadHardcodedClient(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_d2a29c03((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_d2a29c03((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
 

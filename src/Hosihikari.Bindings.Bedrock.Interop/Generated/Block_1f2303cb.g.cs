@@ -353,9 +353,9 @@ public sealed unsafe partial class Block : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_27a0c1cb((void*)_handle);
     }
 
-    public void finalizeBlockCustomComponentEvents(nint arg0)
+    public void finalizeBlockCustomComponentEvents(global::Hosihikari.Bindings.Bedrock.Interop.ScriptBlockCustomComponentsFinalizer arg0)
     {
-        NativeMethods.TablePtr->hs_method_6cd139bd((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_6cd139bd((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -523,9 +523,10 @@ public sealed unsafe partial class Block : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Material((nint)NativeMethods.TablePtr->hs_method_3f437787((void*)_handle), false);
     }
 
-    public nint getMobToSpawn(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnerData? getMobToSpawn(global::Hosihikari.Bindings.Bedrock.Interop.SpawnConditions arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_b8e65271((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_b8e65271((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnerData((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.HashedString getName()

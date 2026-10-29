@@ -189,14 +189,14 @@ public sealed unsafe partial class WitherBoss : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_7a6a849b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public void reloadHardcoded(int arg0, nint arg1)
+    public void reloadHardcoded(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_56853782((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_56853782((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
-    public void reloadHardcodedClient(int arg0, nint arg1)
+    public void reloadHardcodedClient(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_e01039db((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_e01039db((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public void remove()

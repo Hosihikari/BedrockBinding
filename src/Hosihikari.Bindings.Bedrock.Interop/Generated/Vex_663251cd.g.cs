@@ -61,9 +61,9 @@ public sealed unsafe partial class Vex : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_a5f0f0df((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void initializeComponents(int arg0, nint arg1)
+    public void initializeComponents(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_b057f1c0((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_b057f1c0((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public bool isInWall()
@@ -80,9 +80,9 @@ public sealed unsafe partial class Vex : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_b5248f4f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public void reloadHardcoded(int arg0, nint arg1)
+    public void reloadHardcoded(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_bfc83704((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_bfc83704((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
 

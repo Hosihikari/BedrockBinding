@@ -48,19 +48,19 @@ public sealed unsafe partial class BaseCircuitComponent : global::System.IDispos
         return new BaseCircuitComponent((nint)handle);
     }
 
-    public bool addSource(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph arg0, nint arg1, nint arg2, nint arg3)
+    public bool addSource(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph arg0, global::Hosihikari.Bindings.Bedrock.Interop.CircuitTrackingInfo arg1, nint arg2, nint arg3)
     {
-        return NativeMethods.TablePtr->hs_method_5a0963de((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2, (void*)arg3) != 0;
+        return NativeMethods.TablePtr->hs_method_5a0963de((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3) != 0;
     }
 
-    public void addSourceItem(global::Hosihikari.Bindings.Bedrock.Interop.CircuitComponentList.Item arg0)
+    public void addSourceItem(global::Hosihikari.Bindings.Bedrock.Interop.CircuitComponentList_Nested.Item arg0)
     {
         NativeMethods.TablePtr->hs_method_9b158a93((void*)_handle, (void*)arg0.Handle);
     }
 
-    public bool allowConnection(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph arg0, nint arg1, nint arg2)
+    public bool allowConnection(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph arg0, global::Hosihikari.Bindings.Bedrock.Interop.CircuitTrackingInfo arg1, nint arg2)
     {
-        return NativeMethods.TablePtr->hs_method_7194b434((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2) != 0;
+        return NativeMethods.TablePtr->hs_method_7194b434((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2) != 0;
     }
 
     public bool allowIndirect()

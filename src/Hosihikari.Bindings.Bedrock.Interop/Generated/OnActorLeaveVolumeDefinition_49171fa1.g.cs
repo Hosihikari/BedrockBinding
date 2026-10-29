@@ -45,9 +45,9 @@ public sealed unsafe partial class OnActorLeaveVolumeDefinition
     public static OnActorLeaveVolumeDefinition Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    public static void bindType(nint arg0)
+    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        NativeMethods.TablePtr->hs_method_857b65d1((void*)arg0);
+        NativeMethods.TablePtr->hs_method_857b65d1((void*)arg0.Handle);
     }
 
     public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.OnActorLeaveVolumeComponent arg1)

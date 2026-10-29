@@ -60,9 +60,9 @@ public sealed unsafe partial class RandomScatteredLargeFeature : global::System.
     public bool getNearestGeneratedFeature(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5, nint arg6) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void initMobSpawnTypes(nint arg0)
+    public void initMobSpawnTypes(global::Hosihikari.Bindings.Bedrock.Interop.HardcodedSpawnAreaRegistry arg0)
     {
-        NativeMethods.TablePtr->hs_method_92893c65((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_92893c65((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

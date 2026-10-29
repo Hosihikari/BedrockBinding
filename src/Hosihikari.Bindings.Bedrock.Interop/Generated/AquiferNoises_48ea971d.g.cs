@@ -37,11 +37,31 @@ public sealed partial class AquiferNoises
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static AquiferNoises Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static AquiferNoises Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
+    public static AquiferNoises Create_f749c9b2(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'AquiferNoises' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint make(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'AquiferNoises' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
+    public void Destroy_24a0f072() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public static AquiferNoises Create_2581b24d(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_4ac4d636() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

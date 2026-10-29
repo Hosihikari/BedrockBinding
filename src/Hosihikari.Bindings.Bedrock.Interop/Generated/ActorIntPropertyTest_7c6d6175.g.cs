@@ -64,9 +64,9 @@ public sealed unsafe partial class ActorIntPropertyTest : global::System.IDispos
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public bool setup(global::Hosihikari.Bindings.Bedrock.Interop.FilterTest_Nested.Definition arg0, nint arg1)
+    public bool setup(global::Hosihikari.Bindings.Bedrock.Interop.FilterTest_Nested.Definition arg0, global::Hosihikari.Bindings.Bedrock.Interop.FilterInputs arg1)
     {
-        return NativeMethods.TablePtr->hs_method_f5e57f1c((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_f5e57f1c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
 

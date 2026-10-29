@@ -80,14 +80,14 @@ public sealed unsafe partial class ScriptFormPromiseTracker : global::System.IDi
         set => NativeMethods.TablePtr->hs_set_0d319e4f((void*)_handle, value);
     }
 
-    public int onEvent_bb76f5ae(nint arg0)
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.PlayerFormCloseEvent arg0)
     {
-        return NativeMethods.TablePtr->hs_method_bb76f5ae((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_bb76f5ae((void*)_handle, (void*)arg0.Handle);
     }
 
-    public int onEvent_6450756b(nint arg0)
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.PlayerFormResponseEvent arg0)
     {
-        return NativeMethods.TablePtr->hs_method_6450756b((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_6450756b((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

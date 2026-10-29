@@ -105,6 +105,11 @@ public sealed unsafe partial class Util
     public static int givePlayer(nint arg0, nint arg1, bool arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
+    public bool isSuccess()
+    {
+        return NativeMethods.TablePtr->hs_method_12e2310d((void*)_handle) != 0;
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.LootTable? lookupLootTable(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
@@ -136,7 +141,19 @@ public sealed unsafe partial class Util
         return (nint)NativeMethods.TablePtr->hs_method_07313387((void*)_handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Util::ReplacementResults' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint replaceActorSlotsOrError(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Util::ReplacementResults' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Util::ReplacementResults' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint replaceContainerSlotsOrError(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Util::ReplacementResults' requires --link-carrier or --virtual-dispatch.");
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _Components() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _ValidationResult() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
 }

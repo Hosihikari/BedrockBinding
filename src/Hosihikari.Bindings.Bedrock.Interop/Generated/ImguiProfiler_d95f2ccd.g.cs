@@ -81,10 +81,9 @@ public sealed unsafe partial class ImguiProfiler : global::System.IDisposable
         get => NativeMethods.TablePtr->hs_get_b976e6b2();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint sRecordMutex_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex sRecordMutex
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_529934f1();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex((nint)NativeMethods.TablePtr->hs_get_529934f1(), false);
     }
 
     public void update()

@@ -69,9 +69,9 @@ public sealed unsafe partial class PlayerBoundingBoxStateUpdateSystem
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static void tickPlayerBoundingBoxStateUpdateSystem(global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.AABBShapeComponent arg1, global::Hosihikari.Bindings.Bedrock.Interop.PlayerInputRequestComponent arg2, nint arg3, float arg4, nint arg5, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg6)
+    public static void tickPlayerBoundingBoxStateUpdateSystem(global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.AABBShapeComponent arg1, global::Hosihikari.Bindings.Bedrock.Interop.PlayerInputRequestComponent arg2, nint arg3, float arg4, global::Hosihikari.Bindings.Bedrock.Interop.GetAttachPositionViews arg5, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg6)
     {
-        NativeMethods.TablePtr->hs_method_909617bb((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3, arg4, (void*)arg5, (void*)arg6.Handle);
+        NativeMethods.TablePtr->hs_method_909617bb((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3, arg4, (void*)arg5.Handle, (void*)arg6.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

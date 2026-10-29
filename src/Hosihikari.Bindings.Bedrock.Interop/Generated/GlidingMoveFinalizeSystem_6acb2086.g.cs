@@ -50,9 +50,9 @@ public sealed unsafe partial class GlidingMoveFinalizeSystem
         NativeMethods.TablePtr->hs_method_5cbaf506((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3, (void*)arg4.Handle);
     }
 
-    public static void _tickCollisionDamageHurt(global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorOwnerComponent arg1, nint arg2)
+    public static void _tickCollisionDamageHurt(global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorOwnerComponent arg1, global::Hosihikari.Bindings.Bedrock.Interop.GlidingCollisionDamageComponent arg2)
     {
-        NativeMethods.TablePtr->hs_method_fd98c0d1((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_fd98c0d1((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.", false)]

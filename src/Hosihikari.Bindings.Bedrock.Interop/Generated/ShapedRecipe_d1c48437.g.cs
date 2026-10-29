@@ -56,9 +56,9 @@ public sealed unsafe partial class ShapedRecipe : global::System.IDisposable
         return new ShapedRecipe((nint)handle);
     }
 
-    public nint assemble(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer arg0, nint arg1)
+    public nint assemble(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer arg0, global::Hosihikari.Bindings.Bedrock.Interop.CraftingContext arg1)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d7c8bd46((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        return (nint)NativeMethods.TablePtr->hs_method_d7c8bd46((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public bool assumeSymmetry()
@@ -86,9 +86,9 @@ public sealed unsafe partial class ShapedRecipe : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_dde95600((void*)_handle) != 0;
     }
 
-    public bool matches(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer arg0, nint arg1)
+    public bool matches(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer arg0, global::Hosihikari.Bindings.Bedrock.Interop.CraftingContext arg1)
     {
-        return NativeMethods.TablePtr->hs_method_3d766ec6((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_3d766ec6((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

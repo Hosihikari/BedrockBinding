@@ -192,9 +192,9 @@ public sealed unsafe partial class ContainerModel : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_0d1f5514((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
-    public void setItemSource(int arg0, nint arg1)
+    public void setItemSource(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.SlotData arg1)
     {
-        NativeMethods.TablePtr->hs_method_db70cb99((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_db70cb99((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public void switchItemExpando(int arg0)

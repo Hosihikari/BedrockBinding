@@ -67,4 +67,33 @@ public sealed unsafe partial class ClearRealmEventsCommand
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public int mCommandSymbol
+    {
+        get => NativeMethods.TablePtr->hs_get_48952b44((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_48952b44((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFlags_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_4b5dd15e((void*)_handle);
+    }
+
+    public byte mPermissionLevel
+    {
+        get => NativeMethods.TablePtr->hs_get_f4ff598f((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_f4ff598f((void*)_handle, value);
+    }
+
+    public nint mRegistry
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_231dbfbd((void*)_handle);
+    }
+
+    public int mVersion
+    {
+        get => NativeMethods.TablePtr->hs_get_005c6042((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_005c6042((void*)_handle, value);
+    }
 }

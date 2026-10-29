@@ -70,7 +70,7 @@ public sealed unsafe partial class SpawnGroupRegistry : global::System.IDisposab
     public nint getRootKey_10513d42() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public nint getSpawnGroup(string arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.SpawnGroupData? getSpawnGroup(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -85,7 +85,8 @@ public sealed unsafe partial class SpawnGroupRegistry : global::System.IDisposab
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_944ab0f7((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->hs_method_944ab0f7((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.SpawnGroupData((nint)__hs_handle, false) : null;
         }
     }
 

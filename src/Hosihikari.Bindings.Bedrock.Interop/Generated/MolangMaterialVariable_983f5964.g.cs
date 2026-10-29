@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class MolangMaterialVariable
+public sealed unsafe partial class MolangMaterialVariable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -36,4 +36,25 @@ public sealed partial class MolangMaterialVariable
         _handle = 0;
         return __hs_handle;
     }
+
+    public ulong hash
+    {
+        get => NativeMethods.TablePtr->hs_get_21a7a9ca((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_21a7a9ca((void*)_handle, value);
+    }
+
+    public nint lastMatch
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_3603105f((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint str_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e0fbddb5((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

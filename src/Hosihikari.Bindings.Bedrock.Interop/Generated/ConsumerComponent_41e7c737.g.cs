@@ -48,14 +48,14 @@ public sealed unsafe partial class ConsumerComponent : global::System.IDisposabl
         return new ConsumerComponent((nint)handle);
     }
 
-    public bool addSource(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph arg0, nint arg1, nint arg2, nint arg3)
+    public bool addSource(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph arg0, global::Hosihikari.Bindings.Bedrock.Interop.CircuitTrackingInfo arg1, nint arg2, nint arg3)
     {
-        return NativeMethods.TablePtr->hs_method_6152cd18((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2, (void*)arg3) != 0;
+        return NativeMethods.TablePtr->hs_method_6152cd18((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3) != 0;
     }
 
-    public bool allowConnection(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph arg0, nint arg1, nint arg2)
+    public bool allowConnection(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph arg0, global::Hosihikari.Bindings.Bedrock.Interop.CircuitTrackingInfo arg1, nint arg2)
     {
-        return NativeMethods.TablePtr->hs_method_b1ce7d48((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2) != 0;
+        return NativeMethods.TablePtr->hs_method_b1ce7d48((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2) != 0;
     }
 
     public bool canConsumerPower()

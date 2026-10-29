@@ -75,9 +75,9 @@ public sealed unsafe partial class SimpleBlockVolume : global::System.IDisposabl
     public nint begin() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'SimpleBlockVolumeIterator' requires --link-carrier or --virtual-dispatch.");
 
-    public static void cerealBindTypes(nint arg0)
+    public static void cerealBindTypes(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        NativeMethods.TablePtr->hs_method_090b8916((void*)arg0);
+        NativeMethods.TablePtr->hs_method_090b8916((void*)arg0.Handle);
     }
 
     public bool contains(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)

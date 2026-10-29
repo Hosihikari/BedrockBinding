@@ -56,13 +56,13 @@ public sealed unsafe partial class BlockComponentFactory : global::System.IDispo
     public static BlockComponentFactory Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static nint getPropRegisteredCerealComponents_07f4de42(nint arg0)
+    public static nint getPropRegisteredCerealComponents(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_07f4de42((void*)arg0);
+        return (nint)NativeMethods.TablePtr->hs_method_07f4de42((void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getPropRegisteredCerealComponents_e7526600(nint arg0) =>
+    public static nint getPropRegisteredCerealComponents(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void initializeFactory(global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg0)
@@ -74,9 +74,9 @@ public sealed unsafe partial class BlockComponentFactory : global::System.IDispo
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static void registerAllCerealDescriptions(nint arg0)
+    public static void registerAllCerealDescriptions(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        NativeMethods.TablePtr->hs_method_d060ef35((void*)arg0);
+        NativeMethods.TablePtr->hs_method_d060ef35((void*)arg0.Handle);
     }
 
     public void Dispose()

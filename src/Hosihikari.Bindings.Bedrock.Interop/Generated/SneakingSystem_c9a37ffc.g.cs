@@ -61,9 +61,9 @@ public sealed unsafe partial class SneakingSystem
     public void __unk_vfn_4() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static void _tickSneakingSystem(global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg0, nint arg1, nint arg2, global::Hosihikari.Bindings.Bedrock.Interop.ActorOwnerComponent arg3)
+    public static void _tickSneakingSystem(global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.SneakingComponent arg2, global::Hosihikari.Bindings.Bedrock.Interop.ActorOwnerComponent arg3)
     {
-        NativeMethods.TablePtr->hs_method_8228ffb8((void*)arg0.Handle, (void*)arg1, (void*)arg2, (void*)arg3.Handle);
+        NativeMethods.TablePtr->hs_method_8228ffb8((void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle, (void*)arg3.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.", false)]

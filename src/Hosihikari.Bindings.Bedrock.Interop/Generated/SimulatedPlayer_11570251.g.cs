@@ -76,9 +76,9 @@ public sealed unsafe partial class SimulatedPlayer
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public nint getMovementSettings()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PlayerMovementSettings getMovementSettings()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_5492a533((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerMovementSettings((nint)NativeMethods.TablePtr->hs_method_5492a533((void*)_handle), false);
     }
 
     public string getXuid_eff9a855()
@@ -91,9 +91,9 @@ public sealed unsafe partial class SimulatedPlayer
     public nint getXuid_0abf5ae3() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void initializeComponents(int arg0, nint arg1)
+    public void initializeComponents(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_cdd957f5((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_cdd957f5((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public bool isSimulated()

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class BiomeComponentFactory
+public sealed unsafe partial class BiomeComponentFactory
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,5 +35,27 @@ public sealed partial class BiomeComponentFactory
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BiomeComponentFactory Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BiomeComponentFactory Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void registrationFinished()
+    {
+        NativeMethods.TablePtr->hs_method_ca3766fc((void*)_handle);
+    }
+
+    public void writeComponentsToTag(global::Hosihikari.Bindings.Bedrock.Interop.Biome arg0, global::Hosihikari.Bindings.Bedrock.Interop.IWorldRegistriesProvider arg1, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg2)
+    {
+        NativeMethods.TablePtr->hs_method_bab16189((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 }

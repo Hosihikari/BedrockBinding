@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DurabilityItemComponent
+public sealed unsafe partial class DurabilityItemComponent : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,16 @@ public sealed unsafe partial class DurabilityItemComponent
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static DurabilityItemComponent Create(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static DurabilityItemComponent Create(int arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_448788e1(arg0);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DurabilityItemComponent((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static void bindType(nint arg0, nint arg1, nint arg2) =>
@@ -62,5 +69,18 @@ public sealed unsafe partial class DurabilityItemComponent
     public void setMaxDamage(int arg0)
     {
         NativeMethods.TablePtr->hs_method_dce8aaee((void*)_handle, arg0);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_766dcd4f((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

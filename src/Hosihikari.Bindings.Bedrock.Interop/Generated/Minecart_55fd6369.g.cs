@@ -138,14 +138,14 @@ public sealed unsafe partial class Minecart : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->hs_method_0aed0ee2((void*)_handle));
     }
 
-    public void reloadHardcoded(int arg0, nint arg1)
+    public void reloadHardcoded(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_0d881266((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_0d881266((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
-    public void reloadHardcodedClient(int arg0, nint arg1)
+    public void reloadHardcodedClient(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_9254b5d5((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_9254b5d5((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public void setCustomDisplay(bool arg0)

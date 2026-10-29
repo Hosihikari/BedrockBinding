@@ -218,9 +218,9 @@ public sealed unsafe partial class ResourcePackRepository : global::System.IDisp
         return new global::Hosihikari.Bindings.Bedrock.Interop.PackManifestFactory((nint)NativeMethods.TablePtr->hs_method_6709372a((void*)_handle), false);
     }
 
-    public nint getPackSettingsFactory()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PackSettingsFactory getPackSettingsFactory()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_c617bd13((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PackSettingsFactory((nint)NativeMethods.TablePtr->hs_method_c617bd13((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.PackSourceFactory getPackSourceFactory()

@@ -45,9 +45,9 @@ public sealed unsafe partial class VolumeFogDefinition : global::System.IDisposa
     public static VolumeFogDefinition Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static void bindType(nint arg0)
+    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        NativeMethods.TablePtr->hs_method_f74d4c2c((void*)arg0);
+        NativeMethods.TablePtr->hs_method_f74d4c2c((void*)arg0.Handle);
     }
 
     public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.VolumeFogComponent arg1)

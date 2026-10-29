@@ -56,9 +56,9 @@ public sealed unsafe partial class Pack : global::System.IDisposable
     public static Pack Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'SubpackInfoCollection' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static Pack Create(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'SubpackInfoCollection' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Pack? createPack(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0, sbyte arg1, sbyte arg2, global::Hosihikari.Bindings.Bedrock.Interop.IPackManifestFactory arg3, nint arg4, global::Hosihikari.Bindings.Bedrock.Interop.PackSourceReport? arg5)
     {
@@ -66,9 +66,9 @@ public sealed unsafe partial class Pack : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Pack((nint)__hs_handle) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'PackMetadata' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'PackMetadata' has no accessible destructor.", false)]
     public static nint createPackMetadata(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'PackMetadata' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'PackMetadata' has no accessible destructor.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy? getAccessStrategy_cfd14407()
     {
@@ -92,9 +92,10 @@ public sealed unsafe partial class Pack : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PackManifest((nint)__hs_handle, false) : null;
     }
 
-    public nint getSubpackInfoStack_c3d957aa()
+    public global::Hosihikari.Bindings.Bedrock.Interop.SubpackInfoCollection? getSubpackInfoStack_c3d957aa()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_c3d957aa((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_c3d957aa((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.SubpackInfoCollection((nint)__hs_handle, false) : null;
     }
 
     // The native field type is not projected; this is the address of the field storage.

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class ServerCommand
+public sealed unsafe partial class ServerCommand
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -36,4 +36,62 @@ public sealed partial class ServerCommand
         _handle = 0;
         return __hs_handle;
     }
+
+    public int mCommandSymbol
+    {
+        get => NativeMethods.TablePtr->hs_get_5dc6615b((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_5dc6615b((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFlags_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_cf272405((void*)_handle);
+    }
+
+    public byte mPermissionLevel
+    {
+        get => NativeMethods.TablePtr->hs_get_390bb02b((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_390bb02b((void*)_handle, value);
+    }
+
+    public nint mRegistry
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_8b923688((void*)_handle);
+    }
+
+    public int mVersion
+    {
+        get => NativeMethods.TablePtr->hs_get_d73cf25d((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_d73cf25d((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ServerCommand Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ServerCommand Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static void kickPlayerDueToFlooding_6a1c2437(nint arg0, nint arg1, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Minecraft mGame
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Minecraft((nint)NativeMethods.TablePtr->hs_get_43b10fd6(), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool tryToFilterTextWithRemoteFilter_9b70c5c0(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

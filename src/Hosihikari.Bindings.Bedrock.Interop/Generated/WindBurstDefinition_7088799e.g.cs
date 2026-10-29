@@ -50,9 +50,9 @@ public sealed unsafe partial class WindBurstDefinition
         NativeMethods.TablePtr->hs_method_87ed2a01(arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, nint arg1)
+    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.WindBurstComponent arg1)
     {
-        NativeMethods.TablePtr->hs_method_391ca1f6((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_391ca1f6((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

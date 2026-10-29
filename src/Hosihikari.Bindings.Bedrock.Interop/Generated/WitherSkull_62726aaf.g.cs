@@ -61,9 +61,9 @@ public sealed unsafe partial class WitherSkull : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_16c4edb4((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    public void initializeComponents(int arg0, nint arg1)
+    public void initializeComponents(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_e8cf32ef((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_e8cf32ef((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public bool isOnFire()

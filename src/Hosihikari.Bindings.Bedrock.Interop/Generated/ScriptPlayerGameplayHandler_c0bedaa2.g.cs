@@ -133,9 +133,9 @@ public sealed unsafe partial class ScriptPlayerGameplayHandler
     public nint handleEvent_fc6c808d(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'GameplayHandlerResult<CoordinatorResult>' requires --link-carrier or --virtual-dispatch.");
 
-    public int handleEvent_0b20ade0(nint arg0)
+    public int handleEvent(global::Hosihikari.Bindings.Bedrock.Interop.PlayerDisconnectEvent arg0)
     {
-        return NativeMethods.TablePtr->hs_method_0b20ade0((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_0b20ade0((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

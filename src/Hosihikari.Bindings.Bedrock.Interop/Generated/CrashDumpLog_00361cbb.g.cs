@@ -45,19 +45,19 @@ public sealed unsafe partial class CrashDumpLog
     public static CrashDumpLog Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static void logEvent(nint arg0)
+    public static void logEvent(global::Hosihikari.Bindings.Bedrock.Interop.CrashDumpEventData arg0)
     {
-        NativeMethods.TablePtr->hs_method_987467dc((void*)arg0);
+        NativeMethods.TablePtr->hs_method_987467dc((void*)arg0.Handle);
     }
 
-    public static void logFrame(nint arg0)
+    public static void logFrame(global::Hosihikari.Bindings.Bedrock.Interop.CrashDumpFrameData arg0)
     {
-        NativeMethods.TablePtr->hs_method_4a3720a8((void*)arg0);
+        NativeMethods.TablePtr->hs_method_4a3720a8((void*)arg0.Handle);
     }
 
-    public static void logKeyValue(nint arg0)
+    public static void logKeyValue(global::Hosihikari.Bindings.Bedrock.Interop.CrashDumpKeyValueData arg0)
     {
-        NativeMethods.TablePtr->hs_method_4b5d2c7b((void*)arg0);
+        NativeMethods.TablePtr->hs_method_4b5d2c7b((void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the static field has no symbol in the IR.", false)]

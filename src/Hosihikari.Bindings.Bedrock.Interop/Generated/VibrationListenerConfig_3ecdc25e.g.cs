@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class VibrationListenerConfig
+public sealed unsafe partial class VibrationListenerConfig
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -36,4 +36,31 @@ public sealed partial class VibrationListenerConfig
         _handle = 0;
         return __hs_handle;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static VibrationListenerConfig Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static VibrationListenerConfig Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public bool canReceiveOnlyIfAdjacentChunksAreTicking()
+    {
+        return NativeMethods.TablePtr->hs_method_0bd11736((void*)_handle) != 0;
+    }
+
+    public bool isValidVibration(global::Hosihikari.Bindings.Bedrock.Interop.GameEvent arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_a1d66644((void*)_handle, (void*)arg0.Handle) != 0;
+    }
+
+    public void onSerializableDataChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0)
+    {
+        NativeMethods.TablePtr->hs_method_675b0231((void*)_handle, (void*)arg0.Handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 }

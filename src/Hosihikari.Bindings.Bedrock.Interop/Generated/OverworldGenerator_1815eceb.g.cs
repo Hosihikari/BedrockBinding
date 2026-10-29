@@ -75,9 +75,10 @@ public sealed unsafe partial class OverworldGenerator : global::System.IDisposab
     public nint generateDensityCellsForChunk(nint chunkPos) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'BiomeArea' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getBiomeArea(nint arg0, uint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'BiomeArea' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeArea getBiomeArea(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg0, uint arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeArea((nint)NativeMethods.TablePtr->hs_method_20bda862((void*)_handle, (void*)arg0.Handle, arg1));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.WorldGenerator_Nested.BlockVolumeDimensions getBlockVolumeDimensions()
     {

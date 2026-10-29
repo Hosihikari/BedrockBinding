@@ -76,14 +76,14 @@ public sealed unsafe partial class BlockSelectionBoxDescription : global::System
         }
     }
 
-    public static void bindType(nint arg0)
+    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        NativeMethods.TablePtr->hs_method_a61e4215((void*)arg0);
+        NativeMethods.TablePtr->hs_method_a61e4215((void*)arg0.Handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? buildNetworkTag(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? buildNetworkTag(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_4496ad5d((void*)_handle, (void*)arg0);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_4496ad5d((void*)_handle, (void*)arg0.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
     }
 
@@ -107,9 +107,9 @@ public sealed unsafe partial class BlockSelectionBoxDescription : global::System
         NativeMethods.TablePtr->hs_method_1bb9c18c((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void initializeFromNetwork(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, nint arg1)
+    public void initializeFromNetwork(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg1)
     {
-        NativeMethods.TablePtr->hs_method_d307ce67((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_d307ce67((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public bool isNetworkComponent()

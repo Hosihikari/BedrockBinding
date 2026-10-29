@@ -45,9 +45,9 @@ public sealed unsafe partial class AmbientSoundIntervalDefinition
     public static AmbientSoundIntervalDefinition Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public void addDynamic(nint arg0)
+    public void addDynamic(global::Hosihikari.Bindings.Bedrock.Interop.DynamicAmbientSound arg0)
     {
-        NativeMethods.TablePtr->hs_method_686a9170((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_686a9170((void*)_handle, (void*)arg0.Handle);
     }
 
     public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)
@@ -55,9 +55,9 @@ public sealed unsafe partial class AmbientSoundIntervalDefinition
         NativeMethods.TablePtr->hs_method_21fdd591(arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, nint arg1)
+    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.AmbientSoundServerComponent arg1)
     {
-        NativeMethods.TablePtr->hs_method_d0f3f5b6((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_d0f3f5b6((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

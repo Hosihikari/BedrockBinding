@@ -76,7 +76,7 @@ public sealed unsafe partial class WorkerPool : global::System.IDisposable
         }
     }
 
-    public static WorkerPool Create(string arg0, ulong arg1, nint arg2, ulong? arg3, bool arg4, int? arg5)
+    public static WorkerPool Create(string arg0, ulong arg1, global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.OSThreadPriority arg2, ulong? arg3, bool arg4, int? arg5)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -91,7 +91,7 @@ public sealed unsafe partial class WorkerPool : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->hs_create_b22ecb3a(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, (void*)arg2, arg3 ?? default(ulong), arg4, arg5 ?? default(int), arg3.HasValue, arg5.HasValue);
+            var handle = NativeMethods.TablePtr->hs_create_b22ecb3a(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, (void*)arg2.Handle, arg3 ?? default(ulong), arg4, arg5 ?? default(int), arg3.HasValue, arg5.HasValue);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -129,10 +129,9 @@ public sealed unsafe partial class WorkerPool : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->hs_get_c08c3ab0();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint sAllPoolsMutex_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex sAllPoolsMutex
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_9336abc9();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex((nint)NativeMethods.TablePtr->hs_get_9336abc9(), false);
     }
 
     public ulong size()

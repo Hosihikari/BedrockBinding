@@ -45,19 +45,19 @@ public sealed unsafe partial class ServerFileChunkUploader
     public static ServerFileChunkUploader Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public bool canCancelUpload(nint arg0)
+    public bool canCancelUpload(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo arg0)
     {
-        return NativeMethods.TablePtr->hs_method_e39e686f((void*)_handle, (void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_e39e686f((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    public void cancelUpload(nint arg0)
+    public void cancelUpload(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo arg0)
     {
-        NativeMethods.TablePtr->hs_method_ae0b9171((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_ae0b9171((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void confirmChunkReceived(nint arg0, nint arg1)
+    public void confirmChunkReceived(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo arg0, global::Hosihikari.Bindings.Bedrock.Interop.FileChunkInfo arg1)
     {
-        NativeMethods.TablePtr->hs_method_7feed1e4((void*)_handle, (void*)arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_7feed1e4((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'FileChunkInfo' requires --link-carrier or --virtual-dispatch.", false)]
@@ -73,9 +73,9 @@ public sealed unsafe partial class ServerFileChunkUploader
     public void getServerMissingChunks(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public float getUploadProgress(nint arg0)
+    public float getUploadProgress(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo arg0)
     {
-        return NativeMethods.TablePtr->hs_method_3a1a3a94((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_3a1a3a94((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

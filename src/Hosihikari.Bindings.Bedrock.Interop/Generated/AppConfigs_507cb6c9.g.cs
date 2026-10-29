@@ -128,9 +128,9 @@ public sealed unsafe partial class AppConfigs : global::System.IDisposable
     public nint getHelpCenterURL_a510eb61() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'IScreenCapabilities' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'IScreenCapabilities' has no accessible destructor.", false)]
     public nint getScreenCapabilities_99614d11(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'IScreenCapabilities' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'IScreenCapabilities' has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint getScreenCapabilities_ac815c00(nint screenName) =>

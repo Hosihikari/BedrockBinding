@@ -45,22 +45,22 @@ public sealed unsafe partial class BlockTraitFactory
     public static BlockTraitFactory Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static nint getPropRegisteredTraits_97bfac0d(nint arg0)
+    public static nint getPropRegisteredTraits(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_97bfac0d((void*)arg0);
+        return (nint)NativeMethods.TablePtr->hs_method_97bfac0d((void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public static nint getPropRegisteredTraits_89a2e8e4(nint arg0) =>
+    public static nint getPropRegisteredTraits(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static void registerAllTraits(nint arg0)
+    public static void registerAllTraits(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        NativeMethods.TablePtr->hs_method_fcb92589((void*)arg0);
+        NativeMethods.TablePtr->hs_method_fcb92589((void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

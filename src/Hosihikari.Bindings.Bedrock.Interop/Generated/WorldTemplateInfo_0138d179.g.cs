@@ -49,9 +49,9 @@ public sealed unsafe partial class WorldTemplateInfo
     public static WorldTemplateInfo Create_ce5d69dc(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public void addWorldTemplatePackSource(nint arg0)
+    public void addWorldTemplatePackSource(global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplatePackSource arg0)
     {
-        NativeMethods.TablePtr->hs_method_804daeb8((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_804daeb8((void*)_handle, (void*)arg0.Handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplatePackManifest getPackManifest()

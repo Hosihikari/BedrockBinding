@@ -37,6 +37,27 @@ public sealed unsafe partial class SavedData : global::System.IDisposable
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void deserialize(nint tag) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public bool mDirty
+    {
+        get => NativeMethods.TablePtr->hs_get_ad005ee9((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_ad005ee9((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_60a2bd39((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void serialize(nint tag) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+
 
     public void Dispose()
     {

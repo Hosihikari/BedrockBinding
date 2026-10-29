@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen;
 
-public sealed unsafe partial class ChunkGeneratorStructureState
+public sealed unsafe partial class ChunkGeneratorStructureState : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -93,7 +93,17 @@ public sealed unsafe partial class ChunkGeneratorStructureState
     public nint operator_assign_f2b2bbc8(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_166c48a1((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

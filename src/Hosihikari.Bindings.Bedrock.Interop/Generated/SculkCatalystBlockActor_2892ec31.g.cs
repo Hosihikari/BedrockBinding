@@ -75,9 +75,9 @@ public sealed unsafe partial class SculkCatalystBlockActor : global::System.IDis
         return NativeMethods.TablePtr->hs_method_4b99c880((void*)_handle);
     }
 
-    public nint getPositionSource()
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameEvents.PositionSource getPositionSource()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_a1f7bb18((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.GameEvents.PositionSource((nint)NativeMethods.TablePtr->hs_method_a1f7bb18((void*)_handle), false);
     }
 
     public uint getRange()
@@ -90,9 +90,9 @@ public sealed unsafe partial class SculkCatalystBlockActor : global::System.IDis
         return new global::Hosihikari.Bindings.Bedrock.Interop.SculkSpreader((nint)NativeMethods.TablePtr->hs_method_924786a2((void*)_handle), false);
     }
 
-    public void handleGameEvent(nint arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg2)
+    public void handleGameEvent(global::Hosihikari.Bindings.Bedrock.Interop.GameEvent arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg2)
     {
-        NativeMethods.TablePtr->hs_method_e0da88bc((void*)_handle, (void*)arg0, (void*)arg1, (void*)arg2.Handle);
+        NativeMethods.TablePtr->hs_method_e0da88bc((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle);
     }
 
     public void load(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg1, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)

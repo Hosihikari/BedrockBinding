@@ -37,6 +37,15 @@ public sealed unsafe partial class BedrockLog
         return __hs_handle;
     }
 
+    public void AddChannel(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_f3c8cb92((void*)_handle, arg0);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint CategoryLogFile() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
     public void closeLog()
     {
         NativeMethods.TablePtr->hs_method_cd69dd79((void*)_handle);
@@ -75,7 +84,35 @@ public sealed unsafe partial class BedrockLog
         }
     }
 
+    public void toggleFilter(int arg0)
+    {
+        NativeMethods.TablePtr->hs_method_9c37db0a((void*)_handle, arg0);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'LogSettingsUpdater' has no generated wrapper.", false)]
     public void updateLogFilter(nint arg0, nint arg1, nint arg2, nint arg3, bool arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'LogSettingsUpdater' has no generated wrapper.");
+
+    public void updateLogSetting(string arg0, bool arg1)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->hs_method_c7631be8((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1);
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _CategoryLogFile() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
 }

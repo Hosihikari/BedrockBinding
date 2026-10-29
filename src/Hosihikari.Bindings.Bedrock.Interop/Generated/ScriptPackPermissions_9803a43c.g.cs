@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class ScriptPackPermissions
+public sealed unsafe partial class ScriptPackPermissions
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,5 +35,44 @@ public sealed partial class ScriptPackPermissions
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ScriptPackPermissions Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ScriptPackPermissions Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mAllowedModules_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_ec6e71e0((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCommandsPermissionLevel_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_45400ec8((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mModulePermissions_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b26c9bf9((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public static string sWildCardModuleName
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_e972a279();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
     }
 }

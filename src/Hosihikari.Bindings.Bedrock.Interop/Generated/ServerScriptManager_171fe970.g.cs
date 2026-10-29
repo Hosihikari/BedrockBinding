@@ -68,13 +68,13 @@ public sealed unsafe partial class ServerScriptManager : global::System.IDisposa
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptSettings((nint)NativeMethods.TablePtr->hs_method_99b5228d((void*)_handle), false);
     }
 
-    public int onEvent_b30263b0(nint arg0)
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstanceRequestResourceReload arg0)
     {
-        return NativeMethods.TablePtr->hs_method_b30263b0((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_b30263b0((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint onEvent_54c95d38(nint @event) =>
+    public nint onEvent(nint @event) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public void onMainThreadStartLeaveGame()

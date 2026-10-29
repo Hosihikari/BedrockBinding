@@ -365,9 +365,9 @@ public sealed unsafe partial class ItemStackBase : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor((nint)NativeMethods.TablePtr->hs_method_075bb91b((void*)_handle));
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.DynamicProperties? getDynamicProperties(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.DynamicProperties? getDynamicProperties(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_f972e233((void*)_handle, (void*)arg0);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_f972e233((void*)_handle, (void*)arg0.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.DynamicProperties((nint)__hs_handle) : null;
     }
 
@@ -1171,7 +1171,7 @@ public sealed unsafe partial class ItemStackBase : global::System.IDisposable
     public void setDynamicProperty(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void setDynamicProperty(string arg0, nint arg1, string arg2, nint arg3)
+    public void setDynamicProperty(string arg0, nint arg1, string arg2, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg3)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -1199,7 +1199,7 @@ public sealed unsafe partial class ItemStackBase : global::System.IDisposable
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                NativeMethods.TablePtr->hs_method_54076554((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)arg3);
+                NativeMethods.TablePtr->hs_method_54076554((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)arg3.Handle);
             }
         }
     }

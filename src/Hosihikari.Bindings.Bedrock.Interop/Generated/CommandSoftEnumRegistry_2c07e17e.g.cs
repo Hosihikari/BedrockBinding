@@ -37,6 +37,36 @@ public sealed unsafe partial class CommandSoftEnumRegistry : global::System.IDis
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static CommandSoftEnumRegistry Create(nint registry) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static CommandSoftEnumRegistry Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry? arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_700d566d((void*)(arg0?.Handle ?? 0));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandSoftEnumRegistry((nint)handle);
+    }
+
+    public nint registry
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_619db8a7((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_619db8a7((void*)_handle, (void*)value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public void updateSoftEnum_f0303e13(nint type, nint enumName, nint values) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
+    public void updateSoftEnum_c3d66e55(nint arg0, nint arg1, nint arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
+
+
 
     public void Dispose()
     {

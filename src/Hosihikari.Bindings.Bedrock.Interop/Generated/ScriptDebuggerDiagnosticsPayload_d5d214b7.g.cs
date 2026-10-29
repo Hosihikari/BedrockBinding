@@ -45,23 +45,23 @@ public sealed unsafe partial class ScriptDebuggerDiagnosticsPayload
     public static ScriptDebuggerDiagnosticsPayload Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    public static void bindType(nint arg0)
+    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        NativeMethods.TablePtr->hs_method_fbeeaf2f((void*)arg0);
+        NativeMethods.TablePtr->hs_method_fbeeaf2f((void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public string serialize_3487a5ec(nint arg0)
+    public string serialize(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_3487a5ec((void*)_handle, (void*)arg0);
+        var __hs_view = NativeMethods.TablePtr->hs_method_3487a5ec((void*)_handle, (void*)arg0.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint serialize_d1f2d2b7(nint arg0) =>
+    public nint serialize(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

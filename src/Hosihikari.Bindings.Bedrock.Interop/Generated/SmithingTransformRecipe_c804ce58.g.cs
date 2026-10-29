@@ -58,9 +58,9 @@ public sealed unsafe partial class SmithingTransformRecipe : global::System.IDis
     public static SmithingTransformRecipe Create_8e25fe26(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    public nint assemble(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer arg0, nint arg1)
+    public nint assemble(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer arg0, global::Hosihikari.Bindings.Bedrock.Interop.CraftingContext arg1)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_1e9fc780((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        return (nint)NativeMethods.TablePtr->hs_method_1e9fc780((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient getAdditionIngredient()
@@ -83,9 +83,9 @@ public sealed unsafe partial class SmithingTransformRecipe : global::System.IDis
         return new global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient((nint)NativeMethods.TablePtr->hs_method_6994a667((void*)_handle), false);
     }
 
-    public bool matches(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer arg0, nint arg1)
+    public bool matches(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer arg0, global::Hosihikari.Bindings.Bedrock.Interop.CraftingContext arg1)
     {
-        return NativeMethods.TablePtr->hs_method_946909df((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_946909df((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

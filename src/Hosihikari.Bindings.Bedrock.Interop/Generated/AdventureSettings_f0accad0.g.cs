@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class AdventureSettings
+public sealed unsafe partial class AdventureSettings : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,5 +35,59 @@ public sealed partial class AdventureSettings
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+    public static AdventureSettings Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_95dde228();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AdventureSettings((nint)handle);
+    }
+
+    public bool mAutoJump
+    {
+        get => NativeMethods.TablePtr->hs_get_eadf0bac((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_eadf0bac((void*)_handle, value);
+    }
+
+    public bool mImmutableWorld
+    {
+        get => NativeMethods.TablePtr->hs_get_433fa228((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_433fa228((void*)_handle, value);
+    }
+
+    public bool mNoMvP
+    {
+        get => NativeMethods.TablePtr->hs_get_86c269db((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_86c269db((void*)_handle, value);
+    }
+
+    public bool mNoPvM
+    {
+        get => NativeMethods.TablePtr->hs_get_cf9112d4((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_cf9112d4((void*)_handle, value);
+    }
+
+    public bool mShowNameTags
+    {
+        get => NativeMethods.TablePtr->hs_get_0c0615a3((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_0c0615a3((void*)_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_f0accad0((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

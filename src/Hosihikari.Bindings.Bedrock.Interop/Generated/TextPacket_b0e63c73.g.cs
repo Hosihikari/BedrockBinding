@@ -345,7 +345,7 @@ public sealed unsafe partial class TextPacket : global::System.IDisposable
         }
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.TextPacket createTextObjectMessage(nint arg0, string arg1, string arg2)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.TextPacket createTextObjectMessage(global::Hosihikari.Bindings.Bedrock.Interop.ResolvedTextObject arg0, string arg1, string arg2)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
         scoped global::System.Span<byte> __hs_stringBytes1;
@@ -373,7 +373,7 @@ public sealed unsafe partial class TextPacket : global::System.IDisposable
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->hs_method_edb0d776((void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2));
+                return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->hs_method_edb0d776((void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2));
             }
         }
     }
@@ -382,7 +382,7 @@ public sealed unsafe partial class TextPacket : global::System.IDisposable
     public static nint createTextObjectMessage(nint resolvedTextObject, nint fromXuid, nint fromPlatformId) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.TextPacket createTextObjectWhisperMessage(nint arg0, string arg1, string arg2)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.TextPacket createTextObjectWhisperMessage(global::Hosihikari.Bindings.Bedrock.Interop.ResolvedTextObject arg0, string arg1, string arg2)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
         scoped global::System.Span<byte> __hs_stringBytes1;
@@ -410,7 +410,7 @@ public sealed unsafe partial class TextPacket : global::System.IDisposable
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->hs_method_1d8bc2a3((void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2));
+                return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->hs_method_1d8bc2a3((void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2));
             }
         }
     }

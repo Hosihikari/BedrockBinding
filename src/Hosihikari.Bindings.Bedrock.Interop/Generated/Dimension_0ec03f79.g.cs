@@ -305,9 +305,10 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.FeatureTerrainAdjustments((nint)NativeMethods.TablePtr->hs_method_60de36bb((void*)_handle), false);
     }
 
-    public nint getGameEventDispatcher()
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameEventDispatcher? getGameEventDispatcher()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_a95c7d2a((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_a95c7d2a((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.GameEventDispatcher((nint)__hs_handle, false) : null;
     }
 
     public short getHeight()
@@ -360,9 +361,9 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_b1c3e66e((void*)_handle, arg0, arg1);
     }
 
-    public nint getSeasons()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Seasons getSeasons()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_66afae89((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Seasons((nint)NativeMethods.TablePtr->hs_method_66afae89((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Brightness getSkyDarken()
@@ -453,9 +454,9 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_731871d4((void*)_handle) != 0;
     }
 
-    public void init(nint arg0)
+    public void init(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructureSetRegistry arg0)
     {
-        NativeMethods.TablePtr->hs_method_211c325f((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_211c325f((void*)_handle, (void*)arg0.Handle);
     }
 
     public void initializeWithLevelStorageManager(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageManager arg0)
@@ -731,6 +732,18 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
 
+
+    public bool mDirty
+    {
+        get => NativeMethods.TablePtr->hs_get_4f013145((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_4f013145((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_88815280((void*)_handle);
+    }
 
     public void Dispose()
     {

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class ITickingSystem
+public sealed unsafe partial class ITickingSystem
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,5 +35,27 @@ public sealed partial class ITickingSystem
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ITickingSystem Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ITickingSystem Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void singleTick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg1)
+    {
+        NativeMethods.TablePtr->hs_method_9dbfc8f0((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+    }
+
+    public void singleTick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg1)
+    {
+        NativeMethods.TablePtr->hs_method_1b2698de((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 }

@@ -37,6 +37,26 @@ public sealed unsafe partial class LevelSeed64 : global::System.IDisposable
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static LevelSeed64 Create(ulong value) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 fromUnsigned32(uint arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64((nint)NativeMethods.TablePtr->hs_method_04335c10(arg0));
+    }
+
+    public ulong mValue
+    {
+        get => NativeMethods.TablePtr->hs_get_773c3f24((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_773c3f24((void*)_handle, value);
+    }
+
+    public uint to32BitRandomSeed()
+    {
+        return NativeMethods.TablePtr->hs_method_2cff6b40((void*)_handle);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

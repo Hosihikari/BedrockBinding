@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MoveTowardsRestrictionGoal
+public sealed unsafe partial class MoveTowardsRestrictionGoal : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -59,7 +59,17 @@ public sealed unsafe partial class MoveTowardsRestrictionGoal
         NativeMethods.TablePtr->hs_method_1f2c7848((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_9906b4f8((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

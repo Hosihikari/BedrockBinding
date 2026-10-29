@@ -37,6 +37,18 @@ public sealed unsafe partial class BlockTypeRegistry
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BlockTypeRegistry Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BlockTypeRegistry Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint _lookupByNameImpl_56276c75(nint name, int data, nint resolve, bool logNotFound) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public static void checkBlockPermutationCap()
     {
         NativeMethods.TablePtr->hs_method_d7d3dec8();
@@ -66,6 +78,10 @@ public sealed unsafe partial class BlockTypeRegistry
         return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_e7455096(arg0), false);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint getComplexAliasPostSplitBlockNames(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public static nint getComplexAliasPostSplitBlockNames(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
     {
         return (nint)NativeMethods.TablePtr->hs_method_6761ef2a((void*)arg0.Handle);
@@ -75,6 +91,10 @@ public sealed unsafe partial class BlockTypeRegistry
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->hs_method_2d19781d((void*)arg0.Handle, arg1), false);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint getDirectAccessBlocks_b1fc16b9() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static void initHardCodedBlockComponents(global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg0)
     {
@@ -97,13 +117,71 @@ public sealed unsafe partial class BlockTypeRegistry
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'BlockTypeRegistry::BlockComplexAliasBlockState' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public static nint lookupByName(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'BlockTypeRegistry::BlockComplexAliasBlockState' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'WeakPtr<BlockLegacy>' requires --link-carrier or --virtual-dispatch.", false)]
     public static nint lookupByName(nint arg0, bool arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'WeakPtr<BlockLegacy>' requires --link-carrier or --virtual-dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mBlockAliasLookupMap_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_58be63d7();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mBlockComplexAliasLookupMap_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_01e97325();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mBlockComplexAliasPostSplitBlockNamesList_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_fc6677aa();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mBlockComplexAliasPostSplitBlockNamesLookupMap_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_6eedfb09();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mBlockLookupMap_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_f53767ae();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mBlockNameHashToStringMap_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b8c678c1();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mDirectAccessBlocks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_abfcc1c2();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mKnownNamespaces_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_eaadb631();
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint mRWLock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_18f9f859();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static void prepareBlocks(uint arg0)
     {
@@ -116,8 +194,12 @@ public sealed unsafe partial class BlockTypeRegistry
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'Block const*' is not supported.", false)]
-    public static void registerComplexAlias(nint arg0, nint arg1, nint arg2, nint arg3) =>
+    public static void registerComplexAlias_4cefd767(nint arg0, nint arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'Block const*' is not supported.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static void registerComplexAlias_981e9edf(nint alias, nint callback, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public static void setupDirectAccessBlocks()
     {

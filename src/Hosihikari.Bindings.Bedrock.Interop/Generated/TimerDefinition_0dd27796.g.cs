@@ -45,9 +45,9 @@ public sealed unsafe partial class TimerDefinition
     public static TimerDefinition Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public void addWeightedChoiceEntry(nint arg0)
+    public void addWeightedChoiceEntry(global::Hosihikari.Bindings.Bedrock.Interop.WeightChoiceEntry arg0)
     {
-        NativeMethods.TablePtr->hs_method_c107fd7b((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_c107fd7b((void*)_handle, (void*)arg0.Handle);
     }
 
     public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)

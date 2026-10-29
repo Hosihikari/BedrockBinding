@@ -49,7 +49,7 @@ public sealed unsafe partial class CoalItem : global::System.IDisposable
     public static CoalItem Create(nint arg0, int arg1, nint arg2, nint arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static CoalItem Create(string arg0, int arg1, nint arg2, int arg3)
+    public static CoalItem Create(string arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg2, int arg3)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -64,7 +64,7 @@ public sealed unsafe partial class CoalItem : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->hs_create_9e4fc01b(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, (void*)arg2, arg3);
+            var handle = NativeMethods.TablePtr->hs_create_9e4fc01b(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, (void*)arg2.Handle, arg3);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

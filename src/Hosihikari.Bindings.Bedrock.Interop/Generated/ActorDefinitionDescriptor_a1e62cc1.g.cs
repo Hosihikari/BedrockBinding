@@ -71,7 +71,7 @@ public sealed unsafe partial class ActorDefinitionDescriptor
     public static bool executeEvent(nint entity, nint name, nint list) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static bool executeEvent(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, string arg1, nint arg2)
+    public static bool executeEvent(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg2)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
         scoped global::System.Span<byte> __hs_stringBytes1;
@@ -86,13 +86,13 @@ public sealed unsafe partial class ActorDefinitionDescriptor
         global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return NativeMethods.TablePtr->hs_method_3b8e1769((void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2) != 0;
+            return NativeMethods.TablePtr->hs_method_3b8e1769((void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2.Handle) != 0;
         }
     }
 
-    public static bool executeTrigger(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionTrigger arg1, nint arg2)
+    public static bool executeTrigger(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionTrigger arg1, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg2)
     {
-        return NativeMethods.TablePtr->hs_method_77401417((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2) != 0;
+        return NativeMethods.TablePtr->hs_method_77401417((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -103,9 +103,9 @@ public sealed unsafe partial class ActorDefinitionDescriptor
     public nint findAttributeByName_bfcaeba4(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'ActorDefinitionAttribute' is not supported.");
 
-    public static void forceExecuteTrigger(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionTrigger arg1, nint arg2)
+    public static void forceExecuteTrigger(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionTrigger arg1, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg2)
     {
-        NativeMethods.TablePtr->hs_method_7f57491c((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_7f57491c((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

@@ -101,9 +101,9 @@ public sealed unsafe partial class LegacyGoalDefinition
     public nint operator_assign_30424bee(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public bool parse(nint arg0, int arg1)
+    public bool parse(global::Hosihikari.Bindings.Bedrock.Interop.ConstDeserializeDataParams arg0, int arg1)
     {
-        return NativeMethods.TablePtr->hs_method_4b4b1a31((void*)_handle, (void*)arg0, arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_4b4b1a31((void*)_handle, (void*)arg0.Handle, arg1) != 0;
     }
 
     public static void shutdown()

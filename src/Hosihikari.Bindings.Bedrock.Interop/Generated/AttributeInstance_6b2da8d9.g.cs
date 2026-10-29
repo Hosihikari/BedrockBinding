@@ -67,9 +67,10 @@ public sealed unsafe partial class AttributeInstance : global::System.IDisposabl
         NativeMethods.TablePtr->hs_method_c74d9858((void*)_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public nint getAttribute()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Attribute? getAttribute()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_c7eeba13((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_c7eeba13((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)__hs_handle, false) : null;
     }
 
     public float getCurrentValue()

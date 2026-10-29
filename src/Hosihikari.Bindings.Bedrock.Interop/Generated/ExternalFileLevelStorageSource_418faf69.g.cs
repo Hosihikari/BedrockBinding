@@ -118,9 +118,9 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'LevelLooseFileStorage' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'LevelLooseFileStorage' has no accessible destructor.", false)]
     public nint createLevelLooseStorage_aa9ff954(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'LevelLooseFileStorage' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'LevelLooseFileStorage' has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint createLevelLooseStorage_d18dc3f6(nint levelId, nint contentIdentity, nint keyProvider) =>

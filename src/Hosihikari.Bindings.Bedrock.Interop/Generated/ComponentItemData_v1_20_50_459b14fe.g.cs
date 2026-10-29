@@ -45,15 +45,14 @@ public sealed unsafe partial class ComponentItemData_v1_20_50
     public static ComponentItemData_v1_20_50 Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint SUPPORTED_VERSIONS_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Puv.VersionRange SUPPORTED_VERSIONS
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_70f7d1f0();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Puv.VersionRange((nint)NativeMethods.TablePtr->hs_get_70f7d1f0(), false);
     }
 
-    public static void bindType(nint arg0)
+    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        NativeMethods.TablePtr->hs_method_a3782e35((void*)arg0);
+        NativeMethods.TablePtr->hs_method_a3782e35((void*)arg0.Handle);
     }
 
     public static void moveDeprecatedData(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItemData_v1_20_40 arg0, global::Hosihikari.Bindings.Bedrock.Interop.ComponentItemData_v1_20_50 arg1)

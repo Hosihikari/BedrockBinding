@@ -45,14 +45,14 @@ public sealed unsafe partial class ServerNetworkEventListener
     public static ServerNetworkEventListener Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public int onEvent(nint arg0)
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ServerNetworkGameplayNotificationEvent arg0)
     {
-        return NativeMethods.TablePtr->hs_method_cfbc3853((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_cfbc3853((void*)_handle, (void*)arg0.Handle);
     }
 
-    public int onMessage(nint arg0)
+    public int onMessage(global::Hosihikari.Bindings.Bedrock.Interop.MessageEvent arg0)
     {
-        return NativeMethods.TablePtr->hs_method_4b4d0b61((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_4b4d0b61((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

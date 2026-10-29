@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class NetherNetConnector
+public sealed unsafe partial class NetherNetConnector : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -43,9 +43,16 @@ public sealed unsafe partial class NetherNetConnector
         get => (nint)NativeMethods.TablePtr->hs_get_6f15e14f((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static NetherNetConnector Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static NetherNetConnector Create(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Connector_Nested.ConnectionCallbacks arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_08ae35cb((void*)arg0, (void*)arg1.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NetherNetConnector((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'NetherNet::NetworkID' is not a known bindable declaration.", false)]
     public void clearPacketData(nint arg0) =>
@@ -129,11 +136,18 @@ public sealed unsafe partial class NetherNetConnector
         NativeMethods.TablePtr->hs_method_bde87394((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_47e205f7() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_26359aa0() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_9117c60a((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

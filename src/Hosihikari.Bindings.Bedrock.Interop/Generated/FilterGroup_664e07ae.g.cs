@@ -72,16 +72,16 @@ public sealed unsafe partial class FilterGroup : global::System.IDisposable
     public bool _parseObject_141a74fc(nint name, nint jsonVal) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public bool addFilterTest(global::Hosihikari.Bindings.Bedrock.Interop.FilterTest_Nested.Definition arg0, nint arg1)
+    public bool addFilterTest(global::Hosihikari.Bindings.Bedrock.Interop.FilterTest_Nested.Definition arg0, global::Hosihikari.Bindings.Bedrock.Interop.FilterInputs arg1)
     {
-        return NativeMethods.TablePtr->hs_method_f1268bd1((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_f1268bd1((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public bool addFilterTest(nint filterName, nint inputs) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public bool addFilterTest(string arg0, nint arg1)
+    public bool addFilterTest(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.FilterInputs arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -96,7 +96,7 @@ public sealed unsafe partial class FilterGroup : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_25e27353((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1) != 0;
+            return NativeMethods.TablePtr->hs_method_25e27353((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle) != 0;
         }
     }
 

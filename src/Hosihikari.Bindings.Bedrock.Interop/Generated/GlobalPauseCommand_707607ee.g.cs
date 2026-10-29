@@ -37,6 +37,35 @@ public sealed unsafe partial class GlobalPauseCommand
         return __hs_handle;
     }
 
+    public int mCommandSymbol
+    {
+        get => NativeMethods.TablePtr->hs_get_53989b59((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_53989b59((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFlags_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_67308d11((void*)_handle);
+    }
+
+    public byte mPermissionLevel
+    {
+        get => NativeMethods.TablePtr->hs_get_ab5e2ccc((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_ab5e2ccc((void*)_handle, value);
+    }
+
+    public nint mRegistry
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_0f64bf4c((void*)_handle);
+    }
+
+    public int mVersion
+    {
+        get => NativeMethods.TablePtr->hs_get_1479f8f1((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_1479f8f1((void*)_handle, value);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static GlobalPauseCommand Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");

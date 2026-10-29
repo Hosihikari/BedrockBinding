@@ -61,9 +61,9 @@ public sealed unsafe partial class InteractButtonItemComponent : global::System.
     public static void bindType(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? buildNetworkTag(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? buildNetworkTag(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_86f1c797((void*)_handle, (void*)arg0);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_86f1c797((void*)_handle, (void*)arg0.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
     }
 
@@ -72,9 +72,9 @@ public sealed unsafe partial class InteractButtonItemComponent : global::System.
         return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->hs_method_6993b451(), false);
     }
 
-    public bool initializeFromNetwork(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, nint arg1)
+    public bool initializeFromNetwork(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg1)
     {
-        return NativeMethods.TablePtr->hs_method_95320e23((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_95320e23((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     public bool isNetworkComponent()

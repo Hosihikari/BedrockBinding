@@ -81,9 +81,9 @@ public sealed unsafe partial class PackSourceFactory : global::System.IDisposabl
         return new global::Hosihikari.Bindings.Bedrock.Interop.WorldHistoryPackSource((nint)NativeMethods.TablePtr->hs_method_e95b2dfb((void*)_handle, (void*)arg0, arg1), false);
     }
 
-    public nint createWorldTemplatePackSource(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg1, sbyte arg2, sbyte arg3)
+    public global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplatePackSource createWorldTemplatePackSource(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg1, sbyte arg2, sbyte arg3)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_71e73518((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg2, arg3);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplatePackSource((nint)NativeMethods.TablePtr->hs_method_71e73518((void*)_handle, (void*)arg0, (void*)arg1.Handle, arg2, arg3), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.DirectoryPackSource? getDirectoryPackSource(nint arg0, sbyte arg1)
@@ -116,9 +116,10 @@ public sealed unsafe partial class PackSourceFactory : global::System.IDisposabl
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.WorldHistoryPackSource((nint)__hs_handle, false) : null;
     }
 
-    public nint getWorldTemplatePackSource(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0, sbyte arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplatePackSource? getWorldTemplatePackSource(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0, sbyte arg1)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_21229efe((void*)_handle, (void*)arg0.Handle, arg1);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_21229efe((void*)_handle, (void*)arg0.Handle, arg1);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplatePackSource((nint)__hs_handle, false) : null;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

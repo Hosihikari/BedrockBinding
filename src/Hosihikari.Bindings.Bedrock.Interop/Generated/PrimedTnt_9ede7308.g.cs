@@ -71,9 +71,9 @@ public sealed unsafe partial class PrimedTnt : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->hs_method_e5dd38d1((void*)_handle));
     }
 
-    public void initializeComponents(int arg0, nint arg1)
+    public void initializeComponents(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_b253071a((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_b253071a((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public void normalTick()
@@ -90,14 +90,14 @@ public sealed unsafe partial class PrimedTnt : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_5cb2b841((void*)_handle);
     }
 
-    public void reloadHardcoded(int arg0, nint arg1)
+    public void reloadHardcoded(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_3d2e6126((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_3d2e6126((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
-    public void reloadHardcodedClient(int arg0, nint arg1)
+    public void reloadHardcodedClient(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_ca52e6d1((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_ca52e6d1((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public void teleportTo(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, bool arg1, int arg2, int arg3, bool arg4)

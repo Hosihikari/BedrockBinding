@@ -37,6 +37,29 @@ public sealed unsafe partial class MovementPackets : global::System.IDisposable
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MovementPackets Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static MovementPackets Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public bool isReadyToSimulate()
+    {
+        return NativeMethods.TablePtr->hs_method_85bfd1e6((void*)_handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint unk_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_411c16e2((void*)_handle);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

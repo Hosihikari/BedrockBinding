@@ -37,6 +37,12 @@ public sealed unsafe partial class ItemStackRequestActionCraftRecipeOptional : g
         return __hs_handle;
     }
 
+    public byte mActionType
+    {
+        get => NativeMethods.TablePtr->hs_get_afed046e((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_afed046e((void*)_handle, value);
+    }
+
     public static ItemStackRequestActionCraftRecipeOptional Create()
     {
         var handle = NativeMethods.TablePtr->hs_create_8539ed91();

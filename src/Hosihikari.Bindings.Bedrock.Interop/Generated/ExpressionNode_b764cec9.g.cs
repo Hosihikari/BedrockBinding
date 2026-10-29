@@ -143,9 +143,9 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
     public bool _tokenize_f5780f8b(nint expression, nint usedTokenFlags, nint idSet, nint molangVersion) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static void bindType(nint arg0)
+    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        NativeMethods.TablePtr->hs_method_ed8039ff((void*)arg0);
+        NativeMethods.TablePtr->hs_method_ed8039ff((void*)arg0.Handle);
     }
 
     public static void buildExpressionOpTable()

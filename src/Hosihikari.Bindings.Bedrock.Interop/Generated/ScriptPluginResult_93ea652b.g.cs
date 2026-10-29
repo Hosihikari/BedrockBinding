@@ -119,9 +119,9 @@ public sealed unsafe partial class ScriptPluginResult
         return (nint)NativeMethods.TablePtr->hs_method_ead03165((void*)_handle);
     }
 
-    public nint getModuleDescriptor()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ModuleDescriptor getModuleDescriptor()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_fdab3262((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ModuleDescriptor((nint)NativeMethods.TablePtr->hs_method_fdab3262((void*)_handle), false);
     }
 
     public nint getWarnings()

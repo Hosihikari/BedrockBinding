@@ -145,9 +145,9 @@ public sealed unsafe partial class ActorFactory : global::System.IDisposable
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public static void fillFactoryData(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg1, nint arg2, nint arg3)
+    public static void fillFactoryData(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier arg1, nint arg2, global::Hosihikari.Bindings.Bedrock.Interop.ActorFactoryData arg3)
     {
-        NativeMethods.TablePtr->hs_method_4313fd20((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3);
+        NativeMethods.TablePtr->hs_method_4313fd20((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

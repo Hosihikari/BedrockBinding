@@ -538,7 +538,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
     public bool executeEvent(nint name, nint list) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public bool executeEvent(string arg0, nint arg1)
+    public bool executeEvent(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -553,7 +553,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_6f33468a((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1) != 0;
+            return NativeMethods.TablePtr->hs_method_6f33468a((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle) != 0;
         }
     }
 
@@ -666,9 +666,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_20e1d1a2((void*)_handle, arg0, arg1));
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance getAttribute(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance getAttribute(global::Hosihikari.Bindings.Bedrock.Interop.Attribute arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance((nint)NativeMethods.TablePtr->hs_method_c771f0f7((void*)_handle, (void*)arg0), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance((nint)NativeMethods.TablePtr->hs_method_c771f0f7((void*)_handle, (void*)arg0.Handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::not_null<BaseAttributeMap const*>' requires --link-carrier or --virtual-dispatch.", false)]
@@ -868,11 +868,7 @@ public sealed unsafe partial class Actor : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getEntityContext_c5680340() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getEntityContext_588ba4f3() =>
+    public nint getEntityContext() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.SynchedActorDataEntityWrapper getEntityData_5cfb5aba()
@@ -901,9 +897,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    public nint getEntityTerrainInterlockData()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorTerrainInterlockData getEntityTerrainInterlockData()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_810a89e6((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorTerrainInterlockData((nint)NativeMethods.TablePtr->hs_method_810a89e6((void*)_handle), false);
     }
 
     public int getEntityTypeId()
@@ -1253,9 +1249,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.MolangVariableMap((nint)NativeMethods.TablePtr->hs_method_466631c2((void*)_handle), false);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance? getMutableAttribute(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance? getMutableAttribute(global::Hosihikari.Bindings.Bedrock.Interop.Attribute arg0)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_6bc8b1a0((void*)_handle, (void*)arg0);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_6bc8b1a0((void*)_handle, (void*)arg0.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance((nint)__hs_handle, false) : null;
     }
 
@@ -1535,9 +1531,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_f8412b3f((void*)_handle);
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getViewVector(nint arg0, float arg1)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getViewVector(global::Hosihikari.Bindings.Bedrock.Interop.ActorRotationComponent arg0, float arg1)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_d2954def((void*)arg0, arg1));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_d2954def((void*)arg0.Handle, arg1));
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getViewVector(global::Hosihikari.Bindings.Bedrock.Interop.Vec2 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec2 arg1, float arg2)
@@ -1778,9 +1774,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_43e7c212((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void initParams(nint arg0)
+    public void initParams(global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg0)
     {
-        NativeMethods.TablePtr->hs_method_597d3792((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_597d3792((void*)_handle, (void*)arg0.Handle);
     }
 
     public bool intersects(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
@@ -2498,9 +2494,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_cc898b8e((void*)_handle);
     }
 
-    public void postGameEvent(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block? arg2)
+    public void postGameEvent(global::Hosihikari.Bindings.Bedrock.Interop.GameEvent arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Block? arg2)
     {
-        NativeMethods.TablePtr->hs_method_889e5097((void*)_handle, (void*)arg0, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0));
+        NativeMethods.TablePtr->hs_method_889e5097((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0));
     }
 
     public void postSplashGameEvent()
@@ -2513,9 +2509,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_550baed7((void*)_handle, (void*)arg0.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ActionEvent' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
     public void pushBackActionEventToActionQueue(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ActionEvent' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.HashedString queryEntityRenderer()
     {
@@ -2680,9 +2676,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         }
     }
 
-    public void sendMotionPacketIfNeeded(nint arg0)
+    public void sendMotionPacketIfNeeded(global::Hosihikari.Bindings.Bedrock.Interop.PlayerMovementSettings arg0)
     {
-        NativeMethods.TablePtr->hs_method_56a52f22((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_56a52f22((void*)_handle, (void*)arg0.Handle);
     }
 
     public void sendMotionToServer()

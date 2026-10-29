@@ -64,7 +64,7 @@ public sealed unsafe partial class ActorAnimationControllerState
     public nint addEntryActorEvent(float time, nint @event, nint commandVersion, nint molangVersion) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public nint addEntryActorEvent(float arg0, string arg1, int arg2, int arg3)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationEvent addEntryActorEvent(float arg0, string arg1, int arg2, int arg3)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
         scoped global::System.Span<byte> __hs_stringBytes1;
@@ -79,7 +79,7 @@ public sealed unsafe partial class ActorAnimationControllerState
         global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_8e184fb6((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3);
+            return new global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationEvent((nint)NativeMethods.TablePtr->hs_method_8e184fb6((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3), false);
         }
     }
 
@@ -87,7 +87,7 @@ public sealed unsafe partial class ActorAnimationControllerState
     public nint addExitActorEvent(float time, nint @event, nint commandVersion, nint molangVersion) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public nint addExitActorEvent(float arg0, string arg1, int arg2, int arg3)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationEvent addExitActorEvent(float arg0, string arg1, int arg2, int arg3)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
         scoped global::System.Span<byte> __hs_stringBytes1;
@@ -102,18 +102,18 @@ public sealed unsafe partial class ActorAnimationControllerState
         global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_ae5fbefb((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3);
+            return new global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationEvent((nint)NativeMethods.TablePtr->hs_method_ae5fbefb((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3), false);
         }
     }
 
-    public nint addParticleEffect()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorParticleEffect addParticleEffect()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_12490ba9((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorParticleEffect((nint)NativeMethods.TablePtr->hs_method_12490ba9((void*)_handle), false);
     }
 
-    public nint addSoundEffect()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorSoundEffect addSoundEffect()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_501f92c0((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorSoundEffect((nint)NativeMethods.TablePtr->hs_method_501f92c0((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -157,7 +157,7 @@ public sealed unsafe partial class ActorAnimationControllerState
     public nint addVariable(nint variableName) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public nint addVariable(string arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.StateAnimationVariable addVariable(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -172,7 +172,7 @@ public sealed unsafe partial class ActorAnimationControllerState
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_c40f3085((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return new global::Hosihikari.Bindings.Bedrock.Interop.StateAnimationVariable((nint)NativeMethods.TablePtr->hs_method_c40f3085((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
         }
     }
 

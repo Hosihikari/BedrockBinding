@@ -37,6 +37,33 @@ public sealed unsafe partial class Tick : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Tick MAX
+    {
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Tick((nint)NativeMethods.TablePtr->hs_get_1a05e0a4(), false);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Tick Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Tick Create(nint v) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static Tick Create(ulong v) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public ulong operator_unsigned_long_long() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public ulong t
+    {
+        get => NativeMethods.TablePtr->hs_get_028880af((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_028880af((void*)_handle, value);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

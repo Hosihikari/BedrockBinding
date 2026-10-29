@@ -50,9 +50,9 @@ public sealed unsafe partial class AgentMoveCommandSystem
         NativeMethods.TablePtr->hs_method_07718ee1((void*)arg0.Handle, arg1);
     }
 
-    public static void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, nint arg1, nint arg2)
+    public static void initialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.AgentComponents.Move arg2)
     {
-        NativeMethods.TablePtr->hs_method_6cadc12d((void*)arg0.Handle, (void*)arg1, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_6cadc12d((void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -76,9 +76,9 @@ public sealed unsafe partial class AgentMoveCommandSystem
         NativeMethods.TablePtr->hs_method_2573e693((void*)_handle, (void*)arg0.Handle);
     }
 
-    public static void tickMove(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, nint arg1, nint arg2)
+    public static void tickMove(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.AgentComponents.Move arg2)
     {
-        NativeMethods.TablePtr->hs_method_74546f2b((void*)arg0.Handle, (void*)arg1, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_74546f2b((void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

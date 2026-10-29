@@ -429,9 +429,9 @@ public sealed unsafe partial class LevelChunk
     public nint getFinalized_f8fdc89d() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public nint getGameEventListenerRegistry()
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameEventListenerRegistry getGameEventListenerRegistry()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_de40744b((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.GameEventListenerRegistry((nint)NativeMethods.TablePtr->hs_method_de40744b((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource? getGenerator()

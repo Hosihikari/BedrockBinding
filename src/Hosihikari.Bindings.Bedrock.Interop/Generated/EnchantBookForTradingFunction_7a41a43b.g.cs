@@ -45,14 +45,14 @@ public sealed unsafe partial class EnchantBookForTradingFunction
     public static EnchantBookForTradingFunction Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public int apply(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, nint arg2, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext arg3)
+    public int apply(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, global::Hosihikari.Bindings.Bedrock.Interop.Trade arg2, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext arg3)
     {
-        return NativeMethods.TablePtr->hs_method_a546cc4b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3.Handle);
+        return NativeMethods.TablePtr->hs_method_a546cc4b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
     }
 
-    public int apply(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, nint arg2, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext arg3)
+    public int apply(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, global::Hosihikari.Bindings.Bedrock.Interop.Trade arg2, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext arg3)
     {
-        return NativeMethods.TablePtr->hs_method_7d73224b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3.Handle);
+        return NativeMethods.TablePtr->hs_method_7d73224b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
     }
 
     public void apply(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext arg2)

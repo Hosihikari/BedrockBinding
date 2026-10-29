@@ -169,9 +169,9 @@ public sealed unsafe partial class ItemDescriptor : global::System.IDisposable
     public static ItemDescriptor Create(nint fullName, int itemAux) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static void bindType(nint arg0)
+    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        NativeMethods.TablePtr->hs_method_367e2ed5((void*)arg0);
+        NativeMethods.TablePtr->hs_method_367e2ed5((void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]

@@ -97,9 +97,9 @@ public sealed unsafe partial class MobSpawnRules
         return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules((nint)NativeMethods.TablePtr->hs_method_e004445b((void*)_handle, arg0, arg1, (void*)arg2.Handle), false);
     }
 
-    public bool canSpawnInConditions(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1)
+    public bool canSpawnInConditions(global::Hosihikari.Bindings.Bedrock.Interop.SpawnConditions arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1)
     {
-        return NativeMethods.TablePtr->hs_method_7636f975((void*)_handle, (void*)arg0, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->hs_method_7636f975((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     public int getAboveBlockDistance()
@@ -146,9 +146,9 @@ public sealed unsafe partial class MobSpawnRules
         return NativeMethods.TablePtr->hs_method_8c51d105((void*)_handle) != 0;
     }
 
-    public int getPopulationCap(nint arg0)
+    public int getPopulationCap(global::Hosihikari.Bindings.Bedrock.Interop.SpawnConditions arg0)
     {
-        return NativeMethods.TablePtr->hs_method_5a6e5c93((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_5a6e5c93((void*)_handle, (void*)arg0.Handle);
     }
 
     public nint getSpawnAboveBlockList()
@@ -161,9 +161,9 @@ public sealed unsafe partial class MobSpawnRules
         return (nint)NativeMethods.TablePtr->hs_method_8b4d5c7e((void*)_handle);
     }
 
-    public int getSpawnCount(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2, nint arg3)
+    public int getSpawnCount(global::Hosihikari.Bindings.Bedrock.Interop.SpawnConditions arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2, global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnHerdInfo arg3)
     {
-        return NativeMethods.TablePtr->hs_method_8f18347d((void*)_handle, (void*)arg0, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3);
+        return NativeMethods.TablePtr->hs_method_8f18347d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
     }
 
     public nint getSpawnOnBlockList()
@@ -204,9 +204,9 @@ public sealed unsafe partial class MobSpawnRules
     public nint operator_assign_e46ef561(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public nint selectRandomHerd(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnHerdInfo selectRandomHerd(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_c73dd600((void*)_handle, (void*)arg0.Handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnHerdInfo((nint)NativeMethods.TablePtr->hs_method_c73dd600((void*)_handle, (void*)arg0.Handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules setAboveBlockDistance(int arg0)

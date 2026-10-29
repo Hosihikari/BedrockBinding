@@ -52,9 +52,9 @@ public sealed unsafe partial class BehaviorNode : global::System.IDisposable
     public static BehaviorNode Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public nint getBehaviorData()
+    public global::Hosihikari.Bindings.Bedrock.Interop.BehaviorData getBehaviorData()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_9ad84e1e((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BehaviorData((nint)NativeMethods.TablePtr->hs_method_9ad84e1e((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

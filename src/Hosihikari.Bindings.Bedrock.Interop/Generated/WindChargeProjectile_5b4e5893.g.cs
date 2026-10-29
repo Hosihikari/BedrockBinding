@@ -66,9 +66,9 @@ public sealed unsafe partial class WindChargeProjectile : global::System.IDispos
         return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->hs_method_e2b92146((void*)_handle));
     }
 
-    public void initializeComponents(int arg0, nint arg1)
+    public void initializeComponents(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_6af27d63((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_6af27d63((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -80,9 +80,9 @@ public sealed unsafe partial class WindChargeProjectile : global::System.IDispos
         NativeMethods.TablePtr->hs_method_f3aa6aa3((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public void reloadHardcoded(int arg0, nint arg1)
+    public void reloadHardcoded(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_36cbf742((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_36cbf742((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public void remove()

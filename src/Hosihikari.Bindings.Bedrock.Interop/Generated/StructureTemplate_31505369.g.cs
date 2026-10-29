@@ -212,9 +212,9 @@ public sealed unsafe partial class StructureTemplate : global::System.IDisposabl
     public void placeInWorld(nint blockSource, nint minCorner, nint mirror, nint rotation, bool ignoreBlocks, bool ignoreEntities) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void placeInWorld(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPalette arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.StructureSettings arg3, nint arg4, bool arg5)
+    public void placeInWorld(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPalette arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.StructureSettings arg3, global::Hosihikari.Bindings.Bedrock.Interop.StructureTelemetryServerData? arg4, bool arg5)
     {
-        NativeMethods.TablePtr->hs_method_5d606163((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4, arg5);
+        NativeMethods.TablePtr->hs_method_5d606163((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, (void*)(arg4?.Handle ?? 0), arg5);
     }
 
     public void placeNextSegmentInWorld(global::Hosihikari.Bindings.Bedrock.Interop.StructureAnimationData arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPalette arg1)

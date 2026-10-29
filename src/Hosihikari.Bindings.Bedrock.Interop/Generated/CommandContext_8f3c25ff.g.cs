@@ -37,6 +37,38 @@ public sealed unsafe partial class CommandContext : global::System.IDisposable
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static CommandContext Create_b4e18405(nint command, nint origin, int version) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
+    public static CommandContext Create_ead0dce8(nint arg0, nint arg1, int arg2) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin getCommandOrigin()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin((nint)NativeMethods.TablePtr->hs_method_ad081206((void*)_handle), false);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCommand_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_33be4f24((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOrigin_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_43e8f10f((void*)_handle);
+    }
+
+    public int mVersion
+    {
+        get => NativeMethods.TablePtr->hs_get_4cee1eef((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_4cee1eef((void*)_handle, value);
+    }
+
+
 
     public void Dispose()
     {

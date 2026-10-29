@@ -608,9 +608,9 @@ public sealed unsafe partial class Mob : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_bb07eedf((void*)_handle) != 0;
     }
 
-    public void initializeComponents(int arg0, nint arg1)
+    public void initializeComponents(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_0997f418((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_0997f418((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public bool isAbleToMove()
@@ -746,14 +746,14 @@ public sealed unsafe partial class Mob : global::System.IDisposable
     public void refreshInventory() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void reloadHardcoded(int arg0, nint arg1)
+    public void reloadHardcoded(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_102cc6b5((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_102cc6b5((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
-    public void reloadHardcodedClient(int arg0, nint arg1)
+    public void reloadHardcodedClient(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_6614604a((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_6614604a((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public void removeSpeedModifier(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg0)

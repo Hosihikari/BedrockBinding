@@ -95,9 +95,9 @@ public sealed unsafe partial class ExperienceOrb : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_4bf597d6((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public void reloadHardcoded(int arg0, nint arg1)
+    public void reloadHardcoded(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_d513050d((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_d513050d((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public void setValue(int arg0)

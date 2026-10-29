@@ -92,7 +92,7 @@ public sealed unsafe partial class DimensionDefinitionGroup : global::System.IDi
     public bool tryAddDimensionDefinitionByString(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public bool tryAddDimensionDefinitionByString(nint arg0, string arg1)
+    public bool tryAddDimensionDefinitionByString(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0, string arg1)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
         scoped global::System.Span<byte> __hs_stringBytes1;
@@ -107,7 +107,7 @@ public sealed unsafe partial class DimensionDefinitionGroup : global::System.IDi
         global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return NativeMethods.TablePtr->hs_method_0700620d((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
+            return NativeMethods.TablePtr->hs_method_0700620d((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
         }
     }
 

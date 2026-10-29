@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.PubSub.Detail;
 
-public sealed partial class PublisherBase
+public sealed unsafe partial class PublisherBase : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -65,7 +65,17 @@ public sealed partial class PublisherBase
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_b256d749((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

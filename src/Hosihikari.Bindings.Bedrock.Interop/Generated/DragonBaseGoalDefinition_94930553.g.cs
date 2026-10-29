@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class DragonBaseGoalDefinition
+public sealed unsafe partial class DragonBaseGoalDefinition
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -36,4 +36,25 @@ public sealed partial class DragonBaseGoalDefinition
         _handle = 0;
         return __hs_handle;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static DragonBaseGoalDefinition Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static DragonBaseGoalDefinition Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public bool validateMobType(global::Hosihikari.Bindings.Bedrock.Interop.Mob arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_4fea8197((void*)_handle, (void*)arg0.Handle) != 0;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

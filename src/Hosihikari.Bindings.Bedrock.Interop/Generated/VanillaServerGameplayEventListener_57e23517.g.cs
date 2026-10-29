@@ -78,19 +78,19 @@ public sealed unsafe partial class VanillaServerGameplayEventListener
         return NativeMethods.TablePtr->hs_method_c737704f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3);
     }
 
-    public int onEvent_11ebed1a(nint arg0)
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtEvent arg0)
     {
-        return NativeMethods.TablePtr->hs_method_11ebed1a((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_11ebed1a((void*)_handle, (void*)arg0.Handle);
     }
 
-    public int onEvent_f77e936f(nint arg0)
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.PlayerDamageEvent arg0)
     {
-        return NativeMethods.TablePtr->hs_method_f77e936f((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_f77e936f((void*)_handle, (void*)arg0.Handle);
     }
 
-    public int onEvent_d50f8372(nint arg0)
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.PlayerOpenContainerEvent arg0)
     {
-        return NativeMethods.TablePtr->hs_method_d50f8372((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_d50f8372((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

@@ -53,9 +53,9 @@ public sealed unsafe partial class ParameterList
     public static ParameterList Create_96f8d9f7(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Biome? findTarget(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.RTree_Nested.Hint? arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Biome? findTarget(global::Hosihikari.Bindings.Bedrock.Interop.TargetPoint arg0, global::Hosihikari.Bindings.Bedrock.Interop.RTree_Nested.Hint? arg1)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_675bebb0((void*)_handle, (void*)arg0, (void*)(arg1?.Handle ?? 0));
+        var __hs_handle = NativeMethods.TablePtr->hs_method_675bebb0((void*)_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Biome((nint)__hs_handle, false) : null;
     }
 

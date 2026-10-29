@@ -100,14 +100,14 @@ public sealed unsafe partial class LeashFenceKnotActor : global::System.IDisposa
         NativeMethods.TablePtr->hs_method_084ed90d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public void reloadHardcoded(int arg0, nint arg1)
+    public void reloadHardcoded(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_36226d4f((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_36226d4f((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
-    public void reloadHardcodedClient(int arg0, nint arg1)
+    public void reloadHardcodedClient(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_296bf3ef((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_296bf3ef((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public void remove()

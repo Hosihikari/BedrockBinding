@@ -45,9 +45,9 @@ public sealed unsafe partial class BehaviorDefinition : global::System.IDisposab
     public static BehaviorDefinition Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.BehaviorNode? createNode(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.BehaviorNode? arg2, nint arg3)
+    public global::Hosihikari.Bindings.Bedrock.Interop.BehaviorNode? createNode(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.BehaviorFactory arg1, global::Hosihikari.Bindings.Bedrock.Interop.BehaviorNode? arg2, global::Hosihikari.Bindings.Bedrock.Interop.BehaviorData? arg3)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_ecb38bb1((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)(arg2?.Handle ?? 0), (void*)arg3);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_ecb38bb1((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0), (void*)(arg3?.Handle ?? 0));
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BehaviorNode((nint)__hs_handle) : null;
     }
 

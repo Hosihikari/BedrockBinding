@@ -71,9 +71,9 @@ public sealed unsafe partial class FilterTest : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value((nint)NativeMethods.TablePtr->hs_method_88d3a954((void*)_handle));
     }
 
-    public bool setup(global::Hosihikari.Bindings.Bedrock.Interop.FilterTest_Nested.Definition arg0, nint arg1)
+    public bool setup(global::Hosihikari.Bindings.Bedrock.Interop.FilterTest_Nested.Definition arg0, global::Hosihikari.Bindings.Bedrock.Interop.FilterInputs arg1)
     {
-        return NativeMethods.TablePtr->hs_method_b3d51e48((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_b3d51e48((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
 

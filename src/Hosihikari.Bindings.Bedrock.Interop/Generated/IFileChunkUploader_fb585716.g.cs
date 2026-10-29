@@ -65,9 +65,9 @@ public sealed unsafe partial class IFileChunkUploader
     public void __unk_vfn_9() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void confirmChunkReceived(nint arg0, nint arg1)
+    public void confirmChunkReceived(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo arg0, global::Hosihikari.Bindings.Bedrock.Interop.FileChunkInfo arg1)
     {
-        NativeMethods.TablePtr->hs_method_44a842aa((void*)_handle, (void*)arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_44a842aa((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'FileChunkInfo' requires --link-carrier or --virtual-dispatch.", false)]

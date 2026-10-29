@@ -80,6 +80,7 @@ $symbolArguments = @{
     NoPrototype = $true
     Version = $Version
     SkipBuild = $true
+    Verbose = ($VerbosePreference -ne 'SilentlyContinue')
 }
 if (-not [string]::IsNullOrWhiteSpace($ClassesFile)) {
     $symbolArguments.ClassesFile = $ClassesFile

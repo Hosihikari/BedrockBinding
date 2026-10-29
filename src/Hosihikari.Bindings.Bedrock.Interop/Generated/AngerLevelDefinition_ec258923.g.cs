@@ -45,9 +45,9 @@ public sealed unsafe partial class AngerLevelDefinition
     public static AngerLevelDefinition Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public void addOnIncreaseSoundDefinition(nint arg0)
+    public void addOnIncreaseSoundDefinition(global::Hosihikari.Bindings.Bedrock.Interop.SoundDefinition arg0)
     {
-        NativeMethods.TablePtr->hs_method_f7dbcfa8((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_f7dbcfa8((void*)_handle, (void*)arg0.Handle);
     }
 
     public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? arg0)

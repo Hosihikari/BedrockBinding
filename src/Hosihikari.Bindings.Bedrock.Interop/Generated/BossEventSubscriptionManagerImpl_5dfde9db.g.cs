@@ -37,6 +37,12 @@ public sealed unsafe partial class BossEventSubscriptionManagerImpl : global::Sy
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_40ad1a69((void*)_handle);
+    }
+
     public static BossEventSubscriptionManagerImpl Create()
     {
         var handle = NativeMethods.TablePtr->hs_create_df5798ff();

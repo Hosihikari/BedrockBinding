@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ServerNetherNetConnector
+public sealed unsafe partial class ServerNetherNetConnector : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -51,9 +51,16 @@ public sealed unsafe partial class ServerNetherNetConnector
     public void OnSessionRequested(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'NetherNet::NetworkID' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static ServerNetherNetConnector Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static ServerNetherNetConnector Create(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Connector_Nested.ConnectionCallbacks arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_f6b15bdf((void*)arg0, (void*)arg1.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ServerNetherNetConnector((nint)handle);
+    }
 
     public bool host(nint arg0)
     {
@@ -63,5 +70,18 @@ public sealed unsafe partial class ServerNetherNetConnector
     public bool isServer()
     {
         return NativeMethods.TablePtr->hs_method_73ad223b((void*)_handle) != 0;
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_41ec66db((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

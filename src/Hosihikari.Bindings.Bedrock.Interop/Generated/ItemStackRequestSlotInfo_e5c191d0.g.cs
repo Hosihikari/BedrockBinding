@@ -37,6 +37,25 @@ public sealed unsafe partial class ItemStackRequestSlotInfo : global::System.IDi
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mNetIdVariant_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e2cd5471((void*)_handle);
+    }
+
+    public sbyte mOpenContainerNetId
+    {
+        get => NativeMethods.TablePtr->hs_get_c27aa5f0((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_c27aa5f0((void*)_handle, value);
+    }
+
+    public byte mSlot
+    {
+        get => NativeMethods.TablePtr->hs_get_6e8ee41c((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_6e8ee41c((void*)_handle, value);
+    }
+
+
 
     public void Dispose()
     {

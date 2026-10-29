@@ -154,7 +154,7 @@ public sealed unsafe partial class ServerPlayer : global::System.IDisposable
     public void displayTextObjectMessage(nint textObject, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void displayTextObjectWhisperMessage(nint arg0, string arg1, string arg2)
+    public void displayTextObjectWhisperMessage(global::Hosihikari.Bindings.Bedrock.Interop.ResolvedTextObject arg0, string arg1, string arg2)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
         scoped global::System.Span<byte> __hs_stringBytes1;
@@ -182,7 +182,7 @@ public sealed unsafe partial class ServerPlayer : global::System.IDisposable
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                NativeMethods.TablePtr->hs_method_21c916e3((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                NativeMethods.TablePtr->hs_method_21c916e3((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
             }
         }
     }
@@ -382,14 +382,14 @@ public sealed unsafe partial class ServerPlayer : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_033205d5((void*)_handle, (void*)arg0.Handle, arg1, arg2);
     }
 
-    public void initializeComponents(int arg0, nint arg1)
+    public void initializeComponents(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_a482d9b2((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_a482d9b2((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
-    public static void initializePlayerTickComponents(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, nint arg1)
+    public static void initializePlayerTickComponents(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.PlayerMovementSettings arg1)
     {
-        NativeMethods.TablePtr->hs_method_a4309e26((void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_a4309e26((void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void initiateContainerClose()

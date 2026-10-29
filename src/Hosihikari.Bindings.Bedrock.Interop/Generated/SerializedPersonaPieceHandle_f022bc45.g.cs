@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class SerializedPersonaPieceHandle
+public sealed unsafe partial class SerializedPersonaPieceHandle : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,5 +35,95 @@ public sealed partial class SerializedPersonaPieceHandle
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static SerializedPersonaPieceHandle Create(nint pieceId, nint pieceType, nint packId, bool isDefaultPiece, nint productId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static SerializedPersonaPieceHandle Create(string arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID arg2, bool arg3, string arg4)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(arg4);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg4, __hs_stringBytes4);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+            {
+                var handle = NativeMethods.TablePtr->hs_create_164d5590(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, (void*)arg2.Handle, arg3, __hs_stringData4, (nuint)__hs_stringByteCount4);
+                if (handle == null)
+                {
+                    throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+                }
+
+                return new SerializedPersonaPieceHandle((nint)handle);
+            }
+        }
+    }
+
+    public bool mIsDefaultPiece
+    {
+        get => NativeMethods.TablePtr->hs_get_e21c69c0((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_e21c69c0((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPackId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_386d4b6f((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPieceId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_1cab6996((void*)_handle);
+    }
+
+    public int mPieceType
+    {
+        get => NativeMethods.TablePtr->hs_get_4e986ca5((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_4e986ca5((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mProductId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_9aed1f28((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_f022bc45((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

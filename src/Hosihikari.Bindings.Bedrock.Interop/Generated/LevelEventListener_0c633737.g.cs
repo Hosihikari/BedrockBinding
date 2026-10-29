@@ -45,9 +45,9 @@ public sealed unsafe partial class LevelEventListener
     public static LevelEventListener Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public int onEvent(nint arg0)
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.LevelNotificationEvent arg0)
     {
-        return NativeMethods.TablePtr->hs_method_59808fc0((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_59808fc0((void*)_handle, (void*)arg0.Handle);
     }
 
     public int onLevelAddedPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player arg1)

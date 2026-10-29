@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class ITextObject
+public sealed unsafe partial class ITextObject
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -36,4 +36,52 @@ public sealed partial class ITextObject
         _handle = 0;
         return __hs_handle;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ITextObject Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ITextObject Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static string RAW_TEXT_OBJECT_KEY
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_308f36a0();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string RAW_TEXT_TEXT_KEY
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_19702043();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string RAW_TEXT_TRANSLATE_KEY
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_8028c531();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string RAW_TEXT_WITH_KEY
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_5c6a9b03();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 }

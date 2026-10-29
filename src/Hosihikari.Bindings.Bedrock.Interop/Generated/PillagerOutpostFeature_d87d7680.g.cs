@@ -60,9 +60,9 @@ public sealed unsafe partial class PillagerOutpostFeature : global::System.IDisp
     public bool getNearestGeneratedFeature(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, bool arg5, nint arg6) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void initMobSpawnTypes(nint arg0)
+    public void initMobSpawnTypes(global::Hosihikari.Bindings.Bedrock.Interop.HardcodedSpawnAreaRegistry arg0)
     {
-        NativeMethods.TablePtr->hs_method_a4853e90((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_a4853e90((void*)_handle, (void*)arg0.Handle);
     }
 
     public bool isFeatureChunk(global::Hosihikari.Bindings.Bedrock.Interop.BiomeSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg2, uint arg3, global::Hosihikari.Bindings.Bedrock.Interop.IPreliminarySurfaceProvider arg4, global::Hosihikari.Bindings.Bedrock.Interop.Dimension arg5)

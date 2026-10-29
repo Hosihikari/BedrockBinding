@@ -74,9 +74,9 @@ public sealed unsafe partial class VolumeEntityManager : global::System.IDisposa
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static void registerComponentNetRelevancy(nint arg0, nint arg1)
+    public static void registerComponentNetRelevancy(global::Hosihikari.Bindings.Bedrock.Interop.ComponentNetRelevancyRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg1)
     {
-        NativeMethods.TablePtr->hs_method_0472fa25((void*)arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_0472fa25((void*)arg0.Handle, (void*)arg1.Handle);
     }
 
 

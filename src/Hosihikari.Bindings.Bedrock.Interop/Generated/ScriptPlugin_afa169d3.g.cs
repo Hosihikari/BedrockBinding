@@ -60,17 +60,17 @@ public sealed unsafe partial class ScriptPlugin : global::System.IDisposable
     public static ScriptPlugin Create_e0f12618(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'Scripting::ModuleDescriptor' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public static ScriptPlugin Create_5b9f61c4(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'Scripting::ModuleDescriptor' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint _loadScript_df50c7d9(nint fileName) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public nint getModuleDescriptor()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ModuleDescriptor getModuleDescriptor()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_8785d52a((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ModuleDescriptor((nint)NativeMethods.TablePtr->hs_method_8785d52a((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ScriptContext getScriptContext_546165f3()

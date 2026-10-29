@@ -128,9 +128,9 @@ public sealed unsafe partial class TrimDataPacket : global::System.IDisposable
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.TrimDataPacket prepareFromRegistries(nint arg0, nint arg1)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.TrimDataPacket prepareFromRegistries(global::Hosihikari.Bindings.Bedrock.Interop.TrimPatternRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.TrimMaterialRegistry arg1)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.TrimDataPacket((nint)NativeMethods.TablePtr->hs_method_02c68d8e((void*)arg0, (void*)arg1));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TrimDataPacket((nint)NativeMethods.TablePtr->hs_method_02c68d8e((void*)arg0.Handle, (void*)arg1.Handle));
     }
 
     public void write(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream arg0)

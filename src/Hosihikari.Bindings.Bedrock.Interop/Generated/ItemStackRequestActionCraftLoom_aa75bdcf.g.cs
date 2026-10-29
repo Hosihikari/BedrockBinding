@@ -37,6 +37,12 @@ public sealed unsafe partial class ItemStackRequestActionCraftLoom : global::Sys
         return __hs_handle;
     }
 
+    public byte mActionType
+    {
+        get => NativeMethods.TablePtr->hs_get_2aa7c96f((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_2aa7c96f((void*)_handle, value);
+    }
+
     public static ItemStackRequestActionCraftLoom Create()
     {
         var handle = NativeMethods.TablePtr->hs_create_b9747816();

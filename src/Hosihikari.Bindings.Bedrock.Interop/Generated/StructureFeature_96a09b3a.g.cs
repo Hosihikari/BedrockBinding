@@ -114,9 +114,9 @@ public sealed unsafe partial class StructureFeature : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_42869384((void*)_handle);
     }
 
-    public void initMobSpawnTypes(nint arg0)
+    public void initMobSpawnTypes(global::Hosihikari.Bindings.Bedrock.Interop.HardcodedSpawnAreaRegistry arg0)
     {
-        NativeMethods.TablePtr->hs_method_3fa23546((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_3fa23546((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

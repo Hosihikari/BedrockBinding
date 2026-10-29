@@ -72,14 +72,14 @@ public sealed unsafe partial class RealmsStoriesGameplayEventListener : global::
     public void _publishWorldEventFirstOrOtherTime_d5e03ca9(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public int onEvent_a2e9e54f(nint arg0)
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ActorAcquiredItemEvent arg0)
     {
-        return NativeMethods.TablePtr->hs_method_a2e9e54f((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_a2e9e54f((void*)_handle, (void*)arg0.Handle);
     }
 
-    public int onEvent_74912375(nint arg0)
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ActorKilledEvent arg0)
     {
-        return NativeMethods.TablePtr->hs_method_74912375((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_74912375((void*)_handle, (void*)arg0.Handle);
     }
 
     public int onPlayerMove(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)

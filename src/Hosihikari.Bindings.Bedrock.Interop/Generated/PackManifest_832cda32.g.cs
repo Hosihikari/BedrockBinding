@@ -138,9 +138,9 @@ public sealed unsafe partial class PackManifest : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_b5b93963((void*)_handle);
     }
 
-    public nint getMetaData()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ResourceMetadata getMetaData()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_2afb728d((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ResourceMetadata((nint)NativeMethods.TablePtr->hs_method_2afb728d((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.SemVersion getMinEngineVersion()

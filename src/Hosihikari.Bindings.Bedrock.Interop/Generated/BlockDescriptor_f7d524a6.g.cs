@@ -100,9 +100,9 @@ public sealed unsafe partial class BlockDescriptor
     public static bool anyMatch_1af0c50b(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
-    public static void bindType(nint arg0)
+    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        NativeMethods.TablePtr->hs_method_099957d5((void*)arg0);
+        NativeMethods.TablePtr->hs_method_099957d5((void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'BlockDescriptor' requires --link-carrier or --virtual-dispatch.", false)]

@@ -130,9 +130,9 @@ public sealed unsafe partial class Agent : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_a9a66286((void*)_handle, arg0, arg1);
     }
 
-    public void initializeComponents(int arg0, nint arg1)
+    public void initializeComponents(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_75af1c39((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_75af1c39((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public bool isEmoting()

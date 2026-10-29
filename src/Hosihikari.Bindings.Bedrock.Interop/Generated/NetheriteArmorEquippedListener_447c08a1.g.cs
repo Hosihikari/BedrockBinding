@@ -169,13 +169,13 @@ public sealed unsafe partial class NetheriteArmorEquippedListener
     public void __unk_vfn_9() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public int onEvent_abb6ddd5(nint arg0)
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ActorEquippedArmorEvent arg0)
     {
-        return NativeMethods.TablePtr->hs_method_abb6ddd5((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_abb6ddd5((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint onEvent_6ee779cd(nint @event) =>
+    public nint onEvent(nint @event) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

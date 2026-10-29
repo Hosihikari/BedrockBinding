@@ -53,9 +53,9 @@ public sealed unsafe partial class ProducerComponent : global::System.IDisposabl
         NativeMethods.TablePtr->hs_method_ecbb46fc((void*)_handle, arg0);
     }
 
-    public bool allowConnection(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph arg0, nint arg1, nint arg2)
+    public bool allowConnection(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph arg0, global::Hosihikari.Bindings.Bedrock.Interop.CircuitTrackingInfo arg1, nint arg2)
     {
-        return NativeMethods.TablePtr->hs_method_3242b36e((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2) != 0;
+        return NativeMethods.TablePtr->hs_method_3242b36e((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2) != 0;
     }
 
     public bool canStopPower()

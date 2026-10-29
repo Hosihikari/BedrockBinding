@@ -97,9 +97,9 @@ public sealed unsafe partial class ArmorItemComponent : global::System.IDisposab
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static void registerVersionUpgrades(nint arg0)
+    public static void registerVersionUpgrades(global::Hosihikari.Bindings.Bedrock.Interop.CerealSchemaUpgradeSet arg0)
     {
-        NativeMethods.TablePtr->hs_method_2c870908((void*)arg0);
+        NativeMethods.TablePtr->hs_method_2c870908((void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

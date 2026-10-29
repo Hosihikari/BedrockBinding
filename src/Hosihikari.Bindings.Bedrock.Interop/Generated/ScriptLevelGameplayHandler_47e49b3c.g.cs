@@ -53,9 +53,9 @@ public sealed unsafe partial class ScriptLevelGameplayHandler
     public nint handleEvent_40615763(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public int handleEvent_5c03e2f0(nint arg0)
+    public int handleEvent(global::Hosihikari.Bindings.Bedrock.Interop.ScriptingInitializeEvent arg0)
     {
-        return NativeMethods.TablePtr->hs_method_5c03e2f0((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_5c03e2f0((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

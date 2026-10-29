@@ -37,6 +37,12 @@ public sealed unsafe partial class EntityComponentFactoryJson : global::System.I
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_f06ea06a((void*)_handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static EntityComponentFactoryJson Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
@@ -53,7 +59,7 @@ public sealed unsafe partial class EntityComponentFactoryJson : global::System.I
     public nint tryGetDefinitionSerializer(nint name) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public nint tryGetDefinitionSerializer(string arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.IJsonDefinitionSerializer? tryGetDefinitionSerializer(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -68,7 +74,8 @@ public sealed unsafe partial class EntityComponentFactoryJson : global::System.I
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_a1e54330((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->hs_method_a1e54330((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.IJsonDefinitionSerializer((nint)__hs_handle, false) : null;
         }
     }
 

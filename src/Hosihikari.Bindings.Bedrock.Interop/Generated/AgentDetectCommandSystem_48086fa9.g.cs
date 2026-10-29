@@ -45,14 +45,14 @@ public sealed unsafe partial class AgentDetectCommandSystem
     public static AgentDetectCommandSystem Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static void initializeObstacle(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, nint arg1)
+    public static void initializeObstacle(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.AgentComponents.DetectObstacle arg1)
     {
-        NativeMethods.TablePtr->hs_method_ceb36579((void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_ceb36579((void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public static void initializeRedstone(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, nint arg1)
+    public static void initializeRedstone(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.AgentComponents.DetectRedstone arg1)
     {
-        NativeMethods.TablePtr->hs_method_b521aaf6((void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_b521aaf6((void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

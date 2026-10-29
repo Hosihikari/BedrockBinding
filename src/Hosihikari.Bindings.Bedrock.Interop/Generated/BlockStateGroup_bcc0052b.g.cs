@@ -84,7 +84,7 @@ public sealed unsafe partial class BlockStateGroup
     public static bool loadBlockStateFromJson(nint blockState, nint name, nint root) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static bool loadBlockStateFromJson(nint arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg2)
+    public static bool loadBlockStateFromJson(global::Hosihikari.Bindings.Bedrock.Interop.BlockStateDefinition arg0, string arg1, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg2)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
         scoped global::System.Span<byte> __hs_stringBytes1;
@@ -99,7 +99,7 @@ public sealed unsafe partial class BlockStateGroup
         global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return NativeMethods.TablePtr->hs_method_0ac838d2((void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2.Handle) != 0;
+            return NativeMethods.TablePtr->hs_method_0ac838d2((void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2.Handle) != 0;
         }
     }
 
@@ -107,9 +107,9 @@ public sealed unsafe partial class BlockStateGroup
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void registerBlockStateDefinition(nint arg0)
+    public void registerBlockStateDefinition(global::Hosihikari.Bindings.Bedrock.Interop.BlockStateDefinition arg0)
     {
-        NativeMethods.TablePtr->hs_method_916505b8((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_916505b8((void*)_handle, (void*)arg0.Handle);
     }
 
     public void registerExistingBlockState(global::Hosihikari.Bindings.Bedrock.Interop.BlockState arg0)

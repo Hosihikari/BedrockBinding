@@ -215,9 +215,9 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         NativeMethods.TablePtr->hs_method_5d878d4e((void*)_handle, arg0, arg1);
     }
 
-    public void fireChunkRecyclerTelemetryData(nint arg0)
+    public void fireChunkRecyclerTelemetryData(global::Hosihikari.Bindings.Bedrock.Interop.ChunkRecyclerTelemetryOutput arg0)
     {
-        NativeMethods.TablePtr->hs_method_830b0b1f((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_830b0b1f((void*)_handle, (void*)arg0.Handle);
     }
 
     public void fireClassroomSettingUpdated(int arg0, int arg1)
@@ -292,7 +292,7 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         NativeMethods.TablePtr->hs_method_93798dd4((void*)_handle, (void*)arg0);
     }
 
-    public void fireDBStorageError(nint arg0, string arg1)
+    public void fireDBStorageError(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageEventingContext arg0, string arg1)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
         scoped global::System.Span<byte> __hs_stringBytes1;
@@ -307,7 +307,7 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_method_3860df6c((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            NativeMethods.TablePtr->hs_method_3860df6c((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
         }
     }
 
@@ -2453,9 +2453,9 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
     public void fireEventPacketViolationDetected(ulong arg0, nint arg1, nint arg2, nint arg3, nint arg4, uint arg5, nint arg6, nint arg7, uint arg8) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void fireEventPerformanceContext(nint arg0)
+    public void fireEventPerformanceContext(global::Hosihikari.Bindings.Bedrock.Interop.PerfContextTrackerReport arg0)
     {
-        NativeMethods.TablePtr->hs_method_ba99befe((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_ba99befe((void*)_handle, (void*)arg0.Handle);
     }
 
     public void fireEventPerformanceMetrics(nint arg0, bool arg1)
@@ -4296,9 +4296,9 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
     public void fireEventSignInToIdentity_9fb33d05(nint arg0, nint arg1, nint arg2, bool arg3, nint arg4, nint arg5, int arg6, nint arg7, nint arg8) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Social::PlayerIDs' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
     public void fireEventSignInToIdentity_902a383d(nint arg0, nint arg1, nint arg2, bool arg3, nint arg4, nint arg5, int arg6, nint arg7, nint arg8) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Social::PlayerIDs' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public void fireEventSignOutEdu(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
@@ -5342,7 +5342,7 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         NativeMethods.TablePtr->hs_method_6aa19f4b((void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3);
     }
 
-    public void fireEventWorldCorruptionCausedWorldShutdown(nint arg0, string arg1, bool? arg2)
+    public void fireEventWorldCorruptionCausedWorldShutdown(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageEventingContext arg0, string arg1, bool? arg2)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
         scoped global::System.Span<byte> __hs_stringBytes1;
@@ -5357,7 +5357,7 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_method_747f7194((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2 ?? default(bool), arg2.HasValue);
+            NativeMethods.TablePtr->hs_method_747f7194((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2 ?? default(bool), arg2.HasValue);
         }
     }
 
@@ -5910,9 +5910,9 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         }
     }
 
-    public void firePackSettingsEvent(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.PackManifest arg1)
+    public void firePackSettingsEvent(global::Hosihikari.Bindings.Bedrock.Interop.PackSettings arg0, global::Hosihikari.Bindings.Bedrock.Interop.PackManifest arg1)
     {
-        NativeMethods.TablePtr->hs_method_7c547ce3((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->hs_method_7c547ce3((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -5965,9 +5965,9 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         NativeMethods.TablePtr->hs_method_20861764((void*)_handle, arg0, arg1, arg2, arg3);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Social::PermissionCheckResult' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
     public void firePlayerAccountMetadata(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, bool arg6, bool arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Social::PermissionCheckResult' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public void firePlayerUnexpectedFallDamage(float arg0, bool arg1, float arg2)
     {
@@ -6232,14 +6232,14 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
     public void fireStorageMigrationEvent_1077d76e(bool arg0, nint arg1, int arg2, int arg3, nint arg4, nint arg5) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public void fireStructureBlockAction(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.StructureEditorData arg1, nint arg2)
+    public void fireStructureBlockAction(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.StructureEditorData arg1, global::Hosihikari.Bindings.Bedrock.Interop.StructureTelemetryClientData? arg2)
     {
-        NativeMethods.TablePtr->hs_method_59119af1((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_59119af1((void*)_handle, arg0, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0));
     }
 
-    public void fireStructureBlockRedstoneActivated(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.StructureEditorData arg1, nint arg2)
+    public void fireStructureBlockRedstoneActivated(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.StructureEditorData arg1, global::Hosihikari.Bindings.Bedrock.Interop.StructureTelemetryClientData? arg2)
     {
-        NativeMethods.TablePtr->hs_method_1555335b((void*)_handle, arg0, (void*)arg1.Handle, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_1555335b((void*)_handle, arg0, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0));
     }
 
     public void fireTextToSpeechToggled(bool arg0, bool arg1)
@@ -6422,16 +6422,14 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         get => (nint)NativeMethods.TablePtr->hs_get_30a4907c();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mRealtimeRoute_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.RealtimeRoute mRealtimeRoute
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_1806b19d();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.RealtimeRoute((nint)NativeMethods.TablePtr->hs_get_1806b19d(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mScreenFlow_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.ScreenFlow mScreenFlow
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_b8d3aa98();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Social.Events.ScreenFlow((nint)NativeMethods.TablePtr->hs_get_b8d3aa98(), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -6474,22 +6472,19 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint sHeartbeatMutex_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex sHeartbeatMutex
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_cb4e1255();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex((nint)NativeMethods.TablePtr->hs_get_cb4e1255(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint sMutex_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex sMutex
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_21fe4353();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex((nint)NativeMethods.TablePtr->hs_get_21fe4353(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint sPlayerTelemetryMutex_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex sPlayerTelemetryMutex
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_00f791f0();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex((nint)NativeMethods.TablePtr->hs_get_00f791f0(), false);
     }
 
     public void sendBatchedCrashTelemetry()

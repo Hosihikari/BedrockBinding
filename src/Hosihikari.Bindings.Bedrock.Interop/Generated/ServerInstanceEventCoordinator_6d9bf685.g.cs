@@ -49,9 +49,9 @@ public sealed unsafe partial class ServerInstanceEventCoordinator : global::Syst
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'ServerInstanceEventHandler' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void registerServerInstanceEventHandler(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'ServerInstanceEventHandler' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public void sendEvent(nint arg0)
     {

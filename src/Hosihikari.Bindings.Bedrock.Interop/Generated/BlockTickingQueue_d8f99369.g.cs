@@ -37,6 +37,14 @@ public sealed unsafe partial class BlockTickingQueue
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BlockTickingQueue Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BlockTickingQueue Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
     public void acquireAllRandomTicks(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
     {
         NativeMethods.TablePtr->hs_method_c681cc3a((void*)_handle, (void*)arg0.Handle);
@@ -89,8 +97,12 @@ public sealed unsafe partial class BlockTickingQueue
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Tick((nint)__hs_handle) : null;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint getTickDelaysInArea_fd7fde2f(nint boundingBox) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::unordered_multimap<BlockPos,TickDelayBlock,std::hash<BlockPos>,std::equal_to<BlockPos>,std::allocator<std::pair<BlockPos const,TickDelayBlock>>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getTickDelaysInArea(nint arg0) =>
+    public nint getTickDelaysInArea_b093920d(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unordered_multimap<BlockPos,TickDelayBlock,std::hash<BlockPos>,std::equal_to<BlockPos>,std::allocator<std::pair<BlockPos const,TickDelayBlock>>>' requires --link-carrier or --virtual-dispatch.");
 
     public bool hasTickInPendingTicks(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)
@@ -107,6 +119,10 @@ public sealed unsafe partial class BlockTickingQueue
     {
         NativeMethods.TablePtr->hs_method_79934bd7((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void remove(nint arg0) =>

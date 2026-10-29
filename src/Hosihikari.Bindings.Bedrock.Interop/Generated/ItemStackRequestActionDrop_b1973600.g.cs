@@ -62,4 +62,34 @@ public sealed unsafe partial class ItemStackRequestActionDrop
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public byte mAmount
+    {
+        get => NativeMethods.TablePtr->hs_get_96517c16((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_96517c16((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDst_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e082fbe4((void*)_handle);
+    }
+
+    public bool mIsAmountSerialized
+    {
+        get => NativeMethods.TablePtr->hs_get_aced0cdc((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_aced0cdc((void*)_handle, value);
+    }
+
+    public bool mIsDstSerialized
+    {
+        get => NativeMethods.TablePtr->hs_get_5df9b75d((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_5df9b75d((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSrc_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_59a87b86((void*)_handle);
+    }
 }

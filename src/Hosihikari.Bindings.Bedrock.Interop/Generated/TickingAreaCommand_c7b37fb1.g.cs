@@ -79,9 +79,9 @@ public sealed unsafe partial class TickingAreaCommand
         NativeMethods.TablePtr->hs_method_49e04232((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'TickingAreaDescription' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public static nint formatTickingAreaList_c08852aa(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'TickingAreaDescription' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public static nint formatTickingAreaList_5609518d(nint arg0) =>

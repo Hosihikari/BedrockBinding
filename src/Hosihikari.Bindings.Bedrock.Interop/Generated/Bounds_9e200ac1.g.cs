@@ -103,6 +103,52 @@ public sealed unsafe partial class Bounds : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->hs_get_d7b4bf62((void*)_handle);
     }
 
+    public static Bounds Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, int arg2, int arg3)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_e5914bf8((void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Bounds((nint)handle);
+    }
+
+    public static Bounds Create(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_90443774((void*)arg0.Handle, (void*)arg1.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Bounds((nint)handle);
+    }
+
+    public int mArea
+    {
+        get => NativeMethods.TablePtr->hs_get_588211e2((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_588211e2((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDim_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_ed9cf275((void*)_handle);
+    }
+
+    public int mSide
+    {
+        get => NativeMethods.TablePtr->hs_get_f0437187((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_f0437187((void*)_handle, value);
+    }
+
+    public int mVolume
+    {
+        get => NativeMethods.TablePtr->hs_get_cb75cdad((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_cb75cdad((void*)_handle, value);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

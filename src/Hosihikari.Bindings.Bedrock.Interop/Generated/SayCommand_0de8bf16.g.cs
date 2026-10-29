@@ -37,6 +37,35 @@ public sealed unsafe partial class SayCommand
         return __hs_handle;
     }
 
+    public int mCommandSymbol
+    {
+        get => NativeMethods.TablePtr->hs_get_d7f42efa((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_d7f42efa((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFlags_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_54d89f35((void*)_handle);
+    }
+
+    public byte mPermissionLevel
+    {
+        get => NativeMethods.TablePtr->hs_get_fcfdbcab((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_fcfdbcab((void*)_handle, value);
+    }
+
+    public nint mRegistry
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_42c63564((void*)_handle);
+    }
+
+    public int mVersion
+    {
+        get => NativeMethods.TablePtr->hs_get_e6ac244e((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_e6ac244e((void*)_handle, value);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static SayCommand Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");

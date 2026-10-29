@@ -292,14 +292,14 @@ public sealed unsafe partial class MobEffect : global::System.IDisposable
         get => new global::Hosihikari.Bindings.Bedrock.Interop.MobEffect((nint)NativeMethods.TablePtr->hs_get_0dae61dd(), false);
     }
 
-    public void addAttributeBuff(nint arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1)
+    public void addAttributeBuff(global::Hosihikari.Bindings.Bedrock.Interop.Attribute arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1)
     {
-        NativeMethods.TablePtr->hs_method_4b2f2105((void*)_handle, (void*)arg0, arg1?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->hs_method_4b2f2105((void*)_handle, (void*)arg0.Handle, arg1?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    public void addAttributeModifier(nint arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1)
+    public void addAttributeModifier(global::Hosihikari.Bindings.Bedrock.Interop.Attribute arg0, global::Hosihikari.Bindings.Abi.SharedHandle? arg1)
     {
-        NativeMethods.TablePtr->hs_method_ff12d5ef((void*)_handle, (void*)arg0, arg1?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->hs_method_ff12d5ef((void*)_handle, (void*)arg0.Handle, arg1?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
     public void applyEffects(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1, int arg2)

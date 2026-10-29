@@ -66,7 +66,7 @@ public sealed unsafe partial class CommandSelectorBase : global::System.IDisposa
     public void addHasItemFilter(nint itemName, nint auxValue, nint quantity, nint equipmentSlot, nint slot) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void addHasItemFilter(string arg0, int? arg1, nint arg2, int arg3, nint arg4)
+    public void addHasItemFilter(string arg0, int? arg1, global::Hosihikari.Bindings.Bedrock.Interop.CommandIntegerRange arg2, int arg3, global::Hosihikari.Bindings.Bedrock.Interop.CommandIntegerRange arg4)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -81,7 +81,7 @@ public sealed unsafe partial class CommandSelectorBase : global::System.IDisposa
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_cc67abf9((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1 ?? default(int), (void*)arg2, arg3, (void*)arg4, arg1.HasValue);
+            NativeMethods.TablePtr->hs_method_cc67abf9((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1 ?? default(int), (void*)arg2.Handle, arg3, (void*)arg4.Handle, arg1.HasValue);
         }
     }
 

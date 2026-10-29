@@ -37,6 +37,44 @@ public sealed unsafe partial class SpawnSettings : global::System.IDisposable
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static SpawnSettings Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static SpawnSettings Create(global::Hosihikari.Bindings.Bedrock.Interop.SpawnSettings arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_5e9df09b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SpawnSettings((nint)handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint dimension_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_a9adaaea((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public short type
+    {
+        get => NativeMethods.TablePtr->hs_get_e1e4a6d6((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_e1e4a6d6((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint userDefinedBiomeName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_9b393261((void*)_handle);
+    }
+
+
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static SpawnSettings Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");

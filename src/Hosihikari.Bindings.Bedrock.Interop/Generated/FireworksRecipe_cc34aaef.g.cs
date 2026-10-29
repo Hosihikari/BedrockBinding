@@ -79,9 +79,9 @@ public sealed unsafe partial class FireworksRecipe : global::System.IDisposable
         get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->hs_get_c0652111(), false);
     }
 
-    public nint assemble(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer arg0, nint arg1)
+    public nint assemble(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer arg0, global::Hosihikari.Bindings.Bedrock.Interop.CraftingContext arg1)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_14084d6d((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        return (nint)NativeMethods.TablePtr->hs_method_14084d6d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public int getCraftingSize()
@@ -104,9 +104,9 @@ public sealed unsafe partial class FireworksRecipe : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_9da09ac1((void*)_handle) != 0;
     }
 
-    public bool matches(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer arg0, nint arg1)
+    public bool matches(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer arg0, global::Hosihikari.Bindings.Bedrock.Interop.CraftingContext arg1)
     {
-        return NativeMethods.TablePtr->hs_method_69f073f6((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_69f073f6((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

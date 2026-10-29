@@ -79,9 +79,9 @@ public sealed unsafe partial class SmithingTrimRecipe : global::System.IDisposab
         }
     }
 
-    public nint assemble(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer arg0, nint arg1)
+    public nint assemble(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer arg0, global::Hosihikari.Bindings.Bedrock.Interop.CraftingContext arg1)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_de0ed2d2((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        return (nint)NativeMethods.TablePtr->hs_method_de0ed2d2((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient getAdditionIngredient()
@@ -104,9 +104,9 @@ public sealed unsafe partial class SmithingTrimRecipe : global::System.IDisposab
         return NativeMethods.TablePtr->hs_method_607084d2((void*)_handle) != 0;
     }
 
-    public bool matches(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer arg0, nint arg1)
+    public bool matches(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer arg0, global::Hosihikari.Bindings.Bedrock.Interop.CraftingContext arg1)
     {
-        return NativeMethods.TablePtr->hs_method_c78251df((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_c78251df((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

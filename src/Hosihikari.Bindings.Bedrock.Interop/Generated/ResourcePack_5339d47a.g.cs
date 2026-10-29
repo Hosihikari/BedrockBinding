@@ -169,9 +169,9 @@ public sealed unsafe partial class ResourcePack : global::System.IDisposable
         }
     }
 
-    public nint getSubpackInfoStack()
+    public global::Hosihikari.Bindings.Bedrock.Interop.SubpackInfoCollection getSubpackInfoStack()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_bbae34e8((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SubpackInfoCollection((nint)NativeMethods.TablePtr->hs_method_bbae34e8((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.SemVersion getVersion()

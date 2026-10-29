@@ -50,10 +50,9 @@ public sealed unsafe partial class ComponentItemData_v1_19_83
         get => new global::Hosihikari.Bindings.Bedrock.Interop.SemVersion((nint)NativeMethods.TablePtr->hs_get_86d91c6e(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint SUPPORTED_VERSIONS_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Puv.VersionRange SUPPORTED_VERSIONS
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_6e401b6d();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Puv.VersionRange((nint)NativeMethods.TablePtr->hs_get_6e401b6d(), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

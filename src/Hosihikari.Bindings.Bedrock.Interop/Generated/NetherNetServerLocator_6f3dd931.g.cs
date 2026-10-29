@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class NetherNetServerLocator
+public sealed unsafe partial class NetherNetServerLocator : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,9 +37,16 @@ public sealed unsafe partial class NetherNetServerLocator
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
-    public static NetherNetServerLocator Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
+    public static NetherNetServerLocator Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_7688f390();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NetherNetServerLocator((nint)handle);
+    }
 
     public void clearServerList()
     {
@@ -74,5 +81,18 @@ public sealed unsafe partial class NetherNetServerLocator
     public void update()
     {
         NativeMethods.TablePtr->hs_method_830e7b31((void*)_handle);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_6f3dd931((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

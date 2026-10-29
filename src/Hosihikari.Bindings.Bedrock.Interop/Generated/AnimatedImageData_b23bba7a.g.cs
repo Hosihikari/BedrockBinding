@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class AnimatedImageData
+public sealed unsafe partial class AnimatedImageData : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,7 +37,70 @@ public sealed partial class AnimatedImageData
         return __hs_handle;
     }
 
+    public static AnimatedImageData Create(global::Hosihikari.Bindings.Bedrock.Interop.AnimatedImageData arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_f9ee3dad((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AnimatedImageData((nint)handle);
+    }
+
+    public static AnimatedImageData Create(int arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.mce.Image arg2, float arg3)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_b2bdfe1f(arg0, arg1, (void*)arg2.Handle, arg3);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AnimatedImageData((nint)handle);
+    }
+
+    public int mAnimationExpression
+    {
+        get => NativeMethods.TablePtr->hs_get_18b5436b((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_18b5436b((void*)_handle, value);
+    }
+
+    public float mFrames
+    {
+        get => NativeMethods.TablePtr->hs_get_48475b47((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_48475b47((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mImage_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_04338c39((void*)_handle);
+    }
+
+    public int mType
+    {
+        get => NativeMethods.TablePtr->hs_get_e33902f7((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_e33902f7((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static AnimatedImageData Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_b23bba7a((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

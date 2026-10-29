@@ -37,9 +37,53 @@ public sealed unsafe partial class ExperimentStorage : global::System.IDisposabl
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static ExperimentStorage Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ExperimentStorage Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static ExperimentStorage Create(global::Hosihikari.Bindings.Bedrock.Interop.ExperimentStorage arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_daebbc78((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ExperimentStorage((nint)handle);
+    }
+
+    public bool isAnyToggleEnabled()
+    {
+        return NativeMethods.TablePtr->hs_method_b272ac05((void*)_handle) != 0;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDeprecatedData_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b94cce7e((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mExperimentData_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_79ea59f5((void*)_handle);
+    }
+
+    public bool mExperimentsEverToggled
+    {
+        get => NativeMethods.TablePtr->hs_get_949ebfad((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_949ebfad((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public bool wereAnyExperimentsEverToggled()
+    {
+        return NativeMethods.TablePtr->hs_method_e25faa20((void*)_handle) != 0;
+    }
+
 
 
     public void Dispose()

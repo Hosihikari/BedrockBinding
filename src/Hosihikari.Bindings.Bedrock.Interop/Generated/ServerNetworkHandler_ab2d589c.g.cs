@@ -293,9 +293,10 @@ public sealed unsafe partial class ServerNetworkHandler : global::System.IDispos
         return new global::Hosihikari.Bindings.Bedrock.Interop.ConnectionRequest((nint)NativeMethods.TablePtr->hs_method_bab4ee84((void*)_handle, (void*)arg0.Handle), false);
     }
 
-    public nint getGameSpecificNetEventCallback()
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameSpecificNetEventCallback? getGameSpecificNetEventCallback()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_6971cca8((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_6971cca8((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.GameSpecificNetEventCallback((nint)__hs_handle, false) : null;
     }
 
     public string getGlobalMultiplayerCorrelationId_1e5291a1()

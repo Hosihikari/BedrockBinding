@@ -37,6 +37,22 @@ public sealed unsafe partial class Features : global::System.IDisposable
         return __hs_handle;
     }
 
+    public bool allowNumericKeys_
+    {
+        get => NativeMethods.TablePtr->hs_get_a68271bd((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_a68271bd((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint strictMode() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public bool strictRoot_
+    {
+        get => NativeMethods.TablePtr->hs_get_be1c1601((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_be1c1601((void*)_handle, value);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

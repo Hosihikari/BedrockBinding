@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class ItemTag
+public sealed unsafe partial class ItemTag
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,7 +37,28 @@ public sealed partial class ItemTag
         return __hs_handle;
     }
 
+    public ulong hash
+    {
+        get => NativeMethods.TablePtr->hs_get_2300532c((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_2300532c((void*)_handle, value);
+    }
+
+    public nint lastMatch
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_c181af29((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint str_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_4a3f1a5a((void*)_handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy() =>
+    public void Destroy_32f2a99d() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    [global::System.Obsolete("BindingShim does not expose this member.", false)]
+    public void Destroy_c14063fc() =>
+        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
 }

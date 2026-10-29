@@ -45,22 +45,22 @@ public sealed unsafe partial class VibrationListener
     public static VibrationListener Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'GameEvents::PositionSource' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static VibrationListener Create(nint arg0, nint arg1, uint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'GameEvents::PositionSource' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint getDeliveryMode() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public nint getLatestReceivedVibration()
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameEvent getLatestReceivedVibration()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_c7d43ec1((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.GameEvent((nint)NativeMethods.TablePtr->hs_method_c7d43ec1((void*)_handle), false);
     }
 
-    public nint getPositionSource()
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameEvents.PositionSource getPositionSource()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_78ca076c((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.GameEvents.PositionSource((nint)NativeMethods.TablePtr->hs_method_78ca076c((void*)_handle), false);
     }
 
     public uint getRange()
@@ -68,9 +68,9 @@ public sealed unsafe partial class VibrationListener
         return NativeMethods.TablePtr->hs_method_831226b3((void*)_handle);
     }
 
-    public void handleGameEvent(nint arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg2)
+    public void handleGameEvent(global::Hosihikari.Bindings.Bedrock.Interop.GameEvent arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg2)
     {
-        NativeMethods.TablePtr->hs_method_1ce0adba((void*)_handle, (void*)arg0, (void*)arg1, (void*)arg2.Handle);
+        NativeMethods.TablePtr->hs_method_1ce0adba((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2.Handle);
     }
 
     public void load(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg1)

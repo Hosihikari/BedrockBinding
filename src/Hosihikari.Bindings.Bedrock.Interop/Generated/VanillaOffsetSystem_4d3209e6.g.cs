@@ -70,9 +70,9 @@ public sealed unsafe partial class VanillaOffsetSystem
         return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_d0fae9cb((void*)arg0.Handle, arg1));
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getCameraPosition(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, nint arg1, nint arg2, float arg3)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getCameraPosition(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.PassengerRenderingRidingOffsetComponent? arg1, global::Hosihikari.Bindings.Bedrock.Interop.VanillaOffsetComponent? arg2, float arg3)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_a61b000d((void*)arg0.Handle, (void*)arg1, (void*)arg2, arg3));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_a61b000d((void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), (void*)(arg2?.Handle ?? 0), arg3));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

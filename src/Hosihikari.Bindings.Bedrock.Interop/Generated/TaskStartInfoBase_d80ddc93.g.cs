@@ -37,6 +37,60 @@ public sealed unsafe partial class TaskStartInfoBase : global::System.IDisposabl
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public static nint NoAffinity_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_18ce0e96();
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static TaskStartInfoBase Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static TaskStartInfoBase Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint affinity_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_dd50e26a((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint name_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_72f6bb9e((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public int options
+    {
+        get => NativeMethods.TablePtr->hs_get_ff5adc75((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_ff5adc75((void*)_handle, value);
+    }
+
+    public uint priority
+    {
+        get => NativeMethods.TablePtr->hs_get_cfb55d04((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_cfb55d04((void*)_handle, value);
+    }
+
+    public int priorityBackDown
+    {
+        get => NativeMethods.TablePtr->hs_get_7af74142((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_7af74142((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint startAtTime_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_38d45c03((void*)_handle);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

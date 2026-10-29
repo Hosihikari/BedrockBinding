@@ -37,6 +37,35 @@ public sealed unsafe partial class SaveCommand
         return __hs_handle;
     }
 
+    public int mCommandSymbol
+    {
+        get => NativeMethods.TablePtr->hs_get_b5d29645((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_b5d29645((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFlags_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_fbbe478b((void*)_handle);
+    }
+
+    public byte mPermissionLevel
+    {
+        get => NativeMethods.TablePtr->hs_get_4cfff8b3((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_4cfff8b3((void*)_handle, value);
+    }
+
+    public nint mRegistry
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_5a005241((void*)_handle);
+    }
+
+    public int mVersion
+    {
+        get => NativeMethods.TablePtr->hs_get_6f365d91((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_6f365d91((void*)_handle, value);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static SaveCommand Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
@@ -56,10 +85,9 @@ public sealed unsafe partial class SaveCommand
         get => (nint)NativeMethods.TablePtr->hs_get_995f16ac();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mSaveAllMutex_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex mSaveAllMutex
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_f5741ce5();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex((nint)NativeMethods.TablePtr->hs_get_f5741ce5(), false);
     }
 
     public static int mState

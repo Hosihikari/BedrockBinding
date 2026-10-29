@@ -87,13 +87,15 @@ public sealed unsafe partial class FixedBiomeSource : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Biome((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'BiomeArea' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getBiomeArea(nint arg0, uint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'BiomeArea' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeArea getBiomeArea(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg0, uint arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeArea((nint)NativeMethods.TablePtr->hs_method_7f208f05((void*)_handle, (void*)arg0.Handle, arg1));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'BiomeArea' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getBiomeArea(nint arg0, uint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'BiomeArea' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeArea getBiomeArea(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox arg0, uint arg1, nint arg2)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeArea((nint)NativeMethods.TablePtr->hs_method_17fe7f5c((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2));
+    }
 
     public bool has(ulong arg0)
     {

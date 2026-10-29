@@ -59,9 +59,9 @@ public sealed unsafe partial class ComponentItemComponentData_v1_20_30
         get => new global::Hosihikari.Bindings.Bedrock.Interop.SemVersion((nint)NativeMethods.TablePtr->hs_get_2415579b(), false);
     }
 
-    public static void bindType(nint arg0)
+    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        NativeMethods.TablePtr->hs_method_39a78377((void*)arg0);
+        NativeMethods.TablePtr->hs_method_39a78377((void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

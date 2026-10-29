@@ -37,6 +37,23 @@ public sealed unsafe partial class GameRuleId : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static GameRuleId Create(int arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_c35a535f(arg0);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameRuleId((nint)handle);
+    }
+
+    public int value
+    {
+        get => NativeMethods.TablePtr->hs_get_9b75594f((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_9b75594f((void*)_handle, value);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

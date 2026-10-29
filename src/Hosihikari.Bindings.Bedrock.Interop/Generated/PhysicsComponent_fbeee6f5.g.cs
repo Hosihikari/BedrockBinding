@@ -54,9 +54,9 @@ public sealed unsafe partial class PhysicsComponent
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void setAffectedByGravity(global::Hosihikari.Bindings.Bedrock.Interop.ActorDataFlagComponent arg0, nint arg1, bool arg2)
+    public void setAffectedByGravity(global::Hosihikari.Bindings.Bedrock.Interop.ActorDataFlagComponent arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDataDirtyFlagsComponent arg1, bool arg2)
     {
-        NativeMethods.TablePtr->hs_method_c9566b8b((void*)_handle, (void*)arg0.Handle, (void*)arg1, arg2);
+        NativeMethods.TablePtr->hs_method_c9566b8b((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2);
     }
 
     public void setHasCollision(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, bool arg1)

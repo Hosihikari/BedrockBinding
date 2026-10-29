@@ -70,9 +70,9 @@ public sealed unsafe partial class Bee : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_1f3da7eb((void*)_handle);
     }
 
-    public void reloadHardcodedClient(int arg0, nint arg1)
+    public void reloadHardcodedClient(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_ede97776((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_ede97776((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
 

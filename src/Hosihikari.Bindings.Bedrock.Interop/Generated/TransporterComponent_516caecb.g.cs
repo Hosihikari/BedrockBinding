@@ -48,14 +48,14 @@ public sealed unsafe partial class TransporterComponent : global::System.IDispos
         return new TransporterComponent((nint)handle);
     }
 
-    public bool addSource(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph arg0, nint arg1, nint arg2, nint arg3)
+    public bool addSource(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph arg0, global::Hosihikari.Bindings.Bedrock.Interop.CircuitTrackingInfo arg1, nint arg2, nint arg3)
     {
-        return NativeMethods.TablePtr->hs_method_9a5c5ebf((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2, (void*)arg3) != 0;
+        return NativeMethods.TablePtr->hs_method_9a5c5ebf((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, (void*)arg3) != 0;
     }
 
-    public bool allowConnection(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph arg0, nint arg1, nint arg2)
+    public bool allowConnection(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph arg0, global::Hosihikari.Bindings.Bedrock.Interop.CircuitTrackingInfo arg1, nint arg2)
     {
-        return NativeMethods.TablePtr->hs_method_d258de7d((void*)_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2) != 0;
+        return NativeMethods.TablePtr->hs_method_d258de7d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2) != 0;
     }
 
     public void cacheValues(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSystem arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)

@@ -126,9 +126,9 @@ public sealed unsafe partial class ActorEventListener
         return NativeMethods.TablePtr->hs_method_c0ef74b8((void*)_handle, (void*)arg0.Handle);
     }
 
-    public int onEvent(nint arg0)
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ActorNotificationEvent arg0)
     {
-        return NativeMethods.TablePtr->hs_method_97ec9b54((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_97ec9b54((void*)_handle, (void*)arg0.Handle);
     }
 
     public int onPlayerAIStepBegin(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0)

@@ -37,6 +37,64 @@ public sealed unsafe partial class PacksInfoData : global::System.IDisposable
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static PacksInfoData Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static PacksInfoData Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public ulong getBehaviorPackSize()
+    {
+        return NativeMethods.TablePtr->hs_method_0402c2ac((void*)_handle);
+    }
+
+    public ulong getResourcePackSize()
+    {
+        return NativeMethods.TablePtr->hs_method_c4b28b8c((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mBehaviorPacks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e354afe9((void*)_handle);
+    }
+
+    public bool mForceServerPacksEnabled
+    {
+        get => NativeMethods.TablePtr->hs_get_6b9d1d42((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_6b9d1d42((void*)_handle, value);
+    }
+
+    public bool mHasExceptions
+    {
+        get => NativeMethods.TablePtr->hs_get_cbe04713((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_cbe04713((void*)_handle, value);
+    }
+
+    public bool mHasScripts
+    {
+        get => NativeMethods.TablePtr->hs_get_99b13d23((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_99b13d23((void*)_handle, value);
+    }
+
+    public bool mResourcePackRequired
+    {
+        get => NativeMethods.TablePtr->hs_get_9fe9ee22((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_9fe9ee22((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mResourcePacks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_ad6c1f43((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
 
     public void Dispose()
     {

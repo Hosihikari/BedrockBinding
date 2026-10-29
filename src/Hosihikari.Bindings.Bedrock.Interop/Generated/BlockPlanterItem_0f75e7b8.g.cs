@@ -49,7 +49,7 @@ public sealed unsafe partial class BlockPlanterItem : global::System.IDisposable
     public static BlockPlanterItem Create(nint arg0, int arg1, nint arg2, nint arg3, bool arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static BlockPlanterItem Create(string arg0, int arg1, nint arg2, global::Hosihikari.Bindings.Bedrock.Interop.Block arg3, bool arg4)
+    public static BlockPlanterItem Create(string arg0, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg2, global::Hosihikari.Bindings.Bedrock.Interop.Block arg3, bool arg4)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -64,7 +64,7 @@ public sealed unsafe partial class BlockPlanterItem : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->hs_create_b0978587(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, (void*)arg2, (void*)arg3.Handle, arg4);
+            var handle = NativeMethods.TablePtr->hs_create_b0978587(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, (void*)arg2.Handle, (void*)arg3.Handle, arg4);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

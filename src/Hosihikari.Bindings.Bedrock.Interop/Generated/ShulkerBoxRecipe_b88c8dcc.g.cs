@@ -54,9 +54,9 @@ public sealed unsafe partial class ShulkerBoxRecipe : global::System.IDisposable
     public static ShulkerBoxRecipe Create_ac2600ce(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public nint assemble(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer arg0, nint arg1)
+    public nint assemble(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer arg0, global::Hosihikari.Bindings.Bedrock.Interop.CraftingContext arg1)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_2a6ce1c5((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        return (nint)NativeMethods.TablePtr->hs_method_2a6ce1c5((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public bool itemsMatch(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor arg1)

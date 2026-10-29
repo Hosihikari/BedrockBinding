@@ -79,14 +79,14 @@ public sealed unsafe partial class AABB : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: anonymous fields are not projected.", false)]
-    public nint __d1beb62a
+    public nint __bf43984a
     {
         get => throw new global::System.NotSupportedException("BindingShim cannot project this member: anonymous fields are not projected.");
         set => throw new global::System.NotSupportedException("BindingShim cannot project this member: anonymous fields are not projected.");
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: anonymous fields are not projected.", false)]
-    public nint __0a40cf43
+    public nint __d612732b
     {
         get => throw new global::System.NotSupportedException("BindingShim cannot project this member: anonymous fields are not projected.");
         set => throw new global::System.NotSupportedException("BindingShim cannot project this member: anonymous fields are not projected.");
@@ -161,9 +161,9 @@ public sealed unsafe partial class AABB : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_b43db7d1((void*)_handle, (void*)arg0.Handle));
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.AABB cloneAndTransformByMatrix(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.AABB cloneAndTransformByMatrix(global::Hosihikari.Bindings.Bedrock.Interop.Matrix arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_e2822bdc((void*)_handle, (void*)arg0));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->hs_method_e2822bdc((void*)_handle, (void*)arg0.Handle));
     }
 
     public bool contains(global::Hosihikari.Bindings.Bedrock.Interop.AABB arg0)

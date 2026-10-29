@@ -56,9 +56,9 @@ public sealed unsafe partial class GameTestLevelListener : global::System.IDispo
         return new GameTestLevelListener((nint)handle);
     }
 
-    public int onEvent(nint arg0)
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.LevelNotificationEvent arg0)
     {
-        return NativeMethods.TablePtr->hs_method_5c955257((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_5c955257((void*)_handle, (void*)arg0.Handle);
     }
 
     public void onLevelTickEnd()

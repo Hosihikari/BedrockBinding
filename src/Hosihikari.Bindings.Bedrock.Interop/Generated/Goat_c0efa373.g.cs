@@ -98,9 +98,9 @@ public sealed unsafe partial class Goat : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_3872917c((void*)_handle, arg0, arg1);
     }
 
-    public void initializeComponents(int arg0, nint arg1)
+    public void initializeComponents(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_6d9364ec((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_6d9364ec((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public bool isScreaming()

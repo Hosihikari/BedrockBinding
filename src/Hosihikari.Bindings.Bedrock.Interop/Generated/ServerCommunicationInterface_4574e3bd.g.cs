@@ -49,9 +49,9 @@ public sealed unsafe partial class ServerCommunicationInterface
     public void communicate_b3cfdceb(nint method, nint @params) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.ServerCommunicationInterface? create(nint arg0)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ServerCommunicationInterface? create(global::Hosihikari.Bindings.Bedrock.Interop.NetworkAddress arg0)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_c6da2e60((void*)arg0);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_c6da2e60((void*)arg0.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ServerCommunicationInterface((nint)__hs_handle) : null;
     }
 
@@ -82,9 +82,9 @@ public sealed unsafe partial class ServerCommunicationInterface
         }
     }
 
-    public void sendChunkLoadTelemtryData(nint arg0)
+    public void sendChunkLoadTelemtryData(global::Hosihikari.Bindings.Bedrock.Interop.ChunkLoadTelemetryData arg0)
     {
-        NativeMethods.TablePtr->hs_method_efa5ab32((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_efa5ab32((void*)_handle, (void*)arg0.Handle);
     }
 
     public void sendServerStarted()

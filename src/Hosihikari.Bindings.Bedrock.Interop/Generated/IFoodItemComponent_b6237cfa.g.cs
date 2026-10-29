@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class IFoodItemComponent
+public sealed unsafe partial class IFoodItemComponent
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -36,4 +36,43 @@ public sealed partial class IFoodItemComponent
         _handle = 0;
         return __hs_handle;
     }
+
+    public static string CAN_ALWAYS_EAT
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_e56ee8f8();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static IFoodItemComponent Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static IFoodItemComponent Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static string NUTRITION
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_34c80357();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string SATURATION_MODIFIER
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->hs_get_e544e8fd();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 }

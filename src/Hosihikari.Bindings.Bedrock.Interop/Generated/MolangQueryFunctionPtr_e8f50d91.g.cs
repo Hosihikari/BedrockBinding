@@ -37,6 +37,24 @@ public sealed unsafe partial class MolangQueryFunctionPtr : global::System.IDisp
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_368c7809((void*)_handle);
+    }
+
+    public nint mQueryFunctionPtr
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_49144bde((void*)_handle);
+    }
+
+    public ulong mReturnType
+    {
+        get => NativeMethods.TablePtr->hs_get_b3b18ab1((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_b3b18ab1((void*)_handle, value);
+    }
+
+
 
     public void Dispose()
     {

@@ -60,9 +60,9 @@ public sealed unsafe partial class MovementAbilitiesComponent
         return NativeMethods.TablePtr->hs_method_6e42eee4(arg0);
     }
 
-    public void inheritFrom(nint arg0)
+    public void inheritFrom(global::Hosihikari.Bindings.Bedrock.Interop.AbilitiesComponent arg0)
     {
-        NativeMethods.TablePtr->hs_method_f548da17((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_f548da17((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

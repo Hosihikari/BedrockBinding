@@ -292,9 +292,9 @@ public sealed unsafe partial class PropertiesSettings
         return NativeMethods.TablePtr->hs_method_82b7e10f((void*)_handle);
     }
 
-    public nint getPlayerMovementSettings()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PlayerMovementSettings getPlayerMovementSettings()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_029930b1((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerMovementSettings((nint)NativeMethods.TablePtr->hs_method_029930b1((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'NetworkAddress' requires --link-carrier or --virtual-dispatch.", false)]

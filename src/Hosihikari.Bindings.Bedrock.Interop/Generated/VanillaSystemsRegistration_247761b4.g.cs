@@ -36,4 +36,12 @@ public sealed partial class VanillaSystemsRegistration
         _handle = 0;
         return __hs_handle;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'VanillaSystemsRegistration::RegistrationOptions' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint getDefault(nint arg0, bool arg1, bool arg2, nint arg3, nint arg4) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'VanillaSystemsRegistration::RegistrationOptions' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _RegistrationOptions() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
 }

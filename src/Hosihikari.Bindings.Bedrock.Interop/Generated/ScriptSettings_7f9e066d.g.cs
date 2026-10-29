@@ -37,6 +37,39 @@ public sealed unsafe partial class ScriptSettings : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ScriptSettings Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_80a53d11();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptSettings((nint)handle);
+    }
+
+    public static ScriptSettings Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptSettings arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_c645c9b9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptSettings((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint padding_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_81df1050((void*)_handle);
+    }
+
+
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static ScriptSettings Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");

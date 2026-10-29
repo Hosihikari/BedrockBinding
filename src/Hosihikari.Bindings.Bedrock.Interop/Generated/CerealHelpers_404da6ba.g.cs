@@ -45,10 +45,23 @@ public sealed unsafe partial class CerealHelpers
     public nint Member(nint arg0, nint arg1, bool arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
 
+    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
+    {
+        NativeMethods.TablePtr->hs_method_44b32338((void*)arg0.Handle);
+    }
+
     public bool check(nint arg0)
     {
         return NativeMethods.TablePtr->hs_method_66236932((void*)_handle, (void*)arg0) != 0;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _IdentifierString() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _LocIdString() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _Member() =>

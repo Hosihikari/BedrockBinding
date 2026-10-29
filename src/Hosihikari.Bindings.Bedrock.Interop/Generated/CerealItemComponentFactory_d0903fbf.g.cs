@@ -49,7 +49,7 @@ public sealed unsafe partial class CerealItemComponentFactory
     public static nint constructItemComponent(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static global::Hosihikari.Bindings.Abi.SharedHandle? constructItemComponent(string arg0, nint arg1)
+    public static global::Hosihikari.Bindings.Abi.SharedHandle? constructItemComponent(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -64,7 +64,7 @@ public sealed unsafe partial class CerealItemComponentFactory
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_shared = NativeMethods.TablePtr->hs_method_e912cc33(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1);
+            var __hs_shared = NativeMethods.TablePtr->hs_method_e912cc33(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle);
             return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
         }
     }
@@ -85,16 +85,16 @@ public sealed unsafe partial class CerealItemComponentFactory
     public static nint getReleasedMinFormatVersionForAnyComponent(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'SemVersion' is not supported.");
 
-    public static bool isComponentBasedItemSchema(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1, nint arg2)
+    public static bool isComponentBasedItemSchema(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg2)
     {
-        return NativeMethods.TablePtr->hs_method_6e740b1f((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2) != 0;
+        return NativeMethods.TablePtr->hs_method_6e740b1f((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static bool validateCerealComponent(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, bool arg2, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg3, nint arg4)
+    public static bool validateCerealComponent(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1, bool arg2, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg3, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg4)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -109,7 +109,7 @@ public sealed unsafe partial class CerealItemComponentFactory
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_eb459a25(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, arg2, (void*)arg3.Handle, (void*)arg4) != 0;
+            return NativeMethods.TablePtr->hs_method_eb459a25(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, arg2, (void*)arg3.Handle, (void*)arg4.Handle) != 0;
         }
     }
 

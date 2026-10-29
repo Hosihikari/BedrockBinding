@@ -54,9 +54,9 @@ public sealed unsafe partial class KeyFrameTransform
         NativeMethods.TablePtr->hs_method_966c63f2((void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, (void*)arg2.Handle, (void*)(arg3?.Handle ?? 0));
     }
 
-    public nint getLerpMode_c30bc13f()
+    public global::Hosihikari.Bindings.Bedrock.Interop.KeyFrameLerpMode getLerpMode_c30bc13f()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_c30bc13f((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.KeyFrameLerpMode((nint)NativeMethods.TablePtr->hs_method_c30bc13f((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

@@ -57,7 +57,7 @@ public sealed unsafe partial class ActorSkeletalAnimation
     public nint addActorEvent(float time, nint @event, nint commandVersion, nint molangVersion) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public nint addActorEvent(float arg0, string arg1, int arg2, int arg3)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationEvent addActorEvent(float arg0, string arg1, int arg2, int arg3)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
         scoped global::System.Span<byte> __hs_stringBytes1;
@@ -72,7 +72,7 @@ public sealed unsafe partial class ActorSkeletalAnimation
         global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_4b9b6aba((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3);
+            return new global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationEvent((nint)NativeMethods.TablePtr->hs_method_4b9b6aba((void*)_handle, arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, arg2, arg3), false);
         }
     }
 
@@ -99,14 +99,14 @@ public sealed unsafe partial class ActorSkeletalAnimation
         }
     }
 
-    public nint addParticleEffectEvent(float arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorParticleEffectEvent addParticleEffectEvent(float arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d8916e5e((void*)_handle, arg0);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorParticleEffectEvent((nint)NativeMethods.TablePtr->hs_method_d8916e5e((void*)_handle, arg0), false);
     }
 
-    public nint addSoundEffectEvent(float arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorSoundEffectEvent addSoundEffectEvent(float arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_da7849aa((void*)_handle, arg0);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorSoundEffectEvent((nint)NativeMethods.TablePtr->hs_method_da7849aa((void*)_handle, arg0), false);
     }
 
     public void calculateAnimationLength()

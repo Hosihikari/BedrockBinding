@@ -37,6 +37,37 @@ public sealed unsafe partial class EntityNetId : global::System.IDisposable
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static EntityNetId Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static EntityNetId Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.EntityNetId _serverGetEntityNetId(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.EntityNetId((nint)NativeMethods.TablePtr->hs_method_c499e25a((void*)arg0.Handle));
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<EntityNetId,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint deserialize_a0cf05d3(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<EntityNetId,std::error_code>' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public static nint deserialize_4217ca69(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    public int netId
+    {
+        get => NativeMethods.TablePtr->hs_get_789d6538((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_789d6538((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void Dispose()
     {
         if (_handle != 0)

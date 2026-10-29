@@ -70,9 +70,9 @@ public sealed unsafe partial class AbstractArrow : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_f37ce775((void*)_handle);
     }
 
-    public void initializeComponents(int arg0, nint arg1)
+    public void initializeComponents(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_8c50db3d((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_8c50db3d((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public void lerpMotion(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)
@@ -89,9 +89,9 @@ public sealed unsafe partial class AbstractArrow : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_a7cf9c89((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void reloadHardcoded(int arg0, nint arg1)
+    public void reloadHardcoded(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_2fbb76c5((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_2fbb76c5((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public void setFavoredSlot(int arg0)

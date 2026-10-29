@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class NetEventCallback
+public sealed unsafe partial class NetEventCallback : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -43,9 +43,10 @@ public sealed unsafe partial class NetEventCallback
         get => (nint)NativeMethods.TablePtr->hs_get_13fccebc((void*)_handle);
     }
 
-    public nint getGameSpecificNetEventCallback()
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameSpecificNetEventCallback? getGameSpecificNetEventCallback()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_3ab6336e((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_3ab6336e((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.GameSpecificNetEventCallback((nint)__hs_handle, false) : null;
     }
 
     public bool getIsConnectedToApplicationLayer()
@@ -1196,11 +1197,18 @@ public sealed unsafe partial class NetEventCallback
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
-    public void Destroy_c4e5c096() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public void Destroy_7bed8a2f() =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_0dbc7794((void*)_handle);
+            }
+
+            _handle = 0;
+        }
+    }
 }

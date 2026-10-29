@@ -45,9 +45,9 @@ public sealed unsafe partial class SneezeGoal
     public static SneezeGoal Create_c9072ffd(nint mob, float cooldownTime, float probability, float dropItemChance, nint lootTable, nint sneezeSound, nint preSneezeSound, float prepareTime, nint reactMobFilters, float reactWithin) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'MobDescriptor' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public static SneezeGoal Create_d266763e(nint arg0, float arg1, float arg2, float arg3, nint arg4, nint arg5, nint arg6, float arg7, nint arg8, float arg9) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'MobDescriptor' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static SneezeGoal Create(nint arg0) =>

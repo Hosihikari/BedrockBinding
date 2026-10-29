@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class MolangActorArrayPtr
+public sealed unsafe partial class MolangActorArrayPtr : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,5 +35,29 @@ public sealed partial class MolangActorArrayPtr
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
+    public static MolangActorArrayPtr Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mActors_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_bf6bdb54((void*)_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_f53b4373((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

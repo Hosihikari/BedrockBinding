@@ -37,6 +37,57 @@ public sealed unsafe partial class CommandOriginData : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static CommandOriginData Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_945d96a5();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandOriginData((nint)handle);
+    }
+
+    public static CommandOriginData Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandOriginData arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_b1c62dec((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandOriginData((nint)handle);
+    }
+
+    public long mPlayerId
+    {
+        get => NativeMethods.TablePtr->hs_get_dde356e2((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_dde356e2((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRequestId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_1cc7d24f((void*)_handle);
+    }
+
+    public sbyte mType
+    {
+        get => NativeMethods.TablePtr->hs_get_96518214((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_96518214((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mUuid_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_10884230((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint rhs) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+
     [global::System.Obsolete("BindingShim does not expose this member.", false)]
     public static CommandOriginData Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim does not expose this member.");

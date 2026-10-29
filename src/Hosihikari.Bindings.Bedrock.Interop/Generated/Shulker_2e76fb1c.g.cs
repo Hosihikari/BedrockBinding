@@ -136,23 +136,23 @@ public sealed unsafe partial class Shulker : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_21438f51((void*)_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'SynchedActorDataWriter' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
     public static void postSetPosSetShulkerAttachPosAndPeekAmount(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'SynchedActorDataWriter' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg1)
     {
         NativeMethods.TablePtr->hs_method_b1f9fc06((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public void reloadHardcoded(int arg0, nint arg1)
+    public void reloadHardcoded(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_da70c0ce((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_da70c0ce((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'SynchedActorDataWriter' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
     public static void setShulkerAttachPos(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'SynchedActorDataWriter' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public bool shouldRender()
     {

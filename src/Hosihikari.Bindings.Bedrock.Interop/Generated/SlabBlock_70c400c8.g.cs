@@ -93,9 +93,10 @@ public sealed unsafe partial class SlabBlock : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_12a90178((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
-    public nint getMobToSpawn(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnerData? getMobToSpawn(global::Hosihikari.Bindings.Bedrock.Interop.SpawnConditions arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d164840d((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_d164840d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnerData((nint)__hs_handle, false) : null;
     }
 
     public ulong getRedstoneProperty(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)

@@ -72,16 +72,14 @@ public sealed unsafe partial class Player : global::System.IDisposable
         get => NativeMethods.TablePtr->hs_get_bcc38e03();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint EXHAUSTION_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute EXHAUSTION
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_9f475109();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_9f475109(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint EXPERIENCE_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute EXPERIENCE
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_28c51fda();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_28c51fda(), false);
     }
 
     public static int GLIDE_STOP_DELAY
@@ -89,16 +87,14 @@ public sealed unsafe partial class Player : global::System.IDisposable
         get => NativeMethods.TablePtr->hs_get_092b7ce1();
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint HUNGER_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute HUNGER
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_436a1e56();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_436a1e56(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint LEVEL_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute LEVEL
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_c520bf4c();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_c520bf4c(), false);
     }
 
     public static float PLAYER_ALIVE_HEIGHT
@@ -152,10 +148,9 @@ public sealed unsafe partial class Player : global::System.IDisposable
     public static Player Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint SATURATION_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute SATURATION
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_03553d0f();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_03553d0f(), false);
     }
 
     public static uint SPAWN_CHUNK_LARGE_JUMP
@@ -332,9 +327,9 @@ public sealed unsafe partial class Player : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_2bd423ee((void*)_handle, (void*)arg0.Handle);
     }
 
-    public static bool checkNeedAutoJump(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.AABBShapeComponent arg1, nint arg2, float arg3, global::Hosihikari.Bindings.Bedrock.Interop.StateVectorComponent arg4, global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeInterface? arg5, float arg6, float arg7)
+    public static bool checkNeedAutoJump(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.AABBShapeComponent arg1, global::Hosihikari.Bindings.Bedrock.Interop.ActorRotationComponent arg2, float arg3, global::Hosihikari.Bindings.Bedrock.Interop.StateVectorComponent arg4, global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeInterface? arg5, float arg6, float arg7)
     {
-        return NativeMethods.TablePtr->hs_method_39d74354((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, arg3, (void*)arg4.Handle, (void*)(arg5?.Handle ?? 0), arg6, arg7, arg5 is not null) != 0;
+        return NativeMethods.TablePtr->hs_method_39d74354((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3, (void*)arg4.Handle, (void*)(arg5?.Handle ?? 0), arg6, arg7, arg5 is not null) != 0;
     }
 
     public bool checkNeedAutoJump(float arg0, float arg1)
@@ -482,7 +477,7 @@ public sealed unsafe partial class Player : global::System.IDisposable
     public void displayTextObjectMessage(nint textObject, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void displayTextObjectWhisperMessage(nint arg0, string arg1, string arg2)
+    public void displayTextObjectWhisperMessage(global::Hosihikari.Bindings.Bedrock.Interop.ResolvedTextObject arg0, string arg1, string arg2)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
         scoped global::System.Span<byte> __hs_stringBytes1;
@@ -510,7 +505,7 @@ public sealed unsafe partial class Player : global::System.IDisposable
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                NativeMethods.TablePtr->hs_method_ff8f49b1((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                NativeMethods.TablePtr->hs_method_ff8f49b1((void*)_handle, (void*)arg0.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
             }
         }
     }
@@ -853,11 +848,7 @@ public sealed unsafe partial class Player : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getEnderChestContainer_6e321530() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getEnderChestContainer_f73f2d25() =>
+    public nint getEnderChestContainer() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ItemStack getEquippedTotem()
@@ -1005,9 +996,9 @@ public sealed unsafe partial class Player : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_bfbdacac((void*)_handle);
     }
 
-    public nint getMovementSettings()
+    public global::Hosihikari.Bindings.Bedrock.Interop.PlayerMovementSettings getMovementSettings()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_8a48678a((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerMovementSettings((nint)NativeMethods.TablePtr->hs_method_8a48678a((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -1186,11 +1177,7 @@ public sealed unsafe partial class Player : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getUserEntityIdentifier_8c183776() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint getUserEntityIdentifier_4b63d575() =>
+    public nint getUserEntityIdentifier() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     public uint getUserId()
@@ -1282,9 +1269,9 @@ public sealed unsafe partial class Player : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_4b8e5ebc((void*)_handle);
     }
 
-    public void initializeComponents(int arg0, nint arg1)
+    public void initializeComponents(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_8245fbff((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_8245fbff((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public bool interact(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1)
@@ -1586,9 +1573,9 @@ public sealed unsafe partial class Player : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_ea2e8c82((void*)_handle);
     }
 
-    public void reloadHardcoded(int arg0, nint arg1)
+    public void reloadHardcoded(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_92aa63df((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_92aa63df((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public void remove()
@@ -1663,9 +1650,9 @@ public sealed unsafe partial class Player : global::System.IDisposable
     public void sendMessage(nint msg) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void sendMotionPacketIfNeeded(nint arg0)
+    public void sendMotionPacketIfNeeded(global::Hosihikari.Bindings.Bedrock.Interop.PlayerMovementSettings arg0)
     {
-        NativeMethods.TablePtr->hs_method_a6274274((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_a6274274((void*)_handle, (void*)arg0.Handle);
     }
 
     public void sendNetworkPacket(global::Hosihikari.Bindings.Bedrock.Interop.Packet arg0)
@@ -1736,9 +1723,9 @@ public sealed unsafe partial class Player : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_316a8988((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void setCursorSelectedItemGroup(nint arg0)
+    public void setCursorSelectedItemGroup(global::Hosihikari.Bindings.Bedrock.Interop.ItemGroup arg0)
     {
-        NativeMethods.TablePtr->hs_method_7dc858e5((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_7dc858e5((void*)_handle, (void*)arg0.Handle);
     }
 
     public void setEnchantmentSeed(int arg0)

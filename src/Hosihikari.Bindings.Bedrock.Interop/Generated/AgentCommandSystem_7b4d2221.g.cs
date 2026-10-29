@@ -76,9 +76,9 @@ public sealed unsafe partial class AgentCommandSystem
         NativeMethods.TablePtr->hs_method_13dfcc36((void*)_handle, (void*)arg0.Handle);
     }
 
-    public static void tickAgentCooldown(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, nint arg1)
+    public static void tickAgentCooldown(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.AgentComponents.CommandCooldown arg1)
     {
-        NativeMethods.TablePtr->hs_method_358a277d((void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_358a277d((void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public static void tickLegacy(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.AgentCommandComponent arg1)

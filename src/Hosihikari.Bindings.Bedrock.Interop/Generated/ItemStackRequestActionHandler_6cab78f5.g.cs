@@ -49,9 +49,9 @@ public sealed unsafe partial class ItemStackRequestActionHandler
     public static ItemStackRequestActionHandler Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public void _addResponseSlotInfo(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1)
+    public void _addResponseSlotInfo(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestHandlerSlotInfo arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1)
     {
-        NativeMethods.TablePtr->hs_method_f99c166d((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->hs_method_f99c166d((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void _cacheLegacySlotIdAssignment(sbyte arg0, byte arg1, global::Hosihikari.Bindings.Bedrock.Interop.TypedClientNetId_ItemStackLegacyRequestIdTag_int_0_ arg2, global::Hosihikari.Bindings.Bedrock.Interop.TypedServerNetId_ItemStackNetIdTag_int_0_ arg3)

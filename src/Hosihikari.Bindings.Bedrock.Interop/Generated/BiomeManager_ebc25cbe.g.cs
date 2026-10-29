@@ -59,9 +59,9 @@ public sealed unsafe partial class BiomeManager
         return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry((nint)NativeMethods.TablePtr->hs_method_1e3f11a7((void*)_handle), false);
     }
 
-    public nint getSurfaceBuilderRegistry_158e5096()
+    public global::Hosihikari.Bindings.Bedrock.Interop.SurfaceBuilderRegistry getSurfaceBuilderRegistry_158e5096()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_158e5096((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SurfaceBuilderRegistry((nint)NativeMethods.TablePtr->hs_method_158e5096((void*)_handle), false);
     }
 
     public void initializeBiomeRegistryAndAutomaticFeatureRulesOnServer(global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg0, global::Hosihikari.Bindings.Bedrock.Interop.IWorldRegistriesProvider arg1, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg2, global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 arg3)

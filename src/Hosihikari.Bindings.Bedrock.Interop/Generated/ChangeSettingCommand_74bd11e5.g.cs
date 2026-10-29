@@ -62,4 +62,33 @@ public sealed unsafe partial class ChangeSettingCommand
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public int mCommandSymbol
+    {
+        get => NativeMethods.TablePtr->hs_get_2e060ce4((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_2e060ce4((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFlags_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_4f2015e4((void*)_handle);
+    }
+
+    public byte mPermissionLevel
+    {
+        get => NativeMethods.TablePtr->hs_get_97ed3c3f((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_97ed3c3f((void*)_handle, value);
+    }
+
+    public nint mRegistry
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_41ea9466((void*)_handle);
+    }
+
+    public int mVersion
+    {
+        get => NativeMethods.TablePtr->hs_get_cbc54f4d((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_cbc54f4d((void*)_handle, value);
+    }
 }

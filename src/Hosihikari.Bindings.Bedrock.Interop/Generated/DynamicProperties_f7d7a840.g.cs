@@ -59,16 +59,12 @@ public sealed unsafe partial class DynamicProperties
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint _getPropertyCollection_35618876(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public static nint _getPropertyVariant_caabb702(nint var) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static void bindType(nint arg0)
+    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        NativeMethods.TablePtr->hs_method_a38a2874((void*)arg0);
+        NativeMethods.TablePtr->hs_method_a38a2874((void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -94,9 +90,9 @@ public sealed unsafe partial class DynamicProperties
         }
     }
 
-    public void deserialize(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, nint arg1)
+    public void deserialize(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg1)
     {
-        NativeMethods.TablePtr->hs_method_d9095540((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_d9095540((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public ulong getCollectionCount()
@@ -240,9 +236,9 @@ public sealed unsafe partial class DynamicProperties
         }
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? serialize(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? serialize(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_1bf3c204((void*)_handle, (void*)arg0);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_1bf3c204((void*)_handle, (void*)arg0.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
     }
 
@@ -345,7 +341,7 @@ public sealed unsafe partial class DynamicProperties
     public static nint validateDynamicProperty(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static string validateDynamicProperty_V010(nint arg0, string arg1, nint arg2)
+    public static string validateDynamicProperty_V010(global::Hosihikari.Bindings.Bedrock.Interop.DynamicPropertyDefinition? arg0, string arg1, nint arg2)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(arg1);
         scoped global::System.Span<byte> __hs_stringBytes1;
@@ -360,7 +356,7 @@ public sealed unsafe partial class DynamicProperties
         global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            var __hs_view = NativeMethods.TablePtr->hs_method_7634fb91((void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2);
+            var __hs_view = NativeMethods.TablePtr->hs_method_7634fb91((void*)(arg0?.Handle ?? 0), __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)arg2);
             return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
         }
     }

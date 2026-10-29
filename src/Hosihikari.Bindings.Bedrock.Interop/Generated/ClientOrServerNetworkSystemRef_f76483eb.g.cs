@@ -37,6 +37,17 @@ public sealed unsafe partial class ClientOrServerNetworkSystemRef : global::Syst
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint @ref_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_caaf8871((void*)_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ServerNetworkSystem toServerNetworkSystem()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ServerNetworkSystem((nint)NativeMethods.TablePtr->hs_method_6543f5ba((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

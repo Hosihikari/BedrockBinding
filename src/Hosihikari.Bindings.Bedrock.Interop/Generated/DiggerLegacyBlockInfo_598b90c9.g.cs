@@ -45,9 +45,9 @@ public sealed unsafe partial class DiggerLegacyBlockInfo
     public static DiggerLegacyBlockInfo Create_ded36a3d(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    public static void bindType(nint arg0)
+    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        NativeMethods.TablePtr->hs_method_ea037e5e((void*)arg0);
+        NativeMethods.TablePtr->hs_method_ea037e5e((void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

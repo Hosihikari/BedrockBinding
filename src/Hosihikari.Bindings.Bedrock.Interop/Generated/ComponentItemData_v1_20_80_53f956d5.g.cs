@@ -49,15 +49,14 @@ public sealed unsafe partial class ComponentItemData_v1_20_80
     public static ComponentItemData_v1_20_80 Create_c63d12d1(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint SUPPORTED_VERSIONS_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Puv.VersionRange SUPPORTED_VERSIONS
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_a282dbde();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Puv.VersionRange((nint)NativeMethods.TablePtr->hs_get_a282dbde(), false);
     }
 
-    public static void bindType(nint arg0)
+    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        NativeMethods.TablePtr->hs_method_6d0ae2aa((void*)arg0);
+        NativeMethods.TablePtr->hs_method_6d0ae2aa((void*)arg0.Handle);
     }
 
     public static void moveDeprecatedData(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItemData_v1_20_60 arg0, global::Hosihikari.Bindings.Bedrock.Interop.ComponentItemData_v1_20_80 arg1)

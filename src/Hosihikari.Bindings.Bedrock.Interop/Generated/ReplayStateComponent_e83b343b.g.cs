@@ -45,9 +45,9 @@ public sealed unsafe partial class ReplayStateComponent
     public static ReplayStateComponent Create_76afcaaa(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static ReplayStateComponent Create_c15666a9(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class layout is unavailable.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the class layout is unavailable.", false)]
     public static ReplayStateComponent Create(nint arg0, nint arg1) =>

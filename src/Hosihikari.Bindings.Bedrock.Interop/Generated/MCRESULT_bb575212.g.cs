@@ -37,6 +37,42 @@ public sealed unsafe partial class MCRESULT : global::System.IDisposable
         return __hs_handle;
     }
 
+    public int getFullCode()
+    {
+        return NativeMethods.TablePtr->hs_method_a51b5b0d((void*)_handle);
+    }
+
+    public bool isSuccess()
+    {
+        return NativeMethods.TablePtr->hs_method_e3d1dce6((void*)_handle) != 0;
+    }
+
+    public sbyte mCategory
+    {
+        get => NativeMethods.TablePtr->hs_get_b4cbab0b((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_b4cbab0b((void*)_handle, value);
+    }
+
+    public ushort mCode
+    {
+        get => NativeMethods.TablePtr->hs_get_b7da2bad((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_b7da2bad((void*)_handle, value);
+    }
+
+    public bool mSuccess
+    {
+        get => NativeMethods.TablePtr->hs_get_165495a9((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_165495a9((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool operator_bool() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public bool operator_equal(nint other) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void Dispose()
     {
         if (_handle != 0)

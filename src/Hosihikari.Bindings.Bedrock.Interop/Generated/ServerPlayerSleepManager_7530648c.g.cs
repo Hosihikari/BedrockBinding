@@ -45,9 +45,9 @@ public sealed unsafe partial class ServerPlayerSleepManager : global::System.IDi
     public static ServerPlayerSleepManager Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'IPlayerSleepPercentageGetter' has no generated wrapper.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static ServerPlayerSleepManager Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'IPlayerSleepPercentageGetter' has no generated wrapper.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public bool enoughPlayersDeepSleeping()
     {

@@ -57,9 +57,9 @@ public sealed unsafe partial class PlayJumpSoundSystemImpl
     public void __unk_vfn_4() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static void doPlayJumpSoundSystem(global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg0, nint arg1, nint arg2, global::Hosihikari.Bindings.Bedrock.Interop.ActorDataFlagComponent arg3, global::Hosihikari.Bindings.Bedrock.Interop.StateVectorComponent arg4, global::Hosihikari.Bindings.Bedrock.Interop.AABBShapeComponent arg5, nint arg6, nint arg7, int arg8, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg9)
+    public static void doPlayJumpSoundSystem(global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifierComponent arg1, global::Hosihikari.Bindings.Bedrock.Interop.SoundEventPlayerComponent arg2, global::Hosihikari.Bindings.Bedrock.Interop.ActorDataFlagComponent arg3, global::Hosihikari.Bindings.Bedrock.Interop.StateVectorComponent arg4, global::Hosihikari.Bindings.Bedrock.Interop.AABBShapeComponent arg5, nint arg6, global::Hosihikari.Bindings.Bedrock.Interop.GetAttachPositionViews arg7, int arg8, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg9)
     {
-        NativeMethods.TablePtr->hs_method_72bc4322((void*)arg0.Handle, (void*)arg1, (void*)arg2, (void*)arg3.Handle, (void*)arg4.Handle, (void*)arg5.Handle, (void*)arg6, (void*)arg7, arg8, (void*)arg9.Handle);
+        NativeMethods.TablePtr->hs_method_72bc4322((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4.Handle, (void*)arg5.Handle, (void*)arg6, (void*)arg7.Handle, arg8, (void*)arg9.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

@@ -70,13 +70,14 @@ public sealed unsafe partial class TeleportCommand
     public static TeleportCommand Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'TeleportTarget' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'TeleportTarget' is not copy-constructible.", false)]
     public static void applyTarget(nint arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'TeleportTarget' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'TeleportTarget' is not copy-constructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TeleportTarget' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint computeTarget(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, int arg5) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TeleportTarget' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.TeleportTarget computeTarget(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3? arg2, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg3, global::Hosihikari.Bindings.Bedrock.Interop.RotationCommandUtils.RotationData? arg4, int arg5)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TeleportTarget((nint)NativeMethods.TablePtr->hs_method_3e2df0c7((void*)arg0.Handle, (void*)arg1.Handle, (void*)(arg2?.Handle ?? 0), (void*)arg3.Handle, (void*)(arg4?.Handle ?? 0), arg5, arg4 is not null));
+    }
 
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg0, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput arg1)
     {

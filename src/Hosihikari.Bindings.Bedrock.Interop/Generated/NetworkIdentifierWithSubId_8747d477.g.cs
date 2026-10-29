@@ -37,6 +37,18 @@ public sealed unsafe partial class NetworkIdentifierWithSubId : global::System.I
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mIdentifier_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_dfa4cb71((void*)_handle);
+    }
+
+    public byte mSubClientId
+    {
+        get => NativeMethods.TablePtr->hs_get_a2c61de4((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_a2c61de4((void*)_handle, value);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

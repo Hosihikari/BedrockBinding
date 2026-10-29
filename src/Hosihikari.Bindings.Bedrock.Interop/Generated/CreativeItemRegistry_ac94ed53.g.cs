@@ -101,10 +101,9 @@ public sealed unsafe partial class CreativeItemRegistry : global::System.IDispos
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CreativeItemEntry((nint)__hs_handle, false) : null;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint mCreativeListMutex_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex mCreativeListMutex
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_e6f7bca9();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Mutex((nint)NativeMethods.TablePtr->hs_get_e6f7bca9(), false);
     }
 
     // The native field type is not projected; this is the address of the field storage.

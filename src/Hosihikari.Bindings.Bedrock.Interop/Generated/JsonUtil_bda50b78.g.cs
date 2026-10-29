@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class JsonUtil
+public sealed unsafe partial class JsonUtil
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -40,6 +40,12 @@ public sealed partial class JsonUtil
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
     public nint JsonSchemaNodeBase() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    public string getSourceFilePathWithExtension()
+    {
+        var __hs_view = NativeMethods.TablePtr->hs_method_7faca0f3((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _JsonSchemaNodeBase() =>

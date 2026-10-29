@@ -37,6 +37,18 @@ public sealed unsafe partial class MaterialReducerEntryOutput : global::System.I
         return __hs_handle;
     }
 
+    public int itemCount
+    {
+        get => NativeMethods.TablePtr->hs_get_9418ac00((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_9418ac00((void*)_handle, value);
+    }
+
+    public int itemId
+    {
+        get => NativeMethods.TablePtr->hs_get_b8b917b9((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_b8b917b9((void*)_handle, value);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

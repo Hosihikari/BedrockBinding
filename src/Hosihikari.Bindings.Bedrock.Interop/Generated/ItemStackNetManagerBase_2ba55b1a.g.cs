@@ -81,9 +81,9 @@ public sealed unsafe partial class ItemStackNetManagerBase : global::System.IDis
         return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext((nint)NativeMethods.TablePtr->hs_method_67f5d62a((void*)_handle), false);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.SparseContainer? initOpenContainer(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, sbyte arg1, nint arg2)
+    public global::Hosihikari.Bindings.Bedrock.Interop.SparseContainer? initOpenContainer(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, sbyte arg1, global::Hosihikari.Bindings.Bedrock.Interop.ContainerWeakRef arg2)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_f008a2ce((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_f008a2ce((void*)_handle, (void*)arg0.Handle, arg1, (void*)arg2.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.SparseContainer((nint)__hs_handle, false) : null;
     }
 

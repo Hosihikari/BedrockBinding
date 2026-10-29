@@ -49,13 +49,17 @@ public sealed unsafe partial class CommandAreaFactory
     public static CommandAreaFactory Create_e53218c8(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CommandArea' is not a known bindable declaration.", false)]
-    public nint findArea(nint arg0, nint arg1, bool arg2, bool arg3, bool arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CommandArea' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.CommandArea? findArea(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, bool arg2, bool arg3, bool arg4)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_64b733e4((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CommandArea((nint)__hs_handle) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CommandArea' is not a known bindable declaration.", false)]
-    public nint findAreaWithBuffer(nint arg0, nint arg1, int arg2, bool arg3, bool arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CommandArea' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.CommandArea? findAreaWithBuffer(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, int arg2, bool arg3, bool arg4)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_f8f182c1((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CommandArea((nint)__hs_handle) : null;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint operator_assign(nint arg0) =>

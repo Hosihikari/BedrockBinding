@@ -74,9 +74,9 @@ public sealed unsafe partial class PackManifestFactory : global::System.IDisposa
     public static PackManifestFactory Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static PackManifestFactory Create(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.IPackTelemetry arg1)
+    public static PackManifestFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.PackCapabilityRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.IPackTelemetry arg1)
     {
-        var handle = NativeMethods.TablePtr->hs_create_1b9b2828((void*)arg0, (void*)arg1.Handle);
+        var handle = NativeMethods.TablePtr->hs_create_1b9b2828((void*)arg0.Handle, (void*)arg1.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -118,9 +118,9 @@ public sealed unsafe partial class PackManifestFactory : global::System.IDisposa
     public static nint contentKeyLookup(nint packIdentity) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.PackManifest? create(global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy arg0, global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg1, global::Hosihikari.Bindings.Bedrock.Interop.PackReport arg2, nint arg3)
+    public global::Hosihikari.Bindings.Bedrock.Interop.PackManifest? create(global::Hosihikari.Bindings.Bedrock.Interop.PackAccessStrategy arg0, global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg1, global::Hosihikari.Bindings.Bedrock.Interop.PackReport arg2, global::Hosihikari.Bindings.Bedrock.Interop.SubpackInfoCollection? arg3)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_46757b16((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_46757b16((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)(arg3?.Handle ?? 0));
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PackManifest((nint)__hs_handle) : null;
     }
 

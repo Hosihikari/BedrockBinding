@@ -111,14 +111,14 @@ public sealed unsafe partial class Guardian : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_63cc15fa((void*)_handle);
     }
 
-    public void reloadHardcoded(int arg0, nint arg1)
+    public void reloadHardcoded(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_61ae4467((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_61ae4467((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
-    public void reloadHardcodedClient(int arg0, nint arg1)
+    public void reloadHardcodedClient(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_787d1c4f((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_787d1c4f((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public void setAttackTime(int arg0)

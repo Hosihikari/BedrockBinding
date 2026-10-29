@@ -53,9 +53,9 @@ public sealed unsafe partial class DefinitionTrigger : global::System.IDisposabl
     public static DefinitionTrigger Create_9044aa7c(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static void bindType(nint arg0)
+    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        NativeMethods.TablePtr->hs_method_8d39c61a((void*)arg0);
+        NativeMethods.TablePtr->hs_method_8d39c61a((void*)arg0.Handle);
     }
 
     public bool canTrigger(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg0)

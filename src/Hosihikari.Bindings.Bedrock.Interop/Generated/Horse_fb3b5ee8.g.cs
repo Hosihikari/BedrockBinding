@@ -76,9 +76,9 @@ public sealed unsafe partial class Horse : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->hs_method_5db78d03((void*)_handle));
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getInterpolatedRidingOffset(nint arg0, nint arg1, float arg2)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getInterpolatedRidingOffset(global::Hosihikari.Bindings.Bedrock.Interop.RenderRotationComponent arg0, global::Hosihikari.Bindings.Bedrock.Interop.StandAnimationComponent arg1, float arg2)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_7accf6d4((void*)arg0, (void*)arg1, arg2));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_7accf6d4((void*)arg0.Handle, (void*)arg1.Handle, arg2));
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getInterpolatedRidingOffset(global::Hosihikari.Bindings.Bedrock.Interop.Vec2 arg0, float arg1, float arg2, float arg3)
@@ -91,9 +91,9 @@ public sealed unsafe partial class Horse : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_398c6968((void*)_handle, arg0, arg1));
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getNewPassengerPos(nint arg0, nint arg1, nint arg2, float arg3, float arg4)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 getNewPassengerPos(global::Hosihikari.Bindings.Bedrock.Interop.RenderPositionComponent arg0, global::Hosihikari.Bindings.Bedrock.Interop.RenderRotationComponent arg1, global::Hosihikari.Bindings.Bedrock.Interop.StandAnimationComponent arg2, float arg3, float arg4)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_dcc8d36a((void*)arg0, (void*)arg1, (void*)arg2, arg3, arg4));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->hs_method_dcc8d36a((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3, arg4));
     }
 
     public float getShadowRadius()
@@ -165,9 +165,9 @@ public sealed unsafe partial class Horse : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_e03a8714((void*)_handle, arg0);
     }
 
-    public static void setHorseFlag(global::Hosihikari.Bindings.Bedrock.Interop.ActorDataHorseFlagComponent arg0, nint arg1, int arg2, bool arg3)
+    public static void setHorseFlag(global::Hosihikari.Bindings.Bedrock.Interop.ActorDataHorseFlagComponent arg0, global::Hosihikari.Bindings.Bedrock.Interop.ActorDataDirtyFlagsComponent arg1, int arg2, bool arg3)
     {
-        NativeMethods.TablePtr->hs_method_5b3701ab((void*)arg0.Handle, (void*)arg1, arg2, arg3);
+        NativeMethods.TablePtr->hs_method_5b3701ab((void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3);
     }
 
     public void setStanding(bool arg0)

@@ -80,9 +80,9 @@ public sealed unsafe partial class EyeOfEnder : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_59b57179((void*)_handle);
     }
 
-    public void reloadHardcoded(int arg0, nint arg1)
+    public void reloadHardcoded(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_7ed17f12((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_7ed17f12((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public void signalTo(global::Hosihikari.Bindings.Bedrock.Interop.Player arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)

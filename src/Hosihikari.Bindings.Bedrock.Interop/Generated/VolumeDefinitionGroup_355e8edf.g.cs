@@ -57,9 +57,9 @@ public sealed unsafe partial class VolumeDefinitionGroup
     public bool _registerDefinition_92b377e9(nint arg0, nint engineVersion, nint filePath) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static void bindVolumeDefinitions(nint arg0)
+    public static void bindVolumeDefinitions(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        NativeMethods.TablePtr->hs_method_ac4d3925((void*)arg0);
+        NativeMethods.TablePtr->hs_method_ac4d3925((void*)arg0.Handle);
     }
 
     public void loadDefinitions(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager arg0, bool arg1)

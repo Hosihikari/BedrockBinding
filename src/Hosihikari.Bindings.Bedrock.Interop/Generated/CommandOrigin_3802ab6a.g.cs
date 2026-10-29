@@ -68,21 +68,29 @@ public sealed unsafe partial class CommandOrigin : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin((nint)__hs_handle) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CommandArea' is not a known bindable declaration.", false)]
-    public nint getAreaAt(nint arg0, nint arg1, int arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CommandArea' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.CommandArea? getAreaAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, int arg2, bool arg3)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_b91fea3f((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CommandArea((nint)__hs_handle) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CommandArea' is not a known bindable declaration.", false)]
-    public nint getAreaAt(nint arg0, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CommandArea' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.CommandArea? getAreaAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, int arg1)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_97bede52((void*)_handle, (void*)arg0.Handle, arg1);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CommandArea((nint)__hs_handle) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CommandArea' is not a known bindable declaration.", false)]
-    public nint getAreaAtWithBuffer(nint arg0, nint arg1, int arg2, bool arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CommandArea' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.CommandArea? getAreaAtWithBuffer(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, int arg2, bool arg3)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_8c26bb42((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CommandArea((nint)__hs_handle) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CommandArea' is not a known bindable declaration.", false)]
-    public nint getAreaAtWithBuffer(nint arg0, int arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CommandArea' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.CommandArea? getAreaAtWithBuffer(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, int arg1)
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_method_0a2705ec((void*)_handle, (void*)arg0.Handle, arg1);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CommandArea((nint)__hs_handle) : null;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
     public nint getBlockPosition() =>

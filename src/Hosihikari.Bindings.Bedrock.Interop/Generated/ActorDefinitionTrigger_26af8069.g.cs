@@ -49,9 +49,9 @@ public sealed unsafe partial class ActorDefinitionTrigger
     public static ActorDefinitionTrigger Create_ea675b42(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public bool canTrigger(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, nint arg1)
+    public bool canTrigger(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        return NativeMethods.TablePtr->hs_method_9b7446cc((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_9b7446cc((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

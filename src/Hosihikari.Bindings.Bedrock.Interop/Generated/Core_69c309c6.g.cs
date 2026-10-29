@@ -42,7 +42,19 @@ public sealed unsafe partial class Core
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint DiskAccessTracker() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint ExcludedPath(nint arg0, bool arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
     public nint FileImpl(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint FileOpenMode(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
@@ -86,6 +98,10 @@ public sealed unsafe partial class Core
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint ProfileThread(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
     public nint Result_aa9cf59b(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
 
@@ -114,7 +130,23 @@ public sealed unsafe partial class Core
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint UnzipInternals(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint UnzipSettings() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint ZipFileRestrictions() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
     public nint ZipProgress() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint ZipSettings() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
 
     public void __autoclassinit2(ulong arg0)
@@ -182,6 +214,11 @@ public sealed unsafe partial class Core
     public nint _write(nint arg0, ulong arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
+    public void addIgnoredPath(nint arg0)
+    {
+        NativeMethods.TablePtr->hs_method_620c9b22((void*)_handle, (void*)arg0);
+    }
+
     public void addReadOperation(bool arg0, ulong arg1)
     {
         NativeMethods.TablePtr->hs_method_74e167f2((void*)_handle, arg0, arg1);
@@ -197,6 +234,11 @@ public sealed unsafe partial class Core
         NativeMethods.TablePtr->hs_method_d7cf95ee((void*)_handle, arg0, arg1);
     }
 
+    public bool allowFile(nint arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_4f64d0ee((void*)_handle, (void*)arg0) != 0;
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public void appendCurrentFileContents(nint arg0, ulong arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
@@ -209,6 +251,11 @@ public sealed unsafe partial class Core
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void attemptExtendSize_f5c27991(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public nint cModeWide()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_19f0ec8a((void*)_handle);
+    }
 
     public bool canExtendSize()
     {
@@ -282,11 +329,19 @@ public sealed unsafe partial class Core
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint copyDirectory(nint arg0, nint arg1, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
     public nint copyDirectoryAndContentsRecursively(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint copyFile(nint arg0, nint arg1) =>
+    public static nint copyFile(nint arg0, nint arg1, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint copyFile(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
@@ -302,7 +357,7 @@ public sealed unsafe partial class Core
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint createDirectoryRecursively(nint arg0) =>
+    public nint createDirectoryRecursively(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
@@ -320,7 +375,7 @@ public sealed unsafe partial class Core
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint deleteDirectoryAndContentsRecursively(nint arg0) =>
+    public static nint deleteDirectoryAndContentsRecursively(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
@@ -328,20 +383,20 @@ public sealed unsafe partial class Core
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint deleteEmptyDirectory(nint arg0) =>
+    public static nint deleteEmptyDirectory(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint deleteFile(nint arg0) =>
+    public nint deleteFile(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
     public nint deleteFileOrDirectory(nint arg0, nint arg1, bool arg2, bool arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    public static bool directoryExists(nint arg0)
+    public bool directoryExists(nint arg0)
     {
-        return NativeMethods.TablePtr->hs_method_3d243b6e((void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_3d243b6e((void*)_handle, (void*)arg0) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
@@ -357,6 +412,10 @@ public sealed unsafe partial class Core
     public void enumerateFiles(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint exec(nint arg0, nint arg1, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+
     public bool failed()
     {
         return NativeMethods.TablePtr->hs_method_52356d18((void*)_handle) != 0;
@@ -367,9 +426,9 @@ public sealed unsafe partial class Core
         return NativeMethods.TablePtr->hs_method_60a59263((void*)_handle, (void*)arg0) != 0;
     }
 
-    public static bool fileOrDirectoryExists(nint arg0)
+    public bool fileOrDirectoryExists(nint arg0)
     {
-        return NativeMethods.TablePtr->hs_method_86886027((void*)arg0) != 0;
+        return NativeMethods.TablePtr->hs_method_86886027((void*)_handle, (void*)arg0) != 0;
     }
 
     public bool fileOrDirectoryExists(nint arg0, nint arg1)
@@ -377,9 +436,10 @@ public sealed unsafe partial class Core
         return NativeMethods.TablePtr->hs_method_ff6e00db((void*)_handle, (void*)arg0, (void*)arg1) != 0;
     }
 
-    public nint findFileOrDirectoryEntry(nint arg0, bool arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.FlatFileManifestInfo? findFileOrDirectoryEntry(nint arg0, bool arg1)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_142a9292((void*)_handle, (void*)arg0, arg1);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_142a9292((void*)_handle, (void*)arg0, arg1);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.FlatFileManifestInfo((nint)__hs_handle, false) : null;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
@@ -389,6 +449,11 @@ public sealed unsafe partial class Core
     public void flushImmediately()
     {
         NativeMethods.TablePtr->hs_method_ca2b1bd4((void*)_handle);
+    }
+
+    public nint get_a63e697b()
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_a63e697b((void*)_handle);
     }
 
     public int getAccessType_df80a644()
@@ -427,8 +492,13 @@ public sealed unsafe partial class Core
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getDirectoryFilesRecursively(nint arg0, nint arg1) =>
+    public static nint getDirectoryFilesRecursively(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.DiskAccessTracker getDiskAccessTracker()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.DiskAccessTracker((nint)NativeMethods.TablePtr->hs_method_62d72e74(), false);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getExtendSizeThreshold(nint arg0) =>
@@ -439,10 +509,10 @@ public sealed unsafe partial class Core
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getFileSize(nint arg0, nint arg1) =>
+    public nint getFileSize(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    public ulong getFileSize()
+    public ulong getFileSize_391e6620()
     {
         return NativeMethods.TablePtr->hs_method_391e6620((void*)_handle);
     }
@@ -458,20 +528,20 @@ public sealed unsafe partial class Core
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getLastModificationTime(nint arg0, nint arg1) =>
+    public nint getLastModificationTime(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
-    public nint getName()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.PathPart getName()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_96946207((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.PathPart((nint)NativeMethods.TablePtr->hs_method_96946207((void*)_handle), false);
     }
 
-    public nint getOpenMode()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.FileOpenMode getOpenMode()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_2af88b89((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.FileOpenMode((nint)NativeMethods.TablePtr->hs_method_2af88b89((void*)_handle), false);
     }
 
-    public string getPath()
+    public string getPath_8715b1be()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_8715b1be((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
@@ -513,7 +583,11 @@ public sealed unsafe partial class Core
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getStorageAreaForPath(nint arg0, nint arg1) =>
+    public static nint getStorageAreaForPath_d646da51(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint getStorageAreaForPath_c3af73d1(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::FileStorageArea::StorageAreaSpaceInfo' requires --link-carrier or --virtual-dispatch.", false)]
@@ -611,7 +685,7 @@ public sealed unsafe partial class Core
         return NativeMethods.TablePtr->hs_method_9d0e5695((void*)_handle) != 0;
     }
 
-    public bool isDirectory()
+    public bool isDirectory_910fbb32()
     {
         return NativeMethods.TablePtr->hs_method_910fbb32((void*)_handle) != 0;
     }
@@ -621,7 +695,7 @@ public sealed unsafe partial class Core
         return NativeMethods.TablePtr->hs_method_387532aa((void*)_handle, (void*)arg0) != 0;
     }
 
-    public bool isFile()
+    public bool isFile_cadc9de1()
     {
         return NativeMethods.TablePtr->hs_method_cadc9de1((void*)_handle) != 0;
     }
@@ -703,6 +777,10 @@ public sealed unsafe partial class Core
         var __hs_view = NativeMethods.TablePtr->hs_method_0709e838((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint moveFile(nint arg0, nint arg1, nint arg2, nint arg3) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
     public void notifyChangeInFileSize_4e03ecd5(long arg0, long arg1)
     {
@@ -786,13 +864,13 @@ public sealed unsafe partial class Core
     public void preemptiveExtendSize_f9c56a90(ulong arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Core::FileSizePresetToken' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Core::FileSizePresetToken' has no accessible destructor.", false)]
     public static nint presetFileInitialSize(nint arg0, ulong arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Core::FileSizePresetToken' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Core::FileSizePresetToken' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Core::FileSizePresetToken' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Core::FileSizePresetToken' has no accessible destructor.", false)]
     public nint presetInitialSizeForFile(nint arg0, ulong arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Core::FileSizePresetToken' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Core::FileSizePresetToken' has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
     public nint read(nint arg0, ulong arg1, nint arg2) =>
@@ -807,12 +885,16 @@ public sealed unsafe partial class Core
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint readFileData(nint arg0, nint arg1) =>
+    public nint readFileData(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
     public static nint readFileData(nint arg0, ulong arg1, ulong arg2, nint arg3, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint readFromStream(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void,std::error_code>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void,std::error_code>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint readFromStream(nint arg0, nint arg1, bool arg2) =>
@@ -867,7 +949,7 @@ public sealed unsafe partial class Core
         NativeMethods.TablePtr->hs_method_844d4936((void*)_handle, arg0);
     }
 
-    public void setFileSize(ulong arg0)
+    public void setFileSize_b6b95fa0(ulong arg0)
     {
         NativeMethods.TablePtr->hs_method_b6b95fa0((void*)_handle, arg0);
     }
@@ -892,9 +974,9 @@ public sealed unsafe partial class Core
         NativeMethods.TablePtr->hs_method_3cd0a1b7((void*)_handle, arg0);
     }
 
-    public void setName(nint arg0)
+    public void setName(global::Hosihikari.Bindings.Bedrock.Interop.Core_Nested.PathPart arg0)
     {
-        NativeMethods.TablePtr->hs_method_5f4f9b62((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_5f4f9b62((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
@@ -1075,6 +1157,10 @@ public sealed unsafe partial class Core
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _FileSizePresetManager() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _FileStdStreamBuf() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
 
@@ -1084,6 +1170,26 @@ public sealed unsafe partial class Core
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _FileSystemImpl() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _FlatFileManifestInfo() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _FlatFileSearchResult() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _LevelStorageResult() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _PathPart() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _ProfileThread() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
@@ -1099,10 +1205,34 @@ public sealed unsafe partial class Core
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _TransactionFrame() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _TransactionFrameSourceTarget() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _UnzipFile() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _UnzipInternals() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _UnzipSettings() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _ZipFileRestrictions() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _ZipProgress() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint _ZipSettings() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'unknown' requires --link-carrier or --virtual-dispatch.");
 }

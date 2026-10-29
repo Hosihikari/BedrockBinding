@@ -37,6 +37,43 @@ public sealed unsafe partial class UpdateSubChunkNetworkBlockInfo : global::Syst
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static UpdateSubChunkNetworkBlockInfo Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static UpdateSubChunkNetworkBlockInfo Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPos_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_806627c6((void*)_handle);
+    }
+
+    public uint mRuntimeId
+    {
+        get => NativeMethods.TablePtr->hs_get_523bc905((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_523bc905((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSyncMessage_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_99222c3c((void*)_handle);
+    }
+
+    public byte mUpdateFlags
+    {
+        get => NativeMethods.TablePtr->hs_get_2389bf94((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_2389bf94((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+
 
     public void Dispose()
     {

@@ -54,9 +54,9 @@ public sealed unsafe partial class VanillaBlockUpdater
         NativeMethods.TablePtr->hs_method_b136b7bb();
     }
 
-    public static nint get()
+    public static global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext get()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_edd4f3d4();
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterContext((nint)NativeMethods.TablePtr->hs_method_edd4f3d4(), false);
     }
 
     public static void initialize()

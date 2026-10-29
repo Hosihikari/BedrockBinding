@@ -52,9 +52,9 @@ public sealed unsafe partial class BlockCustomComponentsComponent : global::Syst
     public static BlockCustomComponentsComponent Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static void generateOrderDocumentationForVersion(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1)
+    public static void generateOrderDocumentationForVersion(global::Hosihikari.Bindings.Bedrock.Interop.Scripting_Nested.ModuleDescriptor arg0, global::Hosihikari.Bindings.Bedrock.Interop.Json_Nested.Value arg1)
     {
-        NativeMethods.TablePtr->hs_method_21030005((void*)arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->hs_method_21030005((void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public nint getCustomComponentData()

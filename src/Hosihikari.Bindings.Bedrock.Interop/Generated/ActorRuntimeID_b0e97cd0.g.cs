@@ -37,6 +37,24 @@ public sealed unsafe partial class ActorRuntimeID : global::System.IDisposable
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ActorRuntimeID Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ActorRuntimeID Create(ulong x) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public ulong id
+    {
+        get => NativeMethods.TablePtr->hs_get_8530b89e((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_8530b89e((void*)_handle, value);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public ulong operator_unsigned_long_long() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void Dispose()
     {
         if (_handle != 0)

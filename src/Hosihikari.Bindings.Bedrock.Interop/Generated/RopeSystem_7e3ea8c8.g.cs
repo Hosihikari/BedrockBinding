@@ -55,9 +55,9 @@ public sealed unsafe partial class RopeSystem
         NativeMethods.TablePtr->hs_method_6a34787d((void*)_handle, arg0);
     }
 
-    public void initialize(nint arg0)
+    public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.RopeParams arg0)
     {
-        NativeMethods.TablePtr->hs_method_4fa03f96((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_4fa03f96((void*)_handle, (void*)arg0.Handle);
     }
 
     public bool isCut()

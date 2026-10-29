@@ -45,9 +45,9 @@ public sealed unsafe partial class ItemEventListener
     public static ItemEventListener Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public int onEvent(nint arg0)
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ItemNotificationEvent arg0)
     {
-        return NativeMethods.TablePtr->hs_method_72afe436((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_72afe436((void*)_handle, (void*)arg0.Handle);
     }
 
     public int onInventoryItemClosed()

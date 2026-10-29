@@ -37,52 +37,44 @@ public sealed unsafe partial class FogDefinition
         return __hs_handle;
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DEFAULT_DISTANCE_AIR_SETTING_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.FogDistanceSetting DEFAULT_DISTANCE_AIR_SETTING
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_d9a5286d();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.FogDistanceSetting((nint)NativeMethods.TablePtr->hs_get_d9a5286d(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DEFAULT_DISTANCE_LAVA_RESISTANCE_SETTING_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.FogDistanceSetting DEFAULT_DISTANCE_LAVA_RESISTANCE_SETTING
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_50476f66();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.FogDistanceSetting((nint)NativeMethods.TablePtr->hs_get_50476f66(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DEFAULT_DISTANCE_LAVA_SETTING_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.FogDistanceSetting DEFAULT_DISTANCE_LAVA_SETTING
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_4df4d563();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.FogDistanceSetting((nint)NativeMethods.TablePtr->hs_get_4df4d563(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DEFAULT_DISTANCE_NETHER_AIR_SETTING_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.FogDistanceSetting DEFAULT_DISTANCE_NETHER_AIR_SETTING
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_1044d361();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.FogDistanceSetting((nint)NativeMethods.TablePtr->hs_get_1044d361(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DEFAULT_DISTANCE_POWDER_SNOW_SETTING_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.FogDistanceSetting DEFAULT_DISTANCE_POWDER_SNOW_SETTING
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_503b714f();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.FogDistanceSetting((nint)NativeMethods.TablePtr->hs_get_503b714f(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DEFAULT_DISTANCE_WATER_SETTING_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.FogDistanceSetting DEFAULT_DISTANCE_WATER_SETTING
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_a81ade16();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.FogDistanceSetting((nint)NativeMethods.TablePtr->hs_get_a81ade16(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DEFAULT_DISTANCE_WEATHER_SETTING_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.FogDistanceSetting DEFAULT_DISTANCE_WEATHER_SETTING
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_88217a77();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.FogDistanceSetting((nint)NativeMethods.TablePtr->hs_get_88217a77(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DEFAULT_FOG_AIR_SETTING_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.FogSetting DEFAULT_FOG_AIR_SETTING
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_d28fa9b1();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.FogSetting((nint)NativeMethods.TablePtr->hs_get_d28fa9b1(), false);
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.FogDefinition DEFAULT_FOG_DEFINITION
@@ -90,58 +82,49 @@ public sealed unsafe partial class FogDefinition
         get => new global::Hosihikari.Bindings.Bedrock.Interop.FogDefinition((nint)NativeMethods.TablePtr->hs_get_66ab3ed4(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DEFAULT_FOG_LAVA_RESISTANCE_SETTING_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.FogSetting DEFAULT_FOG_LAVA_RESISTANCE_SETTING
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_e1645ea2();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.FogSetting((nint)NativeMethods.TablePtr->hs_get_e1645ea2(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DEFAULT_FOG_LAVA_SETTING_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.FogSetting DEFAULT_FOG_LAVA_SETTING
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_9f444edd();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.FogSetting((nint)NativeMethods.TablePtr->hs_get_9f444edd(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DEFAULT_FOG_NETHER_AIR_SETTING_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.FogSetting DEFAULT_FOG_NETHER_AIR_SETTING
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_f18c9ef2();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.FogSetting((nint)NativeMethods.TablePtr->hs_get_f18c9ef2(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DEFAULT_FOG_POWDER_SNOW_SETTING_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.FogSetting DEFAULT_FOG_POWDER_SNOW_SETTING
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_b1db5e25();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.FogSetting((nint)NativeMethods.TablePtr->hs_get_b1db5e25(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DEFAULT_FOG_WATER_SETTING_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.FogSetting DEFAULT_FOG_WATER_SETTING
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_089ce592();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.FogSetting((nint)NativeMethods.TablePtr->hs_get_089ce592(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DEFAULT_FOG_WEATHER_SETTING_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.FogSetting DEFAULT_FOG_WEATHER_SETTING
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_8521a2b9();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.FogSetting((nint)NativeMethods.TablePtr->hs_get_8521a2b9(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DEFAULT_VOLUME_COEFFICIENT_AIR_SETTING_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.FogVolumetricCoefficientSetting DEFAULT_VOLUME_COEFFICIENT_AIR_SETTING
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_b2a3a573();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.FogVolumetricCoefficientSetting((nint)NativeMethods.TablePtr->hs_get_b2a3a573(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DEFAULT_VOLUME_COEFFICIENT_CLOUD_SETTING_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.FogVolumetricCoefficientSetting DEFAULT_VOLUME_COEFFICIENT_CLOUD_SETTING
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_41f0b7f2();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.FogVolumetricCoefficientSetting((nint)NativeMethods.TablePtr->hs_get_41f0b7f2(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DEFAULT_VOLUME_COEFFICIENT_WATER_SETTING_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.FogVolumetricCoefficientSetting DEFAULT_VOLUME_COEFFICIENT_WATER_SETTING
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_dc7ddc2c();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.FogVolumetricCoefficientSetting((nint)NativeMethods.TablePtr->hs_get_dc7ddc2c(), false);
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.FogDefinition DEFERRED_DEFAULT_FOG_DEFINITION
@@ -149,22 +132,19 @@ public sealed unsafe partial class FogDefinition
         get => new global::Hosihikari.Bindings.Bedrock.Interop.FogDefinition((nint)NativeMethods.TablePtr->hs_get_66ab5412(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DEFERRED_DEFAULT_VOLUME_DENSITY_AIR_SETTING_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.FogVolumetricDensitySetting DEFERRED_DEFAULT_VOLUME_DENSITY_AIR_SETTING
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_1a70c3c5();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.FogVolumetricDensitySetting((nint)NativeMethods.TablePtr->hs_get_1a70c3c5(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DEFERRED_DEFAULT_VOLUME_DENSITY_WATER_SETTING_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.FogVolumetricDensitySetting DEFERRED_DEFAULT_VOLUME_DENSITY_WATER_SETTING
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_f26bb3c7();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.FogVolumetricDensitySetting((nint)NativeMethods.TablePtr->hs_get_f26bb3c7(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint DEFERRED_DEFAULT_VOLUME_DENSITY_WEATHER_SETTING_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.FogVolumetricDensitySetting DEFERRED_DEFAULT_VOLUME_DENSITY_WEATHER_SETTING
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_80e5afff();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.FogVolumetricDensitySetting((nint)NativeMethods.TablePtr->hs_get_80e5afff(), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]

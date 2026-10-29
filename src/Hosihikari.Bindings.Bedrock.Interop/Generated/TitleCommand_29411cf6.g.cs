@@ -37,6 +37,35 @@ public sealed unsafe partial class TitleCommand
         return __hs_handle;
     }
 
+    public int mCommandSymbol
+    {
+        get => NativeMethods.TablePtr->hs_get_bd491c2c((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_bd491c2c((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFlags_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b20108c4((void*)_handle);
+    }
+
+    public byte mPermissionLevel
+    {
+        get => NativeMethods.TablePtr->hs_get_59046cf8((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_59046cf8((void*)_handle, value);
+    }
+
+    public nint mRegistry
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_ab68150d((void*)_handle);
+    }
+
+    public int mVersion
+    {
+        get => NativeMethods.TablePtr->hs_get_c5d7359f((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_c5d7359f((void*)_handle, value);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static TitleCommand Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");

@@ -66,9 +66,9 @@ public sealed unsafe partial class Throwable : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_2fcec6ea((void*)_handle);
     }
 
-    public void initializeComponents(int arg0, nint arg1)
+    public void initializeComponents(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_ba5cdbc2((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_ba5cdbc2((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public void lerpMotion(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0)

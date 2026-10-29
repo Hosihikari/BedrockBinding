@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed partial class MolangTempVariable
+public sealed unsafe partial class MolangTempVariable : global::System.IDisposable
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -35,5 +35,53 @@ public sealed partial class MolangTempVariable
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+    public ulong hash
+    {
+        get => NativeMethods.TablePtr->hs_get_f7cb530c((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_f7cb530c((void*)_handle, value);
+    }
+
+    public nint lastMatch
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_f1b6cd87((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint str_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_8fbdbe6b((void*)_handle);
+    }
+
+    public static MolangTempVariable Create(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_f68f12dc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangTempVariable((nint)handle);
+    }
+
+    public ushort mMolangVariableIndex
+    {
+        get => NativeMethods.TablePtr->hs_get_d72724a4((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_d72724a4((void*)_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_6af4e4ee((void*)_handle);
+            }
+
+            _handle = 0;
+        }
     }
 }

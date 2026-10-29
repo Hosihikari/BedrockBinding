@@ -93,9 +93,9 @@ public sealed unsafe partial class ScriptActorGameplayHandler
     public nint handleEvent_3d0f40b0(nint @event) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public int handleEvent_c67344b4(nint arg0)
+    public int handleEvent(global::Hosihikari.Bindings.Bedrock.Interop.ActorRemovedEvent arg0)
     {
-        return NativeMethods.TablePtr->hs_method_c67344b4((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_c67344b4((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

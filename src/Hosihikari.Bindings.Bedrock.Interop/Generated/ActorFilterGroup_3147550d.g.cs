@@ -61,9 +61,9 @@ public sealed unsafe partial class ActorFilterGroup : global::System.IDisposable
     public bool _processLegacyMember_a1387db3(nint name, nint jsonVal, nint legacy) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public bool evaluateActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, nint arg1)
+    public bool evaluateActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        return NativeMethods.TablePtr->hs_method_340475d4((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_340475d4((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
     public static void initialize()

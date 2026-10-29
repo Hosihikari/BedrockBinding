@@ -45,7 +45,7 @@ public sealed unsafe partial class BackgroundWorker : global::System.IDisposable
     public static BackgroundWorker Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static BackgroundWorker Create(string arg0, bool arg1, nint arg2, ulong? arg3, int? arg4, global::Hosihikari.Bindings.Bedrock.Interop.WorkerPool arg5, bool arg6)
+    public static BackgroundWorker Create(string arg0, bool arg1, global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.OSThreadPriority arg2, ulong? arg3, int? arg4, global::Hosihikari.Bindings.Bedrock.Interop.WorkerPool arg5, bool arg6)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -60,7 +60,7 @@ public sealed unsafe partial class BackgroundWorker : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->hs_create_63b39c4d(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, (void*)arg2, arg3 ?? default(ulong), arg4 ?? default(int), (void*)arg5.Handle, arg6, arg3.HasValue, arg4.HasValue);
+            var handle = NativeMethods.TablePtr->hs_create_63b39c4d(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, (void*)arg2.Handle, arg3 ?? default(ulong), arg4 ?? default(int), (void*)arg5.Handle, arg6, arg3.HasValue, arg4.HasValue);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

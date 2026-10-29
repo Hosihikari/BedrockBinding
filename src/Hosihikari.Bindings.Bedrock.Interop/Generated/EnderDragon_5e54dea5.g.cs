@@ -205,9 +205,9 @@ public sealed unsafe partial class EnderDragon : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_1ed31e57((void*)_handle);
     }
 
-    public void reloadHardcoded(int arg0, nint arg1)
+    public void reloadHardcoded(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_7ff2d9ce((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_7ff2d9ce((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public void remove()

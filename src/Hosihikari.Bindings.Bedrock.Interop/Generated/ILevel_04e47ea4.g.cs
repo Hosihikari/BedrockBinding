@@ -72,9 +72,10 @@ public sealed unsafe partial class ILevel : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData((nint)NativeMethods.TablePtr->hs_method_aa08e424((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle), false);
     }
 
-    public nint getTradeTables()
+    public global::Hosihikari.Bindings.Bedrock.Interop.TradeTables? getTradeTables()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_c36a7993((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_c36a7993((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.TradeTables((nint)__hs_handle, false) : null;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

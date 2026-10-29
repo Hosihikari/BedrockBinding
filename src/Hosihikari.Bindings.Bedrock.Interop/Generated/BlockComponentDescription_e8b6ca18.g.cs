@@ -45,9 +45,9 @@ public sealed unsafe partial class BlockComponentDescription : global::System.ID
     public static BlockComponentDescription Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? buildNetworkTag(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? buildNetworkTag(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_d1105af7((void*)_handle, (void*)arg0);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_d1105af7((void*)_handle, (void*)arg0.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
     }
 
@@ -91,9 +91,9 @@ public sealed unsafe partial class BlockComponentDescription : global::System.ID
         NativeMethods.TablePtr->hs_method_e47821cd((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void initializeFromNetwork(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, nint arg1)
+    public void initializeFromNetwork(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg1)
     {
-        NativeMethods.TablePtr->hs_method_697859cf((void*)_handle, (void*)arg0.Handle, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_697859cf((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public bool isNetworkComponent()
@@ -105,9 +105,9 @@ public sealed unsafe partial class BlockComponentDescription : global::System.ID
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static void registerVersionUpgrades(nint arg0)
+    public static void registerVersionUpgrades(global::Hosihikari.Bindings.Bedrock.Interop.CerealSchemaUpgradeSet arg0)
     {
-        NativeMethods.TablePtr->hs_method_1111657e((void*)arg0);
+        NativeMethods.TablePtr->hs_method_1111657e((void*)arg0.Handle);
     }
 
 

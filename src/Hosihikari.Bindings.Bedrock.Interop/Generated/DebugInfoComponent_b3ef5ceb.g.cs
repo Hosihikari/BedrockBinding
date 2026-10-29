@@ -206,13 +206,13 @@ public sealed unsafe partial class DebugInfoComponent : global::System.IDisposab
         return NativeMethods.TablePtr->hs_method_f9420570((void*)_handle) != 0;
     }
 
-    public int onEvent_e9bb7151(nint arg0)
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionTriggeredEvent arg0)
     {
-        return NativeMethods.TablePtr->hs_method_e9bb7151((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_e9bb7151((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
-    public nint onEvent_1a1b0883(nint @event) =>
+    public nint onEvent(nint @event) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

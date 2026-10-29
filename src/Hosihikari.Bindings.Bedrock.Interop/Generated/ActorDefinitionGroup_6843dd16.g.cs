@@ -92,9 +92,10 @@ public sealed unsafe partial class ActorDefinitionGroup : global::System.IDispos
     public static void forEachComponentOf_629c9632(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public nint getComponentFactory()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorComponentFactory? getComponentFactory()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_6a68a5ac((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_6a68a5ac((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ActorComponentFactory((nint)__hs_handle, false) : null;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
@@ -117,9 +118,9 @@ public sealed unsafe partial class ActorDefinitionGroup : global::System.IDispos
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void setComponentFactory(nint arg0)
+    public void setComponentFactory(global::Hosihikari.Bindings.Bedrock.Interop.ActorComponentFactory? arg0)
     {
-        NativeMethods.TablePtr->hs_method_d4ec7576((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_d4ec7576((void*)_handle, (void*)(arg0?.Handle ?? 0));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

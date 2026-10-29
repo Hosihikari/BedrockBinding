@@ -57,9 +57,9 @@ public sealed unsafe partial class BlockDefinition
     public nint operator_assign_041db3f8(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static void registerBlockDefinitionTypes(nint arg0)
+    public static void registerBlockDefinitionTypes(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        NativeMethods.TablePtr->hs_method_afb6350c((void*)arg0);
+        NativeMethods.TablePtr->hs_method_afb6350c((void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

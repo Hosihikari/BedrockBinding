@@ -42,10 +42,9 @@ public sealed unsafe partial class Zombie : global::System.IDisposable
         get => new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->hs_get_6e2aa7b2(), false);
     }
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint SPAWN_REINFORCEMENTS_CHANCE_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Attribute SPAWN_REINFORCEMENTS_CHANCE
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_61d24161();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->hs_get_61d24161(), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
@@ -81,9 +80,9 @@ public sealed unsafe partial class Zombie : global::System.IDisposable
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void reloadHardcoded(int arg0, nint arg1)
+    public void reloadHardcoded(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_664f859c((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_664f859c((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public void setZombieType(int arg0)

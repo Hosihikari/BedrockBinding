@@ -49,7 +49,7 @@ public sealed unsafe partial class ComponentItem : global::System.IDisposable
     public static ComponentItem Create(nint arg0, short arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static ComponentItem Create(string arg0, short arg1, nint arg2)
+    public static ComponentItem Create(string arg0, short arg1, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg2)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -64,7 +64,7 @@ public sealed unsafe partial class ComponentItem : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->hs_create_fba021e7(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, (void*)arg2);
+            var handle = NativeMethods.TablePtr->hs_create_fba021e7(__hs_stringData0, (nuint)__hs_stringByteCount0, arg1, (void*)arg2.Handle);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -122,9 +122,9 @@ public sealed unsafe partial class ComponentItem : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? buildNetworkTag(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? buildNetworkTag(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_3db9c213((void*)_handle, (void*)arg0);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_3db9c213((void*)_handle, (void*)arg0.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)__hs_handle) : null;
     }
 
@@ -371,9 +371,9 @@ public sealed unsafe partial class ComponentItem : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_2ca2cb28((void*)_handle, (void*)arg0.Handle);
     }
 
-    public static void initializeJsonUpgrades(nint arg0)
+    public static void initializeJsonUpgrades(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        NativeMethods.TablePtr->hs_method_e962b739((void*)arg0);
+        NativeMethods.TablePtr->hs_method_e962b739((void*)arg0.Handle);
     }
 
     public bool isBlockPlanterItem()
@@ -487,9 +487,9 @@ public sealed unsafe partial class ComponentItem : global::System.IDisposable
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static void registerItemComponentTypes(nint arg0)
+    public static void registerItemComponentTypes(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        NativeMethods.TablePtr->hs_method_a28e4c1c((void*)arg0);
+        NativeMethods.TablePtr->hs_method_a28e4c1c((void*)arg0.Handle);
     }
 
     public void releaseUsing(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0, global::Hosihikari.Bindings.Bedrock.Interop.Player? arg1, int arg2)

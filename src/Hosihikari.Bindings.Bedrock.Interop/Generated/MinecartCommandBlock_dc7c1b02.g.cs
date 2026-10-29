@@ -77,9 +77,9 @@ public sealed unsafe partial class MinecartCommandBlock : global::System.IDispos
         return NativeMethods.TablePtr->hs_method_bbda526e((void*)_handle);
     }
 
-    public void initializeComponents(int arg0, nint arg1)
+    public void initializeComponents(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_c80e716e((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_c80e716e((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

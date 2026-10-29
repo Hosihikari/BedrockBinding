@@ -52,9 +52,9 @@ public sealed unsafe partial class TargetGoal : global::System.IDisposable
         return new TargetGoal((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'MobDescriptor' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public static TargetGoal Create(nint arg0, nint arg1, bool arg2, int arg3, bool arg4, float arg5, bool arg6, int arg7) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'MobDescriptor' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
     public static TargetGoal Create(nint arg0) =>

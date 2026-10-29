@@ -104,9 +104,9 @@ public sealed unsafe partial class Slime : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_aa9ece87((void*)_handle);
     }
 
-    public void reloadHardcoded(int arg0, nint arg1)
+    public void reloadHardcoded(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_c11a2dd0((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_c11a2dd0((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public void remove()

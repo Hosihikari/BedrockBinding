@@ -45,9 +45,9 @@ public sealed partial class MinecartMoveAlongRailSystem
     public static MinecartMoveAlongRailSystem Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'StrictActorIDEntityContextPair' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ViewT<StrictEntityContext,Include<FlagComponent<PlayerComponentFlag>>,ActorRotationComponent const,LocalMoveVelocityComponent const>' is not a known bindable declaration.", false)]
     public static bool _calculateAllPassengersRailMovementInput(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'StrictActorIDEntityContextPair' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ViewT<StrictEntityContext,Include<FlagComponent<PlayerComponentFlag>>,ActorRotationComponent const,LocalMoveVelocityComponent const>' is not a known bindable declaration.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TickingSystemWithInfo' requires --link-carrier or --virtual-dispatch.", false)]
     public static nint createCleanupSystem() =>

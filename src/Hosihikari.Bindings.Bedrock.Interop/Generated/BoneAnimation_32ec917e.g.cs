@@ -45,9 +45,9 @@ public sealed unsafe partial class BoneAnimation
     public static BoneAnimation Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public nint addAnimationChannel(int arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.BoneAnimationChannel addAnimationChannel(int arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_bc2e5c85((void*)_handle, arg0);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BoneAnimationChannel((nint)NativeMethods.TablePtr->hs_method_bc2e5c85((void*)_handle, arg0), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

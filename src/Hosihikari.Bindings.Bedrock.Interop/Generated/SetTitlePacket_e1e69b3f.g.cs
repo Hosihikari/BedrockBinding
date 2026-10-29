@@ -111,9 +111,9 @@ public sealed unsafe partial class SetTitlePacket : global::System.IDisposable
         return new SetTitlePacket((nint)handle);
     }
 
-    public static SetTitlePacket Create(int arg0, nint arg1)
+    public static SetTitlePacket Create(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.ResolvedTextObject arg1)
     {
-        var handle = NativeMethods.TablePtr->hs_create_535ccfbe(arg0, (void*)arg1);
+        var handle = NativeMethods.TablePtr->hs_create_535ccfbe(arg0, (void*)arg1.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

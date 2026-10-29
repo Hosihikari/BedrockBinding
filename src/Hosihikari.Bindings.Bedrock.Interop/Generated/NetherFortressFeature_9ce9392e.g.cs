@@ -56,9 +56,9 @@ public sealed unsafe partial class NetherFortressFeature : global::System.IDispo
         return new NetherFortressFeature((nint)handle);
     }
 
-    public void initMobSpawnTypes(nint arg0)
+    public void initMobSpawnTypes(global::Hosihikari.Bindings.Bedrock.Interop.HardcodedSpawnAreaRegistry arg0)
     {
-        NativeMethods.TablePtr->hs_method_d922ceb9((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_d922ceb9((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

@@ -37,6 +37,12 @@ public sealed unsafe partial class NullSoundPlayer
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_b61afd79((void*)_handle);
+    }
+
     public void fadeOut(ulong arg0, float arg1)
     {
         NativeMethods.TablePtr->hs_method_83100377((void*)_handle, arg0, arg1);

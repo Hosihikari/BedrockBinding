@@ -47,9 +47,10 @@ public sealed unsafe partial class TaskQueuePortContextImpl
         return NativeMethods.TablePtr->hs_method_1ffe47c3((void*)_handle) != 0;
     }
 
-    public nint GetPort()
+    public global::Hosihikari.Bindings.Bedrock.Interop.ITaskQueuePort? GetPort()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_8f305053((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_8f305053((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ITaskQueuePort((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ITaskQueue? GetQueue()

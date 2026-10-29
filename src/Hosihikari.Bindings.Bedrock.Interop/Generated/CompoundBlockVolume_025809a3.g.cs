@@ -65,9 +65,9 @@ public sealed unsafe partial class CompoundBlockVolume : global::System.IDisposa
         return new CompoundBlockVolume((nint)handle);
     }
 
-    public static void bindType(nint arg0)
+    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        NativeMethods.TablePtr->hs_method_0768e84c((void*)arg0);
+        NativeMethods.TablePtr->hs_method_0768e84c((void*)arg0.Handle);
     }
 
     public ulong capacity()

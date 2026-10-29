@@ -80,9 +80,9 @@ public sealed unsafe partial class VanillaDimensions
     public static VanillaDimensions Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public static bool convertPointBetweenDimensions(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg2, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg3, nint arg4)
+    public static bool convertPointBetweenDimensions(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg2, global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg3, global::Hosihikari.Bindings.Bedrock.Interop.DimensionConversionData arg4)
     {
-        return NativeMethods.TablePtr->hs_method_4546db0c((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4) != 0;
+        return NativeMethods.TablePtr->hs_method_4546db0c((void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4.Handle) != 0;
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ fromSerializedInt(int arg0)

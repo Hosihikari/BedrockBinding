@@ -45,7 +45,7 @@ public sealed unsafe partial class ActorAliasDescription : global::System.IDispo
     public static ActorAliasDescription Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public nint getAliasInfo(string arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.AliasInfoDescription? getAliasInfo(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -60,7 +60,8 @@ public sealed unsafe partial class ActorAliasDescription : global::System.IDispo
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_0b1e3b1d((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->hs_method_0b1e3b1d((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.AliasInfoDescription((nint)__hs_handle, false) : null;
         }
     }
 

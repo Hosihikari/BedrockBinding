@@ -37,6 +37,36 @@ public sealed unsafe partial class BeardKernel : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static BeardKernel Create()
+    {
+        var handle = NativeMethods.TablePtr->hs_create_7fb108fe();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BeardKernel((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static BeardKernel Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static float getContribution(int arg0, int arg1, int arg2)
+    {
+        return NativeMethods.TablePtr->hs_method_0083dae0(arg0, arg1, arg2);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mKernel_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_413e15fa((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
     public void Dispose()
     {
         if (_handle != 0)

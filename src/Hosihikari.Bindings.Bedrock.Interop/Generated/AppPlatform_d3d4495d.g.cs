@@ -258,9 +258,9 @@ public sealed unsafe partial class AppPlatform : global::System.IDisposable
     public nint getAndroidScopedStorageInfo_221d63f6() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public nint getAppLifecycleContext_6edd25e0()
+    public global::Hosihikari.Bindings.Bedrock.Interop.AppLifecycleContext getAppLifecycleContext_6edd25e0()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_6edd25e0((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AppLifecycleContext((nint)NativeMethods.TablePtr->hs_method_6edd25e0((void*)_handle), false);
     }
 
     public string getAssetFileFullPath_26d11506(nint arg0)
@@ -1618,6 +1618,12 @@ public sealed unsafe partial class AppPlatform : global::System.IDisposable
     }
 
 
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mControlBlock_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_dc61486f((void*)_handle);
+    }
 
     public void Dispose()
     {

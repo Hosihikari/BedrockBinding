@@ -62,9 +62,9 @@ public sealed unsafe partial class OverworldDimension : global::System.IDisposab
     public static OverworldDimension Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.WorldGenerator? createGenerator(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.WorldGenerator? createGenerator(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructureSetRegistry arg0)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_e1fbc510((void*)_handle, (void*)arg0);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_e1fbc510((void*)_handle, (void*)arg0.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.WorldGenerator((nint)__hs_handle) : null;
     }
 
@@ -104,6 +104,18 @@ public sealed unsafe partial class OverworldDimension : global::System.IDisposab
     public void upgradeLevelChunk(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg1, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg2)
     {
         NativeMethods.TablePtr->hs_method_17d77dc7((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
+    }
+
+    public bool mDirty
+    {
+        get => NativeMethods.TablePtr->hs_get_01f7f1ef((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_01f7f1ef((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_22f357ce((void*)_handle);
     }
 
     public void Dispose()

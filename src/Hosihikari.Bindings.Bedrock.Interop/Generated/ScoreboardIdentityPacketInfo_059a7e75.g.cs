@@ -37,6 +37,18 @@ public sealed unsafe partial class ScoreboardIdentityPacketInfo : global::System
         return __hs_handle;
     }
 
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPlayerId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_97f7382d((void*)_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScoreboardId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_55e6111a((void*)_handle);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

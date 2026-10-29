@@ -42,9 +42,9 @@ public sealed unsafe partial class PlayerEventListener
         return NativeMethods.TablePtr->hs_method_8613e6c4((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
-    public int onEvent(nint arg0)
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.PlayerNotificationEvent arg0)
     {
-        return NativeMethods.TablePtr->hs_method_b9c930a9((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_b9c930a9((void*)_handle, (void*)arg0.Handle);
     }
 
     public int onLocalPlayerDeath(nint arg0, nint arg1)

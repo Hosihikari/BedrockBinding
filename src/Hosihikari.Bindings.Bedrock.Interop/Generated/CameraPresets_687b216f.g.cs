@@ -48,9 +48,9 @@ public sealed unsafe partial class CameraPresets : global::System.IDisposable
         return new CameraPresets((nint)handle);
     }
 
-    public static CameraPresets Create(nint arg0)
+    public static CameraPresets Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        var handle = NativeMethods.TablePtr->hs_create_bed23cd2((void*)arg0);
+        var handle = NativeMethods.TablePtr->hs_create_bed23cd2((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

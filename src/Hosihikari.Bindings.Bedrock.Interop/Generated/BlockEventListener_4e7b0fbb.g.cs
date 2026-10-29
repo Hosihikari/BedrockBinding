@@ -90,9 +90,9 @@ public sealed unsafe partial class BlockEventListener
         return NativeMethods.TablePtr->hs_method_52a076fc((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3);
     }
 
-    public int onEvent(nint arg0)
+    public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.BlockNotificationEvent arg0)
     {
-        return NativeMethods.TablePtr->hs_method_2ff4e90f((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_2ff4e90f((void*)_handle, (void*)arg0.Handle);
     }
 
     public int onUnknownBlockReceived(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0, nint arg1, ushort arg2)

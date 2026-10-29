@@ -108,9 +108,9 @@ public sealed unsafe partial class BaseAttributeMap
         return (nint)NativeMethods.TablePtr->hs_method_18783040((void*)_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance getInstance_aee35ae0(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance getInstance(global::Hosihikari.Bindings.Bedrock.Interop.Attribute arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance((nint)NativeMethods.TablePtr->hs_method_aee35ae0((void*)_handle, (void*)arg0), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance((nint)NativeMethods.TablePtr->hs_method_aee35ae0((void*)_handle, (void*)arg0.Handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance getInstance(uint arg0)
@@ -118,9 +118,9 @@ public sealed unsafe partial class BaseAttributeMap
         return new global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance((nint)NativeMethods.TablePtr->hs_method_deca419c((void*)_handle, arg0), false);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance? getMutableInstance(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance? getMutableInstance(global::Hosihikari.Bindings.Bedrock.Interop.Attribute arg0)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_71f2a979((void*)_handle, (void*)arg0);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_71f2a979((void*)_handle, (void*)arg0.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance((nint)__hs_handle, false) : null;
     }
 
@@ -154,14 +154,14 @@ public sealed unsafe partial class BaseAttributeMap
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance registerAttribute(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance registerAttribute(global::Hosihikari.Bindings.Bedrock.Interop.Attribute arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance((nint)NativeMethods.TablePtr->hs_method_6e1247cb((void*)_handle, (void*)arg0), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance((nint)NativeMethods.TablePtr->hs_method_6e1247cb((void*)_handle, (void*)arg0.Handle), false);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance registerNoSyncAttribute(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance registerNoSyncAttribute(global::Hosihikari.Bindings.Bedrock.Interop.Attribute arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance((nint)NativeMethods.TablePtr->hs_method_6e9621d3((void*)_handle, (void*)arg0), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance((nint)NativeMethods.TablePtr->hs_method_6e9621d3((void*)_handle, (void*)arg0.Handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

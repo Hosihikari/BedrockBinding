@@ -45,24 +45,24 @@ public sealed unsafe partial class JigsawStructureRegistry
     public static JigsawStructureRegistry Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public nint getJigsawStructureActorRulesRegistry_f73e9d0f()
+    public global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureActorRulesRegistry getJigsawStructureActorRulesRegistry_f73e9d0f()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_f73e9d0f((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureActorRulesRegistry((nint)NativeMethods.TablePtr->hs_method_f73e9d0f((void*)_handle), false);
     }
 
-    public nint getJigsawStructureBlockRulesRegistry_33b19899()
+    public global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureBlockRulesRegistry getJigsawStructureBlockRulesRegistry_33b19899()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_33b19899((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureBlockRulesRegistry((nint)NativeMethods.TablePtr->hs_method_33b19899((void*)_handle), false);
     }
 
-    public nint getJigsawStructureBlockTagRulesRegistry_18572238()
+    public global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureBlockTagRulesRegistry getJigsawStructureBlockTagRulesRegistry_18572238()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_18572238((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureBlockTagRulesRegistry((nint)NativeMethods.TablePtr->hs_method_18572238((void*)_handle), false);
     }
 
-    public nint getJigsawStructureElementRegistry_340b201a()
+    public global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureElementRegistry getJigsawStructureElementRegistry_340b201a()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_340b201a((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureElementRegistry((nint)NativeMethods.TablePtr->hs_method_340b201a((void*)_handle), false);
     }
 
     public void initialize(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg0, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg1)
@@ -102,9 +102,9 @@ public sealed unsafe partial class JigsawStructureRegistry
     public void registerPool(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    public nint structureSetRegistry_2d838ba8()
+    public global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructureSetRegistry structureSetRegistry_2d838ba8()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_2d838ba8((void*)_handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructureSetRegistry((nint)NativeMethods.TablePtr->hs_method_2d838ba8((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

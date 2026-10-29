@@ -45,15 +45,14 @@ public sealed unsafe partial class ComponentItemData_v1_20
     public static ComponentItemData_v1_20 Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    // The native field type is not projected; this is the address of the field storage.
-    public static nint SUPPORTED_VERSIONS_Address
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Puv.VersionRange SUPPORTED_VERSIONS
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_33d6aa2e();
+        get => new global::Hosihikari.Bindings.Bedrock.Interop.Puv.VersionRange((nint)NativeMethods.TablePtr->hs_get_33d6aa2e(), false);
     }
 
-    public static void bindType(nint arg0)
+    public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
     {
-        NativeMethods.TablePtr->hs_method_a9642a01((void*)arg0);
+        NativeMethods.TablePtr->hs_method_a9642a01((void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

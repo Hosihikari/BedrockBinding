@@ -210,9 +210,9 @@ public sealed unsafe partial class ActorDefinitionDiffList
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'DiffListPair' is not supported.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public void setDefinitionStack(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'DiffListPair' is not supported.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     public ulong size()
     {

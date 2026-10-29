@@ -37,9 +37,40 @@ public sealed unsafe partial class SystemInfo : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim does not expose this member.", false)]
-    public static SystemInfo Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static SystemInfo Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static SystemInfo Create_331e4f58(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static SystemInfo Create_0dcac51e(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDependencies_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_81665f3d((void*)_handle);
+    }
+
+    public nint mGenerateDetailedInfo
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_9bf119e4((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_9bf119e4((void*)_handle, (void*)value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_e3ea4dce((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
 
 
     public void Dispose()

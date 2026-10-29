@@ -76,9 +76,9 @@ public sealed unsafe partial class ItemStackRequestActionCraftHandler : global::
         NativeMethods.TablePtr->hs_method_a7878412((void*)_handle);
     }
 
-    public sbyte handleConsume(nint arg0)
+    public sbyte handleConsume(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionConsume arg0)
     {
-        return NativeMethods.TablePtr->hs_method_67971c66((void*)_handle, (void*)arg0);
+        return NativeMethods.TablePtr->hs_method_67971c66((void*)_handle, (void*)arg0.Handle);
     }
 
     public sbyte handleCraftAction(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionCraftBase arg0)

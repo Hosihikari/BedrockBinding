@@ -66,9 +66,9 @@ public sealed unsafe partial class Axolotl : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_5bb4b0da((void*)_handle, (void*)arg0.Handle);
     }
 
-    public void initializeComponents(int arg0, nint arg1)
+    public void initializeComponents(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_9249c6da((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_9249c6da((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

@@ -85,9 +85,9 @@ public sealed unsafe partial class VanillaBiomes
         NativeMethods.TablePtr->hs_method_733f7179((void*)arg0.Handle);
     }
 
-    public static void initSurfaceBuilders(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg1)
+    public static void initSurfaceBuilders(global::Hosihikari.Bindings.Bedrock.Interop.SurfaceBuilderRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg1)
     {
-        NativeMethods.TablePtr->hs_method_a0c2a832((void*)arg0, (void*)arg1.Handle);
+        NativeMethods.TablePtr->hs_method_a0c2a832((void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public static void initVanillaBiomeTypeComponent(global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry arg0)

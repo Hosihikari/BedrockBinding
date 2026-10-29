@@ -43,6 +43,18 @@ public sealed unsafe partial class TheEndDimension : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->hs_get_6a2f06b2((void*)_handle);
     }
 
+    public bool mDirty
+    {
+        get => NativeMethods.TablePtr->hs_get_3643f5ec((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_3643f5ec((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_44e380d9((void*)_handle);
+    }
+
     public static float AMBIENT_MULTIPLIER
     {
         get => NativeMethods.TablePtr->hs_get_ef0bc4bf();
@@ -67,9 +79,9 @@ public sealed unsafe partial class TheEndDimension : global::System.IDisposable
     public static TheEndDimension Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.WorldGenerator? createGenerator(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.WorldGenerator? createGenerator(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructureSetRegistry arg0)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_9402515e((void*)_handle, (void*)arg0);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_9402515e((void*)_handle, (void*)arg0.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.WorldGenerator((nint)__hs_handle) : null;
     }
 
@@ -118,9 +130,9 @@ public sealed unsafe partial class TheEndDimension : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_dd455814((void*)_handle) != 0;
     }
 
-    public void init(nint arg0)
+    public void init(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructureSetRegistry arg0)
     {
-        NativeMethods.TablePtr->hs_method_f4fbb308((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_f4fbb308((void*)_handle, (void*)arg0.Handle);
     }
 
     public bool isDay()

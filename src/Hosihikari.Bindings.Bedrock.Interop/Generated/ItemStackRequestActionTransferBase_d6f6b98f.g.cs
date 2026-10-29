@@ -43,6 +43,54 @@ public sealed unsafe partial class ItemStackRequestActionTransferBase : global::
         set => NativeMethods.TablePtr->hs_set_6fc6a7b2((void*)_handle, value);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ItemStackRequestActionTransferBase Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static ItemStackRequestActionTransferBase Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestSlotInfo getSrc()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestSlotInfo((nint)NativeMethods.TablePtr->hs_method_9ad7678b((void*)_handle), false);
+    }
+
+    public byte mAmount
+    {
+        get => NativeMethods.TablePtr->hs_get_f964f918((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_f964f918((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDst_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_3fe1f21c((void*)_handle);
+    }
+
+    public bool mIsAmountSerialized
+    {
+        get => NativeMethods.TablePtr->hs_get_b0699788((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_b0699788((void*)_handle, value);
+    }
+
+    public bool mIsDstSerialized
+    {
+        get => NativeMethods.TablePtr->hs_get_6a2ebecb((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_6a2ebecb((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSrc_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_655318ad((void*)_handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
+    public nint operator_assign(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
+
+
 
     public void Dispose()
     {

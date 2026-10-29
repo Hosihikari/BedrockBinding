@@ -161,9 +161,9 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_a319cb37((void*)_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.HitResult clip(nint arg0)
+    public global::Hosihikari.Bindings.Bedrock.Interop.HitResult clip(global::Hosihikari.Bindings.Bedrock.Interop.ClipParameters arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.HitResult((nint)NativeMethods.TablePtr->hs_method_f7d08572((void*)_handle, (void*)arg0));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.HitResult((nint)NativeMethods.TablePtr->hs_method_f7d08572((void*)_handle, (void*)arg0.Handle));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -880,14 +880,14 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void postGameEvent(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.Block? arg3)
+    public void postGameEvent(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, global::Hosihikari.Bindings.Bedrock.Interop.GameEvent arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.Block? arg3)
     {
-        NativeMethods.TablePtr->hs_method_4779113c((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1, (void*)arg2.Handle, (void*)(arg3?.Handle ?? 0));
+        NativeMethods.TablePtr->hs_method_4779113c((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, (void*)arg2.Handle, (void*)(arg3?.Handle ?? 0));
     }
 
-    public void postGameEvent(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, nint arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, global::Hosihikari.Bindings.Bedrock.Interop.Block? arg3)
+    public void postGameEvent(global::Hosihikari.Bindings.Bedrock.Interop.Actor? arg0, global::Hosihikari.Bindings.Bedrock.Interop.GameEvent arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, global::Hosihikari.Bindings.Bedrock.Interop.Block? arg3)
     {
-        NativeMethods.TablePtr->hs_method_68ed2050((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1, (void*)arg2.Handle, (void*)(arg3?.Handle ?? 0));
+        NativeMethods.TablePtr->hs_method_68ed2050((void*)_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, (void*)arg2.Handle, (void*)(arg3?.Handle ?? 0));
     }
 
     public bool removeBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0)

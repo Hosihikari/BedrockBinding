@@ -85,9 +85,9 @@ public sealed unsafe partial class TripodCamera : global::System.IDisposable
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void reloadHardcoded(int arg0, nint arg1)
+    public void reloadHardcoded(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_2de80a39((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_2de80a39((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public void remove()

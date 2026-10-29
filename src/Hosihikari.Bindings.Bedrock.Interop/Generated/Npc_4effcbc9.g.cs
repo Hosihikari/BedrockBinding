@@ -108,9 +108,9 @@ public sealed unsafe partial class Npc : global::System.IDisposable
     public nint getNameTagTextColor() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'mce::Color' requires --link-carrier or --virtual-dispatch.");
 
-    public void initializeComponents(int arg0, nint arg1)
+    public void initializeComponents(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_13500f2c((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_13500f2c((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     public bool isTargetable()
@@ -132,9 +132,9 @@ public sealed unsafe partial class Npc : global::System.IDisposable
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public void reloadHardcoded(int arg0, nint arg1)
+    public void reloadHardcoded(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_38ecafca((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_38ecafca((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
 

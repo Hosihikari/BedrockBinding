@@ -60,19 +60,19 @@ public sealed unsafe partial class SystemFilePicker : global::System.IDisposable
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public ulong readBytes(nint arg0, ulong arg1, ulong arg2, byte[] arg3)
+    public ulong readBytes(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo arg0, ulong arg1, ulong arg2, byte[] arg3)
     {
         fixed (byte* __hs_vectorData3 = arg3)
         {
-            return NativeMethods.TablePtr->hs_method_499e7c5c((void*)_handle, (void*)arg0, arg1, arg2, __hs_vectorData3, (nuint)(arg3?.Length ?? 0));
+            return NativeMethods.TablePtr->hs_method_499e7c5c((void*)_handle, (void*)arg0.Handle, arg1, arg2, __hs_vectorData3, (nuint)(arg3?.Length ?? 0));
         }
     }
 
-    public bool writeBytes(nint arg0, ulong arg1, ulong arg2, byte[] arg3)
+    public bool writeBytes(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo arg0, ulong arg1, ulong arg2, byte[] arg3)
     {
         fixed (byte* __hs_vectorData3 = arg3)
         {
-            return NativeMethods.TablePtr->hs_method_ee2a28a1((void*)_handle, (void*)arg0, arg1, arg2, __hs_vectorData3, (nuint)(arg3?.Length ?? 0)) != 0;
+            return NativeMethods.TablePtr->hs_method_ee2a28a1((void*)_handle, (void*)arg0.Handle, arg1, arg2, __hs_vectorData3, (nuint)(arg3?.Length ?? 0)) != 0;
         }
     }
 

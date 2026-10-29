@@ -70,13 +70,13 @@ public sealed unsafe partial class PortalForcer : global::System.IDisposable
     public static PortalForcer Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PortalRecord' is not a known bindable declaration.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
     public nint addPortalRecord(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PortalRecord' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
-    public nint addPortalRecord(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0, global::Hosihikari.Bindings.Bedrock.Interop.PortalShape arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.PortalRecord addPortalRecord(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0, global::Hosihikari.Bindings.Bedrock.Interop.PortalShape arg1)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_da868ef1((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PortalRecord((nint)NativeMethods.TablePtr->hs_method_da868ef1((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle), false);
     }
 
     public static bool canPortalReplaceBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
@@ -84,9 +84,9 @@ public sealed unsafe partial class PortalForcer : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_7c43f0b9((void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
-    public nint createPortal(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.PortalRecord createPortal(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, int arg1)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_e23079b4((void*)_handle, (void*)arg0.Handle, arg1);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PortalRecord((nint)NativeMethods.TablePtr->hs_method_e23079b4((void*)_handle, (void*)arg0.Handle, arg1), false);
     }
 
     public void deserialize(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag arg0)
@@ -108,14 +108,14 @@ public sealed unsafe partial class PortalForcer : global::System.IDisposable
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public bool portalRecordExists(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0, nint arg1)
+    public bool portalRecordExists(global::Hosihikari.Bindings.Bedrock.Interop.AutomaticID_Dimension_int_ arg0, global::Hosihikari.Bindings.Bedrock.Interop.PortalRecord arg1)
     {
-        return NativeMethods.TablePtr->hs_method_0b350113((void*)_handle, (void*)arg0.Handle, (void*)arg1) != 0;
+        return NativeMethods.TablePtr->hs_method_0b350113((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle) != 0;
     }
 
-    public void removeMisalignedPortalRecords(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.PortalShape arg1, nint arg2)
+    public void removeMisalignedPortalRecords(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.PortalShape arg1, global::Hosihikari.Bindings.Bedrock.Interop.PortalRecord arg2)
     {
-        NativeMethods.TablePtr->hs_method_b49c2d2c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2);
+        NativeMethods.TablePtr->hs_method_b49c2d2c((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle);
     }
 
     public void removePortalRecord(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1)
@@ -128,6 +128,18 @@ public sealed unsafe partial class PortalForcer : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_183f245e((void*)_handle, (void*)arg0.Handle);
     }
 
+
+    public bool mDirty
+    {
+        get => NativeMethods.TablePtr->hs_get_eaa98f68((void*)_handle) != 0;
+        set => NativeMethods.TablePtr->hs_set_eaa98f68((void*)_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->hs_get_46b1800a((void*)_handle);
+    }
 
     public void Dispose()
     {

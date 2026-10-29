@@ -37,6 +37,48 @@ public sealed unsafe partial class CommandVersion : global::System.IDisposable
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor has no symbol in the IR.", false)]
+    public static CommandVersion Create() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor has no symbol in the IR.");
+
+    public static CommandVersion Create(int arg0, int arg1)
+    {
+        var handle = NativeMethods.TablePtr->hs_create_374beced(arg0, arg1);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandVersion((nint)handle);
+    }
+
+    public static int CurrentVersion
+    {
+        get => NativeMethods.TablePtr->hs_get_f5c8f05b();
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.SemVersion getLatestCompatibleSemVersion(int arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SemVersion((nint)NativeMethods.TablePtr->hs_method_96e8ade8(arg0));
+    }
+
+    public static int getVersionMapping(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg0)
+    {
+        return NativeMethods.TablePtr->hs_method_2262f943((void*)arg0.Handle);
+    }
+
+    public int mFrom
+    {
+        get => NativeMethods.TablePtr->hs_get_caea1e38((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_caea1e38((void*)_handle, value);
+    }
+
+    public int mTo
+    {
+        get => NativeMethods.TablePtr->hs_get_4f7c2530((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_4f7c2530((void*)_handle, value);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

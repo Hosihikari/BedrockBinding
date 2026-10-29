@@ -61,9 +61,9 @@ public sealed unsafe partial class Fish : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_13ead6f5((void*)_handle) != 0;
     }
 
-    public void initializeComponents(int arg0, nint arg1)
+    public void initializeComponents(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList arg1)
     {
-        NativeMethods.TablePtr->hs_method_b55593c7((void*)_handle, arg0, (void*)arg1);
+        NativeMethods.TablePtr->hs_method_b55593c7((void*)_handle, arg0, (void*)arg1.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]

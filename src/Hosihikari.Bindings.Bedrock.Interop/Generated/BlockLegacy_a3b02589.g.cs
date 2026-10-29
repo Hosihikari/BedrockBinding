@@ -479,9 +479,9 @@ public sealed unsafe partial class BlockLegacy : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_b482941e((void*)_handle);
     }
 
-    public void finalizeBlockCustomComponentEvents(nint arg0)
+    public void finalizeBlockCustomComponentEvents(global::Hosihikari.Bindings.Bedrock.Interop.ScriptBlockCustomComponentsFinalizer arg0)
     {
-        NativeMethods.TablePtr->hs_method_109c6501((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->hs_method_109c6501((void*)_handle, (void*)arg0.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -677,9 +677,10 @@ public sealed unsafe partial class BlockLegacy : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Material((nint)NativeMethods.TablePtr->hs_method_003504fc((void*)_handle), false);
     }
 
-    public nint getMobToSpawn(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1)
+    public global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnerData? getMobToSpawn(global::Hosihikari.Bindings.Bedrock.Interop.SpawnConditions arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource arg1)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_4c62c6aa((void*)_handle, (void*)arg0, (void*)arg1.Handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_4c62c6aa((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnerData((nint)__hs_handle, false) : null;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.", false)]
@@ -764,9 +765,10 @@ public sealed unsafe partial class BlockLegacy : global::System.IDisposable
     public nint getRequiredMedium() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'HashedString' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ResourceDrops' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getResourceDrops(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ResourceDrops' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ResourceDrops getResourceDrops(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, global::Hosihikari.Bindings.Bedrock.Interop.Randomize arg1, global::Hosihikari.Bindings.Bedrock.Interop.ResourceDropsContext arg2)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ResourceDrops((nint)NativeMethods.TablePtr->hs_method_7185aded((void*)_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle));
+    }
 
     public bool getSecondPart(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2)
     {

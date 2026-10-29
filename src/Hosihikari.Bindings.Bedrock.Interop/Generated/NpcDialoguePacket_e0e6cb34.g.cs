@@ -90,7 +90,7 @@ public sealed unsafe partial class NpcDialoguePacket : global::System.IDisposabl
     public static bool initializePacket(nint arg0, nint storage, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member has no symbol or vtable slot in the IR.");
 
-    public static bool initializePacket(global::Hosihikari.Bindings.Bedrock.Interop.NpcDialoguePacket arg0, nint arg1, string arg2)
+    public static bool initializePacket(global::Hosihikari.Bindings.Bedrock.Interop.NpcDialoguePacket arg0, global::Hosihikari.Bindings.Bedrock.Interop.NpcDialogueStorage? arg1, string arg2)
     {
         var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(arg2);
         scoped global::System.Span<byte> __hs_stringBytes2;
@@ -105,7 +105,7 @@ public sealed unsafe partial class NpcDialoguePacket : global::System.IDisposabl
         global::System.Text.Encoding.UTF8.GetBytes(arg2, __hs_stringBytes2);
         fixed (byte* __hs_stringData2 = __hs_stringBytes2)
         {
-            return NativeMethods.TablePtr->hs_method_0b8d51a5((void*)arg0.Handle, (void*)arg1, __hs_stringData2, (nuint)__hs_stringByteCount2) != 0;
+            return NativeMethods.TablePtr->hs_method_0b8d51a5((void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringByteCount2) != 0;
         }
     }
 
