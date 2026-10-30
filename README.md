@@ -57,6 +57,10 @@ The generated shim directories contain `hosihikari_abi.h` from `BindingAbi`, so 
 
 `tests/runtime-smoke/` is a plugin script that loads the shim inside a real server, checks two static accessors, and constructs a `HashedString`, a `Core::Random`, and a `TextPacket` before calling instance methods. `scripts/run-runtime-smoke.ps1 -ServerRoot <dir>` builds everything, deploys the plugin, starts the server, and requires `result=OK`.
 
+## Release
+
+`release.yml` runs on `v*` tags: it builds and verifies the committed surface, packs `Hosihikari.Bindings.Bedrock.Interop.<version>.nupkg`, builds the Windows shim, zips it as `Hosihikari.Bindings.Bedrock.Shim-win-x64-server.zip`, and attaches both to the GitHub release. The package version lives in the csproj (`1.26.51-r0`).
+
 ## Generated-source gate
 
 `scripts/verify_generated.py` checks provenance, the coverage baseline, the shim function count, the table version, the managed table, and every generated file hash. CI builds the solution, runs the verifier, validates the committed coverage contract with the generator, and compiles the Windows shim.

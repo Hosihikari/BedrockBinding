@@ -57,6 +57,10 @@ powershell -File native/BindingShim/build.ps1
 
 `tests/runtime-smoke/` 是一个插件脚本：在真实服务器进程内加载垫片，校验两个静态访问器，并构造 `HashedString`、`Core::Random` 与 `TextPacket` 后调用实例方法。`scripts/run-runtime-smoke.ps1 -ServerRoot <目录>` 会构建、部署插件、启动服务器并要求 `result=OK`。
 
+## 发布
+
+`release.yml` 在 `v*` 标签上运行：构建并校验已提交的面，打包 `Hosihikari.Bindings.Bedrock.Interop.<version>.nupkg`，构建 Windows 垫片并压缩为 `Hosihikari.Bindings.Bedrock.Shim-win-x64-server.zip`，两者附加到 GitHub Release。包版本写在 csproj 里（`1.26.51-r0`）。
+
 ## 生成源校验
 
 `scripts/verify_generated.py` 校验来源信息、覆盖基线、shim 函数数、表版本、托管表与每个生成文件的哈希。CI 构建解决方案、运行校验器、用生成器验证提交的覆盖契约，并编译 Windows shim。

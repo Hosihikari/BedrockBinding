@@ -1,0 +1,48 @@
+name: release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: ABI contract
+        uses: actions/checkout@v4
+        with:
+          repository: HosihikariProjection/BindingAbi
+          path: Binding.Abi
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Build
+        run: dotnet build Hosihikari.Bindings.Bedrock.slnx -c Release -p:AbiProjectPath=${{ github.workspace }}/Binding.Abi/src/Hosihikari.Bindings.Abi/Hosihikari.Bindings.Abi.csproj
+
+      - name: Verify generated sources
+        run: python scripts/verify_generated.py
+
+      - name: Pack managed assembly
+        run: dotnet pack src/Hosihikari.Bindings.Bedrock.Interop/Hosihikari.Bindings.Bedrock.Interop.csproj -c Release -p:AbiProjectPath=${{ github.workspace }}/Binding.Abi/src/Hosihikari.Bindings.Abi/Hosihikari.Bindings.Abi.csproj -o artifacts/pack
+
+      - name: Build native shim
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File native/BindingShim/build.ps1 -Configuration win-x64-server -Output artifacts/pack/Hosihikari.Bindings.Bedrock.Shim.dll
+
+      - name: Package native shim
+        shell: pwsh
+        run: Compress-Archive -Path artifacts/pack/Hosihikari.Bindings.Bedrock.Shim.dll -DestinationPath artifacts/pack/Hosihikari.Bindings.Bedrock.Shim-win-x64-server.zip
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            artifacts/pack/*.nupkg
+            artifacts/pack/*.zip
+          generate_release_notes: true
