@@ -53,9 +53,9 @@ powershell -File native/BindingShim/build.ps1
 
 生成的 shim 目录包含来自 `BindingAbi` 的 `hosihikari_abi.h`，原生构建因此自包含。shim 用 MSVC 构建，不需要 BDS 头文件或 import library。
 
-## 示例
+## 运行时冒烟
 
-`samples/UsageSmoke/` 是一个插件脚本：加载垫片、调用一个静态 MCAPI 函数，并在两个构造出的游戏对象上调用实例方法。部署所需文件见其 README。
+`tests/runtime-smoke/` 是一个插件脚本：在真实服务器进程内加载垫片，校验两个静态访问器，并构造 `HashedString`、`Core::Random` 与 `TextPacket` 后调用实例方法。`scripts/run-runtime-smoke.ps1 -ServerRoot <目录>` 会构建、部署插件、启动服务器并要求 `result=OK`。
 
 ## 生成源校验
 

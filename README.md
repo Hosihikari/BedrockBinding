@@ -53,9 +53,9 @@ powershell -File native/BindingShim/build.ps1
 
 The generated shim directories contain `hosihikari_abi.h` from `BindingAbi`, so the native build stays self-contained. The shim builds with MSVC and needs no BDS headers or import library.
 
-## Sample
+## Runtime smoke
 
-`samples/UsageSmoke/` is a plugin script that loads the shim, calls a static MCAPI function, and constructs two game objects before calling instance methods on them. Its README lists the files to deploy next to it.
+`tests/runtime-smoke/` is a plugin script that loads the shim inside a real server, checks two static accessors, and constructs a `HashedString`, a `Core::Random`, and a `TextPacket` before calling instance methods. `scripts/run-runtime-smoke.ps1 -ServerRoot <dir>` builds everything, deploys the plugin, starts the server, and requires `result=OK`.
 
 ## Generated-source gate
 

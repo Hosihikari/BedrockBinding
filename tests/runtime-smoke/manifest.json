@@ -1,5 +1,5 @@
 {
-  "name": "usage-smoke",
+  "name": "bedrock-smoke",
   "entry": "main.cs",
   "type": "hosihikari",
   "version": "1.0.0",
