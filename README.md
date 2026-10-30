@@ -56,6 +56,10 @@ powershell -File native/BindingShim/build.ps1
 
 The generated shim directories contain `hosihikari_abi.h` from `BindingAbi`, so the native build stays self-contained. The Windows shim builds with MSVC and the Linux shim with g++ (`-ldl`); neither needs BDS headers.
 
+## Runtime smoke
+
+`tests/runtime-smoke/` is a plugin script that loads the shim inside a real 1.21.3.01 server and reads two static accessors. `scripts/run-runtime-smoke.ps1 -ServerRoot <dir>` builds everything, deploys the plugin, starts the server, and requires `result=OK`.
+
 ## Generated-source gate
 
 `scripts/verify_generated.py` checks provenance, the coverage baseline, the shim function counts in both configurations, the table version, the managed table, and every generated file hash. CI builds the solution, runs the verifier, validates the committed coverage contract with the generator, and compiles the Linux and Windows shims.

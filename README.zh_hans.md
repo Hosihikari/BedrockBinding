@@ -56,6 +56,10 @@ powershell -File native/BindingShim/build.ps1
 
 生成的 shim 目录包含来自 `BindingAbi` 的 `hosihikari_abi.h`，原生构建因此自包含。Windows shim 用 MSVC 构建，Linux shim 用 g++（`-ldl`）；两者都不需要 BDS 头文件。
 
+## 运行时冒烟
+
+`tests/runtime-smoke/` 是一个插件脚本：在真实 1.21.3.01 服务器进程内加载垫片并读取两个静态访问器。`scripts/run-runtime-smoke.ps1 -ServerRoot <目录>` 会构建、部署插件、启动服务器并要求 `result=OK`。
+
 ## 生成源校验
 
 `scripts/verify_generated.py` 校验来源信息、覆盖基线、两个配置的 shim 函数数、表版本、托管表与每个生成文件的哈希。CI 构建解决方案、运行校验器、用生成器验证提交的覆盖契约，并编译 Linux 与 Windows shim。
