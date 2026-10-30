@@ -30,10 +30,4 @@
     <None Include="../../README.md" Pack="true" PackagePath="/" Visible="false" />
   </ItemGroup>
 
-  <!-- The native shim is distributed inside the package. Pass BedrockShimDll to include
-       the build produced by native/BindingShim/build.ps1; packing without it stays valid. -->
-  <ItemGroup Condition="'$(BedrockShimDll)' != '' and Exists('$(BedrockShimDll)')">
-    <None Include="$(BedrockShimDll)" Pack="true" PackagePath="runtimes/win-x64/native/" Visible="false" />
-  </ItemGroup>
-
 </Project>

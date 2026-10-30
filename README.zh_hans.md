@@ -59,16 +59,20 @@ powershell -File native/BindingShim/build.ps1
 
 ## 分发
 
-面通过 NuGet 包 `Hosihikari.Bindings.Bedrock.Interop` 分发（版本 `1.26.51-r0`）。打包与推送：
+两个 NuGet 包共用版本 `1.26.51-r0`：
+
+- `Hosihikari.Bindings.Bedrock.Interop` —— 托管互操作；依赖 `Hosihikari.Bindings.Abi`。
+- `Hosihikari.Bindings.Bedrock.Shim` —— 原生 Windows 垫片，位于 `runtimes/win-x64/native/`。
+
+`publish.yml` 在 `v*` 标签上运行：构建并校验面、编译垫片、打包两个包，并用 `NUGET_API_KEY` secret 推送到 nuget.org。本地打包：
 
 ```shell
 powershell -File native/BindingShim/build.ps1 -Output artifacts/native/Hosihikari.Bindings.Bedrock.Shim.dll
-dotnet pack src/Hosihikari.Bindings.Bedrock.Interop/Hosihikari.Bindings.Bedrock.Interop.csproj -c Release `
-  -p:BedrockShimDll=artifacts/native/Hosihikari.Bindings.Bedrock.Shim.dll -o artifacts/pack
+dotnet pack src/Hosihikari.Bindings.Bedrock.Interop/Hosihikari.Bindings.Bedrock.Interop.csproj -c Release -o artifacts/pack
+dotnet pack src/Hosihikari.Bindings.Bedrock.Shim/Hosihikari.Bindings.Bedrock.Shim.csproj -c Release `
+  -p:ShimDll=artifacts/native/Hosihikari.Bindings.Bedrock.Shim.dll -o artifacts/pack
 dotnet nuget push artifacts/pack/*.nupkg --api-key <key> --source https://api.nuget.org/v3/index.json
 ```
-
-包依赖 `Hosihikari.Bindings.Abi`，并在 `runtimes/win-x64/native/` 下携带 Windows 垫片；不传 `-p:BedrockShimDll` 时只含托管程序集。
 
 ## 生成源校验
 

@@ -59,16 +59,20 @@ The generated shim directories contain `hosihikari_abi.h` from `BindingAbi`, so 
 
 ## Distribution
 
-The surface is distributed as the NuGet package `Hosihikari.Bindings.Bedrock.Interop` (version `1.26.51-r0`). Pack and push it with:
+Two NuGet packages share the version `1.26.51-r0`:
+
+- `Hosihikari.Bindings.Bedrock.Interop` — the managed interop; depends on `Hosihikari.Bindings.Abi`.
+- `Hosihikari.Bindings.Bedrock.Shim` — the native Windows shim under `runtimes/win-x64/native/`.
+
+`publish.yml` runs on `v*` tags: it builds and verifies the surface, builds the shim, packs both packages, and pushes them to nuget.org using the `NUGET_API_KEY` secret. To pack locally:
 
 ```shell
 powershell -File native/BindingShim/build.ps1 -Output artifacts/native/Hosihikari.Bindings.Bedrock.Shim.dll
-dotnet pack src/Hosihikari.Bindings.Bedrock.Interop/Hosihikari.Bindings.Bedrock.Interop.csproj -c Release `
-  -p:BedrockShimDll=artifacts/native/Hosihikari.Bindings.Bedrock.Shim.dll -o artifacts/pack
+dotnet pack src/Hosihikari.Bindings.Bedrock.Interop/Hosihikari.Bindings.Bedrock.Interop.csproj -c Release -o artifacts/pack
+dotnet pack src/Hosihikari.Bindings.Bedrock.Shim/Hosihikari.Bindings.Bedrock.Shim.csproj -c Release `
+  -p:ShimDll=artifacts/native/Hosihikari.Bindings.Bedrock.Shim.dll -o artifacts/pack
 dotnet nuget push artifacts/pack/*.nupkg --api-key <key> --source https://api.nuget.org/v3/index.json
 ```
-
-The package depends on `Hosihikari.Bindings.Abi` and carries the Windows shim under `runtimes/win-x64/native/`; without `-p:BedrockShimDll` it contains the managed assembly only.
 
 ## Generated-source gate
 
