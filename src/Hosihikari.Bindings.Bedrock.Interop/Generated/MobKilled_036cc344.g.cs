@@ -38,40 +38,51 @@ public sealed unsafe partial class MobKilled : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static MobKilled Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyTelemetryEventPacketPayload_Nested.MobKilled arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_cc652bea((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MobKilled((nint)handle);
+    }
+
     public int mDamageChildType
     {
-        get => NativeMethods.TablePtr->C1.hs_get_81bcad66((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_81bcad66((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_81bcad66((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_81bcad66((void*)__hosihikari_shim_handle, value);
     }
 
     public int mDamageSource
     {
-        get => NativeMethods.TablePtr->C1.hs_get_249a94e4((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_249a94e4((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_249a94e4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_249a94e4((void*)__hosihikari_shim_handle, value);
     }
 
     public long mKilledMobId
     {
-        get => NativeMethods.TablePtr->C1.hs_get_fb5830d5((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_fb5830d5((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_fb5830d5((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_fb5830d5((void*)__hosihikari_shim_handle, value);
     }
 
     public long mKillerEntityId
     {
-        get => NativeMethods.TablePtr->C1.hs_get_84e5c84b((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_84e5c84b((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_84e5c84b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_84e5c84b((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTraderName_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_b5f899c7((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b5f899c7((void*)__hosihikari_shim_handle);
     }
 
     public int mTraderTier
     {
-        get => NativeMethods.TablePtr->C1.hs_get_293a9d04((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_293a9d04((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_293a9d04((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_293a9d04((void*)__hosihikari_shim_handle, value);
     }
 
 
@@ -81,7 +92,7 @@ public sealed unsafe partial class MobKilled : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_036cc344((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_036cc344((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

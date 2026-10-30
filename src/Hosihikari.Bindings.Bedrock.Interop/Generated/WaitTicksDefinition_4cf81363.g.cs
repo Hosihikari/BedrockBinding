@@ -50,13 +50,26 @@ public sealed unsafe partial class WaitTicksDefinition : global::System.IDisposa
         get => (nint)NativeMethods.TablePtr->C4.hs_get_ab246bc8((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void _load(nint value, nint factory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void _load(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value value, global::Hosihikari.Bindings.Bedrock.Interop.BehaviorFactory factory)
+    {
+        NativeMethods.TablePtr->C4.hs_method_4474424f((void*)__hosihikari_shim_handle, (void*)value.Handle, (void*)factory.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void load(nint value, nint factory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static WaitTicksDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.WaitTicksDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_e5274f84((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WaitTicksDefinition((nint)handle);
+    }
+
+    public void load(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value value, global::Hosihikari.Bindings.Bedrock.Interop.BehaviorFactory factory)
+    {
+        NativeMethods.TablePtr->C4.hs_method_399568c4((void*)__hosihikari_shim_handle, (void*)value.Handle, (void*)factory.Handle);
+    }
 
     public int mTicks
     {

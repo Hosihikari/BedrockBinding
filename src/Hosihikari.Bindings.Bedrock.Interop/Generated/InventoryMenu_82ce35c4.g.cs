@@ -166,6 +166,17 @@ public sealed unsafe partial class InventoryMenu : global::System.IDisposable
         return new InventoryMenu((nint)handle);
     }
 
+    public static InventoryMenu Create(global::Hosihikari.Bindings.Bedrock.Interop.InventoryMenu arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_26526bda((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InventoryMenu((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.Container? _getContainer()
     {
         var __hs_handle = NativeMethods.TablePtr->C1.hs_method_53422e0b((void*)__hosihikari_shim_handle);

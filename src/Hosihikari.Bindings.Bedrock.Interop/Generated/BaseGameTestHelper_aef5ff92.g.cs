@@ -158,9 +158,10 @@ public sealed unsafe partial class BaseGameTestHelper : global::System.IDisposab
     public nint destroyBlock(nint pos, bool dropResources) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void fail(nint error) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void fail(global::Hosihikari.Bindings.Bedrock.Interop.gametest.GameTestError error)
+    {
+        NativeMethods.TablePtr->C4.hs_method_0bad2513((void*)__hosihikari_shim_handle, (void*)error.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::optional<gametest::GameTestError>' is not supported.", false)]
     public void failIf(nint fn) =>

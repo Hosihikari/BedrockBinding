@@ -53,6 +53,17 @@ public sealed unsafe partial class TerrainShaper : global::System.IDisposable
         get => NativeMethods.TablePtr->C3.hs_get_55668328((void*)__hosihikari_shim_handle);
     }
 
+    public static TerrainShaper Create(global::Hosihikari.Bindings.Bedrock.Interop.TerrainShaper arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_2a8ca342((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TerrainShaper((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ToFloatFunction<TerrainShaper::Point>' requires --link-carrier or --virtual-dispatch.", false)]
     public static nint buildErosionJaggednessSpline(nint jaggednessFactorAtPeakRidgeAndErosionIndex0, nint jaggednessFactorAtPeakRidgeAndErosionIndex1, nint jaggednessFactorAtHighRidgeAndErosionIndex0, nint jaggednessFactorAtHighRidgeAndErosionIndex1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ToFloatFunction<TerrainShaper::Point>' requires --link-carrier or --virtual-dispatch.");

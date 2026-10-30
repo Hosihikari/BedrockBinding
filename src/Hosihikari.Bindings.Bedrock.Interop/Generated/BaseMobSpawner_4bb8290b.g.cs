@@ -38,9 +38,10 @@ public sealed unsafe partial class BaseMobSpawner : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint actorDefId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier actorDefId)
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_4889db99((void*)__hosihikari_shim_handle, (void*)actorDefId.Handle);
+    }
 
     public void _dtor()
     {
@@ -77,9 +78,16 @@ public sealed unsafe partial class BaseMobSpawner : global::System.IDisposable
         return new BaseMobSpawner((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static BaseMobSpawner Create(nint actorDefId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static BaseMobSpawner Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier actorDefId)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_ff67a644((void*)actorDefId.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BaseMobSpawner((nint)handle);
+    }
 
     public void _delay(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource source)
     {
@@ -207,9 +215,10 @@ public sealed unsafe partial class BaseMobSpawner : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_47e4af98((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void setEntityId(nint actorDefId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void setEntityId(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier actorDefId)
+    {
+        NativeMethods.TablePtr->C0.hs_method_abfe21b5((void*)__hosihikari_shim_handle, (void*)actorDefId.Handle);
+    }
 
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource source)
     {

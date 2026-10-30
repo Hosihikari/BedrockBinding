@@ -43,6 +43,17 @@ public sealed unsafe partial class BurnsInDaylightSystem : global::System.IDispo
         NativeMethods.TablePtr->C0.hs_method_3752173a((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static BurnsInDaylightSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.BurnsInDaylightSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_a04a5607((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BurnsInDaylightSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C0.hs_method_9157672d((void*)__hosihikari_shim_handle, (void*)registry.Handle);

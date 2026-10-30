@@ -49,6 +49,17 @@ public sealed unsafe partial class ActorIsColorTest : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static ActorIsColorTest Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorIsColorTest arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_3f2ce4c2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorIsColorTest((nint)handle);
+    }
+
     public bool evaluate(nint context)
     {
         return NativeMethods.TablePtr->C0.hs_method_cdb8bbc7((void*)__hosihikari_shim_handle, (void*)context) != 0;

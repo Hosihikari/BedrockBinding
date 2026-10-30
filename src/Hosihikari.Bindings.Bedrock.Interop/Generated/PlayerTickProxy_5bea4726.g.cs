@@ -63,6 +63,17 @@ public sealed unsafe partial class PlayerTickProxy : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_0ff60c16((void*)__hosihikari_shim_handle, (void*)dimension.Handle);
     }
 
+    public static PlayerTickProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerTickProxy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_db6cbd9b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerTickProxy((nint)handle);
+    }
+
     public void clearDimensionPlayerReplicationList(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension)
     {
         NativeMethods.TablePtr->C2.hs_method_d0edfe9b((void*)__hosihikari_shim_handle, (void*)dimension.Handle);

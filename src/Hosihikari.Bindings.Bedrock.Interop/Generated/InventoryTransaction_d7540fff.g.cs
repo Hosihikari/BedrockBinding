@@ -43,6 +43,17 @@ public sealed unsafe partial class InventoryTransaction : global::System.IDispos
         NativeMethods.TablePtr->C1.hs_method_4f3bdfe2((void*)__hosihikari_shim_handle);
     }
 
+    public static InventoryTransaction Create(global::Hosihikari.Bindings.Bedrock.Interop.InventoryTransaction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_0065207e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InventoryTransaction((nint)handle);
+    }
+
     public void addAction(global::Hosihikari.Bindings.Bedrock.Interop.InventoryAction action)
     {
         NativeMethods.TablePtr->C1.hs_method_47d818cb((void*)__hosihikari_shim_handle, (void*)action.Handle);

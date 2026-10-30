@@ -38,6 +38,17 @@ public sealed unsafe partial class SettingsCommandPacketPayload : global::System
         return __hs_handle;
     }
 
+    public static SettingsCommandPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.SettingsCommandPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_cdc4876f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SettingsCommandPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mCommandString_Address
     {

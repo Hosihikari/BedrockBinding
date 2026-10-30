@@ -43,6 +43,17 @@ public sealed unsafe partial class EnvironmentSensorSystem : global::System.IDis
         NativeMethods.TablePtr->C1.hs_method_a1481b4f((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static EnvironmentSensorSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.EnvironmentSensorSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_e971cd11((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EnvironmentSensorSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C1.hs_method_1658bd8e((void*)__hosihikari_shim_handle, (void*)registry.Handle);

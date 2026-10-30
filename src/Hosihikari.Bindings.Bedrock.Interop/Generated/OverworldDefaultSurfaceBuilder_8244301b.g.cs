@@ -63,6 +63,17 @@ public sealed unsafe partial class OverworldDefaultSurfaceBuilder : global::Syst
         return NativeMethods.TablePtr->C4.hs_method_cb9c3cc7((void*)__hosihikari_shim_handle, (void*)surfaceBuilderData) != 0;
     }
 
+    public static OverworldDefaultSurfaceBuilder Create(global::Hosihikari.Bindings.Bedrock.Interop.VanillaSurfaceBuilders.OverworldDefaultSurfaceBuilder arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_1f16e1c3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OverworldDefaultSurfaceBuilder((nint)handle);
+    }
+
     public void buildSurfaceAt(global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.GlobalParameters globalParams, global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.SurfaceBuilderParameters surfaceBuilderParams, global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.PerColumnParameters columnParams)
     {
         NativeMethods.TablePtr->C4.hs_method_204a392b((void*)__hosihikari_shim_handle, (void*)globalParams.Handle, (void*)surfaceBuilderParams.Handle, (void*)columnParams.Handle);

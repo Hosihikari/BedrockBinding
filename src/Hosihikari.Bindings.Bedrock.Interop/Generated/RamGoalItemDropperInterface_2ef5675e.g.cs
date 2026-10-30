@@ -38,6 +38,17 @@ public sealed unsafe partial class RamGoalItemDropperInterface : global::System.
         return __hs_handle;
     }
 
+    public static RamGoalItemDropperInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.RamAttackGoalUtils.RamGoalItemDropperInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_5d64c321((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RamGoalItemDropperInterface((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void checkForHornDropOnCollision(nint collisionPos) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
@@ -57,7 +68,7 @@ public sealed unsafe partial class RamGoalItemDropperInterface : global::System.
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_2ef5675e((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_2ef5675e((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -38,6 +38,17 @@ public sealed unsafe partial class IFileWriteAccess : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static IFileWriteAccess Create(global::Hosihikari.Bindings.Bedrock.Interop.IFileWriteAccess arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_62a544da((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IFileWriteAccess((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public ulong fwrite(nint buffer, ulong size, ulong count, nint file) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

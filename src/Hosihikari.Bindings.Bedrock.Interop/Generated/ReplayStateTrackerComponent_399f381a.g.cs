@@ -38,10 +38,21 @@ public sealed unsafe partial class ReplayStateTrackerComponent : global::System.
         return __hs_handle;
     }
 
+    public static ReplayStateTrackerComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ReplayStateTrackerComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a804de00((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ReplayStateTrackerComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mDiff_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_2f6680fe((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2f6680fe((void*)__hosihikari_shim_handle);
     }
 
 
@@ -51,7 +62,7 @@ public sealed unsafe partial class ReplayStateTrackerComponent : global::System.
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_399f381a((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_399f381a((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -59,6 +59,17 @@ public sealed unsafe partial class BlockStateGroup : global::System.IDisposable
         return new BlockStateGroup((nint)handle);
     }
 
+    public static BlockStateGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockStateGroup arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_d0b108c5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockStateGroup((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockStateMeta? getBlockStateFromHash(nint h)
     {
         var __hs_handle = NativeMethods.TablePtr->C0.hs_method_2c1909d0((void*)__hosihikari_shim_handle, (void*)h);

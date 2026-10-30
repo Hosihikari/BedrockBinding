@@ -43,6 +43,17 @@ public sealed unsafe partial class SeatDescription : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.SeatDescription((nint)NativeMethods.TablePtr->C3.hs_method_267377f2(), false);
     }
 
+    public static SeatDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.SeatDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_4f3edd20((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SeatDescription((nint)handle);
+    }
+
     public void addRotationExpressionNode(global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode node)
     {
         NativeMethods.TablePtr->C3.hs_method_ee3c444c((void*)__hosihikari_shim_handle, (void*)node.Handle);

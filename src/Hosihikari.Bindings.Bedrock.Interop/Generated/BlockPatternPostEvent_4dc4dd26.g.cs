@@ -62,6 +62,17 @@ public sealed unsafe partial class BlockPatternPostEvent : global::System.IDispo
         get => (nint)NativeMethods.TablePtr->C0.hs_get_52170902((void*)__hosihikari_shim_handle);
     }
 
+    public static BlockPatternPostEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPatternPostEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5b240fc5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockPatternPostEvent((nint)handle);
+    }
+
 
     public void Dispose()
     {

@@ -87,6 +87,17 @@ public sealed unsafe partial class MeadowFlowerFeature : global::System.IDisposa
         return new MeadowFlowerFeature((nint)handle);
     }
 
+    public static MeadowFlowerFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.MeadowFlowerFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_64cee835((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MeadowFlowerFeature((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBiomeInfoNoise_Address
     {

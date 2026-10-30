@@ -38,6 +38,17 @@ public sealed unsafe partial class RequestIdAssignments : global::System.IDispos
         return __hs_handle;
     }
 
+    public static RequestIdAssignments Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionHandler_Nested.RequestIdAssignments arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_107f7b0a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RequestIdAssignments((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mContainers_Address
     {

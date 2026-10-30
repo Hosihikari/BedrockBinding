@@ -75,6 +75,17 @@ public sealed unsafe partial class BlockIntersectionConstraint : global::System.
         return new BlockIntersectionConstraint((nint)handle);
     }
 
+    public static BlockIntersectionConstraint Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockIntersectionConstraint arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_b1c64173((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockIntersectionConstraint((nint)handle);
+    }
+
     public bool isSatisfied(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos structurePos, nint structureRot, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos centeringOffset)
     {
         return NativeMethods.TablePtr->C0.hs_method_883a143c((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)structurePos.Handle, (void*)structureRot, (void*)centeringOffset.Handle) != 0;

@@ -48,6 +48,17 @@ public sealed unsafe partial class ITickingSystem : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_b0d193d8((void*)__hosihikari_shim_handle, (void*)registry.Handle, (void*)entityContext.Handle);
     }
 
+    public static ITickingSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.ITickingSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_7120f54e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ITickingSystem((nint)handle);
+    }
+
     public void singleTick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity)
     {
         NativeMethods.TablePtr->C1.hs_method_c757ba92((void*)__hosihikari_shim_handle, (void*)registry.Handle, (void*)entity.Handle);

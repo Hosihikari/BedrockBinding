@@ -38,6 +38,17 @@ public sealed unsafe partial class AABBBucket : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static AABBBucket Create(global::Hosihikari.Bindings.Bedrock.Interop.AABBBucket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_cc2cf556((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AABBBucket((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBBs_Address
     {

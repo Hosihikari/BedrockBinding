@@ -38,6 +38,17 @@ public sealed unsafe partial class MolangItemDescriptorData : global::System.IDi
         return __hs_handle;
     }
 
+    public static MolangItemDescriptorData Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestCereal.MolangItemDescriptorData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_3ce32ad2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangItemDescriptorData((nint)handle);
+    }
+
     public short mMolangVersion
     {
         get => NativeMethods.TablePtr->C1.hs_get_3e1bc26b((void*)__hosihikari_shim_handle);

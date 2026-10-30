@@ -38,6 +38,17 @@ public sealed unsafe partial class SurfaceMaterialAdjustmentAttributes : global:
         return __hs_handle;
     }
 
+    public static SurfaceMaterialAdjustmentAttributes Create(global::Hosihikari.Bindings.Bedrock.Interop.SurfaceMaterialAdjustmentAttributes arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_9a2820a4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SurfaceMaterialAdjustmentAttributes((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.SurfaceMaterialAdjustmentEvaluated evaluateAdjustments(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams molangParams, global::Hosihikari.Bindings.Bedrock.Interop.PerlinSimplexNoise noise, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, int heightMin, int heightMax)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.SurfaceMaterialAdjustmentEvaluated((nint)NativeMethods.TablePtr->C3.hs_method_8b69e8a3((void*)__hosihikari_shim_handle, (void*)molangParams.Handle, (void*)noise.Handle, (void*)pos.Handle, heightMin, heightMax));

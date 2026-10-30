@@ -38,6 +38,17 @@ public sealed unsafe partial class SendEventData : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static SendEventData Create(global::Hosihikari.Bindings.Bedrock.Interop.SendEventData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_82440706((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SendEventData((nint)handle);
+    }
+
     public int castDuration
     {
         get => NativeMethods.TablePtr->C3.hs_get_5742ef14((void*)__hosihikari_shim_handle);

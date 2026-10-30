@@ -38,6 +38,17 @@ public sealed unsafe partial class ScriptCameraSetRotationOptions : global::Syst
         return __hs_handle;
     }
 
+    public static ScriptCameraSetRotationOptions Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptCameraSetRotationOptions arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_f73aa3fb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptCameraSetRotationOptions((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding((nint)NativeMethods.TablePtr->C3.hs_method_3cf7c839());

@@ -43,6 +43,17 @@ public sealed unsafe partial class PlaySoundReactionComponent : global::System.I
         NativeMethods.TablePtr->C2.hs_method_190060e5((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)region.Handle);
     }
 
+    public static PlaySoundReactionComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.PlaySoundReactionComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_b8b011e4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlaySoundReactionComponent((nint)handle);
+    }
+
     public void _onEnd(global::Hosihikari.Bindings.Bedrock.Interop.LabTableReaction owner, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
     {
         NativeMethods.TablePtr->C2.hs_method_02ee7627((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)region.Handle);

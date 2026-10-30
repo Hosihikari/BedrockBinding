@@ -38,28 +38,39 @@ public sealed unsafe partial class NormalizedRectangularRecipeResults : global::
         return __hs_handle;
     }
 
+    public static NormalizedRectangularRecipeResults Create(global::Hosihikari.Bindings.Bedrock.Interop.Recipes_Nested.NormalizedRectangularRecipeResults arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_5d9429c6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NormalizedRectangularRecipeResults((nint)handle);
+    }
+
     public int mHeight
     {
-        get => NativeMethods.TablePtr->C2.hs_get_9b3c77a3((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_9b3c77a3((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_9b3c77a3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_9b3c77a3((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mNormalizedResult_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_f0c5d81c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f0c5d81c((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mWarning_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_9d9046e0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_9d9046e0((void*)__hosihikari_shim_handle);
     }
 
     public int mWidth
     {
-        get => NativeMethods.TablePtr->C2.hs_get_e985dbff((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_e985dbff((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_e985dbff((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_e985dbff((void*)__hosihikari_shim_handle, value);
     }
 
 
@@ -69,7 +80,7 @@ public sealed unsafe partial class NormalizedRectangularRecipeResults : global::
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_c99e9dfd((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_c99e9dfd((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

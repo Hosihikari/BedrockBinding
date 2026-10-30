@@ -38,6 +38,17 @@ public sealed unsafe partial class TargetSpace : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static TargetSpace Create(global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.TargetSpace arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_2561cca7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TargetSpace((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mParams_Address
     {

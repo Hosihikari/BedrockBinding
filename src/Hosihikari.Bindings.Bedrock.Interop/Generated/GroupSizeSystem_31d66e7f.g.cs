@@ -43,6 +43,17 @@ public sealed unsafe partial class GroupSizeSystem : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_8dff3ea2((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static GroupSizeSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.GroupSizeSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_55302e82((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GroupSizeSystem((nint)handle);
+    }
+
     public static void _tickComponent(global::Hosihikari.Bindings.Bedrock.Interop.ActorOwnerComponent actorOwnerComponent, global::Hosihikari.Bindings.Bedrock.Interop.GroupSizeComponent groupSizeComponent)
     {
         NativeMethods.TablePtr->C1.hs_method_c9c909c6((void*)actorOwnerComponent.Handle, (void*)groupSizeComponent.Handle);

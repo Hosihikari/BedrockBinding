@@ -38,6 +38,17 @@ public sealed unsafe partial class DocumentableEventExecution : global::System.I
         return __hs_handle;
     }
 
+    public static DocumentableEventExecution Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptDeferredEventCoordinator_Nested.DocumentableEventExecution arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_57ed048c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DocumentableEventExecution((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mDocumentationGenerationFn_Address
     {

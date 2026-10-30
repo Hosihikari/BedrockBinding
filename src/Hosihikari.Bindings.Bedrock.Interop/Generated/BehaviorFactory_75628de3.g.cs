@@ -38,6 +38,17 @@ public sealed unsafe partial class BehaviorFactory : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static BehaviorFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.BehaviorFactory arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_97002beb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BehaviorFactory((nint)handle);
+    }
+
     public void _initNodes()
     {
         NativeMethods.TablePtr->C0.hs_method_dbde82c7((void*)__hosihikari_shim_handle);

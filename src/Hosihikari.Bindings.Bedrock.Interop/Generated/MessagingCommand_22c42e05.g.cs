@@ -67,6 +67,17 @@ public sealed unsafe partial class MessagingCommand : global::System.IDisposable
         set => NativeMethods.TablePtr->C2.hs_set_0d648061((void*)__hosihikari_shim_handle, value);
     }
 
+    public static MessagingCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.MessagingCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_9ec6ca43((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MessagingCommand((nint)handle);
+    }
+
     public bool checkChatPermissions(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         return NativeMethods.TablePtr->C2.hs_method_ef54349a((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle) != 0;

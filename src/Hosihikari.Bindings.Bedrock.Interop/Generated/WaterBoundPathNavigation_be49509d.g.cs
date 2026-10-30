@@ -72,6 +72,17 @@ public sealed unsafe partial class WaterBoundPathNavigation : global::System.IDi
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static WaterBoundPathNavigation Create(global::Hosihikari.Bindings.Bedrock.Interop.WaterBoundPathNavigation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_6a372b91((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WaterBoundPathNavigation((nint)handle);
+    }
+
     public bool canUpdatePath(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
         return NativeMethods.TablePtr->C4.hs_method_cf75915b((void*)__hosihikari_shim_handle, (void*)mob.Handle) != 0;

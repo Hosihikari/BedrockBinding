@@ -38,6 +38,17 @@ public sealed unsafe partial class BarrelContainerScreenValidator : global::Syst
         return __hs_handle;
     }
 
+    public static BarrelContainerScreenValidator Create(global::Hosihikari.Bindings.Bedrock.Interop.BarrelContainerScreenValidator arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_8e502a53((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BarrelContainerScreenValidator((nint)handle);
+    }
+
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mValidContainerEnumNames_Address

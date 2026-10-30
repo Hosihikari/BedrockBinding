@@ -111,6 +111,17 @@ public sealed unsafe partial class ChangeDimensionPacket : global::System.IDispo
         NativeMethods.TablePtr->C0.hs_method_1bfebc03((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+    public static ChangeDimensionPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_a0386c3a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChangeDimensionPacket((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");

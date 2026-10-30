@@ -40,17 +40,17 @@ public sealed unsafe partial class LevelChunk : global::System.IDisposable
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos cp, bool readOnly, int initBlocks, bool initializeMetaData, int blockActorTrackingMode)
     {
-        return (nint)NativeMethods.TablePtr->C1.hs_method_827e746a((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)cp.Handle, readOnly, initBlocks, initializeMetaData, blockActorTrackingMode);
+        return (nint)NativeMethods.TablePtr->C2.hs_method_827e746a((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)cp.Handle, readOnly, initBlocks, initializeMetaData, blockActorTrackingMode);
     }
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C1.hs_method_5e593d81((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_5e593d81((void*)__hosihikari_shim_handle);
     }
 
     public static LevelChunk Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_d382c003();
+        var handle = NativeMethods.TablePtr->C2.hs_create_d382c003();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -61,7 +61,7 @@ public sealed unsafe partial class LevelChunk : global::System.IDisposable
 
     public static LevelChunk Create(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos cp, bool readOnly, int initBlocks, bool initializeMetaData, int blockActorTrackingMode)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_50a78fed((void*)dimension.Handle, (void*)cp.Handle, readOnly, initBlocks, initializeMetaData, blockActorTrackingMode);
+        var handle = NativeMethods.TablePtr->C2.hs_create_50a78fed((void*)dimension.Handle, (void*)cp.Handle, readOnly, initBlocks, initializeMetaData, blockActorTrackingMode);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -72,7 +72,7 @@ public sealed unsafe partial class LevelChunk : global::System.IDisposable
 
     public static LevelChunk Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_a250d436((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_a250d436((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -83,17 +83,17 @@ public sealed unsafe partial class LevelChunk : global::System.IDisposable
 
     public void _addEntityToVolumes(global::Hosihikari.Bindings.Bedrock.Interop.Actor? actor)
     {
-        NativeMethods.TablePtr->C1.hs_method_143d6882((void*)__hosihikari_shim_handle, (void*)(actor?.Handle ?? 0));
+        NativeMethods.TablePtr->C2.hs_method_143d6882((void*)__hosihikari_shim_handle, (void*)(actor?.Handle ?? 0));
     }
 
     public void _deserializeBlockEntities(global::Hosihikari.Bindings.Bedrock.Interop.IDataInput stream, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkBlockActorStorage blockEntityMap)
     {
-        NativeMethods.TablePtr->C1.hs_method_10471f2a((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)blockEntityMap.Handle);
+        NativeMethods.TablePtr->C2.hs_method_10471f2a((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)blockEntityMap.Handle);
     }
 
     public bool _deserializeSubChunk(short index, global::Hosihikari.Bindings.Bedrock.Interop.StringByteInput stream)
     {
-        return NativeMethods.TablePtr->C1.hs_method_9adb7636((void*)__hosihikari_shim_handle, index, (void*)stream.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_9adb7636((void*)__hosihikari_shim_handle, index, (void*)stream.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: span element type 'SubChunk' is not supported.", false)]
@@ -102,51 +102,52 @@ public sealed unsafe partial class LevelChunk : global::System.IDisposable
 
     public void _lightingCallbacks(global::Hosihikari.Bindings.Bedrock.Interop.ChunkBlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block old, global::Hosihikari.Bindings.Bedrock.Interop.Block current, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource? currentSource)
     {
-        NativeMethods.TablePtr->C1.hs_method_1930afcd((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)old.Handle, (void*)current.Handle, (void*)(currentSource?.Handle ?? 0));
+        NativeMethods.TablePtr->C2.hs_method_1930afcd((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)old.Handle, (void*)current.Handle, (void*)(currentSource?.Handle ?? 0));
     }
 
     public void _placeBlockEntity(global::Hosihikari.Bindings.Abi.SharedHandle? te)
     {
-        NativeMethods.TablePtr->C1.hs_method_1635bbb9((void*)__hosihikari_shim_handle, te?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C2.hs_method_1635bbb9((void*)__hosihikari_shim_handle, te?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
     public bool _recalcHeight(global::Hosihikari.Bindings.Bedrock.Interop.ChunkBlockPos start, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource? source)
     {
-        return NativeMethods.TablePtr->C1.hs_method_8984cd41((void*)__hosihikari_shim_handle, (void*)start.Handle, (void*)(source?.Handle ?? 0)) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_8984cd41((void*)__hosihikari_shim_handle, (void*)start.Handle, (void*)(source?.Handle ?? 0)) != 0;
     }
 
     public void _set2DBiomesFrom3D(global::Hosihikari.Bindings.Bedrock.Interop.IDataInput stream)
     {
-        NativeMethods.TablePtr->C1.hs_method_5a7bb66c((void*)__hosihikari_shim_handle, (void*)stream.Handle);
+        NativeMethods.TablePtr->C2.hs_method_5a7bb66c((void*)__hosihikari_shim_handle, (void*)stream.Handle);
     }
 
     public void _setAllBiomesFrom2D(nint legacyBiomes)
     {
-        NativeMethods.TablePtr->C1.hs_method_fc4b79cf((void*)__hosihikari_shim_handle, (void*)legacyBiomes);
+        NativeMethods.TablePtr->C2.hs_method_fc4b79cf((void*)__hosihikari_shim_handle, (void*)legacyBiomes);
     }
 
     public void _setBiome(global::Hosihikari.Bindings.Bedrock.Interop.Biome biome, global::Hosihikari.Bindings.Bedrock.Interop.ChunkBlockPos pos, bool fillYDimension)
     {
-        NativeMethods.TablePtr->C1.hs_method_6b8ad75c((void*)__hosihikari_shim_handle, (void*)biome.Handle, (void*)pos.Handle, fillYDimension);
+        NativeMethods.TablePtr->C2.hs_method_6b8ad75c((void*)__hosihikari_shim_handle, (void*)biome.Handle, (void*)pos.Handle, fillYDimension);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void addEntity(nint entityRef) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void addEntity(global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef entityRef)
+    {
+        NativeMethods.TablePtr->C2.hs_method_bf71bd1a((void*)__hosihikari_shim_handle, (void*)entityRef.Handle);
+    }
 
     public void addHardcodedSpawningArea(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox spawnerAABB, byte type)
     {
-        NativeMethods.TablePtr->C1.hs_method_030adade((void*)__hosihikari_shim_handle, (void*)spawnerAABB.Handle, type);
+        NativeMethods.TablePtr->C2.hs_method_030adade((void*)__hosihikari_shim_handle, (void*)spawnerAABB.Handle, type);
     }
 
     public bool applySeasonsPostProcess(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
     {
-        return NativeMethods.TablePtr->C1.hs_method_5ba8793d((void*)__hosihikari_shim_handle, (void*)region.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_5ba8793d((void*)__hosihikari_shim_handle, (void*)region.Handle) != 0;
     }
 
     public bool checkSeasonsPostProcessDirty()
     {
-        return NativeMethods.TablePtr->C1.hs_method_fdd4c342((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_fdd4c342((void*)__hosihikari_shim_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::unique_ptr<LevelChunk, LevelChunkPhase1Deleter>' requires --link-carrier or --virtual-dispatch.", false)]
@@ -163,12 +164,12 @@ public sealed unsafe partial class LevelChunk : global::System.IDisposable
 
     public void deserializeBlockEntities(global::Hosihikari.Bindings.Bedrock.Interop.IDataInput stream)
     {
-        NativeMethods.TablePtr->C1.hs_method_0ee36576((void*)__hosihikari_shim_handle, (void*)stream.Handle);
+        NativeMethods.TablePtr->C2.hs_method_0ee36576((void*)__hosihikari_shim_handle, (void*)stream.Handle);
     }
 
     public void deserializeBorderBlocks(global::Hosihikari.Bindings.Bedrock.Interop.IDataInput stream)
     {
-        NativeMethods.TablePtr->C1.hs_method_5c477cab((void*)__hosihikari_shim_handle, (void*)stream.Handle);
+        NativeMethods.TablePtr->C2.hs_method_5c477cab((void*)__hosihikari_shim_handle, (void*)stream.Handle);
     }
 
     public bool deserializeKey(string key, string value)
@@ -199,14 +200,14 @@ public sealed unsafe partial class LevelChunk : global::System.IDisposable
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                return NativeMethods.TablePtr->C1.hs_method_9a7e7c20((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
+                return NativeMethods.TablePtr->C2.hs_method_9a7e7c20((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
             }
         }
     }
 
     public void deserializeMetaDataHash(global::Hosihikari.Bindings.Bedrock.Interop.IDataInput stream)
     {
-        NativeMethods.TablePtr->C1.hs_method_91bbd1db((void*)__hosihikari_shim_handle, (void*)stream.Handle);
+        NativeMethods.TablePtr->C2.hs_method_91bbd1db((void*)__hosihikari_shim_handle, (void*)stream.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional parameter type 'DeserializationChanges *' is not supported.", false)]
@@ -215,17 +216,17 @@ public sealed unsafe partial class LevelChunk : global::System.IDisposable
 
     public void fetchBlocks(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos volumeOrigin, global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume volume)
     {
-        NativeMethods.TablePtr->C1.hs_method_1ca04bcf((void*)__hosihikari_shim_handle, (void*)volumeOrigin.Handle, (void*)volume.Handle);
+        NativeMethods.TablePtr->C2.hs_method_1ca04bcf((void*)__hosihikari_shim_handle, (void*)volumeOrigin.Handle, (void*)volume.Handle);
     }
 
     public void finalizeDeserialization()
     {
-        NativeMethods.TablePtr->C1.hs_method_ed6c7d76((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_ed6c7d76((void*)__hosihikari_shim_handle);
     }
 
     public void finalizePostProcessing()
     {
-        NativeMethods.TablePtr->C1.hs_method_a8910ed3((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_a8910ed3((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: span element type 'SubChunk' is not supported.", false)]
@@ -235,13 +236,13 @@ public sealed unsafe partial class LevelChunk : global::System.IDisposable
     public static global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? findExposedLightningRod(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_86cc1071((void*)pos.Handle, (void*)region.Handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_86cc1071((void*)pos.Handle, (void*)region.Handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalHeight getAboveTopSolidBlock(global::Hosihikari.Bindings.Bedrock.Interop.ChunkBlockPos start, bool iteratePastInitialBlocking, bool includeWater, bool includeLeaves)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalHeight((nint)NativeMethods.TablePtr->C1.hs_method_9048cf61((void*)__hosihikari_shim_handle, (void*)start.Handle, iteratePastInitialBlocking, includeWater, includeLeaves));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalHeight((nint)NativeMethods.TablePtr->C2.hs_method_9048cf61((void*)__hosihikari_shim_handle, (void*)start.Handle, iteratePastInitialBlocking, includeWater, includeLeaves));
     }
 
     public void getActors(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier actorDefinitionId, global::Hosihikari.Bindings.Bedrock.Interop.AABB bb, nint[] actors)
@@ -250,18 +251,18 @@ public sealed unsafe partial class LevelChunk : global::System.IDisposable
         fixed (nint* __hs_vectorHandleData2 = __hs_vectorItems2)
         {
             var __hs_vectorData2 = (void**)__hs_vectorHandleData2;
-            NativeMethods.TablePtr->C1.hs_method_57203922((void*)__hosihikari_shim_handle, (void*)actorDefinitionId.Handle, (void*)bb.Handle, __hs_vectorData2, (nuint)(actors?.Length ?? 0));
+            NativeMethods.TablePtr->C2.hs_method_57203922((void*)__hosihikari_shim_handle, (void*)actorDefinitionId.Handle, (void*)bb.Handle, __hs_vectorData2, (nuint)(actors?.Length ?? 0));
         }
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Biome getBiome(global::Hosihikari.Bindings.Bedrock.Interop.ChunkBlockPos pos)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Biome((nint)NativeMethods.TablePtr->C1.hs_method_b3c3d4e8((void*)__hosihikari_shim_handle, (void*)pos.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Biome((nint)NativeMethods.TablePtr->C2.hs_method_b3c3d4e8((void*)__hosihikari_shim_handle, (void*)pos.Handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Block getBlock(global::Hosihikari.Bindings.Bedrock.Interop.ChunkBlockPos pos)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->C1.hs_method_5d99aaf4((void*)__hosihikari_shim_handle, (void*)pos.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->C2.hs_method_5d99aaf4((void*)__hosihikari_shim_handle, (void*)pos.Handle), false);
     }
 
     public void getEntities(int type, global::Hosihikari.Bindings.Bedrock.Interop.AABB bb, nint[] es, bool ignoreTargetType)
@@ -270,7 +271,7 @@ public sealed unsafe partial class LevelChunk : global::System.IDisposable
         fixed (nint* __hs_vectorHandleData2 = __hs_vectorItems2)
         {
             var __hs_vectorData2 = (void**)__hs_vectorHandleData2;
-            NativeMethods.TablePtr->C1.hs_method_a3834088((void*)__hosihikari_shim_handle, type, (void*)bb.Handle, ignoreTargetType, __hs_vectorData2, (nuint)(es?.Length ?? 0));
+            NativeMethods.TablePtr->C2.hs_method_a3834088((void*)__hosihikari_shim_handle, type, (void*)bb.Handle, ignoreTargetType, __hs_vectorData2, (nuint)(es?.Length ?? 0));
         }
     }
 
@@ -280,560 +281,560 @@ public sealed unsafe partial class LevelChunk : global::System.IDisposable
 
     public short getMaxAllocatedY()
     {
-        return NativeMethods.TablePtr->C1.hs_method_fa35f472((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C2.hs_method_fa35f472((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getMetaDataCopy()
     {
-        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_18b63be3((void*)__hosihikari_shim_handle);
+        var __hs_shared = NativeMethods.TablePtr->C2.hs_method_18b63be3((void*)__hosihikari_shim_handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
     public int getSubChunkCountUpToHighestNonAirBlock()
     {
-        return NativeMethods.TablePtr->C1.hs_method_dd8b7213((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C2.hs_method_dd8b7213((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockTickingQueue getTickQueue_58feba36()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockTickingQueue((nint)NativeMethods.TablePtr->C1.hs_method_58feba36((void*)__hosihikari_shim_handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockTickingQueue((nint)NativeMethods.TablePtr->C2.hs_method_58feba36((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockTickingQueue getTickQueue_a72689c4()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockTickingQueue((nint)NativeMethods.TablePtr->C1.hs_method_a72689c4((void*)__hosihikari_shim_handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockTickingQueue((nint)NativeMethods.TablePtr->C2.hs_method_a72689c4((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getTopRainBlockPos(global::Hosihikari.Bindings.Bedrock.Interop.ChunkBlockPos pos)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C1.hs_method_66912e5b((void*)__hosihikari_shim_handle, (void*)pos.Handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C2.hs_method_66912e5b((void*)__hosihikari_shim_handle, (void*)pos.Handle));
     }
 
     public bool mActorStorageUpdatedAfterCheckingForReplacementData
     {
-        get => NativeMethods.TablePtr->C1.hs_get_749533a7((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_749533a7((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_749533a7((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_749533a7((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mAllSerializedEntitiesLoaded
     {
-        get => NativeMethods.TablePtr->C1.hs_get_86f4613d((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_86f4613d((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_86f4613d((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_86f4613d((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBiomeStates_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_1a867faf((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1a867faf((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBiomes_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_ca2d587b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ca2d587b((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockEntities_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_e42c4b9e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e42c4b9e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockEntityAccessLock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_c2b52f04((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c2b52f04((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBorderBlockMap_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_a3ea4175((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a3ea4175((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCachedData_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_48ee74b4((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_48ee74b4((void*)__hosihikari_shim_handle);
     }
 
     public byte mCachedDataState
     {
-        get => NativeMethods.TablePtr->C1.hs_get_4d65a80d((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_4d65a80d((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_4d65a80d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_4d65a80d((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCachedDataStateSpinLock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_69cb2f1f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_69cb2f1f((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mChunkActorsDirtyTicksCounter_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_5adffe6f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5adffe6f((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mChunkCreationMode_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_c1ecd1be((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c1ecd1be((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mChunkGenContext_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_630ab615((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_630ab615((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mChunkInterpolants_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_3c3d0228((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3c3d0228((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mChunkTimings_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_fc4e5314((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_fc4e5314((void*)__hosihikari_shim_handle);
     }
 
     public bool mClientNeedsToRequestSubChunks
     {
-        get => NativeMethods.TablePtr->C1.hs_get_a00c9cee((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_a00c9cee((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_a00c9cee((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_a00c9cee((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mClientRequestHeightmapAdjustSpinLock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_b1c06acc((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b1c06acc((void*)__hosihikari_shim_handle);
     }
 
     public int mCurrentInstatick
     {
-        get => NativeMethods.TablePtr->C1.hs_get_0a4daa82((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_0a4daa82((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_0a4daa82((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_0a4daa82((void*)__hosihikari_shim_handle, value);
     }
 
     public byte mDebugDisplaySavedState
     {
-        get => NativeMethods.TablePtr->C1.hs_get_aaa3d0c5((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_aaa3d0c5((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_aaa3d0c5((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_aaa3d0c5((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDefaultBrightness_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_93eb71de((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_93eb71de((void*)__hosihikari_shim_handle);
     }
 
     public bool mDidSaveJigsawStructureBlueprints
     {
-        get => NativeMethods.TablePtr->C1.hs_get_6e9d3fd0((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_6e9d3fd0((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_6e9d3fd0((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_6e9d3fd0((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDimension_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_a7f2ed0d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a7f2ed0d((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mEntities_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_9a2b403e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9a2b403e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFailedSerializedEntitiesBuffer_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_c30033e5((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c30033e5((void*)__hosihikari_shim_handle);
     }
 
     public int mFinalized
     {
-        get => NativeMethods.TablePtr->C1.hs_get_e7f46bf4((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_e7f46bf4((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_e7f46bf4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_e7f46bf4((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFullChunkDirtyTicksCounters_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_516a74e5((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_516a74e5((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mGameEventListenerRegistry_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_f00fee8b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f00fee8b((void*)__hosihikari_shim_handle);
     }
 
     public bool mGeneratedPreCavesAndCliffsBlending
     {
-        get => NativeMethods.TablePtr->C1.hs_get_9fe61833((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_9fe61833((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_9fe61833((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_9fe61833((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mGenerationSeed_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_6e340b1f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6e340b1f((void*)__hosihikari_shim_handle);
     }
 
     public nint mGenerator
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_fb263d40((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_fb263d40((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_fb263d40((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_fb263d40((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public bool mHadSerializedEntities
     {
-        get => NativeMethods.TablePtr->C1.hs_get_33fba41b((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_33fba41b((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_33fba41b((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_33fba41b((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mHasCachedTemperatureNoise
     {
-        get => NativeMethods.TablePtr->C1.hs_get_7ab7ce80((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_7ab7ce80((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_7ab7ce80((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_7ab7ce80((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mHasSubChunksToPrune
     {
-        get => NativeMethods.TablePtr->C1.hs_get_4d5626e3((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_4d5626e3((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_4d5626e3((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_4d5626e3((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mHaveSubChunksBeenPruned
     {
-        get => NativeMethods.TablePtr->C1.hs_get_53d5ebab((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_53d5ebab((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_53d5ebab((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_53d5ebab((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mHeightmap_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_066ca73e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_066ca73e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mIsBeingMoved_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_a3f82315((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a3f82315((void*)__hosihikari_shim_handle);
     }
 
     public bool mIsClientGenerated
     {
-        get => NativeMethods.TablePtr->C1.hs_get_82a3eda9((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_82a3eda9((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_82a3eda9((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_82a3eda9((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mIsCurrentLoadStateIndeterminate_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_e1108425((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e1108425((void*)__hosihikari_shim_handle);
     }
 
     public bool mIsEmptyClientChunk
     {
-        get => NativeMethods.TablePtr->C1.hs_get_e2e33ea2((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_e2e33ea2((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_e2e33ea2((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_e2e33ea2((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mIsRedstoneLoaded
     {
-        get => NativeMethods.TablePtr->C1.hs_get_404c4b2f((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_404c4b2f((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_404c4b2f((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_404c4b2f((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mIsTransient_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_ac695c7c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ac695c7c((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLastNetworkLightingTime_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_2bfdf7a8((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2bfdf7a8((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLastTick_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_4116e87e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4116e87e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLevel_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_6c6efbf5((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6c6efbf5((void*)__hosihikari_shim_handle);
     }
 
     public bool mLevelChunkHas3dBiomeTag
     {
-        get => NativeMethods.TablePtr->C1.hs_get_45c48878((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_45c48878((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_45c48878((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_45c48878((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mLevelChunkHasHadOriginalLighting
     {
-        get => NativeMethods.TablePtr->C1.hs_get_0b2a19b5((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_0b2a19b5((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_0b2a19b5((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_0b2a19b5((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLevelChunkVolumeData_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_9c31f419((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9c31f419((void*)__hosihikari_shim_handle);
     }
 
     public bool mLightingFixupDone
     {
-        get => NativeMethods.TablePtr->C1.hs_get_df3b88d2((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_df3b88d2((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_df3b88d2((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_df3b88d2((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLightingTaskActive_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_74308261((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_74308261((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLoadState_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_56a0c5ef((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_56a0c5ef((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLoadedFormat_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_b65f9521((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b65f9521((void*)__hosihikari_shim_handle);
     }
 
     public ulong mLoadedMetaDataHash
     {
-        get => NativeMethods.TablePtr->C1.hs_get_24409e60((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_24409e60((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_24409e60((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_24409e60((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMax_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_12fba286((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_12fba286((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMetaData_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_56b4abe0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_56b4abe0((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMin_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_88d7afd9((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_88d7afd9((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMoveLockMutex_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_f12ac07a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f12ac07a((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mNonAirMaxHeight_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_e0afdd1c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e0afdd1c((void*)__hosihikari_shim_handle);
     }
 
     public bool mOnChunkLoadedCalled
     {
-        get => NativeMethods.TablePtr->C1.hs_get_6a68b6bd((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_6a68b6bd((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_6a68b6bd((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_6a68b6bd((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOutOfBoundsBlockEntitiesBuffer_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_bb823fda((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_bb823fda((void*)__hosihikari_shim_handle);
     }
 
     public bool mOwnedByTickingThread
     {
-        get => NativeMethods.TablePtr->C1.hs_get_2401d4d1((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_2401d4d1((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_2401d4d1((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_2401d4d1((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPosition_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_97abcf99((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_97abcf99((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPreWorldGenHeightmap_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_85de4b22((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_85de4b22((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPreservedBlockEntities_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_f455d60e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f455d60e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPreservedBlockEntitiesTick_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_353b0fac((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_353b0fac((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRainHeights_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_bf5724c9((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_bf5724c9((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRandomTickQueue_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_70a8c382((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_70a8c382((void*)__hosihikari_shim_handle);
     }
 
     public bool mReadOnly
     {
-        get => NativeMethods.TablePtr->C1.hs_get_5a2f5f6e((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_5a2f5f6e((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_5a2f5f6e((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_5a2f5f6e((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRemovedActorStorageKeys_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_5913b35e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5913b35e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRenderHeightmap_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_90d1acdd((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_90d1acdd((void*)__hosihikari_shim_handle);
     }
 
     public bool mSaveIfNeverSaved
     {
-        get => NativeMethods.TablePtr->C1.hs_get_01c99a64((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_01c99a64((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_01c99a64((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_01c99a64((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mSaveNonActorDataIfDirty
     {
-        get => NativeMethods.TablePtr->C1.hs_get_ea91c1b2((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_ea91c1b2((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_ea91c1b2((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_ea91c1b2((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSavedNeighbors_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_8c987580((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8c987580((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSerializedEntitiesBuffer_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_872c64b6((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_872c64b6((void*)__hosihikari_shim_handle);
     }
 
     public bool mShouldShiftUpFlatWorldSubChunks
     {
-        get => NativeMethods.TablePtr->C1.hs_get_dd7ca6a1((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_dd7ca6a1((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_dd7ca6a1((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_dd7ca6a1((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSnowRandomValue_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_f506850d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f506850d((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSpawningAreas_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_3a818e6b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3a818e6b((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSubChunks_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_e8bf8062((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e8bf8062((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSubChunksToPruneOutsideRange_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_95c37241((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_95c37241((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTelemetry_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_b37c7a9b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b37c7a9b((void*)__hosihikari_shim_handle);
     }
 
     public byte mTerrainDataState
     {
-        get => NativeMethods.TablePtr->C1.hs_get_c1a40ffd((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_c1a40ffd((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_c1a40ffd((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_c1a40ffd((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTickQueue_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_9ba1239f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9ba1239f((void*)__hosihikari_shim_handle);
     }
 
     public uint mTmpTickingEntity
     {
-        get => NativeMethods.TablePtr->C1.hs_get_428dca22((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_428dca22((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_428dca22((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_428dca22((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnresolvedActorLinks_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_1c22981d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1c22981d((void*)__hosihikari_shim_handle);
     }
 
     public bool mUse3DBiomeMaps
     {
-        get => NativeMethods.TablePtr->C1.hs_get_8eb0ad10((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_8eb0ad10((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_8eb0ad10((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_8eb0ad10((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mVolumes_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_4629a785((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4629a785((void*)__hosihikari_shim_handle);
     }
 
     public bool mWasClientGenerated
     {
-        get => NativeMethods.TablePtr->C1.hs_get_2f95600f((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_2f95600f((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_2f95600f((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_2f95600f((void*)__hosihikari_shim_handle, value);
     }
 
     public void markForTickingThisFrame(nint registry)
     {
-        NativeMethods.TablePtr->C1.hs_method_e50ac163((void*)__hosihikari_shim_handle, (void*)registry);
+        NativeMethods.TablePtr->C2.hs_method_e50ac163((void*)__hosihikari_shim_handle, (void*)registry);
     }
 
     public bool mbChunkHasConverterTag
     {
-        get => NativeMethods.TablePtr->C1.hs_get_0475ae12((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_0475ae12((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_0475ae12((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_0475ae12((void*)__hosihikari_shim_handle, value);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
@@ -842,76 +843,78 @@ public sealed unsafe partial class LevelChunk : global::System.IDisposable
 
     public bool nonActorDataNeedsSaving(int wait, int maxWait)
     {
-        return NativeMethods.TablePtr->C1.hs_method_36cc9aab((void*)__hosihikari_shim_handle, wait, maxWait) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_36cc9aab((void*)__hosihikari_shim_handle, wait, maxWait) != 0;
     }
 
     public void onDiscarded()
     {
-        NativeMethods.TablePtr->C1.hs_method_d58a3b1d((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_d58a3b1d((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk((nint)NativeMethods.TablePtr->C1.hs_method_15879856((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk((nint)NativeMethods.TablePtr->C2.hs_method_15879856((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void placeCallbacks(global::Hosihikari.Bindings.Bedrock.Interop.ChunkBlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block old, global::Hosihikari.Bindings.Bedrock.Interop.Block current, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource? currentSource, global::Hosihikari.Bindings.Abi.SharedHandle? blockEntity, nint changeSourceContext)
     {
-        NativeMethods.TablePtr->C1.hs_method_d70073c3((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)old.Handle, (void*)current.Handle, (void*)(currentSource?.Handle ?? 0), blockEntity?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)changeSourceContext);
+        NativeMethods.TablePtr->C2.hs_method_d70073c3((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)old.Handle, (void*)current.Handle, (void*)(currentSource?.Handle ?? 0), blockEntity?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)changeSourceContext);
     }
 
     public void populateHeightMapDataForSubChunkPacket(short subChunkAbsoluteIndex, global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPacketPayload_Nested.SubChunkPacketData subChunkPacketData)
     {
-        NativeMethods.TablePtr->C1.hs_method_cac5ccd8((void*)__hosihikari_shim_handle, subChunkAbsoluteIndex, (void*)subChunkPacketData.Handle);
+        NativeMethods.TablePtr->C2.hs_method_cac5ccd8((void*)__hosihikari_shim_handle, subChunkAbsoluteIndex, (void*)subChunkPacketData.Handle);
     }
 
     public void recomputeHeightMap(bool resetLighting)
     {
-        NativeMethods.TablePtr->C1.hs_method_d2e6527e((void*)__hosihikari_shim_handle, resetLighting);
+        NativeMethods.TablePtr->C2.hs_method_d2e6527e((void*)__hosihikari_shim_handle, resetLighting);
     }
 
     public void releasePreservedBlockEntities(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource tickRegion)
     {
-        NativeMethods.TablePtr->C1.hs_method_6352c634((void*)__hosihikari_shim_handle, (void*)tickRegion.Handle);
+        NativeMethods.TablePtr->C2.hs_method_6352c634((void*)__hosihikari_shim_handle, (void*)tickRegion.Handle);
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? removeBlockEntity(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos blockPos)
     {
-        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_016d1e4b((void*)__hosihikari_shim_handle, (void*)blockPos.Handle);
+        var __hs_shared = NativeMethods.TablePtr->C2.hs_method_016d1e4b((void*)__hosihikari_shim_handle, (void*)blockPos.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public bool removeEntityFromChunk(nint entityRef) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public bool removeEntityFromChunk(global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef entityRef)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_ba966d1b((void*)__hosihikari_shim_handle, (void*)entityRef.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public bool removeEntityFromWorld(nint entityRef) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public bool removeEntityFromWorld(global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef entityRef)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_a9f55806((void*)__hosihikari_shim_handle, (void*)entityRef.Handle) != 0;
+    }
 
     public void removeHardcodedSpawningArea(byte type)
     {
-        NativeMethods.TablePtr->C1.hs_method_d0e9cb1e((void*)__hosihikari_shim_handle, type);
+        NativeMethods.TablePtr->C2.hs_method_d0e9cb1e((void*)__hosihikari_shim_handle, type);
     }
 
     public void serializeBiomes(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput stream)
     {
-        NativeMethods.TablePtr->C1.hs_method_66d5dc2e((void*)__hosihikari_shim_handle, (void*)stream.Handle);
+        NativeMethods.TablePtr->C2.hs_method_66d5dc2e((void*)__hosihikari_shim_handle, (void*)stream.Handle);
     }
 
     public void serializeBlockEntities(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput stream, nint saveContext)
     {
-        NativeMethods.TablePtr->C1.hs_method_9fd53434((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)saveContext);
+        NativeMethods.TablePtr->C2.hs_method_9fd53434((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)saveContext);
     }
 
     public void serializeBlockEntitiesForSubChunk(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput stream, global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPos subChunkPos, nint saveContext)
     {
-        NativeMethods.TablePtr->C1.hs_method_827d549d((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)subChunkPos.Handle, (void*)saveContext);
+        NativeMethods.TablePtr->C2.hs_method_827d549d((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)subChunkPos.Handle, (void*)saveContext);
     }
 
     public bool serializeBorderBlocks(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput stream)
     {
-        return NativeMethods.TablePtr->C1.hs_method_77da99e9((void*)__hosihikari_shim_handle, (void*)stream.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_77da99e9((void*)__hosihikari_shim_handle, (void*)stream.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
@@ -924,12 +927,12 @@ public sealed unsafe partial class LevelChunk : global::System.IDisposable
 
     public void serializeRandomTicks(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput stream)
     {
-        NativeMethods.TablePtr->C1.hs_method_23edb3c8((void*)__hosihikari_shim_handle, (void*)stream.Handle);
+        NativeMethods.TablePtr->C2.hs_method_23edb3c8((void*)__hosihikari_shim_handle, (void*)stream.Handle);
     }
 
     public void serializeTicks(global::Hosihikari.Bindings.Bedrock.Interop.IDataOutput stream)
     {
-        NativeMethods.TablePtr->C1.hs_method_c3aae8ba((void*)__hosihikari_shim_handle, (void*)stream.Handle);
+        NativeMethods.TablePtr->C2.hs_method_c3aae8ba((void*)__hosihikari_shim_handle, (void*)stream.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: span element type 'BlockID' is not supported.", false)]
@@ -942,32 +945,32 @@ public sealed unsafe partial class LevelChunk : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Block setBlock(global::Hosihikari.Bindings.Bedrock.Interop.ChunkBlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource? issuingSource, global::Hosihikari.Bindings.Abi.SharedHandle? blockEntity, nint changeSourceContext)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->C1.hs_method_fb7ba09d((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)block.Handle, (void*)(issuingSource?.Handle ?? 0), blockEntity?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)changeSourceContext), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->C2.hs_method_fb7ba09d((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)block.Handle, (void*)(issuingSource?.Handle ?? 0), blockEntity?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)changeSourceContext), false);
     }
 
     public void setBlockSimple(global::Hosihikari.Bindings.Bedrock.Interop.ChunkBlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
-        NativeMethods.TablePtr->C1.hs_method_de565ffc((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)block.Handle);
+        NativeMethods.TablePtr->C2.hs_method_de565ffc((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)block.Handle);
     }
 
     public void setBlockVolume(global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume box, uint yOffset)
     {
-        NativeMethods.TablePtr->C1.hs_method_2557d4b0((void*)__hosihikari_shim_handle, (void*)box.Handle, yOffset);
+        NativeMethods.TablePtr->C2.hs_method_2557d4b0((void*)__hosihikari_shim_handle, (void*)box.Handle, yOffset);
     }
 
     public void setBorder(global::Hosihikari.Bindings.Bedrock.Interop.ChunkBlockPos pos, bool val)
     {
-        NativeMethods.TablePtr->C1.hs_method_bfade1b0((void*)__hosihikari_shim_handle, (void*)pos.Handle, val);
+        NativeMethods.TablePtr->C2.hs_method_bfade1b0((void*)__hosihikari_shim_handle, (void*)pos.Handle, val);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Block setExtraBlock(global::Hosihikari.Bindings.Bedrock.Interop.ChunkBlockPos localPos, global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource? issuingSource)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->C1.hs_method_4a4a315a((void*)__hosihikari_shim_handle, (void*)localPos.Handle, (void*)block.Handle, (void*)(issuingSource?.Handle ?? 0)), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->C2.hs_method_4a4a315a((void*)__hosihikari_shim_handle, (void*)localPos.Handle, (void*)block.Handle, (void*)(issuingSource?.Handle ?? 0)), false);
     }
 
     public void setExtraBlockSimple(global::Hosihikari.Bindings.Bedrock.Interop.ChunkBlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
-        NativeMethods.TablePtr->C1.hs_method_66a4a619((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)block.Handle);
+        NativeMethods.TablePtr->C2.hs_method_66a4a619((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)block.Handle);
     }
 
     public void setPendingEntities(string entitiesData)
@@ -985,7 +988,7 @@ public sealed unsafe partial class LevelChunk : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(entitiesData, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_1d445c8a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_1d445c8a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -999,7 +1002,7 @@ public sealed unsafe partial class LevelChunk : global::System.IDisposable
 
     public void tickBlockEntities(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource tickRegion)
     {
-        NativeMethods.TablePtr->C1.hs_method_61cab667((void*)__hosihikari_shim_handle, (void*)tickRegion.Handle);
+        NativeMethods.TablePtr->C2.hs_method_61cab667((void*)__hosihikari_shim_handle, (void*)tickRegion.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -1008,12 +1011,12 @@ public sealed unsafe partial class LevelChunk : global::System.IDisposable
 
     public bool tryChangeState(byte from, byte to)
     {
-        return NativeMethods.TablePtr->C1.hs_method_9f4aba9b((void*)__hosihikari_shim_handle, from, to) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_9f4aba9b((void*)__hosihikari_shim_handle, from, to) != 0;
     }
 
     public void validateAndFixBiomeStates()
     {
-        NativeMethods.TablePtr->C1.hs_method_bb604aa4((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_bb604aa4((void*)__hosihikari_shim_handle);
     }
 
 
@@ -1023,7 +1026,7 @@ public sealed unsafe partial class LevelChunk : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_18e14e79((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_18e14e79((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

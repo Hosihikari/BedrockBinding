@@ -47,6 +47,17 @@ public sealed unsafe partial class UpdateRotationGetPlacementBlockCallback : glo
     public nint _getPlacementBlock(nint block, nint by, nint arg2, byte arg3, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::not_null<const Block *>' requires --link-carrier or --virtual-dispatch.");
 
+    public static UpdateRotationGetPlacementBlockCallback Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockTrait.PlacementDirection_Nested.UpdateRotationGetPlacementBlockCallback arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_69fe9e84((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UpdateRotationGetPlacementBlockCallback((nint)handle);
+    }
+
     public int getCallbackOrder()
     {
         return NativeMethods.TablePtr->C0.hs_method_95afd106((void*)__hosihikari_shim_handle);

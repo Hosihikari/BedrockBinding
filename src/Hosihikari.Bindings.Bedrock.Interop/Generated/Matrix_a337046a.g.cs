@@ -54,6 +54,17 @@ public sealed unsafe partial class Matrix : global::System.IDisposable
         return new Matrix((nint)handle);
     }
 
+    public static Matrix Create(global::Hosihikari.Bindings.Bedrock.Interop.Matrix arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_e6bf511c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Matrix((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint _m_Address
     {

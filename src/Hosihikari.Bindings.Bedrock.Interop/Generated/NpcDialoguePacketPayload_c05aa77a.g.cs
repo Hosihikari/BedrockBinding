@@ -198,6 +198,17 @@ public sealed unsafe partial class NpcDialoguePacketPayload : global::System.IDi
         }
     }
 
+    public static NpcDialoguePacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.NpcDialoguePacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_c9bb1345((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NpcDialoguePacketPayload((nint)handle);
+    }
+
     public static bool initializePacket(global::Hosihikari.Bindings.Bedrock.Interop.NpcDialoguePacket outPacket, global::Hosihikari.Bindings.Bedrock.Interop.NpcDialogueStorage? storage, string sceneName)
     {
         var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(sceneName);

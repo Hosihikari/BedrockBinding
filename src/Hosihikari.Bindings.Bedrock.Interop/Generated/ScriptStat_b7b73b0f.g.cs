@@ -38,6 +38,17 @@ public sealed unsafe partial class ScriptStat : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ScriptStat Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleDebugUtilities.ScriptStat arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_0ce6e565((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptStat((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding((nint)NativeMethods.TablePtr->C3.hs_method_2aecfbbf());

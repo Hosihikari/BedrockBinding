@@ -43,6 +43,17 @@ public sealed unsafe partial class InstantDespawnSystem : global::System.IDispos
         NativeMethods.TablePtr->C1.hs_method_f601cb9a((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static InstantDespawnSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.InstantDespawnSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_f732805f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InstantDespawnSystem((nint)handle);
+    }
+
     public static void _tickComponent(global::Hosihikari.Bindings.Bedrock.Interop.ActorOwnerComponent actorOwnerComponent, global::Hosihikari.Bindings.Bedrock.Interop.InstantDespawnComponent instantDespawnComponent)
     {
         NativeMethods.TablePtr->C1.hs_method_bf00147e((void*)actorOwnerComponent.Handle, (void*)instantDespawnComponent.Handle);

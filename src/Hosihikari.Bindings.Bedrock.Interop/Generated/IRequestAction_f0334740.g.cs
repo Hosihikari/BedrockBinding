@@ -43,6 +43,17 @@ public sealed unsafe partial class IRequestAction : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_a4056864((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
+    public static IRequestAction Create(global::Hosihikari.Bindings.Bedrock.Interop.IRequestAction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_4a34bbce((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IRequestAction((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void execute(nint level, nint dimension) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

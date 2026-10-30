@@ -70,6 +70,17 @@ public sealed unsafe partial class ScriptItemUseOnAfterEvent : global::System.ID
         return new ScriptItemUseOnAfterEvent((nint)handle);
     }
 
+    public static ScriptItemUseOnAfterEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemUseOnAfterEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_e0b3a14e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptItemUseOnAfterEvent((nint)handle);
+    }
+
     public static ScriptItemUseOnAfterEvent Create(global::Hosihikari.Bindings.Abi.SharedHandle? evtData, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope)
     {
         var handle = NativeMethods.TablePtr->C3.hs_create_a72cd0da(evtData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)scope.Handle);

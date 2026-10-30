@@ -43,6 +43,17 @@ public sealed unsafe partial class ClearSpawnPointCommand : global::System.IDisp
         NativeMethods.TablePtr->C0.hs_method_6536c71c((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static ClearSpawnPointCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.ClearSpawnPointCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_c39cc51e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ClearSpawnPointCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C0.hs_method_523ad79f((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

@@ -38,6 +38,17 @@ public sealed unsafe partial class PlayerMovementSettingsManager : global::Syste
         return __hs_handle;
     }
 
+    public static PlayerMovementSettingsManager Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerMovementSettingsManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_003dbd04((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerMovementSettingsManager((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.PlayerMovementSettings getPlayerMovementSettings()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerMovementSettings((nint)NativeMethods.TablePtr->C2.hs_method_3720bcaa((void*)__hosihikari_shim_handle), false);

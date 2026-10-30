@@ -38,6 +38,17 @@ public sealed unsafe partial class IPackLoadScoped : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static IPackLoadScoped Create(global::Hosihikari.Bindings.Bedrock.Interop.IPackLoadScoped arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_3859050a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IPackLoadScoped((nint)handle);
+    }
+
 
     public void Dispose()
     {

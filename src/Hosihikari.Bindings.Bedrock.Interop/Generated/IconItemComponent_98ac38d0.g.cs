@@ -43,6 +43,17 @@ public sealed unsafe partial class IconItemComponent : global::System.IDisposabl
         NativeMethods.TablePtr->C3.hs_method_fef35ca3((void*)__hosihikari_shim_handle);
     }
 
+    public static IconItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_21_80.IconItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_d537a08a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IconItemComponent((nint)handle);
+    }
+
     public static string NAME()
     {
         var __hs_view = NativeMethods.TablePtr->C3.hs_method_270c189e();

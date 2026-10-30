@@ -38,6 +38,17 @@ public sealed unsafe partial class CarvingParameters : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static CarvingParameters Create(global::Hosihikari.Bindings.Bedrock.Interop.CaveFeatureUtils.CarvingParameters arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_fa045691((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CarvingParameters((nint)handle);
+    }
+
     public float mFloorLevel
     {
         get => NativeMethods.TablePtr->C0.hs_get_2e11cc91((void*)__hosihikari_shim_handle);

@@ -38,6 +38,17 @@ public sealed unsafe partial class ActorHealEvent : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ActorHealEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorHealEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_8bb84a7f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorHealEvent((nint)handle);
+    }
+
     public byte mCause
     {
         get => NativeMethods.TablePtr->C0.hs_get_1a16486f((void*)__hosihikari_shim_handle);

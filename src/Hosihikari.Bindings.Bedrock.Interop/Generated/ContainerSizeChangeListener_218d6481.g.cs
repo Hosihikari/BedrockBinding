@@ -38,6 +38,17 @@ public sealed unsafe partial class ContainerSizeChangeListener : global::System.
         return __hs_handle;
     }
 
+    public static ContainerSizeChangeListener Create(global::Hosihikari.Bindings.Bedrock.Interop.ContainerSizeChangeListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_c4596fa5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ContainerSizeChangeListener((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void containerSizeChanged(int size) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
@@ -49,7 +60,7 @@ public sealed unsafe partial class ContainerSizeChangeListener : global::System.
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_218d6481((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_218d6481((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -64,6 +64,17 @@ public sealed unsafe partial class ServerGameplayUserManagerProxy : global::Syst
         }
     }
 
+    public static ServerGameplayUserManagerProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.ServerGameplayUserManagerProxy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_b70fdfdc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ServerGameplayUserManagerProxy((nint)handle);
+    }
+
     public bool shouldGeneratePlayerIndex()
     {
         return NativeMethods.TablePtr->C3.hs_method_466434f1((void*)__hosihikari_shim_handle) != 0;

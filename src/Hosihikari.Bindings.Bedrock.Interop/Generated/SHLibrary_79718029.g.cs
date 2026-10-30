@@ -48,6 +48,17 @@ public sealed unsafe partial class SHLibrary : global::System.IDisposable
         return NativeMethods.TablePtr->C3.hs_method_97c103ad((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle) != 0;
     }
 
+    public static SHLibrary Create(global::Hosihikari.Bindings.Bedrock.Interop.SHLibrary arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_0f1f7aa1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SHLibrary((nint)handle);
+    }
+
     public int getType()
     {
         return NativeMethods.TablePtr->C3.hs_method_9f424c36((void*)__hosihikari_shim_handle);

@@ -38,6 +38,17 @@ public sealed unsafe partial class CorrectPlayerMovePredictionPacketPayload : gl
         return __hs_handle;
     }
 
+    public static CorrectPlayerMovePredictionPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.CorrectPlayerMovePredictionPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_608972c1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CorrectPlayerMovePredictionPacketPayload((nint)handle);
+    }
+
     public bool mOnGround
     {
         get => NativeMethods.TablePtr->C1.hs_get_807b2d03((void*)__hosihikari_shim_handle) != 0;

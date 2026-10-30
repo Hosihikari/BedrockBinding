@@ -58,6 +58,17 @@ public sealed unsafe partial class InventoryContainerValidation : global::System
         return NativeMethods.TablePtr->C1.hs_method_840b094f((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, (void*)item.Handle) != 0;
     }
 
+    public static InventoryContainerValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.InventoryContainerValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_95d87112((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InventoryContainerValidation((nint)handle);
+    }
+
     public bool canItemMoveToContainer(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item)
     {
         return NativeMethods.TablePtr->C1.hs_method_0f11aaae((void*)__hosihikari_shim_handle, (void*)item.Handle) != 0;

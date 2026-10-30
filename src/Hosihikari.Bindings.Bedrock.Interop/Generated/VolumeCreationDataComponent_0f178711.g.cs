@@ -49,6 +49,17 @@ public sealed unsafe partial class VolumeCreationDataComponent : global::System.
         return new VolumeCreationDataComponent((nint)handle);
     }
 
+    public static VolumeCreationDataComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.VolumeCreationDataComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_0fb3c331((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VolumeCreationDataComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mInstanceName_Address
     {

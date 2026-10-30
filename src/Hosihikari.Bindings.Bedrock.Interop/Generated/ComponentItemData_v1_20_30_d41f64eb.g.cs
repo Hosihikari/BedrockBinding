@@ -38,6 +38,17 @@ public sealed unsafe partial class ComponentItemData_v1_20_30 : global::System.I
         return __hs_handle;
     }
 
+    public static ComponentItemData_v1_20_30 Create(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItemData_v1_20_30 arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_66eb5c90((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ComponentItemData_v1_20_30((nint)handle);
+    }
+
     public static nint VERSION()
     {
         return (nint)NativeMethods.TablePtr->C0.hs_method_4e85bdf1();

@@ -43,6 +43,17 @@ public sealed unsafe partial class RaidBossSystem : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_8ec22387((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static RaidBossSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.RaidBossSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_30813ace((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RaidBossSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C2.hs_method_850f8b77((void*)__hosihikari_shim_handle, (void*)registry.Handle);

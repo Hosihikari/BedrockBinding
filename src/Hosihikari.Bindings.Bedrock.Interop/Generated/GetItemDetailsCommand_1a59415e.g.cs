@@ -83,6 +83,17 @@ public sealed unsafe partial class GetItemDetailsCommand : global::System.IDispo
         return NativeMethods.TablePtr->C0.hs_method_efb59a92((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static GetItemDetailsCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.AgentCommands.GetItemDetailsCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_34fb41b3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GetItemDetailsCommand((nint)handle);
+    }
+
     public void execute()
     {
         NativeMethods.TablePtr->C0.hs_method_4de73250((void*)__hosihikari_shim_handle);

@@ -72,6 +72,17 @@ public sealed unsafe partial class SpawnPointCommand : global::System.IDisposabl
         NativeMethods.TablePtr->C3.hs_method_2b66afcf((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static SpawnPointCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.SpawnPointCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_e1b3f7a8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SpawnPointCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C3.hs_method_5b25faa9((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

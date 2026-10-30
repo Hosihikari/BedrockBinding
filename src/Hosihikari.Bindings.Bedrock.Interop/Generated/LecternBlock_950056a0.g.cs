@@ -349,6 +349,17 @@ public sealed unsafe partial class LecternBlock : global::System.IDisposable
         return new LecternBlock((nint)handle);
     }
 
+    public static LecternBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.LecternBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_6e1a52eb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LecternBlock((nint)handle);
+    }
+
     public static LecternBlock Create(string nameId, int id)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);

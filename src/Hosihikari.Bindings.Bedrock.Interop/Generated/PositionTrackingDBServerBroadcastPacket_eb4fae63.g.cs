@@ -168,6 +168,17 @@ public sealed unsafe partial class PositionTrackingDBServerBroadcastPacket : glo
         return new PositionTrackingDBServerBroadcastPacket((nint)handle);
     }
 
+    public static PositionTrackingDBServerBroadcastPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDBServerBroadcastPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_d37ce85e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PositionTrackingDBServerBroadcastPacket((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");

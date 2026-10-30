@@ -77,6 +77,17 @@ public sealed unsafe partial class MapLockingRecipe : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->C2.hs_method_10539c80(), false);
     }
 
+    public static MapLockingRecipe Create(global::Hosihikari.Bindings.Bedrock.Interop.MapLockingRecipe arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_27993b97((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MapLockingRecipe((nint)handle);
+    }
+
     public nint assemble(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer craftSlots, global::Hosihikari.Bindings.Bedrock.Interop.CraftingContext craftingContext)
     {
         return (nint)NativeMethods.TablePtr->C2.hs_method_38a100d0((void*)__hosihikari_shim_handle, (void*)craftSlots.Handle, (void*)craftingContext.Handle);

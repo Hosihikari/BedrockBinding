@@ -38,6 +38,17 @@ public sealed unsafe partial class CommandPosition : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static CommandPosition Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandPosition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_e9d15a19((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandPosition((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getBlockPos(int version, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 offset)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C0.hs_method_0aff26ff((void*)__hosihikari_shim_handle, version, (void*)origin.Handle, (void*)offset.Handle));

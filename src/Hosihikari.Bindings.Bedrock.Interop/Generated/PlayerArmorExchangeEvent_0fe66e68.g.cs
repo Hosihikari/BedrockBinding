@@ -43,6 +43,17 @@ public sealed unsafe partial class PlayerArmorExchangeEvent : global::System.IDi
         NativeMethods.TablePtr->C2.hs_method_84ef4c7c((void*)__hosihikari_shim_handle);
     }
 
+    public static PlayerArmorExchangeEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerArmorExchangeEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_a38262e4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerArmorExchangeEvent((nint)handle);
+    }
+
     public int mArmorSlot
     {
         get => NativeMethods.TablePtr->C2.hs_get_1df8ea4f((void*)__hosihikari_shim_handle);

@@ -72,6 +72,17 @@ public sealed unsafe partial class GameModeCommand : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_4f65bf32((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static GameModeCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.GameModeCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_97c27cdf((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameModeCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C1.hs_method_f478500a((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

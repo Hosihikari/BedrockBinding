@@ -43,6 +43,17 @@ public sealed unsafe partial class ScriptSettings : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_4b91605c((void*)__hosihikari_shim_handle);
     }
 
+    public static ScriptSettings Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptSettings arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_6a6a6c80((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptSettings((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBaseGameVersion_Address
     {

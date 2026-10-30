@@ -135,6 +135,17 @@ public sealed unsafe partial class SmithingTrimRecipe : global::System.IDisposab
         return new SmithingTrimRecipe((nint)handle);
     }
 
+    public static SmithingTrimRecipe Create(global::Hosihikari.Bindings.Bedrock.Interop.SmithingTrimRecipe arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_81710eca((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SmithingTrimRecipe((nint)handle);
+    }
+
     public nint assemble(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer craftingContainer, global::Hosihikari.Bindings.Bedrock.Interop.CraftingContext craftingContext)
     {
         return (nint)NativeMethods.TablePtr->C3.hs_method_26a5809f((void*)__hosihikari_shim_handle, (void*)craftingContainer.Handle, (void*)craftingContext.Handle);

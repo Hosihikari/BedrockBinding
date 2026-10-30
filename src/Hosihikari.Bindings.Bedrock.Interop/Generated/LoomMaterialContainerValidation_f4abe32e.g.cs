@@ -48,6 +48,17 @@ public sealed unsafe partial class LoomMaterialContainerValidation : global::Sys
         return NativeMethods.TablePtr->C2.hs_method_609d016c((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, slot, (void*)item.Handle, amount, arg4) != 0;
     }
 
+    public static LoomMaterialContainerValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.LoomMaterialContainerValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_f22fbcc4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LoomMaterialContainerValidation((nint)handle);
+    }
+
     public int getContainerOffset(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
     {
         return NativeMethods.TablePtr->C2.hs_method_2ef24257((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);

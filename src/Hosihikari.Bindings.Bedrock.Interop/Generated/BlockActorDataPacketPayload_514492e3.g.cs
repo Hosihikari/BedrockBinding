@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockActorDataPacketPayload : global::System.
         return __hs_handle;
     }
 
+    public static BlockActorDataPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockActorDataPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_63b76613((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockActorDataPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mData_Address
     {

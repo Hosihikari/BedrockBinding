@@ -49,6 +49,17 @@ public sealed unsafe partial class ArmorTrimIconGenerationInfo : global::System.
         return new ArmorTrimIconGenerationInfo((nint)handle);
     }
 
+    public static ArmorTrimIconGenerationInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.ArmorTrimIconGenerationInfo arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_252049a9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ArmorTrimIconGenerationInfo((nint)handle);
+    }
+
     public static string buildTrimmedArmorName(string trimMaterial, string armorName)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(trimMaterial);

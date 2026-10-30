@@ -53,6 +53,17 @@ public sealed unsafe partial class MolangActorArrayPtr : global::System.IDisposa
         return new MolangActorArrayPtr((nint)handle);
     }
 
+    public static MolangActorArrayPtr Create(global::Hosihikari.Bindings.Bedrock.Interop.MolangActorArrayPtr arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_9fa66882((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangActorArrayPtr((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
     public static MolangActorArrayPtr Create(nint actors) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");

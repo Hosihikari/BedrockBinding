@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockPosTrackerComponent : global::System.IDi
         return __hs_handle;
     }
 
+    public static BlockPosTrackerComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPosTrackerComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_98fc8d1d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockPosTrackerComponent((nint)handle);
+    }
+
     public nint mCurrentBlock
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_c6eda341((void*)__hosihikari_shim_handle);

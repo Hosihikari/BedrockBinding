@@ -151,6 +151,17 @@ public sealed unsafe partial class StructurePoolElement : global::System.IDispos
         return new StructurePoolElement((nint)handle);
     }
 
+    public static StructurePoolElement Create(global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolElement arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_5072c3c0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructurePoolElement((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IStructureTemplateManager>>' is not a known bindable declaration.", false)]
     public static StructurePoolElement Create_5bc1d419(nint manager, nint location, nint projection, nint postProcessSettings) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IStructureTemplateManager>>' is not a known bindable declaration.");

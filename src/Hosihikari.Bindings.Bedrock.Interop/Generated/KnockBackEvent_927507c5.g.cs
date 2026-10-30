@@ -38,6 +38,17 @@ public sealed unsafe partial class KnockBackEvent : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static KnockBackEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.KnockBackEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_962b0bfc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new KnockBackEvent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mActor_Address
     {

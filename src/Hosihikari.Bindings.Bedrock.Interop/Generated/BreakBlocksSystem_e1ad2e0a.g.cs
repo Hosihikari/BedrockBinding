@@ -43,6 +43,17 @@ public sealed unsafe partial class BreakBlocksSystem : global::System.IDisposabl
         NativeMethods.TablePtr->C0.hs_method_ae9ba8db((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static BreakBlocksSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.BreakBlocksSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_7fa6a642((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BreakBlocksSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C0.hs_method_894d6741((void*)__hosihikari_shim_handle, (void*)registry.Handle);

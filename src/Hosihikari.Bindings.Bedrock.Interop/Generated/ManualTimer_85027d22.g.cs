@@ -42,6 +42,17 @@ public sealed unsafe partial class ManualTimer : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ManualTimer Create(global::Hosihikari.Bindings.Bedrock.Interop.ImguiProfiler_Nested.ManualTimer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_cc3990c3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ManualTimer((nint)handle);
+    }
+
     public bool mHasAddedRecord
     {
         get => NativeMethods.TablePtr->C1.hs_get_779466c0((void*)__hosihikari_shim_handle) != 0;

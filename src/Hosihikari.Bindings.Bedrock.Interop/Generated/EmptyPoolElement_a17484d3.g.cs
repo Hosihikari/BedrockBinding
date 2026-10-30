@@ -85,6 +85,17 @@ public sealed unsafe partial class EmptyPoolElement : global::System.IDisposable
         return new EmptyPoolElement((nint)handle);
     }
 
+    public static EmptyPoolElement Create(global::Hosihikari.Bindings.Bedrock.Interop.EmptyPoolElement arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_e067bf8b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EmptyPoolElement((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IStructureTemplateManager>>' is not a known bindable declaration.", false)]
     public static EmptyPoolElement Create(nint manager) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IStructureTemplateManager>>' is not a known bindable declaration.");

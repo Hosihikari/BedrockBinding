@@ -43,6 +43,17 @@ public sealed unsafe partial class Path : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_c186a5c9((void*)__hosihikari_shim_handle);
     }
 
+    public static Path Create(global::Hosihikari.Bindings.Bedrock.Interop.Path arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_1cfa4219((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Path((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.Vec3 currentPos(global::Hosihikari.Bindings.Bedrock.Interop.Actor? actor)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->C2.hs_method_47b28fda((void*)__hosihikari_shim_handle, (void*)(actor?.Handle ?? 0)));

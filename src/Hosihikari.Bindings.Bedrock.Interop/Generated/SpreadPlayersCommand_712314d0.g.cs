@@ -72,6 +72,17 @@ public sealed unsafe partial class SpreadPlayersCommand : global::System.IDispos
         NativeMethods.TablePtr->C3.hs_method_1b50da07((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static SpreadPlayersCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.SpreadPlayersCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_f10c98a3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SpreadPlayersCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C3.hs_method_e3784fb4((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

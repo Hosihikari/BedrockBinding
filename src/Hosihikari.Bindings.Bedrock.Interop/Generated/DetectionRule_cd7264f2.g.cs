@@ -38,6 +38,17 @@ public sealed unsafe partial class DetectionRule : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static DetectionRule Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_0.DetectionRule arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_26175b77((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DetectionRule((nint)handle);
+    }
+
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C3.hs_method_dd2d812a((void*)ctx.Handle);

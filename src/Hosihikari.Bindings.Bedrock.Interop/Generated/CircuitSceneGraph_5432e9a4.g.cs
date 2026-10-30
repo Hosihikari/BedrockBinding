@@ -59,6 +59,17 @@ public sealed unsafe partial class CircuitSceneGraph : global::System.IDisposabl
         return new CircuitSceneGraph((nint)handle);
     }
 
+    public static CircuitSceneGraph Create(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_a6194651((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CircuitSceneGraph((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void add(nint pos, nint component) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");

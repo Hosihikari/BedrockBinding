@@ -44,6 +44,17 @@ public sealed unsafe partial class GameModuleServer : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C1.hs_get_03bb54d2((void*)__hosihikari_shim_handle);
     }
 
+    public static GameModuleServer Create(global::Hosihikari.Bindings.Bedrock.Interop.GameModuleServer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_5438cb4d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameModuleServer((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void configureDocumentation(nint moduleDocumentation, nint docItemRegistry) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

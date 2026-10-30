@@ -57,9 +57,10 @@ public sealed unsafe partial class ScriptDebugger : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint settings, nint serverLevel, nint commands, nint ctx, nint scriptEngine, nint pluginManager, nint watchdog, nint telemetry, nint profilerControlBroker) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ScriptDebuggerSettings settings, global::Hosihikari.Bindings.Bedrock.Interop.ServerLevel serverLevel, global::Hosihikari.Bindings.Bedrock.Interop.MinecraftCommands commands, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ScriptEngine scriptEngine, global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginManager pluginManager, global::Hosihikari.Bindings.Bedrock.Interop.IScriptDebuggerWatchdog watchdog, global::Hosihikari.Bindings.Bedrock.Interop.IScriptTelemetryLogger telemetry, nint profilerControlBroker)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_b33c50d7((void*)__hosihikari_shim_handle, (void*)settings.Handle, (void*)serverLevel.Handle, (void*)commands.Handle, (void*)ctx.Handle, (void*)scriptEngine.Handle, (void*)pluginManager.Handle, (void*)watchdog.Handle, (void*)telemetry.Handle, (void*)profilerControlBroker);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ScriptDebuggerSettings _getSettings()
     {
@@ -105,9 +106,16 @@ public sealed unsafe partial class ScriptDebugger : global::System.IDisposable
         return new ScriptDebugger((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static ScriptDebugger Create(nint settings, nint serverLevel, nint commands, nint ctx, nint scriptEngine, nint pluginManager, nint watchdog, nint telemetry, nint profilerControlBroker) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static ScriptDebugger Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptDebuggerSettings settings, global::Hosihikari.Bindings.Bedrock.Interop.ServerLevel serverLevel, global::Hosihikari.Bindings.Bedrock.Interop.MinecraftCommands commands, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ScriptEngine scriptEngine, global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginManager pluginManager, global::Hosihikari.Bindings.Bedrock.Interop.IScriptDebuggerWatchdog watchdog, global::Hosihikari.Bindings.Bedrock.Interop.IScriptTelemetryLogger telemetry, nint profilerControlBroker)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_ebcf4e20((void*)settings.Handle, (void*)serverLevel.Handle, (void*)commands.Handle, (void*)ctx.Handle, (void*)scriptEngine.Handle, (void*)pluginManager.Handle, (void*)watchdog.Handle, (void*)telemetry.Handle, (void*)profilerControlBroker);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptDebugger((nint)handle);
+    }
 
     public static ScriptDebugger Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptDebugger arg0)
     {

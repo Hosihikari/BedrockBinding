@@ -106,9 +106,10 @@ public sealed unsafe partial class EquipItemGoal : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_1ea4fe73((void*)__hosihikari_shim_handle, (void*)item.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void _sendMobEquipmentPacket(nint packet) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void _sendMobEquipmentPacket(global::Hosihikari.Bindings.Bedrock.Interop.MobEquipmentPacket packet)
+    {
+        NativeMethods.TablePtr->C1.hs_method_e537cba2((void*)__hosihikari_shim_handle, (void*)packet.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public void appendDebugInfo(nint str) =>

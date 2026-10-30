@@ -274,9 +274,24 @@ public sealed unsafe partial class GrassBlockBase : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_c9b1b6ee((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint nameId, int id, nint tillsIntoBlock, nint growsOnBlock) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(string nameId, int id, global::Hosihikari.Bindings.Bedrock.Interop.BlockDescriptor tillsIntoBlock, global::Hosihikari.Bindings.Bedrock.Interop.BlockDescriptor growsOnBlock)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(nameId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return (nint)NativeMethods.TablePtr->C1.hs_method_26266312((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, id, (void*)tillsIntoBlock.Handle, (void*)growsOnBlock.Handle);
+        }
+    }
 
     public void _dtor()
     {
@@ -308,9 +323,41 @@ public sealed unsafe partial class GrassBlockBase : global::System.IDisposable
         return new GrassBlockBase((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static GrassBlockBase Create(nint nameId, int id, nint tillsIntoBlock, nint growsOnBlock) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static GrassBlockBase Create(global::Hosihikari.Bindings.Bedrock.Interop.GrassBlockBase arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d7373d7c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GrassBlockBase((nint)handle);
+    }
+
+    public static GrassBlockBase Create(string nameId, int id, global::Hosihikari.Bindings.Bedrock.Interop.BlockDescriptor tillsIntoBlock, global::Hosihikari.Bindings.Bedrock.Interop.BlockDescriptor growsOnBlock)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(nameId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->C1.hs_create_6653341d(__hs_stringData0, (nuint)__hs_stringByteCount0, id, (void*)tillsIntoBlock.Handle, (void*)growsOnBlock.Handle);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new GrassBlockBase((nint)handle);
+        }
+    }
 
     public static bool _canBeGrass(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
     {

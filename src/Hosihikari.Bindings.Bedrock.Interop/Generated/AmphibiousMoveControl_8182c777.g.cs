@@ -47,6 +47,17 @@ public sealed unsafe partial class AmphibiousMoveControl : global::System.IDispo
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static AmphibiousMoveControl Create(global::Hosihikari.Bindings.Bedrock.Interop.AmphibiousMoveControl arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_24f7a947((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AmphibiousMoveControl((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.MoveControlComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
         NativeMethods.TablePtr->C0.hs_method_42ce87de((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle);

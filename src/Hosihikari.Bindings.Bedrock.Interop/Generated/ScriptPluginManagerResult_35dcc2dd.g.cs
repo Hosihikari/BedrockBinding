@@ -60,9 +60,10 @@ public sealed unsafe partial class ScriptPluginManagerResult : global::System.ID
         return new ScriptPluginManagerResult((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint getOrCreatePluginResults(nint packId, nint descriptor) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginResult getOrCreatePluginResults(global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion packId, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ModuleDescriptor descriptor)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginResult((nint)NativeMethods.TablePtr->C3.hs_method_6f74f5d8((void*)__hosihikari_shim_handle, (void*)packId.Handle, (void*)descriptor.Handle), false);
+    }
 
     public void logMessages()
     {

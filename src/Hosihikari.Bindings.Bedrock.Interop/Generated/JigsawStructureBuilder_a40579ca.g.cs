@@ -38,9 +38,24 @@ public sealed unsafe partial class JigsawStructureBuilder : global::System.IDisp
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint key, nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(string key, global::Hosihikari.Bindings.Bedrock.Interop.HashedString type)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(key);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return (nint)NativeMethods.TablePtr->C4.hs_method_fb384624((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)type.Handle);
+        }
+    }
 
     public void _dtor()
     {
@@ -62,18 +77,65 @@ public sealed unsafe partial class JigsawStructureBuilder : global::System.IDisp
         return new JigsawStructureBuilder((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static JigsawStructureBuilder Create(nint key, nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static JigsawStructureBuilder Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.JigsawStructureBuilder arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_2e6af16a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new JigsawStructureBuilder((nint)handle);
+    }
+
+    public static JigsawStructureBuilder Create(string key, global::Hosihikari.Bindings.Bedrock.Interop.HashedString type)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(key);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->C4.hs_create_301cf276(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)type.Handle);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new JigsawStructureBuilder((nint)handle);
+        }
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.JigsawStructure build()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.JigsawStructure((nint)NativeMethods.TablePtr->C4.hs_method_31f55e57((void*)__hosihikari_shim_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static nint create(nint key, nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.JigsawStructureBuilder create(string key, global::Hosihikari.Bindings.Bedrock.Interop.HashedString type)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(key);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.JigsawStructureBuilder((nint)NativeMethods.TablePtr->C4.hs_method_71644d8a(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)type.Handle));
+        }
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDimensionPadding_Address

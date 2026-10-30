@@ -40,6 +40,10 @@ public sealed partial class BidirectionalUnorderedMap_SharedTypes__Legacy__Conta
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
+    public static BidirectionalUnorderedMap_SharedTypes__Legacy__ContainerType__std__basic_string_char__ Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
     public nint at_268158a1(nint a) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
 

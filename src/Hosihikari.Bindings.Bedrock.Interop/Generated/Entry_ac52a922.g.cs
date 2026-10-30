@@ -43,6 +43,17 @@ public sealed unsafe partial class Entry : global::System.IDisposable
         NativeMethods.TablePtr->C4.hs_method_181ab51e((void*)__hosihikari_shim_handle);
     }
 
+    public static Entry Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructureSet_Nested.Entry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_326d45f9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Entry((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mStructure_Address
     {

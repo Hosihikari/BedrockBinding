@@ -38,6 +38,17 @@ public sealed unsafe partial class IStructureConstraint : global::System.IDispos
         return __hs_handle;
     }
 
+    public static IStructureConstraint Create(global::Hosihikari.Bindings.Bedrock.Interop.IStructureConstraint arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b4bb3fa6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IStructureConstraint((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool isSatisfied(nint target, nint structurePos, nint structureRot, nint centeringOffset) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

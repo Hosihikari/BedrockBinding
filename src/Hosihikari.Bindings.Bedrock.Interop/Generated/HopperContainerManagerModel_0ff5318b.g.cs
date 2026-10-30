@@ -162,6 +162,17 @@ public sealed unsafe partial class HopperContainerManagerModel : global::System.
         return new HopperContainerManagerModel((nint)handle);
     }
 
+    public static HopperContainerManagerModel Create(global::Hosihikari.Bindings.Bedrock.Interop.HopperContainerManagerModel arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d5f929d9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HopperContainerManagerModel((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext _postInit()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext((nint)NativeMethods.TablePtr->C1.hs_method_f9e08fad((void*)__hosihikari_shim_handle));

@@ -38,6 +38,17 @@ public sealed unsafe partial class CommandRawText : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static CommandRawText Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandRawText arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_70c1aab0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandRawText((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mText_Address
     {

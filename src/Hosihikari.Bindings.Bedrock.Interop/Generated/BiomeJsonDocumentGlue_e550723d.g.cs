@@ -38,6 +38,17 @@ public sealed unsafe partial class BiomeJsonDocumentGlue : global::System.IDispo
         return __hs_handle;
     }
 
+    public static BiomeJsonDocumentGlue Create(global::Hosihikari.Bindings.Bedrock.Interop.BiomeJsonDocumentGlue arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5c412768((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BiomeJsonDocumentGlue((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mComponentGlueFactories_Address
     {

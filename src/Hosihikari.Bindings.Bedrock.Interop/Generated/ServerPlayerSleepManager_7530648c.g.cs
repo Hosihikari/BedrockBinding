@@ -63,6 +63,17 @@ public sealed unsafe partial class ServerPlayerSleepManager : global::System.IDi
         NativeMethods.TablePtr->C3.hs_method_1cfb9176((void*)__hosihikari_shim_handle);
     }
 
+    public static ServerPlayerSleepManager Create(global::Hosihikari.Bindings.Bedrock.Interop.ServerPlayerSleepManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_8a1ebeff((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ServerPlayerSleepManager((nint)handle);
+    }
+
     public void _onPlayerDeath()
     {
         NativeMethods.TablePtr->C3.hs_method_f97968d4((void*)__hosihikari_shim_handle);

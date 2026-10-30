@@ -38,6 +38,17 @@ public sealed unsafe partial class ProfilerLite : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ProfilerLite Create(global::Hosihikari.Bindings.Bedrock.Interop.ProfilerLite arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_133fdd52((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ProfilerLite((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.ProfilerLite gProfilerLiteInstance()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ProfilerLite((nint)NativeMethods.TablePtr->C2.hs_method_3d2127dc(), false);

@@ -43,6 +43,17 @@ public sealed unsafe partial class DamageSensorTrigger : global::System.IDisposa
         NativeMethods.TablePtr->C1.hs_method_22b8bcc5((void*)__hosihikari_shim_handle);
     }
 
+    public static DamageSensorTrigger Create(global::Hosihikari.Bindings.Bedrock.Interop.DamageSensorTrigger arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_95012f1f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DamageSensorTrigger((nint)handle);
+    }
+
     public int mCause
     {
         get => NativeMethods.TablePtr->C1.hs_get_7c8e7272((void*)__hosihikari_shim_handle);

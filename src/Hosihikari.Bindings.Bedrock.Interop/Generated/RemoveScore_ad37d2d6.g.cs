@@ -38,16 +38,27 @@ public sealed unsafe partial class RemoveScore : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static RemoveScore Create(global::Hosihikari.Bindings.Bedrock.Interop.RemoveScore arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_577a9a8f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RemoveScore((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mObjectiveName_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_3374add8((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3374add8((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mScoreboardId_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_9554ced5((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_9554ced5((void*)__hosihikari_shim_handle);
     }
 
 
@@ -57,7 +68,7 @@ public sealed unsafe partial class RemoveScore : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_ad37d2d6((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_ad37d2d6((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

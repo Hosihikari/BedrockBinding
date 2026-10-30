@@ -72,6 +72,17 @@ public sealed unsafe partial class EventCommand : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_5d10c342((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static EventCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.EventCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b9ca4caa((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EventCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C1.hs_method_1e2102a6((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

@@ -38,9 +38,10 @@ public sealed unsafe partial class ScriptWorldAfterEvents : global::System.IDisp
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint scope, nint level, nint locator, nint config, nint serverModuleVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope, global::Hosihikari.Bindings.Bedrock.Interop.Level? level, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.DependencyLocator locator, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextConfig config, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.Version serverModuleVersion)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_4b595651((void*)__hosihikari_shim_handle, (void*)scope.Handle, (void*)(level?.Handle ?? 0), (void*)locator.Handle, (void*)config.Handle, (void*)serverModuleVersion.Handle);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Level _getLevel()
     {
@@ -408,9 +409,16 @@ public sealed unsafe partial class ScriptWorldAfterEvents : global::System.IDisp
         return new ScriptWorldAfterEvents((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static ScriptWorldAfterEvents Create(nint scope, nint level, nint locator, nint config, nint serverModuleVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static ScriptWorldAfterEvents Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope, global::Hosihikari.Bindings.Bedrock.Interop.Level? level, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.DependencyLocator locator, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextConfig config, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.Version serverModuleVersion)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_f638cd77((void*)scope.Handle, (void*)(level?.Handle ?? 0), (void*)locator.Handle, (void*)config.Handle, (void*)serverModuleVersion.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptWorldAfterEvents((nint)handle);
+    }
 
     public static void bind(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ModuleBindingBuilder moduleBuilder)
     {

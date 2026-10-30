@@ -115,6 +115,17 @@ public sealed unsafe partial class SetDisplayObjectivePacketPayload : global::Sy
         return new SetDisplayObjectivePacketPayload((nint)handle);
     }
 
+    public static SetDisplayObjectivePacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.SetDisplayObjectivePacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_3c507726((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SetDisplayObjectivePacketPayload((nint)handle);
+    }
+
     public static SetDisplayObjectivePacketPayload Create(string displaySlotName, string objectiveName, string displayName, string criteriaName, byte order)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(displaySlotName);

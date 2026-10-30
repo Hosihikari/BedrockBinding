@@ -38,6 +38,17 @@ public sealed unsafe partial class Brightness : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Brightness Create(global::Hosihikari.Bindings.Bedrock.Interop.Brightness arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_2a2eb456((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Brightness((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Brightness MAX()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Brightness((nint)NativeMethods.TablePtr->C0.hs_method_f7d7a38c(), false);

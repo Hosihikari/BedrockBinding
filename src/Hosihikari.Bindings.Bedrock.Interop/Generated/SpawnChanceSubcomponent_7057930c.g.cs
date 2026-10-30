@@ -58,6 +58,17 @@ public sealed unsafe partial class SpawnChanceSubcomponent : global::System.IDis
         NativeMethods.TablePtr->C3.hs_method_589ae651((void*)__hosihikari_shim_handle, (void*)component.Handle);
     }
 
+    public static SpawnChanceSubcomponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SpawnChanceSubcomponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_287da08e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SpawnChanceSubcomponent((nint)handle);
+    }
+
     public void doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent arg1)
     {
         NativeMethods.TablePtr->C3.hs_method_aa94efb0((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)arg1.Handle);

@@ -38,6 +38,17 @@ public sealed unsafe partial class JigsawStructureElementRegistry : global::Syst
         return __hs_handle;
     }
 
+    public static JigsawStructureElementRegistry Create(global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureElementRegistry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_6235c877((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new JigsawStructureElementRegistry((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolElement? lookupByName(string name)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);

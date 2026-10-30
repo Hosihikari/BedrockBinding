@@ -42,6 +42,17 @@ public sealed unsafe partial class VehicleStateProvider : global::System.IDispos
     public bool _canAddPassenger(nint vehiclePassengers, nint vehicleData, nint vehicleActor, nint passengerActor) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
+    public static VehicleStateProvider Create(global::Hosihikari.Bindings.Bedrock.Interop.RideableComponentHelpers.VehicleStateProvider arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_3652d5b7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VehicleStateProvider((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public bool canAddPassenger(nint vehiclePassengers, nint vehicleData, nint vehicleActor, nint passengerActor) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");

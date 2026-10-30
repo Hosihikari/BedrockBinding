@@ -49,6 +49,17 @@ public sealed unsafe partial class MoveControlHoverDescription : global::System.
         return (nint)NativeMethods.TablePtr->C2.hs_method_2a33c9bc((void*)__hosihikari_shim_handle);
     }
 
+    public static MoveControlHoverDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.MoveControlHoverDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_4f420f1c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MoveControlHoverDescription((nint)handle);
+    }
+
     public nint getJsonName()
     {
         return (nint)NativeMethods.TablePtr->C2.hs_method_abb039ee((void*)__hosihikari_shim_handle);

@@ -43,6 +43,17 @@ public sealed unsafe partial class PeekSystem : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_fe28aca7((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static PeekSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.PeekSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_1dd7c8b4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PeekSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C2.hs_method_87ec6f6c((void*)__hosihikari_shim_handle, (void*)registry.Handle);

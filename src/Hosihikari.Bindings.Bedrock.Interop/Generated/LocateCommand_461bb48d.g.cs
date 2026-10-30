@@ -72,6 +72,17 @@ public sealed unsafe partial class LocateCommand : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_97a1c16c((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static LocateCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.LocateCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_95e19f09((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LocateCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C2.hs_method_ca1bea92((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

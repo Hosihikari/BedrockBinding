@@ -40,7 +40,7 @@ public sealed unsafe partial class RemovePassengersWithoutSeatSystem : global::S
 
     public static void removePassengersWithoutSeat(global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.RideableComponent rideableComponent, global::Hosihikari.Bindings.Bedrock.Interop.VehicleComponent vehicleComponent, nint modifier)
     {
-        NativeMethods.TablePtr->C2.hs_method_93bf3a5f((void*)arg0.Handle, (void*)rideableComponent.Handle, (void*)vehicleComponent.Handle, (void*)modifier);
+        NativeMethods.TablePtr->C3.hs_method_93bf3a5f((void*)arg0.Handle, (void*)rideableComponent.Handle, (void*)vehicleComponent.Handle, (void*)modifier);
     }
 
     public void Dispose()
@@ -49,7 +49,7 @@ public sealed unsafe partial class RemovePassengersWithoutSeatSystem : global::S
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_46d97af8((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_46d97af8((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

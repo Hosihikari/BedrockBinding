@@ -40,7 +40,7 @@ public sealed unsafe partial class TrackerStats : global::System.IDisposable
 
     public static TrackerStats Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_f9c38f84();
+        var handle = NativeMethods.TablePtr->C1.hs_create_f9c38f84();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class TrackerStats : global::System.IDisposable
 
     public static TrackerStats Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.DiskAccessTracker_Nested.TrackerStats arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_20a480d7((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_20a480d7((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,48 +63,48 @@ public sealed unsafe partial class TrackerStats : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk19960e_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_c557ad57((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_c557ad57((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk268666_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_a0fc59c6((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a0fc59c6((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk700cbe_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_eac06100((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_eac06100((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk7f81a1_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_4f35af81((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_4f35af81((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkbd5b4c_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_9adfabd7((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_9adfabd7((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnke2d2e0_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_85a28b3e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_85a28b3e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkf1891e_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_b909b47a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b909b47a((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.DiskAccessTracker_Nested.TrackerStats operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.DiskAccessTracker_Nested.TrackerStats arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.DiskAccessTracker_Nested.TrackerStats((nint)NativeMethods.TablePtr->C0.hs_method_a3555c38((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.DiskAccessTracker_Nested.TrackerStats((nint)NativeMethods.TablePtr->C1.hs_method_a3555c38((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -113,7 +113,7 @@ public sealed unsafe partial class TrackerStats : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_3aef8da6((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_3aef8da6((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -38,6 +38,17 @@ public sealed unsafe partial class IReplayStatePolicy : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static IReplayStatePolicy Create(global::Hosihikari.Bindings.Bedrock.Interop.IReplayStatePolicy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_556ecbc0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IReplayStatePolicy((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool isReplayNeeded(nint result) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

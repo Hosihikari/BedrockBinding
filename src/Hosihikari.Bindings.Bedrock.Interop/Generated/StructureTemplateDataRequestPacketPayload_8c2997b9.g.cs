@@ -49,6 +49,17 @@ public sealed unsafe partial class StructureTemplateDataRequestPacketPayload : g
         return new StructureTemplateDataRequestPacketPayload((nint)handle);
     }
 
+    public static StructureTemplateDataRequestPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplateDataRequestPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_7ecc6b2c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureTemplateDataRequestPacketPayload((nint)handle);
+    }
+
     public byte mRequestOperation
     {
         get => NativeMethods.TablePtr->C3.hs_get_d21b8e6e((void*)__hosihikari_shim_handle);

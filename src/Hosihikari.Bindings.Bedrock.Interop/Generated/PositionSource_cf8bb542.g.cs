@@ -38,6 +38,17 @@ public sealed unsafe partial class PositionSource : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static PositionSource Create(global::Hosihikari.Bindings.Bedrock.Interop.GameEvents.PositionSource arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_f56649ff((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PositionSource((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mVariant_Address
     {

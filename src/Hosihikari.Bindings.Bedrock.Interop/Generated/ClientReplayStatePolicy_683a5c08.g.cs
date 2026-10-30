@@ -57,6 +57,17 @@ public sealed unsafe partial class ClientReplayStatePolicy : global::System.IDis
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ClientReplayStatePolicy Create(global::Hosihikari.Bindings.Bedrock.Interop.ClientReplayStatePolicy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_e5889a08((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ClientReplayStatePolicy((nint)handle);
+    }
+
     public bool isReplayNeeded(byte result)
     {
         return NativeMethods.TablePtr->C0.hs_method_d622106f((void*)__hosihikari_shim_handle, result) != 0;

@@ -40,47 +40,58 @@ public sealed unsafe partial class CoralCrustFeature : global::System.IDisposabl
 
     public bool _place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
-        return NativeMethods.TablePtr->C0.hs_method_8d61ced5((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_8d61ced5((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
+    }
+
+    public static CoralCrustFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.CoralCrustFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_85f0fc4c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CoralCrustFeature((nint)handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos _getCropOffsetFromRot(int rot, int type)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C0.hs_method_3b4297b0((void*)__hosihikari_shim_handle, rot, type));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C1.hs_method_3b4297b0((void*)__hosihikari_shim_handle, rot, type));
     }
 
     public void _placeCoralBase(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureTemplate structure, global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings settings)
     {
-        NativeMethods.TablePtr->C0.hs_method_b653c094((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle, (void*)structure.Handle, (void*)settings.Handle);
+        NativeMethods.TablePtr->C1.hs_method_b653c094((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle, (void*)structure.Handle, (void*)settings.Handle);
     }
 
     public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
-        return NativeMethods.TablePtr->C0.hs_method_e783ba8b((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_e783ba8b((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
     }
 
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPlacerID_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_873621cf((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_873621cf((void*)__hosihikari_shim_handle);
     }
 
     public nint mTransaction
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_017ecbdc((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C0.hs_set_017ecbdc((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_017ecbdc((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_017ecbdc((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public bool mCanUseInternalFeature
     {
-        get => NativeMethods.TablePtr->C0.hs_get_eb36c668((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C0.hs_set_eb36c668((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_eb36c668((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_eb36c668((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mInternal
     {
-        get => NativeMethods.TablePtr->C0.hs_get_c7026e2e((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C0.hs_set_c7026e2e((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_c7026e2e((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_c7026e2e((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -89,7 +100,7 @@ public sealed unsafe partial class CoralCrustFeature : global::System.IDisposabl
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_84501bd8((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_84501bd8((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

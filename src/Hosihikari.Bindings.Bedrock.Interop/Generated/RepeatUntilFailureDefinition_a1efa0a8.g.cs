@@ -41,28 +41,30 @@ public sealed unsafe partial class RepeatUntilFailureDefinition : global::System
     // The native field type is not projected; this is the address of the field storage.
     public nint mName_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_8d815bc6((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8d815bc6((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTreeDefinition_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_9a9576ef((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_9a9576ef((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mChild_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_b5a1d9d7((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b5a1d9d7((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void _load(nint value, nint factory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void _load(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value value, global::Hosihikari.Bindings.Bedrock.Interop.BehaviorFactory factory)
+    {
+        NativeMethods.TablePtr->C3.hs_method_d0e5f175((void*)__hosihikari_shim_handle, (void*)value.Handle, (void*)factory.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void load(nint value, nint factory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void load(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value value, global::Hosihikari.Bindings.Bedrock.Interop.BehaviorFactory factory)
+    {
+        NativeMethods.TablePtr->C3.hs_method_07e170c3((void*)__hosihikari_shim_handle, (void*)value.Handle, (void*)factory.Handle);
+    }
 
 
     public void Dispose()
@@ -71,7 +73,7 @@ public sealed unsafe partial class RepeatUntilFailureDefinition : global::System
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_a1efa0a8((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_a1efa0a8((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

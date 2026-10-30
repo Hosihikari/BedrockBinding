@@ -38,6 +38,17 @@ public sealed unsafe partial class ItemEnchants : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ItemEnchants Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemEnchants arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_474744f4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemEnchants((nint)handle);
+    }
+
     public void _fromList(global::Hosihikari.Bindings.Bedrock.Interop.ListTag tag)
     {
         NativeMethods.TablePtr->C1.hs_method_f1a68da6((void*)__hosihikari_shim_handle, (void*)tag.Handle);

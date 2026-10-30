@@ -38,6 +38,17 @@ public sealed unsafe partial class IRequestBody : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static IRequestBody Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.Internal.IRequestBody arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_ea9a42d7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IRequestBody((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void cancel() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

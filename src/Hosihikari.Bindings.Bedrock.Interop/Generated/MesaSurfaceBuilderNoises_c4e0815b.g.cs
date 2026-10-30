@@ -43,6 +43,17 @@ public sealed unsafe partial class MesaSurfaceBuilderNoises : global::System.IDi
         NativeMethods.TablePtr->C2.hs_method_84852835((void*)__hosihikari_shim_handle);
     }
 
+    public static MesaSurfaceBuilderNoises Create(global::Hosihikari.Bindings.Bedrock.Interop.MesaSurfaceBuilderNoises arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_3179adaa((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MesaSurfaceBuilderNoises((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mClayBandsOffsetNoise_Address
     {

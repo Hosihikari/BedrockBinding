@@ -163,6 +163,17 @@ public sealed unsafe partial class GameConnectionInfo : global::System.IDisposab
         return new GameConnectionInfo((nint)handle);
     }
 
+    public static GameConnectionInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_b69d4340((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameConnectionInfo((nint)handle);
+    }
+
     public bool mAllowSmallDownloads
     {
         get => NativeMethods.TablePtr->C3.hs_get_56ca1d28((void*)__hosihikari_shim_handle) != 0;

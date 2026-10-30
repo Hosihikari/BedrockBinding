@@ -38,44 +38,57 @@ public sealed unsafe partial class TrailDescription : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void _deserializeData(nint deserializeDataParams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void _deserializeData(global::Hosihikari.Bindings.Bedrock.Interop.DeserializeDataParams deserializeDataParams)
+    {
+        NativeMethods.TablePtr->C4.hs_method_6dbddfa7((void*)__hosihikari_shim_handle, (void*)deserializeDataParams.Handle);
+    }
 
     public nint _getJsonName()
     {
-        return (nint)NativeMethods.TablePtr->C3.hs_method_f1e8e0c3((void*)__hosihikari_shim_handle);
+        return (nint)NativeMethods.TablePtr->C4.hs_method_f1e8e0c3((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void deserializeData(nint deserializeDataParams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static TrailDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.TrailDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_4736a9fa((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TrailDescription((nint)handle);
+    }
+
+    public void deserializeData(global::Hosihikari.Bindings.Bedrock.Interop.DeserializeDataParams deserializeDataParams)
+    {
+        NativeMethods.TablePtr->C4.hs_method_a69d8992((void*)__hosihikari_shim_handle, (void*)deserializeDataParams.Handle);
+    }
 
     public nint getJsonName()
     {
-        return (nint)NativeMethods.TablePtr->C3.hs_method_4b4178b6((void*)__hosihikari_shim_handle);
+        return (nint)NativeMethods.TablePtr->C4.hs_method_4b4178b6((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockType_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_fe04f0a5((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_fe04f0a5((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSpawnCondition_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_e301a262((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_e301a262((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSpawnOffset_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_912e10bb((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_912e10bb((void*)__hosihikari_shim_handle);
     }
 
 
@@ -85,7 +98,7 @@ public sealed unsafe partial class TrailDescription : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_660f5824((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_660f5824((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

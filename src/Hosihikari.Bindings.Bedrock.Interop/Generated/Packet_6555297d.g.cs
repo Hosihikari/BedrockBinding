@@ -110,6 +110,17 @@ public sealed unsafe partial class Packet : global::System.IDisposable
         return new Packet((nint)handle);
     }
 
+    public static Packet Create(global::Hosihikari.Bindings.Bedrock.Interop.Packet arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_5fd3c3f6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Packet((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint _read_ee4d01fa(nint stream) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

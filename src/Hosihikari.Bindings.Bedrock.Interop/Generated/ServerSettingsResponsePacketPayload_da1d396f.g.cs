@@ -38,6 +38,17 @@ public sealed unsafe partial class ServerSettingsResponsePacketPayload : global:
         return __hs_handle;
     }
 
+    public static ServerSettingsResponsePacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.ServerSettingsResponsePacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a85a90bb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ServerSettingsResponsePacketPayload((nint)handle);
+    }
+
     public uint mFormId
     {
         get => NativeMethods.TablePtr->C3.hs_get_9bf242ef((void*)__hosihikari_shim_handle);

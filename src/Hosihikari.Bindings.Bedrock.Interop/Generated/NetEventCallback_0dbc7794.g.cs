@@ -1405,6 +1405,17 @@ public sealed unsafe partial class NetEventCallback : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static NetEventCallback Create(global::Hosihikari.Bindings.Bedrock.Interop.NetEventCallback arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_2ae616d5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NetEventCallback((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint allowIncomingPacketId(nint id, nint packetId, ulong packetSize) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

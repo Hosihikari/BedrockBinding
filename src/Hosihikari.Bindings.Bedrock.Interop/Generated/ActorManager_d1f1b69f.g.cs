@@ -94,9 +94,11 @@ public sealed unsafe partial class ActorManager : global::System.IDisposable
     public void cleanupActorEntityReferencesGarbageCollect(nint entity) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint deleteActorEntityFromWorldAndTakeEntity(nint entityRef) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? deleteActorEntityFromWorldAndTakeEntity(global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef entityRef)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_d6a387ab((void*)__hosihikari_shim_handle, (void*)entityRef.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public void forceRemoveActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
@@ -173,17 +175,23 @@ public sealed unsafe partial class ActorManager : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_6bf7081e((void*)__hosihikari_shim_handle, (void*)levelChunkEventManagerConnector.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint removeActorEntityAndTakeEntity(nint entityRef) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? removeActorEntityAndTakeEntity(global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef entityRef)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_6aef05fb((void*)__hosihikari_shim_handle, (void*)entityRef.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint removeEntity(nint entityRef) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? removeEntity(global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef entityRef)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_8e7945a1((void*)__hosihikari_shim_handle, (void*)entityRef.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint takeEntity(nint entityRef, nint levelChunk) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? takeEntity(global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef entityRef, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_31b60d71((void*)__hosihikari_shim_handle, (void*)entityRef.Handle, (void*)levelChunk.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
 
     public void Dispose()

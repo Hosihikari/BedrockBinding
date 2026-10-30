@@ -38,6 +38,17 @@ public sealed unsafe partial class MobEffectDefinition : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static MobEffectDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.MobEffectDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_2cf38dd3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MobEffectDefinition((nint)handle);
+    }
+
     public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
         NativeMethods.TablePtr->C2.hs_method_21fe7242(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));

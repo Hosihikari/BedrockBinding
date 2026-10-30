@@ -42,6 +42,17 @@ public sealed unsafe partial class Context : global::System.IDisposable
     public void ClearTxErrorCounter() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static Context Create(global::Hosihikari.Bindings.Bedrock.Interop.dcsctp.Context arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_0479f340((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Context((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool HasTooManyTxErrors() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

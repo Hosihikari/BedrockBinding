@@ -38,6 +38,17 @@ public sealed unsafe partial class ItemDescription : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ItemDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_0.ItemDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_1bc7dd0c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemDescription((nint)handle);
+    }
+
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C3.hs_method_5115e7c5((void*)ctx.Handle);

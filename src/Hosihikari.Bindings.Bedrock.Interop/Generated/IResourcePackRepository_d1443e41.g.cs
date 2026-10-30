@@ -44,6 +44,17 @@ public sealed unsafe partial class IResourcePackRepository : global::System.IDis
         get => (nint)NativeMethods.TablePtr->C1.hs_get_61675d42((void*)__hosihikari_shim_handle);
     }
 
+    public static IResourcePackRepository Create(global::Hosihikari.Bindings.Bedrock.Interop.IResourcePackRepository arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_51ba3ed9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IResourcePackRepository((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void addCachedResourcePacks(nint tempCacheKeys) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

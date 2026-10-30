@@ -47,6 +47,17 @@ public sealed unsafe partial class EncodedImageCallback : global::System.IDispos
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static EncodedImageCallback Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.EncodedImageCallback arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_1b3f03d6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EncodedImageCallback((nint)handle);
+    }
+
     public void OnDroppedFrame(byte arg0)
     {
         NativeMethods.TablePtr->C4.hs_method_bbe00f5d((void*)__hosihikari_shim_handle, arg0);

@@ -76,6 +76,17 @@ public sealed unsafe partial class CompoundCreatorContainerManagerModel : global
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static CompoundCreatorContainerManagerModel Create(global::Hosihikari.Bindings.Bedrock.Interop.CompoundCreatorContainerManagerModel arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_a3831592((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CompoundCreatorContainerManagerModel((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext _postInit()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext((nint)NativeMethods.TablePtr->C0.hs_method_2a89e90e((void*)__hosihikari_shim_handle));

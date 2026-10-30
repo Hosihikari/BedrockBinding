@@ -38,6 +38,17 @@ public sealed unsafe partial class LoggingInterface : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static LoggingInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.LoggingInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_4baa5eb7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LoggingInterface((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public ulong threadId() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

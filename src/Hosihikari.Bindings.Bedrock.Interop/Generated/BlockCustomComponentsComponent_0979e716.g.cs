@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockCustomComponentsComponent : global::Syst
         return __hs_handle;
     }
 
+    public static BlockCustomComponentsComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockCustomComponentsComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_16d17817((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockCustomComponentsComponent((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'BlockCustomComponentsComponent::ExecutableComponent' is not supported.", false)]
     public nint _gatherComponentsToExecute() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'BlockCustomComponentsComponent::ExecutableComponent' is not supported.");

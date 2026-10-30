@@ -40,7 +40,7 @@ public sealed unsafe partial class ReadOnlyBinaryStream : global::System.IDispos
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C2.hs_method_6aaf6be8((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_6aaf6be8((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
@@ -50,6 +50,10 @@ public sealed unsafe partial class ReadOnlyBinaryStream : global::System.IDispos
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: classes that store borrowed strings are not supported by symbol dispatch.", false)]
+    public static ReadOnlyBinaryStream Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: classes that store borrowed strings are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: classes that store borrowed strings are not supported by symbol dispatch.", false)]
     public static ReadOnlyBinaryStream Create(nint buffer, bool copyBuffer) =>
@@ -141,26 +145,26 @@ public sealed unsafe partial class ReadOnlyBinaryStream : global::System.IDispos
 
     public bool mHasOverflowed
     {
-        get => NativeMethods.TablePtr->C2.hs_get_0a04f663((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_0a04f663((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_0a04f663((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_0a04f663((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOwnedBuffer_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_7a8d711c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7a8d711c((void*)__hosihikari_shim_handle);
     }
 
     public ulong mReadPointer
     {
-        get => NativeMethods.TablePtr->C2.hs_get_818833b3((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_818833b3((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_818833b3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_818833b3((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mView_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_78b0824c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_78b0824c((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
@@ -174,7 +178,7 @@ public sealed unsafe partial class ReadOnlyBinaryStream : global::System.IDispos
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_a73888ed((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_a73888ed((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

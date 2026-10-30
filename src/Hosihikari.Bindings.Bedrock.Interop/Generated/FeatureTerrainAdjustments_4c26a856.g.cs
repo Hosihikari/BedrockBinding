@@ -38,6 +38,17 @@ public sealed unsafe partial class FeatureTerrainAdjustments : global::System.ID
         return __hs_handle;
     }
 
+    public static FeatureTerrainAdjustments Create(global::Hosihikari.Bindings.Bedrock.Interop.FeatureTerrainAdjustments arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_c8f4296d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FeatureTerrainAdjustments((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public nint _insertDescriptions(nint intersectingChunks, nint modifyFn) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");

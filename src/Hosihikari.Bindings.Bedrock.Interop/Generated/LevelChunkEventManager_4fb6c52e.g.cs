@@ -69,6 +69,17 @@ public sealed unsafe partial class LevelChunkEventManager : global::System.IDisp
         return new LevelChunkEventManager((nint)handle);
     }
 
+    public static LevelChunkEventManager Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkEventManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_26d85dab((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelChunkEventManager((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static LevelChunkEventManager Create(nint levelChunkEventManagerProxy) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");

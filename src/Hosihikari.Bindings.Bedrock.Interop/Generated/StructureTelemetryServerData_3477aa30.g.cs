@@ -38,6 +38,17 @@ public sealed unsafe partial class StructureTelemetryServerData : global::System
         return __hs_handle;
     }
 
+    public static StructureTelemetryServerData Create(global::Hosihikari.Bindings.Bedrock.Interop.StructureTelemetryServerData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_ee2da34d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureTelemetryServerData((nint)handle);
+    }
+
     public bool mHasBeenActivatedByRedstone
     {
         get => NativeMethods.TablePtr->C3.hs_get_29c5ac65((void*)__hosihikari_shim_handle) != 0;

@@ -38,6 +38,17 @@ public sealed unsafe partial class TickFunction : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static TickFunction Create(global::Hosihikari.Bindings.Bedrock.Interop.FunctionManager_Nested.TickFunction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_7f25f473((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TickFunction((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mFunction_Address
     {

@@ -59,6 +59,17 @@ public sealed unsafe partial class FilterGroupData : global::System.IDisposable
         return new FilterGroupData((nint)handle);
     }
 
+    public static FilterGroupData Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_21_20.FilterGroupData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_93d60372((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FilterGroupData((nint)handle);
+    }
+
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C3.hs_method_85d453e0((void*)ctx.Handle);

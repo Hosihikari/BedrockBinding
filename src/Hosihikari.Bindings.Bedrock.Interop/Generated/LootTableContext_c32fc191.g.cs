@@ -43,6 +43,17 @@ public sealed unsafe partial class LootTableContext : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_b2628de2((void*)__hosihikari_shim_handle);
     }
 
+    public static LootTableContext Create(global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_c7c6bac9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LootTableContext((nint)handle);
+    }
+
     public string getOriginalItemName()
     {
         var __hs_view = NativeMethods.TablePtr->C2.hs_method_872597d2((void*)__hosihikari_shim_handle);

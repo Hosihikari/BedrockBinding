@@ -38,6 +38,17 @@ public sealed unsafe partial class OnUseOnTriggerItemComponent : global::System.
         return __hs_handle;
     }
 
+    public static OnUseOnTriggerItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy.OnUseOnTriggerItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_7f7577d7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OnUseOnTriggerItemComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnUseOn_Address
     {

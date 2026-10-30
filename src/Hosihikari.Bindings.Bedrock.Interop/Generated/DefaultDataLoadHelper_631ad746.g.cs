@@ -126,6 +126,17 @@ public sealed unsafe partial class DefaultDataLoadHelper : global::System.IDispo
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static DefaultDataLoadHelper Create(global::Hosihikari.Bindings.Bedrock.Interop.DefaultDataLoadHelper arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d355a4a8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DefaultDataLoadHelper((nint)handle);
+    }
+
     public int getType()
     {
         return NativeMethods.TablePtr->C1.hs_method_65b01009((void*)__hosihikari_shim_handle);

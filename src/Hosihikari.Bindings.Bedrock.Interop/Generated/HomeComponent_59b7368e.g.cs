@@ -38,6 +38,17 @@ public sealed unsafe partial class HomeComponent : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static HomeComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.HomeComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_09036231((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HomeComponent((nint)handle);
+    }
+
     public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
         NativeMethods.TablePtr->C1.hs_method_746f1121((void*)__hosihikari_shim_handle, (void*)tag.Handle);

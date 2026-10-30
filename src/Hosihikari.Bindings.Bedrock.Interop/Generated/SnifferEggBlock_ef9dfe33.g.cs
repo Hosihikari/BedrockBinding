@@ -319,6 +319,17 @@ public sealed unsafe partial class SnifferEggBlock : global::System.IDisposable
         return new SnifferEggBlock((nint)handle);
     }
 
+    public static SnifferEggBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.SnifferEggBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_f4bd3812((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SnifferEggBlock((nint)handle);
+    }
+
     public static SnifferEggBlock Create(string nameId, int id)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);

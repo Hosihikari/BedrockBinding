@@ -152,6 +152,17 @@ public sealed unsafe partial class SetActorDataPacket : global::System.IDisposab
         NativeMethods.TablePtr->C3.hs_method_cc680327((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+    public static SetActorDataPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.SetActorDataPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_36bf37b4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SetActorDataPacket((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");

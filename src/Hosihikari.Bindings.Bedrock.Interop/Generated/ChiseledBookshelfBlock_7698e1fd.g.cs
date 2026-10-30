@@ -288,14 +288,26 @@ public sealed unsafe partial class ChiseledBookshelfBlock : global::System.IDisp
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ChiseledBookshelfBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.ChiseledBookshelfBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_afce0c7e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChiseledBookshelfBlock((nint)handle);
+    }
+
     public static bool _retrieveBook(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChiseledBookshelfBlockActor bookshelfActor, int hitSlot)
     {
         return NativeMethods.TablePtr->C0.hs_method_d40c95ab((void*)player.Handle, (void*)bookshelfActor.Handle, hitSlot) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void _setBook(nint player, nint heldItem, nint bookshelfActor, nint hitSlot) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void _setBook(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack heldItem, global::Hosihikari.Bindings.Bedrock.Interop.ChiseledBookshelfBlockActor bookshelfActor, int hitSlot)
+    {
+        NativeMethods.TablePtr->C0.hs_method_dbc9f229((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)heldItem.Handle, (void*)bookshelfActor.Handle, hitSlot);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance asItemInstance(global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.BlockActor? arg1)
     {

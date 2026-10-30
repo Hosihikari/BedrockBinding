@@ -38,6 +38,17 @@ public sealed unsafe partial class ScriptPluginResult : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static ScriptPluginResult Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginResult arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_7c1c0d1b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptPluginResult((nint)handle);
+    }
+
     public void logError(string error)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(error);

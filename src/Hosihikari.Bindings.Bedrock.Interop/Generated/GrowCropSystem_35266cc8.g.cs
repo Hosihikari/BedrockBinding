@@ -43,6 +43,17 @@ public sealed unsafe partial class GrowCropSystem : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_6dc8cde8((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static GrowCropSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.GrowCropSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_260a062f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GrowCropSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C1.hs_method_65c16235((void*)__hosihikari_shim_handle, (void*)registry.Handle);

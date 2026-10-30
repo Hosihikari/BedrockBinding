@@ -63,6 +63,17 @@ public sealed unsafe partial class SculkVeinMultifaceSpreader : global::System.I
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static SculkVeinMultifaceSpreader Create(global::Hosihikari.Bindings.Bedrock.Interop.SculkVeinMultifaceSpreader arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_08c0519c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SculkVeinMultifaceSpreader((nint)handle);
+    }
+
     public bool _canSpreadFrom(global::Hosihikari.Bindings.Bedrock.Interop.Block block, byte facing)
     {
         return NativeMethods.TablePtr->C3.hs_method_9c8cf344((void*)__hosihikari_shim_handle, (void*)block.Handle, facing) != 0;

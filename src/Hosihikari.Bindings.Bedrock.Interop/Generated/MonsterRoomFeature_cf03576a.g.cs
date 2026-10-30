@@ -71,6 +71,17 @@ public sealed unsafe partial class MonsterRoomFeature : global::System.IDisposab
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static MonsterRoomFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.MonsterRoomFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_46693673((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MonsterRoomFeature((nint)handle);
+    }
+
     public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         return NativeMethods.TablePtr->C2.hs_method_08df3ffc((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;

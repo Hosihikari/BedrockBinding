@@ -38,6 +38,17 @@ public sealed unsafe partial class TcpProxy : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static TcpProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.TcpProxy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_1b7011b5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TcpProxy((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void close(nint address) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

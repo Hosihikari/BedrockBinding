@@ -38,6 +38,17 @@ public sealed unsafe partial class LookAtPositionIntent : global::System.IDispos
         return __hs_handle;
     }
 
+    public static LookAtPositionIntent Create(global::Hosihikari.Bindings.Bedrock.Interop.sim.LookAtPositionIntent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_83c59b7b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LookAtPositionIntent((nint)handle);
+    }
+
     public int mCountdown
     {
         get => NativeMethods.TablePtr->C4.hs_get_a6c53f91((void*)__hosihikari_shim_handle);

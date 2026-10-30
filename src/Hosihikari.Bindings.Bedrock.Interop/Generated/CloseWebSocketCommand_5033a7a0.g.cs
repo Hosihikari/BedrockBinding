@@ -43,6 +43,17 @@ public sealed unsafe partial class CloseWebSocketCommand : global::System.IDispo
         NativeMethods.TablePtr->C0.hs_method_d3ebeea6((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)arg1.Handle);
     }
 
+    public static CloseWebSocketCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.CloseWebSocketCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_8c9926cd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CloseWebSocketCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput arg1)
     {
         NativeMethods.TablePtr->C0.hs_method_eaaf170d((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)arg1.Handle);

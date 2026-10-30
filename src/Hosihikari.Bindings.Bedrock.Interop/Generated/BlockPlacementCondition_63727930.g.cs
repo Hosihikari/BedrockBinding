@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockPlacementCondition : global::System.IDis
         return __hs_handle;
     }
 
+    public static BlockPlacementCondition Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPlacementCondition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_91796b73((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockPlacementCondition((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint blockFilter_Address
     {

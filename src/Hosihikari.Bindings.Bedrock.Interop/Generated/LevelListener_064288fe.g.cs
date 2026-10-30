@@ -193,6 +193,17 @@ public sealed unsafe partial class LevelListener : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static LevelListener Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_9c44b5fb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelListener((nint)handle);
+    }
+
     public void addBiomeTintedParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.HashedString effect, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.mce.Color? overrideColor)
     {
         NativeMethods.TablePtr->C2.hs_method_93462eff((void*)__hosihikari_shim_handle, (void*)effect.Handle, (void*)pos.Handle, (void*)block.Handle, (void*)(overrideColor?.Handle ?? 0), overrideColor is not null);

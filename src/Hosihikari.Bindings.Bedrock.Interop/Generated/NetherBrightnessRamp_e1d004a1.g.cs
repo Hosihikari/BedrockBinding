@@ -49,6 +49,17 @@ public sealed unsafe partial class NetherBrightnessRamp : global::System.IDispos
         return NativeMethods.TablePtr->C2.hs_method_e0681658((void*)__hosihikari_shim_handle);
     }
 
+    public static NetherBrightnessRamp Create(global::Hosihikari.Bindings.Bedrock.Interop.NetherBrightnessRamp arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_1084cf1f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NetherBrightnessRamp((nint)handle);
+    }
+
     public float getBaseAmbientValue()
     {
         return NativeMethods.TablePtr->C2.hs_method_b0292b23((void*)__hosihikari_shim_handle);

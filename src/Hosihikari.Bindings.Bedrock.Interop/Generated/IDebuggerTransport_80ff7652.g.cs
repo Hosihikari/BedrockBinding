@@ -38,6 +38,17 @@ public sealed unsafe partial class IDebuggerTransport : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static IDebuggerTransport Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.IDebuggerTransport arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_95907fd8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IDebuggerTransport((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void close() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

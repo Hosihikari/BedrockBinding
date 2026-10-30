@@ -62,6 +62,17 @@ public sealed unsafe partial class MaterialHelper : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static MaterialHelper Create(global::Hosihikari.Bindings.Bedrock.Interop.VanillaSurfaceBuilders.CappedSurfaceBuilder_Nested.MaterialHelper arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_6e490953((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MaterialHelper((nint)handle);
+    }
+
     public bool isFoundationBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
         return NativeMethods.TablePtr->C4.hs_method_c76293fa((void*)__hosihikari_shim_handle, (void*)block.Handle) != 0;

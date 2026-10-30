@@ -47,6 +47,17 @@ public sealed unsafe partial class DataChannelInterface : global::System.IDispos
     public void Close() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static DataChannelInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.DataChannelInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_7f930a7c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DataChannelInterface((nint)handle);
+    }
+
     public static ulong MaxSendQueueSize()
     {
         return NativeMethods.TablePtr->C4.hs_method_237cd58d();

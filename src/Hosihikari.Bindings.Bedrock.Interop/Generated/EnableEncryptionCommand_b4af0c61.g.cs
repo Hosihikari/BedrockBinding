@@ -72,6 +72,17 @@ public sealed unsafe partial class EnableEncryptionCommand : global::System.IDis
         NativeMethods.TablePtr->C1.hs_method_a2452d64((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static EnableEncryptionCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.EnableEncryptionCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_1073325f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EnableEncryptionCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C1.hs_method_908ceb6f((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

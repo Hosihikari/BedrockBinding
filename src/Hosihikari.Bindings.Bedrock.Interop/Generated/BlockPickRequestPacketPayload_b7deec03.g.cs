@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockPickRequestPacketPayload : global::Syste
         return __hs_handle;
     }
 
+    public static BlockPickRequestPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPickRequestPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_d23e06d1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockPickRequestPacketPayload((nint)handle);
+    }
+
     public byte mMaxSlots
     {
         get => NativeMethods.TablePtr->C0.hs_get_bbafdb3d((void*)__hosihikari_shim_handle);

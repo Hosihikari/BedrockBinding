@@ -80,6 +80,17 @@ public sealed unsafe partial class ScriptBlockRaycastOptions : global::System.ID
         get => (nint)NativeMethods.TablePtr->C3.hs_get_724910e3((void*)__hosihikari_shim_handle);
     }
 
+    public static ScriptBlockRaycastOptions Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBlockRaycastOptions arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_11f6df6a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptBlockRaycastOptions((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding((nint)NativeMethods.TablePtr->C3.hs_method_00949d9f());

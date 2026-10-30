@@ -1620,6 +1620,17 @@ public sealed unsafe partial class SimulatedPlayer : global::System.IDisposable
     public static SimulatedPlayer Create(nint level, nint packetSender, nint network, nint clientCacheMirror, nint playerGameType, nint owner, nint subid, nint playerLoadedCallback, nint uuid, nint deviceId, nint authType, nint authInfo, int maxChunkRadius, bool enableItemStackNetManager, nint entityContext) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
+    public static SimulatedPlayer Create(global::Hosihikari.Bindings.Bedrock.Interop.SimulatedPlayer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_33d12e23((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SimulatedPlayer((nint)handle);
+    }
+
     public void _addMoveComponent()
     {
         NativeMethods.TablePtr->C3.hs_method_087f2932((void*)__hosihikari_shim_handle);

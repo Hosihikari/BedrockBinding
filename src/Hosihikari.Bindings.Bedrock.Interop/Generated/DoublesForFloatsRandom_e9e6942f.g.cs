@@ -53,6 +53,17 @@ public sealed unsafe partial class DoublesForFloatsRandom : global::System.IDisp
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static DoublesForFloatsRandom Create(global::Hosihikari.Bindings.Bedrock.Interop.NoiseUtils.DoublesForFloatsRandom arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_b0a1edeb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DoublesForFloatsRandom((nint)handle);
+    }
+
     public float nextFloat()
     {
         return NativeMethods.TablePtr->C2.hs_method_85dafc34((void*)__hosihikari_shim_handle);

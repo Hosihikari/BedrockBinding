@@ -67,6 +67,17 @@ public sealed unsafe partial class SeaAnemoneFeature : global::System.IDisposabl
         return NativeMethods.TablePtr->C3.hs_method_b19c9763((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
     }
 
+    public static SeaAnemoneFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.SeaAnemoneFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_f42c2a4e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SeaAnemoneFeature((nint)handle);
+    }
+
     public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         return NativeMethods.TablePtr->C3.hs_method_709ed5be((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;

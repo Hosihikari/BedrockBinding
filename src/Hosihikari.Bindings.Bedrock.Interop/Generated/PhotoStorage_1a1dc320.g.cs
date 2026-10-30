@@ -94,6 +94,17 @@ public sealed unsafe partial class PhotoStorage : global::System.IDisposable
         return new PhotoStorage((nint)handle);
     }
 
+    public static PhotoStorage Create(global::Hosihikari.Bindings.Bedrock.Interop.PhotoStorage arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_eef43e77((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PhotoStorage((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBaseDir_Address
     {

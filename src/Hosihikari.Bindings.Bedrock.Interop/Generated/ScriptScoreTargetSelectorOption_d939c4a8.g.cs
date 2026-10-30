@@ -38,6 +38,17 @@ public sealed unsafe partial class ScriptScoreTargetSelectorOption : global::Sys
         return __hs_handle;
     }
 
+    public static ScriptScoreTargetSelectorOption Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptScoreTargetSelectorOption arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_e524b1c3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptScoreTargetSelectorOption((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bindV010()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_125d835d());

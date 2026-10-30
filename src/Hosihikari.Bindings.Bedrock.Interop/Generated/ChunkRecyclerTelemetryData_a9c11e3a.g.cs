@@ -44,6 +44,17 @@ public sealed unsafe partial class ChunkRecyclerTelemetryData : global::System.I
         get => (nint)NativeMethods.TablePtr->C0.hs_get_326c2cbe((void*)__hosihikari_shim_handle);
     }
 
+    public static ChunkRecyclerTelemetryData Create(global::Hosihikari.Bindings.Bedrock.Interop.ChunkRecyclerTelemetryData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_18513496((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChunkRecyclerTelemetryData((nint)handle);
+    }
+
     public void _reset()
     {
         NativeMethods.TablePtr->C0.hs_method_8c66d245((void*)__hosihikari_shim_handle);

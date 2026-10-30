@@ -38,6 +38,17 @@ public sealed unsafe partial class CommandRationalRange : global::System.IDispos
         return __hs_handle;
     }
 
+    public static CommandRationalRange Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandRationalRange arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_aa9dc4c4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandRationalRange((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.CommandRationalRange changeToValueType(nint valueType)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.CommandRationalRange((nint)NativeMethods.TablePtr->C0.hs_method_3b6dfe5d((void*)__hosihikari_shim_handle, (void*)valueType));

@@ -40,49 +40,60 @@ public sealed unsafe partial class TickingAreaDescription : global::System.IDisp
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C3.hs_method_5038a310((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_5038a310((void*)__hosihikari_shim_handle);
+    }
+
+    public static TickingAreaDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.TickingAreaDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_bd8db002((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TickingAreaDescription((nint)handle);
     }
 
     public string asString()
     {
-        var __hs_view = NativeMethods.TablePtr->C3.hs_method_fa8dc764((void*)__hosihikari_shim_handle);
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_fa8dc764((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool mIsCircle
     {
-        get => NativeMethods.TablePtr->C3.hs_get_42bb5e76((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_42bb5e76((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_42bb5e76((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_42bb5e76((void*)__hosihikari_shim_handle, value);
     }
 
     public byte mLoadMode
     {
-        get => NativeMethods.TablePtr->C3.hs_get_58e25918((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_58e25918((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_58e25918((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_58e25918((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMax_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_f7a4e78e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f7a4e78e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mName_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_0460f32f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_0460f32f((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOrigin_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_3136203a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_3136203a((void*)__hosihikari_shim_handle);
     }
 
     public uint mRadius
     {
-        get => NativeMethods.TablePtr->C3.hs_get_dc041958((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_dc041958((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_dc041958((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_dc041958((void*)__hosihikari_shim_handle, value);
     }
 
 
@@ -92,7 +103,7 @@ public sealed unsafe partial class TickingAreaDescription : global::System.IDisp
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_69341a7e((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_69341a7e((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

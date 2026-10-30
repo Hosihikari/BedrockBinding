@@ -38,6 +38,17 @@ public sealed unsafe partial class PathfinderNode : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static PathfinderNode Create(global::Hosihikari.Bindings.Bedrock.Interop.PathfinderNode arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_5c895ac0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PathfinderNode((nint)handle);
+    }
+
     public nint cameFrom
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_e6f57b26((void*)__hosihikari_shim_handle);

@@ -170,6 +170,17 @@ public sealed unsafe partial class MoveToLavaGoal : global::System.IDisposable
         set => NativeMethods.TablePtr->C2.hs_set_f8a91aae((void*)__hosihikari_shim_handle, value);
     }
 
+    public static MoveToLavaGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.MoveToLavaGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_fc3f9276((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MoveToLavaGoal((nint)handle);
+    }
+
 
     public byte mMaterialType
     {

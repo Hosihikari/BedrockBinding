@@ -38,6 +38,17 @@ public sealed unsafe partial class DryingOutTimerComponent : global::System.IDis
         return __hs_handle;
     }
 
+    public static DryingOutTimerComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.DryingOutTimerComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_9818cd57((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DryingOutTimerComponent((nint)handle);
+    }
+
     public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
         NativeMethods.TablePtr->C1.hs_method_433a1825((void*)__hosihikari_shim_handle, (void*)tag.Handle);

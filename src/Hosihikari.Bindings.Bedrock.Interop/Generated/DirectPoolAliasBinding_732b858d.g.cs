@@ -51,6 +51,17 @@ public sealed unsafe partial class DirectPoolAliasBinding : global::System.IDisp
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static DirectPoolAliasBinding Create(global::Hosihikari.Bindings.Bedrock.Interop.PoolAliasBindingInternal.DirectPoolAliasBinding arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_92c11494((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DirectPoolAliasBinding((nint)handle);
+    }
+
     public void appendResolvedAliases(global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg0, global::Hosihikari.Bindings.Bedrock.Interop.PoolAliasBinding_Nested.PoolAliasLookup inOutResolvedAliases)
     {
         NativeMethods.TablePtr->C2.hs_method_f7f54291((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)inOutResolvedAliases.Handle);

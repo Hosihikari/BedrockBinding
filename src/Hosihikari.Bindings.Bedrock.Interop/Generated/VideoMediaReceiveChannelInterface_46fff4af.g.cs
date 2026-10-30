@@ -90,6 +90,17 @@ public sealed unsafe partial class VideoMediaReceiveChannelInterface : global::S
     public bool SetSink(uint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static VideoMediaReceiveChannelInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.VideoMediaReceiveChannelInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_31ea9c41((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VideoMediaReceiveChannelInterface((nint)handle);
+    }
+
 
     public void Dispose()
     {

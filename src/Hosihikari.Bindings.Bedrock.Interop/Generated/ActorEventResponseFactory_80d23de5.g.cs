@@ -42,6 +42,17 @@ public sealed unsafe partial class ActorEventResponseFactory : global::System.ID
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ActorEventResponseFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorEventResponseFactory arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_7cd92de2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorEventResponseFactory((nint)handle);
+    }
+
     public void initSchema()
     {
         NativeMethods.TablePtr->C0.hs_method_322aa85b((void*)__hosihikari_shim_handle);

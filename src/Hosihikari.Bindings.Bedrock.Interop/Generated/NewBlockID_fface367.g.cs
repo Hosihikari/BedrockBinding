@@ -38,6 +38,17 @@ public sealed unsafe partial class NewBlockID : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static NewBlockID Create(global::Hosihikari.Bindings.Bedrock.Interop.NewBlockID arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_f890274c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NewBlockID((nint)handle);
+    }
+
     public ushort mValue
     {
         get => NativeMethods.TablePtr->C2.hs_get_7c7a43e0((void*)__hosihikari_shim_handle);

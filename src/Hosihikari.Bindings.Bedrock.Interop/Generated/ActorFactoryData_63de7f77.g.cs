@@ -38,6 +38,17 @@ public sealed unsafe partial class ActorFactoryData : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ActorFactoryData Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorFactoryData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_fe5caa76((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorFactoryData((nint)handle);
+    }
+
     public int mActorType
     {
         get => NativeMethods.TablePtr->C0.hs_get_4a494048((void*)__hosihikari_shim_handle);

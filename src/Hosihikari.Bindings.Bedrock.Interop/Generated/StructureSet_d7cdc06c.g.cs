@@ -38,13 +38,27 @@ public sealed unsafe partial class StructureSet : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public bool contains(nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static StructureSet Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructureSet arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_36e141b3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static nint create(nint structure, nint placement) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+        return new StructureSet((nint)handle);
+    }
+
+    public bool contains(global::Hosihikari.Bindings.Bedrock.Interop.HashedString type)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_beb6bac5((void*)__hosihikari_shim_handle, (void*)type.Handle) != 0;
+    }
+
+    public static global::Hosihikari.Bindings.Abi.SharedHandle? create(global::Hosihikari.Bindings.Abi.SharedHandle? structure, global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructurePlacement placement)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C4.hs_method_a29929b6(structure?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)placement.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mItems_Address

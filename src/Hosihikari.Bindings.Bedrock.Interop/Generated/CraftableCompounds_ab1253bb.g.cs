@@ -67,6 +67,17 @@ public sealed unsafe partial class CraftableCompounds : global::System.IDisposab
         return new CraftableCompounds((nint)handle);
     }
 
+    public static CraftableCompounds Create(global::Hosihikari.Bindings.Bedrock.Interop.CraftableCompounds arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_372029cd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CraftableCompounds((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public nint _getCompoundId(nint input) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");

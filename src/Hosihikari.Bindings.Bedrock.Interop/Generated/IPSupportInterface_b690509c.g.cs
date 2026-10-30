@@ -38,6 +38,17 @@ public sealed unsafe partial class IPSupportInterface : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static IPSupportInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.RakPeerHelper_Nested.IPSupportInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_54f523d5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IPSupportInterface((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public ushort getDefaultGamePort() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
@@ -61,7 +72,7 @@ public sealed unsafe partial class IPSupportInterface : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_b690509c((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_b690509c((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -38,6 +38,17 @@ public sealed unsafe partial class ActorTargetFilter : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static ActorTargetFilter Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorTargetFilter arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_434ad79e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorTargetFilter((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint ConditionPredicates() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");

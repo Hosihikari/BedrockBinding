@@ -44,7 +44,7 @@ public sealed unsafe partial class ResetPositionModeSystem : global::System.IDis
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_7683cde5((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_7683cde5((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

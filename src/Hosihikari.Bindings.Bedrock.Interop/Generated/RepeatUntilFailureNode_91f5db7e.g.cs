@@ -40,47 +40,47 @@ public sealed unsafe partial class RepeatUntilFailureNode : global::System.IDisp
 
     public nint mComponent
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_bbaf499b((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_bbaf499b((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_bbaf499b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_bbaf499b((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public nint mNodeDefinition
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_9e5bfa69((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_9e5bfa69((void*)__hosihikari_shim_handle);
     }
 
     public nint mParent
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_dc3986a0((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_dc3986a0((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_dc3986a0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_dc3986a0((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public int mStatus
     {
-        get => NativeMethods.TablePtr->C2.hs_get_b722cef2((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_b722cef2((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_b722cef2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_b722cef2((void*)__hosihikari_shim_handle, value);
     }
 
     public nint mTreeData
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_a091c9e0((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_a091c9e0((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a091c9e0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_a091c9e0((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTreeDefinition_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_e5c767e0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e5c767e0((void*)__hosihikari_shim_handle);
     }
 
     public void _initializeFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        NativeMethods.TablePtr->C2.hs_method_b83310a6((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+        NativeMethods.TablePtr->C3.hs_method_b83310a6((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
     public int _tick(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        return NativeMethods.TablePtr->C2.hs_method_ba624784((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_ba624784((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -89,18 +89,18 @@ public sealed unsafe partial class RepeatUntilFailureNode : global::System.IDisp
 
     public void initializeFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        NativeMethods.TablePtr->C2.hs_method_b85a189b((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+        NativeMethods.TablePtr->C3.hs_method_b85a189b((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mActiveChild_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_132cf7f2((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_132cf7f2((void*)__hosihikari_shim_handle);
     }
 
     public int tick(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        return NativeMethods.TablePtr->C2.hs_method_ebc729c8((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_ebc729c8((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
 
@@ -110,7 +110,7 @@ public sealed unsafe partial class RepeatUntilFailureNode : global::System.IDisp
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_91f5db7e((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_91f5db7e((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

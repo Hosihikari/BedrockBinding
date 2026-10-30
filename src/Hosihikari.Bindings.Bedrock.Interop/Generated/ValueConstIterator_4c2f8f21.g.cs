@@ -38,6 +38,17 @@ public sealed unsafe partial class ValueConstIterator : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static ValueConstIterator Create(global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueConstIterator arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_ef7563ad((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ValueConstIterator((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.Json.Value operator_multiply()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->C1.hs_method_d397ba9a((void*)__hosihikari_shim_handle), false);

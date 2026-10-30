@@ -38,6 +38,17 @@ public sealed unsafe partial class OutgoingPacketEvent : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static OutgoingPacketEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.OutgoingPacketEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_96545610((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OutgoingPacketEvent((nint)handle);
+    }
+
     public int mPacketId
     {
         get => NativeMethods.TablePtr->C2.hs_get_bc4c56cd((void*)__hosihikari_shim_handle);

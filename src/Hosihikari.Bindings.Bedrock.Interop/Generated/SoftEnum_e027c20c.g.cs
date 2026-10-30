@@ -53,6 +53,17 @@ public sealed unsafe partial class SoftEnum : global::System.IDisposable
         return new SoftEnum((nint)handle);
     }
 
+    public static SoftEnum Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry_Nested.SoftEnum arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_92ffd350((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SoftEnum((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
     public static SoftEnum Create(nint name, nint values) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");

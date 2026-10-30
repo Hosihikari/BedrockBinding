@@ -123,9 +123,10 @@ public sealed unsafe partial class ActorSpawnRuleGroup : global::System.IDisposa
         return new global::Hosihikari.Bindings.Bedrock.Interop.ActorSpawnRuleGroup((nint)NativeMethods.TablePtr->C0.hs_method_8b3b623b((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void resetDelayEnd(nint spawnRules, ulong age, nint random) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void resetDelayEnd(global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules spawnRules, ulong age, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
+    {
+        NativeMethods.TablePtr->C0.hs_method_991e7784((void*)__hosihikari_shim_handle, (void*)spawnRules.Handle, age, (void*)random.Handle);
+    }
 
 
     public void Dispose()

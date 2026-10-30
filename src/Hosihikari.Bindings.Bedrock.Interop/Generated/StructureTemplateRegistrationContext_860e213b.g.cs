@@ -65,9 +65,16 @@ public sealed unsafe partial class StructureTemplateRegistrationContext : global
         return new StructureTemplateRegistrationContext((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static StructureTemplateRegistrationContext Create(nint manager, nint structureRegistry, nint featureRegistry, nint baseGameVersion, nint experiments) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static StructureTemplateRegistrationContext Create(nint manager, global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureElementRegistry structureRegistry, global::Hosihikari.Bindings.Bedrock.Interop.FeatureRegistry featureRegistry, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion, global::Hosihikari.Bindings.Bedrock.Interop.Experiments experiments)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a491ce0e((void*)manager, (void*)structureRegistry.Handle, (void*)featureRegistry.Handle, (void*)baseGameVersion.Handle, (void*)experiments.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureTemplateRegistrationContext((nint)handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBaseGameVersion_Address

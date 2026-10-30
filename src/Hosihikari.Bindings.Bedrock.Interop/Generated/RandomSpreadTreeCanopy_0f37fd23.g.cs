@@ -59,7 +59,7 @@ public sealed unsafe partial class RandomSpreadTreeCanopy : global::System.IDisp
             fixed (nint* __hs_vectorHandleData7 = __hs_vectorHandles7)
             {
                 var __hs_vectorData7 = (void**)__hs_vectorHandleData7;
-                var __hs_handle = NativeMethods.TablePtr->C2.hs_method_4407f823((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)random.Handle, (void*)arg4.Handle, (void*)treeParams.Handle, __hs_vectorData6, (nuint)(attachmentPositions?.Length ?? 0), __hs_vectorData7, (nuint)(arg7?.Length ?? 0), &__hs_hasValue);
+                var __hs_handle = NativeMethods.TablePtr->C3.hs_method_4407f823((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)random.Handle, (void*)arg4.Handle, (void*)treeParams.Handle, __hs_vectorData6, (nuint)(attachmentPositions?.Length ?? 0), __hs_vectorData7, (nuint)(arg7?.Length ?? 0), &__hs_hasValue);
                 return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
             }
         }
@@ -69,28 +69,39 @@ public sealed unsafe partial class RandomSpreadTreeCanopy : global::System.IDisp
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static RandomSpreadTreeCanopy Create(global::Hosihikari.Bindings.Bedrock.Interop.RandomSpreadTreeCanopy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_51e6df45((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RandomSpreadTreeCanopy((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mCanopyHeight_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_3daee196((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3daee196((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCanopyRadius_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_66f478b7((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_66f478b7((void*)__hosihikari_shim_handle);
     }
 
     public int mLeafPlacementAttempts
     {
-        get => NativeMethods.TablePtr->C2.hs_get_dc78c45a((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_dc78c45a((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_dc78c45a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_dc78c45a((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLeavesBlockDescriptors_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_353532eb((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_353532eb((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? placeCanopy(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.ITreeCanopy_Nested.BranchSize arg2, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg4, global::Hosihikari.Bindings.Bedrock.Interop.TreeHelper.TreeParams treeParams, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos[] attachmentPositions, global::Hosihikari.Bindings.Bedrock.Interop.ITreeCanopy_Nested.BranchSize[] arg7)
@@ -114,7 +125,7 @@ public sealed unsafe partial class RandomSpreadTreeCanopy : global::System.IDisp
             fixed (nint* __hs_vectorHandleData7 = __hs_vectorHandles7)
             {
                 var __hs_vectorData7 = (void**)__hs_vectorHandleData7;
-                var __hs_handle = NativeMethods.TablePtr->C2.hs_method_9f9e4297((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)random.Handle, (void*)arg4.Handle, (void*)treeParams.Handle, __hs_vectorData6, (nuint)(attachmentPositions?.Length ?? 0), __hs_vectorData7, (nuint)(arg7?.Length ?? 0), &__hs_hasValue);
+                var __hs_handle = NativeMethods.TablePtr->C3.hs_method_9f9e4297((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)random.Handle, (void*)arg4.Handle, (void*)treeParams.Handle, __hs_vectorData6, (nuint)(attachmentPositions?.Length ?? 0), __hs_vectorData7, (nuint)(arg7?.Length ?? 0), &__hs_hasValue);
                 return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
             }
         }
@@ -127,7 +138,7 @@ public sealed unsafe partial class RandomSpreadTreeCanopy : global::System.IDisp
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_0f37fd23((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_0f37fd23((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

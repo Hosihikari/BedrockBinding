@@ -43,6 +43,17 @@ public sealed unsafe partial class LevelChunkTickingSystem : global::System.IDis
         NativeMethods.TablePtr->C2.hs_method_3b91e8a7((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static LevelChunkTickingSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkTickingSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_166eff35((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelChunkTickingSystem((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mScratchLevelChunksBlockEntitiesToTick_Address
     {

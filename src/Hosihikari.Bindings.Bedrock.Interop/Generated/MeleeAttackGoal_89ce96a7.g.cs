@@ -236,6 +236,17 @@ public sealed unsafe partial class MeleeAttackGoal : global::System.IDisposable
         }
     }
 
+    public static MeleeAttackGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.MeleeAttackGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_06e83dce((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MeleeAttackGoal((nint)handle);
+    }
+
     public static bool _canReachTarget(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 targetPosition, float attackReachSq, float targetMinY, float targetMaxY, float targetXZDistanceSqr, int attackTicks)
     {
         return NativeMethods.TablePtr->C2.hs_method_7529498d((void*)mob.Handle, (void*)targetPosition.Handle, attackReachSq, targetMinY, targetMaxY, targetXZDistanceSqr, attackTicks) != 0;

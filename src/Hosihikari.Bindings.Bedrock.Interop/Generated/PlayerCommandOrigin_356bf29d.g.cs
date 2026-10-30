@@ -169,6 +169,17 @@ public sealed unsafe partial class PlayerCommandOrigin : global::System.IDisposa
         return new PlayerCommandOrigin((nint)handle);
     }
 
+    public static PlayerCommandOrigin Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerCommandOrigin arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_f320ea1d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerCommandOrigin((nint)handle);
+    }
+
     public bool canUseAbility(sbyte abilityIndex)
     {
         return NativeMethods.TablePtr->C2.hs_method_7b8f6b38((void*)__hosihikari_shim_handle, abilityIndex) != 0;

@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockNotificationEvent : global::System.IDisp
         return __hs_handle;
     }
 
+    public static BlockNotificationEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockNotificationEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_58f23011((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockNotificationEvent((nint)handle);
+    }
+
 
     public void Dispose()
     {

@@ -44,18 +44,31 @@ public sealed unsafe partial class SlimeMoveControlDescription : global::System.
         set => NativeMethods.TablePtr->C3.hs_set_721dca31((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void _deserializeData(nint deserializeDataParams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void _deserializeData(global::Hosihikari.Bindings.Bedrock.Interop.DeserializeDataParams deserializeDataParams)
+    {
+        NativeMethods.TablePtr->C3.hs_method_fa5cb8f0((void*)__hosihikari_shim_handle, (void*)deserializeDataParams.Handle);
+    }
 
     public nint _getJsonName()
     {
         return (nint)NativeMethods.TablePtr->C3.hs_method_970a1251((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void deserializeData(nint deserializeDataParams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static SlimeMoveControlDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.SlimeMoveControlDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_b7e222ca((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SlimeMoveControlDescription((nint)handle);
+    }
+
+    public void deserializeData(global::Hosihikari.Bindings.Bedrock.Interop.DeserializeDataParams deserializeDataParams)
+    {
+        NativeMethods.TablePtr->C3.hs_method_ede7b438((void*)__hosihikari_shim_handle, (void*)deserializeDataParams.Handle);
+    }
 
     public nint getJsonName()
     {

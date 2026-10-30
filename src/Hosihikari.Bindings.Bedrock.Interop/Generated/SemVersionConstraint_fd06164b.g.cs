@@ -43,6 +43,17 @@ public sealed unsafe partial class SemVersionConstraint : global::System.IDispos
         return new global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.ConstraintDescription((nint)NativeMethods.TablePtr->C3.hs_method_3a863a66((void*)__hosihikari_shim_handle, arg0));
     }
 
+    public static SemVersionConstraint Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.SemVersionConstraint arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_02dbdf8c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SemVersionConstraint((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.ConstraintDescription doDescription(byte arg0)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.ConstraintDescription((nint)NativeMethods.TablePtr->C3.hs_method_81878374((void*)__hosihikari_shim_handle, arg0));

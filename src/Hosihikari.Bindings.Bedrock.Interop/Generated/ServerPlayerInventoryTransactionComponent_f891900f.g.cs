@@ -38,6 +38,17 @@ public sealed unsafe partial class ServerPlayerInventoryTransactionComponent : g
         return __hs_handle;
     }
 
+    public static ServerPlayerInventoryTransactionComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ServerPlayerInventoryTransactionComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_f2f06cae((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ServerPlayerInventoryTransactionComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mCurrentTransactions_Address
     {

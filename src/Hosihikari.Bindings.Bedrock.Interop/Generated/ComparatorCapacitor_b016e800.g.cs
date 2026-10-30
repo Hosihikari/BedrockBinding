@@ -194,6 +194,17 @@ public sealed unsafe partial class ComparatorCapacitor : global::System.IDisposa
         return new ComparatorCapacitor((nint)handle);
     }
 
+    public static ComparatorCapacitor Create(global::Hosihikari.Bindings.Bedrock.Interop.ComparatorCapacitor arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_9a671122((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ComparatorCapacitor((nint)handle);
+    }
+
     public bool addSource(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph graph, global::Hosihikari.Bindings.Bedrock.Interop.CircuitTrackingInfo info, nint dampening, nint bDirectlyPowered)
     {
         return NativeMethods.TablePtr->C0.hs_method_f16012b6((void*)__hosihikari_shim_handle, (void*)graph.Handle, (void*)info.Handle, (void*)dampening, (void*)bDirectlyPowered) != 0;

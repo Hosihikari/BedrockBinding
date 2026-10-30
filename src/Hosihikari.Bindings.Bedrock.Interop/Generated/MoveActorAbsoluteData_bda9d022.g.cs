@@ -65,6 +65,17 @@ public sealed unsafe partial class MoveActorAbsoluteData : global::System.IDispo
         return new MoveActorAbsoluteData((nint)handle);
     }
 
+    public static MoveActorAbsoluteData Create(global::Hosihikari.Bindings.Bedrock.Interop.MoveActorAbsoluteData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_5b717f03((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MoveActorAbsoluteData((nint)handle);
+    }
+
     public bool isDifferenceSignificant(global::Hosihikari.Bindings.Bedrock.Interop.MoveActorAbsoluteData old, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 velocity)
     {
         return NativeMethods.TablePtr->C2.hs_method_29d483e3((void*)__hosihikari_shim_handle, (void*)old.Handle, (void*)velocity.Handle) != 0;

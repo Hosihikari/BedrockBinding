@@ -38,6 +38,17 @@ public sealed unsafe partial class UpdateWaterStateRequestComponent : global::Sy
         return __hs_handle;
     }
 
+    public static UpdateWaterStateRequestComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.UpdateWaterStateRequestComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_a5795425((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UpdateWaterStateRequestComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mAccumulatedFlow_Address
     {

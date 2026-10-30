@@ -136,6 +136,17 @@ public sealed unsafe partial class StructureDataLoadHelper : global::System.IDis
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static StructureDataLoadHelper Create(global::Hosihikari.Bindings.Bedrock.Interop.StructureDataLoadHelper arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_26f26312((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureDataLoadHelper((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID _generateNewID()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->C3.hs_method_4ff80382((void*)__hosihikari_shim_handle));

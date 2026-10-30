@@ -48,6 +48,17 @@ public sealed unsafe partial class CartographyAdditionalContainerValidation : gl
         return NativeMethods.TablePtr->C0.hs_method_bbfef686((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, slot, (void*)item.Handle, amount, arg4) != 0;
     }
 
+    public static CartographyAdditionalContainerValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.CartographyAdditionalContainerValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f718d9c2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CartographyAdditionalContainerValidation((nint)handle);
+    }
+
     public int getContainerOffset(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
     {
         return NativeMethods.TablePtr->C0.hs_method_24096035((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);

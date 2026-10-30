@@ -43,6 +43,17 @@ public sealed unsafe partial class DripleafFeature : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_bb65fb3a((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
     }
 
+    public static DripleafFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.DripleafFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_e6bdfd89((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DripleafFeature((nint)handle);
+    }
+
     public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         return NativeMethods.TablePtr->C1.hs_method_586e118b((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;

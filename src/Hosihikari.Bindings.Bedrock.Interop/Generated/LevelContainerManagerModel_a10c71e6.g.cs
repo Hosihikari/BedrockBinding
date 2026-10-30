@@ -158,6 +158,17 @@ public sealed unsafe partial class LevelContainerManagerModel : global::System.I
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static LevelContainerManagerModel Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelContainerManagerModel arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_8c1b2238((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelContainerManagerModel((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockActor? _getBlockEntity()
     {
         var __hs_handle = NativeMethods.TablePtr->C2.hs_method_7e0f1241((void*)__hosihikari_shim_handle);

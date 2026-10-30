@@ -65,6 +65,17 @@ public sealed unsafe partial class CherryTreeCanopy : global::System.IDisposable
         }
     }
 
+    public static CherryTreeCanopy Create(global::Hosihikari.Bindings.Bedrock.Interop.CherryTreeCanopy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_b915a097((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CherryTreeCanopy((nint)handle);
+    }
+
     public void _placeLayerOfLeaves(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos canopyPos, int layerOffset, global::Hosihikari.Bindings.Bedrock.Interop.Block leavesBlock, int radius, global::Hosihikari.Bindings.Bedrock.Interop.TreeHelper.TreeParams treeParams)
     {
         NativeMethods.TablePtr->C0.hs_method_e4bdd0b9((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)random.Handle, (void*)canopyPos.Handle, layerOffset, (void*)leavesBlock.Handle, radius, (void*)treeParams.Handle);

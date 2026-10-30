@@ -42,6 +42,17 @@ public sealed unsafe partial class IRNS2_Berkley : global::System.IDisposable
     public nint Bind(nint bindParameters, nint file, uint line) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static IRNS2_Berkley Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.IRNS2_Berkley arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_4ea9bcf8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IRNS2_Berkley((nint)handle);
+    }
+
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk164a1f_Address

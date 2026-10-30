@@ -48,6 +48,17 @@ public sealed unsafe partial class BrewingStandInputContainerValidation : global
         return NativeMethods.TablePtr->C0.hs_method_1110304d((void*)__hosihikari_shim_handle, (void*)arg0.Handle, arg1, (void*)item.Handle, arg3, arg4) != 0;
     }
 
+    public static BrewingStandInputContainerValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.BrewingStandInputContainerValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_e04f56a3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BrewingStandInputContainerValidation((nint)handle);
+    }
+
     public int getContainerOffset(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
     {
         return NativeMethods.TablePtr->C0.hs_method_0751d1ff((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);

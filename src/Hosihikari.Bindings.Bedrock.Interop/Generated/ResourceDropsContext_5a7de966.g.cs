@@ -38,6 +38,17 @@ public sealed unsafe partial class ResourceDropsContext : global::System.IDispos
         return __hs_handle;
     }
 
+    public static ResourceDropsContext Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourceDropsContext arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_28149959((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ResourceDropsContext((nint)handle);
+    }
+
     public int getMiningLootBonusLevel()
     {
         return NativeMethods.TablePtr->C3.hs_method_1decdb05((void*)__hosihikari_shim_handle);

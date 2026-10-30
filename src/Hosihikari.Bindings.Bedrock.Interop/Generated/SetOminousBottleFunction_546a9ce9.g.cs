@@ -54,6 +54,17 @@ public sealed unsafe partial class SetOminousBottleFunction : global::System.IDi
         return NativeMethods.TablePtr->C3.hs_method_e98e1389((void*)__hosihikari_shim_handle);
     }
 
+    public static SetOminousBottleFunction Create(global::Hosihikari.Bindings.Bedrock.Interop.SetOminousBottleFunction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_df37a821((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SetOminousBottleFunction((nint)handle);
+    }
+
     public void applyPreVersion(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext arg2)
     {
         NativeMethods.TablePtr->C3.hs_method_37d513fa((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)random.Handle, (void*)arg2.Handle);

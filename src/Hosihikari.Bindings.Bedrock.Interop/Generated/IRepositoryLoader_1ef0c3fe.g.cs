@@ -38,6 +38,17 @@ public sealed unsafe partial class IRepositoryLoader : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static IRepositoryLoader Create(global::Hosihikari.Bindings.Bedrock.Interop.RepositoryLoading.IRepositoryLoader arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_796ac1ac((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IRepositoryLoader((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void applyTaskResults(nint taskData) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
@@ -57,7 +68,7 @@ public sealed unsafe partial class IRepositoryLoader : global::System.IDisposabl
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_1ef0c3fe((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_1ef0c3fe((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

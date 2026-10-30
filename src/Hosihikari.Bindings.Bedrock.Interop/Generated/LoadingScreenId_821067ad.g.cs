@@ -38,6 +38,17 @@ public sealed unsafe partial class LoadingScreenId : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static LoadingScreenId Create(global::Hosihikari.Bindings.Bedrock.Interop.LoadingScreenId arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_39f76d6c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LoadingScreenId((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mValue_Address
     {

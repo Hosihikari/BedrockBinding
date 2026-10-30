@@ -52,6 +52,17 @@ public sealed unsafe partial class NBBridgeCrossing : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_ce965dee((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle) != 0;
     }
 
+    public static NBBridgeCrossing Create(global::Hosihikari.Bindings.Bedrock.Interop.NBBridgeCrossing arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_57616bfb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NBBridgeCrossing((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.", false)]
     public void addChildren(nint startPiece, nint pieces, nint random) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.");

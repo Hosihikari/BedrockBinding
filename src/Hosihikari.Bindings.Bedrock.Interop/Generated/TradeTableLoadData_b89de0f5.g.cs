@@ -38,16 +38,27 @@ public sealed unsafe partial class TradeTableLoadData : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static TradeTableLoadData Create(global::Hosihikari.Bindings.Bedrock.Interop.TradeTables_Nested.TradeTableLoadData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_2b67348f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TradeTableLoadData((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mLoadTime_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_864f7c39((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_864f7c39((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPackName_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_5a51406c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_5a51406c((void*)__hosihikari_shim_handle);
     }
 
 
@@ -57,7 +68,7 @@ public sealed unsafe partial class TradeTableLoadData : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_b89de0f5((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_b89de0f5((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

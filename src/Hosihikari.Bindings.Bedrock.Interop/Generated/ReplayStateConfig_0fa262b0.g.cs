@@ -38,34 +38,45 @@ public sealed unsafe partial class ReplayStateConfig : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static ReplayStateConfig Create(global::Hosihikari.Bindings.Bedrock.Interop.ReplayStateConfig arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a5e5bc96((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ReplayStateConfig((nint)handle);
+    }
+
     public ushort mHistorySize
     {
-        get => NativeMethods.TablePtr->C2.hs_get_86207945((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_86207945((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_86207945((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_86207945((void*)__hosihikari_shim_handle, value);
     }
 
     public byte mMaxCorrectionDelay
     {
-        get => NativeMethods.TablePtr->C2.hs_get_2e9063d9((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_2e9063d9((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_2e9063d9((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_2e9063d9((void*)__hosihikari_shim_handle, value);
     }
 
     public byte mMinCorrectionDelay
     {
-        get => NativeMethods.TablePtr->C2.hs_get_51bae1ce((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_51bae1ce((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_51bae1ce((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_51bae1ce((void*)__hosihikari_shim_handle, value);
     }
 
     public byte mMode
     {
-        get => NativeMethods.TablePtr->C2.hs_get_83a15cff((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_83a15cff((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_83a15cff((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_83a15cff((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSupportedThresholds_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_73ca7700((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_73ca7700((void*)__hosihikari_shim_handle);
     }
 
 
@@ -75,7 +86,7 @@ public sealed unsafe partial class ReplayStateConfig : global::System.IDisposabl
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_0fa262b0((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_0fa262b0((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

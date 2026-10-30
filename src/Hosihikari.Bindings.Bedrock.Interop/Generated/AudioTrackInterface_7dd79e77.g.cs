@@ -56,6 +56,17 @@ public sealed unsafe partial class AudioTrackInterface : global::System.IDisposa
     public void AddSink(nint a1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static AudioTrackInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.AudioTrackInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_04b6c4fd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AudioTrackInterface((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::scoped_refptr<webrtc::AudioProcessorInterface>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint GetAudioProcessor() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::scoped_refptr<webrtc::AudioProcessorInterface>' requires --link-carrier or --virtual-dispatch.");

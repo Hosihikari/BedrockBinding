@@ -50,13 +50,26 @@ public sealed unsafe partial class InteractActionDefinition : global::System.IDi
         get => (nint)NativeMethods.TablePtr->C1.hs_get_7bf65f77((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void _load(nint value, nint factory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void _load(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value value, global::Hosihikari.Bindings.Bedrock.Interop.BehaviorFactory factory)
+    {
+        NativeMethods.TablePtr->C1.hs_method_d0e03d22((void*)__hosihikari_shim_handle, (void*)value.Handle, (void*)factory.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void load(nint value, nint factory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static InteractActionDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.InteractActionDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_ab1ff0fd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InteractActionDefinition((nint)handle);
+    }
+
+    public void load(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value value, global::Hosihikari.Bindings.Bedrock.Interop.BehaviorFactory factory)
+    {
+        NativeMethods.TablePtr->C1.hs_method_168d3338((void*)__hosihikari_shim_handle, (void*)value.Handle, (void*)factory.Handle);
+    }
 
     public int mInteractTicks
     {

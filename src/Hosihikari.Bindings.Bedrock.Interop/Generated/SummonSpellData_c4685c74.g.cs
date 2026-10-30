@@ -38,6 +38,17 @@ public sealed unsafe partial class SummonSpellData : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static SummonSpellData Create(global::Hosihikari.Bindings.Bedrock.Interop.SummonSpellData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_426c6732((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SummonSpellData((nint)handle);
+    }
+
     public float castDuration
     {
         get => NativeMethods.TablePtr->C3.hs_get_23dcb3d7((void*)__hosihikari_shim_handle);

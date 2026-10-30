@@ -38,6 +38,17 @@ public sealed unsafe partial class ReflectProjectileDefinition : global::System.
         return __hs_handle;
     }
 
+    public static ReflectProjectileDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.ReflectProjectileDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_78f5186b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ReflectProjectileDefinition((nint)handle);
+    }
+
     public void _addProjectileToReflect(string projectileName)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(projectileName);
@@ -53,43 +64,43 @@ public sealed unsafe partial class ReflectProjectileDefinition : global::System.
         global::System.Text.Encoding.UTF8.GetBytes(projectileName, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C2.hs_method_3f7e2c67((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C3.hs_method_3f7e2c67((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
-        NativeMethods.TablePtr->C2.hs_method_11839619(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C3.hs_method_11839619(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mAzimuthAngle_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_39614e47((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_39614e47((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mElevationAngle_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_831400fd((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_831400fd((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mProjectilesToReflect_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_3670beab((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3670beab((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mReflectionScale_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_fcff4fe3((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_fcff4fe3((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mReflectionSound_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_5909b708((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5909b708((void*)__hosihikari_shim_handle);
     }
 
 
@@ -99,7 +110,7 @@ public sealed unsafe partial class ReflectProjectileDefinition : global::System.
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_1012408f((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_1012408f((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

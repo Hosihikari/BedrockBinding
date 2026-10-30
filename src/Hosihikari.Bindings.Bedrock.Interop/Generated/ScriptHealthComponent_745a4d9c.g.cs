@@ -88,6 +88,17 @@ public sealed unsafe partial class ScriptHealthComponent : global::System.IDispo
     public nint _setCurrentV2(nint value) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, ScriptModuleMinecraft::ScriptInvalidActorError, Scripting::ArgumentOutOfBoundsError>' requires --link-carrier or --virtual-dispatch.");
 
+    public static ScriptHealthComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptHealthComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c507591f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptHealthComponent((nint)handle);
+    }
+
     public void notifyHealthChange(float oldValue, float newValue)
     {
         NativeMethods.TablePtr->C3.hs_method_2be37639((void*)__hosihikari_shim_handle, oldValue, newValue);

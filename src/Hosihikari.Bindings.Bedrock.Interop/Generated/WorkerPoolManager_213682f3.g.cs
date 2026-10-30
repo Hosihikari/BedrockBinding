@@ -44,6 +44,17 @@ public sealed unsafe partial class WorkerPoolManager : global::System.IDisposabl
         get => (nint)NativeMethods.TablePtr->C0.hs_get_a6b594be((void*)__hosihikari_shim_handle);
     }
 
+    public static WorkerPoolManager Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.WorkerPoolManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_4161aec4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WorkerPoolManager((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint createWorkerPool(nint name, nint frameType, nint config) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

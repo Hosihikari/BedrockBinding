@@ -43,6 +43,17 @@ public sealed unsafe partial class MoveControlSystem : global::System.IDisposabl
         NativeMethods.TablePtr->C2.hs_method_b636d496((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static MoveControlSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.MoveControlSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_75c53224((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MoveControlSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C2.hs_method_a79b0215((void*)__hosihikari_shim_handle, (void*)registry.Handle);

@@ -80,6 +80,17 @@ public sealed unsafe partial class FlyingPathNavigation : global::System.IDispos
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static FlyingPathNavigation Create(global::Hosihikari.Bindings.Bedrock.Interop.FlyingPathNavigation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_fd4e8db7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FlyingPathNavigation((nint)handle);
+    }
+
     public static void _disableGravity(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
         NativeMethods.TablePtr->C1.hs_method_a94dec37((void*)mob.Handle);

@@ -38,6 +38,17 @@ public sealed unsafe partial class UpdateBlockPacketPayload : global::System.IDi
         return __hs_handle;
     }
 
+    public static UpdateBlockPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.UpdateBlockPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_4cb39c88((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UpdateBlockPacketPayload((nint)handle);
+    }
+
     public uint mLayer
     {
         get => NativeMethods.TablePtr->C4.hs_get_a1b70ca8((void*)__hosihikari_shim_handle);

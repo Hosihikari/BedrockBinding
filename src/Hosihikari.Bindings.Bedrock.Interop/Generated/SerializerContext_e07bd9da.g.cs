@@ -68,6 +68,17 @@ public sealed unsafe partial class SerializerContext : global::System.IDisposabl
         get => (nint)NativeMethods.TablePtr->C4.hs_get_dc2da599((void*)__hosihikari_shim_handle);
     }
 
+    public static SerializerContext Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.SerializerContext arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_3ee0e6dd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SerializerContext((nint)handle);
+    }
+
     public void clearGenerations(uint from, uint to, ushort filter)
     {
         NativeMethods.TablePtr->C4.hs_method_b4c758c2((void*)__hosihikari_shim_handle, from, to, filter);
@@ -77,9 +88,10 @@ public sealed unsafe partial class SerializerContext : global::System.IDisposabl
     public nint getLogCheckpoint() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'cereal::LogCheckpoint' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void log(nint res, nint msg) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void log(ushort res, global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.StaticOptimizedString msg)
+    {
+        NativeMethods.TablePtr->C4.hs_method_07a61d4a((void*)__hosihikari_shim_handle, res, (void*)msg.Handle);
+    }
 
     public uint mGeneration
     {
@@ -98,9 +110,10 @@ public sealed unsafe partial class SerializerContext : global::System.IDisposabl
         NativeMethods.TablePtr->C4.hs_method_2d411af3((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint pushContext(nint propertyName, nint propertyId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.cereal.SerializerContext pushContext(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.StaticOptimizedString propertyName, uint? propertyId)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.cereal.SerializerContext((nint)NativeMethods.TablePtr->C4.hs_method_5b329dae((void*)__hosihikari_shim_handle, (void*)propertyName.Handle, propertyId ?? default(uint), propertyId.HasValue), false);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.cereal.SerializerContext pushContext(uint containerIndex)
     {

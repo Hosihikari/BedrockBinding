@@ -111,9 +111,24 @@ public sealed unsafe partial class SummonActorGoal : global::System.IDisposable
         return new SummonActorGoal((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void _createSpellEntity(float x, float z, float minY, float maxY, float arg4, int lifespan, nint summonType, nint summonEvent) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void _createSpellEntity(float x, float z, float minY, float maxY, float arg4, int lifespan, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier summonType, string summonEvent)
+    {
+        var __hs_stringByteCount7 = global::System.Text.Encoding.UTF8.GetByteCount(summonEvent);
+        scoped global::System.Span<byte> __hs_stringBytes7;
+        if (__hs_stringByteCount7 <= 256)
+        {
+            __hs_stringBytes7 = stackalloc byte[__hs_stringByteCount7 == 0 ? 1 : __hs_stringByteCount7];
+        }
+        else
+        {
+            __hs_stringBytes7 = new byte[__hs_stringByteCount7];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(summonEvent, __hs_stringBytes7);
+        fixed (byte* __hs_stringData7 = __hs_stringBytes7)
+        {
+            NativeMethods.TablePtr->C3.hs_method_e16af206((void*)__hosihikari_shim_handle, x, z, minY, maxY, arg4, lifespan, (void*)summonType.Handle, __hs_stringData7, (nuint)__hs_stringByteCount7);
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public void appendDebugInfo(nint str) =>

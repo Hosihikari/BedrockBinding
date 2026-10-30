@@ -38,6 +38,17 @@ public sealed unsafe partial class PlayerActionPacketPayload : global::System.ID
         return __hs_handle;
     }
 
+    public static PlayerActionPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerActionPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_5b7a4706((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerActionPacketPayload((nint)handle);
+    }
+
     public int mAction
     {
         get => NativeMethods.TablePtr->C2.hs_get_7b4e11dc((void*)__hosihikari_shim_handle);

@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class IPlayerDimensionTransferConnector
+public sealed unsafe partial class IPlayerDimensionTransferConnector : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -39,6 +38,17 @@ public sealed partial class IPlayerDimensionTransferConnector
         return __hs_handle;
     }
 
+    public static IPlayerDimensionTransferConnector Create(global::Hosihikari.Bindings.Bedrock.Interop.IPlayerDimensionTransferConnector arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_48cf4cdc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IPlayerDimensionTransferConnector((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getOnAnyPlayerChangeDimensionCompleteConnector() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
@@ -54,4 +64,17 @@ public sealed partial class IPlayerDimensionTransferConnector
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getOnPlayerLeftDimensionConnector() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_06d4f60d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -48,6 +48,17 @@ public sealed unsafe partial class BlockEventResponseFactory : global::System.ID
         NativeMethods.TablePtr->C0.hs_method_21912938((void*)__hosihikari_shim_handle, (void*)packLoadInfo.Handle);
     }
 
+    public static BlockEventResponseFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockEventResponseFactory arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_2f25a52b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockEventResponseFactory((nint)handle);
+    }
+
     public void initSchema()
     {
         NativeMethods.TablePtr->C0.hs_method_ad2df19b((void*)__hosihikari_shim_handle);

@@ -70,6 +70,17 @@ public sealed unsafe partial class SubChunkRelighter : global::System.IDisposabl
         return new SubChunkRelighter((nint)handle);
     }
 
+    public static SubChunkRelighter Create(global::Hosihikari.Bindings.Bedrock.Interop.SubChunkRelighter arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_aad79583((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SubChunkRelighter((nint)handle);
+    }
+
     public void _checkEdgeForSubtractiveBlockLightProcessing(global::Hosihikari.Bindings.Bedrock.Interop.SubChunkLightIndex coordIndex)
     {
         NativeMethods.TablePtr->C3.hs_method_b874dbfc((void*)__hosihikari_shim_handle, (void*)coordIndex.Handle);

@@ -38,6 +38,17 @@ public sealed unsafe partial class ILevelCrashDumpManager : global::System.IDisp
         return __hs_handle;
     }
 
+    public static ILevelCrashDumpManager Create(global::Hosihikari.Bindings.Bedrock.Interop.ILevelCrashDumpManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_4f10c277((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ILevelCrashDumpManager((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void setCrashDumpLogStringID(nint crashDumpLogStringID) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

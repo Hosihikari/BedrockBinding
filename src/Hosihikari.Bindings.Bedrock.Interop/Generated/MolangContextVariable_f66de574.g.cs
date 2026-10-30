@@ -38,9 +38,10 @@ public sealed unsafe partial class MolangContextVariable : global::System.IDispo
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint value) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.HashedString value)
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_272c351d((void*)__hosihikari_shim_handle, (void*)value.Handle);
+    }
 
     public static MolangContextVariable Create()
     {
@@ -53,9 +54,16 @@ public sealed unsafe partial class MolangContextVariable : global::System.IDispo
         return new MolangContextVariable((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static MolangContextVariable Create(nint value) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static MolangContextVariable Create(global::Hosihikari.Bindings.Bedrock.Interop.HashedString value)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_980891da((void*)value.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangContextVariable((nint)handle);
+    }
 
     public ushort mMolangVariableIndex
     {

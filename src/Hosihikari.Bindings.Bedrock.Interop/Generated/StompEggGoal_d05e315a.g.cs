@@ -269,6 +269,17 @@ public sealed unsafe partial class StompEggGoal : global::System.IDisposable
         }
     }
 
+    public static StompEggGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.StompEggGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_d35c8749((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StompEggGoal((nint)handle);
+    }
+
     public void _createBreakProgressParticles(global::Hosihikari.Bindings.Bedrock.Interop.Level level, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
     {
         NativeMethods.TablePtr->C3.hs_method_8a73c423((void*)__hosihikari_shim_handle, (void*)level.Handle, (void*)region.Handle, (void*)pos.Handle);

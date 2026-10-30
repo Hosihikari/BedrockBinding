@@ -43,6 +43,17 @@ public sealed unsafe partial class AverageTracker : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_f4d340a7((void*)__hosihikari_shim_handle);
     }
 
+    public static AverageTracker Create(global::Hosihikari.Bindings.Bedrock.Interop.AverageTracker arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_46db4abf((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AverageTracker((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void addSample(nint dt) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");

@@ -71,6 +71,17 @@ public sealed unsafe partial class ScriptStrengthComponent : global::System.IDis
     public static nint ComponentId() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ScriptStrengthComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptStrengthComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_0527724d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptStrengthComponent((nint)handle);
+    }
+
     public bool _isValid()
     {
         return NativeMethods.TablePtr->C3.hs_method_94509344((void*)__hosihikari_shim_handle) != 0;

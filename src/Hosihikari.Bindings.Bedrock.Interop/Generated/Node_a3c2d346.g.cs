@@ -38,6 +38,17 @@ public sealed unsafe partial class Node : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Node Create(global::Hosihikari.Bindings.Bedrock.Interop.RTree_Nested.Node arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_d8943e91((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Node((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'RTree::Node' is not supported.", false)]
     public static nint branch(nint children) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'RTree::Node' is not supported.");

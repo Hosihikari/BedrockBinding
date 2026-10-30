@@ -38,6 +38,17 @@ public sealed unsafe partial class ChunkTickOffsetManager : global::System.IDisp
         return __hs_handle;
     }
 
+    public static ChunkTickOffsetManager Create(global::Hosihikari.Bindings.Bedrock.Interop.ChunkTickOffsetManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_1f574d23((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChunkTickOffsetManager((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos[] getSortedPositionsFromClientOffsets(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos[] centers, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos[] offsets)
     {
         var __hs_vectorItems0 = centers;

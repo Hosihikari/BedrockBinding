@@ -46,6 +46,17 @@ public sealed unsafe partial class PayloadTypeSuggester : global::System.IDispos
     public nint AddLocalMapping(nint mid, nint payload_type, nint codec) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static PayloadTypeSuggester Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.PayloadTypeSuggester arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_aaf7eb87((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PayloadTypeSuggester((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint SuggestPayloadType(nint mid, nint codec) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

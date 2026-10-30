@@ -54,6 +54,17 @@ public sealed unsafe partial class PropertyBag : global::System.IDisposable
         return new PropertyBag((nint)handle);
     }
 
+    public static PropertyBag Create(global::Hosihikari.Bindings.Bedrock.Interop.PropertyBag arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_1b7dca20((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PropertyBag((nint)handle);
+    }
+
     public int mChangeVersion
     {
         get => NativeMethods.TablePtr->C2.hs_get_2df2c425((void*)__hosihikari_shim_handle);

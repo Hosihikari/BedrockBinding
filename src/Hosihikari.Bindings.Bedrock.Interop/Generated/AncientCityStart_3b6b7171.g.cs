@@ -49,6 +49,17 @@ public sealed unsafe partial class AncientCityStart : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_0119aa3c((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static AncientCityStart Create(global::Hosihikari.Bindings.Bedrock.Interop.AncientCityStart arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_336acf55((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AncientCityStart((nint)handle);
+    }
+
     public string getStructureName()
     {
         var __hs_view = NativeMethods.TablePtr->C0.hs_method_96140658((void*)__hosihikari_shim_handle);

@@ -47,6 +47,17 @@ public sealed unsafe partial class ScriptAsyncGameTestFunctionRunResult : global
         return NativeMethods.TablePtr->C3.hs_method_66620b6b((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static ScriptAsyncGameTestFunctionRunResult Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest.ScriptAsyncGameTestFunctionRunResult arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_9240b646((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptAsyncGameTestFunctionRunResult((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
     public nint getError() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");

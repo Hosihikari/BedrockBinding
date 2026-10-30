@@ -264,9 +264,10 @@ public sealed unsafe partial class IceBlock : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_6a4f2d8c((void*)__hosihikari_shim_handle, (void*)experiments.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public bool _breaksFallingBlocks(nint block, nint version) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public bool _breaksFallingBlocks(global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion version)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_384e5059((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)version.Handle) != 0;
+    }
 
     public bool _canBeOriginalSurface(bool aboveSeaLevel)
     {
@@ -283,6 +284,17 @@ public sealed unsafe partial class IceBlock : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static IceBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.IceBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b4e4f897((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IceBlock((nint)handle);
+    }
+
     public void _addHardCodedBlockComponents(global::Hosihikari.Bindings.Bedrock.Interop.Experiments experiments)
     {
         NativeMethods.TablePtr->C1.hs_method_78985192((void*)__hosihikari_shim_handle, (void*)experiments.Handle);
@@ -293,9 +305,10 @@ public sealed unsafe partial class IceBlock : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->C1.hs_method_cc0f93c7((void*)region.Handle, (void*)pos.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public bool breaksFallingBlocks(nint block, nint version) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public bool breaksFallingBlocks(global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion version)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_cd1c6892((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)version.Handle) != 0;
+    }
 
     public bool canBeOriginalSurface(bool aboveSeaLevel)
     {

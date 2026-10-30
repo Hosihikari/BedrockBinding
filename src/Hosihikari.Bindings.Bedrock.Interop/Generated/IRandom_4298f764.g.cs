@@ -82,6 +82,17 @@ public sealed unsafe partial class IRandom : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->C1.hs_method_8ab524fb();
     }
 
+    public static IRandom Create(global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_1ca3633d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IRandom((nint)handle);
+    }
+
     public bool chance(int likeliness, int possibilities)
     {
         return NativeMethods.TablePtr->C1.hs_method_c38867f4((void*)__hosihikari_shim_handle, likeliness, possibilities) != 0;

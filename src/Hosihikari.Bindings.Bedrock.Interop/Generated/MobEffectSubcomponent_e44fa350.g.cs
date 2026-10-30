@@ -58,6 +58,17 @@ public sealed unsafe partial class MobEffectSubcomponent : global::System.IDispo
         NativeMethods.TablePtr->C2.hs_method_3efe3dfe((void*)__hosihikari_shim_handle, (void*)component.Handle);
     }
 
+    public static MobEffectSubcomponent Create(global::Hosihikari.Bindings.Bedrock.Interop.MobEffectSubcomponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_9e919ba0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MobEffectSubcomponent((nint)handle);
+    }
+
     public void doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent component)
     {
         NativeMethods.TablePtr->C2.hs_method_2ea465f0((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)component.Handle);

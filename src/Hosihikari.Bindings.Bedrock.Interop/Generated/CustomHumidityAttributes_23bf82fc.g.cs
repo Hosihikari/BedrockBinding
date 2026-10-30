@@ -38,6 +38,17 @@ public sealed unsafe partial class CustomHumidityAttributes : global::System.IDi
         return __hs_handle;
     }
 
+    public static CustomHumidityAttributes Create(global::Hosihikari.Bindings.Bedrock.Interop.CustomHumidityAttributes arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_0a28f5da((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CustomHumidityAttributes((nint)handle);
+    }
+
     public bool mIsHumid
     {
         get => NativeMethods.TablePtr->C1.hs_get_e26a4bd6((void*)__hosihikari_shim_handle) != 0;

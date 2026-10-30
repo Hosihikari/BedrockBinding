@@ -38,6 +38,17 @@ public sealed unsafe partial class ShooterDefinition : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static ShooterDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.ShooterDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_e7a09546((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ShooterDefinition((nint)handle);
+    }
+
     public void addSoundByName(string name)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);

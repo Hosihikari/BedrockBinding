@@ -43,6 +43,17 @@ public sealed unsafe partial class DispatchTargets : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_47e868c8((void*)__hosihikari_shim_handle);
     }
 
+    public static DispatchTargets Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PubSub.Detail.DispatchTargets arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_8da73f8e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DispatchTargets((nint)handle);
+    }
+
     public bool loadSubscriptions(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PubSub.Detail.PublisherBase publisher)
     {
         return NativeMethods.TablePtr->C0.hs_method_5fd16c63((void*)__hosihikari_shim_handle, (void*)publisher.Handle) != 0;

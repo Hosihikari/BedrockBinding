@@ -38,6 +38,17 @@ public sealed unsafe partial class LodestoneCompassComponent : global::System.ID
         return __hs_handle;
     }
 
+    public static LodestoneCompassComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.LodestoneCompassComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_3a2f9abc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LodestoneCompassComponent((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.LodestoneCompassComponentCalculator? _createCalculator(nint compassId)
     {
         var __hs_handle = NativeMethods.TablePtr->C2.hs_method_483f9641((void*)__hosihikari_shim_handle, (void*)compassId);

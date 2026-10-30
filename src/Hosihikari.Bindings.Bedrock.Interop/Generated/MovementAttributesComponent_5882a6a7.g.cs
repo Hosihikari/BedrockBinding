@@ -38,6 +38,17 @@ public sealed unsafe partial class MovementAttributesComponent : global::System.
         return __hs_handle;
     }
 
+    public static MovementAttributesComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.MovementAttributesComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_b510512f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MovementAttributesComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mAirDragModifier_Address
     {

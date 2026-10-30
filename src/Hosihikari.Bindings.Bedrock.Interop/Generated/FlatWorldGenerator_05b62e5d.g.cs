@@ -118,9 +118,9 @@ public sealed unsafe partial class FlatWorldGenerator : global::System.IDisposab
         return NativeMethods.TablePtr->C1.hs_method_760d07c8((void*)__hosihikari_shim_handle, (void*)neighborhood.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public bool _findNearestStructureFeature(nint feature, nint origin, nint pos, bool mustBeInNewChunks, nint biomeTag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos _findSpawnPosition()
     {
@@ -151,9 +151,10 @@ public sealed unsafe partial class FlatWorldGenerator : global::System.IDisposab
         return new global::Hosihikari.Bindings.Bedrock.Interop.WorldGenerator_Nested.BlockVolumeDimensions((nint)NativeMethods.TablePtr->C1.hs_method_2211b778((void*)__hosihikari_shim_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public bool _isStructureFeatureTypeAt(nint pos, nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public bool _isStructureFeatureTypeAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.HashedString type)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_ad81aad4((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)type.Handle) != 0;
+    }
 
     public void _loadChunk(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc, bool forceImmediateReplacementDataLoad)
     {
@@ -210,9 +211,9 @@ public sealed unsafe partial class FlatWorldGenerator : global::System.IDisposab
         return NativeMethods.TablePtr->C1.hs_method_b31a9a5b((void*)__hosihikari_shim_handle, (void*)neighborhood.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public bool findNearestStructureFeature(nint feature, nint origin, nint pos, bool mustBeInNewChunks, nint biomeTag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos findSpawnPosition()
     {
@@ -243,9 +244,10 @@ public sealed unsafe partial class FlatWorldGenerator : global::System.IDisposab
         return new global::Hosihikari.Bindings.Bedrock.Interop.WorldGenerator_Nested.BlockVolumeDimensions((nint)NativeMethods.TablePtr->C1.hs_method_29e0a465((void*)__hosihikari_shim_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public bool isStructureFeatureTypeAt(nint pos, nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public bool isStructureFeatureTypeAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.HashedString type)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_6db36d17((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)type.Handle) != 0;
+    }
 
     public void loadChunk(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc, bool forceImmediateReplacementDataLoad)
     {

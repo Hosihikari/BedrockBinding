@@ -40,18 +40,18 @@ public sealed unsafe partial class TradeResupplyComponent : global::System.IDisp
 
     public bool mHasResupplied
     {
-        get => NativeMethods.TablePtr->C3.hs_get_aedd9420((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_aedd9420((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_aedd9420((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_aedd9420((void*)__hosihikari_shim_handle, value);
     }
 
     public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
     {
-        NativeMethods.TablePtr->C3.hs_method_f9a17f6f((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)tag.Handle, (void*)arg2.Handle);
+        NativeMethods.TablePtr->C4.hs_method_f9a17f6f((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)tag.Handle, (void*)arg2.Handle);
     }
 
     public void reloadComponent(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
-        NativeMethods.TablePtr->C3.hs_method_84a1d0cb((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+        NativeMethods.TablePtr->C4.hs_method_84a1d0cb((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
     public void Dispose()
@@ -60,7 +60,7 @@ public sealed unsafe partial class TradeResupplyComponent : global::System.IDisp
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_fb1fd910((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_fb1fd910((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

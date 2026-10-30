@@ -65,6 +65,17 @@ public sealed unsafe partial class RoofedTreeCanopy : global::System.IDisposable
         }
     }
 
+    public static RoofedTreeCanopy Create(global::Hosihikari.Bindings.Bedrock.Interop.RoofedTreeCanopy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_9c2b76f6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RoofedTreeCanopy((nint)handle);
+    }
+
     public int mCoreWidth
     {
         get => NativeMethods.TablePtr->C3.hs_get_cd773b8b((void*)__hosihikari_shim_handle);

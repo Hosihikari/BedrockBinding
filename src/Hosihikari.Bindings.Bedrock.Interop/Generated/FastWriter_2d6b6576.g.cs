@@ -69,6 +69,17 @@ public sealed unsafe partial class FastWriter : global::System.IDisposable
         return new FastWriter((nint)handle);
     }
 
+    public static FastWriter Create(global::Hosihikari.Bindings.Bedrock.Interop.Json.FastWriter arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_ad49e772((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FastWriter((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint document__Address
     {

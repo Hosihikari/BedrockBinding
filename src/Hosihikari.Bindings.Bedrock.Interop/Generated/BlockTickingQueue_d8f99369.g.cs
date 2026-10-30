@@ -43,6 +43,17 @@ public sealed unsafe partial class BlockTickingQueue : global::System.IDisposabl
         NativeMethods.TablePtr->C0.hs_method_68a09d08((void*)__hosihikari_shim_handle);
     }
 
+    public static BlockTickingQueue Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockTickingQueue arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_cc6d6d2a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockTickingQueue((nint)handle);
+    }
+
     public void _acquireAllTicks(global::Hosihikari.Bindings.Bedrock.Interop.BlockTickingQueue otherChunkQueue)
     {
         NativeMethods.TablePtr->C0.hs_method_2e9506e6((void*)__hosihikari_shim_handle, (void*)otherChunkQueue.Handle);

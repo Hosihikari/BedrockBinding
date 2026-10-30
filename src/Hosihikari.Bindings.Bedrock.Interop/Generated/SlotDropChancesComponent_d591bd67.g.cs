@@ -38,6 +38,17 @@ public sealed unsafe partial class SlotDropChancesComponent : global::System.IDi
         return __hs_handle;
     }
 
+    public static SlotDropChancesComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SlotDropChancesComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c4773aa2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SlotDropChancesComponent((nint)handle);
+    }
+
     public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
         NativeMethods.TablePtr->C3.hs_method_a344ac53((void*)__hosihikari_shim_handle, (void*)tag.Handle);

@@ -50,6 +50,17 @@ public sealed unsafe partial class CherryTreeTrunk : global::System.IDisposable
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
+    public static CherryTreeTrunk Create(global::Hosihikari.Bindings.Bedrock.Interop.CherryTreeTrunk arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f8bdd918((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CherryTreeTrunk((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos _generateBranch(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.Block trunkBlock, global::Hosihikari.Bindings.Bedrock.Interop.Block sidewaysTrunkBlock, global::Hosihikari.Bindings.Bedrock.Interop.Random random, int treeHeight, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos origin, global::Hosihikari.Bindings.Bedrock.Interop.TreeHelper.TreeParams treeParams, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos branchDirection, int offsetFromOrigin, bool middleContinuesUpwards)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C0.hs_method_304df872((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)trunkBlock.Handle, (void*)sidewaysTrunkBlock.Handle, (void*)random.Handle, treeHeight, (void*)origin.Handle, (void*)treeParams.Handle, (void*)branchDirection.Handle, offsetFromOrigin, middleContinuesUpwards));

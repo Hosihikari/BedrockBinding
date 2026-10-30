@@ -45,6 +45,17 @@ public sealed unsafe partial class MangroveTreeRoots : global::System.IDisposabl
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
+    public static MangroveTreeRoots Create(global::Hosihikari.Bindings.Bedrock.Interop.MangroveTreeRoots arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_6ce283a2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MangroveTreeRoots((nint)handle);
+    }
+
     public bool _simulateRoots(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos rootPos, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos newOrigin, byte dir, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos[] rootPositions, int layer, global::Hosihikari.Bindings.Bedrock.Interop.TreeHelper.TreeParams treeParams)
     {
         var __hs_vectorItems5 = rootPositions;

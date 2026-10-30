@@ -38,6 +38,17 @@ public sealed unsafe partial class NameableDefinition : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static NameableDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.NameableDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_50039018((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NameableDefinition((nint)handle);
+    }
+
     public void addNameAction(global::Hosihikari.Bindings.Bedrock.Interop.NameAction nameAction)
     {
         NativeMethods.TablePtr->C2.hs_method_4a158bff((void*)__hosihikari_shim_handle, (void*)nameAction.Handle);

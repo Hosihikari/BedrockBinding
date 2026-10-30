@@ -40,18 +40,29 @@ public sealed unsafe partial class LegacyTriggerItemComponent : global::System.I
 
     public nint mOwner
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_013b0e76((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_013b0e76((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_013b0e76((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_013b0e76((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static LegacyTriggerItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyTriggerItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_720cc47a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacyTriggerItemComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnTriggerPublisher_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_39ae9b5e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_39ae9b5e((void*)__hosihikari_shim_handle);
     }
 
 
@@ -61,7 +72,7 @@ public sealed unsafe partial class LegacyTriggerItemComponent : global::System.I
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_e591d07e((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_e591d07e((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

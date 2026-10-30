@@ -38,6 +38,17 @@ public sealed unsafe partial class IScriptDebuggerWatchdog : global::System.IDis
         return __hs_handle;
     }
 
+    public static IScriptDebuggerWatchdog Create(global::Hosihikari.Bindings.Bedrock.Interop.IScriptDebuggerWatchdog arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_a2d4e888((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IScriptDebuggerWatchdog((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool listenTimeoutExpired() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

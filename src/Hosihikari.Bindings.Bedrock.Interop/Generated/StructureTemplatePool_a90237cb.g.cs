@@ -58,6 +58,17 @@ public sealed unsafe partial class StructureTemplatePool : global::System.IDispo
         return new StructureTemplatePool((nint)handle);
     }
 
+    public static StructureTemplatePool Create(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplatePool arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_3953b72f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureTemplatePool((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public static StructureTemplatePool Create(nint name, nint fallback, nint templates) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");

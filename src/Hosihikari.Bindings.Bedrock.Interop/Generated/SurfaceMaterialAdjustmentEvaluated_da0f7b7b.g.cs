@@ -43,6 +43,17 @@ public sealed unsafe partial class SurfaceMaterialAdjustmentEvaluated : global::
         NativeMethods.TablePtr->C3.hs_method_e114c5ed((void*)__hosihikari_shim_handle);
     }
 
+    public static SurfaceMaterialAdjustmentEvaluated Create(global::Hosihikari.Bindings.Bedrock.Interop.SurfaceMaterialAdjustmentEvaluated arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_40c25e1b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SurfaceMaterialAdjustmentEvaluated((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mAdjustments_Address
     {

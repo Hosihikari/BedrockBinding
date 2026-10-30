@@ -72,6 +72,17 @@ public sealed unsafe partial class GetTopSolidBlockCommand : global::System.IDis
         NativeMethods.TablePtr->C1.hs_method_b0258655((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static GetTopSolidBlockCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.GetTopSolidBlockCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_8e4f8cd2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GetTopSolidBlockCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C1.hs_method_80d57b71((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

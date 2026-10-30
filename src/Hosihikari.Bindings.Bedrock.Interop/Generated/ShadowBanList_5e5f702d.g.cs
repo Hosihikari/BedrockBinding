@@ -38,6 +38,17 @@ public sealed unsafe partial class ShadowBanList : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ShadowBanList Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.ShadowBanList arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_e4f7f56a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ShadowBanList((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public ushort addBan(nint addr, nint time) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");

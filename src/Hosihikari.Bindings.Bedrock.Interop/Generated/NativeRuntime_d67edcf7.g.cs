@@ -93,9 +93,11 @@ public sealed unsafe partial class NativeRuntime : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.IDebuggerController((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint enableWatchdog(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.IWatchdog? enableWatchdog(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WatchdogSettings arg0)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_06148860((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.IWatchdog((nint)__hs_handle, false) : null;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<Scripting::CoRoutineResult>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint executeCoroutines(nint arg0) =>

@@ -72,6 +72,17 @@ public sealed unsafe partial class UnlockRecipeCommand : global::System.IDisposa
         NativeMethods.TablePtr->C4.hs_method_3111fa25((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static UnlockRecipeCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.UnlockRecipeCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_8c31531b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UnlockRecipeCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C4.hs_method_e75e81c5((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

@@ -38,6 +38,17 @@ public sealed unsafe partial class Control : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Control Create(global::Hosihikari.Bindings.Bedrock.Interop.Control arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_dd67bf16((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Control((nint)handle);
+    }
+
 
     public void Dispose()
     {
@@ -45,7 +56,7 @@ public sealed unsafe partial class Control : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_61f63d0a((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_61f63d0a((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

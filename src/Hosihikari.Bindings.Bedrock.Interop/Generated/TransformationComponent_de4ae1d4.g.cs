@@ -40,18 +40,18 @@ public sealed unsafe partial class TransformationComponent : global::System.IDis
 
     public int mDelayTicks
     {
-        get => NativeMethods.TablePtr->C3.hs_get_681a77e2((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_681a77e2((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_681a77e2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_681a77e2((void*)__hosihikari_shim_handle, value);
     }
 
     public void reloadComponent(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
-        NativeMethods.TablePtr->C3.hs_method_e02fe77c((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+        NativeMethods.TablePtr->C4.hs_method_e02fe77c((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
     public void transformIfAble(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, bool shouldRemove)
     {
-        NativeMethods.TablePtr->C3.hs_method_a4e263b4((void*)__hosihikari_shim_handle, (void*)actor.Handle, shouldRemove);
+        NativeMethods.TablePtr->C4.hs_method_a4e263b4((void*)__hosihikari_shim_handle, (void*)actor.Handle, shouldRemove);
     }
 
     public void Dispose()
@@ -60,7 +60,7 @@ public sealed unsafe partial class TransformationComponent : global::System.IDis
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_de4ae1d4((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_de4ae1d4((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

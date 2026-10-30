@@ -52,6 +52,17 @@ public sealed unsafe partial class SHPortalRoom : global::System.IDisposable
         return NativeMethods.TablePtr->C3.hs_method_3905c371((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle) != 0;
     }
 
+    public static SHPortalRoom Create(global::Hosihikari.Bindings.Bedrock.Interop.SHPortalRoom arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_4938b464((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SHPortalRoom((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.", false)]
     public void addChildren(nint startPiece, nint pieces, nint random) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.");

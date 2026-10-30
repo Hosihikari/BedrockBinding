@@ -43,6 +43,17 @@ public sealed unsafe partial class CelebrateHuntSystem : global::System.IDisposa
         NativeMethods.TablePtr->C0.hs_method_716ff1bf((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static CelebrateHuntSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.CelebrateHuntSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_42e61fc8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CelebrateHuntSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C0.hs_method_2e1f6ce7((void*)__hosihikari_shim_handle, (void*)registry.Handle);

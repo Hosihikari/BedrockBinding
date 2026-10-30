@@ -67,9 +67,35 @@ public sealed unsafe partial class ServerCommand : global::System.IDisposable
         set => NativeMethods.TablePtr->C3.hs_set_d73cf25d((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static void kickPlayerDueToFlooding(nint serverNetworkHandler, nint player, nint eventing, nint message) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static ServerCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.ServerCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_5629b4e6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ServerCommand((nint)handle);
+    }
+
+    public static void kickPlayerDueToFlooding(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.NonOwnerPointer_ServerNetworkHandler_ serverNetworkHandler, global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing eventing, string message)
+    {
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes3);
+        fixed (byte* __hs_stringData3 = __hs_stringBytes3)
+        {
+            NativeMethods.TablePtr->C3.hs_method_6a1c2437((void*)serverNetworkHandler.Handle, (void*)(player?.Handle ?? 0), (void*)eventing.Handle, __hs_stringData3, (nuint)__hs_stringByteCount3);
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint mGame() =>

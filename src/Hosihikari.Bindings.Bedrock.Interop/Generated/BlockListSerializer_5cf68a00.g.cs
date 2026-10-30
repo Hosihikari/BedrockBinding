@@ -38,13 +38,14 @@ public sealed unsafe partial class BlockListSerializer : global::System.IDisposa
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static void loadJSON_59c1e3c1(nint value, nint molangVersion, nint blockDescriptor) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static void loadJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value value, short molangVersion, global::Hosihikari.Bindings.Bedrock.Interop.BlockDescriptor blockDescriptor)
+    {
+        NativeMethods.TablePtr->C0.hs_method_59c1e3c1((void*)value.Handle, molangVersion, (void*)blockDescriptor.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static void loadJSON_15ab1ce7(nint value, nint molangVersion, nint blockDescriptors) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
+    public static void loadJSON(nint value, nint molangVersion, nint blockDescriptors) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     public void Dispose()
     {

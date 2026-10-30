@@ -40,12 +40,23 @@ public sealed unsafe partial class ContainerValidationSlotData : global::System.
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotData AUTOPLACE()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotData((nint)NativeMethods.TablePtr->C0.hs_method_fdbdb08d(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotData((nint)NativeMethods.TablePtr->C1.hs_method_fdbdb08d(), false);
     }
 
     public static ContainerValidationSlotData Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_696be157();
+        var handle = NativeMethods.TablePtr->C1.hs_create_696be157();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ContainerValidationSlotData((nint)handle);
+    }
+
+    public static ContainerValidationSlotData Create(global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_4dff3350((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -57,13 +68,13 @@ public sealed unsafe partial class ContainerValidationSlotData : global::System.
     // The native field type is not projected; this is the address of the field storage.
     public nint mContainerEnumName_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_a5267e39((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a5267e39((void*)__hosihikari_shim_handle);
     }
 
     public int mSlotIndex
     {
-        get => NativeMethods.TablePtr->C0.hs_get_a6217a9d((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C0.hs_set_a6217a9d((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_a6217a9d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_a6217a9d((void*)__hosihikari_shim_handle, value);
     }
 
 
@@ -73,7 +84,7 @@ public sealed unsafe partial class ContainerValidationSlotData : global::System.
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_738b2167((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_738b2167((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

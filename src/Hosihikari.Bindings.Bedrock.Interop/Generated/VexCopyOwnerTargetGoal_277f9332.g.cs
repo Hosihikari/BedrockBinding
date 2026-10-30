@@ -189,6 +189,17 @@ public sealed unsafe partial class VexCopyOwnerTargetGoal : global::System.IDisp
     public static VexCopyOwnerTargetGoal Create(nint mob, nint name, nint goalId, nint targetTypes) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
+    public static VexCopyOwnerTargetGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.VexCopyOwnerTargetGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_e234d095((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VexCopyOwnerTargetGoal((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public void appendDebugInfo(nint str) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");

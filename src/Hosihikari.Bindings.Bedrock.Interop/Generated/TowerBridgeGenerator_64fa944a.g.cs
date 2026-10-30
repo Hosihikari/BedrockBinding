@@ -42,6 +42,17 @@ public sealed unsafe partial class TowerBridgeGenerator : global::System.IDispos
     public bool _generate(nint structureManager, nint generators, int genDepth, nint parent, nint offset, nint pieces, nint random) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' is not a known bindable declaration.");
 
+    public static TowerBridgeGenerator Create(global::Hosihikari.Bindings.Bedrock.Interop.EndCityPieces_Nested.TowerBridgeGenerator arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_6485115e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TowerBridgeGenerator((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' is not a known bindable declaration.", false)]
     public bool generate(nint structureManager, nint generators, int genDepth, nint parent, nint offset, nint pieces, nint random) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' is not a known bindable declaration.");

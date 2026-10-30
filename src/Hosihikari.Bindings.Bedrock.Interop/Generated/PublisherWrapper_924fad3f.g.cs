@@ -38,6 +38,17 @@ public sealed unsafe partial class PublisherWrapper : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static PublisherWrapper Create(global::Hosihikari.Bindings.Bedrock.Interop.Container_Nested.PublisherWrapper arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_d5b6bfaa((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PublisherWrapper((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mPublisher_Address
     {

@@ -43,6 +43,17 @@ public sealed unsafe partial class CommandBlockSystem : global::System.IDisposab
         NativeMethods.TablePtr->C0.hs_method_f3c61710((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static CommandBlockSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandBlockSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_653169f6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandBlockSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C0.hs_method_3e1f4b96((void*)__hosihikari_shim_handle, (void*)registry.Handle);

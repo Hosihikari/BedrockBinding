@@ -58,6 +58,17 @@ public sealed unsafe partial class FurnaceFuelContainerValidation : global::Syst
         return NativeMethods.TablePtr->C1.hs_method_710ed5ca((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, slot, (void*)item.Handle, amount, arg4) != 0;
     }
 
+    public static FurnaceFuelContainerValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.FurnaceFuelContainerValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_ef81a5d1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FurnaceFuelContainerValidation((nint)handle);
+    }
+
     public int getAllowedAddCount(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase itemInSlot)
     {
         return NativeMethods.TablePtr->C1.hs_method_c41d3cd0((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)itemInSlot.Handle);

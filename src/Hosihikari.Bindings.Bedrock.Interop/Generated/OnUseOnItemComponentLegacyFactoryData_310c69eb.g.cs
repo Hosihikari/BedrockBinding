@@ -38,9 +38,10 @@ public sealed unsafe partial class OnUseOnItemComponentLegacyFactoryData : globa
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy.OnUseOnTriggerItemComponent data)
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_cd177471((void*)__hosihikari_shim_handle, (void*)data.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
@@ -57,9 +58,27 @@ public sealed unsafe partial class OnUseOnItemComponentLegacyFactoryData : globa
         return new OnUseOnItemComponentLegacyFactoryData((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static OnUseOnItemComponentLegacyFactoryData Create(nint data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static OnUseOnItemComponentLegacyFactoryData Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy.OnUseOnTriggerItemComponent data)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_070b8691((void*)data.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OnUseOnItemComponentLegacyFactoryData((nint)handle);
+    }
+
+    public static OnUseOnItemComponentLegacyFactoryData Create(global::Hosihikari.Bindings.Bedrock.Interop.OnUseOnItemComponentLegacyFactoryData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_959c3ce7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OnUseOnItemComponentLegacyFactoryData((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static void bindType(nint ctx, nint requiredToggles, nint releasedMinFormatVersion) =>

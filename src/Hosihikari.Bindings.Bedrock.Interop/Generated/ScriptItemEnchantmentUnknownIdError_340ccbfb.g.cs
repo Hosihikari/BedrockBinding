@@ -54,6 +54,17 @@ public sealed unsafe partial class ScriptItemEnchantmentUnknownIdError : global:
         return new ScriptItemEnchantmentUnknownIdError((nint)handle);
     }
 
+    public static ScriptItemEnchantmentUnknownIdError Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemEnchantmentUnknownIdError arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a3261ed5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptItemEnchantmentUnknownIdError((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ErrorBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ErrorBinding((nint)NativeMethods.TablePtr->C3.hs_method_068996b2());

@@ -57,6 +57,17 @@ public sealed unsafe partial class SculkPatchFeature : global::System.IDisposabl
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
+    public static SculkPatchFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.SculkPatchFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_7d11f9a1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SculkPatchFeature((nint)handle);
+    }
+
     public nint mBlock
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_db90e4bd((void*)__hosihikari_shim_handle);

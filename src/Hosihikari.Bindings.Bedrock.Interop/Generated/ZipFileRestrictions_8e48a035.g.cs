@@ -54,6 +54,17 @@ public sealed unsafe partial class ZipFileRestrictions : global::System.IDisposa
         return new ZipFileRestrictions((nint)handle);
     }
 
+    public static ZipFileRestrictions Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.ZipUtils.ZipFileRestrictions arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_be245648((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ZipFileRestrictions((nint)handle);
+    }
+
     public void addRestrictedExtensions(string[] extensions)
     {
         var __hs_vectorItems0 = extensions ?? global::System.Array.Empty<string>();

@@ -43,6 +43,17 @@ public sealed unsafe partial class Interact : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_1dae40ed((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static Interact Create(global::Hosihikari.Bindings.Bedrock.Interop.AgentCommands.Interact arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_af2bc744((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Interact((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C0.hs_method_3905f6a0((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

@@ -55,6 +55,17 @@ public sealed unsafe partial class VCMProtectionCallback : global::System.IDispo
     public void SetRetransmissionMode(int retransmission_mode) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static VCMProtectionCallback Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.VCMProtectionCallback arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_5a5e1200((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VCMProtectionCallback((nint)handle);
+    }
+
 
     public void Dispose()
     {

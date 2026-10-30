@@ -44,6 +44,17 @@ public sealed unsafe partial class LocalSpatialEntityFetcherFactoryComponent : g
         get => (nint)NativeMethods.TablePtr->C2.hs_get_b67ed32f((void*)__hosihikari_shim_handle);
     }
 
+    public static LocalSpatialEntityFetcherFactoryComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.LocalSpatialEntityFetcherFactoryComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_7234fd10((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LocalSpatialEntityFetcherFactoryComponent((nint)handle);
+    }
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

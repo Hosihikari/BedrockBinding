@@ -38,6 +38,17 @@ public sealed unsafe partial class IComplexExpression : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static IComplexExpression Create(global::Hosihikari.Bindings.Bedrock.Interop.Molang.details.IComplexExpression arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_2cc3cafe((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IComplexExpression((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint clone() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

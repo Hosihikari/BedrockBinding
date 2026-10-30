@@ -38,6 +38,17 @@ public sealed unsafe partial class AreaAttackDefinition : global::System.IDispos
         return __hs_handle;
     }
 
+    public static AreaAttackDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.AreaAttackDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_9b3627e3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AreaAttackDefinition((nint)handle);
+    }
+
     public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
         NativeMethods.TablePtr->C0.hs_method_6312ebe5(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));

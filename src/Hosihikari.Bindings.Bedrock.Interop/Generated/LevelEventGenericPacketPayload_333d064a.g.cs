@@ -38,6 +38,17 @@ public sealed unsafe partial class LevelEventGenericPacketPayload : global::Syst
         return __hs_handle;
     }
 
+    public static LevelEventGenericPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelEventGenericPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_409bcbed((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelEventGenericPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mData_Address
     {

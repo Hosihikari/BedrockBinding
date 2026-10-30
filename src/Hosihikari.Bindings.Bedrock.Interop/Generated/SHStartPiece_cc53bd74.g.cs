@@ -53,6 +53,17 @@ public sealed unsafe partial class SHStartPiece : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static SHStartPiece Create(global::Hosihikari.Bindings.Bedrock.Interop.SHStartPiece arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_df1872db((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SHStartPiece((nint)handle);
+    }
+
     public int getType()
     {
         return NativeMethods.TablePtr->C3.hs_method_4fdd0736((void*)__hosihikari_shim_handle);

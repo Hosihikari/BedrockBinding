@@ -58,6 +58,17 @@ public sealed unsafe partial class ParticleOnHitSubcomponent : global::System.ID
         NativeMethods.TablePtr->C2.hs_method_dbd2cde5((void*)__hosihikari_shim_handle, (void*)component.Handle);
     }
 
+    public static ParticleOnHitSubcomponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ParticleOnHitSubcomponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_60f3a8d8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ParticleOnHitSubcomponent((nint)handle);
+    }
+
     public void doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent component)
     {
         NativeMethods.TablePtr->C2.hs_method_9b110c40((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)component.Handle);

@@ -152,6 +152,17 @@ public sealed unsafe partial class SetLastHurtByPacket : global::System.IDisposa
         NativeMethods.TablePtr->C3.hs_method_b82e4b65((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+    public static SetLastHurtByPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.SetLastHurtByPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_ef4edf3f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SetLastHurtByPacket((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");

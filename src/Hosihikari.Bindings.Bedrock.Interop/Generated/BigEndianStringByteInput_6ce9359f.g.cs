@@ -66,6 +66,17 @@ public sealed unsafe partial class BigEndianStringByteInput : global::System.IDi
     public nint _readShortResult() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<short>' requires --link-carrier or --virtual-dispatch.");
 
+    public static BigEndianStringByteInput Create(global::Hosihikari.Bindings.Bedrock.Interop.BigEndianStringByteInput arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_462c6dfd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BigEndianStringByteInput((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint readBigEndianBytesResult(nint data, ulong bytes) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");

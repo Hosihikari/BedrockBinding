@@ -59,6 +59,17 @@ public sealed unsafe partial class ActorQueueCommandResponse : global::System.ID
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static ActorQueueCommandResponse Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorQueueCommandResponse arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_3a9cb8cd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorQueueCommandResponse((nint)handle);
+    }
+
     public static string NameID()
     {
         var __hs_view = NativeMethods.TablePtr->C0.hs_method_826e1e5a();

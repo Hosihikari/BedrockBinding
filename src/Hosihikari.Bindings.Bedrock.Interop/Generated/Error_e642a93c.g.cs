@@ -110,6 +110,17 @@ public sealed unsafe partial class Error : global::System.IDisposable
         return new Error((nint)handle);
     }
 
+    public static Error Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.Error arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_3cf74750((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Error((nint)handle);
+    }
+
     public static Error Create(string message_)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(message_);

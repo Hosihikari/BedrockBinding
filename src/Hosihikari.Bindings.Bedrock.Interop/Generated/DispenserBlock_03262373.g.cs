@@ -348,6 +348,17 @@ public sealed unsafe partial class DispenserBlock : global::System.IDisposable
         return new DispenserBlock((nint)handle);
     }
 
+    public static DispenserBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.DispenserBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_40229a89((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DispenserBlock((nint)handle);
+    }
+
     public static DispenserBlock Create(string nameId, int id)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);

@@ -43,6 +43,17 @@ public sealed unsafe partial class ChunkLoadActionList : global::System.IDisposa
         NativeMethods.TablePtr->C0.hs_method_af773ef5((void*)__hosihikari_shim_handle);
     }
 
+    public static ChunkLoadActionList Create(global::Hosihikari.Bindings.Bedrock.Interop.ChunkLoadActionList arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_c60c3baa((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChunkLoadActionList((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ChunkLoadedRequest' is not copy-constructible.", false)]
     public void _addChunkLoadedRequest(nint chunkLoadedRequest, nint dimensionPrefix, nint chunksLoadedStatus, nint levelStorage) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ChunkLoadedRequest' is not copy-constructible.");

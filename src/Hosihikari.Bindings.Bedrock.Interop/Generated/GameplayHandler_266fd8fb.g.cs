@@ -38,6 +38,17 @@ public sealed unsafe partial class GameplayHandler : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static GameplayHandler Create(global::Hosihikari.Bindings.Bedrock.Interop.GameplayHandler arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b248067c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameplayHandler((nint)handle);
+    }
+
 
     public void Dispose()
     {

@@ -54,6 +54,17 @@ public sealed unsafe partial class ScriptDebuggerSettings : global::System.IDisp
         return new ScriptDebuggerSettings((nint)handle);
     }
 
+    public static ScriptDebuggerSettings Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptDebuggerSettings arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_d4cea215((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptDebuggerSettings((nint)handle);
+    }
+
     public bool mAllowInboundListen
     {
         get => NativeMethods.TablePtr->C3.hs_get_1cc926ec((void*)__hosihikari_shim_handle) != 0;

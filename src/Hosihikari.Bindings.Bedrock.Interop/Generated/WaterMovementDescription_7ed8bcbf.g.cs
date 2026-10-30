@@ -38,9 +38,10 @@ public sealed unsafe partial class WaterMovementDescription : global::System.IDi
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void _deserializeData(nint deserializeDataParams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void _deserializeData(global::Hosihikari.Bindings.Bedrock.Interop.DeserializeDataParams deserializeDataParams)
+    {
+        NativeMethods.TablePtr->C4.hs_method_8fa039d5((void*)__hosihikari_shim_handle, (void*)deserializeDataParams.Handle);
+    }
 
     public nint _getJsonName()
     {
@@ -73,9 +74,10 @@ public sealed unsafe partial class WaterMovementDescription : global::System.IDi
         return new WaterMovementDescription((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void deserializeData(nint deserializeDataParams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void deserializeData(global::Hosihikari.Bindings.Bedrock.Interop.DeserializeDataParams deserializeDataParams)
+    {
+        NativeMethods.TablePtr->C4.hs_method_9a70bb78((void*)__hosihikari_shim_handle, (void*)deserializeDataParams.Handle);
+    }
 
     public nint getJsonName()
     {

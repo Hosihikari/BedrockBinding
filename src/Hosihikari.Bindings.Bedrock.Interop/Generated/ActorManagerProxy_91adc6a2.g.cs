@@ -43,6 +43,17 @@ public sealed unsafe partial class ActorManagerProxy : global::System.IDisposabl
         NativeMethods.TablePtr->C0.hs_method_50b116ee((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
+    public static ActorManagerProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorManagerProxy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_3b0c85b2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorManagerProxy((nint)handle);
+    }
+
     public void removeActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
         NativeMethods.TablePtr->C0.hs_method_adfecb0e((void*)__hosihikari_shim_handle, (void*)actor.Handle);

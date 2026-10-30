@@ -38,6 +38,17 @@ public sealed unsafe partial class SchedulerDefinition : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static SchedulerDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.SchedulerDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_96dc01ac((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SchedulerDefinition((nint)handle);
+    }
+
     public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
         NativeMethods.TablePtr->C3.hs_method_053ac9b6(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));

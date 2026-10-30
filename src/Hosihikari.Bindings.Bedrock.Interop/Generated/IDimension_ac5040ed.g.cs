@@ -43,6 +43,17 @@ public sealed unsafe partial class IDimension : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_9a40aed5((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)removed.Handle, (void*)placed.Handle);
     }
 
+    public static IDimension Create(global::Hosihikari.Bindings.Bedrock.Interop.IDimension arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_41d5075c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IDimension((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void buildPlayersForPositionPacket(nint position, nint except, nint result) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

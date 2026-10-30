@@ -38,6 +38,17 @@ public sealed unsafe partial class ChunkGenContext : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ChunkGenContext Create(global::Hosihikari.Bindings.Bedrock.Interop.ChunkGenContext arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_24b990a5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChunkGenContext((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mChunkPosition_Address
     {

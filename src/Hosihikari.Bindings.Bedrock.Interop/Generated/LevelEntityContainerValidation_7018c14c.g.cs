@@ -48,6 +48,17 @@ public sealed unsafe partial class LevelEntityContainerValidation : global::Syst
         return NativeMethods.TablePtr->C2.hs_method_e7b2c0c6((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, (void*)container.Handle);
     }
 
+    public static LevelEntityContainerValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelEntityContainerValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_e287bc29((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelEntityContainerValidation((nint)handle);
+    }
+
     public int getContainerOffset(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
     {
         return NativeMethods.TablePtr->C2.hs_method_07e327ef((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);

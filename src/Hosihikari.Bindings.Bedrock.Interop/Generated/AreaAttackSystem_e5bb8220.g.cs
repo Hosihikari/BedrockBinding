@@ -43,6 +43,17 @@ public sealed unsafe partial class AreaAttackSystem : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_9d512e72((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static AreaAttackSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.AreaAttackSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_889cf49d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AreaAttackSystem((nint)handle);
+    }
+
     public static void _tickComponent(global::Hosihikari.Bindings.Bedrock.Interop.ActorOwnerComponent actorOwnerComponent, global::Hosihikari.Bindings.Bedrock.Interop.AreaAttackComponent areaAttackComponent)
     {
         NativeMethods.TablePtr->C0.hs_method_e4475b3a((void*)actorOwnerComponent.Handle, (void*)areaAttackComponent.Handle);

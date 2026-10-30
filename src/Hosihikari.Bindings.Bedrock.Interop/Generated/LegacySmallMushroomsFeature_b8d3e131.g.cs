@@ -41,35 +41,35 @@ public sealed unsafe partial class LegacySmallMushroomsFeature : global::System.
     // The native field type is not projected; this is the address of the field storage.
     public nint mPlacerID_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_ff49fd86((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ff49fd86((void*)__hosihikari_shim_handle);
     }
 
     public nint mTransaction
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_ea7cd19e((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_ea7cd19e((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ea7cd19e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_ea7cd19e((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public bool mCanUseInternalFeature
     {
-        get => NativeMethods.TablePtr->C1.hs_get_80759c72((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_80759c72((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_80759c72((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_80759c72((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mInternal
     {
-        get => NativeMethods.TablePtr->C1.hs_get_baddc118((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_baddc118((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_baddc118((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_baddc118((void*)__hosihikari_shim_handle, value);
     }
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.FeatureRegistry registry)
     {
-        return (nint)NativeMethods.TablePtr->C1.hs_method_aa9adf3b((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+        return (nint)NativeMethods.TablePtr->C2.hs_method_aa9adf3b((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
     public bool _place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos origin, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
-        return NativeMethods.TablePtr->C1.hs_method_e4100597((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)origin.Handle, (void*)random.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_e4100597((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)origin.Handle, (void*)random.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -78,7 +78,7 @@ public sealed unsafe partial class LegacySmallMushroomsFeature : global::System.
 
     public static LegacySmallMushroomsFeature Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_158d7f58();
+        var handle = NativeMethods.TablePtr->C2.hs_create_158d7f58();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -89,7 +89,18 @@ public sealed unsafe partial class LegacySmallMushroomsFeature : global::System.
 
     public static LegacySmallMushroomsFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.FeatureRegistry registry)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_b22370f7((void*)registry.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_b22370f7((void*)registry.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacySmallMushroomsFeature((nint)handle);
+    }
+
+    public static LegacySmallMushroomsFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacySmallMushroomsFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_da437d4b((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -101,18 +112,18 @@ public sealed unsafe partial class LegacySmallMushroomsFeature : global::System.
     // The native field type is not projected; this is the address of the field storage.
     public nint mBrownMushroomFeature_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_9ec7723b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9ec7723b((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRedMushroomFeature_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_9315304e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9315304e((void*)__hosihikari_shim_handle);
     }
 
     public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos origin, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
-        return NativeMethods.TablePtr->C1.hs_method_54c76f4e((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)origin.Handle, (void*)random.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_54c76f4e((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)origin.Handle, (void*)random.Handle) != 0;
     }
 
 
@@ -122,7 +133,7 @@ public sealed unsafe partial class LegacySmallMushroomsFeature : global::System.
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_b8d3e131((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_b8d3e131((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -72,6 +72,17 @@ public sealed unsafe partial class SetWorldSpawnCommand : global::System.IDispos
         NativeMethods.TablePtr->C3.hs_method_db56d321((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static SetWorldSpawnCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.SetWorldSpawnCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_168020b1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SetWorldSpawnCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C3.hs_method_14f746d0((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

@@ -38,9 +38,10 @@ public sealed unsafe partial class ParserBase : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint parserVersion, nint supportedVersions) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion parserVersion, global::Hosihikari.Bindings.Bedrock.Interop.Puv.VersionRange supportedVersions)
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_e1366155((void*)__hosihikari_shim_handle, (void*)parserVersion.Handle, (void*)supportedVersions.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
@@ -68,9 +69,16 @@ public sealed unsafe partial class ParserBase : global::System.IDisposable
         return new ParserBase((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static ParserBase Create(nint parserVersion, nint supportedVersions) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static ParserBase Create(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion parserVersion, global::Hosihikari.Bindings.Bedrock.Interop.Puv.VersionRange supportedVersions)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_f8464aa2((void*)parserVersion.Handle, (void*)supportedVersions.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ParserBase((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint doParse(nint input, nint contextArea) =>

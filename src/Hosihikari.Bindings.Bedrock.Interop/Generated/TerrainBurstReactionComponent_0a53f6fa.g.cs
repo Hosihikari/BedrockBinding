@@ -43,6 +43,17 @@ public sealed unsafe partial class TerrainBurstReactionComponent : global::Syste
         NativeMethods.TablePtr->C3.hs_method_44387c8e((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)region.Handle);
     }
 
+    public static TerrainBurstReactionComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.TerrainBurstReactionComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_e4489b91((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TerrainBurstReactionComponent((nint)handle);
+    }
+
     public void _onEnd(global::Hosihikari.Bindings.Bedrock.Interop.LabTableReaction owner, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
     {
         NativeMethods.TablePtr->C3.hs_method_149a9a07((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)region.Handle);

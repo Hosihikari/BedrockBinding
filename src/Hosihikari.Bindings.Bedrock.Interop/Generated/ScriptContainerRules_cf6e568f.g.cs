@@ -43,6 +43,17 @@ public sealed unsafe partial class ScriptContainerRules : global::System.IDispos
         NativeMethods.TablePtr->C3.hs_method_a006d936((void*)__hosihikari_shim_handle);
     }
 
+    public static ScriptContainerRules Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptContainerRules arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_ec7f82d5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptContainerRules((nint)handle);
+    }
+
     public string[] _getAllowedItems()
     {
         var __hs_view = NativeMethods.TablePtr->C3.hs_method_cbb199a3((void*)__hosihikari_shim_handle);

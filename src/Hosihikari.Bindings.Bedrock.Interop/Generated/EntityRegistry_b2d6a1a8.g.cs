@@ -73,6 +73,17 @@ public sealed unsafe partial class EntityRegistry : global::System.IDisposable
         return new EntityRegistry((nint)handle);
     }
 
+    public static EntityRegistry Create(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d254e07a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EntityRegistry((nint)handle);
+    }
+
     public static EntityRegistry Create(string identifier)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(identifier);

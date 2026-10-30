@@ -64,6 +64,17 @@ public sealed unsafe partial class BiomeRegistry : global::System.IDisposable
         return new BiomeRegistry((nint)handle);
     }
 
+    public static BiomeRegistry Create(global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_ee16e876((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BiomeRegistry((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.Biome _register(string name, global::Hosihikari.Bindings.Bedrock.Interop.BiomeIdType id)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);

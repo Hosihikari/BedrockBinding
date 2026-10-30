@@ -40,14 +40,14 @@ public sealed unsafe partial class PortalUsed : global::System.IDisposable
 
     public int mFromDimension
     {
-        get => NativeMethods.TablePtr->C1.hs_get_87299896((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_87299896((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_87299896((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_87299896((void*)__hosihikari_shim_handle, value);
     }
 
     public int mToDimension
     {
-        get => NativeMethods.TablePtr->C1.hs_get_63733c2d((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_63733c2d((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_63733c2d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_63733c2d((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -56,7 +56,7 @@ public sealed unsafe partial class PortalUsed : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_28e9563f((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_28e9563f((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

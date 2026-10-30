@@ -38,6 +38,17 @@ public sealed unsafe partial class AnimatePacketPayload : global::System.IDispos
         return __hs_handle;
     }
 
+    public static AnimatePacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.AnimatePacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_0443c81f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AnimatePacketPayload((nint)handle);
+    }
+
     public byte mAction
     {
         get => NativeMethods.TablePtr->C0.hs_get_a6776ec8((void*)__hosihikari_shim_handle);

@@ -82,6 +82,17 @@ public sealed unsafe partial class PlaceBlockNode : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static PlaceBlockNode Create(global::Hosihikari.Bindings.Bedrock.Interop.PlaceBlockNode arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_3d14f753((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlaceBlockNode((nint)handle);
+    }
+
     public bool mPreActionDone
     {
         get => NativeMethods.TablePtr->C2.hs_get_8d560281((void*)__hosihikari_shim_handle) != 0;

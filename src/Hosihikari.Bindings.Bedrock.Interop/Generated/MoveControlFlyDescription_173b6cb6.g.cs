@@ -49,6 +49,17 @@ public sealed unsafe partial class MoveControlFlyDescription : global::System.ID
         return (nint)NativeMethods.TablePtr->C2.hs_method_e87a73a5((void*)__hosihikari_shim_handle);
     }
 
+    public static MoveControlFlyDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.MoveControlFlyDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_33eac8e3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MoveControlFlyDescription((nint)handle);
+    }
+
     public nint getJsonName()
     {
         return (nint)NativeMethods.TablePtr->C2.hs_method_bc90de25((void*)__hosihikari_shim_handle);

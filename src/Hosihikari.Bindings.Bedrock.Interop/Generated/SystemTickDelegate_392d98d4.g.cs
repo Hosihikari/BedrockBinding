@@ -48,6 +48,17 @@ public sealed unsafe partial class SystemTickDelegate : global::System.IDisposab
         NativeMethods.TablePtr->C1.hs_method_3e6582e2((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)region.Handle, (void*)pos.Handle);
     }
 
+    public static SystemTickDelegate Create(global::Hosihikari.Bindings.Bedrock.Interop.FallingBlockSystemOnLand.SystemTickDelegate arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_3277ec72((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SystemTickDelegate((nint)handle);
+    }
+
     public void breakBlock(global::Hosihikari.Bindings.Bedrock.Interop.FallingBlockActor fallingBlock)
     {
         NativeMethods.TablePtr->C1.hs_method_7802b453((void*)__hosihikari_shim_handle, (void*)fallingBlock.Handle);

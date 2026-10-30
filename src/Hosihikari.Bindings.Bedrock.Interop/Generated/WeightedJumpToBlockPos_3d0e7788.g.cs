@@ -38,6 +38,17 @@ public sealed unsafe partial class WeightedJumpToBlockPos : global::System.IDisp
         return __hs_handle;
     }
 
+    public static WeightedJumpToBlockPos Create(global::Hosihikari.Bindings.Bedrock.Interop.JumpToBlockGoal_Nested.WeightedJumpToBlockPos arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_6d3b342a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WeightedJumpToBlockPos((nint)handle);
+    }
+
     public int mWeight
     {
         get => NativeMethods.TablePtr->C1.hs_get_06417036((void*)__hosihikari_shim_handle);

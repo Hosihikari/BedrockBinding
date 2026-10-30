@@ -54,6 +54,17 @@ public sealed unsafe partial class BlockMaterialInstancesComponent : global::Sys
         return new BlockMaterialInstancesComponent((nint)handle);
     }
 
+    public static BlockMaterialInstancesComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockMaterialInstancesComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_37e2e662((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockMaterialInstancesComponent((nint)handle);
+    }
+
     public static BlockMaterialInstancesComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockMaterialInstancesDescription blockMaterialInstancesDescription)
     {
         var handle = NativeMethods.TablePtr->C0.hs_create_60854097((void*)blockMaterialInstancesDescription.Handle);

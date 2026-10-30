@@ -61,14 +61,26 @@ public sealed unsafe partial class UnlockedRecipesServerComponent : global::Syst
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static UnlockedRecipesServerComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.UnlockedRecipesServerComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_fbd5d61a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UnlockedRecipesServerComponent((nint)handle);
+    }
+
     public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
         NativeMethods.TablePtr->C4.hs_method_0c33825f((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void addUnlockingInstruction(nint instruction) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void addUnlockingInstruction(global::Hosihikari.Bindings.Bedrock.Interop.UnlockedRecipesServerComponent_Nested.UnlockingInstruction instruction)
+    {
+        NativeMethods.TablePtr->C4.hs_method_900e47cf((void*)__hosihikari_shim_handle, (void*)instruction.Handle);
+    }
 
     public bool isRecipeUnlocked(string recipeId)
     {

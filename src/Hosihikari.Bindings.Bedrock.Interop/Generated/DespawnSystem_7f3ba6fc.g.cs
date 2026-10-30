@@ -43,6 +43,17 @@ public sealed unsafe partial class DespawnSystem : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_2a533937((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static DespawnSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.DespawnSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_fbcf148a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DespawnSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C1.hs_method_47cac971((void*)__hosihikari_shim_handle, (void*)registry.Handle);

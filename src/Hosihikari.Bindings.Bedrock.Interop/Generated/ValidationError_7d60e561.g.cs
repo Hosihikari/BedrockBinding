@@ -38,6 +38,17 @@ public sealed unsafe partial class ValidationError : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ValidationError Create(global::Hosihikari.Bindings.Bedrock.Interop.GameRule_Nested.ValidationError arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_7a28e0c1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ValidationError((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mErrorDescription_Address
     {

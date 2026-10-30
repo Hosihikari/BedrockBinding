@@ -72,6 +72,17 @@ public sealed unsafe partial class LegacyEventItemComponent : global::System.IDi
     public static LegacyEventItemComponent Create(nint componentData) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
+    public static LegacyEventItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyEventItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_c51c72ec((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacyEventItemComponent((nint)handle);
+    }
+
     public void _initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {
         NativeMethods.TablePtr->C1.hs_method_07595ba5((void*)__hosihikari_shim_handle, (void*)owner.Handle);

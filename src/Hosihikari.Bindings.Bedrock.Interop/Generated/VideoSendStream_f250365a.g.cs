@@ -83,6 +83,17 @@ public sealed unsafe partial class VideoSendStream : global::System.IDisposable
     public void Stop() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static VideoSendStream Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.VideoSendStream arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_e3fe86c7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VideoSendStream((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool started() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

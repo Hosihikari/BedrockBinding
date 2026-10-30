@@ -43,6 +43,17 @@ public sealed unsafe partial class OpenDoorAnnotationSystem : global::System.IDi
         NativeMethods.TablePtr->C2.hs_method_9b9649c1((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static OpenDoorAnnotationSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.OpenDoorAnnotationSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_ef429e47((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OpenDoorAnnotationSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C2.hs_method_e017a3c3((void*)__hosihikari_shim_handle, (void*)registry.Handle);

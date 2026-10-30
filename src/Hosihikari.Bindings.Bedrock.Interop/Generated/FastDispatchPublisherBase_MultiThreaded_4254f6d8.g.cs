@@ -42,6 +42,17 @@ public sealed unsafe partial class FastDispatchPublisherBase_MultiThreaded : glo
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static FastDispatchPublisherBase_MultiThreaded Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PubSub.Detail.FastDispatchPublisherBase_MultiThreaded arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_e9868159((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FastDispatchPublisherBase_MultiThreaded((nint)handle);
+    }
+
     public bool _loadDispatchTargets(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PubSub.Detail.DispatchTargets targets)
     {
         return NativeMethods.TablePtr->C0.hs_method_d60ba23b((void*)__hosihikari_shim_handle, (void*)targets.Handle) != 0;

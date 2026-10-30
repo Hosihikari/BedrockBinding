@@ -40,19 +40,19 @@ public sealed unsafe partial class FileSizePresetTokenImpl : global::System.IDis
 
     public nint mNext
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_ffdd19d3((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C0.hs_set_ffdd19d3((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_ffdd19d3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_ffdd19d3((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public nint mPrev
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_d6d28c60((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C0.hs_set_d6d28c60((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d6d28c60((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_d6d28c60((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public static FileSizePresetTokenImpl Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_485499a4();
+        var handle = NativeMethods.TablePtr->C1.hs_create_485499a4();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,7 +63,7 @@ public sealed unsafe partial class FileSizePresetTokenImpl : global::System.IDis
 
     public static FileSizePresetTokenImpl Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSizePresetTokenImpl arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_f6d46942((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_f6d46942((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -75,30 +75,30 @@ public sealed unsafe partial class FileSizePresetTokenImpl : global::System.IDis
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk43aab0_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_a1262a72((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a1262a72((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk89993c_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_08951945((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_08951945((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkbc126d_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_727282f0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_727282f0((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnke35968_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_c3d41f92((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_c3d41f92((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSizePresetTokenImpl operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSizePresetTokenImpl arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSizePresetTokenImpl((nint)NativeMethods.TablePtr->C0.hs_method_4b4a9d31((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSizePresetTokenImpl((nint)NativeMethods.TablePtr->C1.hs_method_4b4a9d31((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
@@ -108,7 +108,7 @@ public sealed unsafe partial class FileSizePresetTokenImpl : global::System.IDis
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_8fef0c70((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_8fef0c70((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

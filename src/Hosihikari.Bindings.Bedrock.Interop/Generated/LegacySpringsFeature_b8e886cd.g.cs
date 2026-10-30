@@ -41,40 +41,40 @@ public sealed unsafe partial class LegacySpringsFeature : global::System.IDispos
     // The native field type is not projected; this is the address of the field storage.
     public nint mPlacerID_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_6ee609c6((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6ee609c6((void*)__hosihikari_shim_handle);
     }
 
     public nint mTransaction
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_2cd2e28d((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_2cd2e28d((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2cd2e28d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_2cd2e28d((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public bool mCanUseInternalFeature
     {
-        get => NativeMethods.TablePtr->C1.hs_get_b4983fd0((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_b4983fd0((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_b4983fd0((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_b4983fd0((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mInternal
     {
-        get => NativeMethods.TablePtr->C1.hs_get_059a1566((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_059a1566((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_059a1566((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_059a1566((void*)__hosihikari_shim_handle, value);
     }
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.FeatureRegistry registry, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion)
     {
-        return (nint)NativeMethods.TablePtr->C1.hs_method_73143676((void*)__hosihikari_shim_handle, (void*)registry.Handle, (void*)baseGameVersion.Handle);
+        return (nint)NativeMethods.TablePtr->C2.hs_method_73143676((void*)__hosihikari_shim_handle, (void*)registry.Handle, (void*)baseGameVersion.Handle);
     }
 
     public bool _place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos origin, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
-        return NativeMethods.TablePtr->C1.hs_method_8732e420((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)origin.Handle, (void*)random.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_8732e420((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)origin.Handle, (void*)random.Handle) != 0;
     }
 
     public static LegacySpringsFeature Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_b866e445();
+        var handle = NativeMethods.TablePtr->C2.hs_create_b866e445();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -85,7 +85,18 @@ public sealed unsafe partial class LegacySpringsFeature : global::System.IDispos
 
     public static LegacySpringsFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.FeatureRegistry registry, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_3bea9a72((void*)registry.Handle, (void*)baseGameVersion.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_3bea9a72((void*)registry.Handle, (void*)baseGameVersion.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacySpringsFeature((nint)handle);
+    }
+
+    public static LegacySpringsFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacySpringsFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_c6643b19((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -96,25 +107,25 @@ public sealed unsafe partial class LegacySpringsFeature : global::System.IDispos
 
     public bool mIsCavesAndCliffsUpdate
     {
-        get => NativeMethods.TablePtr->C1.hs_get_2a1aaeee((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_2a1aaeee((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_2a1aaeee((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_2a1aaeee((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLavaSpringFeature_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_086a3b82((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_086a3b82((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mWaterSpringFeature_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_0aa18a59((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0aa18a59((void*)__hosihikari_shim_handle);
     }
 
     public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos origin, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
-        return NativeMethods.TablePtr->C1.hs_method_d82148a6((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)origin.Handle, (void*)random.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_d82148a6((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)origin.Handle, (void*)random.Handle) != 0;
     }
 
 
@@ -124,7 +135,7 @@ public sealed unsafe partial class LegacySpringsFeature : global::System.IDispos
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_b8e886cd((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_b8e886cd((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

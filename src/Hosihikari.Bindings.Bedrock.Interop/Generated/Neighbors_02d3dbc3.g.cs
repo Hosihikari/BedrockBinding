@@ -40,13 +40,13 @@ public sealed unsafe partial class Neighbors : global::System.IDisposable
 
     public byte mNeighbors
     {
-        get => NativeMethods.TablePtr->C1.hs_get_69134014((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_69134014((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_69134014((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_69134014((void*)__hosihikari_shim_handle, value);
     }
 
     public static nint sOffsetMap()
     {
-        return (nint)NativeMethods.TablePtr->C1.hs_method_b5c44e93();
+        return (nint)NativeMethods.TablePtr->C2.hs_method_b5c44e93();
     }
 
     public void Dispose()
@@ -55,7 +55,7 @@ public sealed unsafe partial class Neighbors : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_02d3dbc3((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_02d3dbc3((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

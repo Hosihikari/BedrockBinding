@@ -38,6 +38,17 @@ public sealed unsafe partial class GainedRaidOmenAtPositionComponent : global::S
         return __hs_handle;
     }
 
+    public static GainedRaidOmenAtPositionComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.GainedRaidOmenAtPositionComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_ea83276b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GainedRaidOmenAtPositionComponent((nint)handle);
+    }
+
     public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
         NativeMethods.TablePtr->C1.hs_method_c28a899f((void*)__hosihikari_shim_handle, (void*)tag.Handle);

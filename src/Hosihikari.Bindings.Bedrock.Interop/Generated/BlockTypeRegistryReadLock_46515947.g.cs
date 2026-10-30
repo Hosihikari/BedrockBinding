@@ -59,6 +59,17 @@ public sealed unsafe partial class BlockTypeRegistryReadLock : global::System.ID
         return new BlockTypeRegistryReadLock((nint)handle);
     }
 
+    public static BlockTypeRegistryReadLock Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockTypeRegistryReadLock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_05ec9ff6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockTypeRegistryReadLock((nint)handle);
+    }
+
     public static BlockTypeRegistryReadLock Create(global::Hosihikari.Bindings.Abi.SharedHandle? locker)
     {
         var handle = NativeMethods.TablePtr->C0.hs_create_5643c928(locker?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));

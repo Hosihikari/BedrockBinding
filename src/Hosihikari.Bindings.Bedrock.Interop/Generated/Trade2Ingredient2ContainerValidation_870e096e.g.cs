@@ -40,12 +40,23 @@ public sealed unsafe partial class Trade2Ingredient2ContainerValidation : global
 
     public int _getContainerOffset(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
     {
-        return NativeMethods.TablePtr->C3.hs_method_c143e411((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_c143e411((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);
+    }
+
+    public static Trade2Ingredient2ContainerValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.Trade2Ingredient2ContainerValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_9a3af701((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Trade2Ingredient2ContainerValidation((nint)handle);
     }
 
     public int getContainerOffset(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
     {
-        return NativeMethods.TablePtr->C3.hs_method_146cf628((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_146cf628((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);
     }
 
 
@@ -55,7 +66,7 @@ public sealed unsafe partial class Trade2Ingredient2ContainerValidation : global
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_870e096e((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_870e096e((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

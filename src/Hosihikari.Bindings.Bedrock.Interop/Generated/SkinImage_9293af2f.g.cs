@@ -38,6 +38,17 @@ public sealed unsafe partial class SkinImage : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static SkinImage Create(global::Hosihikari.Bindings.Bedrock.Interop.SkinImage arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_311336f8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SkinImage((nint)handle);
+    }
+
     public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.SkinImage rhs)
     {
         return NativeMethods.TablePtr->C3.hs_method_8b75d4c3((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;

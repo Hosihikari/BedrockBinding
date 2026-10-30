@@ -38,6 +38,17 @@ public sealed unsafe partial class ImportWorldResult : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static ImportWorldResult Create(global::Hosihikari.Bindings.Bedrock.Interop.FileArchiver_Nested.ImportWorldsResult_Nested.ImportWorldResult arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_4ee17ded((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ImportWorldResult((nint)handle);
+    }
+
     public int outcome
     {
         get => NativeMethods.TablePtr->C1.hs_get_270e707d((void*)__hosihikari_shim_handle);

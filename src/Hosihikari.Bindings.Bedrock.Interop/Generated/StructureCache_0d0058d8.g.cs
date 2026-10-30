@@ -38,6 +38,17 @@ public sealed unsafe partial class StructureCache : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static StructureCache Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructureCache arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_6321cf93((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureCache((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Abi.SharedHandle? at(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
     {
         var __hs_shared = NativeMethods.TablePtr->C4.hs_method_270147ce((void*)__hosihikari_shim_handle, (void*)pos.Handle);

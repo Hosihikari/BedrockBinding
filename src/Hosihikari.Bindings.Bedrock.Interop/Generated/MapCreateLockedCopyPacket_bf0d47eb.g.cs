@@ -111,6 +111,17 @@ public sealed unsafe partial class MapCreateLockedCopyPacket : global::System.ID
         NativeMethods.TablePtr->C2.hs_method_7ef44ec7((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+    public static MapCreateLockedCopyPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.MapCreateLockedCopyPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_1156351e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MapCreateLockedCopyPacket((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");

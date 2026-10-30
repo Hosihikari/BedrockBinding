@@ -38,6 +38,17 @@ public sealed unsafe partial class ActionQueue : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ActionQueue Create(global::Hosihikari.Bindings.Bedrock.Interop.ActionQueue arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_83c253bd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActionQueue((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mQueue_Address
     {

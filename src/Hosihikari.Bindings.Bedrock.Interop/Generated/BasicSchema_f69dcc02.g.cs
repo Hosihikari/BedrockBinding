@@ -58,6 +58,17 @@ public sealed unsafe partial class BasicSchema : global::System.IDisposable
         return NativeMethods.TablePtr->C4.hs_method_0ecaae41((void*)__hosihikari_shim_handle, (void*)ctx);
     }
 
+    public static BasicSchema Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.BasicSchema arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_f8ae9a14((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BasicSchema((nint)handle);
+    }
+
     public void doLoad(global::Hosihikari.Bindings.Bedrock.Interop.cereal.SchemaReader reader, nint any, nint udata, nint state)
     {
         NativeMethods.TablePtr->C4.hs_method_092ead57((void*)__hosihikari_shim_handle, (void*)reader.Handle, (void*)any, (void*)udata, (void*)state);

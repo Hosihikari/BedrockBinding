@@ -624,9 +624,10 @@ public sealed unsafe partial class MinecartTNT : global::System.IDisposable
     public nint __hurt(nint source, float damage, nint hurtParameters) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public float _causeFallDamageToActor(float distance, float arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public float _causeFallDamageToActor(float distance, float arg1, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg2)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_750e3dbc((void*)__hosihikari_shim_handle, distance, arg1, (void*)arg2.Handle);
+    }
 
     public void _destroy(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source, bool dropMinecartComponents)
     {
@@ -658,9 +659,10 @@ public sealed unsafe partial class MinecartTNT : global::System.IDisposable
     public nint _hurt(nint source, float damage, nint hurtParameters) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public float causeFallDamageToActor(float distance, float arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public float causeFallDamageToActor(float distance, float arg1, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource arg2)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_0d4c2204((void*)__hosihikari_shim_handle, distance, arg1, (void*)arg2.Handle);
+    }
 
     public void destroy(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source, bool dropMinecartComponents)
     {

@@ -57,6 +57,17 @@ public sealed unsafe partial class ScanSurfaceFeature : global::System.IDisposab
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
+    public static ScanSurfaceFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.ScanSurfaceFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_8c3b2b25((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScanSurfaceFeature((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mFeatureRef_Address
     {

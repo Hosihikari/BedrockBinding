@@ -38,6 +38,17 @@ public sealed unsafe partial class ArrayNode : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ArrayNode Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.JSONObject.ArrayNode arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_306f580b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ArrayNode((nint)handle);
+    }
+
     public bool setContents(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.JSONObject.ValueWrapper contents)
     {
         return NativeMethods.TablePtr->C0.hs_method_4115048d((void*)__hosihikari_shim_handle, (void*)contents.Handle) != 0;

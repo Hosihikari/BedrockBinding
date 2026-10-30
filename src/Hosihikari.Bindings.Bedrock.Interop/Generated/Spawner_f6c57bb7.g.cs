@@ -73,6 +73,17 @@ public sealed unsafe partial class Spawner : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
     }
 
+    public static Spawner Create(global::Hosihikari.Bindings.Bedrock.Interop.Spawner arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_3e732e40((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Spawner((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::tuple<std::array<SpawnCategory::Type, 8>, unsigned long long>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint filteredSpawningCategories(nint arg0, bool arg1, bool arg2, bool arg3) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::tuple<std::array<SpawnCategory::Type, 8>, unsigned long long>' requires --link-carrier or --virtual-dispatch.");

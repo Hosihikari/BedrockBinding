@@ -72,6 +72,17 @@ public sealed unsafe partial class EffectCommand : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_e8792cf1((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static EffectCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.EffectCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_263503a8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EffectCommand((nint)handle);
+    }
+
     public void _add(nint targets, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output, global::Hosihikari.Bindings.Bedrock.Interop.EffectDuration duration)
     {
         NativeMethods.TablePtr->C1.hs_method_56d033c7((void*)__hosihikari_shim_handle, (void*)targets, (void*)output.Handle, (void*)duration.Handle);

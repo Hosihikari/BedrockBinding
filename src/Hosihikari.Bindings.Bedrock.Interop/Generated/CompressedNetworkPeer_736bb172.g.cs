@@ -70,6 +70,17 @@ public sealed unsafe partial class CompressedNetworkPeer : global::System.IDispo
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static CompressedNetworkPeer Create(global::Hosihikari.Bindings.Bedrock.Interop.CompressedNetworkPeer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_58f93f47((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CompressedNetworkPeer((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public nint _receivePacket(nint outData, nint timepointPtr) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");

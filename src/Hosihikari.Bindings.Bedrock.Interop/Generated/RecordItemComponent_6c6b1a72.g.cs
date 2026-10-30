@@ -40,8 +40,8 @@ public sealed unsafe partial class RecordItemComponent : global::System.IDisposa
 
     public nint mOwner
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_8e31ea66((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_8e31ea66((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8e31ea66((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_8e31ea66((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'SharedTypes::Beta::RecordItemComponent' is not a known bindable declaration.", false)]
@@ -54,7 +54,7 @@ public sealed unsafe partial class RecordItemComponent : global::System.IDisposa
 
     public static RecordItemComponent Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_d989e710();
+        var handle = NativeMethods.TablePtr->C3.hs_create_d989e710();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -67,9 +67,20 @@ public sealed unsafe partial class RecordItemComponent : global::System.IDisposa
     public static RecordItemComponent Create(nint component) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'SharedTypes::Beta::RecordItemComponent' is not a known bindable declaration.");
 
+    public static RecordItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.RecordItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_1451e8f9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RecordItemComponent((nint)handle);
+    }
+
     public void appendFormattedHovertext(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Safety.RedactableString hovertext)
     {
-        NativeMethods.TablePtr->C2.hs_method_8d5947f0((void*)__hosihikari_shim_handle, (void*)hovertext.Handle);
+        NativeMethods.TablePtr->C3.hs_method_8d5947f0((void*)__hosihikari_shim_handle, (void*)hovertext.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -78,31 +89,31 @@ public sealed unsafe partial class RecordItemComponent : global::System.IDisposa
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.HashedString getIdentifier()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->C2.hs_method_f1d264f7(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->C3.hs_method_f1d264f7(), false);
     }
 
     public string getRecordDescription()
     {
-        var __hs_view = NativeMethods.TablePtr->C2.hs_method_253edddc((void*)__hosihikari_shim_handle);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_253edddc((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int mComparatorSignal
     {
-        get => NativeMethods.TablePtr->C2.hs_get_f234d485((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_f234d485((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_f234d485((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_f234d485((void*)__hosihikari_shim_handle, value);
     }
 
     public float mDuration
     {
-        get => NativeMethods.TablePtr->C2.hs_get_e9243cf0((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_e9243cf0((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_e9243cf0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_e9243cf0((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSoundEvent_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_79e1fb1f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_79e1fb1f((void*)__hosihikari_shim_handle);
     }
 
 
@@ -112,7 +123,7 @@ public sealed unsafe partial class RecordItemComponent : global::System.IDisposa
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_6c6b1a72((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_6c6b1a72((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

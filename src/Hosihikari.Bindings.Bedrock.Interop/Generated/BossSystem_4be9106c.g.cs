@@ -43,6 +43,17 @@ public sealed unsafe partial class BossSystem : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_9ddfe934((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static BossSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.BossSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_79f26e9e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BossSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C0.hs_method_4f6f1e8a((void*)__hosihikari_shim_handle, (void*)registry.Handle);

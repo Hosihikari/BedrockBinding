@@ -38,28 +38,39 @@ public sealed unsafe partial class TransferPacketPayload : global::System.IDispo
         return __hs_handle;
     }
 
+    public static TransferPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.TransferPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_f4e0e24b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TransferPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mDestination_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_affa7c66((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_affa7c66((void*)__hosihikari_shim_handle);
     }
 
     public ushort mDestinationPort
     {
-        get => NativeMethods.TablePtr->C3.hs_get_3fd10cfe((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_3fd10cfe((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_3fd10cfe((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_3fd10cfe((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mGatheringsConfiguration_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_7a77405d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_7a77405d((void*)__hosihikari_shim_handle);
     }
 
     public bool mReloadWorld
     {
-        get => NativeMethods.TablePtr->C3.hs_get_183781c3((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_183781c3((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_183781c3((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_183781c3((void*)__hosihikari_shim_handle, value);
     }
 
 
@@ -69,7 +80,7 @@ public sealed unsafe partial class TransferPacketPayload : global::System.IDispo
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_e9322c4d((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_e9322c4d((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

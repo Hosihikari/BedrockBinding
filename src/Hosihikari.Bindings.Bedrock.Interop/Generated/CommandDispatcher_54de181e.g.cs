@@ -47,6 +47,17 @@ public sealed unsafe partial class CommandDispatcher : global::System.IDisposabl
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static CommandDispatcher Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandDispatcher arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f2a52703((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandDispatcher((nint)handle);
+    }
+
     public int performCommand(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.Command command)
     {
         return NativeMethods.TablePtr->C0.hs_method_223624c5((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)command.Handle);

@@ -38,6 +38,17 @@ public sealed unsafe partial class CachedLineData : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static CachedLineData Create(global::Hosihikari.Bindings.Bedrock.Interop.ChalkboardBlockActor_Nested.CachedLineData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_34545ed3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CachedLineData((nint)handle);
+    }
+
     public int lineLength
     {
         get => NativeMethods.TablePtr->C0.hs_get_866dae7b((void*)__hosihikari_shim_handle);

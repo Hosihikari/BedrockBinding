@@ -111,6 +111,17 @@ public sealed unsafe partial class AddBehaviorTreePacket : global::System.IDispo
         NativeMethods.TablePtr->C0.hs_method_38c62404((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+    public static AddBehaviorTreePacket Create(global::Hosihikari.Bindings.Bedrock.Interop.AddBehaviorTreePacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_36fe0ea4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AddBehaviorTreePacket((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");

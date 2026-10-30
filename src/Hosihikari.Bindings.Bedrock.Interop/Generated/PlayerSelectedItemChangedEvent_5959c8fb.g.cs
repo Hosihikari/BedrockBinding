@@ -38,6 +38,17 @@ public sealed unsafe partial class PlayerSelectedItemChangedEvent : global::Syst
         return __hs_handle;
     }
 
+    public static PlayerSelectedItemChangedEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerSelectedItemChangedEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_4e22f925((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerSelectedItemChangedEvent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mItem_Address
     {

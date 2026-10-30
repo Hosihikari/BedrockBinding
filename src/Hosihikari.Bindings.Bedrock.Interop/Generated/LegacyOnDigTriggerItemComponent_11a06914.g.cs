@@ -40,23 +40,23 @@ public sealed unsafe partial class LegacyOnDigTriggerItemComponent : global::Sys
 
     public nint mOwner
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_d634fd3b((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_d634fd3b((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d634fd3b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_d634fd3b((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public void __initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {
-        NativeMethods.TablePtr->C1.hs_method_71dca6e7((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+        NativeMethods.TablePtr->C2.hs_method_71dca6e7((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50.DiggerItemComponent diggerComponentData)
     {
-        return (nint)NativeMethods.TablePtr->C1.hs_method_82c53169((void*)__hosihikari_shim_handle, (void*)diggerComponentData.Handle);
+        return (nint)NativeMethods.TablePtr->C2.hs_method_82c53169((void*)__hosihikari_shim_handle, (void*)diggerComponentData.Handle);
     }
 
     public void _handleVersionBasedInitialization(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion originalJsonVersion)
     {
-        NativeMethods.TablePtr->C1.hs_method_490df0e9((void*)__hosihikari_shim_handle, (void*)originalJsonVersion.Handle);
+        NativeMethods.TablePtr->C2.hs_method_490df0e9((void*)__hosihikari_shim_handle, (void*)originalJsonVersion.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -65,7 +65,18 @@ public sealed unsafe partial class LegacyOnDigTriggerItemComponent : global::Sys
 
     public static LegacyOnDigTriggerItemComponent Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_29b933b1();
+        var handle = NativeMethods.TablePtr->C2.hs_create_29b933b1();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacyOnDigTriggerItemComponent((nint)handle);
+    }
+
+    public static LegacyOnDigTriggerItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyOnDigTriggerItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_876d2d02((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -76,7 +87,7 @@ public sealed unsafe partial class LegacyOnDigTriggerItemComponent : global::Sys
 
     public static LegacyOnDigTriggerItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50.DiggerItemComponent diggerComponentData)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_83784a29((void*)diggerComponentData.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_83784a29((void*)diggerComponentData.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -87,43 +98,43 @@ public sealed unsafe partial class LegacyOnDigTriggerItemComponent : global::Sys
 
     public void _initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {
-        NativeMethods.TablePtr->C1.hs_method_98e850af((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+        NativeMethods.TablePtr->C2.hs_method_98e850af((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
     public void handleVersionBasedInitialization(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion originalJsonVersion)
     {
-        NativeMethods.TablePtr->C1.hs_method_2d7ba95b((void*)__hosihikari_shim_handle, (void*)originalJsonVersion.Handle);
+        NativeMethods.TablePtr->C2.hs_method_2d7ba95b((void*)__hosihikari_shim_handle, (void*)originalJsonVersion.Handle);
     }
 
     public bool mCanUseOnDig
     {
-        get => NativeMethods.TablePtr->C1.hs_get_40cc5507((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_40cc5507((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_40cc5507((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_40cc5507((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnDigDefault_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_adbda842((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_adbda842((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnDigTriggers_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_a51b933e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a51b933e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnMineBlockSubscription_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_072ded5e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_072ded5e((void*)__hosihikari_shim_handle);
     }
 
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnTriggerPublisher_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_5874e20d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5874e20d((void*)__hosihikari_shim_handle);
     }
 
     public void Dispose()
@@ -132,7 +143,7 @@ public sealed unsafe partial class LegacyOnDigTriggerItemComponent : global::Sys
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_11a06914((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_11a06914((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

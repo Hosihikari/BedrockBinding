@@ -38,6 +38,17 @@ public sealed unsafe partial class Key : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Key Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBlockStateType_Nested.Key arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_76535563((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Key((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint blockState_Address
     {

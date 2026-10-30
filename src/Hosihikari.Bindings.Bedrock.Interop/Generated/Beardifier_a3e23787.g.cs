@@ -38,6 +38,17 @@ public sealed unsafe partial class Beardifier : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Beardifier Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.Beardifier arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_a9cb0e76((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Beardifier((nint)handle);
+    }
+
     public double compute(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
     {
         return NativeMethods.TablePtr->C4.hs_method_50faf197((void*)__hosihikari_shim_handle, (void*)pos.Handle);

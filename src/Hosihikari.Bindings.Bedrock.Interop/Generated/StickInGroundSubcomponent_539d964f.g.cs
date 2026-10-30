@@ -58,6 +58,17 @@ public sealed unsafe partial class StickInGroundSubcomponent : global::System.ID
         NativeMethods.TablePtr->C3.hs_method_77b935cc((void*)__hosihikari_shim_handle, (void*)component.Handle);
     }
 
+    public static StickInGroundSubcomponent Create(global::Hosihikari.Bindings.Bedrock.Interop.StickInGroundSubcomponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c50cd68b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StickInGroundSubcomponent((nint)handle);
+    }
+
     public void doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent component)
     {
         NativeMethods.TablePtr->C3.hs_method_b5a4d986((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)component.Handle);

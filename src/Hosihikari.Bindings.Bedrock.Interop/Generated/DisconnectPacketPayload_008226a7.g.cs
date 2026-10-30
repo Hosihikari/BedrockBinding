@@ -121,6 +121,17 @@ public sealed unsafe partial class DisconnectPacketPayload : global::System.IDis
         }
     }
 
+    public static DisconnectPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.DisconnectPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_1229312d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DisconnectPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mMessages_Address
     {

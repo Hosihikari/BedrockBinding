@@ -48,6 +48,17 @@ public sealed unsafe partial class SwimMoveControl : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_f91a0b85((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle);
     }
 
+    public static SwimMoveControl Create(global::Hosihikari.Bindings.Bedrock.Interop.SwimMoveControl arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_4d8b77a8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SwimMoveControl((nint)handle);
+    }
+
     public void initializeInternal(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.MoveControlDescription? description)
     {
         NativeMethods.TablePtr->C3.hs_method_68499e35((void*)__hosihikari_shim_handle, (void*)mob.Handle, (void*)(description?.Handle ?? 0));

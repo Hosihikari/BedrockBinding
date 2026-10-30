@@ -38,13 +38,15 @@ public sealed unsafe partial class VanillaItems : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static void registerHardCodedItemTags(nint itemRegistry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static void registerHardCodedItemTags(global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistryRef itemRegistry)
+    {
+        NativeMethods.TablePtr->C4.hs_method_a5c5de94((void*)itemRegistry.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static void registerItems(nint ctx, nint itemRegistry, nint baseGameVersion, nint experiments) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static void registerItems(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx, global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistryRef itemRegistry, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion, global::Hosihikari.Bindings.Bedrock.Interop.Experiments experiments)
+    {
+        NativeMethods.TablePtr->C4.hs_method_b8a82619((void*)ctx.Handle, (void*)itemRegistry.Handle, (void*)baseGameVersion.Handle, (void*)experiments.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LinkedAssetValidator>' is not a known bindable declaration.", false)]
     public static void serverInitCreativeItemsCallback(nint itemRegistry, nint blockDefinitionGroup, nint creativeItemRegistry, nint worldVersion, nint experiments, nint resourcePackManager, nint ctx, nint validator, nint eventing) =>

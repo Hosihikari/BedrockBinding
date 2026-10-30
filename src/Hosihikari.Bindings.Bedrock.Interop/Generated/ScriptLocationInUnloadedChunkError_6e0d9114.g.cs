@@ -54,6 +54,17 @@ public sealed unsafe partial class ScriptLocationInUnloadedChunkError : global::
         return new ScriptLocationInUnloadedChunkError((nint)handle);
     }
 
+    public static ScriptLocationInUnloadedChunkError Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptLocationInUnloadedChunkError arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_562a68b9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptLocationInUnloadedChunkError((nint)handle);
+    }
+
     public static ScriptLocationInUnloadedChunkError Create(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos)
     {
         var handle = NativeMethods.TablePtr->C3.hs_create_c9756198((void*)pos.Handle);

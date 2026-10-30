@@ -38,6 +38,17 @@ public sealed unsafe partial class BeforeWatchdogTerminateEvent : global::System
         return __hs_handle;
     }
 
+    public static BeforeWatchdogTerminateEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.BeforeWatchdogTerminateEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_984d5eca((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BeforeWatchdogTerminateEvent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mScope_Address
     {

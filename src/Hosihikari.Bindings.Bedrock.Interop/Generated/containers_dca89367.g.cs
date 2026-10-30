@@ -38,6 +38,17 @@ public sealed unsafe partial class containers : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static containers Create(global::Hosihikari.Bindings.Bedrock.Interop.brstd.associative_adapter_Bedrock__typeid_t_void___std__unique_ptr_BlockCompon_3d58a188.containers arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_9aa09bfe((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new containers((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint keys_Address
     {

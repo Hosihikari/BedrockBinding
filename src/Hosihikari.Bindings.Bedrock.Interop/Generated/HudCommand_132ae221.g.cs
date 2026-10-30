@@ -72,6 +72,17 @@ public sealed unsafe partial class HudCommand : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_8f34e344((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static HudCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.HudCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_c635493c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HudCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C1.hs_method_d7330f63((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

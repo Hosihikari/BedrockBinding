@@ -38,16 +38,27 @@ public sealed unsafe partial class RemoveVolumeEntityPacketPayload : global::Sys
         return __hs_handle;
     }
 
+    public static RemoveVolumeEntityPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.RemoveVolumeEntityPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a87f7338((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RemoveVolumeEntityPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mDimensionType_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_da37aaec((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_da37aaec((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mEntityNetId_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_d34cb27f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d34cb27f((void*)__hosihikari_shim_handle);
     }
 
 
@@ -57,7 +68,7 @@ public sealed unsafe partial class RemoveVolumeEntityPacketPayload : global::Sys
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_6f8ff916((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_6f8ff916((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

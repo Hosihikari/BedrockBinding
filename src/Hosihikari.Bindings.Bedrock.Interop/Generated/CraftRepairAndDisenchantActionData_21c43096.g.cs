@@ -38,6 +38,17 @@ public sealed unsafe partial class CraftRepairAndDisenchantActionData : global::
         return __hs_handle;
     }
 
+    public static CraftRepairAndDisenchantActionData Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestCereal.CraftRepairAndDisenchantActionData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_7675217c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CraftRepairAndDisenchantActionData((nint)handle);
+    }
+
     public byte mNumCrafts
     {
         get => NativeMethods.TablePtr->C1.hs_get_07f63eee((void*)__hosihikari_shim_handle);

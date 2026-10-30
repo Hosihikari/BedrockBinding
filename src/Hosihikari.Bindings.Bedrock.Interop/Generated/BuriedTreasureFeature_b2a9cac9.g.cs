@@ -75,6 +75,17 @@ public sealed unsafe partial class BuriedTreasureFeature : global::System.IDispo
         return new BuriedTreasureFeature((nint)handle);
     }
 
+    public static BuriedTreasureFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.BuriedTreasureFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_d5dbc004((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BuriedTreasureFeature((nint)handle);
+    }
+
     public static BuriedTreasureFeature Create(uint seed)
     {
         var handle = NativeMethods.TablePtr->C0.hs_create_7b9c6b0c(seed);

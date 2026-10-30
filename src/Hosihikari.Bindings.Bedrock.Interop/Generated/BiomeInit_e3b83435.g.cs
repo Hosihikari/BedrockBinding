@@ -65,6 +65,17 @@ public sealed unsafe partial class BiomeInit : global::System.IDisposable
         return new BiomeInit((nint)handle);
     }
 
+    public static BiomeInit Create(global::Hosihikari.Bindings.Bedrock.Interop.OperationNodeFilters.BiomeInit arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_c8c4379d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BiomeInit((nint)handle);
+    }
+
     public nint mDefaultOcean
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_1bfce087((void*)__hosihikari_shim_handle);

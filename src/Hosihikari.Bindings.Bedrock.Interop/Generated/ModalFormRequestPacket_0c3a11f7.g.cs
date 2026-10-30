@@ -111,6 +111,17 @@ public sealed unsafe partial class ModalFormRequestPacket : global::System.IDisp
         NativeMethods.TablePtr->C2.hs_method_834235db((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+    public static ModalFormRequestPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.ModalFormRequestPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_9a614f76((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ModalFormRequestPacket((nint)handle);
+    }
+
     public static ModalFormRequestPacket Create(uint formId, string formJSON)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(formJSON);

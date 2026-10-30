@@ -56,6 +56,17 @@ public sealed unsafe partial class ScriptPlayerGameModeChangeBeforeEvent : globa
         set => NativeMethods.TablePtr->C3.hs_set_b83642c9((void*)__hosihikari_shim_handle, value);
     }
 
+    public static ScriptPlayerGameModeChangeBeforeEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptPlayerGameModeChangeBeforeEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_b14a85bf((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptPlayerGameModeChangeBeforeEvent((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_47ace5b4());

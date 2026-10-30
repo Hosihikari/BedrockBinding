@@ -73,6 +73,17 @@ public sealed unsafe partial class SpawnGroupData : global::System.IDisposable
         return new SpawnGroupData((nint)handle);
     }
 
+    public static SpawnGroupData Create(global::Hosihikari.Bindings.Bedrock.Interop.SpawnGroupData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_9261eeec((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SpawnGroupData((nint)handle);
+    }
+
     public static SpawnGroupData Create(string identifier, global::Hosihikari.Bindings.Bedrock.Interop.MobSpawnRules spawnRules)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(identifier);

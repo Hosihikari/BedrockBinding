@@ -44,6 +44,17 @@ public sealed unsafe partial class IUnknownBlockTypeRegistry : global::System.ID
         get => (nint)NativeMethods.TablePtr->C1.hs_get_21e82f59((void*)__hosihikari_shim_handle);
     }
 
+    public static IUnknownBlockTypeRegistry Create(global::Hosihikari.Bindings.Bedrock.Interop.IUnknownBlockTypeRegistry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_545990ff((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IUnknownBlockTypeRegistry((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getUnknownBlock(nint serId) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

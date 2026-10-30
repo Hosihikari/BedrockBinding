@@ -57,6 +57,17 @@ public sealed unsafe partial class StoneCutterContainerScreenValidator : global:
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static StoneCutterContainerScreenValidator Create(global::Hosihikari.Bindings.Bedrock.Interop.StoneCutterContainerScreenValidator arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_236ac89d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StoneCutterContainerScreenValidator((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance _getResultFromId(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext, nint recipeNetId)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->C3.hs_method_0ac16525((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, (void*)recipeNetId));

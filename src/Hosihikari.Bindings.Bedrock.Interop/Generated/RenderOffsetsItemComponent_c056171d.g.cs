@@ -38,6 +38,17 @@ public sealed unsafe partial class RenderOffsetsItemComponent : global::System.I
         return __hs_handle;
     }
 
+    public static RenderOffsetsItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy.RenderOffsetsItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_4245df0b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RenderOffsetsItemComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mMainHand_Address
     {

@@ -43,6 +43,17 @@ public sealed unsafe partial class GameEventMovementTrackingSystem : global::Sys
         NativeMethods.TablePtr->C1.hs_method_6f4f8140((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static GameEventMovementTrackingSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.GameEventMovementTrackingSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_5f0a1c8b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameEventMovementTrackingSystem((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Optional<const RailMovementComponent>' is not a known bindable declaration.", false)]
     public static void _tickGameEventMovementTrackingComponent(nint actorOwnerComponent, nint gameEventMovementTrackingComponent, nint railMovementComponent) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Optional<const RailMovementComponent>' is not a known bindable declaration.");

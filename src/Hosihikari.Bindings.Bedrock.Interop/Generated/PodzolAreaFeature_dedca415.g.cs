@@ -67,6 +67,17 @@ public sealed unsafe partial class PodzolAreaFeature : global::System.IDisposabl
         return NativeMethods.TablePtr->C2.hs_method_44aca785((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)origin.Handle, (void*)random.Handle) != 0;
     }
 
+    public static PodzolAreaFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.PodzolAreaFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_f9a2349a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PodzolAreaFeature((nint)handle);
+    }
+
     public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos origin, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         return NativeMethods.TablePtr->C2.hs_method_48a64709((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)origin.Handle, (void*)random.Handle) != 0;

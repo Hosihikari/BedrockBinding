@@ -38,10 +38,21 @@ public sealed unsafe partial class RenderRotationComponent : global::System.IDis
         return __hs_handle;
     }
 
+    public static RenderRotationComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.RenderRotationComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_90fd4e8d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RenderRotationComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mRot_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_cbe7a3b2((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_cbe7a3b2((void*)__hosihikari_shim_handle);
     }
 
 
@@ -51,7 +62,7 @@ public sealed unsafe partial class RenderRotationComponent : global::System.IDis
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_1f2099c6((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_1f2099c6((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

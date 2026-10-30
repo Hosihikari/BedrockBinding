@@ -53,6 +53,17 @@ public sealed unsafe partial class PlayerAbilitiesManager : global::System.IDisp
         return new PlayerAbilitiesManager((nint)handle);
     }
 
+    public static PlayerAbilitiesManager Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerAbilitiesManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_a1e0cd47((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerAbilitiesManager((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<GameplayUserManager>>' is not a known bindable declaration.", false)]
     public static PlayerAbilitiesManager Create(nint gameplayUserManager) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<GameplayUserManager>>' is not a known bindable declaration.");

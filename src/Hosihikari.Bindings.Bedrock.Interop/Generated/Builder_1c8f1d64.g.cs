@@ -43,6 +43,17 @@ public sealed unsafe partial class Builder : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_0cc05430((void*)__hosihikari_shim_handle);
     }
 
+    public static Builder Create(global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext_Nested.Builder arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_8fbc9a0d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Builder((nint)handle);
+    }
+
     public nint mDeathSource
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_f9fb9222((void*)__hosihikari_shim_handle);

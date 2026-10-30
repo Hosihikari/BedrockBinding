@@ -44,7 +44,7 @@ public sealed unsafe partial class RegisterDiagnosticsStatsTypes : global::Syste
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_be236fe6((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_be236fe6((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

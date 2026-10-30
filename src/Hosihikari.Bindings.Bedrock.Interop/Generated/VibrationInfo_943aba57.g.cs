@@ -38,6 +38,17 @@ public sealed unsafe partial class VibrationInfo : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static VibrationInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.VibrationInfo arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_7c2303c7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VibrationInfo((nint)handle);
+    }
+
     public void load(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper dataLoadHelper)
     {
         NativeMethods.TablePtr->C4.hs_method_65f8af35((void*)__hosihikari_shim_handle, (void*)tag.Handle, (void*)dataLoadHelper.Handle);

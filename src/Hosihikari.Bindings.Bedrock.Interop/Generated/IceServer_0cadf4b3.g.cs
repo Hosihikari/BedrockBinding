@@ -38,6 +38,17 @@ public sealed unsafe partial class IceServer : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static IceServer Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.PeerConnectionInterface_Nested.IceServer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_7a1b9b1e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IceServer((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint hostname_Address
     {

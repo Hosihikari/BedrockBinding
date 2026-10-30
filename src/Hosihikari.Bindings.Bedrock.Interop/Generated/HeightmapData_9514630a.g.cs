@@ -49,6 +49,17 @@ public sealed unsafe partial class HeightmapData : global::System.IDisposable
         return new HeightmapData((nint)handle);
     }
 
+    public static HeightmapData Create(global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPacketPayload_Nested.HeightmapData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_9e1dd212((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HeightmapData((nint)handle);
+    }
+
     public byte mHeightMapType
     {
         get => NativeMethods.TablePtr->C3.hs_get_afa8e065((void*)__hosihikari_shim_handle);

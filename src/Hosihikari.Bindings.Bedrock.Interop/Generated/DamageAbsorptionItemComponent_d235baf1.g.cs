@@ -38,9 +38,10 @@ public sealed unsafe partial class DamageAbsorptionItemComponent : global::Syste
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_21_10.DamageAbsorptionItemComponent data)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_a0ffca2d((void*)__hosihikari_shim_handle, (void*)data.Handle);
+    }
 
     public nint _ctor(int[] absorbableDamageCauses)
     {
@@ -65,9 +66,27 @@ public sealed unsafe partial class DamageAbsorptionItemComponent : global::Syste
         return new DamageAbsorptionItemComponent((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static DamageAbsorptionItemComponent Create(nint data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static DamageAbsorptionItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_21_10.DamageAbsorptionItemComponent data)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_74638b4a((void*)data.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DamageAbsorptionItemComponent((nint)handle);
+    }
+
+    public static DamageAbsorptionItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.DamageAbsorptionItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_0d4be902((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DamageAbsorptionItemComponent((nint)handle);
+    }
 
     public static DamageAbsorptionItemComponent Create(int[] absorbableDamageCauses)
     {

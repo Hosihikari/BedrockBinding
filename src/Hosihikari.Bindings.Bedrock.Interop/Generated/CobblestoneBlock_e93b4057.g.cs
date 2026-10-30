@@ -269,6 +269,17 @@ public sealed unsafe partial class CobblestoneBlock : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static CobblestoneBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.CobblestoneBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_3fc28212((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CobblestoneBlock((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.Block? tryGetInfested(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
         var __hs_handle = NativeMethods.TablePtr->C0.hs_method_014b737a((void*)__hosihikari_shim_handle, (void*)block.Handle);

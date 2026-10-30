@@ -73,6 +73,17 @@ public sealed unsafe partial class VideoEncoderFactory : global::System.IDisposa
         }
     }
 
+    public static VideoEncoderFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.VideoEncoderFactory arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_95f28e22((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VideoEncoderFactory((nint)handle);
+    }
+
 
     public void Dispose()
     {

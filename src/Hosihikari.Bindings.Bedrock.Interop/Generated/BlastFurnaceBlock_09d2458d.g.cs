@@ -77,6 +77,17 @@ public sealed unsafe partial class BlastFurnaceBlock : global::System.IDisposabl
         return new BlastFurnaceBlock((nint)handle);
     }
 
+    public static BlastFurnaceBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.BlastFurnaceBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_092f3e13((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlastFurnaceBlock((nint)handle);
+    }
+
     public static BlastFurnaceBlock Create(string nameId, int id, bool lit)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);

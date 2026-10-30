@@ -53,6 +53,17 @@ public sealed unsafe partial class PreviewContainerValidation : global::System.I
         return NativeMethods.TablePtr->C2.hs_method_28702f8e((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, (void*)container.Handle, slot) != 0;
     }
 
+    public static PreviewContainerValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.PreviewContainerValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_32126bec((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PreviewContainerValidation((nint)handle);
+    }
+
     public int getAllowedAddCount(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg1)
     {
         return NativeMethods.TablePtr->C2.hs_method_cf244ec2((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle);

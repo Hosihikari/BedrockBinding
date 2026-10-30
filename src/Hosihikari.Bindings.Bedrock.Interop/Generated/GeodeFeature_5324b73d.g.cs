@@ -45,6 +45,17 @@ public sealed unsafe partial class GeodeFeature : global::System.IDisposable
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
+    public static GeodeFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.GeodeFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_157d348b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GeodeFeature((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mAlternateInnerLayer_Address
     {

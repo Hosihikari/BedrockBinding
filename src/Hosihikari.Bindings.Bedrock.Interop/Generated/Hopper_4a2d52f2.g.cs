@@ -38,6 +38,17 @@ public sealed unsafe partial class Hopper : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Hopper Create(global::Hosihikari.Bindings.Bedrock.Interop.Hopper arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_f8621168((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Hopper((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.Container? _getContainerInBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos)
     {
         var __hs_handle = NativeMethods.TablePtr->C1.hs_method_da2e5e70((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle);
@@ -74,9 +85,10 @@ public sealed unsafe partial class Hopper : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_4ef5ee13((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)fromContainer.Handle, (void*)pos.Handle, attachedFace, canPushItems) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public bool _tryMoveItems(nint callbacks, nint region, nint fromContainer, nint pos, int attachedFace, bool canPushItems) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public bool _tryMoveItems(global::Hosihikari.Bindings.Bedrock.Interop.HopperCallbacks callbacks, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Container fromContainer, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int attachedFace, bool canPushItems)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_0de46c90((void*)__hosihikari_shim_handle, (void*)callbacks.Handle, (void*)region.Handle, (void*)fromContainer.Handle, (void*)pos.Handle, attachedFace, canPushItems) != 0;
+    }
 
     public bool _tryPullInItemsFromAboveContainer(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Container toContainer, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos)
     {

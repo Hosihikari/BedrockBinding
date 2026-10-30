@@ -43,6 +43,17 @@ public sealed unsafe partial class ScriptIdentityModuleFactory : global::System.
         return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->C3.hs_method_1859fc13(), false);
     }
 
+    public static ScriptIdentityModuleFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptIdentityModuleFactory arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_89597de5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptIdentityModuleFactory((nint)handle);
+    }
+
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk13b033_Address

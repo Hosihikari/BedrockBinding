@@ -38,6 +38,17 @@ public sealed unsafe partial class JigsawJunction : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static JigsawJunction Create(global::Hosihikari.Bindings.Bedrock.Interop.JigsawJunction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_e3bda3e1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new JigsawJunction((nint)handle);
+    }
+
     public int mDeltaSourceY
     {
         get => NativeMethods.TablePtr->C1.hs_get_7bc8ade5((void*)__hosihikari_shim_handle);

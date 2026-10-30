@@ -143,6 +143,17 @@ public sealed unsafe partial class PlayerDimensionTransferer : global::System.ID
         return new PlayerDimensionTransferer((nint)handle);
     }
 
+    public static PlayerDimensionTransferer Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerDimensionTransferer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_34baeb6b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerDimensionTransferer((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<PortalForcer>>' is not a known bindable declaration.", false)]
     public static PlayerDimensionTransferer Create(nint playerDimensionTransferProxy, bool isClientSide, nint portalForcer, nint sharedSpawnGetter, nint levelStorage, nint loadingScreenIdManager) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<PortalForcer>>' is not a known bindable declaration.");

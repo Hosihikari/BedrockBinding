@@ -48,6 +48,17 @@ public sealed unsafe partial class WardenSpawnTrackerSystem : global::System.IDi
         NativeMethods.TablePtr->C4.hs_method_9713f071((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static WardenSpawnTrackerSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.WardenSpawnTrackerSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_d7c60947((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WardenSpawnTrackerSystem((nint)handle);
+    }
+
     public int onLevelAddedPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
         return NativeMethods.TablePtr->C4.hs_method_4cb7969a((void*)__hosihikari_shim_handle, (void*)player.Handle);

@@ -38,6 +38,17 @@ public sealed unsafe partial class FecControllerOverride : global::System.IDispo
         return __hs_handle;
     }
 
+    public static FecControllerOverride Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.FecControllerOverride arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_c87b3445((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FecControllerOverride((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void SetFecAllowed(bool fec_allowed) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

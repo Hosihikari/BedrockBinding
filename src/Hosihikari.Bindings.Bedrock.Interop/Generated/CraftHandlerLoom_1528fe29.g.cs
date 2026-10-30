@@ -85,6 +85,17 @@ public sealed unsafe partial class CraftHandlerLoom : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_42e521aa((void*)__hosihikari_shim_handle, (void*)requestAction.Handle);
     }
 
+    public static CraftHandlerLoom Create(global::Hosihikari.Bindings.Bedrock.Interop.CraftHandlerLoom arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_4ca8e2ec((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CraftHandlerLoom((nint)handle);
+    }
+
     public byte _handleCraftAction(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionCraftBase requestAction)
     {
         return NativeMethods.TablePtr->C1.hs_method_166d6377((void*)__hosihikari_shim_handle, (void*)requestAction.Handle);

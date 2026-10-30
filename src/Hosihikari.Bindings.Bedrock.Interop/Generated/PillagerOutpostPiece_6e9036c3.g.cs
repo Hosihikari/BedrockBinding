@@ -87,6 +87,17 @@ public sealed unsafe partial class PillagerOutpostPiece : global::System.IDispos
         return new PillagerOutpostPiece((nint)handle);
     }
 
+    public static PillagerOutpostPiece Create(global::Hosihikari.Bindings.Bedrock.Interop.PillagerOutpostPieces_Nested.PillagerOutpostPiece arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_2dc67173((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PillagerOutpostPiece((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' is not a known bindable declaration.", false)]
     public static PillagerOutpostPiece Create(nint structureManager, nint templateName, nint origin, nint rotation, float integrity, bool isSatellite, nint dimension) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' is not a known bindable declaration.");

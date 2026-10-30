@@ -156,6 +156,17 @@ public sealed unsafe partial class Inventory : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_7fb0ae6c((void*)__hosihikari_shim_handle, slot, (void*)item.Handle, forceBalanced);
     }
 
+    public static Inventory Create(global::Hosihikari.Bindings.Bedrock.Interop.Inventory arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_5dd6067c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Inventory((nint)handle);
+    }
+
     public bool add(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
     {
         return NativeMethods.TablePtr->C1.hs_method_18e4789b((void*)__hosihikari_shim_handle, (void*)item.Handle) != 0;

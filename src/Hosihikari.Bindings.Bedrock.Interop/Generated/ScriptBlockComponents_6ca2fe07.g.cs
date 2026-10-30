@@ -38,6 +38,17 @@ public sealed unsafe partial class ScriptBlockComponents : global::System.IDispo
         return __hs_handle;
     }
 
+    public static ScriptBlockComponents Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBlockComponents arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_d665ea16((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptBlockComponents((nint)handle);
+    }
+
     public static void bind(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ModuleBindingBuilder moduleBuilder, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.Version scriptingVersion, global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptComponentTypeEnumBuilder componentTypeEnumBuilder, global::Hosihikari.Bindings.Abi.SharedHandle? blockComponents)
     {
         NativeMethods.TablePtr->C3.hs_method_9d2c922f((void*)moduleBuilder.Handle, (void*)scriptingVersion.Handle, (void*)componentTypeEnumBuilder.Handle, blockComponents?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));

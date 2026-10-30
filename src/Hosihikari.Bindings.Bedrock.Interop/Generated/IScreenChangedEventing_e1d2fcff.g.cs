@@ -38,6 +38,17 @@ public sealed unsafe partial class IScreenChangedEventing : global::System.IDisp
         return __hs_handle;
     }
 
+    public static IScreenChangedEventing Create(global::Hosihikari.Bindings.Bedrock.Interop.IScreenChangedEventing arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_f819b860((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IScreenChangedEventing((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void fireEventImGuiScreenChanged(nint screenName, nint additionalProperties) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

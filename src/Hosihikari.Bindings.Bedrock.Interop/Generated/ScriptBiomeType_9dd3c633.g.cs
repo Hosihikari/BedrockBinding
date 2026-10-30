@@ -38,6 +38,17 @@ public sealed unsafe partial class ScriptBiomeType : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ScriptBiomeType Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBiomeType arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_d3fac24a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptBiomeType((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_370c0265());

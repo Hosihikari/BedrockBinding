@@ -85,6 +85,17 @@ public sealed unsafe partial class ShooterItemComponent : global::System.IDispos
         return new ShooterItemComponent((nint)handle);
     }
 
+    public static ShooterItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ShooterItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_82586418((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ShooterItemComponent((nint)handle);
+    }
+
     public void _consumeAmmunition(global::Hosihikari.Bindings.Bedrock.Interop.Player? player, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack ammunition, int slotIndex, bool infiniteAmmo, bool fromOffhand)
     {
         NativeMethods.TablePtr->C3.hs_method_6adddd08((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)ammunition.Handle, slotIndex, infiniteAmmo, fromOffhand);

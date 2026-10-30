@@ -40,7 +40,7 @@ public sealed unsafe partial class LevelAnimateTickHelper : global::System.IDisp
 
     public static LevelAnimateTickHelper Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_7094daef();
+        var handle = NativeMethods.TablePtr->C2.hs_create_7094daef();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class LevelAnimateTickHelper : global::System.IDisp
 
     public static LevelAnimateTickHelper Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelAnimateTickHelper arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_5090ab1f((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_5090ab1f((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,24 +63,24 @@ public sealed unsafe partial class LevelAnimateTickHelper : global::System.IDisp
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk3e3067_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_86044deb((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_86044deb((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk623737_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_269fe08a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_269fe08a((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkd511a7_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_81b117e5((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_81b117e5((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelAnimateTickHelper operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LevelAnimateTickHelper arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelAnimateTickHelper((nint)NativeMethods.TablePtr->C1.hs_method_1ee6dbd0((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelAnimateTickHelper((nint)NativeMethods.TablePtr->C2.hs_method_1ee6dbd0((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -89,7 +89,7 @@ public sealed unsafe partial class LevelAnimateTickHelper : global::System.IDisp
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_0b83aea7((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_0b83aea7((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

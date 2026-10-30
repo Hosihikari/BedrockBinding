@@ -70,6 +70,17 @@ public sealed unsafe partial class VoiceMediaSendChannelInterface : global::Syst
     public bool SetSenderParameters(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static VoiceMediaSendChannelInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.VoiceMediaSendChannelInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_64171ae5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VoiceMediaSendChannelInterface((nint)handle);
+    }
+
 
     public void Dispose()
     {

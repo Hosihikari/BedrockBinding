@@ -80,6 +80,17 @@ public sealed unsafe partial class MonumentBuilding : global::System.IDisposable
         return new MonumentBuilding((nint)handle);
     }
 
+    public static MonumentBuilding Create(global::Hosihikari.Bindings.Bedrock.Interop.MonumentBuilding arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_6b103bec((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MonumentBuilding((nint)handle);
+    }
+
     public void generateWing(bool isFlipped, int xoff, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox chunkBB)
     {
         NativeMethods.TablePtr->C2.hs_method_ec082db7((void*)__hosihikari_shim_handle, isFlipped, xoff, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle);

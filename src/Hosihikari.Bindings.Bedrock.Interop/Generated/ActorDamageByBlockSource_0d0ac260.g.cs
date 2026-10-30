@@ -51,6 +51,17 @@ public sealed unsafe partial class ActorDamageByBlockSource : global::System.IDi
         return NativeMethods.TablePtr->C0.hs_method_2854fae9((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static ActorDamageByBlockSource Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageByBlockSource arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_45f998bd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorDamageByBlockSource((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::pair<std::basic_string<char>, std::vector<std::basic_string<char>>>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _getDeathMessageInternal(nint deadName, nint dead) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::pair<std::basic_string<char>, std::vector<std::basic_string<char>>>' requires --link-carrier or --virtual-dispatch.");

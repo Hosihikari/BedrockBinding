@@ -43,6 +43,17 @@ public sealed unsafe partial class StoneCutterInputContainerValidation : global:
         return NativeMethods.TablePtr->C3.hs_method_c0c69ef8((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);
     }
 
+    public static StoneCutterInputContainerValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.StoneCutterInputContainerValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_40a056fc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StoneCutterInputContainerValidation((nint)handle);
+    }
+
     public int getContainerOffset(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
     {
         return NativeMethods.TablePtr->C3.hs_method_72fcef81((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);

@@ -43,6 +43,17 @@ public sealed unsafe partial class HomeSystem : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_84eb54e3((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static HomeSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.HomeSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_f0a658b3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HomeSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C1.hs_method_769ab4ae((void*)__hosihikari_shim_handle, (void*)registry.Handle);

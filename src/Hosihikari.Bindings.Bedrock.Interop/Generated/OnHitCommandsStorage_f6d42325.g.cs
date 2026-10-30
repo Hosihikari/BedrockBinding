@@ -38,6 +38,17 @@ public sealed unsafe partial class OnHitCommandsStorage : global::System.IDispos
         return __hs_handle;
     }
 
+    public static OnHitCommandsStorage Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_50.OnHitCommandsStorage arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_9ba3a842((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OnHitCommandsStorage((nint)handle);
+    }
+
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C3.hs_method_f8910b51((void*)ctx.Handle);

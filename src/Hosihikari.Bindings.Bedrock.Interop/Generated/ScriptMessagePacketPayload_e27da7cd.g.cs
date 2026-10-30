@@ -82,6 +82,17 @@ public sealed unsafe partial class ScriptMessagePacketPayload : global::System.I
         return new ScriptMessagePacketPayload((nint)handle);
     }
 
+    public static ScriptMessagePacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptMessagePacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a991cd82((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptMessagePacketPayload((nint)handle);
+    }
+
     public static ScriptMessagePacketPayload Create(string messageId, string messageValue)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(messageId);

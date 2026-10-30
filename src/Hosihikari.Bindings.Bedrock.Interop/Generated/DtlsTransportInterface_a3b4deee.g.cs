@@ -43,6 +43,17 @@ public sealed unsafe partial class DtlsTransportInterface : global::System.IDisp
         NativeMethods.TablePtr->C4.hs_method_ebf96ae5((void*)__hosihikari_shim_handle);
     }
 
+    public static DtlsTransportInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.DtlsTransportInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_df49d3d6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DtlsTransportInterface((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint Information() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

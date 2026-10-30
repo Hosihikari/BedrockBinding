@@ -54,6 +54,17 @@ public sealed unsafe partial class WebSocketInterfaceInternal : global::System.I
     public nint _sendMessage(nint arg0, nint arg1, nint arg2) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'long' requires --link-carrier or --virtual-dispatch.");
 
+    public static WebSocketInterfaceInternal Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.WebSocketInterfaceInternal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_c95e242d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WebSocketInterfaceInternal((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'long' requires --link-carrier or --virtual-dispatch.", false)]
     public nint connect(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'long' requires --link-carrier or --virtual-dispatch.");

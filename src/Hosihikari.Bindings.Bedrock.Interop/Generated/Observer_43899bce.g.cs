@@ -47,6 +47,17 @@ public sealed unsafe partial class Observer : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static Observer Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.JsepTransportController_Nested.Observer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_bf5fe7ab((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Observer((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool OnTransportChanged(nint mid, nint rtp_transport, nint dtls_transport, nint data_channel_transport) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

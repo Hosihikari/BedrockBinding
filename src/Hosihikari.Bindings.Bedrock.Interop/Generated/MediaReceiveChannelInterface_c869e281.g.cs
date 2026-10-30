@@ -62,6 +62,17 @@ public sealed unsafe partial class MediaReceiveChannelInterface : global::System
     public nint GetUnsignaledSsrc() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static MediaReceiveChannelInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.MediaReceiveChannelInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_7c4feaef((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MediaReceiveChannelInterface((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void OnDemuxerCriteriaUpdateComplete() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

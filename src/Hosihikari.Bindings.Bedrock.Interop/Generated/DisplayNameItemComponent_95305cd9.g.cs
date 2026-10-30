@@ -38,6 +38,17 @@ public sealed unsafe partial class DisplayNameItemComponent : global::System.IDi
         return __hs_handle;
     }
 
+    public static DisplayNameItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50.DisplayNameItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_b7952309((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DisplayNameItemComponent((nint)handle);
+    }
+
     public static string NAME()
     {
         var __hs_view = NativeMethods.TablePtr->C3.hs_method_aa415c91();

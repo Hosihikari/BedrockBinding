@@ -38,6 +38,17 @@ public sealed unsafe partial class PlayerInputRequestComponent : global::System.
         return __hs_handle;
     }
 
+    public static PlayerInputRequestComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerInputRequestComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_fb8ba57c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerInputRequestComponent((nint)handle);
+    }
+
     public bool mBreathingInAir
     {
         get => NativeMethods.TablePtr->C2.hs_get_ad9030e2((void*)__hosihikari_shim_handle) != 0;

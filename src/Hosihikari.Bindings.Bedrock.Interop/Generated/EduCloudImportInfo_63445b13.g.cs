@@ -38,6 +38,17 @@ public sealed unsafe partial class EduCloudImportInfo : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static EduCloudImportInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.FileArchiver_Nested.EduCloudImportInfo arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_5fdabb6c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EduCloudImportInfo((nint)handle);
+    }
+
     public bool allowMultiplayer
     {
         get => NativeMethods.TablePtr->C1.hs_get_cb7f4956((void*)__hosihikari_shim_handle) != 0;

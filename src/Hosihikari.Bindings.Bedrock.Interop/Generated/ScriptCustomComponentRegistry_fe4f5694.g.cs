@@ -38,6 +38,17 @@ public sealed unsafe partial class ScriptCustomComponentRegistry : global::Syste
         return __hs_handle;
     }
 
+    public static ScriptCustomComponentRegistry Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptCustomComponentRegistry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_e327d5d9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptCustomComponentRegistry((nint)handle);
+    }
+
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mInitializeCompleteSub_Address

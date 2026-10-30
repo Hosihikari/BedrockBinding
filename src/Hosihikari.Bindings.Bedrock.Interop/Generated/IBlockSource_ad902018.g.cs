@@ -38,6 +38,17 @@ public sealed unsafe partial class IBlockSource : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static IBlockSource Create(global::Hosihikari.Bindings.Bedrock.Interop.IBlockSource arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_a1b08404((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IBlockSource((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void addListener(nint l) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

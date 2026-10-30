@@ -50,6 +50,17 @@ public sealed unsafe partial class SimpleTreeTrunk : global::System.IDisposable
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
+    public static SimpleTreeTrunk Create(global::Hosihikari.Bindings.Bedrock.Interop.SimpleTreeTrunk arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_ed52a5a4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SimpleTreeTrunk((nint)handle);
+    }
+
     public int getTreeHeight(global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         return NativeMethods.TablePtr->C3.hs_method_5f358083((void*)__hosihikari_shim_handle, (void*)random.Handle);

@@ -53,7 +53,7 @@ public sealed unsafe partial class ContentLogScope : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(scope, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->C0.hs_method_a8588e35((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return (nint)NativeMethods.TablePtr->C1.hs_method_a8588e35((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -72,18 +72,29 @@ public sealed unsafe partial class ContentLogScope : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(@ref ?? string.Empty, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->C0.hs_method_c4fd2dcd((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)str.Handle, @ref is not null);
+            return (nint)NativeMethods.TablePtr->C1.hs_method_c4fd2dcd((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)str.Handle, @ref is not null);
         }
     }
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C0.hs_method_a5bfc8b2((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_a5bfc8b2((void*)__hosihikari_shim_handle);
     }
 
     public static ContentLogScope Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_b42473d1();
+        var handle = NativeMethods.TablePtr->C1.hs_create_b42473d1();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ContentLogScope((nint)handle);
+    }
+
+    public static ContentLogScope Create(global::Hosihikari.Bindings.Bedrock.Interop.ContentLog_Nested.ContentLogScope arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d4616acd((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -107,7 +118,7 @@ public sealed unsafe partial class ContentLogScope : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(scope, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->C0.hs_create_39053b53(__hs_stringData0, (nuint)__hs_stringByteCount0);
+            var handle = NativeMethods.TablePtr->C1.hs_create_39053b53(__hs_stringData0, (nuint)__hs_stringByteCount0);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -132,7 +143,7 @@ public sealed unsafe partial class ContentLogScope : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(@ref ?? string.Empty, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->C0.hs_create_a5810520(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)str.Handle, @ref is not null);
+            var handle = NativeMethods.TablePtr->C1.hs_create_a5810520(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)str.Handle, @ref is not null);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -144,14 +155,14 @@ public sealed unsafe partial class ContentLogScope : global::System.IDisposable
 
     public bool mPopScope
     {
-        get => NativeMethods.TablePtr->C0.hs_get_0ccba489((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C0.hs_set_0ccba489((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_0ccba489((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_0ccba489((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mScopeHandler_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_a41e8969((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a41e8969((void*)__hosihikari_shim_handle);
     }
 
 
@@ -161,7 +172,7 @@ public sealed unsafe partial class ContentLogScope : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_6bfd46b3((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_6bfd46b3((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -156,6 +156,17 @@ public sealed unsafe partial class WindChargedMobEffect : global::System.IDispos
         NativeMethods.TablePtr->C4.hs_method_95cbe215((void*)__hosihikari_shim_handle, (void*)target.Handle, amplifier);
     }
 
+    public static WindChargedMobEffect Create(global::Hosihikari.Bindings.Bedrock.Interop.WindChargedMobEffect arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_1654b81c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WindChargedMobEffect((nint)handle);
+    }
+
     public void onActorDied(global::Hosihikari.Bindings.Bedrock.Interop.Actor target, int amplifier)
     {
         NativeMethods.TablePtr->C4.hs_method_114461c3((void*)__hosihikari_shim_handle, (void*)target.Handle, amplifier);

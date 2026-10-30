@@ -48,6 +48,17 @@ public sealed unsafe partial class SmithingTableMaterialContainerValidation : gl
         return NativeMethods.TablePtr->C3.hs_method_daa06d1b((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, arg1, (void*)item.Handle, arg3, arg4) != 0;
     }
 
+    public static SmithingTableMaterialContainerValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.SmithingTableMaterialContainerValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_af128ee5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SmithingTableMaterialContainerValidation((nint)handle);
+    }
+
     public int getContainerOffset(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
     {
         return NativeMethods.TablePtr->C3.hs_method_bd243bcf((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);

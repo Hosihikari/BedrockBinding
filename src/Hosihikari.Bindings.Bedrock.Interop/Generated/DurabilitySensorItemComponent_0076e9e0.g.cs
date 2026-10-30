@@ -43,6 +43,17 @@ public sealed unsafe partial class DurabilitySensorItemComponent : global::Syste
         NativeMethods.TablePtr->C3.hs_method_c8c3ab9a((void*)__hosihikari_shim_handle);
     }
 
+    public static DurabilitySensorItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_21_10.DurabilitySensorItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c9708582((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DurabilitySensorItemComponent((nint)handle);
+    }
+
     public static string NAME()
     {
         var __hs_view = NativeMethods.TablePtr->C3.hs_method_a16bdfa1();

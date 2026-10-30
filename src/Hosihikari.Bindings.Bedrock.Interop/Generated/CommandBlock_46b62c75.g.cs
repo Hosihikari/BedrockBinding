@@ -338,6 +338,17 @@ public sealed unsafe partial class CommandBlock : global::System.IDisposable
         return new CommandBlock((nint)handle);
     }
 
+    public static CommandBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_26c9f4b8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandBlock((nint)handle);
+    }
+
     public static CommandBlock Create(string nameId, int id, ushort mode)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);

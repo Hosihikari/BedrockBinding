@@ -42,6 +42,17 @@ public sealed unsafe partial class RtpPacketSinkInterface : global::System.IDisp
     public void OnRtpPacket(nint parsed_packet) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static RtpPacketSinkInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RtpPacketSinkInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_599073bb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RtpPacketSinkInterface((nint)handle);
+    }
+
 
     public void Dispose()
     {

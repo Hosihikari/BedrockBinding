@@ -38,6 +38,17 @@ public sealed unsafe partial class ClientboundDebugRendererPacketPayload : globa
         return __hs_handle;
     }
 
+    public static ClientboundDebugRendererPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.ClientboundDebugRendererPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_2f337612((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ClientboundDebugRendererPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mDebugMarkerData_Address
     {

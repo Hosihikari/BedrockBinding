@@ -127,6 +127,17 @@ public sealed unsafe partial class WindBurstEnchant : global::System.IDisposable
         return NativeMethods.TablePtr->C4.hs_method_3363718c((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static WindBurstEnchant Create(global::Hosihikari.Bindings.Bedrock.Interop.WindBurstEnchant arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_f48691eb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WindBurstEnchant((nint)handle);
+    }
+
     public void doPostItemHurtActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor attacker, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, int enchantLevel)
     {
         NativeMethods.TablePtr->C4.hs_method_0706725e((void*)__hosihikari_shim_handle, (void*)attacker.Handle, (void*)arg1.Handle, enchantLevel);

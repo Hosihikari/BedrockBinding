@@ -38,6 +38,17 @@ public sealed unsafe partial class DefaultBiome : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static DefaultBiome Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_50.DimensionDefinition.DefaultBiome arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_39cd634f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DefaultBiome((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBiomeId_Address
     {

@@ -48,6 +48,17 @@ public sealed unsafe partial class DwellerSystem : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_843d6d33((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static DwellerSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.DwellerSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_330e5e82((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DwellerSystem((nint)handle);
+    }
+
     public void registerEvents(nint eventDispatcher)
     {
         NativeMethods.TablePtr->C1.hs_method_801367a4((void*)__hosihikari_shim_handle, (void*)eventDispatcher);

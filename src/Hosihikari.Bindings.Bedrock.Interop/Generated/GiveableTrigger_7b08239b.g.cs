@@ -43,6 +43,17 @@ public sealed unsafe partial class GiveableTrigger : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_d8bcc358((void*)__hosihikari_shim_handle);
     }
 
+    public static GiveableTrigger Create(global::Hosihikari.Bindings.Bedrock.Interop.GiveableTrigger arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_7c0f9859((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GiveableTrigger((nint)handle);
+    }
+
     public void addItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor itemDescriptor)
     {
         NativeMethods.TablePtr->C1.hs_method_2a957b27((void*)__hosihikari_shim_handle, (void*)itemDescriptor.Handle);

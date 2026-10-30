@@ -134,6 +134,17 @@ public sealed unsafe partial class HurtByTargetGoal : global::System.IDisposable
         }
     }
 
+    public static HurtByTargetGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.HurtByTargetGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_5308d649((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HurtByTargetGoal((nint)handle);
+    }
+
     public void alertOther(global::Hosihikari.Bindings.Bedrock.Interop.Mob? other, global::Hosihikari.Bindings.Bedrock.Interop.Mob? hurtByMob)
     {
         NativeMethods.TablePtr->C1.hs_method_26710129((void*)__hosihikari_shim_handle, (void*)(other?.Handle ?? 0), (void*)(hurtByMob?.Handle ?? 0));

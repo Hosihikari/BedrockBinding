@@ -42,6 +42,17 @@ public sealed unsafe partial class IPacketHandlerDispatcher : global::System.IDi
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static IPacketHandlerDispatcher Create(global::Hosihikari.Bindings.Bedrock.Interop.IPacketHandlerDispatcher arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_bb8da372((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IPacketHandlerDispatcher((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void handle(nint source, nint callback, nint packet) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

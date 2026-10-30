@@ -52,6 +52,17 @@ public sealed unsafe partial class ShiftedDurationAmplifier : global::System.IDi
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ShiftedDurationAmplifier Create(global::Hosihikari.Bindings.Bedrock.Interop.ShiftedDurationAmplifier arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_bab4dd1c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ShiftedDurationAmplifier((nint)handle);
+    }
+
     public int getTickInterval(int amplification)
     {
         return NativeMethods.TablePtr->C3.hs_method_5f100486((void*)__hosihikari_shim_handle, amplification);

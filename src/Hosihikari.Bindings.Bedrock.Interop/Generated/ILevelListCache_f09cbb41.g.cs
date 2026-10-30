@@ -44,6 +44,17 @@ public sealed unsafe partial class ILevelListCache : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C1.hs_get_f3fc20f6((void*)__hosihikari_shim_handle);
     }
 
+    public static ILevelListCache Create(global::Hosihikari.Bindings.Bedrock.Interop.ILevelListCache arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_95d15d5c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ILevelListCache((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void addLevel(nint levelId, nint levelData) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

@@ -38,6 +38,17 @@ public sealed unsafe partial class OverloadData : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static OverloadData Create(global::Hosihikari.Bindings.Bedrock.Interop.AvailableCommandsPacketPayload_Nested.OverloadData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_9e269c6f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OverloadData((nint)handle);
+    }
+
     public bool isChaining
     {
         get => NativeMethods.TablePtr->C0.hs_get_fc4ab933((void*)__hosihikari_shim_handle) != 0;

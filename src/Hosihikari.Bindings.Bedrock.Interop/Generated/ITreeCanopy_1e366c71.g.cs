@@ -38,6 +38,17 @@ public sealed unsafe partial class ITreeCanopy : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ITreeCanopy Create(global::Hosihikari.Bindings.Bedrock.Interop.ITreeCanopy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_66f0f809((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ITreeCanopy((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint placeCanopy(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4, nint arg5, nint arg6, nint arg7) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

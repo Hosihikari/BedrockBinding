@@ -61,6 +61,17 @@ public sealed unsafe partial class NoSurfaceOreFeature : global::System.IDisposa
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static NoSurfaceOreFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.NoSurfaceOreFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_955b742e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NoSurfaceOreFeature((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mAvoidsBlock_Address
     {

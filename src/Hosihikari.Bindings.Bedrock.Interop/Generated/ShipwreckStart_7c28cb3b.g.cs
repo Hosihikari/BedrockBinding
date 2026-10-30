@@ -44,6 +44,17 @@ public sealed unsafe partial class ShipwreckStart : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static ShipwreckStart Create(global::Hosihikari.Bindings.Bedrock.Interop.ShipwreckStart arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a527b5d9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ShipwreckStart((nint)handle);
+    }
+
     public string getStructureName()
     {
         var __hs_view = NativeMethods.TablePtr->C3.hs_method_dd3105bb((void*)__hosihikari_shim_handle);

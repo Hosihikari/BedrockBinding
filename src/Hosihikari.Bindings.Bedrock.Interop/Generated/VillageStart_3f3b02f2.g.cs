@@ -84,6 +84,17 @@ public sealed unsafe partial class VillageStart : global::System.IDisposable
         return NativeMethods.TablePtr->C4.hs_method_962e7354((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static VillageStart Create(global::Hosihikari.Bindings.Bedrock.Interop.VillageStart arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_09d9e9d2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VillageStart((nint)handle);
+    }
+
     public string getStructureName()
     {
         var __hs_view = NativeMethods.TablePtr->C4.hs_method_a7a7fe6d((void*)__hosihikari_shim_handle);

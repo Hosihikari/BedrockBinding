@@ -43,6 +43,17 @@ public sealed unsafe partial class RegistryState : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_72cb8cb9((void*)__hosihikari_shim_handle);
     }
 
+    public static RegistryState Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry_Nested.RegistryState arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f8c94c26((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RegistryState((nint)handle);
+    }
+
     public uint chainedSubcommandCount
     {
         get => NativeMethods.TablePtr->C0.hs_get_7aaf08b0((void*)__hosihikari_shim_handle);

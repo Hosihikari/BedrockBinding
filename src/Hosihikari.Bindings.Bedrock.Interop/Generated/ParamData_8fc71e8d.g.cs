@@ -38,6 +38,17 @@ public sealed unsafe partial class ParamData : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ParamData Create(global::Hosihikari.Bindings.Bedrock.Interop.AvailableCommandsPacketPayload_Nested.ParamData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_90f40c6d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ParamData((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint name_Address
     {

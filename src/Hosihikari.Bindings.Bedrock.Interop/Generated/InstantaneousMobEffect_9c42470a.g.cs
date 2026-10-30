@@ -48,6 +48,17 @@ public sealed unsafe partial class InstantaneousMobEffect : global::System.IDisp
         return NativeMethods.TablePtr->C1.hs_method_d91ca7fd((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static InstantaneousMobEffect Create(global::Hosihikari.Bindings.Bedrock.Interop.InstantaneousMobEffect arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d884898f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InstantaneousMobEffect((nint)handle);
+    }
+
     public bool isDurationEffectTick(int remainingDuration, int arg1)
     {
         return NativeMethods.TablePtr->C1.hs_method_9f66a6b3((void*)__hosihikari_shim_handle, remainingDuration, arg1) != 0;

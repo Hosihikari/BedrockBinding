@@ -43,6 +43,17 @@ public sealed unsafe partial class BoostableSystem : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_f800c97f((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static BoostableSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.BoostableSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_21d9d4a2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BoostableSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C0.hs_method_d28fba97((void*)__hosihikari_shim_handle, (void*)registry.Handle);

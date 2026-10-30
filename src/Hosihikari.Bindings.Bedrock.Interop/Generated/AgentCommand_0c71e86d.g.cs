@@ -43,6 +43,17 @@ public sealed unsafe partial class AgentCommand : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_5079d5c7((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static AgentCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.AgentCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f8c6ac20((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AgentCommand((nint)handle);
+    }
+
     public void createAgent(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C0.hs_method_83a143b7((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)origin.Handle, (void*)output.Handle);

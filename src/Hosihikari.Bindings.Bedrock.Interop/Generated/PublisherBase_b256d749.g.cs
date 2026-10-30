@@ -42,6 +42,17 @@ public sealed unsafe partial class PublisherBase : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static PublisherBase Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PubSub.Detail.PublisherBase arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_b05a6391((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PublisherBase((nint)handle);
+    }
+
     public void _insertConnection(global::Hosihikari.Bindings.Abi.SharedHandle? body, int at, int? group)
     {
         NativeMethods.TablePtr->C0.hs_method_7786b9bb((void*)__hosihikari_shim_handle, body?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), at, group ?? default(int), group.HasValue);

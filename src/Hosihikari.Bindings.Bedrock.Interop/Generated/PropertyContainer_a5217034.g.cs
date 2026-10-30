@@ -38,6 +38,17 @@ public sealed unsafe partial class PropertyContainer : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static PropertyContainer Create(global::Hosihikari.Bindings.Bedrock.Interop.PropertyContainer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_5892f350((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PropertyContainer((nint)handle);
+    }
+
     public void _addDataToCompoundTag(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag compoundTag, global::Hosihikari.Bindings.Bedrock.Interop.PropertyMetadata propertyMetadata)
     {
         NativeMethods.TablePtr->C2.hs_method_3e98cd2e((void*)__hosihikari_shim_handle, (void*)compoundTag.Handle, (void*)propertyMetadata.Handle);

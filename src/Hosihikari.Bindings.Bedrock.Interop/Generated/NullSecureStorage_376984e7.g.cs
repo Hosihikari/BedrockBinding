@@ -127,6 +127,17 @@ public sealed unsafe partial class NullSecureStorage : global::System.IDisposabl
         }
     }
 
+    public static NullSecureStorage Create(global::Hosihikari.Bindings.Bedrock.Interop.NullSecureStorage arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_aebb1607((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NullSecureStorage((nint)handle);
+    }
+
     public bool add(string arg0, string arg1)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

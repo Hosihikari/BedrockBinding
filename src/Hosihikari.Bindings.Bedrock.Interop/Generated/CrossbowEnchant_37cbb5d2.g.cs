@@ -63,6 +63,17 @@ public sealed unsafe partial class CrossbowEnchant : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_5a15109f((void*)__hosihikari_shim_handle, type) != 0;
     }
 
+    public static CrossbowEnchant Create(global::Hosihikari.Bindings.Bedrock.Interop.CrossbowEnchant arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_3289ea23((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CrossbowEnchant((nint)handle);
+    }
+
     public static nint VALID_ENCHANTMENTS()
     {
         return (nint)NativeMethods.TablePtr->C1.hs_method_8762699f();

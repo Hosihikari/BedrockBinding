@@ -38,6 +38,17 @@ public sealed unsafe partial class DimensionTypeComponent : global::System.IDisp
         return __hs_handle;
     }
 
+    public static DimensionTypeComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.DimensionTypeComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_fdbb9510((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DimensionTypeComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mType_Address
     {

@@ -69,6 +69,17 @@ public sealed unsafe partial class MoveTowardsDwellingRestrictionGoal : global::
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static MoveTowardsDwellingRestrictionGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.MoveTowardsDwellingRestrictionGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_342cfcd5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MoveTowardsDwellingRestrictionGoal((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public void appendDebugInfo(nint str) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");

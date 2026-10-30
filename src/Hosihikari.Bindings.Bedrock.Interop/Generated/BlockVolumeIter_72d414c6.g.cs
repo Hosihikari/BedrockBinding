@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockVolumeIter : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static BlockVolumeIter Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume_Nested.BlockVolumeIter arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_cb7ffb0b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockVolumeIter((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint blockIter_Address
     {

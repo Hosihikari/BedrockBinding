@@ -38,6 +38,17 @@ public sealed unsafe partial class AttributesComponent : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static AttributesComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.AttributesComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_ab932014((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AttributesComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mAttributes_Address
     {

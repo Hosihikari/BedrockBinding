@@ -38,6 +38,17 @@ public sealed unsafe partial class ActorParticleEffectEvent : global::System.IDi
         return __hs_handle;
     }
 
+    public static ActorParticleEffectEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorParticleEffectEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_1048f2e2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorParticleEffectEvent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mParticleEffect_Address
     {

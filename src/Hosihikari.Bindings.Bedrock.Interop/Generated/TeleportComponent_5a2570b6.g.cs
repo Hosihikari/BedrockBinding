@@ -38,6 +38,17 @@ public sealed unsafe partial class TeleportComponent : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static TeleportComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.TeleportComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_e9ef9b59((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TeleportComponent((nint)handle);
+    }
+
     public void initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
         NativeMethods.TablePtr->C3.hs_method_4c08d7d3((void*)__hosihikari_shim_handle, (void*)actor.Handle);

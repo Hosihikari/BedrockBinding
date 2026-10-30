@@ -47,6 +47,17 @@ public sealed unsafe partial class SharedSpawnGetter : global::System.IDisposabl
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static SharedSpawnGetter Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedSpawnGetter arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_382ee9c1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SharedSpawnGetter((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getSharedSpawnPosition()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C3.hs_method_901b3d0d((void*)__hosihikari_shim_handle), false);

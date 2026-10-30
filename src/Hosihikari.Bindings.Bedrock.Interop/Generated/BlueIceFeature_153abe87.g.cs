@@ -43,6 +43,17 @@ public sealed unsafe partial class BlueIceFeature : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_8d5b3679((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
     }
 
+    public static BlueIceFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.BlueIceFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_d20a93ef((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlueIceFeature((nint)handle);
+    }
+
     public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         return NativeMethods.TablePtr->C0.hs_method_7a7f6131((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;

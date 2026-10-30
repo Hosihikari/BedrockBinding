@@ -49,6 +49,17 @@ public sealed unsafe partial class ActorIsRaiderTest : global::System.IDisposabl
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static ActorIsRaiderTest Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorIsRaiderTest arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_78c24762((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorIsRaiderTest((nint)handle);
+    }
+
     public bool evaluate(nint context)
     {
         return NativeMethods.TablePtr->C0.hs_method_5418abc3((void*)__hosihikari_shim_handle, (void*)context) != 0;

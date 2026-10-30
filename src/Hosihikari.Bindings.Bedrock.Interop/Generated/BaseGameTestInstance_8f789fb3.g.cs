@@ -115,9 +115,10 @@ public sealed unsafe partial class BaseGameTestInstance : global::System.IDispos
         return new global::Hosihikari.Bindings.Bedrock.Interop.gametest.GameTestSequence((nint)NativeMethods.TablePtr->C4.hs_method_77031d63((void*)__hosihikari_shim_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void fail(nint error, bool canRetry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void fail(global::Hosihikari.Bindings.Bedrock.Interop.gametest.GameTestError error, bool canRetry)
+    {
+        NativeMethods.TablePtr->C4.hs_method_e2b20e17((void*)__hosihikari_shim_handle, (void*)error.Handle, canRetry);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getStructureBlockPivot() =>

@@ -49,6 +49,17 @@ public sealed unsafe partial class ActorIsOwnerTest : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static ActorIsOwnerTest Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorIsOwnerTest arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_d4c0a0c1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorIsOwnerTest((nint)handle);
+    }
+
     public bool evaluate(nint context)
     {
         return NativeMethods.TablePtr->C0.hs_method_d9b1eac9((void*)__hosihikari_shim_handle, (void*)context) != 0;

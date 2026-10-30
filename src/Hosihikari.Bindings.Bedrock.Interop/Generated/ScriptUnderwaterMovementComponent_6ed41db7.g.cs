@@ -72,6 +72,17 @@ public sealed unsafe partial class ScriptUnderwaterMovementComponent : global::S
     public static nint ComponentId() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ScriptUnderwaterMovementComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptUnderwaterMovementComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_d1cc4ec5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptUnderwaterMovementComponent((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_b653e9c8());

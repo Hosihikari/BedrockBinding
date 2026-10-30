@@ -59,6 +59,17 @@ public sealed unsafe partial class PerlinSimplexNoise : global::System.IDisposab
         return new PerlinSimplexNoise((nint)handle);
     }
 
+    public static PerlinSimplexNoise Create(global::Hosihikari.Bindings.Bedrock.Interop.PerlinSimplexNoise arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_e635907b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PerlinSimplexNoise((nint)handle);
+    }
+
     public static PerlinSimplexNoise Create(uint seed, int levels)
     {
         var handle = NativeMethods.TablePtr->C2.hs_create_bbc773f9(seed, levels);

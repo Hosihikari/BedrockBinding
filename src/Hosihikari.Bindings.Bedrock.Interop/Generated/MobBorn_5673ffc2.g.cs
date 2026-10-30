@@ -40,20 +40,20 @@ public sealed unsafe partial class MobBorn : global::System.IDisposable
 
     public byte mBabyColor
     {
-        get => NativeMethods.TablePtr->C1.hs_get_9bb46b0f((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_9bb46b0f((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_9bb46b0f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_9bb46b0f((void*)__hosihikari_shim_handle, value);
     }
 
     public int mBabyType
     {
-        get => NativeMethods.TablePtr->C1.hs_get_4d427fb7((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_4d427fb7((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_4d427fb7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_4d427fb7((void*)__hosihikari_shim_handle, value);
     }
 
     public int mBabyVariant
     {
-        get => NativeMethods.TablePtr->C1.hs_get_dceed3aa((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_dceed3aa((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_dceed3aa((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_dceed3aa((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -62,7 +62,7 @@ public sealed unsafe partial class MobBorn : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_5673ffc2((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_5673ffc2((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

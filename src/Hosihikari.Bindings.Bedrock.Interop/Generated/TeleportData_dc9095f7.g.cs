@@ -38,6 +38,17 @@ public sealed unsafe partial class TeleportData : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static TeleportData Create(global::Hosihikari.Bindings.Bedrock.Interop.TeleportData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_118029d8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TeleportData((nint)handle);
+    }
+
     public int mCause
     {
         get => NativeMethods.TablePtr->C3.hs_get_1b4ce602((void*)__hosihikari_shim_handle);

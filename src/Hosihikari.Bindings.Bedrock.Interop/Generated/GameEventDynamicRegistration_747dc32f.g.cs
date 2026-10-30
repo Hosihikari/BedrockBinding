@@ -54,6 +54,17 @@ public sealed unsafe partial class GameEventDynamicRegistration : global::System
         return new GameEventDynamicRegistration((nint)handle);
     }
 
+    public static GameEventDynamicRegistration Create(global::Hosihikari.Bindings.Bedrock.Interop.GameEventDynamicRegistration arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_c3c5d613((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameEventDynamicRegistration((nint)handle);
+    }
+
     public static GameEventDynamicRegistration Create(global::Hosihikari.Bindings.Abi.SharedHandle? listener)
     {
         var handle = NativeMethods.TablePtr->C1.hs_create_e3780c2b(listener?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));

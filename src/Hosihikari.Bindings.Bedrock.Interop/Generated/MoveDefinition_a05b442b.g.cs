@@ -50,13 +50,26 @@ public sealed unsafe partial class MoveDefinition : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C2.hs_get_2e399b4e((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void _load(nint value, nint factory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void _load(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value value, global::Hosihikari.Bindings.Bedrock.Interop.BehaviorFactory factory)
+    {
+        NativeMethods.TablePtr->C2.hs_method_74cedde7((void*)__hosihikari_shim_handle, (void*)value.Handle, (void*)factory.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void load(nint value, nint factory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static MoveDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.MoveDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_eccb62c9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MoveDefinition((nint)handle);
+    }
+
+    public void load(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value value, global::Hosihikari.Bindings.Bedrock.Interop.BehaviorFactory factory)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f86996d7((void*)__hosihikari_shim_handle, (void*)value.Handle, (void*)factory.Handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDirectionToMove_Address

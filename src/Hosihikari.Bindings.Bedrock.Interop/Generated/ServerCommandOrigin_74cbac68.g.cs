@@ -153,6 +153,17 @@ public sealed unsafe partial class ServerCommandOrigin : global::System.IDisposa
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ServerCommandOrigin Create(global::Hosihikari.Bindings.Bedrock.Interop.ServerCommandOrigin arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_851b2058((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ServerCommandOrigin((nint)handle);
+    }
+
     public static ServerCommandOrigin Create(string requestId, global::Hosihikari.Bindings.Bedrock.Interop.ServerLevel level, byte permission, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionType)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(requestId);

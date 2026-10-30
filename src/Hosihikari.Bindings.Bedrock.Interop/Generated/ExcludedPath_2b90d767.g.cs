@@ -40,7 +40,7 @@ public sealed unsafe partial class ExcludedPath : global::System.IDisposable
 
     public static ExcludedPath Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_8b6373b3();
+        var handle = NativeMethods.TablePtr->C1.hs_create_8b6373b3();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class ExcludedPath : global::System.IDisposable
 
     public static ExcludedPath Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.ExcludedPath arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_7f60190b((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_7f60190b((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,18 +63,18 @@ public sealed unsafe partial class ExcludedPath : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk3176b9_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_b15966de((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b15966de((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk40717f_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_6990e2a3((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_6990e2a3((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.ExcludedPath operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.ExcludedPath arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.ExcludedPath((nint)NativeMethods.TablePtr->C0.hs_method_44a0068b((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.ExcludedPath((nint)NativeMethods.TablePtr->C1.hs_method_44a0068b((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -83,7 +83,7 @@ public sealed unsafe partial class ExcludedPath : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_2b90d767((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_2b90d767((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

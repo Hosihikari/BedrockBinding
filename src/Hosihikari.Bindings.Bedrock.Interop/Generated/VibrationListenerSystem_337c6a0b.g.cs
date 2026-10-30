@@ -43,6 +43,17 @@ public sealed unsafe partial class VibrationListenerSystem : global::System.IDis
         NativeMethods.TablePtr->C4.hs_method_b0b88b82((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static VibrationListenerSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.VibrationListenerSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_37d0a08b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VibrationListenerSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C4.hs_method_94075ca3((void*)__hosihikari_shim_handle, (void*)registry.Handle);

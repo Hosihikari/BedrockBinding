@@ -43,22 +43,36 @@ public sealed unsafe partial class StructureFeatureRegistry : global::System.IDi
         NativeMethods.TablePtr->C3.hs_method_6747c467((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    public static StructureFeatureRegistry Create(global::Hosihikari.Bindings.Bedrock.Interop.StructureFeatureRegistry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_674d562f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureFeatureRegistry((nint)handle);
+    }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public bool findNearestStructureFeature(nint dimension, nint surfaceProvider, nint feature, nint origin, nint pos, nint biomeSource, bool mustBeInNewChunks, nint biomeTag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.HashedString findStructureFeatureTypeAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->C3.hs_method_31e20b69((void*)__hosihikari_shim_handle, (void*)pos.Handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint getStructureFeatureOfType(nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.StructureFeature? getStructureFeatureOfType(global::Hosihikari.Bindings.Bedrock.Interop.HashedString type)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_a6e51c99((void*)__hosihikari_shim_handle, (void*)type.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.StructureFeature((nint)__hs_handle, false) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public bool isStructureFeatureTypeAt(nint pos, nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public bool isStructureFeatureTypeAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.HashedString type)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_dfc6b388((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)type.Handle) != 0;
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mGeneratorState_Address

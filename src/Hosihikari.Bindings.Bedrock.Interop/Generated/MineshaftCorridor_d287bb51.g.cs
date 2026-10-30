@@ -57,6 +57,17 @@ public sealed unsafe partial class MineshaftCorridor : global::System.IDisposabl
         NativeMethods.TablePtr->C2.hs_method_dc291421((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle);
     }
 
+    public static MineshaftCorridor Create(global::Hosihikari.Bindings.Bedrock.Interop.MineshaftCorridor arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_ddd2507c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MineshaftCorridor((nint)handle);
+    }
+
     public void _fillPillarDownOrChainUp(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, int x, int y, int z, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox chunkBB)
     {
         NativeMethods.TablePtr->C2.hs_method_67cecaef((void*)__hosihikari_shim_handle, (void*)region.Handle, x, y, z, (void*)chunkBB.Handle);

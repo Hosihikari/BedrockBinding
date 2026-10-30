@@ -43,6 +43,17 @@ public sealed unsafe partial class NavigationSystem : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_a8685287((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static NavigationSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.NavigationSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_edee0513((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NavigationSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C2.hs_method_04bba4d3((void*)__hosihikari_shim_handle, (void*)registry.Handle);

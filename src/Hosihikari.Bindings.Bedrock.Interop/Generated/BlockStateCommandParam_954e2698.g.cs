@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockStateCommandParam : global::System.IDisp
         return __hs_handle;
     }
 
+    public static BlockStateCommandParam Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockStateCommandParam arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_c45ff4c3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockStateCommandParam((nint)handle);
+    }
+
     public bool _createCompoundTag(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         return NativeMethods.TablePtr->C0.hs_method_712697b9((void*)__hosihikari_shim_handle, (void*)tag.Handle, (void*)output.Handle) != 0;

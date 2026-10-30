@@ -44,7 +44,7 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
 
     public void __onTeardown()
     {
-        NativeMethods.TablePtr->C0.hs_method_2f113227((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_2f113227((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
@@ -57,17 +57,17 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
 
     public bool _canExtendSize()
     {
-        return NativeMethods.TablePtr->C0.hs_method_c84a8bdd((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_c84a8bdd((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool _checkCorrupt(bool arg0)
     {
-        return NativeMethods.TablePtr->C0.hs_method_fb61de7e((void*)__hosihikari_shim_handle, arg0) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_fb61de7e((void*)__hosihikari_shim_handle, arg0) != 0;
     }
 
     public void _clearUsedSizeOverride()
     {
-        NativeMethods.TablePtr->C0.hs_method_72c90f28((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_72c90f28((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Core::FileSystemImpl' has no accessible destructor.", false)]
@@ -80,22 +80,22 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C0.hs_method_4b77ce0d((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_4b77ce0d((void*)__hosihikari_shim_handle);
     }
 
     public void _enableFlushToDisk(bool arg0)
     {
-        NativeMethods.TablePtr->C0.hs_method_62b1181c((void*)__hosihikari_shim_handle, arg0);
+        NativeMethods.TablePtr->C1.hs_method_62b1181c((void*)__hosihikari_shim_handle, arg0);
     }
 
     public void _enableSequentialWrites(bool arg0)
     {
-        NativeMethods.TablePtr->C0.hs_method_73d90ae1((void*)__hosihikari_shim_handle, arg0);
+        NativeMethods.TablePtr->C1.hs_method_73d90ae1((void*)__hosihikari_shim_handle, arg0);
     }
 
     public ulong _estimatePendingWriteDiskSize(ulong rawFileSize)
     {
-        return NativeMethods.TablePtr->C0.hs_method_b8b034dc((void*)__hosihikari_shim_handle, rawFileSize);
+        return NativeMethods.TablePtr->C1.hs_method_b8b034dc((void*)__hosihikari_shim_handle, rawFileSize);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
@@ -104,7 +104,7 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
 
     public ulong _getAvailableUserStorageSize()
     {
-        return NativeMethods.TablePtr->C0.hs_method_6b3c9a77((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C1.hs_method_6b3c9a77((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
@@ -113,43 +113,43 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? _getFileIndexLru()
     {
-        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_089c972f((void*)__hosihikari_shim_handle);
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_089c972f((void*)__hosihikari_shim_handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
     public int _getFlushableLevelDbEnvType()
     {
-        return NativeMethods.TablePtr->C0.hs_method_442fb5bb((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C1.hs_method_442fb5bb((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea_Nested.StorageAreaSpaceInfo _getStorageAreaSpaceInfo()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea_Nested.StorageAreaSpaceInfo((nint)NativeMethods.TablePtr->C0.hs_method_15e51ba7((void*)__hosihikari_shim_handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea_Nested.StorageAreaSpaceInfo((nint)NativeMethods.TablePtr->C1.hs_method_15e51ba7((void*)__hosihikari_shim_handle));
     }
 
     public ulong _getTransactionWriteSizeLimit()
     {
-        return NativeMethods.TablePtr->C0.hs_method_8d70b9fa((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C1.hs_method_8d70b9fa((void*)__hosihikari_shim_handle);
     }
 
     public bool _handlesPendingWrites()
     {
-        return NativeMethods.TablePtr->C0.hs_method_ffa4afc1((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_ffa4afc1((void*)__hosihikari_shim_handle) != 0;
     }
 
     public void _informPendingWriteSize(ulong arg0, bool arg1)
     {
-        NativeMethods.TablePtr->C0.hs_method_dde9ca5b((void*)__hosihikari_shim_handle, arg0, arg1);
+        NativeMethods.TablePtr->C1.hs_method_dde9ca5b((void*)__hosihikari_shim_handle, arg0, arg1);
     }
 
     public void _informStorageAreaCopy(ulong arg0)
     {
-        NativeMethods.TablePtr->C0.hs_method_1a1829aa((void*)__hosihikari_shim_handle, arg0);
+        NativeMethods.TablePtr->C1.hs_method_1a1829aa((void*)__hosihikari_shim_handle, arg0);
     }
 
     public void _notifyChangeInFileSize(long changeInSize, long changeInAllocatedSize)
     {
-        NativeMethods.TablePtr->C0.hs_method_1416196c((void*)__hosihikari_shim_handle, changeInSize, changeInAllocatedSize);
+        NativeMethods.TablePtr->C1.hs_method_1416196c((void*)__hosihikari_shim_handle, changeInSize, changeInAllocatedSize);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -158,7 +158,7 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
 
     public void _resetCanAttemptExtendSize()
     {
-        NativeMethods.TablePtr->C0.hs_method_b7b7d120((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_b7b7d120((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
@@ -167,12 +167,12 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
 
     public void _setUsedSizeOverride(ulong fileSize)
     {
-        NativeMethods.TablePtr->C0.hs_method_9939ef7b((void*)__hosihikari_shim_handle, fileSize);
+        NativeMethods.TablePtr->C1.hs_method_9939ef7b((void*)__hosihikari_shim_handle, fileSize);
     }
 
     public bool _shouldAllowCommit()
     {
-        return NativeMethods.TablePtr->C0.hs_method_b6a2618d((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_b6a2618d((void*)__hosihikari_shim_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
@@ -181,12 +181,12 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
 
     public bool _supportsExtendSize()
     {
-        return NativeMethods.TablePtr->C0.hs_method_47774035((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_47774035((void*)__hosihikari_shim_handle) != 0;
     }
 
     public void _tick()
     {
-        NativeMethods.TablePtr->C0.hs_method_661a5079((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_661a5079((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
@@ -199,12 +199,12 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
 
     public void _unloadFlatFileManifests(bool shouldClearManifests)
     {
-        NativeMethods.TablePtr->C0.hs_method_132f2ddd((void*)__hosihikari_shim_handle, shouldClearManifests);
+        NativeMethods.TablePtr->C1.hs_method_132f2ddd((void*)__hosihikari_shim_handle, shouldClearManifests);
     }
 
     public static FileStorageArea Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_1b14ec1e();
+        var handle = NativeMethods.TablePtr->C1.hs_create_1b14ec1e();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -217,19 +217,30 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
     public static FileStorageArea Create(nint type, nint rootPath, bool usesFlatFiles, bool isAccessedDirectly, nint parent) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
 
+    public static FileStorageArea Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_7325dfbc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FileStorageArea((nint)handle);
+    }
+
     public void _addReadOperation(bool succeeded, ulong numBytesRead)
     {
-        NativeMethods.TablePtr->C0.hs_method_e47a42dd((void*)__hosihikari_shim_handle, succeeded, numBytesRead);
+        NativeMethods.TablePtr->C1.hs_method_e47a42dd((void*)__hosihikari_shim_handle, succeeded, numBytesRead);
     }
 
     public void _addWriteOperation(bool succeeded, ulong numBytesWritten)
     {
-        NativeMethods.TablePtr->C0.hs_method_13c689da((void*)__hosihikari_shim_handle, succeeded, numBytesWritten);
+        NativeMethods.TablePtr->C1.hs_method_13c689da((void*)__hosihikari_shim_handle, succeeded, numBytesWritten);
     }
 
     public void _beginTransaction(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSystemImpl? pTransaction, bool arg1)
     {
-        NativeMethods.TablePtr->C0.hs_method_59b66e56((void*)__hosihikari_shim_handle, (void*)(pTransaction?.Handle ?? 0), arg1);
+        NativeMethods.TablePtr->C1.hs_method_59b66e56((void*)__hosihikari_shim_handle, (void*)(pTransaction?.Handle ?? 0), arg1);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
@@ -246,7 +257,7 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
 
     public void _onTeardown()
     {
-        NativeMethods.TablePtr->C0.hs_method_e5eb0780((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_e5eb0780((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
@@ -259,22 +270,22 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
 
     public bool canExtendSize()
     {
-        return NativeMethods.TablePtr->C0.hs_method_f18f77af((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_f18f77af((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool checkCorrupt(bool arg0)
     {
-        return NativeMethods.TablePtr->C0.hs_method_caf970ac((void*)__hosihikari_shim_handle, arg0) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_caf970ac((void*)__hosihikari_shim_handle, arg0) != 0;
     }
 
     public void checkUserStorage()
     {
-        NativeMethods.TablePtr->C0.hs_method_bbec93c3((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_bbec93c3((void*)__hosihikari_shim_handle);
     }
 
     public void clearUsedSizeOverride()
     {
-        NativeMethods.TablePtr->C0.hs_method_5eca8c9b((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_5eca8c9b((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
@@ -287,17 +298,17 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
 
     public void enableFlushToDisk(bool arg0)
     {
-        NativeMethods.TablePtr->C0.hs_method_7cee7455((void*)__hosihikari_shim_handle, arg0);
+        NativeMethods.TablePtr->C1.hs_method_7cee7455((void*)__hosihikari_shim_handle, arg0);
     }
 
     public void enableSequentialWrites(bool arg0)
     {
-        NativeMethods.TablePtr->C0.hs_method_2baee9c5((void*)__hosihikari_shim_handle, arg0);
+        NativeMethods.TablePtr->C1.hs_method_2baee9c5((void*)__hosihikari_shim_handle, arg0);
     }
 
     public ulong estimatePendingWriteDiskSize(ulong rawFileSize)
     {
-        return NativeMethods.TablePtr->C0.hs_method_5ea30df0((void*)__hosihikari_shim_handle, rawFileSize);
+        return NativeMethods.TablePtr->C1.hs_method_5ea30df0((void*)__hosihikari_shim_handle, rawFileSize);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
@@ -306,7 +317,7 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
 
     public ulong getAvailableUserStorageSize()
     {
-        return NativeMethods.TablePtr->C0.hs_method_2507299b((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C1.hs_method_2507299b((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
@@ -315,18 +326,18 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getFileIndexLru()
     {
-        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_265e50da((void*)__hosihikari_shim_handle);
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_265e50da((void*)__hosihikari_shim_handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
     public int getFlushableLevelDbEnvType()
     {
-        return NativeMethods.TablePtr->C0.hs_method_253493ee((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C1.hs_method_253493ee((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea_Nested.StorageAreaSpaceInfo getStorageAreaSpaceInfo()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea_Nested.StorageAreaSpaceInfo((nint)NativeMethods.TablePtr->C0.hs_method_f3bd00f3((void*)__hosihikari_shim_handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea_Nested.StorageAreaSpaceInfo((nint)NativeMethods.TablePtr->C1.hs_method_f3bd00f3((void*)__hosihikari_shim_handle));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
@@ -335,7 +346,7 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
 
     public ulong getTransactionWriteSizeLimit()
     {
-        return NativeMethods.TablePtr->C0.hs_method_54d3bb0a((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C1.hs_method_54d3bb0a((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
@@ -344,7 +355,7 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
 
     public bool handlesPendingWrites()
     {
-        return NativeMethods.TablePtr->C0.hs_method_71289473((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_71289473((void*)__hosihikari_shim_handle) != 0;
     }
 
     public void informPendingWriteSize(ulong arg0, bool arg1)
@@ -535,7 +546,7 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_5fcb2d73((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_5fcb2d73((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -38,6 +38,17 @@ public sealed unsafe partial class UniqueIDManager : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static UniqueIDManager Create(global::Hosihikari.Bindings.Bedrock.Interop.UniqueIDManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_3195db36((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UniqueIDManager((nint)handle);
+    }
+
     public bool mIsClientSide
     {
         get => NativeMethods.TablePtr->C4.hs_get_bae6f10e((void*)__hosihikari_shim_handle) != 0;

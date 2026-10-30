@@ -38,6 +38,17 @@ public sealed unsafe partial class LevelChunkPacketPayload : global::System.IDis
         return __hs_handle;
     }
 
+    public static LevelChunkPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_125c343f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelChunkPacketPayload((nint)handle);
+    }
+
     public bool mCacheEnabled
     {
         get => NativeMethods.TablePtr->C2.hs_get_687c03ed((void*)__hosihikari_shim_handle) != 0;

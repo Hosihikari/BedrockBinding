@@ -82,6 +82,17 @@ public sealed unsafe partial class EndCityPiece : global::System.IDisposable
         return new EndCityPiece((nint)handle);
     }
 
+    public static EndCityPiece Create(global::Hosihikari.Bindings.Bedrock.Interop.EndCityPieces_Nested.EndCityPiece arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_f1c9df2f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EndCityPiece((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' is not a known bindable declaration.", false)]
     public static EndCityPiece Create(nint structureManager, nint templateName, nint origin, nint rotation, bool overwrite) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' is not a known bindable declaration.");

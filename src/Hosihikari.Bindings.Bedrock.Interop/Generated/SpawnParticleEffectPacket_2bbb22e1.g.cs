@@ -87,9 +87,10 @@ public sealed unsafe partial class SpawnParticleEffectPacket : global::System.ID
     public nint __read(nint stream, nint reflectionCtx) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.SpawnParticleEffectPacketPayload payload)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_942eea34((void*)__hosihikari_shim_handle, (void*)payload.Handle);
+    }
 
     public bool _disallowBatching()
     {
@@ -172,9 +173,27 @@ public sealed unsafe partial class SpawnParticleEffectPacket : global::System.ID
         return new SpawnParticleEffectPacket((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static SpawnParticleEffectPacket Create(nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static SpawnParticleEffectPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.SpawnParticleEffectPacketPayload payload)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_2b5a47c2((void*)payload.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SpawnParticleEffectPacket((nint)handle);
+    }
+
+    public static SpawnParticleEffectPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.SpawnParticleEffectPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_6edd8bc3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SpawnParticleEffectPacket((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>

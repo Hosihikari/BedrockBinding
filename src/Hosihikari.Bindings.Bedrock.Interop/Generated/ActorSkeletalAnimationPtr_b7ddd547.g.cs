@@ -59,6 +59,17 @@ public sealed unsafe partial class ActorSkeletalAnimationPtr : global::System.ID
         return new ActorSkeletalAnimationPtr((nint)handle);
     }
 
+    public static ActorSkeletalAnimationPtr Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorSkeletalAnimationPtr arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f7bc55f8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorSkeletalAnimationPtr((nint)handle);
+    }
+
     public static ActorSkeletalAnimationPtr Create(nint animationGroup, global::Hosihikari.Bindings.Bedrock.Interop.HashedString name)
     {
         var handle = NativeMethods.TablePtr->C0.hs_create_f27cb033((void*)animationGroup, (void*)name.Handle);

@@ -38,6 +38,17 @@ public sealed unsafe partial class ScriptMolangVariableMap : global::System.IDis
         return __hs_handle;
     }
 
+    public static ScriptMolangVariableMap Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptMolangVariableMap arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a253936d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptMolangVariableMap((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _prependVariable(nint variableName) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.");

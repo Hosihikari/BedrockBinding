@@ -146,6 +146,17 @@ public sealed unsafe partial class DropperContainerManagerModel : global::System
         return new DropperContainerManagerModel((nint)handle);
     }
 
+    public static DropperContainerManagerModel Create(global::Hosihikari.Bindings.Bedrock.Interop.DropperContainerManagerModel arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_7db7b0a9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DropperContainerManagerModel((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext _postInit()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext((nint)NativeMethods.TablePtr->C1.hs_method_b9697742((void*)__hosihikari_shim_handle));

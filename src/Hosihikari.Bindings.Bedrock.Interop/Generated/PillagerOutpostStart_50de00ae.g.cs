@@ -54,6 +54,17 @@ public sealed unsafe partial class PillagerOutpostStart : global::System.IDispos
         return NativeMethods.TablePtr->C2.hs_method_31a72dce((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle) != 0;
     }
 
+    public static PillagerOutpostStart Create(global::Hosihikari.Bindings.Bedrock.Interop.PillagerOutpostStart arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_81124410((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PillagerOutpostStart((nint)handle);
+    }
+
     public int getMaxYSpawnOffset()
     {
         return NativeMethods.TablePtr->C2.hs_method_a01f233f((void*)__hosihikari_shim_handle);

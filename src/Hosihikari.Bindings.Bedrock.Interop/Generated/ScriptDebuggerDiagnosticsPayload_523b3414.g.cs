@@ -50,6 +50,17 @@ public sealed unsafe partial class ScriptDebuggerDiagnosticsPayload : global::Sy
         set => NativeMethods.TablePtr->C3.hs_set_8bd937ed((void*)__hosihikari_shim_handle, value);
     }
 
+    public static ScriptDebuggerDiagnosticsPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptDebuggerMessages.ScriptDebuggerDiagnosticsPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_2d7e2b9d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptDebuggerDiagnosticsPayload((nint)handle);
+    }
+
 
     public void Dispose()
     {

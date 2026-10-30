@@ -43,6 +43,17 @@ public sealed unsafe partial class Command : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_c76b4372((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static Command Create(global::Hosihikari.Bindings.Bedrock.Interop.Command arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_b8572e48((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Command((nint)handle);
+    }
+
     public bool collectOptionalArguments()
     {
         return NativeMethods.TablePtr->C0.hs_method_b9d477d6((void*)__hosihikari_shim_handle) != 0;

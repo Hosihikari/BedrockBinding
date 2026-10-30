@@ -38,9 +38,10 @@ public sealed unsafe partial class LevelSoundEventPacketPayload : global::System
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint soundEvent, nint pos, int data, nint actorSoundIdentifier, bool isGlobal, nint fireAtPosition) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.SoundEventIdentifier soundEvent, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int data, nint actorSoundIdentifier, bool isGlobal, global::Hosihikari.Bindings.Bedrock.Interop.Vec3? fireAtPosition)
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_8c9cc624((void*)__hosihikari_shim_handle, (void*)soundEvent.Handle, (void*)pos.Handle, data, (void*)actorSoundIdentifier, isGlobal, (void*)(fireAtPosition?.Handle ?? 0), fireAtPosition is not null);
+    }
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.LevelSoundEventPacketPayload arg0)
     {
@@ -63,9 +64,16 @@ public sealed unsafe partial class LevelSoundEventPacketPayload : global::System
         return new LevelSoundEventPacketPayload((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static LevelSoundEventPacketPayload Create(nint soundEvent, nint pos, int data, nint actorSoundIdentifier, bool isGlobal, nint fireAtPosition) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static LevelSoundEventPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.SoundEventIdentifier soundEvent, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int data, nint actorSoundIdentifier, bool isGlobal, global::Hosihikari.Bindings.Bedrock.Interop.Vec3? fireAtPosition)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_a557400f((void*)soundEvent.Handle, (void*)pos.Handle, data, (void*)actorSoundIdentifier, isGlobal, (void*)(fireAtPosition?.Handle ?? 0), fireAtPosition is not null);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelSoundEventPacketPayload((nint)handle);
+    }
 
     public static LevelSoundEventPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelSoundEventPacketPayload arg0)
     {

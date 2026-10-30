@@ -73,6 +73,17 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
         return new ExpressionNode((nint)handle);
     }
 
+    public static ExpressionNode Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy.ExpressionNode arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_bc3a816e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ExpressionNode((nint)handle);
+    }
+
     public static ExpressionNode Create(string @string, short molangVersion)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(@string);

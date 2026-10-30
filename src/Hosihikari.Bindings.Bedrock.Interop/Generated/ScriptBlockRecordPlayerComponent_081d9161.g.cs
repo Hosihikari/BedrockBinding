@@ -66,6 +66,17 @@ public sealed unsafe partial class ScriptBlockRecordPlayerComponent : global::Sy
         return NativeMethods.TablePtr->C3.hs_method_e87e46b0((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static ScriptBlockRecordPlayerComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBlockRecordPlayerComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_0fc0eaf4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptBlockRecordPlayerComponent((nint)handle);
+    }
+
     public bool _isValid()
     {
         return NativeMethods.TablePtr->C3.hs_method_9b42e5ac((void*)__hosihikari_shim_handle) != 0;

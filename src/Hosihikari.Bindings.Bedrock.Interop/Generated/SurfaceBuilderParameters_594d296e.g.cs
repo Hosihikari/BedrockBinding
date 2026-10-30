@@ -65,6 +65,17 @@ public sealed unsafe partial class SurfaceBuilderParameters : global::System.IDi
         return new SurfaceBuilderParameters((nint)handle);
     }
 
+    public static SurfaceBuilderParameters Create(global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.SurfaceBuilderParameters arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_9c9bd3f8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SurfaceBuilderParameters((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mGetTemperatureCallback_Address
     {

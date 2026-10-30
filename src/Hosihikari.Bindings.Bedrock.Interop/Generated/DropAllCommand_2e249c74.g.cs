@@ -78,6 +78,17 @@ public sealed unsafe partial class DropAllCommand : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_7cfdb1c7((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static DropAllCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.AgentCommands.DropAllCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_c5ad235d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DropAllCommand((nint)handle);
+    }
+
     public void execute()
     {
         NativeMethods.TablePtr->C0.hs_method_6cae4043((void*)__hosihikari_shim_handle);

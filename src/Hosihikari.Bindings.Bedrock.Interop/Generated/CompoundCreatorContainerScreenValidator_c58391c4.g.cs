@@ -38,6 +38,17 @@ public sealed unsafe partial class CompoundCreatorContainerScreenValidator : glo
         return __hs_handle;
     }
 
+    public static CompoundCreatorContainerScreenValidator Create(global::Hosihikari.Bindings.Bedrock.Interop.CompoundCreatorContainerScreenValidator arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_09a5230a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CompoundCreatorContainerScreenValidator((nint)handle);
+    }
+
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mValidContainerEnumNames_Address

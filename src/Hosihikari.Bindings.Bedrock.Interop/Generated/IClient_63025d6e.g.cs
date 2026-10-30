@@ -44,6 +44,17 @@ public sealed unsafe partial class IClient : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C0.hs_get_2fcfb5bc((void*)__hosihikari_shim_handle);
     }
 
+    public static IClient Create(global::Hosihikari.Bindings.Bedrock.Interop.CodeBuilder.IClient arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_e90f2623((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IClient((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void send_83412bb3(nint message) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

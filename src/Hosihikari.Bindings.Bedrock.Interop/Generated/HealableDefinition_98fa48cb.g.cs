@@ -38,6 +38,17 @@ public sealed unsafe partial class HealableDefinition : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static HealableDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.HealableDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_a6277726((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HealableDefinition((nint)handle);
+    }
+
     public void addFeedItem(global::Hosihikari.Bindings.Bedrock.Interop.FeedItem feedItem)
     {
         NativeMethods.TablePtr->C1.hs_method_39f6a713((void*)__hosihikari_shim_handle, (void*)feedItem.Handle);

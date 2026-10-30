@@ -152,6 +152,17 @@ public sealed unsafe partial class PlayerAuthInputPacket : global::System.IDispo
         NativeMethods.TablePtr->C2.hs_method_65a9a4a5((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+    public static PlayerAuthInputPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerAuthInputPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_9137e055((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerAuthInputPacket((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");

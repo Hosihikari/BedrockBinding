@@ -60,6 +60,17 @@ public sealed unsafe partial class ShootEventResponse : global::System.IDisposab
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static ShootEventResponse Create(global::Hosihikari.Bindings.Bedrock.Interop.ShootEventResponse arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_26e32f17((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ShootEventResponse((nint)handle);
+    }
+
     public void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root, global::Hosihikari.Bindings.Bedrock.Interop.Factory_EventResponse_ factory)
     {
         NativeMethods.TablePtr->C3.hs_method_2c6df2f4((void*)__hosihikari_shim_handle, root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)factory.Handle);

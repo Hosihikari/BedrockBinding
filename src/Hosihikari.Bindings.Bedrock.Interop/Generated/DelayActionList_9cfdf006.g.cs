@@ -42,6 +42,17 @@ public sealed unsafe partial class DelayActionList : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static DelayActionList Create(global::Hosihikari.Bindings.Bedrock.Interop.DelayActionList arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_f80b313c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DelayActionList((nint)handle);
+    }
+
     public void _loadRequests(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage, global::Hosihikari.Bindings.Bedrock.Interop.ICommandOriginLoader loader, ulong currentTick)
     {
         NativeMethods.TablePtr->C1.hs_method_98dd71f6((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)levelStorage.Handle, (void*)loader.Handle, currentTick);

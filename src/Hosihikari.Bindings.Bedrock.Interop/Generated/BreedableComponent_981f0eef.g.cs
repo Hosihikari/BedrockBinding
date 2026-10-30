@@ -38,6 +38,17 @@ public sealed unsafe partial class BreedableComponent : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static BreedableComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.BreedableComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_3bc19561((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BreedableComponent((nint)handle);
+    }
+
     public static void _spawnExperienceOrbs(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
         NativeMethods.TablePtr->C0.hs_method_97307bc6((void*)owner.Handle);

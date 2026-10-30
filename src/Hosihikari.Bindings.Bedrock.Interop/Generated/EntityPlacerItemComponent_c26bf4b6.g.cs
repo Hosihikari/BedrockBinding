@@ -43,9 +43,10 @@ public sealed unsafe partial class EntityPlacerItemComponent : global::System.ID
         NativeMethods.TablePtr->C1.hs_method_07d6dd55((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint component) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50.EntityPlacerItemComponent component)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_111db926((void*)__hosihikari_shim_handle, (void*)component.Handle);
+    }
 
     public void _dtor()
     {
@@ -72,9 +73,16 @@ public sealed unsafe partial class EntityPlacerItemComponent : global::System.ID
         return new EntityPlacerItemComponent((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static EntityPlacerItemComponent Create(nint component) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static EntityPlacerItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50.EntityPlacerItemComponent component)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_24fee135((void*)component.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EntityPlacerItemComponent((nint)handle);
+    }
 
     public static EntityPlacerItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.EntityPlacerItemComponent arg0)
     {

@@ -48,6 +48,17 @@ public sealed unsafe partial class CollectCommand : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_d55da881((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static CollectCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.AgentCommands.CollectCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_ba3410a8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CollectCommand((nint)handle);
+    }
+
     public void execute()
     {
         NativeMethods.TablePtr->C0.hs_method_cbb940b1((void*)__hosihikari_shim_handle);

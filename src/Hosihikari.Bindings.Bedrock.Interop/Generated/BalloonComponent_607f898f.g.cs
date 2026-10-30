@@ -44,6 +44,17 @@ public sealed unsafe partial class BalloonComponent : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static BalloonComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.BalloonComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_92933439((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BalloonComponent((nint)handle);
+    }
+
     public static string MAX_HEIGHT_TAG()
     {
         var __hs_view = NativeMethods.TablePtr->C0.hs_method_0153ea23();

@@ -43,6 +43,17 @@ public sealed unsafe partial class UrlAction : global::System.IDisposable
         NativeMethods.TablePtr->C4.hs_method_e040fd37((void*)__hosihikari_shim_handle);
     }
 
+    public static UrlAction Create(global::Hosihikari.Bindings.Bedrock.Interop.npc.UrlAction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_5313b6cf((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UrlAction((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint action_Address
     {

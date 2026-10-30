@@ -51,6 +51,17 @@ public sealed unsafe partial class RandomGroupPoolAliasBinding : global::System.
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static RandomGroupPoolAliasBinding Create(global::Hosihikari.Bindings.Bedrock.Interop.PoolAliasBindingInternal.RandomGroupPoolAliasBinding arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_773780b8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RandomGroupPoolAliasBinding((nint)handle);
+    }
+
     public void appendResolvedAliases(global::Hosihikari.Bindings.Bedrock.Interop.IRandom random, global::Hosihikari.Bindings.Bedrock.Interop.PoolAliasBinding_Nested.PoolAliasLookup inOutResolvedAliases)
     {
         NativeMethods.TablePtr->C2.hs_method_6975586a((void*)__hosihikari_shim_handle, (void*)random.Handle, (void*)inOutResolvedAliases.Handle);

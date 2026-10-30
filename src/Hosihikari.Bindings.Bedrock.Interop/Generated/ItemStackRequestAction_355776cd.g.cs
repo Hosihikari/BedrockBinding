@@ -58,6 +58,17 @@ public sealed unsafe partial class ItemStackRequestAction : global::System.IDisp
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ItemStackRequestAction Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestAction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_e540441d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemStackRequestAction((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint _read(nint stream) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

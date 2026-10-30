@@ -46,9 +46,10 @@ public sealed unsafe partial class JsepTransportController : global::System.IDis
     public nint _SuggestPayloadType(nint mid, nint codec) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCErrorOr<webrtc::PayloadType>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint env, nint network_thread, nint port_allocator, nint async_dns_resolver_factory, nint lna_permission_factory, nint payload_type_picker, nint config) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(nint env, nint network_thread, nint port_allocator, nint async_dns_resolver_factory, nint lna_permission_factory, nint payload_type_picker, global::Hosihikari.Bindings.Bedrock.Interop.webrtc.JsepTransportController_Nested.Config config)
+    {
+        return (nint)NativeMethods.TablePtr->C4.hs_method_34005a01((void*)__hosihikari_shim_handle, (void*)env, (void*)network_thread, (void*)port_allocator, (void*)async_dns_resolver_factory, (void*)lna_permission_factory, (void*)payload_type_picker, (void*)config.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftableForHasSlots() =>
@@ -235,9 +236,16 @@ public sealed unsafe partial class JsepTransportController : global::System.IDis
         return new JsepTransportController((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static JsepTransportController Create(nint env, nint network_thread, nint port_allocator, nint async_dns_resolver_factory, nint lna_permission_factory, nint payload_type_picker, nint config) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static JsepTransportController Create(nint env, nint network_thread, nint port_allocator, nint async_dns_resolver_factory, nint lna_permission_factory, nint payload_type_picker, global::Hosihikari.Bindings.Bedrock.Interop.webrtc.JsepTransportController_Nested.Config config)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_e2eb7f14((void*)env, (void*)network_thread, (void*)port_allocator, (void*)async_dns_resolver_factory, (void*)lna_permission_factory, (void*)payload_type_picker, (void*)config.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new JsepTransportController((nint)handle);
+    }
 
     public static JsepTransportController Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.JsepTransportController arg0)
     {

@@ -43,6 +43,17 @@ public sealed unsafe partial class HurtOnConditionSystem : global::System.IDispo
         NativeMethods.TablePtr->C1.hs_method_5dc30946((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static HurtOnConditionSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.HurtOnConditionSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_dc140757((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HurtOnConditionSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C1.hs_method_7cb671e0((void*)__hosihikari_shim_handle, (void*)registry.Handle);

@@ -60,6 +60,17 @@ public sealed unsafe partial class SemVersion : global::System.IDisposable
         return new SemVersion((nint)handle);
     }
 
+    public static SemVersion Create(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_69cf407f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SemVersion((nint)handle);
+    }
+
     public static SemVersion Create(nint other)
     {
         var handle = NativeMethods.TablePtr->C3.hs_create_f1299293((void*)other);

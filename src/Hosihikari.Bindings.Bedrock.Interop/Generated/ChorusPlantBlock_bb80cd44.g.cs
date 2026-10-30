@@ -303,6 +303,17 @@ public sealed unsafe partial class ChorusPlantBlock : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ChorusPlantBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.ChorusPlantBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_450aab30((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChorusPlantBlock((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.AABB _getShape(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.AABB bufferValue)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->C0.hs_method_123d7a56((void*)region.Handle, (void*)pos.Handle, (void*)bufferValue.Handle), false);

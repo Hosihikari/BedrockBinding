@@ -54,6 +54,17 @@ public sealed unsafe partial class ActorSpawnRuleDataLoader : global::System.IDi
         return new ActorSpawnRuleDataLoader((nint)handle);
     }
 
+    public static ActorSpawnRuleDataLoader Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorSpawnRuleDataLoader arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5c25cf28((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorSpawnRuleDataLoader((nint)handle);
+    }
+
     public static ActorSpawnRuleDataLoader Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx, nint packLoadContext, nint spawnPlacements)
     {
         var handle = NativeMethods.TablePtr->C0.hs_create_00b53dfe((void*)ctx.Handle, (void*)packLoadContext, (void*)spawnPlacements);

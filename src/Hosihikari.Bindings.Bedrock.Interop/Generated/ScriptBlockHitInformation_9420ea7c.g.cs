@@ -54,6 +54,17 @@ public sealed unsafe partial class ScriptBlockHitInformation : global::System.ID
         return new ScriptBlockHitInformation((nint)handle);
     }
 
+    public static ScriptBlockHitInformation Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBlockHitInformation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_3a6e8981((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptBlockHitInformation((nint)handle);
+    }
+
     public static ScriptBlockHitInformation Create(global::Hosihikari.Bindings.Abi.SharedHandle? projectileHitEvent, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope)
     {
         var handle = NativeMethods.TablePtr->C3.hs_create_1d5750a1(projectileHitEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)scope.Handle);

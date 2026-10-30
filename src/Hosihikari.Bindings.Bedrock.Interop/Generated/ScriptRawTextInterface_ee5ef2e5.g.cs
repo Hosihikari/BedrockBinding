@@ -38,6 +38,17 @@ public sealed unsafe partial class ScriptRawTextInterface : global::System.IDisp
         return __hs_handle;
     }
 
+    public static ScriptRawTextInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptRawTextInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_ca4f8bb6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptRawTextInterface((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding((nint)NativeMethods.TablePtr->C3.hs_method_76b8a780());

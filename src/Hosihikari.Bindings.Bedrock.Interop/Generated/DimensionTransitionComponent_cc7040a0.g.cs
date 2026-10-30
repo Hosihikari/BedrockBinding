@@ -56,6 +56,17 @@ public sealed unsafe partial class DimensionTransitionComponent : global::System
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static DimensionTransitionComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.DimensionTransitionComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_db939cec((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DimensionTransitionComponent((nint)handle);
+    }
+
     public static string POSITION_X_TAG()
     {
         var __hs_view = NativeMethods.TablePtr->C1.hs_method_1d1a5b76();

@@ -57,6 +57,17 @@ public sealed unsafe partial class TagCacheManager : global::System.IDisposable
     public static TagCacheManager Create(nint commandManager, nint deregisterTagsFromActorProxy) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<CommandManager>' is not a known bindable declaration.");
 
+    public static TagCacheManager Create(global::Hosihikari.Bindings.Bedrock.Interop.TagCacheManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c929e814((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TagCacheManager((nint)handle);
+    }
+
     public void _deregisterTagsFromActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
         NativeMethods.TablePtr->C3.hs_method_6586a227((void*)__hosihikari_shim_handle, (void*)actor.Handle);

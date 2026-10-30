@@ -192,6 +192,17 @@ public sealed unsafe partial class SidePoweredComponent : global::System.IDispos
         NativeMethods.TablePtr->C3.hs_method_4df46c02((void*)__hosihikari_shim_handle, (void*)posSource.Handle, (void*)(pComponent?.Handle ?? 0));
     }
 
+    public static SidePoweredComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SidePoweredComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_fbf17f65((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SidePoweredComponent((nint)handle);
+    }
+
     public bool allowConnection(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph graph, global::Hosihikari.Bindings.Bedrock.Interop.CircuitTrackingInfo info, nint bDirectlyPowered)
     {
         return NativeMethods.TablePtr->C3.hs_method_9d0c72c6((void*)__hosihikari_shim_handle, (void*)graph.Handle, (void*)info.Handle, (void*)bDirectlyPowered) != 0;

@@ -62,6 +62,17 @@ public sealed unsafe partial class OnDeathDefinition : global::System.IDisposabl
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static OnDeathDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_40.OnDeathDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_349031b6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OnDeathDefinition((nint)handle);
+    }
+
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C3.hs_method_c54c43e7((void*)ctx.Handle);

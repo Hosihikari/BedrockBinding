@@ -59,6 +59,17 @@ public sealed unsafe partial class ScriptChunkValidator : global::System.IDispos
         return new ScriptChunkValidator((nint)handle);
     }
 
+    public static ScriptChunkValidator Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptChunkValidator arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_09c78808((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptChunkValidator((nint)handle);
+    }
+
     public static ScriptChunkValidator Create(nint chunkPositions, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
     {
         var handle = NativeMethods.TablePtr->C3.hs_create_35f3df8d((void*)chunkPositions, (void*)region.Handle);

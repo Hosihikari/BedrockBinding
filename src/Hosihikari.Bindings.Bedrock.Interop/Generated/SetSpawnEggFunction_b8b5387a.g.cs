@@ -54,6 +54,17 @@ public sealed unsafe partial class SetSpawnEggFunction : global::System.IDisposa
         return NativeMethods.TablePtr->C3.hs_method_069743fc((void*)__hosihikari_shim_handle);
     }
 
+    public static SetSpawnEggFunction Create(global::Hosihikari.Bindings.Bedrock.Interop.SetSpawnEggFunction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_d89c27da((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SetSpawnEggFunction((nint)handle);
+    }
+
     public void applyPreVersion(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext context)
     {
         NativeMethods.TablePtr->C3.hs_method_b790e273((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)arg1.Handle, (void*)context.Handle);

@@ -81,6 +81,17 @@ public sealed unsafe partial class FilterTestDimensionWeather : global::System.I
         return NativeMethods.TablePtr->C1.hs_method_74106e86((void*)__hosihikari_shim_handle, (void*)definition.Handle, (void*)inputs.Handle) != 0;
     }
 
+    public static FilterTestDimensionWeather Create(global::Hosihikari.Bindings.Bedrock.Interop.FilterTestDimensionWeather arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_a2013bfb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FilterTestDimensionWeather((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.Json.Value _serializeValue()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->C1.hs_method_e276a064((void*)__hosihikari_shim_handle));

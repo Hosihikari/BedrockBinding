@@ -43,6 +43,17 @@ public sealed unsafe partial class SoundDefinition : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_03d6fe7f((void*)__hosihikari_shim_handle);
     }
 
+    public static SoundDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_50.SoundDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_8bab9e44((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SoundDefinition((nint)handle);
+    }
+
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C3.hs_method_4f2cbc91((void*)ctx.Handle);

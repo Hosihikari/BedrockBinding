@@ -296,6 +296,17 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
         return new ExternalFileLevelStorageSource((nint)handle);
     }
 
+    public static ExternalFileLevelStorageSource Create(global::Hosihikari.Bindings.Bedrock.Interop.ExternalFileLevelStorageSource arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_a340f94a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ExternalFileLevelStorageSource((nint)handle);
+    }
+
     public static ExternalFileLevelStorageSource Create(nint pathManager, nint saveTransactionManager)
     {
         var handle = NativeMethods.TablePtr->C1.hs_create_9f365673((void*)pathManager, (void*)saveTransactionManager);

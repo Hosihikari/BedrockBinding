@@ -43,6 +43,17 @@ public sealed unsafe partial class ItemDescriptor : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_6ebc0cbb((void*)__hosihikari_shim_handle);
     }
 
+    public static ItemDescriptor Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy.ItemDescriptor arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c2e3ee84((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemDescriptor((nint)handle);
+    }
+
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C3.hs_method_d4d2308c((void*)ctx.Handle);

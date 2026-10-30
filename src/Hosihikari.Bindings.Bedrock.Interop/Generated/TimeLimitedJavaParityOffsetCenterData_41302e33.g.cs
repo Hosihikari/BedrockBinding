@@ -40,7 +40,7 @@ public sealed unsafe partial class TimeLimitedJavaParityOffsetCenterData : globa
 
     public static TimeLimitedJavaParityOffsetCenterData Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_a2fa9a03();
+        var handle = NativeMethods.TablePtr->C2.hs_create_a2fa9a03();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class TimeLimitedJavaParityOffsetCenterData : globa
 
     public static TimeLimitedJavaParityOffsetCenterData Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelAnimateTickHelper_Nested.TimeLimitedJavaParityOffsetCenterData arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_7566752a((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_7566752a((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,24 +63,24 @@ public sealed unsafe partial class TimeLimitedJavaParityOffsetCenterData : globa
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk103825_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_47f27c9b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_47f27c9b((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk355eb9_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_0563e479((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0563e479((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkc00d85_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_d7150700((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d7150700((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelAnimateTickHelper_Nested.TimeLimitedJavaParityOffsetCenterData operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LevelAnimateTickHelper_Nested.TimeLimitedJavaParityOffsetCenterData arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelAnimateTickHelper_Nested.TimeLimitedJavaParityOffsetCenterData((nint)NativeMethods.TablePtr->C1.hs_method_87eaae8f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelAnimateTickHelper_Nested.TimeLimitedJavaParityOffsetCenterData((nint)NativeMethods.TablePtr->C2.hs_method_87eaae8f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -89,7 +89,7 @@ public sealed unsafe partial class TimeLimitedJavaParityOffsetCenterData : globa
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_41302e33((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_41302e33((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

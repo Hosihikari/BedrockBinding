@@ -318,6 +318,17 @@ public sealed unsafe partial class IScriptWorldAfterEvents : global::System.IDis
         NativeMethods.TablePtr->C3.hs_method_f86c716a((void*)__hosihikari_shim_handle, clockTimeModifiedEvent?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
+    public static IScriptWorldAfterEvents Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.IScriptWorldAfterEvents arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_58f45cd4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IScriptWorldAfterEvents((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getLevel() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

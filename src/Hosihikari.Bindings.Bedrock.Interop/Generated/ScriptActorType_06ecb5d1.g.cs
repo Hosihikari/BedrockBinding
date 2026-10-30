@@ -38,6 +38,17 @@ public sealed unsafe partial class ScriptActorType : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ScriptActorType Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptActorType arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c863fe85((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptActorType((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint addDynamicPropertiesDefinition(nint dynamicPropertiesDefinition) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.");

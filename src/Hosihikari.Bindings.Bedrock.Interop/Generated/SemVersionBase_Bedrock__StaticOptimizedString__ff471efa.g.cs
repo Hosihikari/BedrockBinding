@@ -44,7 +44,11 @@ public sealed partial class SemVersionBase_Bedrock__StaticOptimizedString_
         throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public static SemVersionBase_Bedrock__StaticOptimizedString_ Create(nint arg0) =>
+    public static SemVersionBase_Bedrock__StaticOptimizedString_ Create_9e7ddeba(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
+    public static SemVersionBase_Bedrock__StaticOptimizedString_ Create_8b76034a(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]

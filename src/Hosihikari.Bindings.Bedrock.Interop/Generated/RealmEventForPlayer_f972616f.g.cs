@@ -40,19 +40,30 @@ public sealed unsafe partial class RealmEventForPlayer : global::System.IDisposa
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C2.hs_method_60a15be6((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_60a15be6((void*)__hosihikari_shim_handle);
+    }
+
+    public static RealmEventForPlayer Create(global::Hosihikari.Bindings.Bedrock.Interop.RealmEventForPlayer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c9cc6b81((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RealmEventForPlayer((nint)handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPlayerXuid_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_b5f0b171((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b5f0b171((void*)__hosihikari_shim_handle);
     }
 
     public int mRealmEventId
     {
-        get => NativeMethods.TablePtr->C2.hs_get_136c9ac2((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_136c9ac2((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_136c9ac2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_136c9ac2((void*)__hosihikari_shim_handle, value);
     }
 
 
@@ -62,7 +73,7 @@ public sealed unsafe partial class RealmEventForPlayer : global::System.IDisposa
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_f972616f((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_f972616f((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

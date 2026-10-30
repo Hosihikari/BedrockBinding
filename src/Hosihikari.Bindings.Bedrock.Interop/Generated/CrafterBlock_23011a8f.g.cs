@@ -348,6 +348,17 @@ public sealed unsafe partial class CrafterBlock : global::System.IDisposable
         return new CrafterBlock((nint)handle);
     }
 
+    public static CrafterBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.CrafterBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_64e75f91((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CrafterBlock((nint)handle);
+    }
+
     public static CrafterBlock Create(string nameId, int id)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);

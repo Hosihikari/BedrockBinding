@@ -303,6 +303,17 @@ public sealed unsafe partial class ChemicalHeatBlock : global::System.IDisposabl
         return new ChemicalHeatBlock((nint)handle);
     }
 
+    public static ChemicalHeatBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.ChemicalHeatBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_cdc8fcaf((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChemicalHeatBlock((nint)handle);
+    }
+
     public static ChemicalHeatBlock Create(string nameId, int id)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);

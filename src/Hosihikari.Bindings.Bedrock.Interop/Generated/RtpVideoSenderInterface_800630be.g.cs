@@ -91,6 +91,17 @@ public sealed unsafe partial class RtpVideoSenderInterface : global::System.IDis
     public void OnVideoLayersAllocationUpdated(nint allocation) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static RtpVideoSenderInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RtpVideoSenderInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_43306796((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RtpVideoSenderInterface((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void SetCsrcs(nint csrcs) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

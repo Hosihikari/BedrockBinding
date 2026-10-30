@@ -43,6 +43,17 @@ public sealed unsafe partial class EducationLocalLevelSettings : global::System.
         NativeMethods.TablePtr->C1.hs_method_527bbbad((void*)__hosihikari_shim_handle);
     }
 
+    public static EducationLocalLevelSettings Create(global::Hosihikari.Bindings.Bedrock.Interop.EducationLocalLevelSettings arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_e0069c8c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EducationLocalLevelSettings((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint codeBuilderOverrideUri_Address
     {

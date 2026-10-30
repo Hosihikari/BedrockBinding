@@ -165,9 +165,10 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_6cfb03df((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public float _causeFallDamageToActor(float distance, float multiplier, nint source) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public float _causeFallDamageToActor(float distance, float multiplier, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_70584fc8((void*)__hosihikari_shim_handle, distance, multiplier, (void*)source.Handle);
+    }
 
     public void _changeDimension(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType toId)
     {
@@ -1082,9 +1083,10 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_41f5736b((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public float causeFallDamageToActor(float distance, float multiplier, nint source) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public float causeFallDamageToActor(float distance, float multiplier, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_66212a7f((void*)__hosihikari_shim_handle, distance, multiplier, (void*)source.Handle);
+    }
 
     public void celebrateHunt(int duration, bool special)
     {
@@ -1919,18 +1921,20 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_8ef3023e((void*)__hosihikari_shim_handle, eventId, data);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void handleFallDamage(float fallDistance, float multiplier, nint source) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void handleFallDamage(float fallDistance, float multiplier, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source)
+    {
+        NativeMethods.TablePtr->C0.hs_method_46a781ab((void*)__hosihikari_shim_handle, fallDistance, multiplier, (void*)source.Handle);
+    }
 
     public void handleInsidePortal(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos portalPos)
     {
         NativeMethods.TablePtr->C0.hs_method_284892ff((void*)__hosihikari_shim_handle, (void*)portalPos.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void handleLeftoverFallDamage(float damage, nint source) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void handleLeftoverFallDamage(float damage, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source)
+    {
+        NativeMethods.TablePtr->C0.hs_method_8b05d4e8((void*)__hosihikari_shim_handle, damage, (void*)source.Handle);
+    }
 
     public bool hasAnyEffects()
     {
@@ -3219,9 +3223,10 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_9aae6934((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void setActorRendererId(nint actorRendererId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void setActorRendererId(global::Hosihikari.Bindings.Bedrock.Interop.HashedString actorRendererId)
+    {
+        NativeMethods.TablePtr->C0.hs_method_222c81a8((void*)__hosihikari_shim_handle, (void*)actorRendererId.Handle);
+    }
 
     public void setArmor(int slot, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
     {
@@ -3519,9 +3524,12 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->C0.hs_method_e1ebc12b((void*)__hosihikari_shim_handle, slotNumber);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint tryGetEquippableSlotForItem(nint item) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public int? tryGetEquippableSlotForItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor item)
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->C0.hs_method_222f3f74((void*)__hosihikari_shim_handle, (void*)item.Handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (int?)null;
+    }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Actor? tryGetFromEntity(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity, bool includeRemoved)
     {

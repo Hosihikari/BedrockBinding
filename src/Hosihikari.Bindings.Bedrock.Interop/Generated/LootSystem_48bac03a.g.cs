@@ -48,6 +48,17 @@ public sealed unsafe partial class LootSystem : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_37a5c24b((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
+    public static LootSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.LootSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_c233b322((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LootSystem((nint)handle);
+    }
+
     public void registerEvents(nint eventDispatcher)
     {
         NativeMethods.TablePtr->C2.hs_method_041974ef((void*)__hosihikari_shim_handle, (void*)eventDispatcher);

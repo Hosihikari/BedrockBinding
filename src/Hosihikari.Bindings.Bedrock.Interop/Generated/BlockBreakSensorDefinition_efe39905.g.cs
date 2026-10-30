@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockBreakSensorDefinition : global::System.I
         return __hs_handle;
     }
 
+    public static BlockBreakSensorDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockBreakSensorDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5aa1eb8e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockBreakSensorDefinition((nint)handle);
+    }
+
     public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
         NativeMethods.TablePtr->C0.hs_method_47638c55(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));

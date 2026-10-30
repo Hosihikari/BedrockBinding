@@ -38,6 +38,17 @@ public sealed unsafe partial class GameEventMovementTrackingComponent : global::
         return __hs_handle;
     }
 
+    public static GameEventMovementTrackingComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.GameEventMovementTrackingComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_5ff23087((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameEventMovementTrackingComponent((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
     public void initializeFromData(nint actor, nint settings) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");

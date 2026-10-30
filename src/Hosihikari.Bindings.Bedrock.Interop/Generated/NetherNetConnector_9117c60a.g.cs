@@ -59,9 +59,10 @@ public sealed unsafe partial class NetherNetConnector : global::System.IDisposab
         NativeMethods.TablePtr->C2.hs_method_9b0706a6((void*)__hosihikari_shim_handle, (void*)networkID.Handle, (void*)pApplicationData, size);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void _OnSessionClose(nint networkID, ulong sessionId, nint sessionError, nint summary) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void _OnSessionClose(global::Hosihikari.Bindings.Bedrock.Interop.NetherNet.NetworkID networkID, ulong sessionId, int sessionError, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value summary)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d228ed13((void*)__hosihikari_shim_handle, (void*)networkID.Handle, sessionId, sessionError, (void*)summary.Handle);
+    }
 
     public void _OnSessionGetConnectionFlags(global::Hosihikari.Bindings.Bedrock.Interop.NetherNet.NetworkID arg0, nint flags)
     {
@@ -174,9 +175,10 @@ public sealed unsafe partial class NetherNetConnector : global::System.IDisposab
         NativeMethods.TablePtr->C2.hs_method_5ff3c251((void*)__hosihikari_shim_handle, (void*)networkID.Handle, (void*)pApplicationData, size);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void OnSessionClose(nint networkID, ulong sessionId, nint sessionError, nint summary) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void OnSessionClose(global::Hosihikari.Bindings.Bedrock.Interop.NetherNet.NetworkID networkID, ulong sessionId, int sessionError, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value summary)
+    {
+        NativeMethods.TablePtr->C2.hs_method_ed55b7da((void*)__hosihikari_shim_handle, (void*)networkID.Handle, sessionId, sessionError, (void*)summary.Handle);
+    }
 
     public void OnSessionGetConnectionFlags(global::Hosihikari.Bindings.Bedrock.Interop.NetherNet.NetworkID arg0, nint flags)
     {

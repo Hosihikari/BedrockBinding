@@ -67,6 +67,17 @@ public sealed unsafe partial class ScriptDebugCommand : global::System.IDisposab
         set => NativeMethods.TablePtr->C3.hs_set_d2f0b215((void*)__hosihikari_shim_handle, value);
     }
 
+    public static ScriptDebugCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptDebugCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_86fec4fd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptDebugCommand((nint)handle);
+    }
+
     public void _handleDebuggerAttach(global::Hosihikari.Bindings.Bedrock.Interop.IScriptDebugger? debugger, string locPrefix, int action, string host, ushort port, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(locPrefix);

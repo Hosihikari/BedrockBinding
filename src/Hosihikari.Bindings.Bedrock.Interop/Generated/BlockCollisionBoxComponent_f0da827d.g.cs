@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockCollisionBoxComponent : global::System.I
         return __hs_handle;
     }
 
+    public static BlockCollisionBoxComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockCollisionBoxComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_233f1e42((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockCollisionBoxComponent((nint)handle);
+    }
+
     public static bool addComponentCollisionShapes(global::Hosihikari.Bindings.Bedrock.Interop.BlockCollisionBoxComponent component, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos randomOffsetPos, global::Hosihikari.Bindings.Bedrock.Interop.AABB? intersectTestBox, global::Hosihikari.Bindings.Bedrock.Interop.AABB[] inoutBoxes)
     {
         var __hs_vectorItems4 = inoutBoxes;

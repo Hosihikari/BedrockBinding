@@ -48,6 +48,17 @@ public sealed unsafe partial class MineshaftPiece : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_2e08de80((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)chunkBB.Handle) != 0;
     }
 
+    public static MineshaftPiece Create(global::Hosihikari.Bindings.Bedrock.Interop.MineshaftPiece arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_d130cff6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MineshaftPiece((nint)handle);
+    }
+
     public bool canBeReplaced(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, int x, int y, int z, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox chunkBB)
     {
         return NativeMethods.TablePtr->C2.hs_method_89d00114((void*)__hosihikari_shim_handle, (void*)region.Handle, x, y, z, (void*)chunkBB.Handle) != 0;

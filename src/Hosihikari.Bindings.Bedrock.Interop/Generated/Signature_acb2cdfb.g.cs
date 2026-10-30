@@ -43,6 +43,17 @@ public sealed unsafe partial class Signature : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_9b5ede8e((void*)__hosihikari_shim_handle);
     }
 
+    public static Signature Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry_Nested.Signature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_377e4666((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Signature((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint chainedSubcommandIndexes_Address
     {

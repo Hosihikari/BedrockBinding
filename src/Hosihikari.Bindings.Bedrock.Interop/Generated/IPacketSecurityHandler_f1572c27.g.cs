@@ -38,6 +38,17 @@ public sealed unsafe partial class IPacketSecurityHandler : global::System.IDisp
         return __hs_handle;
     }
 
+    public static IPacketSecurityHandler Create(global::Hosihikari.Bindings.Bedrock.Interop.IPacketSecurityHandler arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_7fb90c2f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IPacketSecurityHandler((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint checkForViolation(nint packetId, nint result, nint outIsNewOrUpdatedViolation) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

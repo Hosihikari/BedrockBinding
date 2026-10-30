@@ -43,6 +43,17 @@ public sealed unsafe partial class BribeableSystem : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_39f9d58c((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static BribeableSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.BribeableSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_06e741f6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BribeableSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C0.hs_method_dabfaeeb((void*)__hosihikari_shim_handle, (void*)registry.Handle);

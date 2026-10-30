@@ -93,6 +93,17 @@ public sealed unsafe partial class ScriptScoreboardObjective : global::System.ID
         }
     }
 
+    public static ScriptScoreboardObjective Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptScoreboardObjective arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_2407535d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptScoreboardObjective((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<int>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _modifyScore(nint participant, nint setFunction, int score) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<int>' requires --link-carrier or --virtual-dispatch.");

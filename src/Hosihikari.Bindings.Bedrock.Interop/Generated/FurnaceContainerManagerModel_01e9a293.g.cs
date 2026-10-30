@@ -174,6 +174,17 @@ public sealed unsafe partial class FurnaceContainerManagerModel : global::System
         return new FurnaceContainerManagerModel((nint)handle);
     }
 
+    public static FurnaceContainerManagerModel Create(global::Hosihikari.Bindings.Bedrock.Interop.FurnaceContainerManagerModel arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_fc3a72ac((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FurnaceContainerManagerModel((nint)handle);
+    }
+
     public static FurnaceContainerManagerModel Create(global::Hosihikari.Bindings.Bedrock.Interop.HashedString recipeTag, sbyte containerType, byte blockActorType, sbyte containerId, global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos blockPos)
     {
         var handle = NativeMethods.TablePtr->C1.hs_create_8113247c((void*)recipeTag.Handle, containerType, blockActorType, containerId, (void*)player.Handle, (void*)blockPos.Handle);

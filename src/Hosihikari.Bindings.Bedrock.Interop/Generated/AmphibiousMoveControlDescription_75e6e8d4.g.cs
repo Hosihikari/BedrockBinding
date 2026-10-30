@@ -43,6 +43,17 @@ public sealed unsafe partial class AmphibiousMoveControlDescription : global::Sy
         return (nint)NativeMethods.TablePtr->C0.hs_method_1b4dffe0((void*)__hosihikari_shim_handle);
     }
 
+    public static AmphibiousMoveControlDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.AmphibiousMoveControlDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_788c9f42((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AmphibiousMoveControlDescription((nint)handle);
+    }
+
     public nint getJsonName()
     {
         return (nint)NativeMethods.TablePtr->C0.hs_method_238b8e91((void*)__hosihikari_shim_handle);

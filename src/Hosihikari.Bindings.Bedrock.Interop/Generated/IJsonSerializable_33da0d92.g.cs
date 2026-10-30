@@ -38,6 +38,17 @@ public sealed unsafe partial class IJsonSerializable : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static IJsonSerializable Create(global::Hosihikari.Bindings.Bedrock.Interop.IJsonSerializable arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_5bf90fd6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IJsonSerializable((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void deserialize(nint root) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

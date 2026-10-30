@@ -43,6 +43,17 @@ public sealed unsafe partial class CommandName : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_d52b13ba((void*)__hosihikari_shim_handle);
     }
 
+    public static CommandName Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandName arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_05bf0384((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandName((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint name_Address
     {

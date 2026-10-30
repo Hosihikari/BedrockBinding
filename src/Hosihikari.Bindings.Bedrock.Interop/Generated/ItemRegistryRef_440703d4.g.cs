@@ -38,6 +38,17 @@ public sealed unsafe partial class ItemRegistryRef : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ItemRegistryRef Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistryRef arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_9b7fb82f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemRegistryRef((nint)handle);
+    }
+
     public void addItemToTagMap(global::Hosihikari.Bindings.Bedrock.Interop.Item item)
     {
         NativeMethods.TablePtr->C1.hs_method_d40265f2((void*)__hosihikari_shim_handle, (void*)item.Handle);

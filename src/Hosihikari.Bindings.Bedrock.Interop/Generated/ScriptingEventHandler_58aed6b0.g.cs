@@ -38,6 +38,17 @@ public sealed unsafe partial class ScriptingEventHandler : global::System.IDispo
         return __hs_handle;
     }
 
+    public static ScriptingEventHandler Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptingEventHandler arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_6a9a7063((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptingEventHandler((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint handleEvent_98b81d8d(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

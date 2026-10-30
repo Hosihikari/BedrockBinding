@@ -38,6 +38,17 @@ public sealed unsafe partial class CustomMapFoliageColorAttributes : global::Sys
         return __hs_handle;
     }
 
+    public static CustomMapFoliageColorAttributes Create(global::Hosihikari.Bindings.Bedrock.Interop.CustomMapFoliageColorAttributes arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_3f4c9ac9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CustomMapFoliageColorAttributes((nint)handle);
+    }
+
     public int mMapFoliageColor
     {
         get => NativeMethods.TablePtr->C1.hs_get_eea958cb((void*)__hosihikari_shim_handle);

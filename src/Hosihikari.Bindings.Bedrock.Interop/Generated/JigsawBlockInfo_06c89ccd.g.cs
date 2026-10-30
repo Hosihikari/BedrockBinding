@@ -38,6 +38,17 @@ public sealed unsafe partial class JigsawBlockInfo : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static JigsawBlockInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.JigsawBlockInfo arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d3d8140a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new JigsawBlockInfo((nint)handle);
+    }
+
     public nint mBlock
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_9a1db191((void*)__hosihikari_shim_handle);

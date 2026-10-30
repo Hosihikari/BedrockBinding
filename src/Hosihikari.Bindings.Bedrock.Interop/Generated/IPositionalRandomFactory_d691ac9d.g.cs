@@ -38,6 +38,17 @@ public sealed unsafe partial class IPositionalRandomFactory : global::System.IDi
         return __hs_handle;
     }
 
+    public static IPositionalRandomFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.IPositionalRandomFactory arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_382f0d97((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IPositionalRandomFactory((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint forBlockPos(nint blockPos) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

@@ -40,55 +40,55 @@ public sealed unsafe partial class RealmsStoriesGameplayEventListener : global::
 
     public int _onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ActorAcquiredItemEvent actorAcquiredItemEvent)
     {
-        return NativeMethods.TablePtr->C2.hs_method_f0f3bd1e((void*)__hosihikari_shim_handle, (void*)actorAcquiredItemEvent.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_f0f3bd1e((void*)__hosihikari_shim_handle, (void*)actorAcquiredItemEvent.Handle);
     }
 
     public int _onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ActorKilledEvent actorKilledEvent)
     {
-        return NativeMethods.TablePtr->C2.hs_method_78c346d2((void*)__hosihikari_shim_handle, (void*)actorKilledEvent.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_78c346d2((void*)__hosihikari_shim_handle, (void*)actorKilledEvent.Handle);
     }
 
     public int _onEvent(global::Hosihikari.Bindings.Bedrock.Interop.PlayerUseNameTagEvent playerUseNameTagEvent)
     {
-        return NativeMethods.TablePtr->C2.hs_method_1114baaa((void*)__hosihikari_shim_handle, (void*)playerUseNameTagEvent.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_1114baaa((void*)__hosihikari_shim_handle, (void*)playerUseNameTagEvent.Handle);
     }
 
     public int _onPlayerCraftedItem(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance craftedItem, bool recipeBook, bool hadSearchString, bool craftedAutomatically, int startingTabId, int endingTabId, int numTabsChanged, bool filterOn, bool recipeBookShown, short[] ingredientItemIDs)
     {
         fixed (short* __hs_vectorData10 = ingredientItemIDs)
         {
-            return NativeMethods.TablePtr->C2.hs_method_aee498fe((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)craftedItem.Handle, recipeBook, hadSearchString, craftedAutomatically, startingTabId, endingTabId, numTabsChanged, filterOn, recipeBookShown, __hs_vectorData10, (nuint)(ingredientItemIDs?.Length ?? 0));
+            return NativeMethods.TablePtr->C3.hs_method_aee498fe((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)craftedItem.Handle, recipeBook, hadSearchString, craftedAutomatically, startingTabId, endingTabId, numTabsChanged, filterOn, recipeBookShown, __hs_vectorData10, (nuint)(ingredientItemIDs?.Length ?? 0));
         }
     }
 
     public int _onPlayerEnchantedItem(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item, global::Hosihikari.Bindings.Bedrock.Interop.ItemEnchants enchants)
     {
-        return NativeMethods.TablePtr->C2.hs_method_997b3684((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)item.Handle, (void*)enchants.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_997b3684((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)item.Handle, (void*)enchants.Handle);
     }
 
     public int _onPlayerMove(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        return NativeMethods.TablePtr->C2.hs_method_9d044df2((void*)__hosihikari_shim_handle, (void*)player.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_9d044df2((void*)__hosihikari_shim_handle, (void*)player.Handle);
     }
 
     public int _onPlayerPortalBuilt(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionBuiltIn)
     {
-        return NativeMethods.TablePtr->C2.hs_method_bd0b1b41((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)dimensionBuiltIn.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_bd0b1b41((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)dimensionBuiltIn.Handle);
     }
 
     public int _onPlayerPortalUsed(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType fromDimension, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType toDimension)
     {
-        return NativeMethods.TablePtr->C2.hs_method_30819e1d((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)fromDimension.Handle, (void*)toDimension.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_30819e1d((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)fromDimension.Handle, (void*)toDimension.Handle);
     }
 
     public int _onPlayerPoweredBeacon(global::Hosihikari.Bindings.Bedrock.Interop.Player player, int arg1)
     {
-        return NativeMethods.TablePtr->C2.hs_method_88f5875b((void*)__hosihikari_shim_handle, (void*)player.Handle, arg1);
+        return NativeMethods.TablePtr->C3.hs_method_88f5875b((void*)__hosihikari_shim_handle, (void*)player.Handle, arg1);
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Player? _getActorFullyAuthenticatedPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Actor? actor)
     {
-        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_e8d34810((void*)(actor?.Handle ?? 0));
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_e8d34810((void*)(actor?.Handle ?? 0));
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Player((nint)__hs_handle, false) : null;
     }
 
@@ -98,7 +98,7 @@ public sealed unsafe partial class RealmsStoriesGameplayEventListener : global::
 
     public static string _playerXuidsToString(nint xuids)
     {
-        var __hs_view = NativeMethods.TablePtr->C2.hs_method_a4e4d2a0((void*)xuids);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_a4e4d2a0((void*)xuids);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -117,79 +117,79 @@ public sealed unsafe partial class RealmsStoriesGameplayEventListener : global::
         global::System.Text.Encoding.UTF8.GetBytes(xuid, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->C2.hs_method_3e2969e3((void*)__hosihikari_shim_handle, id, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)metadata.Handle);
+            NativeMethods.TablePtr->C3.hs_method_3e2969e3((void*)__hosihikari_shim_handle, id, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)metadata.Handle);
         }
     }
 
     public void _publishLocationWorldEventIfFirstTime(int id, global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        NativeMethods.TablePtr->C2.hs_method_086d6900((void*)__hosihikari_shim_handle, id, (void*)player.Handle);
+        NativeMethods.TablePtr->C3.hs_method_086d6900((void*)__hosihikari_shim_handle, id, (void*)player.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLastPosChecked_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_a48b3ca8((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a48b3ca8((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRealmEventLogger_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_79d00ef0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_79d00ef0((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRealmsStoriesData_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_2805feb5((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2805feb5((void*)__hosihikari_shim_handle);
     }
 
     public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ActorAcquiredItemEvent actorAcquiredItemEvent)
     {
-        return NativeMethods.TablePtr->C2.hs_method_d9890105((void*)__hosihikari_shim_handle, (void*)actorAcquiredItemEvent.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_d9890105((void*)__hosihikari_shim_handle, (void*)actorAcquiredItemEvent.Handle);
     }
 
     public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ActorKilledEvent actorKilledEvent)
     {
-        return NativeMethods.TablePtr->C2.hs_method_2806afda((void*)__hosihikari_shim_handle, (void*)actorKilledEvent.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_2806afda((void*)__hosihikari_shim_handle, (void*)actorKilledEvent.Handle);
     }
 
     public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.PlayerUseNameTagEvent playerUseNameTagEvent)
     {
-        return NativeMethods.TablePtr->C2.hs_method_02c106c1((void*)__hosihikari_shim_handle, (void*)playerUseNameTagEvent.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_02c106c1((void*)__hosihikari_shim_handle, (void*)playerUseNameTagEvent.Handle);
     }
 
     public int onPlayerCraftedItem(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance craftedItem, bool recipeBook, bool hadSearchString, bool craftedAutomatically, int startingTabId, int endingTabId, int numTabsChanged, bool filterOn, bool recipeBookShown, short[] ingredientItemIDs)
     {
         fixed (short* __hs_vectorData10 = ingredientItemIDs)
         {
-            return NativeMethods.TablePtr->C2.hs_method_1179cdd2((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)craftedItem.Handle, recipeBook, hadSearchString, craftedAutomatically, startingTabId, endingTabId, numTabsChanged, filterOn, recipeBookShown, __hs_vectorData10, (nuint)(ingredientItemIDs?.Length ?? 0));
+            return NativeMethods.TablePtr->C3.hs_method_1179cdd2((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)craftedItem.Handle, recipeBook, hadSearchString, craftedAutomatically, startingTabId, endingTabId, numTabsChanged, filterOn, recipeBookShown, __hs_vectorData10, (nuint)(ingredientItemIDs?.Length ?? 0));
         }
     }
 
     public int onPlayerEnchantedItem(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item, global::Hosihikari.Bindings.Bedrock.Interop.ItemEnchants enchants)
     {
-        return NativeMethods.TablePtr->C2.hs_method_9986bc3a((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)item.Handle, (void*)enchants.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_9986bc3a((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)item.Handle, (void*)enchants.Handle);
     }
 
     public int onPlayerMove(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        return NativeMethods.TablePtr->C2.hs_method_5b47dad4((void*)__hosihikari_shim_handle, (void*)player.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_5b47dad4((void*)__hosihikari_shim_handle, (void*)player.Handle);
     }
 
     public int onPlayerPortalBuilt(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionBuiltIn)
     {
-        return NativeMethods.TablePtr->C2.hs_method_ba3ecf25((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)dimensionBuiltIn.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_ba3ecf25((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)dimensionBuiltIn.Handle);
     }
 
     public int onPlayerPortalUsed(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType fromDimension, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType toDimension)
     {
-        return NativeMethods.TablePtr->C2.hs_method_57684103((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)fromDimension.Handle, (void*)toDimension.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_57684103((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)fromDimension.Handle, (void*)toDimension.Handle);
     }
 
     public int onPlayerPoweredBeacon(global::Hosihikari.Bindings.Bedrock.Interop.Player player, int arg1)
     {
-        return NativeMethods.TablePtr->C2.hs_method_b278b2ff((void*)__hosihikari_shim_handle, (void*)player.Handle, arg1);
+        return NativeMethods.TablePtr->C3.hs_method_b278b2ff((void*)__hosihikari_shim_handle, (void*)player.Handle, arg1);
     }
 
 
@@ -199,7 +199,7 @@ public sealed unsafe partial class RealmsStoriesGameplayEventListener : global::
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_6ff942c0((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_6ff942c0((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

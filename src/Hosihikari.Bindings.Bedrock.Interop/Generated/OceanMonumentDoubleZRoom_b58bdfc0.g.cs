@@ -48,6 +48,17 @@ public sealed unsafe partial class OceanMonumentDoubleZRoom : global::System.IDi
         return NativeMethods.TablePtr->C2.hs_method_2b562ed3((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle) != 0;
     }
 
+    public static OceanMonumentDoubleZRoom Create(global::Hosihikari.Bindings.Bedrock.Interop.OceanMonumentDoubleZRoom arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_960630e7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OceanMonumentDoubleZRoom((nint)handle);
+    }
+
     public int getType()
     {
         return NativeMethods.TablePtr->C2.hs_method_9fdbf1fa((void*)__hosihikari_shim_handle);

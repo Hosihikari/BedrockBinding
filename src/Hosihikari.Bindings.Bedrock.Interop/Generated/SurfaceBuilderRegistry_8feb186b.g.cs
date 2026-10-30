@@ -38,6 +38,17 @@ public sealed unsafe partial class SurfaceBuilderRegistry : global::System.IDisp
         return __hs_handle;
     }
 
+    public static SurfaceBuilderRegistry Create(global::Hosihikari.Bindings.Bedrock.Interop.SurfaceBuilderRegistry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_24d7a564((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SurfaceBuilderRegistry((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void forEachSurfaceBuilder(nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");

@@ -38,6 +38,17 @@ public sealed unsafe partial class PlayerBlockActions : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static PlayerBlockActions Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerBlockActions arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_cad2e812((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerBlockActions((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: span element type 'const PlayerBlockActionData' is not supported.", false)]
     public nint get() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'const PlayerBlockActionData' is not supported.");

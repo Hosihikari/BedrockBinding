@@ -38,6 +38,17 @@ public sealed unsafe partial class IConstBlockSource : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static IConstBlockSource Create(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_e1847c09((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IConstBlockSource((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool containsAnyLiquid(nint box) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

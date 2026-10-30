@@ -38,6 +38,17 @@ public sealed unsafe partial class StrongholdPiece : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static StrongholdPiece Create(global::Hosihikari.Bindings.Bedrock.Interop.StrongholdPiece arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_59993c20((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StrongholdPiece((nint)handle);
+    }
+
     public int entryDoor
     {
         get => NativeMethods.TablePtr->C3.hs_get_23547aa1((void*)__hosihikari_shim_handle);

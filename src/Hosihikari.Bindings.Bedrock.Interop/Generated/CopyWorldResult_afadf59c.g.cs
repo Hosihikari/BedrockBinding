@@ -49,6 +49,17 @@ public sealed unsafe partial class CopyWorldResult : global::System.IDisposable
         return new CopyWorldResult((nint)handle);
     }
 
+    public static CopyWorldResult Create(global::Hosihikari.Bindings.Bedrock.Interop.FileArchiver_Nested.CopyWorldResult arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_1bea212e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CopyWorldResult((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint copiedLevelId_Address
     {

@@ -67,6 +67,17 @@ public sealed unsafe partial class ClientboundMapItemDataPacketPayload : global:
     public static ClientboundMapItemDataPacketPayload Create(nint mapId, byte scale, nint decorations, nint mapColors, int startX, int startY, int width, int height, nint dimension, bool isLocked, nint mapOrigin) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::pair<MapItemTrackedActor::UniqueId, std::shared_ptr<MapDecoration>>' is not supported.");
 
+    public static ClientboundMapItemDataPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.ClientboundMapItemDataPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_67ecea61((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ClientboundMapItemDataPacketPayload((nint)handle);
+    }
+
     public static ClientboundMapItemDataPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData? newMapItem, global::Hosihikari.Bindings.Bedrock.Interop.Level level)
     {
         var handle = NativeMethods.TablePtr->C0.hs_create_8937db4f((void*)(newMapItem?.Handle ?? 0), (void*)level.Handle);

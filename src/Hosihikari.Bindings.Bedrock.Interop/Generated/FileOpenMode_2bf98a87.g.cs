@@ -40,12 +40,12 @@ public sealed unsafe partial class FileOpenMode : global::System.IDisposable
 
     public nint _ctor(int openMode)
     {
-        return (nint)NativeMethods.TablePtr->C0.hs_method_e2a9cc4a((void*)__hosihikari_shim_handle, openMode);
+        return (nint)NativeMethods.TablePtr->C1.hs_method_e2a9cc4a((void*)__hosihikari_shim_handle, openMode);
     }
 
     public static FileOpenMode Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_80d0f064();
+        var handle = NativeMethods.TablePtr->C1.hs_create_80d0f064();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,7 +56,7 @@ public sealed unsafe partial class FileOpenMode : global::System.IDisposable
 
     public static FileOpenMode Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileOpenMode arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_b904854f((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_b904854f((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -67,7 +67,7 @@ public sealed unsafe partial class FileOpenMode : global::System.IDisposable
 
     public static FileOpenMode Create(int openMode)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_83046001(openMode);
+        var handle = NativeMethods.TablePtr->C1.hs_create_83046001(openMode);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -78,7 +78,7 @@ public sealed unsafe partial class FileOpenMode : global::System.IDisposable
 
     public nint cModeWide()
     {
-        return (nint)NativeMethods.TablePtr->C0.hs_method_0c013d23((void*)__hosihikari_shim_handle);
+        return (nint)NativeMethods.TablePtr->C1.hs_method_0c013d23((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: bitfields are not supported by symbol dispatch.", false)]
@@ -146,7 +146,7 @@ public sealed unsafe partial class FileOpenMode : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.FileOpenMode operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileOpenMode arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileOpenMode((nint)NativeMethods.TablePtr->C0.hs_method_765086b3((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileOpenMode((nint)NativeMethods.TablePtr->C1.hs_method_765086b3((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -155,7 +155,7 @@ public sealed unsafe partial class FileOpenMode : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_2bf98a87((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_2bf98a87((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

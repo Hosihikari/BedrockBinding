@@ -38,6 +38,17 @@ public sealed unsafe partial class InteractButtonItemComponent : global::System.
         return __hs_handle;
     }
 
+    public static InteractButtonItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50.InteractButtonItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a137a321((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InteractButtonItemComponent((nint)handle);
+    }
+
     public static string NAME()
     {
         var __hs_view = NativeMethods.TablePtr->C3.hs_method_78ecb56e();

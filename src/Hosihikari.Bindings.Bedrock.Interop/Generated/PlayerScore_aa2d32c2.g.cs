@@ -38,6 +38,17 @@ public sealed unsafe partial class PlayerScore : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static PlayerScore Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerScore arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_d2fec3f0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerScore((nint)handle);
+    }
+
     public int mScore
     {
         get => NativeMethods.TablePtr->C2.hs_get_ec6a9132((void*)__hosihikari_shim_handle);

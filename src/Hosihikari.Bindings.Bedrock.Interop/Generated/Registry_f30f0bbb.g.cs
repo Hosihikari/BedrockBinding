@@ -38,6 +38,17 @@ public sealed unsafe partial class Registry : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Registry Create(global::Hosihikari.Bindings.Bedrock.Interop.Motif_Nested.Registry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_c3c2d7db((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Registry((nint)handle);
+    }
+
     public void init(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion)
     {
         NativeMethods.TablePtr->C2.hs_method_f9a75b36((void*)__hosihikari_shim_handle, (void*)baseGameVersion.Handle);

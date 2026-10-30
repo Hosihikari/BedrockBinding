@@ -54,6 +54,17 @@ public sealed unsafe partial class RtpSenderInterface : global::System.IDisposab
     public nint GetParameters() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static RtpSenderInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RtpSenderInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_549b6406((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RtpSenderInterface((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void SetEncoderSelector(nint a1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

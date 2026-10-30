@@ -38,6 +38,17 @@ public sealed unsafe partial class BalloonDefinition : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static BalloonDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.BalloonDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_b2f2d512((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BalloonDefinition((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mLiftForce_Address
     {

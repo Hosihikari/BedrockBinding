@@ -47,6 +47,17 @@ public sealed unsafe partial class CanDestroyInCreativeItemComponent : global::S
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static CanDestroyInCreativeItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.CanDestroyInCreativeItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_db8b9725((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CanDestroyInCreativeItemComponent((nint)handle);
+    }
+
     public void _initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {
         NativeMethods.TablePtr->C0.hs_method_7fe1281d((void*)__hosihikari_shim_handle, (void*)owner.Handle);

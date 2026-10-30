@@ -43,6 +43,17 @@ public sealed unsafe partial class CactusFeature : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_2fa3b41c((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
     }
 
+    public static CactusFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.CactusFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_a232430e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CactusFeature((nint)handle);
+    }
+
     public bool mPlaceCactusFlowers
     {
         get => NativeMethods.TablePtr->C0.hs_get_34a91b51((void*)__hosihikari_shim_handle) != 0;

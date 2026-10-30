@@ -40,6 +40,10 @@ public sealed partial class OwnerPtrFactory_Dimension__DerivedDimensionArguments
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
+    public static OwnerPtrFactory_Dimension__DerivedDimensionArguments____ Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
     public nint mFactoryMap
     {
         get => throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");

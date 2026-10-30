@@ -38,15 +38,26 @@ public sealed unsafe partial class TrailComponent : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static TrailComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.TrailComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_2f9989dd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TrailComponent((nint)handle);
+    }
+
     public nint mBlockType
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_9877b3af((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_9877b3af((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSpawnOffset_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_cf3c16be((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_cf3c16be((void*)__hosihikari_shim_handle);
     }
 
 
@@ -56,7 +67,7 @@ public sealed unsafe partial class TrailComponent : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_9cbf5ee6((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_9cbf5ee6((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -43,6 +43,17 @@ public sealed unsafe partial class SchemaInfo : global::System.IDisposable
         NativeMethods.TablePtr->C4.hs_method_414dedc7((void*)__hosihikari_shim_handle);
     }
 
+    public static SchemaInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.SchemaInfo arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_978d3858((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SchemaInfo((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mDescription_Address
     {

@@ -43,6 +43,17 @@ public sealed unsafe partial class BasicSerializerContext : global::System.IDisp
         NativeMethods.TablePtr->C4.hs_method_e273e987((void*)__hosihikari_shim_handle);
     }
 
+    public static BasicSerializerContext Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.BasicSerializerContext arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_50a985e7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BasicSerializerContext((nint)handle);
+    }
+
     public string _getContextString(uint index)
     {
         var __hs_view = NativeMethods.TablePtr->C4.hs_method_3eb79017((void*)__hosihikari_shim_handle, index);

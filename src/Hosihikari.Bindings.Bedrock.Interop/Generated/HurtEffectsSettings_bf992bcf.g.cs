@@ -38,6 +38,17 @@ public sealed unsafe partial class HurtEffectsSettings : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static HurtEffectsSettings Create(global::Hosihikari.Bindings.Bedrock.Interop.HurtEffectsSettings arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_8ace8b1a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HurtEffectsSettings((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mAimDirection_Address
     {

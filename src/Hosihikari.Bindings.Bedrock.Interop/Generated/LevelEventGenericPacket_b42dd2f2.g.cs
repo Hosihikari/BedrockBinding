@@ -51,9 +51,10 @@ public sealed unsafe partial class LevelEventGenericPacket : global::System.IDis
         return (nint)NativeMethods.TablePtr->C2.hs_method_df14833b((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.LevelEventGenericPacketPayload payload)
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_0229550b((void*)__hosihikari_shim_handle, (void*)payload.Handle);
+    }
 
     public bool _disallowBatching()
     {
@@ -131,9 +132,27 @@ public sealed unsafe partial class LevelEventGenericPacket : global::System.IDis
         return new LevelEventGenericPacket((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static LevelEventGenericPacket Create(nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static LevelEventGenericPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelEventGenericPacketPayload payload)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_420d7cbf((void*)payload.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelEventGenericPacket((nint)handle);
+    }
+
+    public static LevelEventGenericPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelEventGenericPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_7e6b6eba((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelEventGenericPacket((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>

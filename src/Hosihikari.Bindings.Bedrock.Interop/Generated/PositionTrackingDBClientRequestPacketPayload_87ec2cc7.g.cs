@@ -38,6 +38,17 @@ public sealed unsafe partial class PositionTrackingDBClientRequestPacketPayload 
         return __hs_handle;
     }
 
+    public static PositionTrackingDBClientRequestPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDBClientRequestPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_9d9408b0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PositionTrackingDBClientRequestPacketPayload((nint)handle);
+    }
+
     public byte mAction
     {
         get => NativeMethods.TablePtr->C2.hs_get_dfd92355((void*)__hosihikari_shim_handle);

@@ -55,6 +55,17 @@ public sealed unsafe partial class RuinedPortalFeature : global::System.IDisposa
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static RuinedPortalFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.RuinedPortalFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_054a5c18((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RuinedPortalFeature((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'StructureStart' has no accessible destructor.", false)]
     public nint createStructureStart(nint dimension, nint biomeSource, nint arg2, nint cp, nint preliminarySurfaceLevel) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'StructureStart' has no accessible destructor.");

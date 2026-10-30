@@ -38,6 +38,17 @@ public sealed unsafe partial class FoodItemComponentLegacyFactoryData : global::
         return __hs_handle;
     }
 
+    public static FoodItemComponentLegacyFactoryData Create(global::Hosihikari.Bindings.Bedrock.Interop.FoodItemComponentLegacyFactoryData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_ab14f9f7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FoodItemComponentLegacyFactoryData((nint)handle);
+    }
+
     public bool mCanAlwaysEat
     {
         get => NativeMethods.TablePtr->C1.hs_get_8c401d91((void*)__hosihikari_shim_handle) != 0;

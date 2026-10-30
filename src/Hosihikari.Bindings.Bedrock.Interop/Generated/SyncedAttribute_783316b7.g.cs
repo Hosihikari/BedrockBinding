@@ -38,6 +38,17 @@ public sealed unsafe partial class SyncedAttribute : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static SyncedAttribute Create(global::Hosihikari.Bindings.Bedrock.Interop.SyncedAttribute arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_01bc7637((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SyncedAttribute((nint)handle);
+    }
+
     public float mCurrentValue
     {
         get => NativeMethods.TablePtr->C3.hs_get_836b4c46((void*)__hosihikari_shim_handle);

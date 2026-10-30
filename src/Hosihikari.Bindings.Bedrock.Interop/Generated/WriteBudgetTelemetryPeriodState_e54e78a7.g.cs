@@ -40,7 +40,7 @@ public sealed unsafe partial class WriteBudgetTelemetryPeriodState : global::Sys
 
     public static WriteBudgetTelemetryPeriodState Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_5916dddb();
+        var handle = NativeMethods.TablePtr->C1.hs_create_5916dddb();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class WriteBudgetTelemetryPeriodState : global::Sys
 
     public static WriteBudgetTelemetryPeriodState Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.DiskAccessDiagnostics_Nested.WriteBudgetTelemetryPeriodState arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_542d97c7((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_542d97c7((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,42 +63,42 @@ public sealed unsafe partial class WriteBudgetTelemetryPeriodState : global::Sys
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk1c787a_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_2982a984((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_2982a984((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk23685b_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_56052e3b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_56052e3b((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk268eb0_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_fbe967b2((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_fbe967b2((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk799b8c_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_58a6f6ff((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_58a6f6ff((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk9a656c_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_e9525749((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e9525749((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkcca2d0_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_1bd062a0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_1bd062a0((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.DiskAccessDiagnostics_Nested.WriteBudgetTelemetryPeriodState operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.DiskAccessDiagnostics_Nested.WriteBudgetTelemetryPeriodState arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.DiskAccessDiagnostics_Nested.WriteBudgetTelemetryPeriodState((nint)NativeMethods.TablePtr->C0.hs_method_f433b2f8((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.DiskAccessDiagnostics_Nested.WriteBudgetTelemetryPeriodState((nint)NativeMethods.TablePtr->C1.hs_method_f433b2f8((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -107,7 +107,7 @@ public sealed unsafe partial class WriteBudgetTelemetryPeriodState : global::Sys
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_e54e78a7((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_e54e78a7((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

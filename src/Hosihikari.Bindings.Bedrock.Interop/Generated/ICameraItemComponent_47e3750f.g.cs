@@ -38,6 +38,17 @@ public sealed unsafe partial class ICameraItemComponent : global::System.IDispos
         return __hs_handle;
     }
 
+    public static ICameraItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ICameraItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_79597247((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ICameraItemComponent((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public float blackBarsDuration() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

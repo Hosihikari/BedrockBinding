@@ -43,6 +43,17 @@ public sealed unsafe partial class JumpControlSystem : global::System.IDisposabl
         NativeMethods.TablePtr->C1.hs_method_5e896b63((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static JumpControlSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.JumpControlSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_3311d38b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new JumpControlSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C1.hs_method_80c8a987((void*)__hosihikari_shim_handle, (void*)registry.Handle);

@@ -48,6 +48,17 @@ public sealed unsafe partial class TaskResult : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.TaskResult((nint)NativeMethods.TablePtr->C3.hs_method_ba82eb3a(), false);
     }
 
+    public static TaskResult Create(global::Hosihikari.Bindings.Bedrock.Interop.TaskResult arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c890783a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TaskResult((nint)handle);
+    }
+
     public bool mIsDone
     {
         get => NativeMethods.TablePtr->C3.hs_get_1318fc4b((void*)__hosihikari_shim_handle) != 0;

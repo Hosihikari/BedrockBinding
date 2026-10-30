@@ -49,6 +49,17 @@ public sealed unsafe partial class PlayerMovementSettings : global::System.IDisp
         return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerMovementSettings((nint)NativeMethods.TablePtr->C2.hs_method_174e133f(), false);
     }
 
+    public static PlayerMovementSettings Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerMovementSettings arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_b5ea6f2b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerMovementSettings((nint)handle);
+    }
+
     public bool ServerAuthBlockBreaking
     {
         get => NativeMethods.TablePtr->C2.hs_get_589cc93c((void*)__hosihikari_shim_handle) != 0;

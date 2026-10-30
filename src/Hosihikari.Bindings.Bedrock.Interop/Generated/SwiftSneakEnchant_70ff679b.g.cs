@@ -117,6 +117,17 @@ public sealed unsafe partial class SwiftSneakEnchant : global::System.IDisposabl
         return NativeMethods.TablePtr->C3.hs_method_ba52d628((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static SwiftSneakEnchant Create(global::Hosihikari.Bindings.Bedrock.Interop.SwiftSneakEnchant arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_ed8bb171((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SwiftSneakEnchant((nint)handle);
+    }
+
     public int getMaxCost(int level)
     {
         return NativeMethods.TablePtr->C3.hs_method_626b01e2((void*)__hosihikari_shim_handle, level);

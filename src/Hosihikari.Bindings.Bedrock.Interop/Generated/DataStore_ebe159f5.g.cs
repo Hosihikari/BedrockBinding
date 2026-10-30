@@ -85,9 +85,10 @@ public sealed unsafe partial class DataStore : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.DataStore((nint)NativeMethods.TablePtr->C0.hs_method_919f2540((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void setCustomFileHandlers(nint handlers) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void setCustomFileHandlers(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.DataStore_Nested.CustomFileHandlers handlers)
+    {
+        NativeMethods.TablePtr->C0.hs_method_11dab671((void*)__hosihikari_shim_handle, (void*)handlers.Handle);
+    }
 
 
     // The native field type is not projected; this is the address of the field storage.

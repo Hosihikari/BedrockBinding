@@ -38,6 +38,17 @@ public sealed unsafe partial class OreVeinifierNoises : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static OreVeinifierNoises Create(global::Hosihikari.Bindings.Bedrock.Interop.OreVeinifierNoises arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_69cbe54b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OreVeinifierNoises((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mGapNoiseSource_Address
     {

@@ -53,6 +53,17 @@ public sealed unsafe partial class Amplifier : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_6b72634e((void*)__hosihikari_shim_handle, remainingDuration, amplification) != 0;
     }
 
+    public static Amplifier Create(global::Hosihikari.Bindings.Bedrock.Interop.Amplifier arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_861284e2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Amplifier((nint)handle);
+    }
+
     public float getAmount(int amplification, float scale)
     {
         return NativeMethods.TablePtr->C0.hs_method_879419dc((void*)__hosihikari_shim_handle, amplification, scale);

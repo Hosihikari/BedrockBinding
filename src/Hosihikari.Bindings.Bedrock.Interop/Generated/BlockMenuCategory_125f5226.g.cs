@@ -43,6 +43,17 @@ public sealed unsafe partial class BlockMenuCategory : global::System.IDisposabl
         NativeMethods.TablePtr->C0.hs_method_d9985214((void*)__hosihikari_shim_handle);
     }
 
+    public static BlockMenuCategory Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockMenuCategory arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_89482ad9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockMenuCategory((nint)handle);
+    }
+
     public byte mCreativeCategory
     {
         get => NativeMethods.TablePtr->C0.hs_get_03300d0e((void*)__hosihikari_shim_handle);

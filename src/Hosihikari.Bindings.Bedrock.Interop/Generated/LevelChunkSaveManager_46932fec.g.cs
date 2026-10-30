@@ -58,6 +58,17 @@ public sealed unsafe partial class LevelChunkSaveManager : global::System.IDispo
         return new LevelChunkSaveManager((nint)handle);
     }
 
+    public static LevelChunkSaveManager Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkSaveManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_bac0ac18((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelChunkSaveManager((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<GameplayUserManager>>' is not a known bindable declaration.", false)]
     public static LevelChunkSaveManager Create(nint levelChunkSaverProxy, nint gameplayUserManager, nint dimensionManager) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<GameplayUserManager>>' is not a known bindable declaration.");

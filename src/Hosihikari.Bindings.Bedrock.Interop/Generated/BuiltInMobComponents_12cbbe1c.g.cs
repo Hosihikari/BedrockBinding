@@ -38,6 +38,17 @@ public sealed unsafe partial class BuiltInMobComponents : global::System.IDispos
         return __hs_handle;
     }
 
+    public static BuiltInMobComponents Create(global::Hosihikari.Bindings.Bedrock.Interop.BuiltInMobComponents arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_fded1e34((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BuiltInMobComponents((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mDeathTickingComponent_Address
     {

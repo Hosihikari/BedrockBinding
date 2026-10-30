@@ -54,6 +54,17 @@ public sealed unsafe partial class StrongholdStart : global::System.IDisposable
         return NativeMethods.TablePtr->C3.hs_method_10cd7543((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static StrongholdStart Create(global::Hosihikari.Bindings.Bedrock.Interop.StrongholdStart arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_4efadb7e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StrongholdStart((nint)handle);
+    }
+
     public string getStructureName()
     {
         var __hs_view = NativeMethods.TablePtr->C3.hs_method_389a0d29((void*)__hosihikari_shim_handle);

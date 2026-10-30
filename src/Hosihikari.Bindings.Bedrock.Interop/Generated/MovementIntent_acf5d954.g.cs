@@ -58,6 +58,17 @@ public sealed unsafe partial class MovementIntent : global::System.IDisposable
         return new MovementIntent((nint)handle);
     }
 
+    public static MovementIntent Create(global::Hosihikari.Bindings.Bedrock.Interop.sim.MovementIntent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_9d0d8e7c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MovementIntent((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::variant<sim::VoidMoveIntent, sim::MoveInDirectionIntent, sim::MoveToPositionIntent, sim::NavigateToPositionsIntent, sim::NavigateToEntityIntent>' is not a known bindable declaration.", false)]
     public static MovementIntent Create(nint type) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<sim::VoidMoveIntent, sim::MoveInDirectionIntent, sim::MoveToPositionIntent, sim::NavigateToPositionsIntent, sim::NavigateToEntityIntent>' is not a known bindable declaration.");

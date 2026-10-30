@@ -110,6 +110,17 @@ public sealed unsafe partial class ServerMapDataManager : global::System.IDispos
         NativeMethods.TablePtr->C3.hs_method_41929740((void*)__hosihikari_shim_handle, (void*)uuid.Handle, forceUpdate);
     }
 
+    public static ServerMapDataManager Create(global::Hosihikari.Bindings.Bedrock.Interop.ServerMapDataManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_95d169f9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ServerMapDataManager((nint)handle);
+    }
+
     public void _copyAndLockMap(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID originalMapUuid, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID newMapUuid)
     {
         NativeMethods.TablePtr->C3.hs_method_a22e33a4((void*)__hosihikari_shim_handle, (void*)originalMapUuid.Handle, (void*)newMapUuid.Handle);

@@ -57,6 +57,17 @@ public sealed unsafe partial class ComponentItemDataLoader : global::System.IDis
     public static ComponentItemDataLoader Create(nint bedrockLoadContext, nint packLoadInfo, nint ctx, nint validatorFn) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
+    public static ComponentItemDataLoader Create(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItemDataLoader arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_361bcf4f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ComponentItemDataLoader((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Puv::LoadResult<ComponentItemDataAll_Latest>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint load(nint input, nint documentVersion) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Puv::LoadResult<ComponentItemDataAll_Latest>' requires --link-carrier or --virtual-dispatch.");

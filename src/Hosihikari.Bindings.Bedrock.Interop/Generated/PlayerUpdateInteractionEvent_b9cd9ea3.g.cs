@@ -38,6 +38,17 @@ public sealed unsafe partial class PlayerUpdateInteractionEvent : global::System
         return __hs_handle;
     }
 
+    public static PlayerUpdateInteractionEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerUpdateInteractionEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_2f9252c9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerUpdateInteractionEvent((nint)handle);
+    }
+
     public int mAction
     {
         get => NativeMethods.TablePtr->C2.hs_get_08acfe14((void*)__hosihikari_shim_handle);

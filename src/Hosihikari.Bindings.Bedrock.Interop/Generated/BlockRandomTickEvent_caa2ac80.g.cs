@@ -53,6 +53,17 @@ public sealed unsafe partial class BlockRandomTickEvent : global::System.IDispos
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static BlockRandomTickEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockEvents.BlockRandomTickEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_902eb86c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockRandomTickEvent((nint)handle);
+    }
+
     public static BlockRandomTickEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         var handle = NativeMethods.TablePtr->C0.hs_create_cdfb7cd2((void*)pos.Handle, (void*)region.Handle, (void*)random.Handle);

@@ -72,6 +72,17 @@ public sealed unsafe partial class ParticleCommand : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_bee82518((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static ParticleCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.ParticleCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_1de7fe71((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ParticleCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C2.hs_method_a5bfc258((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

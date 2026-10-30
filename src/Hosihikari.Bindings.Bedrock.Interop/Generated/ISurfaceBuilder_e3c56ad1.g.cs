@@ -38,6 +38,17 @@ public sealed unsafe partial class ISurfaceBuilder : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ISurfaceBuilder Create(global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_3c032dfe((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ISurfaceBuilder((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void buildSurfaceAt(nint globalParams, nint surfaceBuilderParams, nint columnParams) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

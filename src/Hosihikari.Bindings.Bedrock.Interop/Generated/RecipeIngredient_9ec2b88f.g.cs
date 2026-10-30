@@ -41,13 +41,13 @@ public sealed unsafe partial class RecipeIngredient : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mImpl_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_59b48d9f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_59b48d9f((void*)__hosihikari_shim_handle);
     }
 
     public ushort mStackSize
     {
-        get => NativeMethods.TablePtr->C2.hs_get_7b22b987((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_7b22b987((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_7b22b987((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_7b22b987((void*)__hosihikari_shim_handle, value);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -56,7 +56,18 @@ public sealed unsafe partial class RecipeIngredient : global::System.IDisposable
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient EMPTY_INGREDIENT()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient((nint)NativeMethods.TablePtr->C2.hs_method_8ae872b7(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient((nint)NativeMethods.TablePtr->C3.hs_method_8ae872b7(), false);
+    }
+
+    public static RecipeIngredient Create(global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_5f6e5fe6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RecipeIngredient((nint)handle);
     }
 
 
@@ -66,7 +77,7 @@ public sealed unsafe partial class RecipeIngredient : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_9ec2b88f((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_9ec2b88f((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

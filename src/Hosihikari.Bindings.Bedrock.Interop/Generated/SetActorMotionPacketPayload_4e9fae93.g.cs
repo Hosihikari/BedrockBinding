@@ -65,6 +65,17 @@ public sealed unsafe partial class SetActorMotionPacketPayload : global::System.
         return new SetActorMotionPacketPayload((nint)handle);
     }
 
+    public static SetActorMotionPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.SetActorMotionPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_3d17af72((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SetActorMotionPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mMotion_Address
     {

@@ -87,6 +87,17 @@ public sealed unsafe partial class BreakBlockNode : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static BreakBlockNode Create(global::Hosihikari.Bindings.Bedrock.Interop.BreakBlockNode arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f59e7e43((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BreakBlockNode((nint)handle);
+    }
+
     public void initializeFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
         NativeMethods.TablePtr->C0.hs_method_f967991d((void*)__hosihikari_shim_handle, (void*)owner.Handle);

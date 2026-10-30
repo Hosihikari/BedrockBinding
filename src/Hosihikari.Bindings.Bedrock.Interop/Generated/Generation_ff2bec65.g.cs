@@ -38,6 +38,17 @@ public sealed unsafe partial class Generation : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Generation Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_21_60.DimensionDefinition.Generation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_9859fcfc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Generation((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mGeneratorType_Address
     {

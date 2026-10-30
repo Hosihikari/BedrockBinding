@@ -45,6 +45,17 @@ public sealed unsafe partial class ConditionalListFeature : global::System.IDisp
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
+    public static ConditionalListFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.ConditionalListFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_988c35bf((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ConditionalListFeature((nint)handle);
+    }
+
     public int mEarlyOutScheme
     {
         get => NativeMethods.TablePtr->C0.hs_get_7d755260((void*)__hosihikari_shim_handle);

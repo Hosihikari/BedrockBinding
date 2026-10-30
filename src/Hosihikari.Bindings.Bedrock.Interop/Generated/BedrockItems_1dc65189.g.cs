@@ -38,9 +38,10 @@ public sealed unsafe partial class BedrockItems : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static void registerItems(nint itemRegistry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static void registerItems(global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistryRef itemRegistry)
+    {
+        NativeMethods.TablePtr->C0.hs_method_ceb2226a((void*)itemRegistry.Handle);
+    }
 
     public void Dispose()
     {

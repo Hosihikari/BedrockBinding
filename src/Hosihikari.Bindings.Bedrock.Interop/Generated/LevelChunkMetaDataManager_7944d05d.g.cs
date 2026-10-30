@@ -38,6 +38,17 @@ public sealed unsafe partial class LevelChunkMetaDataManager : global::System.ID
         return __hs_handle;
     }
 
+    public static LevelChunkMetaDataManager Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkMetaDataManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_4189fb59((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelChunkMetaDataManager((nint)handle);
+    }
+
     public void _consolidateLevelChunkMetaData(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
         NativeMethods.TablePtr->C2.hs_method_d46e5197((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);

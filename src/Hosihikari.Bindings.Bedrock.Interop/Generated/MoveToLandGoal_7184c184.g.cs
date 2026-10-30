@@ -194,6 +194,17 @@ public sealed unsafe partial class MoveToLandGoal : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_d7bae7ef((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle) != 0;
     }
 
+    public static MoveToLandGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.MoveToLandGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_f5152bf2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MoveToLandGoal((nint)handle);
+    }
+
     public void _moveToBlock()
     {
         NativeMethods.TablePtr->C2.hs_method_523ea945((void*)__hosihikari_shim_handle);

@@ -72,6 +72,17 @@ public sealed unsafe partial class BannerAddPatternRecipe : global::System.IDisp
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static BannerAddPatternRecipe Create(global::Hosihikari.Bindings.Bedrock.Interop.BannerAddPatternRecipe arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_2c345dbe((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BannerAddPatternRecipe((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID ID()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->C0.hs_method_ee788d08(), false);

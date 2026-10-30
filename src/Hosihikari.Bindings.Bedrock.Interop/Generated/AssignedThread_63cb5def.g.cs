@@ -38,6 +38,17 @@ public sealed unsafe partial class AssignedThread : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static AssignedThread Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.AssignedThread arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_51ecf6b7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AssignedThread((nint)handle);
+    }
+
     public void assign(nint thread)
     {
         NativeMethods.TablePtr->C0.hs_method_1bfb3224((void*)__hosihikari_shim_handle, (void*)thread);

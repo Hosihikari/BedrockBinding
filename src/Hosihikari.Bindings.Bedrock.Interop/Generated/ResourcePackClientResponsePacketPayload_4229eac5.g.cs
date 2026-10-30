@@ -54,6 +54,17 @@ public sealed unsafe partial class ResourcePackClientResponsePacketPayload : glo
         return new ResourcePackClientResponsePacketPayload((nint)handle);
     }
 
+    public static ResourcePackClientResponsePacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackClientResponsePacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_30e9241d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ResourcePackClientResponsePacketPayload((nint)handle);
+    }
+
     public nint getDownloadingPacks()
     {
         return (nint)NativeMethods.TablePtr->C3.hs_method_63880679((void*)__hosihikari_shim_handle);

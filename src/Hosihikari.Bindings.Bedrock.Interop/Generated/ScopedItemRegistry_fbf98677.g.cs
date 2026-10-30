@@ -59,6 +59,17 @@ public sealed unsafe partial class ScopedItemRegistry : global::System.IDisposab
         return new ScopedItemRegistry((nint)handle);
     }
 
+    public static ScopedItemRegistry Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistryManager_Nested.ScopedItemRegistry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_fe26f2ca((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScopedItemRegistry((nint)handle);
+    }
+
     public static ScopedItemRegistry Create(global::Hosihikari.Bindings.Abi.SharedHandle? registry)
     {
         var handle = NativeMethods.TablePtr->C1.hs_create_634e8a6a(registry?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
@@ -75,9 +86,10 @@ public sealed unsafe partial class ScopedItemRegistry : global::System.IDisposab
         NativeMethods.TablePtr->C1.hs_method_9510e32c((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void construct(nint registryRef) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void construct(global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistryRef registryRef)
+    {
+        NativeMethods.TablePtr->C1.hs_method_36f8244c((void*)__hosihikari_shim_handle, (void*)registryRef.Handle);
+    }
 
     public bool mIsSet
     {

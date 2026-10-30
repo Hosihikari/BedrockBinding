@@ -57,6 +57,17 @@ public sealed unsafe partial class ResourcePacksInfoPacketPayload : global::Syst
     public static ResourcePacksInfoPacketPayload Create(bool resourcePackRequired, nint resourcePacks, bool hasAddonPacks, nint worldTemplateIdVersion, bool forceDisableVibrantVisuals) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
+    public static ResourcePacksInfoPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePacksInfoPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_e4df7388((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ResourcePacksInfoPacketPayload((nint)handle);
+    }
+
     public bool mForceDisableVibrantVisuals
     {
         get => NativeMethods.TablePtr->C3.hs_get_e7190562((void*)__hosihikari_shim_handle) != 0;

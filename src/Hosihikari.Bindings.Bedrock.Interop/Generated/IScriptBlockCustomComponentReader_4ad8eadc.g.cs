@@ -38,6 +38,17 @@ public sealed unsafe partial class IScriptBlockCustomComponentReader : global::S
         return __hs_handle;
     }
 
+    public static IScriptBlockCustomComponentReader Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.IScriptBlockCustomComponentReader arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_912dbecd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IScriptBlockCustomComponentReader((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getValidComponentsForBlock(nint permutation) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

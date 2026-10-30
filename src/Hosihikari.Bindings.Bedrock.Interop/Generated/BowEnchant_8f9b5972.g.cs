@@ -58,6 +58,17 @@ public sealed unsafe partial class BowEnchant : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_39a5d71d((void*)__hosihikari_shim_handle, level);
     }
 
+    public static BowEnchant Create(global::Hosihikari.Bindings.Bedrock.Interop.BowEnchant arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_d1350b6d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BowEnchant((nint)handle);
+    }
+
     public static nint VALID_ENCHANTMENTS()
     {
         return (nint)NativeMethods.TablePtr->C0.hs_method_0a29f408();

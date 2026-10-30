@@ -80,6 +80,17 @@ public sealed unsafe partial class BastionFeature : global::System.IDisposable
         return new BastionFeature((nint)handle);
     }
 
+    public static BastionFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.BastionFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_36ccc8fc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BastionFeature((nint)handle);
+    }
+
     public static BastionFeature Create(uint seed, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion)
     {
         var handle = NativeMethods.TablePtr->C0.hs_create_5b74f6fe(seed, (void*)baseGameVersion.Handle);

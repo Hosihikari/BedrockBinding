@@ -38,6 +38,17 @@ public sealed unsafe partial class ManhattanDistance : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static ManhattanDistance Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPosIterator_Nested.ManhattanDistance arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_11401965((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ManhattanDistance((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mFromCenter_Address
     {

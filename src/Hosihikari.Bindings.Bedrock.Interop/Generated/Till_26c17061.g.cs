@@ -38,6 +38,17 @@ public sealed unsafe partial class Till : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Till Create(global::Hosihikari.Bindings.Bedrock.Interop.AgentComponents.Actions.Till arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_af75e4dc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Till((nint)handle);
+    }
+
     public byte dir
     {
         get => NativeMethods.TablePtr->C0.hs_get_54b82303((void*)__hosihikari_shim_handle);

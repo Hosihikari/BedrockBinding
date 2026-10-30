@@ -38,6 +38,17 @@ public sealed unsafe partial class LevelStartLeaveGameEvent : global::System.IDi
         return __hs_handle;
     }
 
+    public static LevelStartLeaveGameEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelStartLeaveGameEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_8b802a63((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelStartLeaveGameEvent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mLevel_Address
     {

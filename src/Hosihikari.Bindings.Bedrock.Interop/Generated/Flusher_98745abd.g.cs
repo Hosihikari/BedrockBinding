@@ -38,6 +38,17 @@ public sealed unsafe partial class Flusher : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Flusher Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.FlushingIOController_Nested.Flusher arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_91cec5e1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Flusher((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint _flushBuffer(nint data, ulong amount) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

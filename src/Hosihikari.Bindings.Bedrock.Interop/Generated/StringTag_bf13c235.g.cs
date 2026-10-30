@@ -92,6 +92,17 @@ public sealed unsafe partial class StringTag : global::System.IDisposable
         return new StringTag((nint)handle);
     }
 
+    public static StringTag Create(global::Hosihikari.Bindings.Bedrock.Interop.StringTag arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_4f743ffa((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StringTag((nint)handle);
+    }
+
     public static StringTag Create_b84b11c8(string str)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(str);

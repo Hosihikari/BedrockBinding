@@ -72,6 +72,17 @@ public sealed unsafe partial class GlobalPauseCommand : global::System.IDisposab
         NativeMethods.TablePtr->C1.hs_method_19ed3980((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static GlobalPauseCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.GlobalPauseCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_f6fa3ec5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GlobalPauseCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C1.hs_method_275929d0((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

@@ -43,6 +43,17 @@ public sealed unsafe partial class AmbientSoundServerSystem : global::System.IDi
         NativeMethods.TablePtr->C0.hs_method_d6b7a5fc((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static AmbientSoundServerSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.AmbientSoundServerSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5837fed9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AmbientSoundServerSystem((nint)handle);
+    }
+
     public static void _tickAmbientSoundComponent(global::Hosihikari.Bindings.Bedrock.Interop.ActorOwnerComponent actorOwnerComponent, global::Hosihikari.Bindings.Bedrock.Interop.AmbientSoundServerComponent ambientSoundServerComponent)
     {
         NativeMethods.TablePtr->C0.hs_method_42653fca((void*)actorOwnerComponent.Handle, (void*)ambientSoundServerComponent.Handle);

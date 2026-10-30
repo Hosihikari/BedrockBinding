@@ -40,7 +40,7 @@ public sealed unsafe partial class Tick : global::System.IDisposable
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Tick MAX()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Tick((nint)NativeMethods.TablePtr->C3.hs_method_41072c7f(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Tick((nint)NativeMethods.TablePtr->C4.hs_method_41072c7f(), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
@@ -49,13 +49,13 @@ public sealed unsafe partial class Tick : global::System.IDisposable
 
     public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.Tick other)
     {
-        return NativeMethods.TablePtr->C3.hs_method_c1581b04((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_c1581b04((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
     }
 
     public ulong tickID
     {
-        get => NativeMethods.TablePtr->C3.hs_get_b3509f82((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_b3509f82((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_b3509f82((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_b3509f82((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -64,7 +64,7 @@ public sealed unsafe partial class Tick : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_5d409d35((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_5d409d35((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

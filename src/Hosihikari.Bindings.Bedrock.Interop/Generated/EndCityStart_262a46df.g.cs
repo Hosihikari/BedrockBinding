@@ -49,6 +49,17 @@ public sealed unsafe partial class EndCityStart : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_d249c3b7((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static EndCityStart Create(global::Hosihikari.Bindings.Bedrock.Interop.EndCityStart arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d7744ddd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EndCityStart((nint)handle);
+    }
+
     public string getStructureName()
     {
         var __hs_view = NativeMethods.TablePtr->C1.hs_method_9dec5628((void*)__hosihikari_shim_handle);

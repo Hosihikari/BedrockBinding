@@ -2106,9 +2106,10 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void _fireEventMultiplayerSessionUpdate(nint level) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void _fireEventMultiplayerSessionUpdate(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.NonOwnerPointer_Level_ level)
+    {
+        NativeMethods.TablePtr->C2.hs_method_07db4734((void*)__hosihikari_shim_handle, (void*)level.Handle);
+    }
 
     public void _fireEventMuteUser(string xuid, bool isSuccess, bool isMuted)
     {
@@ -8753,9 +8754,10 @@ public sealed unsafe partial class MinecraftEventing : global::System.IDisposabl
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void fireEventMultiplayerSessionUpdate(nint level) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void fireEventMultiplayerSessionUpdate(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.NonOwnerPointer_Level_ level)
+    {
+        NativeMethods.TablePtr->C2.hs_method_05932410((void*)__hosihikari_shim_handle, (void*)level.Handle);
+    }
 
     public void fireEventMuteUser(string xuid, bool isSuccess, bool isMuted)
     {

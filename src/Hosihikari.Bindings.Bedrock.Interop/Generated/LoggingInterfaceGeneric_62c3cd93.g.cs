@@ -48,6 +48,17 @@ public sealed unsafe partial class LoggingInterfaceGeneric : global::System.IDis
         NativeMethods.TablePtr->C0.hs_method_b6880789((void*)__hosihikari_shim_handle, (void*)area, level, (void*)message);
     }
 
+    public static LoggingInterfaceGeneric Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.LoggingInterfaceGeneric arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_d85388b5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LoggingInterfaceGeneric((nint)handle);
+    }
+
     public ulong threadId()
     {
         return NativeMethods.TablePtr->C0.hs_method_5eb46e77((void*)__hosihikari_shim_handle);

@@ -38,6 +38,17 @@ public sealed unsafe partial class ITreeRoot : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ITreeRoot Create(global::Hosihikari.Bindings.Bedrock.Interop.ITreeRoot arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_dc596401((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ITreeRoot((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint placeRoots(nint arg0, nint arg1, nint arg2, int arg3, nint arg4, nint arg5) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

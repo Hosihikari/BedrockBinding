@@ -56,6 +56,17 @@ public sealed unsafe partial class ActorDimensionTransferProxy : global::System.
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ActorDimensionTransferProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorDimensionTransferProxy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_56616af3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorDimensionTransferProxy((nint)handle);
+    }
+
     public void removeActorFromLevelChunk(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
         NativeMethods.TablePtr->C0.hs_method_07b33b0d((void*)__hosihikari_shim_handle, (void*)actor.Handle);

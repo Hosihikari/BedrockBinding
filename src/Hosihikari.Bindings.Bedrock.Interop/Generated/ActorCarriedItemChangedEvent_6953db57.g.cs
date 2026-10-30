@@ -43,6 +43,17 @@ public sealed unsafe partial class ActorCarriedItemChangedEvent : global::System
         NativeMethods.TablePtr->C0.hs_method_0e4b9acb((void*)__hosihikari_shim_handle);
     }
 
+    public static ActorCarriedItemChangedEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorCarriedItemChangedEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f825d3d1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorCarriedItemChangedEvent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mCarriedItem_Address
     {

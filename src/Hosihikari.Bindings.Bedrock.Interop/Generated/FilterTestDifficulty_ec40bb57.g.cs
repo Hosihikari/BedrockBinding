@@ -67,6 +67,17 @@ public sealed unsafe partial class FilterTestDifficulty : global::System.IDispos
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static FilterTestDifficulty Create(global::Hosihikari.Bindings.Bedrock.Interop.FilterTestDifficulty arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_5f0c2661((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FilterTestDifficulty((nint)handle);
+    }
+
     public bool evaluate(nint context)
     {
         return NativeMethods.TablePtr->C1.hs_method_7e043715((void*)__hosihikari_shim_handle, (void*)context) != 0;

@@ -58,6 +58,17 @@ public sealed unsafe partial class CommonModuleFactory : global::System.IDisposa
         return new CommonModuleFactory((nint)handle);
     }
 
+    public static CommonModuleFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.CommonModuleFactory arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_5ccd7337((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommonModuleFactory((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint ModuleName() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");

@@ -76,6 +76,17 @@ public sealed unsafe partial class FloatTag : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_73c65430((void*)__hosihikari_shim_handle, (void*)dos.Handle);
     }
 
+    public static FloatTag Create(global::Hosihikari.Bindings.Bedrock.Interop.FloatTag arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_cd8b1225((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FloatTag((nint)handle);
+    }
+
     public static FloatTag Create(float value)
     {
         var handle = NativeMethods.TablePtr->C1.hs_create_23a09e94(value);

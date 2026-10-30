@@ -88,6 +88,17 @@ public sealed unsafe partial class BlockCollisionBoxDescription : global::System
         return new BlockCollisionBoxDescription((nint)handle);
     }
 
+    public static BlockCollisionBoxDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockCollisionBoxDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_1bf0f3ce((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockCollisionBoxDescription((nint)handle);
+    }
+
     public static BlockCollisionBoxDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 origin, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 size)
     {
         var handle = NativeMethods.TablePtr->C0.hs_create_f6920f03((void*)origin.Handle, (void*)size.Handle);

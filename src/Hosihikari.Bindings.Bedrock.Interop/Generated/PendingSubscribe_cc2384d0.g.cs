@@ -43,6 +43,17 @@ public sealed unsafe partial class PendingSubscribe : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_4248f346((void*)__hosihikari_shim_handle);
     }
 
+    public static PendingSubscribe Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptTickSignal_Nested.PendingSubscribe arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_ffbc81d6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PendingSubscribe((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint slot_Address
     {

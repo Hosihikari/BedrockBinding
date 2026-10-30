@@ -154,6 +154,17 @@ public sealed unsafe partial class PrecompiledCommandOrigin : global::System.IDi
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static PrecompiledCommandOrigin Create(global::Hosihikari.Bindings.Bedrock.Interop.PrecompiledCommandOrigin arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_f9894146((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PrecompiledCommandOrigin((nint)handle);
+    }
+
     public bool canUseAbility(sbyte abilityIndex)
     {
         return NativeMethods.TablePtr->C2.hs_method_8af64e85((void*)__hosihikari_shim_handle, abilityIndex) != 0;

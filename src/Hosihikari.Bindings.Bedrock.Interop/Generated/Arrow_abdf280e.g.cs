@@ -684,9 +684,10 @@ public sealed unsafe partial class Arrow : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_5cefff92((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void addMobEffect(nint effect) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void addMobEffect(global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance effect)
+    {
+        NativeMethods.TablePtr->C0.hs_method_c4a37517((void*)__hosihikari_shim_handle, (void*)effect.Handle);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color getEffectColor()
     {

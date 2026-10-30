@@ -38,6 +38,17 @@ public sealed unsafe partial class IPackTelemetry : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static IPackTelemetry Create(global::Hosihikari.Bindings.Bedrock.Interop.IPackTelemetry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_5bb03355((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IPackTelemetry((nint)handle);
+    }
+
 
     public void Dispose()
     {

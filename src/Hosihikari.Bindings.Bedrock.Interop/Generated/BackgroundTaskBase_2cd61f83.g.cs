@@ -63,6 +63,17 @@ public sealed unsafe partial class BackgroundTaskBase : global::System.IDisposab
         return new BackgroundTaskBase((nint)handle);
     }
 
+    public static BackgroundTaskBase Create(global::Hosihikari.Bindings.Bedrock.Interop.BackgroundTaskBase arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_83a885a8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BackgroundTaskBase((nint)handle);
+    }
+
     public static BackgroundTaskBase Create(global::Hosihikari.Bindings.Bedrock.Interop.IBackgroundTaskOwner? group, nint startInfo, bool isAsync)
     {
         var handle = NativeMethods.TablePtr->C0.hs_create_60641e5e((void*)(group?.Handle ?? 0), (void*)startInfo, isAsync);

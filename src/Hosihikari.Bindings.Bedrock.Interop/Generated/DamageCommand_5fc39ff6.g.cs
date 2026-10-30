@@ -72,6 +72,17 @@ public sealed unsafe partial class DamageCommand : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_1c5be3df((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static DamageCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.DamageCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_9e935651((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DamageCommand((nint)handle);
+    }
+
     public void _applyDamage(nint targets, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C1.hs_method_e1d5e0a4((void*)__hosihikari_shim_handle, (void*)targets, (void*)source.Handle, (void*)output.Handle);

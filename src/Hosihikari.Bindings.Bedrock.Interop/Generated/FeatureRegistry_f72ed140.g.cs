@@ -105,6 +105,17 @@ public sealed unsafe partial class FeatureRegistry : global::System.IDisposable
     public static FeatureRegistry Create(nint validator) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LinkedAssetValidator>' is not a known bindable declaration.");
 
+    public static FeatureRegistry Create(global::Hosihikari.Bindings.Bedrock.Interop.FeatureRegistry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_c78364b7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FeatureRegistry((nint)handle);
+    }
+
     public static string PREGENERATION_PASS()
     {
         var __hs_view = NativeMethods.TablePtr->C1.hs_method_e652ddeb();

@@ -77,6 +77,17 @@ public sealed unsafe partial class ScriptComponent : global::System.IDisposable
         return new ScriptComponent((nint)handle);
     }
 
+    public static ScriptComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_fdcdfaf9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptComponent((nint)handle);
+    }
+
     public static ScriptComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope, string id)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(id);

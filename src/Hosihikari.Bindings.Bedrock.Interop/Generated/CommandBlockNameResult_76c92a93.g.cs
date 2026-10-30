@@ -58,6 +58,17 @@ public sealed unsafe partial class CommandBlockNameResult : global::System.IDisp
         return new CommandBlockNameResult((nint)handle);
     }
 
+    public static CommandBlockNameResult Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandBlockNameResult arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5fc84902((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandBlockNameResult((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
     public static CommandBlockNameResult Create(nint originalName, nint block, bool isComplexAlias, nint statesToCompare) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");

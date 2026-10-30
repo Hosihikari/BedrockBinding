@@ -53,6 +53,17 @@ public sealed unsafe partial class ActorRuntimeIDManager : global::System.IDispo
         return new ActorRuntimeIDManager((nint)handle);
     }
 
+    public static ActorRuntimeIDManager Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorRuntimeIDManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_3c1db634((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorRuntimeIDManager((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<GameplayUserManager>>' is not a known bindable declaration.", false)]
     public static ActorRuntimeIDManager Create(nint gameplayUserManager) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<GameplayUserManager>>' is not a known bindable declaration.");

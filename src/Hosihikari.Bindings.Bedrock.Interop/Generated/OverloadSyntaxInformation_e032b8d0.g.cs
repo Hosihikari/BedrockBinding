@@ -68,6 +68,17 @@ public sealed unsafe partial class OverloadSyntaxInformation : global::System.ID
         return new OverloadSyntaxInformation((nint)handle);
     }
 
+    public static OverloadSyntaxInformation Create(global::Hosihikari.Bindings.Bedrock.Interop.OverloadSyntaxInformation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_beeae428((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OverloadSyntaxInformation((nint)handle);
+    }
+
     public static OverloadSyntaxInformation Create(string _text, uint _start, uint _end)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(_text);

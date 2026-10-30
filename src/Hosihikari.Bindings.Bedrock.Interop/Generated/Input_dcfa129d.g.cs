@@ -43,6 +43,17 @@ public sealed unsafe partial class Input : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger((nint)NativeMethods.TablePtr->C2.hs_method_dafa90cf((void*)__hosihikari_shim_handle), false);
     }
 
+    public static Input Create(global::Hosihikari.Bindings.Bedrock.Interop.Puv.Input arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_ee64e4a5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Input((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint data() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

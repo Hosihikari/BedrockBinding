@@ -64,6 +64,17 @@ public sealed unsafe partial class NetherFortressPiece : global::System.IDisposa
         return new NetherFortressPiece((nint)handle);
     }
 
+    public static NetherFortressPiece Create(global::Hosihikari.Bindings.Bedrock.Interop.NetherFortressPiece arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_0d0ce7d8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NetherFortressPiece((nint)handle);
+    }
+
     public static NetherFortressPiece Create(int genDepth)
     {
         var handle = NativeMethods.TablePtr->C2.hs_create_e2b842d9(genDepth);

@@ -40,26 +40,26 @@ public sealed unsafe partial class PlayerDied : global::System.IDisposable
 
     public int mDamageSource
     {
-        get => NativeMethods.TablePtr->C1.hs_get_253a10bc((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_253a10bc((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_253a10bc((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_253a10bc((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mInRaid
     {
-        get => NativeMethods.TablePtr->C1.hs_get_1ea7def5((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_1ea7def5((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_1ea7def5((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_1ea7def5((void*)__hosihikari_shim_handle, value);
     }
 
     public int mKillerId
     {
-        get => NativeMethods.TablePtr->C1.hs_get_1b0bd750((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_1b0bd750((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_1b0bd750((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_1b0bd750((void*)__hosihikari_shim_handle, value);
     }
 
     public int mKillerVariant
     {
-        get => NativeMethods.TablePtr->C1.hs_get_3e948317((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_3e948317((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_3e948317((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_3e948317((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -68,7 +68,7 @@ public sealed unsafe partial class PlayerDied : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_0ea18bf6((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_0ea18bf6((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

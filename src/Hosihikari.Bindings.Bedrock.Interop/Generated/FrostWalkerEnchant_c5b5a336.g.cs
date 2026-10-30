@@ -112,6 +112,17 @@ public sealed unsafe partial class FrostWalkerEnchant : global::System.IDisposab
         return NativeMethods.TablePtr->C1.hs_method_d6a5de0b((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static FrostWalkerEnchant Create(global::Hosihikari.Bindings.Bedrock.Interop.FrostWalkerEnchant arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_36cce7d1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FrostWalkerEnchant((nint)handle);
+    }
+
     public int getMaxCost(int level)
     {
         return NativeMethods.TablePtr->C1.hs_method_c36943fa((void*)__hosihikari_shim_handle, level);

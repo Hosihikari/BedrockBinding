@@ -53,6 +53,17 @@ public sealed unsafe partial class NetworkConnection : global::System.IDisposabl
         return new NetworkConnection((nint)handle);
     }
 
+    public static NetworkConnection Create(global::Hosihikari.Bindings.Bedrock.Interop.NetworkConnection arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_dedb8ef0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NetworkConnection((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<IPacketObserver>' is not a known bindable declaration.", false)]
     public static NetworkConnection Create(nint id, nint peer, bool isSafeAndFast, nint packetObserver, nint mainThread, bool isRawRecordingEnabled, nint settings, nint packetSecurityController) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<IPacketObserver>' is not a known bindable declaration.");

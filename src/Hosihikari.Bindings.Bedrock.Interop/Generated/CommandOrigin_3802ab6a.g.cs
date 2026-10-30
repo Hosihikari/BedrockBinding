@@ -166,6 +166,17 @@ public sealed unsafe partial class CommandOrigin : global::System.IDisposable
         return new CommandOrigin((nint)handle);
     }
 
+    public static CommandOrigin Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_47aed8e0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandOrigin((nint)handle);
+    }
+
     public void _setUUID(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID uuid)
     {
         NativeMethods.TablePtr->C0.hs_method_beb04587((void*)__hosihikari_shim_handle, (void*)uuid.Handle);

@@ -47,6 +47,17 @@ public sealed unsafe partial class EventResponseFactory : global::System.IDispos
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static EventResponseFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.EventResponseFactory arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_72c22247((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EventResponseFactory((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void initSchema() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

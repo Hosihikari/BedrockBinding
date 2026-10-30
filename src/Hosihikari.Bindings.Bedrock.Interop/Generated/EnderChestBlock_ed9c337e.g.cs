@@ -274,6 +274,17 @@ public sealed unsafe partial class EnderChestBlock : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static EnderChestBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.EnderChestBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d254c2be((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EnderChestBlock((nint)handle);
+    }
+
     public void animateTickBedrockLegacy(nint tickData)
     {
         NativeMethods.TablePtr->C1.hs_method_56679b47((void*)__hosihikari_shim_handle, (void*)tickData);

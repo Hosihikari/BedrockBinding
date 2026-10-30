@@ -161,6 +161,17 @@ public sealed unsafe partial class WeavingMobEffect : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->C4.hs_method_c1a2d6d5(), false);
     }
 
+    public static WeavingMobEffect Create(global::Hosihikari.Bindings.Bedrock.Interop.WeavingMobEffect arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_0f9e0d41((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WeavingMobEffect((nint)handle);
+    }
+
     public void onActorDied(global::Hosihikari.Bindings.Bedrock.Interop.Actor target, int amplifier)
     {
         NativeMethods.TablePtr->C4.hs_method_1cfd75e9((void*)__hosihikari_shim_handle, (void*)target.Handle, amplifier);

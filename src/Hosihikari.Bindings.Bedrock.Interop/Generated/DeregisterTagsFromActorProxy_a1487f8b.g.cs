@@ -43,6 +43,17 @@ public sealed unsafe partial class DeregisterTagsFromActorProxy : global::System
         NativeMethods.TablePtr->C1.hs_method_e391dfdf((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
+    public static DeregisterTagsFromActorProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.DeregisterTagsFromActorProxy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_a7f37478((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DeregisterTagsFromActorProxy((nint)handle);
+    }
+
     public void deregisterTagsFromActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
         NativeMethods.TablePtr->C1.hs_method_b309955e((void*)__hosihikari_shim_handle, (void*)actor.Handle);

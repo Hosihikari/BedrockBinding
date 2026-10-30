@@ -49,6 +49,17 @@ public sealed unsafe partial class SubChunkPacketData : global::System.IDisposab
         return new SubChunkPacketData((nint)handle);
     }
 
+    public static SubChunkPacketData Create(global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPacketPayload_Nested.SubChunkPacketData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_cd54848a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SubChunkPacketData((nint)handle);
+    }
+
     public static SubChunkPacketData Create(global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPacketPayload_Nested.SubChunkPosOffset pos, byte requestResult)
     {
         var handle = NativeMethods.TablePtr->C3.hs_create_761193ff((void*)pos.Handle, requestResult);

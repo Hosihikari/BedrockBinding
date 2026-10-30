@@ -221,6 +221,17 @@ public sealed unsafe partial class PistonConsumer : global::System.IDisposable
         return new PistonConsumer((nint)handle);
     }
 
+    public static PistonConsumer Create(global::Hosihikari.Bindings.Bedrock.Interop.PistonConsumer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_558046ad((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PistonConsumer((nint)handle);
+    }
+
     public bool addSource(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph graph, global::Hosihikari.Bindings.Bedrock.Interop.CircuitTrackingInfo info, nint dampening, nint bDirectlyPowered)
     {
         return NativeMethods.TablePtr->C2.hs_method_5752488e((void*)__hosihikari_shim_handle, (void*)graph.Handle, (void*)info.Handle, (void*)dampening, (void*)bDirectlyPowered) != 0;

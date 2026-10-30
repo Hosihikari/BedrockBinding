@@ -43,6 +43,17 @@ public sealed unsafe partial class MountTamingSystem : global::System.IDisposabl
         NativeMethods.TablePtr->C2.hs_method_f9d53f21((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static MountTamingSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.MountTamingSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_ce10d06f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MountTamingSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C2.hs_method_42826ce5((void*)__hosihikari_shim_handle, (void*)registry.Handle);

@@ -91,6 +91,17 @@ public sealed unsafe partial class PillagerOutpostFeature : global::System.IDisp
         return new PillagerOutpostFeature((nint)handle);
     }
 
+    public static PillagerOutpostFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.PillagerOutpostFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_1e1185ac((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PillagerOutpostFeature((nint)handle);
+    }
+
     public static PillagerOutpostFeature Create(uint seed)
     {
         var handle = NativeMethods.TablePtr->C2.hs_create_4f52ebb2(seed);

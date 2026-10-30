@@ -43,6 +43,17 @@ public sealed unsafe partial class GameDataSaveTimer : global::System.IDisposabl
         NativeMethods.TablePtr->C1.hs_method_48328ea9((void*)__hosihikari_shim_handle);
     }
 
+    public static GameDataSaveTimer Create(global::Hosihikari.Bindings.Bedrock.Interop.GameDataSaveTimer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_01353f23((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameDataSaveTimer((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mDeferStorageActionsRefCount_Address
     {

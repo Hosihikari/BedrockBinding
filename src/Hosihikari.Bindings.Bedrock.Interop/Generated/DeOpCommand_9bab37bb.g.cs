@@ -72,6 +72,17 @@ public sealed unsafe partial class DeOpCommand : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_6ec84239((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static DeOpCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.DeOpCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_074ab877((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DeOpCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C1.hs_method_47a16b91((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

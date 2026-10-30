@@ -38,6 +38,17 @@ public sealed unsafe partial class WorldGenContext : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static WorldGenContext Create(global::Hosihikari.Bindings.Bedrock.Interop.WorldGenContext arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_6c8c90e1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WorldGenContext((nint)handle);
+    }
+
     public nint mAquifer
     {
         get => (nint)NativeMethods.TablePtr->C4.hs_get_9a63910c((void*)__hosihikari_shim_handle);

@@ -70,6 +70,17 @@ public sealed unsafe partial class ResourceLocation : global::System.IDisposable
     public static ResourceLocation Create(nint path, nint fileSystem) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
 
+    public static ResourceLocation Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_d44f9b44((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ResourceLocation((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ getFullPath()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C3.hs_method_0d8dcc2a((void*)__hosihikari_shim_handle));

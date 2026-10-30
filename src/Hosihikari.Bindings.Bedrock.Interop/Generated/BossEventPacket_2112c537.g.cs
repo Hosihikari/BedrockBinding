@@ -111,6 +111,17 @@ public sealed unsafe partial class BossEventPacket : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_55b86198((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+    public static BossEventPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.BossEventPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_1809735f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BossEventPacket((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");

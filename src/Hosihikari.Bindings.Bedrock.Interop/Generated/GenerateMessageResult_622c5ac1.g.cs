@@ -43,6 +43,17 @@ public sealed unsafe partial class GenerateMessageResult : global::System.IDispo
         NativeMethods.TablePtr->C1.hs_method_3f60820b((void*)__hosihikari_shim_handle);
     }
 
+    public static GenerateMessageResult Create(global::Hosihikari.Bindings.Bedrock.Interop.GenerateMessageResult arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_ddfc3033((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GenerateMessageResult((nint)handle);
+    }
+
     public bool mIsValid
     {
         get => NativeMethods.TablePtr->C1.hs_get_21c7b9bc((void*)__hosihikari_shim_handle) != 0;

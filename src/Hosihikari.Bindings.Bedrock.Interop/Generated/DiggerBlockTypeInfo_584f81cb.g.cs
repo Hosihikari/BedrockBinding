@@ -38,6 +38,17 @@ public sealed unsafe partial class DiggerBlockTypeInfo : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static DiggerBlockTypeInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.DiggerBlockTypeInfo arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_bca19ccf((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DiggerBlockTypeInfo((nint)handle);
+    }
+
     public int destroySpeed
     {
         get => NativeMethods.TablePtr->C1.hs_get_eb495483((void*)__hosihikari_shim_handle);

@@ -138,6 +138,17 @@ public sealed unsafe partial class ShapedRecipe : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ShapedRecipe Create(global::Hosihikari.Bindings.Bedrock.Interop.ShapedRecipe arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_da132fb5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ShapedRecipe((nint)handle);
+    }
+
     public nint assemble(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer arg0, global::Hosihikari.Bindings.Bedrock.Interop.CraftingContext arg1)
     {
         return (nint)NativeMethods.TablePtr->C3.hs_method_d9cd9c03((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle);

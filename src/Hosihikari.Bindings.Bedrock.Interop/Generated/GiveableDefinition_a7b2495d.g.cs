@@ -38,6 +38,17 @@ public sealed unsafe partial class GiveableDefinition : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static GiveableDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.GiveableDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_3a89c954((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GiveableDefinition((nint)handle);
+    }
+
     public void addGiveableTrigger(global::Hosihikari.Bindings.Bedrock.Interop.GiveableTrigger trigger)
     {
         NativeMethods.TablePtr->C1.hs_method_d9fbf04f((void*)__hosihikari_shim_handle, (void*)trigger.Handle);

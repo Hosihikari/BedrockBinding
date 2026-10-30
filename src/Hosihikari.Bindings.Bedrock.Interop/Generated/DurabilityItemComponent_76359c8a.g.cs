@@ -38,6 +38,17 @@ public sealed unsafe partial class DurabilityItemComponent : global::System.IDis
         return __hs_handle;
     }
 
+    public static DurabilityItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50.DurabilityItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_6caf7565((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DurabilityItemComponent((nint)handle);
+    }
+
     public static string NAME()
     {
         var __hs_view = NativeMethods.TablePtr->C3.hs_method_c53342c5();

@@ -38,6 +38,17 @@ public sealed unsafe partial class BreedableDefinition : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static BreedableDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.BreedableDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5dac2c0c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BreedableDefinition((nint)handle);
+    }
+
     public void addBreedItem(nint breedItem)
     {
         NativeMethods.TablePtr->C0.hs_method_3a4eb674((void*)__hosihikari_shim_handle, (void*)breedItem);

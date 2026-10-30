@@ -86,9 +86,21 @@ public sealed unsafe partial class MerchantRecipe : global::System.IDisposable
         return new MerchantRecipe((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void calculateDemandPrices(int minorPositiveGossip, int majorPositiveGossip, int nearbyCuredDiscount, int heroEffectAmplifier, bool hasHeroOfTheVillage, nint baseGameVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static MerchantRecipe Create(global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_32b48020((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MerchantRecipe((nint)handle);
+    }
+
+    public void calculateDemandPrices(int minorPositiveGossip, int majorPositiveGossip, int nearbyCuredDiscount, int heroEffectAmplifier, bool hasHeroOfTheVillage, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion)
+    {
+        NativeMethods.TablePtr->C2.hs_method_f34adbb9((void*)__hosihikari_shim_handle, minorPositiveGossip, majorPositiveGossip, nearbyCuredDiscount, heroEffectAmplifier, hasHeroOfTheVillage, (void*)baseGameVersion.Handle);
+    }
 
     public bool isSame(global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe lhs)
     {

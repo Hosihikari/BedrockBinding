@@ -38,6 +38,17 @@ public sealed unsafe partial class Ability : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Ability Create(global::Hosihikari.Bindings.Bedrock.Interop.Ability arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_d5aacf00((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Ability((nint)handle);
+    }
+
     public byte mOptions
     {
         get => NativeMethods.TablePtr->C0.hs_get_0e2e56a3((void*)__hosihikari_shim_handle);

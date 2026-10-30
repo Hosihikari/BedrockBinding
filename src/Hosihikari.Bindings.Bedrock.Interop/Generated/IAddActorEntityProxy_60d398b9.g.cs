@@ -38,6 +38,17 @@ public sealed unsafe partial class IAddActorEntityProxy : global::System.IDispos
         return __hs_handle;
     }
 
+    public static IAddActorEntityProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.IAddActorEntityProxy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_2da8162e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IAddActorEntityProxy((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void initializeActor(nint actor) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

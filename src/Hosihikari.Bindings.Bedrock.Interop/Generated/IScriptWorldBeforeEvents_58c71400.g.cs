@@ -121,6 +121,17 @@ public sealed unsafe partial class IScriptWorldBeforeEvents : global::System.IDi
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static IScriptWorldBeforeEvents Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.IScriptWorldBeforeEvents arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_3c98a1d8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IScriptWorldBeforeEvents((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorHealBeforeEvent>' is not supported.", false)]
     public nint onBeforeActorHeal(nint actor, nint eventData) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorHealBeforeEvent>' is not supported.");

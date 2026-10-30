@@ -38,6 +38,17 @@ public sealed unsafe partial class UpdateBlockSyncedPacketPayload : global::Syst
         return __hs_handle;
     }
 
+    public static UpdateBlockSyncedPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.UpdateBlockSyncedPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_f375323a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UpdateBlockSyncedPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mEntityBlockSyncMessage_Address
     {

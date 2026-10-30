@@ -48,6 +48,17 @@ public sealed unsafe partial class BlockSelectionBox11920Upgrade : global::Syste
         NativeMethods.TablePtr->C0.hs_method_3989dcee((void*)__hosihikari_shim_handle, (void*)document, (void*)arg1.Handle);
     }
 
+    public static BlockSelectionBox11920Upgrade Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockSelectionBoxVersioning.BlockSelectionBox11920Upgrade arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_e0c233c1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockSelectionBox11920Upgrade((nint)handle);
+    }
+
     public bool previousSchema(nint component)
     {
         return NativeMethods.TablePtr->C0.hs_method_3eedbc31((void*)__hosihikari_shim_handle, (void*)component) != 0;

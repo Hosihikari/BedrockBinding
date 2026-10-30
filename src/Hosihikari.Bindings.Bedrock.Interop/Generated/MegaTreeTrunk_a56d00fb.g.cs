@@ -50,6 +50,17 @@ public sealed unsafe partial class MegaTreeTrunk : global::System.IDisposable
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
+    public static MegaTreeTrunk Create(global::Hosihikari.Bindings.Bedrock.Interop.MegaTreeTrunk arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_03798bd6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MegaTreeTrunk((nint)handle);
+    }
+
     public int getTreeHeight(global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         return NativeMethods.TablePtr->C2.hs_method_9da59297((void*)__hosihikari_shim_handle, (void*)random.Handle);

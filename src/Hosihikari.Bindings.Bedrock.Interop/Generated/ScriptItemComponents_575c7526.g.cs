@@ -38,6 +38,17 @@ public sealed unsafe partial class ScriptItemComponents : global::System.IDispos
         return __hs_handle;
     }
 
+    public static ScriptItemComponents Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemComponents arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_3dddf82b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptItemComponents((nint)handle);
+    }
+
     public nint _getOrCreateNativeItemComponentFactories()
     {
         return (nint)NativeMethods.TablePtr->C3.hs_method_9350894a((void*)__hosihikari_shim_handle);

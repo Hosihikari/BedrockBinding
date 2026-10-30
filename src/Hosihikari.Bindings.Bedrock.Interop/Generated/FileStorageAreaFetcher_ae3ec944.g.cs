@@ -42,6 +42,17 @@ public sealed unsafe partial class FileStorageAreaFetcher : global::System.IDisp
     public nint _getStorageAreaForPath(nint fileStorageArea, nint path) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
+    public static FileStorageAreaFetcher Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageAreaFetcher arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_4d26f85e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FileStorageAreaFetcher((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getStorageAreaForPath(nint fileStorageArea, nint path) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");

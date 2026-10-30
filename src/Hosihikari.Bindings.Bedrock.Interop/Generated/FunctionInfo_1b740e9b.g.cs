@@ -38,6 +38,17 @@ public sealed unsafe partial class FunctionInfo : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static FunctionInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.ScheduleCommand_Nested.FunctionInfo arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_e9c05daa((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FunctionInfo((nint)handle);
+    }
+
     public nint mFunctionEntry
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_3ed4da4f((void*)__hosihikari_shim_handle);

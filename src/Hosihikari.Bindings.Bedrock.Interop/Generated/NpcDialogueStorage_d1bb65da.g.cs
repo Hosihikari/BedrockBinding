@@ -38,6 +38,17 @@ public sealed unsafe partial class NpcDialogueStorage : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static NpcDialogueStorage Create(global::Hosihikari.Bindings.Bedrock.Interop.NpcDialogueStorage arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_428d53da((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NpcDialogueStorage((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.NpcDialogueScene? getScene_e267154d(string sceneName)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(sceneName);

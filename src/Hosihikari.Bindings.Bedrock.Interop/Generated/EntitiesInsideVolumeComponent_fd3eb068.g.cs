@@ -38,6 +38,17 @@ public sealed unsafe partial class EntitiesInsideVolumeComponent : global::Syste
         return __hs_handle;
     }
 
+    public static EntitiesInsideVolumeComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.EntitiesInsideVolumeComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_e2bf57c4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EntitiesInsideVolumeComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mEntities_Address
     {

@@ -125,6 +125,17 @@ public sealed unsafe partial class AnimateEntityPacketPayload : global::System.I
         return new AnimateEntityPacketPayload((nint)handle);
     }
 
+    public static AnimateEntityPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.AnimateEntityPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_69c373a5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AnimateEntityPacketPayload((nint)handle);
+    }
+
     public static AnimateEntityPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorRuntimeID[] runtimeIds, string animation, string nextState, float blendOutTime, string stopExpression, short stopExpressionVersion, string controller)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(animation);

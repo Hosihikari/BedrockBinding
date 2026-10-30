@@ -68,6 +68,17 @@ public sealed unsafe partial class PackLoadError : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static PackLoadError Create(global::Hosihikari.Bindings.Bedrock.Interop.PackLoadError arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_5ef9dd18((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PackLoadError((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
     public nint getEventErrorMessageMap() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");

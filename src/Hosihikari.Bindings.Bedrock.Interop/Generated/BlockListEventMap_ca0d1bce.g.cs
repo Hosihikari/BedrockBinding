@@ -43,6 +43,17 @@ public sealed unsafe partial class BlockListEventMap : global::System.IDisposabl
         NativeMethods.TablePtr->C0.hs_method_7fed9c14((void*)__hosihikari_shim_handle);
     }
 
+    public static BlockListEventMap Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockListEventMap arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_a987bbb9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockListEventMap((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockDescriptors_Address
     {

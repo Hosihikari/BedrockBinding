@@ -130,6 +130,17 @@ public sealed unsafe partial class SmithingTransformRecipe : global::System.IDis
         return new SmithingTransformRecipe((nint)handle);
     }
 
+    public static SmithingTransformRecipe Create(global::Hosihikari.Bindings.Bedrock.Interop.SmithingTransformRecipe arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c46b3344((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SmithingTransformRecipe((nint)handle);
+    }
+
     public nint assemble(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer craftingContainer, global::Hosihikari.Bindings.Bedrock.Interop.CraftingContext arg1)
     {
         return (nint)NativeMethods.TablePtr->C3.hs_method_6f59328e((void*)__hosihikari_shim_handle, (void*)craftingContainer.Handle, (void*)arg1.Handle);

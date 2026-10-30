@@ -38,6 +38,17 @@ public sealed unsafe partial class CombatRegenerationDefinition : global::System
         return __hs_handle;
     }
 
+    public static CombatRegenerationDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.CombatRegenerationDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_03976dd9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CombatRegenerationDefinition((nint)handle);
+    }
+
     public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
         NativeMethods.TablePtr->C0.hs_method_703b628e(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));

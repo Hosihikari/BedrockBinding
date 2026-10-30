@@ -38,6 +38,17 @@ public sealed unsafe partial class KineticWeaponItemComponent : global::System.I
         return __hs_handle;
     }
 
+    public static KineticWeaponItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_21_90.KineticWeaponItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_6da4d0d5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new KineticWeaponItemComponent((nint)handle);
+    }
+
     public static string NAME()
     {
         var __hs_view = NativeMethods.TablePtr->C3.hs_method_7d22b6c3();

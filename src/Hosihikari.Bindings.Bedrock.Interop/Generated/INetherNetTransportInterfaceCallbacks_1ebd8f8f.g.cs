@@ -42,6 +42,17 @@ public sealed unsafe partial class INetherNetTransportInterfaceCallbacks : globa
     public nint _OnSessionResponse(nint networkID, ulong sessionId, nint assertion, nint fingerprintJson, bool isLan) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<bool>' requires --link-carrier or --virtual-dispatch.");
 
+    public static INetherNetTransportInterfaceCallbacks Create(global::Hosihikari.Bindings.Bedrock.Interop.NetherNet.INetherNetTransportInterfaceCallbacks arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_4d53ab87((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new INetherNetTransportInterfaceCallbacks((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint OnDiscoveryRequest() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

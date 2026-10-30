@@ -38,34 +38,45 @@ public sealed unsafe partial class FeatureArea : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static FeatureArea Create(global::Hosihikari.Bindings.Bedrock.Interop.RectLayoutFeature_Nested.FeatureArea arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_6c6b0610((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FeatureArea((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mFeatureRef_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_04a117c9((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_04a117c9((void*)__hosihikari_shim_handle);
     }
 
     public int mHeight
     {
-        get => NativeMethods.TablePtr->C2.hs_get_19e68073((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_19e68073((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_19e68073((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_19e68073((void*)__hosihikari_shim_handle, value);
     }
 
     public int mWidth
     {
-        get => NativeMethods.TablePtr->C2.hs_get_435a4b42((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_435a4b42((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_435a4b42((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_435a4b42((void*)__hosihikari_shim_handle, value);
     }
 
     public int mX
     {
-        get => NativeMethods.TablePtr->C2.hs_get_83b0554e((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_83b0554e((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_83b0554e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_83b0554e((void*)__hosihikari_shim_handle, value);
     }
 
     public int mY
     {
-        get => NativeMethods.TablePtr->C2.hs_get_bf3ac800((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_bf3ac800((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_bf3ac800((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_bf3ac800((void*)__hosihikari_shim_handle, value);
     }
 
 
@@ -75,7 +86,7 @@ public sealed unsafe partial class FeatureArea : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_e0c2713d((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_e0c2713d((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

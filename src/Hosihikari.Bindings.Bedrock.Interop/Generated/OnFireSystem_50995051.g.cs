@@ -38,6 +38,17 @@ public sealed unsafe partial class OnFireSystem : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static OnFireSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.OnFireSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_ef2a5f98((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OnFireSystem((nint)handle);
+    }
+
     public static void _setOnFireImpl(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, int seconds, bool isInWaterOrRain, int fireProtectionLevels)
     {
         NativeMethods.TablePtr->C2.hs_method_03ec34e1((void*)actor.Handle, seconds, isInWaterOrRain, fireProtectionLevels);

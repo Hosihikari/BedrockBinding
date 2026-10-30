@@ -38,6 +38,17 @@ public sealed unsafe partial class PlaceBlock : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static PlaceBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.AgentComponents.Actions.PlaceBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_c6dc74a9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlaceBlock((nint)handle);
+    }
+
     public byte dir
     {
         get => NativeMethods.TablePtr->C0.hs_get_b1a9c5f6((void*)__hosihikari_shim_handle);

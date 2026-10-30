@@ -152,6 +152,17 @@ public sealed unsafe partial class ShowStoreOfferPacket : global::System.IDispos
         NativeMethods.TablePtr->C3.hs_method_9dea6b63((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+    public static ShowStoreOfferPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.ShowStoreOfferPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_fc0701df((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ShowStoreOfferPacket((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");

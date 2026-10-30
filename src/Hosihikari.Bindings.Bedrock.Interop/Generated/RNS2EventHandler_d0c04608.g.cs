@@ -50,6 +50,17 @@ public sealed unsafe partial class RNS2EventHandler : global::System.IDisposable
     public void OnRNS2Recv(nint recvStruct) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static RNS2EventHandler Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RNS2EventHandler arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_9f819a03((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RNS2EventHandler((nint)handle);
+    }
+
 
     public void Dispose()
     {

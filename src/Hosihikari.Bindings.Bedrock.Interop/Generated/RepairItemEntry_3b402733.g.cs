@@ -38,6 +38,17 @@ public sealed unsafe partial class RepairItemEntry : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static RepairItemEntry Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50.RepairableItemComponent_Nested.RepairItemEntry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_aa1cfcc9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RepairItemEntry((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mItems_Address
     {

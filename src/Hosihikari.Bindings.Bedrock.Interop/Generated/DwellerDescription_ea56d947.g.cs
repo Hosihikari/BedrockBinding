@@ -38,9 +38,10 @@ public sealed unsafe partial class DwellerDescription : global::System.IDisposab
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void _deserializeData(nint deserializeDataParams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void _deserializeData(global::Hosihikari.Bindings.Bedrock.Interop.DeserializeDataParams deserializeDataParams)
+    {
+        NativeMethods.TablePtr->C1.hs_method_0676f6c2((void*)__hosihikari_shim_handle, (void*)deserializeDataParams.Handle);
+    }
 
     public nint _getJsonName()
     {
@@ -51,9 +52,21 @@ public sealed unsafe partial class DwellerDescription : global::System.IDisposab
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void deserializeData(nint deserializeDataParams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static DwellerDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.DwellerDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_0430ff2a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DwellerDescription((nint)handle);
+    }
+
+    public void deserializeData(global::Hosihikari.Bindings.Bedrock.Interop.DeserializeDataParams deserializeDataParams)
+    {
+        NativeMethods.TablePtr->C1.hs_method_f7a3f0c9((void*)__hosihikari_shim_handle, (void*)deserializeDataParams.Handle);
+    }
 
     public nint getJsonName()
     {

@@ -169,6 +169,17 @@ public sealed unsafe partial class ItemEventListener : global::System.IDisposabl
         return NativeMethods.TablePtr->C1.hs_method_d4d25a6f((void*)__hosihikari_shim_handle, (void*)item.Handle);
     }
 
+    public static ItemEventListener Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemEventListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_8deb12b3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemEventListener((nint)handle);
+    }
+
     public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ItemNotificationEvent @event)
     {
         return NativeMethods.TablePtr->C1.hs_method_04af09fd((void*)__hosihikari_shim_handle, (void*)@event.Handle);

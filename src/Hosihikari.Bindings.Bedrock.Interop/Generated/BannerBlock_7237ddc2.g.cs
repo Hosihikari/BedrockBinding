@@ -107,6 +107,17 @@ public sealed unsafe partial class BannerBlock : global::System.IDisposable
         return new BannerBlock((nint)handle);
     }
 
+    public static BannerBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.BannerBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_601eb6ca((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BannerBlock((nint)handle);
+    }
+
     public static BannerBlock Create(string nameId, int id, bool onGround)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);

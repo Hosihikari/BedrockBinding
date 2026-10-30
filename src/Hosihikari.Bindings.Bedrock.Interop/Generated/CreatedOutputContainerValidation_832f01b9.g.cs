@@ -58,6 +58,17 @@ public sealed unsafe partial class CreatedOutputContainerValidation : global::Sy
         return NativeMethods.TablePtr->C1.hs_method_487cb045((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, slot, (void*)item.Handle, amount, arg4) != 0;
     }
 
+    public static CreatedOutputContainerValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.CreatedOutputContainerValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_9ff6ae39((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CreatedOutputContainerValidation((nint)handle);
+    }
+
     public bool canItemMoveToContainer(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item)
     {
         return NativeMethods.TablePtr->C1.hs_method_2f25ce9b((void*)__hosihikari_shim_handle, (void*)item.Handle) != 0;

@@ -81,6 +81,17 @@ public sealed unsafe partial class OceanMonumentFeature : global::System.IDispos
         return new OceanMonumentFeature((nint)handle);
     }
 
+    public static OceanMonumentFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.OceanMonumentFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_3e49f071((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OceanMonumentFeature((nint)handle);
+    }
+
     public static OceanMonumentFeature Create(uint seed)
     {
         var handle = NativeMethods.TablePtr->C2.hs_create_10661a98(seed);

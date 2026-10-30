@@ -72,6 +72,17 @@ public sealed unsafe partial class ScheduleCommand : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_a138d148((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static ScheduleCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.ScheduleCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a19e7511((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScheduleCommand((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.ScheduleCommand_Nested.FunctionInfo _tryGetFunction(global::Hosihikari.Bindings.Bedrock.Interop.FunctionManager functionManager, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScheduleCommand_Nested.FunctionInfo((nint)NativeMethods.TablePtr->C3.hs_method_ff58671f((void*)__hosihikari_shim_handle, (void*)functionManager.Handle, (void*)output.Handle));

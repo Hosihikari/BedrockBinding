@@ -38,6 +38,17 @@ public sealed unsafe partial class StatesProxy : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static StatesProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockDescriptorSerializer.StatesProxy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_51a338e1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StatesProxy((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockStates_Address
     {

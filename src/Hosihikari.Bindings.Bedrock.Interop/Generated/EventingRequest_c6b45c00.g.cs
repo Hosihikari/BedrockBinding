@@ -38,6 +38,17 @@ public sealed unsafe partial class EventingRequest : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static EventingRequest Create(global::Hosihikari.Bindings.Bedrock.Interop.EventingRequest arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b4713203((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EventingRequest((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.EventingRequest addPersonaEmotePlayed(string emoteProductId, bool isEmoteEndedEarly, int emoteSlotId)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(emoteProductId);

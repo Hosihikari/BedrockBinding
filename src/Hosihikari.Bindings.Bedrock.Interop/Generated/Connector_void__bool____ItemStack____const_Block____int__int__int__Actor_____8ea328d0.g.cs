@@ -38,4 +38,8 @@ public sealed partial class Connector_void__bool____ItemStack____const_Block____
         __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
+    public static Connector_void__bool____ItemStack____const_Block____int__int__int__Actor____ Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
 }

@@ -72,6 +72,17 @@ public sealed unsafe partial class ImmutableWorldCommand : global::System.IDispo
         NativeMethods.TablePtr->C1.hs_method_c72c37c7((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static ImmutableWorldCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.ImmutableWorldCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_5498b43c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ImmutableWorldCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C1.hs_method_c254f4cb((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

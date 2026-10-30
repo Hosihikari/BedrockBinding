@@ -58,6 +58,17 @@ public sealed unsafe partial class AsyncOperationBase : global::System.IDisposab
         return NativeMethods.TablePtr->C2.hs_method_f9182268((void*)__hosihikari_shim_handle, databasePtr?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)record.Handle) != 0;
     }
 
+    public static AsyncOperationBase Create(global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.AsyncOperationBase arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_1512ac58((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AsyncOperationBase((nint)handle);
+    }
+
     public bool _init(global::Hosihikari.Bindings.Abi.SharedHandle? databasePtr, global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.TrackingRecord record)
     {
         return NativeMethods.TablePtr->C2.hs_method_271a0cfb((void*)__hosihikari_shim_handle, databasePtr?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)record.Handle) != 0;

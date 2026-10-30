@@ -148,6 +148,17 @@ public sealed unsafe partial class ShieldRecipe : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->C3.hs_method_40ca0100(), false);
     }
 
+    public static ShieldRecipe Create(global::Hosihikari.Bindings.Bedrock.Interop.ShieldRecipe arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_eb9b90af((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ShieldRecipe((nint)handle);
+    }
+
     public nint assemble(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer craftSlots, global::Hosihikari.Bindings.Bedrock.Interop.CraftingContext arg1)
     {
         return (nint)NativeMethods.TablePtr->C3.hs_method_a26a369c((void*)__hosihikari_shim_handle, (void*)craftSlots.Handle, (void*)arg1.Handle);

@@ -38,6 +38,17 @@ public sealed unsafe partial class SubscriptionContext : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static SubscriptionContext Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PubSub.SubscriptionContext arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_112319c9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SubscriptionContext((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void to_string(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

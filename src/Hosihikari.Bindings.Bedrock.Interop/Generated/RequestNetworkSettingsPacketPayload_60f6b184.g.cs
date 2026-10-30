@@ -40,8 +40,8 @@ public sealed unsafe partial class RequestNetworkSettingsPacketPayload : global:
 
     public int mClientNetworkVersion
     {
-        get => NativeMethods.TablePtr->C2.hs_get_ef89ce4c((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_ef89ce4c((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_ef89ce4c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_ef89ce4c((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -50,7 +50,7 @@ public sealed unsafe partial class RequestNetworkSettingsPacketPayload : global:
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_60f6b184((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_60f6b184((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

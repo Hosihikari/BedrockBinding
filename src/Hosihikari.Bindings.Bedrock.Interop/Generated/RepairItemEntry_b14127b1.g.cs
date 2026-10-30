@@ -38,16 +38,27 @@ public sealed unsafe partial class RepairItemEntry : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static RepairItemEntry Create(global::Hosihikari.Bindings.Bedrock.Interop.RepairItemEntry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_7c7139d8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RepairItemEntry((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mItems_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_a9815ab8((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a9815ab8((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRepairAmount_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_e6cebd79((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e6cebd79((void*)__hosihikari_shim_handle);
     }
 
 
@@ -57,7 +68,7 @@ public sealed unsafe partial class RepairItemEntry : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_b14127b1((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_b14127b1((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

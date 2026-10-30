@@ -139,6 +139,17 @@ public sealed unsafe partial class CapacitorComponent : global::System.IDisposab
         return NativeMethods.TablePtr->C0.hs_method_fb0153e8((void*)__hosihikari_shim_handle);
     }
 
+    public static CapacitorComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.CapacitorComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_8d159288((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CapacitorComponent((nint)handle);
+    }
+
     public ulong getCircuitComponentType()
     {
         return NativeMethods.TablePtr->C0.hs_method_d14e645a((void*)__hosihikari_shim_handle);

@@ -54,6 +54,17 @@ public sealed unsafe partial class SetArmorTrimFunction : global::System.IDispos
         return NativeMethods.TablePtr->C3.hs_method_7e13864b((void*)__hosihikari_shim_handle);
     }
 
+    public static SetArmorTrimFunction Create(global::Hosihikari.Bindings.Bedrock.Interop.SetArmorTrimFunction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_80acdd73((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SetArmorTrimFunction((nint)handle);
+    }
+
     public void applyPreVersion(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext context)
     {
         NativeMethods.TablePtr->C3.hs_method_15aca424((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)arg1.Handle, (void*)context.Handle);

@@ -38,6 +38,17 @@ public sealed unsafe partial class StringConstraint : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static StringConstraint Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.StringConstraint arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_34f12666((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StringConstraint((nint)handle);
+    }
+
     public ulong mMinSize
     {
         get => NativeMethods.TablePtr->C4.hs_get_bf3d660c((void*)__hosihikari_shim_handle);

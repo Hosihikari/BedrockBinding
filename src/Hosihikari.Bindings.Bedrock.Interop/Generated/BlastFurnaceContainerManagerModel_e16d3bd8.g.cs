@@ -42,6 +42,17 @@ public sealed unsafe partial class BlastFurnaceContainerManagerModel : global::S
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static BlastFurnaceContainerManagerModel Create(global::Hosihikari.Bindings.Bedrock.Interop.BlastFurnaceContainerManagerModel arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_05494ff9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlastFurnaceContainerManagerModel((nint)handle);
+    }
+
 
     public sbyte mContainerId
     {

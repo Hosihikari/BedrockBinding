@@ -44,6 +44,17 @@ public sealed unsafe partial class RuinedPortalStart : global::System.IDisposabl
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static RuinedPortalStart Create(global::Hosihikari.Bindings.Bedrock.Interop.RuinedPortalStart arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_006d99e3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RuinedPortalStart((nint)handle);
+    }
+
     public string getStructureName()
     {
         var __hs_view = NativeMethods.TablePtr->C3.hs_method_657ba8e4((void*)__hosihikari_shim_handle);

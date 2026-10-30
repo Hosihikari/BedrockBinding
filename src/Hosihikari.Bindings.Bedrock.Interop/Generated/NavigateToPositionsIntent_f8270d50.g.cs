@@ -38,6 +38,17 @@ public sealed unsafe partial class NavigateToPositionsIntent : global::System.ID
         return __hs_handle;
     }
 
+    public static NavigateToPositionsIntent Create(global::Hosihikari.Bindings.Bedrock.Interop.sim.NavigateToPositionsIntent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_890b31db((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NavigateToPositionsIntent((nint)handle);
+    }
+
     public void finalize(global::Hosihikari.Bindings.Bedrock.Interop.SimulatedPlayer player)
     {
         NativeMethods.TablePtr->C4.hs_method_732ccb50((void*)__hosihikari_shim_handle, (void*)player.Handle);

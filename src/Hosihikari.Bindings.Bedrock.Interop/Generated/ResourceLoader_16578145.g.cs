@@ -168,6 +168,17 @@ public sealed unsafe partial class ResourceLoader : global::System.IDisposable
         return new ResourceLoader((nint)handle);
     }
 
+    public static ResourceLoader Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLoader arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_651d7b69((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ResourceLoader((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'Core::PathBuffer<std::basic_string<char>>' is not supported.", false)]
     public static ResourceLoader Create(nint getPath) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'Core::PathBuffer<std::basic_string<char>>' is not supported.");

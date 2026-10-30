@@ -52,6 +52,17 @@ public sealed unsafe partial class AlwaysTrue : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static AlwaysTrue Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.processors.PosRules.AlwaysTrue arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_1fe36a8c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AlwaysTrue((nint)handle);
+    }
+
     public void appendMetadataKey(global::Hosihikari.Bindings.Bedrock.Interop.Util.XXHash hash)
     {
         NativeMethods.TablePtr->C4.hs_method_f76e1e5b((void*)__hosihikari_shim_handle, (void*)hash.Handle);

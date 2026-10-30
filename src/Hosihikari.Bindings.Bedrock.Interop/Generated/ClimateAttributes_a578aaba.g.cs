@@ -38,6 +38,17 @@ public sealed unsafe partial class ClimateAttributes : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static ClimateAttributes Create(global::Hosihikari.Bindings.Bedrock.Interop.ClimateAttributes arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_fc60a491((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ClimateAttributes((nint)handle);
+    }
+
     public float mDownfall
     {
         get => NativeMethods.TablePtr->C0.hs_get_7040acad((void*)__hosihikari_shim_handle);

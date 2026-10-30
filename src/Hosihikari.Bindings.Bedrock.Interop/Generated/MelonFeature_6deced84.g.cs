@@ -67,6 +67,17 @@ public sealed unsafe partial class MelonFeature : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_91bdc1cc((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
     }
 
+    public static MelonFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.MelonFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_ed047fc2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MelonFeature((nint)handle);
+    }
+
     public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         return NativeMethods.TablePtr->C2.hs_method_1e14ae09((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;

@@ -46,6 +46,17 @@ public sealed unsafe partial class BiomeSource : global::System.IDisposable
     public nint _getBiomeVolumeToFill(short chunkHeight, nint chunkMin, uint levelSeed, nint chunkLocalNoiseCache) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ChunkVolume::VolumeOf<Biome>' requires --link-carrier or --virtual-dispatch.");
 
+    public static BiomeSource Create(global::Hosihikari.Bindings.Bedrock.Interop.BiomeSource arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_be4acdfe((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BiomeSource((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint _getBiome(nint getBiomeOptions) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

@@ -83,6 +83,17 @@ public sealed unsafe partial class ScriptItemUseOnBeforeEvent : global::System.I
         return new ScriptItemUseOnBeforeEvent((nint)handle);
     }
 
+    public static ScriptItemUseOnBeforeEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemUseOnBeforeEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_22d19a52((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptItemUseOnBeforeEvent((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_fdbb966e());

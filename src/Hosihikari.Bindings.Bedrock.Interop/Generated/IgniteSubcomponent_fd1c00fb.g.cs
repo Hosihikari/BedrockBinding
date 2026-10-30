@@ -58,6 +58,17 @@ public sealed unsafe partial class IgniteSubcomponent : global::System.IDisposab
         NativeMethods.TablePtr->C1.hs_method_67ca9030((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
+    public static IgniteSubcomponent Create(global::Hosihikari.Bindings.Bedrock.Interop.IgniteSubcomponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_dfeba96f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IgniteSubcomponent((nint)handle);
+    }
+
     public void doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent arg1)
     {
         NativeMethods.TablePtr->C1.hs_method_dccd4f34((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)arg1.Handle);

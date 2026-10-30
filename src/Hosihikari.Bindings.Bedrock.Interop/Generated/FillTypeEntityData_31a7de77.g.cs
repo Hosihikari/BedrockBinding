@@ -38,6 +38,17 @@ public sealed unsafe partial class FillTypeEntityData : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static FillTypeEntityData Create(global::Hosihikari.Bindings.Bedrock.Interop.BucketItem_Nested.FillTypeEntityData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_0da0c1d0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FillTypeEntityData((nint)handle);
+    }
+
     public int mActorType
     {
         get => NativeMethods.TablePtr->C0.hs_get_64e677d4((void*)__hosihikari_shim_handle);

@@ -38,6 +38,17 @@ public sealed unsafe partial class LoadActorResult : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static LoadActorResult Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup_Nested.LoadActorResult arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_bfa68a3a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LoadActorResult((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mActorId_Address
     {

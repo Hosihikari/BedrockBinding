@@ -38,6 +38,17 @@ public sealed unsafe partial class BiomeDimensionAttributes : global::System.IDi
         return __hs_handle;
     }
 
+    public static BiomeDimensionAttributes Create(global::Hosihikari.Bindings.Bedrock.Interop.BiomeDimensionAttributes arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_6f9c30a1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BiomeDimensionAttributes((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mDimensionType_Address
     {

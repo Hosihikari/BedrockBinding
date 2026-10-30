@@ -482,13 +482,15 @@ public sealed unsafe partial class DynamicValue : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.cereal.DynamicValue((nint)NativeMethods.TablePtr->C4.hs_method_0cae0eb4((void*)__hosihikari_shim_handle, index), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint pushBack(nint element) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.cereal.DynamicValue pushBack(global::Hosihikari.Bindings.Bedrock.Interop.cereal.DynamicValue element)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.cereal.DynamicValue((nint)NativeMethods.TablePtr->C4.hs_method_3f5da23c((void*)__hosihikari_shim_handle, (void*)element.Handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint push_back(nint element) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.cereal.DynamicValue push_back(global::Hosihikari.Bindings.Bedrock.Interop.cereal.DynamicValue element)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.cereal.DynamicValue((nint)NativeMethods.TablePtr->C4.hs_method_8b5f1738((void*)__hosihikari_shim_handle, (void*)element.Handle), false);
+    }
 
     public void reserve(ulong capacity)
     {

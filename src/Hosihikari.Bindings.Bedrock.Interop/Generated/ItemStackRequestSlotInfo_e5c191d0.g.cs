@@ -38,6 +38,17 @@ public sealed unsafe partial class ItemStackRequestSlotInfo : global::System.IDi
         return __hs_handle;
     }
 
+    public static ItemStackRequestSlotInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestSlotInfo arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_18b7c33b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemStackRequestSlotInfo((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mFullContainerName_Address
     {

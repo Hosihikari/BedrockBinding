@@ -66,6 +66,17 @@ public sealed unsafe partial class MediaSendChannelInterface : global::System.ID
     public bool HasNetworkInterface() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static MediaSendChannelInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.MediaSendChannelInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_fbae4349((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MediaSendChannelInterface((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void OnNetworkRouteChanged(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

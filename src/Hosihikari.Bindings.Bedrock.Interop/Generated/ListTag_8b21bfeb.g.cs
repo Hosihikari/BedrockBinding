@@ -116,6 +116,17 @@ public sealed unsafe partial class ListTag : global::System.IDisposable
         return new ListTag((nint)handle);
     }
 
+    public static ListTag Create(global::Hosihikari.Bindings.Bedrock.Interop.ListTag arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_9f01beca((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ListTag((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: span element type 'CompoundTagVariant' is not supported.", false)]
     public static ListTag Create_6f768941(nint tags) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'CompoundTagVariant' is not supported.");

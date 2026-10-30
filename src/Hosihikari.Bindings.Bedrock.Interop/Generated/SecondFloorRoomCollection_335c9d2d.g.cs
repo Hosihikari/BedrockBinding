@@ -80,6 +80,17 @@ public sealed unsafe partial class SecondFloorRoomCollection : global::System.ID
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static SecondFloorRoomCollection Create(global::Hosihikari.Bindings.Bedrock.Interop.WoodlandMansionPieces_Nested.SecondFloorRoomCollection arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_c65a2876((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SecondFloorRoomCollection((nint)handle);
+    }
+
     public string get1x1(global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         var __hs_view = NativeMethods.TablePtr->C4.hs_method_ca2495b0((void*)__hosihikari_shim_handle, (void*)random.Handle);

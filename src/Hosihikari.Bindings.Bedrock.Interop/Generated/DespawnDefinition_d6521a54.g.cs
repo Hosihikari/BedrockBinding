@@ -38,6 +38,17 @@ public sealed unsafe partial class DespawnDefinition : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static DespawnDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.DespawnDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_93bce2f7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DespawnDefinition((nint)handle);
+    }
+
     public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
         NativeMethods.TablePtr->C1.hs_method_f6227d54(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));

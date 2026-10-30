@@ -109,9 +109,10 @@ public sealed unsafe partial class GameplayUserManager : global::System.IDisposa
     public nint getPlayerRenamedConnector() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public bool isGameplayUserSuspended(nint weakEntityUser) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public bool isGameplayUserSuspended(global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef weakEntityUser)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_93349004((void*)__hosihikari_shim_handle, (void*)weakEntityUser.Handle) != 0;
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mActiveGameplayUsers_Address

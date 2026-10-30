@@ -47,6 +47,17 @@ public sealed unsafe partial class NetheriteArmorEquippedListener : global::Syst
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static NetheriteArmorEquippedListener Create(global::Hosihikari.Bindings.Bedrock.Interop.NetheriteArmorEquippedListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_4d25af81((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NetheriteArmorEquippedListener((nint)handle);
+    }
+
     public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ActorEquippedArmorEvent actorEquippedArmorEvent)
     {
         return NativeMethods.TablePtr->C2.hs_method_522f3363((void*)__hosihikari_shim_handle, (void*)actorEquippedArmorEvent.Handle);

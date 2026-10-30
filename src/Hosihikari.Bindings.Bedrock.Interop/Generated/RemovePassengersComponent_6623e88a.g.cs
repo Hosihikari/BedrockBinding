@@ -38,10 +38,21 @@ public sealed unsafe partial class RemovePassengersComponent : global::System.ID
         return __hs_handle;
     }
 
+    public static RemovePassengersComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.RemovePassengersComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_8842f54f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RemovePassengersComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mPassengersToRemove_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_f08debe1((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f08debe1((void*)__hosihikari_shim_handle);
     }
 
 
@@ -51,7 +62,7 @@ public sealed unsafe partial class RemovePassengersComponent : global::System.ID
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_6623e88a((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_6623e88a((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

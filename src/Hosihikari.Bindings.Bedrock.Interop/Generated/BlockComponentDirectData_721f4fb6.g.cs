@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockComponentDirectData : global::System.IDi
         return __hs_handle;
     }
 
+    public static BlockComponentDirectData Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockComponentDirectData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5cc2fce2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockComponentDirectData((nint)handle);
+    }
+
     public void _finalizeInit(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
         NativeMethods.TablePtr->C0.hs_method_e26800a6((void*)__hosihikari_shim_handle, (void*)block.Handle);

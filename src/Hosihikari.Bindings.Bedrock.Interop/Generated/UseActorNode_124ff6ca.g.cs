@@ -82,6 +82,17 @@ public sealed unsafe partial class UseActorNode : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static UseActorNode Create(global::Hosihikari.Bindings.Bedrock.Interop.UseActorNode arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_6a5312f5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UseActorNode((nint)handle);
+    }
+
     public int mDelayCounter
     {
         get => NativeMethods.TablePtr->C4.hs_get_a045f60b((void*)__hosihikari_shim_handle);

@@ -84,6 +84,17 @@ public sealed unsafe partial class AllayVibrationConfig : global::System.IDispos
         return new AllayVibrationConfig((nint)handle);
     }
 
+    public static AllayVibrationConfig Create(global::Hosihikari.Bindings.Bedrock.Interop.AllayVibrationConfig arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_e6f7e166((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AllayVibrationConfig((nint)handle);
+    }
+
     public bool isValidVibration(global::Hosihikari.Bindings.Bedrock.Interop.GameEvent gameEvent)
     {
         return NativeMethods.TablePtr->C0.hs_method_80e3675e((void*)__hosihikari_shim_handle, (void*)gameEvent.Handle) != 0;

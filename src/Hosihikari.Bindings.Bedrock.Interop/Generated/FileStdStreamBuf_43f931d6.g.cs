@@ -40,12 +40,12 @@ public sealed unsafe partial class FileStdStreamBuf : global::System.IDisposable
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C0.hs_method_591cf1fc((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_591cf1fc((void*)__hosihikari_shim_handle);
     }
 
     public int _overflow(int c)
     {
-        return NativeMethods.TablePtr->C0.hs_method_215a7dd4((void*)__hosihikari_shim_handle, c);
+        return NativeMethods.TablePtr->C1.hs_method_215a7dd4((void*)__hosihikari_shim_handle, c);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::fpos<_Mbstatet>' requires --link-carrier or --virtual-dispatch.", false)]
@@ -58,17 +58,17 @@ public sealed unsafe partial class FileStdStreamBuf : global::System.IDisposable
 
     public int _sync()
     {
-        return NativeMethods.TablePtr->C0.hs_method_9b084a6c((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C1.hs_method_9b084a6c((void*)__hosihikari_shim_handle);
     }
 
     public int _underflow()
     {
-        return NativeMethods.TablePtr->C0.hs_method_8de82ef1((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C1.hs_method_8de82ef1((void*)__hosihikari_shim_handle);
     }
 
     public static FileStdStreamBuf Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_5c4535c1();
+        var handle = NativeMethods.TablePtr->C1.hs_create_5c4535c1();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -79,7 +79,7 @@ public sealed unsafe partial class FileStdStreamBuf : global::System.IDisposable
 
     public static FileStdStreamBuf Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStdStreamBuf arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_5e97b9d6((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_5e97b9d6((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -90,41 +90,41 @@ public sealed unsafe partial class FileStdStreamBuf : global::System.IDisposable
 
     public int _flushoutput(bool syncToStorage)
     {
-        return NativeMethods.TablePtr->C0.hs_method_ac0b47e5((void*)__hosihikari_shim_handle, syncToStorage);
+        return NativeMethods.TablePtr->C1.hs_method_ac0b47e5((void*)__hosihikari_shim_handle, syncToStorage);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk2320e4_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_4c314bfb((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_4c314bfb((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk5a4631_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_6b669afd((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_6b669afd((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk892e32_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_dcec7372((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_dcec7372((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnka28c60_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_648a27e8((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_648a27e8((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStdStreamBuf operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStdStreamBuf arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStdStreamBuf((nint)NativeMethods.TablePtr->C0.hs_method_b8acc4ee((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStdStreamBuf((nint)NativeMethods.TablePtr->C1.hs_method_b8acc4ee((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public int overflow(int c)
     {
-        return NativeMethods.TablePtr->C0.hs_method_29a607d3((void*)__hosihikari_shim_handle, c);
+        return NativeMethods.TablePtr->C1.hs_method_29a607d3((void*)__hosihikari_shim_handle, c);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::fpos<_Mbstatet>' requires --link-carrier or --virtual-dispatch.", false)]
@@ -137,12 +137,12 @@ public sealed unsafe partial class FileStdStreamBuf : global::System.IDisposable
 
     public int sync()
     {
-        return NativeMethods.TablePtr->C0.hs_method_1111454d((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C1.hs_method_1111454d((void*)__hosihikari_shim_handle);
     }
 
     public int underflow()
     {
-        return NativeMethods.TablePtr->C0.hs_method_95aa3178((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C1.hs_method_95aa3178((void*)__hosihikari_shim_handle);
     }
 
 
@@ -152,7 +152,7 @@ public sealed unsafe partial class FileStdStreamBuf : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_43f931d6((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_43f931d6((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

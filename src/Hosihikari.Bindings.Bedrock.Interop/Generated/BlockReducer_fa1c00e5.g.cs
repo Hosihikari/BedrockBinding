@@ -46,6 +46,17 @@ public sealed unsafe partial class BlockReducer : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static BlockReducer Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockReducer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_1556cddf((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockReducer((nint)handle);
+    }
+
     public nint getReduction(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase block)
     {
         return (nint)NativeMethods.TablePtr->C0.hs_method_c2af2721((void*)__hosihikari_shim_handle, (void*)block.Handle);

@@ -40,6 +40,10 @@ public sealed partial class OwnerPtr_cereal__ReflectionCtx_
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
+    public static OwnerPtr_cereal__ReflectionCtx_ Create_e32b8be8(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
     public static OwnerPtr_cereal__ReflectionCtx_ Create_1bf5cc58(nint ptr) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
 

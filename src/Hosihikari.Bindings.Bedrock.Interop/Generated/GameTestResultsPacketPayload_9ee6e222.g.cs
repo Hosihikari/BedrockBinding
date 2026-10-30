@@ -82,6 +82,17 @@ public sealed unsafe partial class GameTestResultsPacketPayload : global::System
         return new GameTestResultsPacketPayload((nint)handle);
     }
 
+    public static GameTestResultsPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.GameTestResultsPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_16f3feba((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameTestResultsPacketPayload((nint)handle);
+    }
+
     public static GameTestResultsPacketPayload Create(string testName, string error, bool succeeded)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(testName);

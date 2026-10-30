@@ -49,6 +49,17 @@ public sealed unsafe partial class ActorAnimationController : global::System.IDi
         return new ActorAnimationController((nint)handle);
     }
 
+    public static ActorAnimationController Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationController arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_eadd468f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorAnimationController((nint)handle);
+    }
+
     public ulong mInitialStateIndex
     {
         get => NativeMethods.TablePtr->C0.hs_get_eaa31eb7((void*)__hosihikari_shim_handle);

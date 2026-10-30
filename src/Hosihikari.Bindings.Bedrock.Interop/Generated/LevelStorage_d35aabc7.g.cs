@@ -94,6 +94,17 @@ public sealed unsafe partial class LevelStorage : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static LevelStorage Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_e79ca346((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelStorage((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void addStorageObserver(nint observer) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

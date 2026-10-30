@@ -58,6 +58,17 @@ public sealed unsafe partial class DouseFireSubcomponent : global::System.IDispo
         NativeMethods.TablePtr->C1.hs_method_64d4cfcc((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
+    public static DouseFireSubcomponent Create(global::Hosihikari.Bindings.Bedrock.Interop.DouseFireSubcomponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_8ff1c3ec((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DouseFireSubcomponent((nint)handle);
+    }
+
     public void doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent component)
     {
         NativeMethods.TablePtr->C1.hs_method_7d20e814((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)component.Handle);

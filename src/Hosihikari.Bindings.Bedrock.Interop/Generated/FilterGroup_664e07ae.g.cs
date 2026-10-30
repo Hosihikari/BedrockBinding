@@ -57,6 +57,17 @@ public sealed unsafe partial class FilterGroup : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static FilterGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.FilterGroup arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_3e7e126b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FilterGroup((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint _createSubgroup(nint type) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

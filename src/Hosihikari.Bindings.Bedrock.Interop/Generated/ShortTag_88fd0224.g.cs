@@ -87,6 +87,17 @@ public sealed unsafe partial class ShortTag : global::System.IDisposable
         return new ShortTag((nint)handle);
     }
 
+    public static ShortTag Create(global::Hosihikari.Bindings.Bedrock.Interop.ShortTag arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_79cc151f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ShortTag((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Tag' has no accessible destructor.", false)]
     public nint copy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Tag' has no accessible destructor.");

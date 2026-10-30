@@ -308,6 +308,17 @@ public sealed unsafe partial class BushBlock : global::System.IDisposable
         return new BushBlock((nint)handle);
     }
 
+    public static BushBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.BushBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_84a0da9e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BushBlock((nint)handle);
+    }
+
     public static BushBlock Create(string nameId, int id)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);

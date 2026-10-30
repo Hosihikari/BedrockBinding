@@ -52,6 +52,17 @@ public sealed unsafe partial class GenericMoveControl : global::System.IDisposab
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static GenericMoveControl Create(global::Hosihikari.Bindings.Bedrock.Interop.GenericMoveControl arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_35b8640f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GenericMoveControl((nint)handle);
+    }
+
     public void initializeInternal(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.MoveControlDescription? description)
     {
         NativeMethods.TablePtr->C1.hs_method_6f920c4e((void*)__hosihikari_shim_handle, (void*)mob.Handle, (void*)(description?.Handle ?? 0));

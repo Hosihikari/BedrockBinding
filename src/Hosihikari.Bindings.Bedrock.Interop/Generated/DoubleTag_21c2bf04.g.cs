@@ -76,6 +76,17 @@ public sealed unsafe partial class DoubleTag : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_a5bdb266((void*)__hosihikari_shim_handle, (void*)dos.Handle);
     }
 
+    public static DoubleTag Create(global::Hosihikari.Bindings.Bedrock.Interop.DoubleTag arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_f809c52f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DoubleTag((nint)handle);
+    }
+
     public static DoubleTag Create(double value)
     {
         var handle = NativeMethods.TablePtr->C1.hs_create_a5e6f4d0(value);

@@ -102,9 +102,10 @@ public sealed unsafe partial class ScriptFormPromiseTracker : global::System.IDi
         return new ScriptFormPromiseTracker((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static void _sendToClient(nint player, nint formJson, uint formId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static void _sendToClient(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value formJson, uint formId)
+    {
+        NativeMethods.TablePtr->C3.hs_method_70e6559c((void*)player.Handle, (void*)formJson.Handle, formId);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFormRequests_Address

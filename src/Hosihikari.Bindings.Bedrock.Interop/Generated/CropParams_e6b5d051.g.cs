@@ -43,6 +43,17 @@ public sealed unsafe partial class CropParams : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_b8ebf967((void*)__hosihikari_shim_handle);
     }
 
+    public static CropParams Create(global::Hosihikari.Bindings.Bedrock.Interop.CropParams arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_1ed81d6c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CropParams((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mGrowsIntoBlock_Address
     {

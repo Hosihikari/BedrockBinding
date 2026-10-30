@@ -38,6 +38,17 @@ public sealed unsafe partial class UserEntityIdentifierComponent : global::Syste
         return __hs_handle;
     }
 
+    public static UserEntityIdentifierComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.UserEntityIdentifierComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_4120289b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UserEntityIdentifierComponent((nint)handle);
+    }
+
     public string getIdentityName()
     {
         var __hs_view = NativeMethods.TablePtr->C4.hs_method_9b237621((void*)__hosihikari_shim_handle);

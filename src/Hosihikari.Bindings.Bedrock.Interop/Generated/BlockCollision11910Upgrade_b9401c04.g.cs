@@ -48,6 +48,17 @@ public sealed unsafe partial class BlockCollision11910Upgrade : global::System.I
         NativeMethods.TablePtr->C0.hs_method_5873ca7f((void*)__hosihikari_shim_handle, (void*)document, (void*)arg1.Handle);
     }
 
+    public static BlockCollision11910Upgrade Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockCollisionVersioning.BlockCollision11910Upgrade arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_4733973a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockCollision11910Upgrade((nint)handle);
+    }
+
     public bool previousSchema(nint component)
     {
         return NativeMethods.TablePtr->C0.hs_method_818b2267((void*)__hosihikari_shim_handle, (void*)component) != 0;

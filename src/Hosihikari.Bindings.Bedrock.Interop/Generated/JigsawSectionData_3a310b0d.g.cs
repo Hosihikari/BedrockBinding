@@ -38,6 +38,17 @@ public sealed unsafe partial class JigsawSectionData : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static JigsawSectionData Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.JigsawSectionData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_65dc36c3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new JigsawSectionData((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBoundingBoxes_Address
     {

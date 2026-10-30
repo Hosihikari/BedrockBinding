@@ -38,6 +38,17 @@ public sealed unsafe partial class IAsyncInfo : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static IAsyncInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.IAsyncInfo arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_3f2392b9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IAsyncInfo((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void cancel() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

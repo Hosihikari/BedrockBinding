@@ -40,13 +40,13 @@ public sealed unsafe partial class LegacyOnHurtActorTriggerItemComponent : globa
 
     public nint mOwner
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_216e7f33((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_216e7f33((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_216e7f33((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_216e7f33((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public void __initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {
-        NativeMethods.TablePtr->C1.hs_method_2510b370((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+        NativeMethods.TablePtr->C2.hs_method_2510b370((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
@@ -59,7 +59,7 @@ public sealed unsafe partial class LegacyOnHurtActorTriggerItemComponent : globa
 
     public static LegacyOnHurtActorTriggerItemComponent Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_3dc32d1c();
+        var handle = NativeMethods.TablePtr->C2.hs_create_3dc32d1c();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -72,28 +72,39 @@ public sealed unsafe partial class LegacyOnHurtActorTriggerItemComponent : globa
     public static LegacyOnHurtActorTriggerItemComponent Create(nint componentData) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
+    public static LegacyOnHurtActorTriggerItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyOnHurtActorTriggerItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_3f7c589e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacyOnHurtActorTriggerItemComponent((nint)handle);
+    }
+
     public void _initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {
-        NativeMethods.TablePtr->C1.hs_method_7a0325d8((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+        NativeMethods.TablePtr->C2.hs_method_7a0325d8((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnHurtActor_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_79c7fabf((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_79c7fabf((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnHurtActorSubscription_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_e25f9a4b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e25f9a4b((void*)__hosihikari_shim_handle);
     }
 
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnTriggerPublisher_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_c89225a3((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c89225a3((void*)__hosihikari_shim_handle);
     }
 
     public void Dispose()
@@ -102,7 +113,7 @@ public sealed unsafe partial class LegacyOnHurtActorTriggerItemComponent : globa
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_64e24c6d((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_64e24c6d((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

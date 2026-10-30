@@ -73,6 +73,17 @@ public sealed unsafe partial class SlotData : global::System.IDisposable
         return new SlotData((nint)handle);
     }
 
+    public static SlotData Create(global::Hosihikari.Bindings.Bedrock.Interop.SlotData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_414ac33b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SlotData((nint)handle);
+    }
+
     public static SlotData Create(string collectionName, int collectionIndex)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(collectionName);

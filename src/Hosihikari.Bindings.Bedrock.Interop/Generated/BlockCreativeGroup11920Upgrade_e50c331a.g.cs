@@ -48,6 +48,17 @@ public sealed unsafe partial class BlockCreativeGroup11920Upgrade : global::Syst
         NativeMethods.TablePtr->C0.hs_method_64d9aca1((void*)__hosihikari_shim_handle, (void*)document, (void*)arg1.Handle);
     }
 
+    public static BlockCreativeGroup11920Upgrade Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockCreativeGroupVersioning.BlockCreativeGroup11920Upgrade arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_64dc17ba((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockCreativeGroup11920Upgrade((nint)handle);
+    }
+
     public bool previousSchema(nint component)
     {
         return NativeMethods.TablePtr->C0.hs_method_672adadf((void*)__hosihikari_shim_handle, (void*)component) != 0;

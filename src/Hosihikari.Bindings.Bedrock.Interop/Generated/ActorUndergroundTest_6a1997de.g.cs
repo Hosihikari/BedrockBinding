@@ -49,6 +49,17 @@ public sealed unsafe partial class ActorUndergroundTest : global::System.IDispos
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static ActorUndergroundTest Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorUndergroundTest arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_3dd82252((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorUndergroundTest((nint)handle);
+    }
+
     public bool evaluate(nint context)
     {
         return NativeMethods.TablePtr->C0.hs_method_ac66217f((void*)__hosihikari_shim_handle, (void*)context) != 0;

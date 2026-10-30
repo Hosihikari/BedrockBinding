@@ -38,6 +38,17 @@ public sealed unsafe partial class I18n : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static I18n Create(global::Hosihikari.Bindings.Bedrock.Interop.I18n arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_64f8b8a9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new I18n((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void addI18nObserver(nint observer) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

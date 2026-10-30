@@ -328,6 +328,17 @@ public sealed unsafe partial class TallGrassBlock : global::System.IDisposable
         return new TallGrassBlock((nint)handle);
     }
 
+    public static TallGrassBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.TallGrassBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_524b8dd6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TallGrassBlock((nint)handle);
+    }
+
     public static TallGrassBlock Create(string nameId, int id)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);

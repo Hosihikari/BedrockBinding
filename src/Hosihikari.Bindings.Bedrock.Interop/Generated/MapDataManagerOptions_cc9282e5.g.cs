@@ -62,6 +62,17 @@ public sealed unsafe partial class MapDataManagerOptions : global::System.IDispo
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static MapDataManagerOptions Create(global::Hosihikari.Bindings.Bedrock.Interop.MapDataManagerOptions arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_dbe7929a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MapDataManagerOptions((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getWorldCenter()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C2.hs_method_0b911d9d((void*)__hosihikari_shim_handle), false);

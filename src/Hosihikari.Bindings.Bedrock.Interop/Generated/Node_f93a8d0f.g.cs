@@ -43,6 +43,17 @@ public sealed unsafe partial class Node : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_d1a72fc1((void*)__hosihikari_shim_handle);
     }
 
+    public static Node Create(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdater_Nested.Node arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_df6a29e8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Node((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mChildren_Address
     {

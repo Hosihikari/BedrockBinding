@@ -67,6 +67,17 @@ public sealed unsafe partial class FilterTestMoonPhase : global::System.IDisposa
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static FilterTestMoonPhase Create(global::Hosihikari.Bindings.Bedrock.Interop.FilterTestMoonPhase arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b532333b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FilterTestMoonPhase((nint)handle);
+    }
+
     public bool evaluate(nint context)
     {
         return NativeMethods.TablePtr->C1.hs_method_d700f90a((void*)__hosihikari_shim_handle, (void*)context) != 0;

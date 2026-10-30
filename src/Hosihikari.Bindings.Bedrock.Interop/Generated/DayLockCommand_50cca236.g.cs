@@ -72,6 +72,17 @@ public sealed unsafe partial class DayLockCommand : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_5cdb71b7((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static DayLockCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.DayLockCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_464a03dc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DayLockCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C1.hs_method_9f5eaf59((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

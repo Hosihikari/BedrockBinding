@@ -38,6 +38,17 @@ public sealed unsafe partial class RailExits : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static RailExits Create(global::Hosihikari.Bindings.Bedrock.Interop.RailMovementUtility_Nested.RailExits arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_1b380d1c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RailExits((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mExitA_Address
     {

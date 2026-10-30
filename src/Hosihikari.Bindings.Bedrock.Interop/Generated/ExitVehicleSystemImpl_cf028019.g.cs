@@ -52,6 +52,17 @@ public sealed unsafe partial class ExitVehicleSystemImpl : global::System.IDispo
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ExitVehicleSystemImpl Create(global::Hosihikari.Bindings.Bedrock.Interop.ExitVehicleSystemImpl arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d33c4e21((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ExitVehicleSystemImpl((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Optional<const ExitFromPassengerFlagComponent>' is not a known bindable declaration.", false)]
     public static void _tickExitVehicle(nint entity, nint passenger, nint aabb, nint svc, nint offsetsComponent, nint actorDataSeatOffset, nint rotation, nint exitFromPassengerFlag, nint actorIsBeingDestroyedFlag, nint ejectedByActivatorRailFlagComponent, nint baseGameVersion, nint vehicleView, nint modifier, nint executionContext, bool isClientSide, nint region) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Optional<const ExitFromPassengerFlagComponent>' is not a known bindable declaration.");

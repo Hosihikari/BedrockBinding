@@ -43,6 +43,17 @@ public sealed unsafe partial class SlotDescriptor : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_7c6ba757((void*)__hosihikari_shim_handle);
     }
 
+    public static SlotDescriptor Create(global::Hosihikari.Bindings.Bedrock.Interop.SlotDescriptor arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_289da70d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SlotDescriptor((nint)handle);
+    }
+
     public void addAcceptedItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor itemDescriptor)
     {
         NativeMethods.TablePtr->C3.hs_method_f5fd1ece((void*)__hosihikari_shim_handle, (void*)itemDescriptor.Handle);

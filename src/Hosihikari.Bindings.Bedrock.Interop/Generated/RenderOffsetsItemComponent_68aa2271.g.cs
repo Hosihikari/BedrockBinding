@@ -40,8 +40,8 @@ public sealed unsafe partial class RenderOffsetsItemComponent : global::System.I
 
     public nint mOwner
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_28efc38d((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_28efc38d((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_28efc38d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_28efc38d((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -50,12 +50,23 @@ public sealed unsafe partial class RenderOffsetsItemComponent : global::System.I
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy.RenderOffsetsItemComponent_Nested.ItemTransforms Main_Hand_Defaults()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy.RenderOffsetsItemComponent_Nested.ItemTransforms((nint)NativeMethods.TablePtr->C2.hs_method_a231cbd7(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy.RenderOffsetsItemComponent_Nested.ItemTransforms((nint)NativeMethods.TablePtr->C3.hs_method_a231cbd7(), false);
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy.RenderOffsetsItemComponent_Nested.ItemTransforms Off_Hand_Defaults()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy.RenderOffsetsItemComponent_Nested.ItemTransforms((nint)NativeMethods.TablePtr->C2.hs_method_c26f9bf8(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy.RenderOffsetsItemComponent_Nested.ItemTransforms((nint)NativeMethods.TablePtr->C3.hs_method_c26f9bf8(), false);
+    }
+
+    public static RenderOffsetsItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.RenderOffsetsItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_276160a2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RenderOffsetsItemComponent((nint)handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -65,13 +76,13 @@ public sealed unsafe partial class RenderOffsetsItemComponent : global::System.I
     // The native field type is not projected; this is the address of the field storage.
     public nint mMainHand_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_e711b83f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e711b83f((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOffhand_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_c6dde2ba((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c6dde2ba((void*)__hosihikari_shim_handle);
     }
 
 
@@ -81,7 +92,7 @@ public sealed unsafe partial class RenderOffsetsItemComponent : global::System.I
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_68aa2271((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_68aa2271((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -38,6 +38,17 @@ public sealed unsafe partial class CameraPresetsPacketPayload : global::System.I
         return __hs_handle;
     }
 
+    public static CameraPresetsPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.CameraPresetsPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_24ada616((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CameraPresetsPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mCameraPresets_Address
     {

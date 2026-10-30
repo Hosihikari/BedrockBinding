@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockArchetype : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static BlockArchetype Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_20.BlockDefinition.BlockArchetype arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_5307fb6a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockArchetype((nint)handle);
+    }
+
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C3.hs_method_211bc53c((void*)ctx.Handle);

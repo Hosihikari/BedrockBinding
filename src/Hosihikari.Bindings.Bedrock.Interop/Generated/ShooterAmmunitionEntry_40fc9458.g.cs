@@ -38,6 +38,17 @@ public sealed unsafe partial class ShooterAmmunitionEntry : global::System.IDisp
         return __hs_handle;
     }
 
+    public static ShooterAmmunitionEntry Create(global::Hosihikari.Bindings.Bedrock.Interop.ShooterItemComponent_Nested.ShooterAmmunitionEntry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_8624a8e9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ShooterAmmunitionEntry((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint itemDesc_Address
     {

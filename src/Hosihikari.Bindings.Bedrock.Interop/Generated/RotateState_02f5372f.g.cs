@@ -49,6 +49,17 @@ public sealed unsafe partial class RotateState : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_79b295ba((void*)__hosihikari_shim_handle);
     }
 
+    public static RotateState Create(global::Hosihikari.Bindings.Bedrock.Interop.RotateState arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_51442eb3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RotateState((nint)handle);
+    }
+
     public int SETTLE_TICKS
     {
         get => NativeMethods.TablePtr->C3.hs_get_47a46cf1((void*)__hosihikari_shim_handle);

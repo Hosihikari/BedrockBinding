@@ -43,9 +43,10 @@ public sealed unsafe partial class IconItemComponent : global::System.IDisposabl
         NativeMethods.TablePtr->C1.hs_method_637e7748((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint component) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_21_80.IconItemComponent component)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_d863ba8d((void*)__hosihikari_shim_handle, (void*)component.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
@@ -62,9 +63,27 @@ public sealed unsafe partial class IconItemComponent : global::System.IDisposabl
         return new IconItemComponent((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static IconItemComponent Create(nint component) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static IconItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_21_80.IconItemComponent component)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b8e75ed8((void*)component.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IconItemComponent((nint)handle);
+    }
+
+    public static IconItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.IconItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_9b9cd4fb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IconItemComponent((nint)handle);
+    }
 
     public void _initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {

@@ -49,6 +49,17 @@ public sealed unsafe partial class MineshaftStart : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_99b98192((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static MineshaftStart Create(global::Hosihikari.Bindings.Bedrock.Interop.MineshaftStart arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_555dab3d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MineshaftStart((nint)handle);
+    }
+
     public string getStructureName()
     {
         var __hs_view = NativeMethods.TablePtr->C2.hs_method_118990cc((void*)__hosihikari_shim_handle);

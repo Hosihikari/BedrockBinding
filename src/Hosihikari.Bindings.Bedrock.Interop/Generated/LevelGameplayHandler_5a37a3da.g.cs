@@ -38,6 +38,17 @@ public sealed unsafe partial class LevelGameplayHandler : global::System.IDispos
         return __hs_handle;
     }
 
+    public static LevelGameplayHandler Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelGameplayHandler arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_8f35c12b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelGameplayHandler((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint handleEvent_2e0e4ced(nint @event) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

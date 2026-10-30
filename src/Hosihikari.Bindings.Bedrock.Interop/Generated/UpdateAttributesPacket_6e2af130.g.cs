@@ -87,9 +87,10 @@ public sealed unsafe partial class UpdateAttributesPacket : global::System.IDisp
     public nint __read(nint stream, nint reflectionCtx) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.UpdateAttributesPacketPayload payload)
+    {
+        return (nint)NativeMethods.TablePtr->C4.hs_method_e2caa2fb((void*)__hosihikari_shim_handle, (void*)payload.Handle);
+    }
 
     public bool _disallowBatching()
     {
@@ -167,9 +168,27 @@ public sealed unsafe partial class UpdateAttributesPacket : global::System.IDisp
         return new UpdateAttributesPacket((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static UpdateAttributesPacket Create(nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static UpdateAttributesPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.UpdateAttributesPacketPayload payload)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_4ceda2cd((void*)payload.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UpdateAttributesPacket((nint)handle);
+    }
+
+    public static UpdateAttributesPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.UpdateAttributesPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_5aad658f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UpdateAttributesPacket((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>

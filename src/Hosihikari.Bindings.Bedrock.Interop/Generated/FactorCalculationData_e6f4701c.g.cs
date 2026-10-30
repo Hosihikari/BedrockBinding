@@ -38,6 +38,17 @@ public sealed unsafe partial class FactorCalculationData : global::System.IDispo
         return __hs_handle;
     }
 
+    public static FactorCalculationData Create(global::Hosihikari.Bindings.Bedrock.Interop.MobEffect_Nested.FactorCalculationData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_692b0f29((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FactorCalculationData((nint)handle);
+    }
+
     public float mFactorCurrent
     {
         get => NativeMethods.TablePtr->C2.hs_get_41c00e37((void*)__hosihikari_shim_handle);

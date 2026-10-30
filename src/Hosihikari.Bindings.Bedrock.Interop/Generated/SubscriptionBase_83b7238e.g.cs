@@ -38,6 +38,17 @@ public sealed unsafe partial class SubscriptionBase : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static SubscriptionBase Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PubSub.SubscriptionBase arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_77644971((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SubscriptionBase((nint)handle);
+    }
+
     public void disconnect()
     {
         NativeMethods.TablePtr->C0.hs_method_69ca24af((void*)__hosihikari_shim_handle);

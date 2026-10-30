@@ -38,6 +38,17 @@ public sealed unsafe partial class CelebrateHuntComponent : global::System.IDisp
         return __hs_handle;
     }
 
+    public static CelebrateHuntComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.CelebrateHuntComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_0758de5f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CelebrateHuntComponent((nint)handle);
+    }
+
     public uint getCelebrateSound(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
         return NativeMethods.TablePtr->C0.hs_method_a847fadf((void*)__hosihikari_shim_handle, (void*)mob.Handle);

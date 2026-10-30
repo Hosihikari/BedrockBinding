@@ -44,6 +44,17 @@ public sealed unsafe partial class OceanRuinStart : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static OceanRuinStart Create(global::Hosihikari.Bindings.Bedrock.Interop.OceanRuinStart arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_944f8f7f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OceanRuinStart((nint)handle);
+    }
+
     public string getStructureName()
     {
         var __hs_view = NativeMethods.TablePtr->C2.hs_method_a107ecf4((void*)__hosihikari_shim_handle);

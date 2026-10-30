@@ -42,6 +42,17 @@ public sealed unsafe partial class DataProxy : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static DataProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.BehaviorData_Nested.DataProxy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_785004c6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DataProxy((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint copy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

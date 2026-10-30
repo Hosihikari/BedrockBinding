@@ -62,6 +62,17 @@ public sealed unsafe partial class StructurePoolBlockPredicateAlwaysTrue : globa
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static StructurePoolBlockPredicateAlwaysTrue Create(global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolBlockPredicateAlwaysTrue arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_f28dc272((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructurePoolBlockPredicateAlwaysTrue((nint)handle);
+    }
+
     public void appendMetadataKey(global::Hosihikari.Bindings.Bedrock.Interop.Util.XXHash hash)
     {
         NativeMethods.TablePtr->C3.hs_method_e2fba31f((void*)__hosihikari_shim_handle, (void*)hash.Handle);

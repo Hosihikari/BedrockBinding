@@ -38,6 +38,17 @@ public sealed unsafe partial class BounceComponent : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static BounceComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.BounceComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_0541f6ee((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BounceComponent((nint)handle);
+    }
+
     public nint mBounceBlock
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_8766d9a0((void*)__hosihikari_shim_handle);

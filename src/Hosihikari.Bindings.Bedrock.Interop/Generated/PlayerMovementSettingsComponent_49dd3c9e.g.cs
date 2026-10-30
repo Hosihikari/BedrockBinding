@@ -38,6 +38,17 @@ public sealed unsafe partial class PlayerMovementSettingsComponent : global::Sys
         return __hs_handle;
     }
 
+    public static PlayerMovementSettingsComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerMovementSettingsComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_364277d7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerMovementSettingsComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mSettings_Address
     {

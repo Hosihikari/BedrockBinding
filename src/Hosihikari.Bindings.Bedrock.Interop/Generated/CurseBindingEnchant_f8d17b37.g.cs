@@ -53,6 +53,17 @@ public sealed unsafe partial class CurseBindingEnchant : global::System.IDisposa
         return NativeMethods.TablePtr->C1.hs_method_5eb9cd70((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static CurseBindingEnchant Create(global::Hosihikari.Bindings.Bedrock.Interop.CurseBindingEnchant arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_c546a73e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CurseBindingEnchant((nint)handle);
+    }
+
     public int getMaxCost(int level)
     {
         return NativeMethods.TablePtr->C1.hs_method_ab17041b((void*)__hosihikari_shim_handle, level);

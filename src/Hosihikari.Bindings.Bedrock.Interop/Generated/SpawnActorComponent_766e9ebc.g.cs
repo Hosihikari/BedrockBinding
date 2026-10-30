@@ -38,6 +38,17 @@ public sealed unsafe partial class SpawnActorComponent : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static SpawnActorComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SpawnActorComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c7004cbf((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SpawnActorComponent((nint)handle);
+    }
+
     public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
         NativeMethods.TablePtr->C3.hs_method_49c40bea((void*)__hosihikari_shim_handle, (void*)tag.Handle);

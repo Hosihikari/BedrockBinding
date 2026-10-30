@@ -38,6 +38,17 @@ public sealed unsafe partial class Pose : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Pose Create(global::Hosihikari.Bindings.Bedrock.Interop.ArmorStand_Nested.Pose arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_1ffd0ed9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Pose((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBodyPose_Address
     {

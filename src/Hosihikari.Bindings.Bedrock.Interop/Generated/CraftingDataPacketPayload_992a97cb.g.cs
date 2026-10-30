@@ -43,6 +43,17 @@ public sealed unsafe partial class CraftingDataPacketPayload : global::System.ID
         NativeMethods.TablePtr->C1.hs_method_d8394757((void*)__hosihikari_shim_handle);
     }
 
+    public static CraftingDataPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.CraftingDataPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_67d6c81c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CraftingDataPacketPayload((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.CraftingDataPacketPayload fromRecipes(global::Hosihikari.Bindings.Bedrock.Interop.Recipes levelRecipes, bool onlyCraftingRecipes)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.CraftingDataPacketPayload((nint)NativeMethods.TablePtr->C1.hs_method_5444bda7((void*)levelRecipes.Handle, onlyCraftingRecipes));

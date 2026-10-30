@@ -66,14 +66,14 @@ public sealed unsafe partial class LegacyPackIdVersion : global::System.IDisposa
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                return (nint)NativeMethods.TablePtr->C1.hs_method_d6cc914a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+                return (nint)NativeMethods.TablePtr->C2.hs_method_d6cc914a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
             }
         }
     }
 
     public static LegacyPackIdVersion Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_1c34db35();
+        var handle = NativeMethods.TablePtr->C2.hs_create_1c34db35();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -110,7 +110,7 @@ public sealed unsafe partial class LegacyPackIdVersion : global::System.IDisposa
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                var handle = NativeMethods.TablePtr->C1.hs_create_ea9ad2d5(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+                var handle = NativeMethods.TablePtr->C2.hs_create_ea9ad2d5(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
                 if (handle == null)
                 {
                     throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -123,24 +123,24 @@ public sealed unsafe partial class LegacyPackIdVersion : global::System.IDisposa
 
     public global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion getUpgradedPackId()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion((nint)NativeMethods.TablePtr->C1.hs_method_5dbbd6e3((void*)__hosihikari_shim_handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion((nint)NativeMethods.TablePtr->C2.hs_method_5dbbd6e3((void*)__hosihikari_shim_handle));
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk11a54a_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_2a5d5693((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2a5d5693((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkd3a327_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_e7264480((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e7264480((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LegacyPackIdVersion operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LegacyPackIdVersion arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LegacyPackIdVersion((nint)NativeMethods.TablePtr->C1.hs_method_a9c6d851((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LegacyPackIdVersion((nint)NativeMethods.TablePtr->C2.hs_method_a9c6d851((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -149,7 +149,7 @@ public sealed unsafe partial class LegacyPackIdVersion : global::System.IDisposa
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_b4b96bb3((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_b4b96bb3((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

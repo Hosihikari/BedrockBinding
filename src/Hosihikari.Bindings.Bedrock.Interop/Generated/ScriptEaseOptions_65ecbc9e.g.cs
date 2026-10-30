@@ -38,6 +38,17 @@ public sealed unsafe partial class ScriptEaseOptions : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static ScriptEaseOptions Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptEaseOptions arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_e0671033((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptEaseOptions((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding((nint)NativeMethods.TablePtr->C3.hs_method_37f3af5b());

@@ -54,6 +54,17 @@ public sealed unsafe partial class LootItemKilledByPlayerOrPetsCondition : globa
         return NativeMethods.TablePtr->C2.hs_method_301c2139((void*)__hosihikari_shim_handle);
     }
 
+    public static LootItemKilledByPlayerOrPetsCondition Create(global::Hosihikari.Bindings.Bedrock.Interop.LootItemKilledByPlayerOrPetsCondition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_335199d5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LootItemKilledByPlayerOrPetsCondition((nint)handle);
+    }
+
     public bool _applies(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext context)
     {
         return NativeMethods.TablePtr->C2.hs_method_9cb69058((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)context.Handle) != 0;

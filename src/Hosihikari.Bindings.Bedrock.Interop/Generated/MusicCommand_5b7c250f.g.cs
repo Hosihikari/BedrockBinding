@@ -72,6 +72,17 @@ public sealed unsafe partial class MusicCommand : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_20833c90((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static MusicCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.MusicCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_2a135d54((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MusicCommand((nint)handle);
+    }
+
     public void _handleActionQueueOrPlay(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag data, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C2.hs_method_c3198462((void*)__hosihikari_shim_handle, (void*)data.Handle, (void*)output.Handle);

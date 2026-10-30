@@ -54,6 +54,17 @@ public sealed unsafe partial class SpecificEnchantFunction : global::System.IDis
         return NativeMethods.TablePtr->C3.hs_method_1a580f8b((void*)__hosihikari_shim_handle);
     }
 
+    public static SpecificEnchantFunction Create(global::Hosihikari.Bindings.Bedrock.Interop.SpecificEnchantFunction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_ee6af003((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SpecificEnchantFunction((nint)handle);
+    }
+
     public void applyPreVersion(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext arg2)
     {
         NativeMethods.TablePtr->C3.hs_method_69bdbeef((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)random.Handle, (void*)arg2.Handle);

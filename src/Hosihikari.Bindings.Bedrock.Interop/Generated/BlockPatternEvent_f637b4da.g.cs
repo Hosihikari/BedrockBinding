@@ -43,6 +43,17 @@ public sealed unsafe partial class BlockPatternEvent : global::System.IDisposabl
         NativeMethods.TablePtr->C0.hs_method_b034a18e((void*)__hosihikari_shim_handle);
     }
 
+    public static BlockPatternEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPatternEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_ea1b0adc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockPatternEvent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockSourceHandle_Address
     {

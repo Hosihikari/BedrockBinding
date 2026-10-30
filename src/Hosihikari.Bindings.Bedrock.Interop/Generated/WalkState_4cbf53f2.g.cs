@@ -49,6 +49,17 @@ public sealed unsafe partial class WalkState : global::System.IDisposable
         NativeMethods.TablePtr->C4.hs_method_f9d38fb1((void*)__hosihikari_shim_handle);
     }
 
+    public static WalkState Create(global::Hosihikari.Bindings.Bedrock.Interop.WalkState arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_4967c36d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WalkState((nint)handle);
+    }
+
     public void tick()
     {
         NativeMethods.TablePtr->C4.hs_method_14464745((void*)__hosihikari_shim_handle);

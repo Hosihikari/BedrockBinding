@@ -63,6 +63,17 @@ public sealed unsafe partial class TheEndSurfaceBuilder : global::System.IDispos
         return NativeMethods.TablePtr->C4.hs_method_14124b9a((void*)__hosihikari_shim_handle, (void*)surfaceBuilderData) != 0;
     }
 
+    public static TheEndSurfaceBuilder Create(global::Hosihikari.Bindings.Bedrock.Interop.VanillaSurfaceBuilders.TheEndSurfaceBuilder arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_683837ab((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TheEndSurfaceBuilder((nint)handle);
+    }
+
     public void buildSurfaceAt(global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.GlobalParameters arg0, global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.SurfaceBuilderParameters arg1, global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.PerColumnParameters columnParams)
     {
         NativeMethods.TablePtr->C4.hs_method_4611e02f((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)columnParams.Handle);

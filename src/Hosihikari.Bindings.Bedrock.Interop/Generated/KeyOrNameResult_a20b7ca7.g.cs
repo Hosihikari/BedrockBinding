@@ -43,6 +43,17 @@ public sealed unsafe partial class KeyOrNameResult : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_bebf0c6c((void*)__hosihikari_shim_handle);
     }
 
+    public static KeyOrNameResult Create(global::Hosihikari.Bindings.Bedrock.Interop.KeyOrNameResult arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_a982a095((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new KeyOrNameResult((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mString_Address
     {

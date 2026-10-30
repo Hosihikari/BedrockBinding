@@ -76,6 +76,17 @@ public sealed unsafe partial class CartographyContainerManagerModel : global::Sy
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static CartographyContainerManagerModel Create(global::Hosihikari.Bindings.Bedrock.Interop.CartographyContainerManagerModel arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_d2e7eb46((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CartographyContainerManagerModel((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext _postInit()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext((nint)NativeMethods.TablePtr->C0.hs_method_a3142b28((void*)__hosihikari_shim_handle));

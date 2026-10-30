@@ -318,6 +318,17 @@ public sealed unsafe partial class MushroomBlock : global::System.IDisposable
         return new MushroomBlock((nint)handle);
     }
 
+    public static MushroomBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.MushroomBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_2361f64c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MushroomBlock((nint)handle);
+    }
+
     public static MushroomBlock Create(string nameId, int id)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);

@@ -58,6 +58,17 @@ public sealed unsafe partial class StubServerLocator : global::System.IDisposabl
     public nint _getPingTimeForGUID(nint guid) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
 
+    public static StubServerLocator Create(global::Hosihikari.Bindings.Bedrock.Interop.StubServerLocator arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_6088ec0e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StubServerLocator((nint)handle);
+    }
+
     public void addCustomServer(global::Hosihikari.Bindings.Bedrock.Interop.AsynchronousIPResolver futureIP, int port)
     {
         NativeMethods.TablePtr->C3.hs_method_4511a764((void*)__hosihikari_shim_handle, (void*)futureIP.Handle, port);

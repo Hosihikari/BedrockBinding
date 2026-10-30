@@ -38,6 +38,17 @@ public sealed unsafe partial class PropertyCollection : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static PropertyCollection Create(global::Hosihikari.Bindings.Bedrock.Interop.DynamicProperties_Nested.PropertyCollection arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d48a9fc4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PropertyCollection((nint)handle);
+    }
+
     public ulong mByteCount
     {
         get => NativeMethods.TablePtr->C1.hs_get_4750eeeb((void*)__hosihikari_shim_handle);

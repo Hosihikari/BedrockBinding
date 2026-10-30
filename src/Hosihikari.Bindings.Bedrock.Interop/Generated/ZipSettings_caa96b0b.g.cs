@@ -43,6 +43,17 @@ public sealed unsafe partial class ZipSettings : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_d08463b1((void*)__hosihikari_shim_handle);
     }
 
+    public static ZipSettings Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.ZipUtils.ZipSettings arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_f85d1e45((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ZipSettings((nint)handle);
+    }
+
     public int mCompressionLevel
     {
         get => NativeMethods.TablePtr->C1.hs_get_70833725((void*)__hosihikari_shim_handle);

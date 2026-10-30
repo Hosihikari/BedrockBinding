@@ -52,6 +52,17 @@ public sealed unsafe partial class EndPodiumFeature : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C1.hs_method_833eabc2(), false);
     }
 
+    public static EndPodiumFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.EndPodiumFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_419b54f8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EndPodiumFeature((nint)handle);
+    }
+
     public bool mActive
     {
         get => NativeMethods.TablePtr->C1.hs_get_6e8880f2((void*)__hosihikari_shim_handle) != 0;

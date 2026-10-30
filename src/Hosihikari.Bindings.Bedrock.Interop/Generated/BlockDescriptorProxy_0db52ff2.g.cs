@@ -38,9 +38,10 @@ public sealed unsafe partial class BlockDescriptorProxy : global::System.IDispos
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint desc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy.BlockDescriptor desc)
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_7b883926((void*)__hosihikari_shim_handle, (void*)desc.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
     public nint _ctor(nint name, nint states, nint tags) =>
@@ -62,9 +63,27 @@ public sealed unsafe partial class BlockDescriptorProxy : global::System.IDispos
         return new BlockDescriptorProxy((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static BlockDescriptorProxy Create(nint desc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static BlockDescriptorProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy.BlockDescriptor desc)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_3a07689c((void*)desc.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockDescriptorProxy((nint)handle);
+    }
+
+    public static BlockDescriptorProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockDescriptorSerializer.BlockDescriptorProxy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_e1e3694f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockDescriptorProxy((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
     public static BlockDescriptorProxy Create(nint name, nint states, nint tags) =>

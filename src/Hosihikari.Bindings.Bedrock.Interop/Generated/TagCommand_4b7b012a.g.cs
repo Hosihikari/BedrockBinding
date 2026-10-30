@@ -72,6 +72,17 @@ public sealed unsafe partial class TagCommand : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_d4d87a50((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static TagCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.TagCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_be0cd96e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TagCommand((nint)handle);
+    }
+
     public string _getTagWithPercentageFixed()
     {
         var __hs_view = NativeMethods.TablePtr->C3.hs_method_558fdc62((void*)__hosihikari_shim_handle);

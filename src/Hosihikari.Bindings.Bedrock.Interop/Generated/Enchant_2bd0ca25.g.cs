@@ -234,6 +234,17 @@ public sealed unsafe partial class Enchant : global::System.IDisposable
         }
     }
 
+    public static Enchant Create(global::Hosihikari.Bindings.Bedrock.Interop.Enchant arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_403a2523((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Enchant((nint)handle);
+    }
+
     public bool _isValidEnchantmentTypeForCategory(byte type)
     {
         return NativeMethods.TablePtr->C1.hs_method_26184d7f((void*)__hosihikari_shim_handle, type) != 0;

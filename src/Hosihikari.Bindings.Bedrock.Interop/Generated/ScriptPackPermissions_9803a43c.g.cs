@@ -43,6 +43,17 @@ public sealed unsafe partial class ScriptPackPermissions : global::System.IDispo
         NativeMethods.TablePtr->C3.hs_method_312819dd((void*)__hosihikari_shim_handle);
     }
 
+    public static ScriptPackPermissions Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPackPermissions arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_bae9c255((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptPackPermissions((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mAllowedModules_Address
     {

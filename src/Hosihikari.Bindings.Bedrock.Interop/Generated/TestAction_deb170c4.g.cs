@@ -49,6 +49,17 @@ public sealed unsafe partial class TestAction : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_d3659547((void*)__hosihikari_shim_handle, (void*)level.Handle, (void*)dimension.Handle);
     }
 
+    public static TestAction Create(global::Hosihikari.Bindings.Bedrock.Interop.TestAction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_9a591d7d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TestAction((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.ServerLevel level, global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension)
     {
         NativeMethods.TablePtr->C3.hs_method_1a93d38d((void*)__hosihikari_shim_handle, (void*)level.Handle, (void*)dimension.Handle);

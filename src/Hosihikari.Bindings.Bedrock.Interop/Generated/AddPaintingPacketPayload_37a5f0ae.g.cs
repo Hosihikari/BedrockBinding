@@ -38,6 +38,17 @@ public sealed unsafe partial class AddPaintingPacketPayload : global::System.IDi
         return __hs_handle;
     }
 
+    public static AddPaintingPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.AddPaintingPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_a392bc72((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AddPaintingPacketPayload((nint)handle);
+    }
+
     public int mDir
     {
         get => NativeMethods.TablePtr->C0.hs_get_134cb379((void*)__hosihikari_shim_handle);

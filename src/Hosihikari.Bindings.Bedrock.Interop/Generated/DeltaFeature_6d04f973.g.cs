@@ -43,6 +43,17 @@ public sealed unsafe partial class DeltaFeature : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_ac606077((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)centerPos.Handle, (void*)random.Handle) != 0;
     }
 
+    public static DeltaFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.DeltaFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_0563e42c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DeltaFeature((nint)handle);
+    }
+
     public bool _isValidPlacement(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos cursor)
     {
         return NativeMethods.TablePtr->C1.hs_method_2d8af01e((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)cursor.Handle) != 0;

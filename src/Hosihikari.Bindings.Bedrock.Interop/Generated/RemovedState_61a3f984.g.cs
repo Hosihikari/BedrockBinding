@@ -38,6 +38,17 @@ public sealed unsafe partial class RemovedState : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static RemovedState Create(global::Hosihikari.Bindings.Bedrock.Interop.FlatteningUtils.RemovedState arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b7ef162e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RemovedState((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void addValue(nint tag) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

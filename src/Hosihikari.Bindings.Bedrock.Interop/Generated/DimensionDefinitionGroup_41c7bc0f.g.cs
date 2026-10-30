@@ -59,6 +59,17 @@ public sealed unsafe partial class DimensionDefinitionGroup : global::System.IDi
         return new DimensionDefinitionGroup((nint)handle);
     }
 
+    public static DimensionDefinitionGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.DimensionDefinitionGroup arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b3c6c7ba((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DimensionDefinitionGroup((nint)handle);
+    }
+
     public static DimensionDefinitionGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager? rpm, global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing eventing)
     {
         var handle = NativeMethods.TablePtr->C1.hs_create_d96be55e((void*)ctx.Handle, (void*)(rpm?.Handle ?? 0), (void*)eventing.Handle);

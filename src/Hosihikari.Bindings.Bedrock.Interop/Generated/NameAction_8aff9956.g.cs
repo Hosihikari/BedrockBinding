@@ -38,6 +38,17 @@ public sealed unsafe partial class NameAction : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static NameAction Create(global::Hosihikari.Bindings.Bedrock.Interop.NameAction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_9817b375((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NameAction((nint)handle);
+    }
+
     public void addNameFilterByName(string name)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);

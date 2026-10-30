@@ -62,6 +62,17 @@ public sealed unsafe partial class CommandResponse : global::System.IDisposable
     public static nint _vftableForEventResponse() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static CommandResponse Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandResponse arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_d54f53e6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandResponse((nint)handle);
+    }
+
     public void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root, global::Hosihikari.Bindings.Bedrock.Interop.Factory_EventResponse_ factory)
     {
         NativeMethods.TablePtr->C0.hs_method_b09c25c6((void*)__hosihikari_shim_handle, root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)factory.Handle);

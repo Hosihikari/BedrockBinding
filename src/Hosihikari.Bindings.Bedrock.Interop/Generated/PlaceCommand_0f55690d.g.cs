@@ -78,6 +78,17 @@ public sealed unsafe partial class PlaceCommand : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_1244320a((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static PlaceCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.AgentCommands.PlaceCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_8dc78b9d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlaceCommand((nint)handle);
+    }
+
     public void execute()
     {
         NativeMethods.TablePtr->C0.hs_method_9cb5aa1f((void*)__hosihikari_shim_handle);

@@ -358,6 +358,17 @@ public sealed unsafe partial class ComparatorBlock : global::System.IDisposable
         return new ComparatorBlock((nint)handle);
     }
 
+    public static ComparatorBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.ComparatorBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_64cb857d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ComparatorBlock((nint)handle);
+    }
+
     public static ComparatorBlock Create(string nameId, int id, bool on)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);

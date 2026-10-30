@@ -83,6 +83,17 @@ public sealed unsafe partial class GetItemSpaceCommand : global::System.IDisposa
         return NativeMethods.TablePtr->C0.hs_method_95e5574b((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static GetItemSpaceCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.AgentCommands.GetItemSpaceCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_8cc5adba((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GetItemSpaceCommand((nint)handle);
+    }
+
     public void execute()
     {
         NativeMethods.TablePtr->C0.hs_method_af91cd79((void*)__hosihikari_shim_handle);

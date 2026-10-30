@@ -42,9 +42,10 @@ public sealed unsafe partial class ScriptWorldBeforeEvents : global::System.IDis
     public nint _ctor(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint scope, nint level, nint serverModuleVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope, global::Hosihikari.Bindings.Bedrock.Interop.Level? level, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.Version serverModuleVersion)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_6efc0e1a((void*)__hosihikari_shim_handle, (void*)scope.Handle, (void*)(level?.Handle ?? 0), (void*)serverModuleVersion.Handle);
+    }
 
     public void _dtor()
     {
@@ -149,9 +150,16 @@ public sealed unsafe partial class ScriptWorldBeforeEvents : global::System.IDis
     public static ScriptWorldBeforeEvents Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static ScriptWorldBeforeEvents Create(nint scope, nint level, nint serverModuleVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static ScriptWorldBeforeEvents Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope, global::Hosihikari.Bindings.Bedrock.Interop.Level? level, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.Version serverModuleVersion)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_b579e507((void*)scope.Handle, (void*)(level?.Handle ?? 0), (void*)serverModuleVersion.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptWorldBeforeEvents((nint)handle);
+    }
 
     public static ScriptWorldBeforeEvents Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptWorldBeforeEvents arg0)
     {

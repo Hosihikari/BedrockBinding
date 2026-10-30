@@ -43,6 +43,17 @@ public sealed unsafe partial class BalloonSystem : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_08212cf8((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static BalloonSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.BalloonSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_8f6e5267((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BalloonSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C0.hs_method_08b51417((void*)__hosihikari_shim_handle, (void*)registry.Handle);

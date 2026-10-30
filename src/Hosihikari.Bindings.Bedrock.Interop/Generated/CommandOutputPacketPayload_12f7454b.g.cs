@@ -43,6 +43,17 @@ public sealed unsafe partial class CommandOutputPacketPayload : global::System.I
         NativeMethods.TablePtr->C0.hs_method_9ffb8883((void*)__hosihikari_shim_handle);
     }
 
+    public static CommandOutputPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandOutputPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_9431fab6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandOutputPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mOriginData_Address
     {

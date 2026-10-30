@@ -51,6 +51,17 @@ public sealed unsafe partial class Dispatcher : global::System.IDisposable
     public bool CheckSignalClose() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static Dispatcher Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.Dispatcher arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_e4073286((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Dispatcher((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public uint GetRequestedEvents() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

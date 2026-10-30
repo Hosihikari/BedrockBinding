@@ -38,6 +38,17 @@ public sealed unsafe partial class OpenSignRequest : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static OpenSignRequest Create(global::Hosihikari.Bindings.Bedrock.Interop.SignBlockActor_Nested.OpenSignRequest arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_829fb205((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OpenSignRequest((nint)handle);
+    }
+
     public bool mIsWaitingForChangeClear
     {
         get => NativeMethods.TablePtr->C3.hs_get_ed1c9d1e((void*)__hosihikari_shim_handle) != 0;

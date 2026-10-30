@@ -40,12 +40,12 @@ public sealed unsafe partial class DirectoryIterationItem : global::System.IDisp
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C0.hs_method_feeeaafe((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_feeeaafe((void*)__hosihikari_shim_handle);
     }
 
     public static DirectoryIterationItem Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_90be30f4();
+        var handle = NativeMethods.TablePtr->C1.hs_create_90be30f4();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,7 +56,7 @@ public sealed unsafe partial class DirectoryIterationItem : global::System.IDisp
 
     public static DirectoryIterationItem Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.DirectoryIterationItem arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_d2fbc9ef((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_d2fbc9ef((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -68,48 +68,48 @@ public sealed unsafe partial class DirectoryIterationItem : global::System.IDisp
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk47aa5b_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_f397e6e6((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_f397e6e6((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk5990e0_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_1225ddca((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_1225ddca((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk657388_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_27c3f995((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_27c3f995((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk657618_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_bb7c354b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_bb7c354b((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkba94d0_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_1c1cae31((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_1c1cae31((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkd41f5c_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_fc050163((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_fc050163((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkf25ac3_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_b07b6efa((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b07b6efa((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.DirectoryIterationItem operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.DirectoryIterationItem arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.DirectoryIterationItem((nint)NativeMethods.TablePtr->C0.hs_method_43dc893f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.DirectoryIterationItem((nint)NativeMethods.TablePtr->C1.hs_method_43dc893f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
@@ -127,7 +127,7 @@ public sealed unsafe partial class DirectoryIterationItem : global::System.IDisp
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_e62656be((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_e62656be((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

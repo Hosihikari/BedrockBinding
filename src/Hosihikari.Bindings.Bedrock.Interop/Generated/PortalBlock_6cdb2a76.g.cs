@@ -343,6 +343,17 @@ public sealed unsafe partial class PortalBlock : global::System.IDisposable
         return new PortalBlock((nint)handle);
     }
 
+    public static PortalBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.PortalBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_68e54995((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PortalBlock((nint)handle);
+    }
+
     public static PortalBlock Create(string nameId, int id)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);

@@ -50,6 +50,17 @@ public sealed unsafe partial class ScriptItemCustomComponentCompleteUseEvent : g
         get => (nint)NativeMethods.TablePtr->C3.hs_get_12d5d78a((void*)__hosihikari_shim_handle);
     }
 
+    public static ScriptItemCustomComponentCompleteUseEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemCustomComponentCompleteUseEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_7601dac6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptItemCustomComponentCompleteUseEvent((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_0dfaf494());

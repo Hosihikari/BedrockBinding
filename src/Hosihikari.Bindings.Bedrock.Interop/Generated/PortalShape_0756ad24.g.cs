@@ -38,6 +38,17 @@ public sealed unsafe partial class PortalShape : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static PortalShape Create(global::Hosihikari.Bindings.Bedrock.Interop.PortalShape arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_5fad4e8f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PortalShape((nint)handle);
+    }
+
     public static int _getDistanceUntilEdge(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, byte direction, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource source)
     {
         return NativeMethods.TablePtr->C2.hs_method_4cf85d32((void*)pos.Handle, direction, (void*)source.Handle);

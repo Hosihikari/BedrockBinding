@@ -66,6 +66,17 @@ public sealed unsafe partial class StorageAreaStateListener : global::System.IDi
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static StorageAreaStateListener Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.StorageAreaStateListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_a9de644d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StorageAreaStateListener((nint)handle);
+    }
+
     public void initListener(global::Hosihikari.Bindings.Abi.SharedHandle? fileStorageArea)
     {
         NativeMethods.TablePtr->C1.hs_method_c9cc098c((void*)__hosihikari_shim_handle, fileStorageArea?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));

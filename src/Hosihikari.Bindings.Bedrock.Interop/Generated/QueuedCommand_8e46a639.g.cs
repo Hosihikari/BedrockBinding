@@ -38,6 +38,17 @@ public sealed unsafe partial class QueuedCommand : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static QueuedCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.FunctionManager_Nested.QueuedCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_ba7a9753((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new QueuedCommand((nint)handle);
+    }
+
     public nint mFunction
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_985835ba((void*)__hosihikari_shim_handle);

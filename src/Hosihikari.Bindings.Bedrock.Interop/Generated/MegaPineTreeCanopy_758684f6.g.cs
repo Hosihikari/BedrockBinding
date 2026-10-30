@@ -65,6 +65,17 @@ public sealed unsafe partial class MegaPineTreeCanopy : global::System.IDisposab
         }
     }
 
+    public static MegaPineTreeCanopy Create(global::Hosihikari.Bindings.Bedrock.Interop.MegaPineTreeCanopy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_bea2eb32((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MegaPineTreeCanopy((nint)handle);
+    }
+
     public int mCoreWidth
     {
         get => NativeMethods.TablePtr->C2.hs_get_366e0ba4((void*)__hosihikari_shim_handle);

@@ -58,6 +58,17 @@ public sealed unsafe partial class ParameterList : global::System.IDisposable
         return new ParameterList((nint)handle);
     }
 
+    public static ParameterList Create(global::Hosihikari.Bindings.Bedrock.Interop.ParameterList arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_1fcc3bbd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ParameterList((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public static ParameterList Create(nint targets) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");

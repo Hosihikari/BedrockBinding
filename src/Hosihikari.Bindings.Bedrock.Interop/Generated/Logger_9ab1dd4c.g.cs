@@ -143,9 +143,10 @@ public sealed unsafe partial class Logger : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C2.hs_get_961c65ca((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void merge(nint log) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void merge(global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger log)
+    {
+        NativeMethods.TablePtr->C2.hs_method_0ba89ecf((void*)__hosihikari_shim_handle, (void*)log.Handle);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger arg0)
     {

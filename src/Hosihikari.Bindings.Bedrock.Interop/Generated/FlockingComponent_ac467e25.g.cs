@@ -38,6 +38,17 @@ public sealed unsafe partial class FlockingComponent : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static FlockingComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.FlockingComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_5393e6dc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FlockingComponent((nint)handle);
+    }
+
     public void calculateFlockVector(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
         NativeMethods.TablePtr->C1.hs_method_36cd2ea8((void*)__hosihikari_shim_handle, (void*)owner.Handle);

@@ -338,6 +338,17 @@ public sealed unsafe partial class DaylightDetectorBlock : global::System.IDispo
         return new DaylightDetectorBlock((nint)handle);
     }
 
+    public static DaylightDetectorBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.DaylightDetectorBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_18e2a11b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DaylightDetectorBlock((nint)handle);
+    }
+
     public static DaylightDetectorBlock Create(string nameId, int id, bool isInverted)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);

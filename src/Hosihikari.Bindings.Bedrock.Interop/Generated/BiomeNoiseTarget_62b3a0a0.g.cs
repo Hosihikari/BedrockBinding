@@ -38,6 +38,17 @@ public sealed unsafe partial class BiomeNoiseTarget : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static BiomeNoiseTarget Create(global::Hosihikari.Bindings.Bedrock.Interop.BiomeNoiseTarget arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_802a91d0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BiomeNoiseTarget((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint climateParameters_Address
     {

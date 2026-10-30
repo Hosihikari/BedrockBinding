@@ -43,6 +43,17 @@ public sealed unsafe partial class ChunkGeneratorStructureState : global::System
         NativeMethods.TablePtr->C4.hs_method_28d9f3f7((void*)__hosihikari_shim_handle);
     }
 
+    public static ChunkGeneratorStructureState Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.ChunkGeneratorStructureState arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_7346b301((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChunkGeneratorStructureState((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::shared_ptr<const br::worldgen::StructureSet>' is not supported.", false)]
     public static nint createFlat(long levelSeed, nint biomeSource, nint structureOverrides) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::shared_ptr<const br::worldgen::StructureSet>' is not supported.");
@@ -52,9 +63,12 @@ public sealed unsafe partial class ChunkGeneratorStructureState : global::System
         return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.ChunkGeneratorStructureState((nint)NativeMethods.TablePtr->C4.hs_method_eb982308(levelSeed, (void*)biomeSource.Handle, (void*)allStructures.Handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint findNearestStructureFeature(nint dimension, nint feature, nint origin, nint biomeSource, bool mustBeInNewChunks) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? findNearestStructureFeature(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension, global::Hosihikari.Bindings.Bedrock.Interop.HashedString feature, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos origin, global::Hosihikari.Bindings.Bedrock.Interop.BiomeSource biomeSource, bool mustBeInNewChunks)
+    {
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->C4.hs_method_a19e7905((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)feature.Handle, (void*)origin.Handle, (void*)biomeSource.Handle, mustBeInNewChunks, &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
+    }
 
     public long mLevelSeed
     {

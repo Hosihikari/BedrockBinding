@@ -43,6 +43,17 @@ public sealed unsafe partial class AngrySystem : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_5ee38ac7((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static AngrySystem Create(global::Hosihikari.Bindings.Bedrock.Interop.AngrySystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_4afc5681((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AngrySystem((nint)handle);
+    }
+
     public static void _tickComponent(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity, global::Hosihikari.Bindings.Bedrock.Interop.AngryComponent angryComponent)
     {
         NativeMethods.TablePtr->C0.hs_method_dad8393f((void*)entity.Handle, (void*)angryComponent.Handle);

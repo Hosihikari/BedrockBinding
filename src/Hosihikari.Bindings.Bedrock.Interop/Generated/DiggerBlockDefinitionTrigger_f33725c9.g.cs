@@ -38,16 +38,27 @@ public sealed unsafe partial class DiggerBlockDefinitionTrigger : global::System
         return __hs_handle;
     }
 
+    public static DiggerBlockDefinitionTrigger Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyOnDigTriggerItemComponent_Nested.DiggerBlockDefinitionTrigger arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_2c6bba5b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DiggerBlockDefinitionTrigger((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint filter_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_fde8a52b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_fde8a52b((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint onDig_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_829ea74e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_829ea74e((void*)__hosihikari_shim_handle);
     }
 
 
@@ -57,7 +68,7 @@ public sealed unsafe partial class DiggerBlockDefinitionTrigger : global::System
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_f33725c9((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_f33725c9((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

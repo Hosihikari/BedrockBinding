@@ -54,6 +54,17 @@ public sealed unsafe partial class ScriptPlayerDimensionChangeAfterEvent : globa
         return new ScriptPlayerDimensionChangeAfterEvent((nint)handle);
     }
 
+    public static ScriptPlayerDimensionChangeAfterEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptPlayerDimensionChangeAfterEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_0aa384d1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptPlayerDimensionChangeAfterEvent((nint)handle);
+    }
+
     public static ScriptPlayerDimensionChangeAfterEvent Create(global::Hosihikari.Bindings.Abi.SharedHandle? evtData, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope)
     {
         var handle = NativeMethods.TablePtr->C3.hs_create_b5608361(evtData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)scope.Handle);

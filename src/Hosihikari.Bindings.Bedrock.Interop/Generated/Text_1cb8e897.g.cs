@@ -47,6 +47,17 @@ public sealed unsafe partial class Text : global::System.IDisposable
     public static nint SIGN_PERSIST_FORMATTING_TAG() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'const char (&)[18]' is not supported.");
 
+    public static Text Create(global::Hosihikari.Bindings.Bedrock.Interop.SignBlockActor_Nested.Text arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_92d3dd65((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Text((nint)handle);
+    }
+
     public string getMessage()
     {
         var __hs_view = NativeMethods.TablePtr->C3.hs_method_dd058c00((void*)__hosihikari_shim_handle);
@@ -123,9 +134,10 @@ public sealed unsafe partial class Text : global::System.IDisposable
         return NativeMethods.TablePtr->C3.hs_method_409930cd((void*)__hosihikari_shim_handle, (void*)tag.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void setMessage(nint message) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void setMessage(global::Hosihikari.Bindings.Bedrock.Interop.TextObjectRoot message)
+    {
+        NativeMethods.TablePtr->C3.hs_method_978855b2((void*)__hosihikari_shim_handle, (void*)message.Handle);
+    }
 
     public void setMessage(string message)
     {

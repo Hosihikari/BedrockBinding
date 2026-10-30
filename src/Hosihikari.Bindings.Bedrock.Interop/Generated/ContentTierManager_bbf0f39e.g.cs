@@ -41,7 +41,7 @@ public sealed unsafe partial class ContentTierManager : global::System.IDisposab
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_4c3d2011((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_4c3d2011((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContentTierInfo' requires --link-carrier or --virtual-dispatch.", false)]
@@ -50,7 +50,7 @@ public sealed unsafe partial class ContentTierManager : global::System.IDisposab
 
     public bool _shouldDeviceAllowAnimation()
     {
-        return NativeMethods.TablePtr->C0.hs_method_9b0dd86b((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_9b0dd86b((void*)__hosihikari_shim_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -59,7 +59,7 @@ public sealed unsafe partial class ContentTierManager : global::System.IDisposab
 
     public static ContentTierManager Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_1a1bcab8();
+        var handle = NativeMethods.TablePtr->C1.hs_create_1a1bcab8();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -70,7 +70,7 @@ public sealed unsafe partial class ContentTierManager : global::System.IDisposab
 
     public static ContentTierManager Create(global::Hosihikari.Bindings.Bedrock.Interop.ContentTierManager arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_00f43860((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_00f43860((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -86,23 +86,23 @@ public sealed unsafe partial class ContentTierManager : global::System.IDisposab
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk44461e_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_99201217((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_99201217((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkb69c86_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_43739d30((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_43739d30((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ContentTierManager operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ContentTierManager arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ContentTierManager((nint)NativeMethods.TablePtr->C0.hs_method_d9a960c1((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContentTierManager((nint)NativeMethods.TablePtr->C1.hs_method_d9a960c1((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public bool shouldDeviceAllowAnimation()
     {
-        return NativeMethods.TablePtr->C0.hs_method_3e36fee0((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_3e36fee0((void*)__hosihikari_shim_handle) != 0;
     }
 
 
@@ -112,7 +112,7 @@ public sealed unsafe partial class ContentTierManager : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_bbf0f39e((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_bbf0f39e((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

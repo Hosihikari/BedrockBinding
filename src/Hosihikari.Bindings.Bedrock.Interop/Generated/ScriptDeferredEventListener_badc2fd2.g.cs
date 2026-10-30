@@ -98,6 +98,17 @@ public sealed unsafe partial class ScriptDeferredEventListener : global::System.
         NativeMethods.TablePtr->C3.hs_method_f565a7b5((void*)__hosihikari_shim_handle);
     }
 
+    public static ScriptDeferredEventListener Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptDeferredEventListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_5e8303a4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptDeferredEventListener((nint)handle);
+    }
+
     public void onFlushBlockCustomComponentAfterEvents(nint deferredTracker)
     {
         NativeMethods.TablePtr->C3.hs_method_000a4fb0((void*)__hosihikari_shim_handle, (void*)deferredTracker);

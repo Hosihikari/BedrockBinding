@@ -87,6 +87,17 @@ public sealed unsafe partial class GetInteractionPositionForBlockNode : global::
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static GetInteractionPositionForBlockNode Create(global::Hosihikari.Bindings.Bedrock.Interop.GetInteractionPositionForBlockNode arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_c3f384e2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GetInteractionPositionForBlockNode((nint)handle);
+    }
+
     public void initializeFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
         NativeMethods.TablePtr->C1.hs_method_69d36813((void*)__hosihikari_shim_handle, (void*)owner.Handle);

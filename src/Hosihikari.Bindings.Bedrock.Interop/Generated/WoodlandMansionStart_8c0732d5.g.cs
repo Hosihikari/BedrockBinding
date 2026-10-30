@@ -79,6 +79,17 @@ public sealed unsafe partial class WoodlandMansionStart : global::System.IDispos
         return NativeMethods.TablePtr->C4.hs_method_17468942((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle) != 0;
     }
 
+    public static WoodlandMansionStart Create(global::Hosihikari.Bindings.Bedrock.Interop.WoodlandMansionStart arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_a0de58f4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WoodlandMansionStart((nint)handle);
+    }
+
     public static void _makeStairs(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos startPos, global::Hosihikari.Bindings.Bedrock.Interop.Block stairBlock, byte xStepDir, byte yStepDir, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox chunkBB)
     {
         NativeMethods.TablePtr->C4.hs_method_c92e791b((void*)startPos.Handle, (void*)stairBlock.Handle, xStepDir, yStepDir, (void*)region.Handle, (void*)chunkBB.Handle);

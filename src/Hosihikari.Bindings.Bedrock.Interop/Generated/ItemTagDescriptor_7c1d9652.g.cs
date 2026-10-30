@@ -105,6 +105,17 @@ public sealed unsafe partial class ItemTagDescriptor : global::System.IDisposabl
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ItemTagDescriptor Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemTagDescriptor arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_5a1bc500((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemTagDescriptor((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'ItemDescriptor::BaseDescriptor' has no accessible destructor.", false)]
     public nint clone() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'ItemDescriptor::BaseDescriptor' has no accessible destructor.");

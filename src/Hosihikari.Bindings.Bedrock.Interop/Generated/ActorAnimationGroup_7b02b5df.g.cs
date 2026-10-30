@@ -58,6 +58,17 @@ public sealed unsafe partial class ActorAnimationGroup : global::System.IDisposa
         return new ActorAnimationGroup((nint)handle);
     }
 
+    public static ActorAnimationGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationGroup arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_49e624bb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorAnimationGroup((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.ActorSkeletalAnimationPtr getActorAnimation(global::Hosihikari.Bindings.Bedrock.Interop.HashedString name)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ActorSkeletalAnimationPtr((nint)NativeMethods.TablePtr->C0.hs_method_9be6eca7((void*)__hosihikari_shim_handle, (void*)name.Handle));

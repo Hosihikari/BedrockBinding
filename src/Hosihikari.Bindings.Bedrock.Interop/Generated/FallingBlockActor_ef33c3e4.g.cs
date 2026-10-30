@@ -598,9 +598,10 @@ public sealed unsafe partial class FallingBlockActor : global::System.IDisposabl
         return NativeMethods.TablePtr->C1.hs_method_436e8ad6((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public float _causeFallDamageToActor(float distance, float multiplier, nint source) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public float _causeFallDamageToActor(float distance, float multiplier, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_8d1218f4((void*)__hosihikari_shim_handle, distance, multiplier, (void*)source.Handle);
+    }
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup? definitions, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier definitionName, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entityContext)
     {
@@ -683,9 +684,10 @@ public sealed unsafe partial class FallingBlockActor : global::System.IDisposabl
         return NativeMethods.TablePtr->C1.hs_method_a87bec90((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public float causeFallDamageToActor(float distance, float multiplier, nint source) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public float causeFallDamageToActor(float distance, float multiplier, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_72e051e3((void*)__hosihikari_shim_handle, distance, multiplier, (void*)source.Handle);
+    }
 
     public void doNormalTick(global::Hosihikari.Bindings.Bedrock.Interop.ITickDelegate tickDelegate)
     {

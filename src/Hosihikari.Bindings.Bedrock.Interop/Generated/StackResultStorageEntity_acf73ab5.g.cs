@@ -54,6 +54,17 @@ public sealed unsafe partial class StackResultStorageEntity : global::System.IDi
         return new StackResultStorageEntity((nint)handle);
     }
 
+    public static StackResultStorageEntity Create(global::Hosihikari.Bindings.Bedrock.Interop.StackResultStorageEntity arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a8b12d38((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StackResultStorageEntity((nint)handle);
+    }
+
     public static StackResultStorageEntity Create(global::Hosihikari.Bindings.Bedrock.Interop.WeakStorageEntity weakStorage)
     {
         var handle = NativeMethods.TablePtr->C3.hs_create_500f5ff7((void*)weakStorage.Handle);

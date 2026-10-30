@@ -68,6 +68,17 @@ public sealed unsafe partial class PacketViolationWarningPacketPayload : global:
         return new PacketViolationWarningPacketPayload((nint)handle);
     }
 
+    public static PacketViolationWarningPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.PacketViolationWarningPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_7346bddf((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PacketViolationWarningPacketPayload((nint)handle);
+    }
+
     public static PacketViolationWarningPacketPayload Create(nint error_code, int violationResponse, int violatingPacketId, string violationContext)
     {
         var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(violationContext);

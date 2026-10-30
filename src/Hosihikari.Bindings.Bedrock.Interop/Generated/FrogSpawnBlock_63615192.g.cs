@@ -340,6 +340,17 @@ public sealed unsafe partial class FrogSpawnBlock : global::System.IDisposable
         return new FrogSpawnBlock((nint)handle);
     }
 
+    public static FrogSpawnBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.FrogSpawnBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_071ddffe((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FrogSpawnBlock((nint)handle);
+    }
+
     public static FrogSpawnBlock Create(string nameId, int id)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);

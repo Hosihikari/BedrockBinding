@@ -43,6 +43,17 @@ public sealed unsafe partial class IPayload : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ResultAny((nint)NativeMethods.TablePtr->C3.hs_method_f65f31f3((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2 ?? default(byte), arg2.HasValue));
     }
 
+    public static IPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.IPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_e7aa2a86((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IPayload((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ResultAny runOn(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId arg0, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.NativeRuntime arg1, byte? arg2)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ResultAny((nint)NativeMethods.TablePtr->C3.hs_method_05a0b5df((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2 ?? default(byte), arg2.HasValue));

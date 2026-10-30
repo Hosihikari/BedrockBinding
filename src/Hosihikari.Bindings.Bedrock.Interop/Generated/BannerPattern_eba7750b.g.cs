@@ -165,6 +165,17 @@ public sealed unsafe partial class BannerPattern : global::System.IDisposable
         return new BannerPattern((nint)handle);
     }
 
+    public static BannerPattern Create(global::Hosihikari.Bindings.Bedrock.Interop.BannerPattern arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_49511c8f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BannerPattern((nint)handle);
+    }
+
     public static BannerPattern Create(string name, string nameID, bool hiddenFromCrafting)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);

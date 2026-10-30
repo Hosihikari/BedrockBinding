@@ -49,6 +49,17 @@ public sealed unsafe partial class CreatePhotoPacketPayload : global::System.IDi
         return new CreatePhotoPacketPayload((nint)handle);
     }
 
+    public static CreatePhotoPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.CreatePhotoPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_6e4979fe((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CreatePhotoPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mId_Address
     {

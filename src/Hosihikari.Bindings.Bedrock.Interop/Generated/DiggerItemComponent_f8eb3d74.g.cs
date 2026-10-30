@@ -38,9 +38,10 @@ public sealed unsafe partial class DiggerItemComponent : global::System.IDisposa
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint component) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50.DiggerItemComponent component)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_01073fc2((void*)__hosihikari_shim_handle, (void*)component.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
@@ -57,9 +58,27 @@ public sealed unsafe partial class DiggerItemComponent : global::System.IDisposa
         return new DiggerItemComponent((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static DiggerItemComponent Create(nint component) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static DiggerItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50.DiggerItemComponent component)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_7aea7fd3((void*)component.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DiggerItemComponent((nint)handle);
+    }
+
+    public static DiggerItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.DiggerItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_89fbf367((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DiggerItemComponent((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static void bindType(nint ctx, nint requiredToggles, nint releasedMinFormatVersion) =>

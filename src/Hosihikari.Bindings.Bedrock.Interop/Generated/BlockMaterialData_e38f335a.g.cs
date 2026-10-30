@@ -49,6 +49,17 @@ public sealed unsafe partial class BlockMaterialData : global::System.IDisposabl
         return new BlockMaterialData((nint)handle);
     }
 
+    public static BlockMaterialData Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockMaterialInstancesDescription_Nested.BlockMaterialData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_ef287d28((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockMaterialData((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint materialInstanceData_Address
     {

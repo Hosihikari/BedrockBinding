@@ -38,6 +38,17 @@ public sealed unsafe partial class VaultConfig : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static VaultConfig Create(global::Hosihikari.Bindings.Bedrock.Interop.VaultBlockActor_Nested.VaultConfig arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_28167544((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VaultConfig((nint)handle);
+    }
+
     public float activationRange
     {
         get => NativeMethods.TablePtr->C4.hs_get_bb6dc1b9((void*)__hosihikari_shim_handle);

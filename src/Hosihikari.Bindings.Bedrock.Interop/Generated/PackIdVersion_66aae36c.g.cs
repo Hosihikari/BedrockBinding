@@ -59,6 +59,17 @@ public sealed unsafe partial class PackIdVersion : global::System.IDisposable
         return new PackIdVersion((nint)handle);
     }
 
+    public static PackIdVersion Create(global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_f93103b4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PackIdVersion((nint)handle);
+    }
+
     public static PackIdVersion Create(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID id, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion version, sbyte packType)
     {
         var handle = NativeMethods.TablePtr->C2.hs_create_0eac9b2a((void*)id.Handle, (void*)version.Handle, packType);

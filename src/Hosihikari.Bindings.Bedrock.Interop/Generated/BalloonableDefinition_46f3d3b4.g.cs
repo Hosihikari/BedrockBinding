@@ -38,6 +38,17 @@ public sealed unsafe partial class BalloonableDefinition : global::System.IDispo
         return __hs_handle;
     }
 
+    public static BalloonableDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.BalloonableDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_36175fc0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BalloonableDefinition((nint)handle);
+    }
+
     public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
         NativeMethods.TablePtr->C0.hs_method_a6b1717c(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));

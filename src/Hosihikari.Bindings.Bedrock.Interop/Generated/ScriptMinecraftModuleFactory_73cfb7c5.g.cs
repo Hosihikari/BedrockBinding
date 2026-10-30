@@ -113,9 +113,11 @@ public sealed unsafe partial class ScriptMinecraftModuleFactory : global::System
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static nint getModuleName(nint version) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static string getModuleName(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.Version version)
+    {
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_e9b770ce((void*)version.Handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk2bf29c_Address
@@ -139,9 +141,10 @@ public sealed unsafe partial class ScriptMinecraftModuleFactory : global::System
     public static nint makeModuleDependencyFor(nint versions) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::ModuleDependency' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static nint makeModuleDescriptorFor(nint version) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ModuleDescriptor makeModuleDescriptorFor(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.Version version)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ModuleDescriptor((nint)NativeMethods.TablePtr->C3.hs_method_cfa338e3((void*)version.Handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ScriptMinecraftModuleFactory operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScriptMinecraftModuleFactory arg0)
     {

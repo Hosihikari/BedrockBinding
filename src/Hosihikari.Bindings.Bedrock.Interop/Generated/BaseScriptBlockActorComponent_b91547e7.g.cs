@@ -43,6 +43,17 @@ public sealed unsafe partial class BaseScriptBlockActorComponent : global::Syste
         return NativeMethods.TablePtr->C3.hs_method_95cd4b9f((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static BaseScriptBlockActorComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.BaseScriptBlockActorComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_ab19a041((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BaseScriptBlockActorComponent((nint)handle);
+    }
+
     public bool _isValid()
     {
         return NativeMethods.TablePtr->C3.hs_method_4a1415a7((void*)__hosihikari_shim_handle) != 0;

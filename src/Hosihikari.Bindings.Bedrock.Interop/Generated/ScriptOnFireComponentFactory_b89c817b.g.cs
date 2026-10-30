@@ -42,17 +42,30 @@ public sealed unsafe partial class ScriptOnFireComponentFactory : global::System
     public nint _createComponent(nint entity, nint scope, nint id) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorComponent>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public bool _hasComponent(nint entity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public bool _hasComponent(global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef entity)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_fc8af4dd((void*)__hosihikari_shim_handle, (void*)entity.Handle) != 0;
+    }
+
+    public static ScriptOnFireComponentFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptOnFireComponentFactory arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_e1b272c8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptOnFireComponentFactory((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorComponent>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint createComponent(nint entity, nint scope, nint id) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptActorComponent>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public bool hasComponent(nint entity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public bool hasComponent(global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef entity)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_c977e979((void*)__hosihikari_shim_handle, (void*)entity.Handle) != 0;
+    }
 
 
     public void Dispose()

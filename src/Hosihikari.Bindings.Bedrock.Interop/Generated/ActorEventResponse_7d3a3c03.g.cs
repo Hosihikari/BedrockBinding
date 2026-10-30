@@ -38,6 +38,17 @@ public sealed unsafe partial class ActorEventResponse : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static ActorEventResponse Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorEventResponse arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_31537461((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorEventResponse((nint)handle);
+    }
+
     public void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root, global::Hosihikari.Bindings.Bedrock.Interop.Factory_ActorEventResponse_ factory)
     {
         NativeMethods.TablePtr->C0.hs_method_d7f02aba((void*)__hosihikari_shim_handle, root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)factory.Handle);

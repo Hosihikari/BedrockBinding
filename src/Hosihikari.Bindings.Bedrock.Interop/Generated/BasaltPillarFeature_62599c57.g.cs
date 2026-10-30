@@ -43,6 +43,17 @@ public sealed unsafe partial class BasaltPillarFeature : global::System.IDisposa
         return NativeMethods.TablePtr->C0.hs_method_cffb7387((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
     }
 
+    public static BasaltPillarFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.BasaltPillarFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_05965952((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BasaltPillarFeature((nint)handle);
+    }
+
     public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         return NativeMethods.TablePtr->C0.hs_method_dbd47a3f((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;

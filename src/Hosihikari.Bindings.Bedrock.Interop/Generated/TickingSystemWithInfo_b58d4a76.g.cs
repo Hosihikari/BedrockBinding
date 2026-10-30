@@ -40,19 +40,19 @@ public sealed unsafe partial class TickingSystemWithInfo : global::System.IDispo
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C3.hs_method_39d9c6aa((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_39d9c6aa((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mInfo_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_7d24c142((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_7d24c142((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTickingSystem_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_53611daf((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_53611daf((void*)__hosihikari_shim_handle);
     }
 
 
@@ -62,7 +62,7 @@ public sealed unsafe partial class TickingSystemWithInfo : global::System.IDispo
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_b58d4a76((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_b58d4a76((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -43,6 +43,17 @@ public sealed unsafe partial class GoalSelectorSystem : global::System.IDisposab
         NativeMethods.TablePtr->C1.hs_method_9112d28f((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static GoalSelectorSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.GoalSelectorSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_2b7e4045((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GoalSelectorSystem((nint)handle);
+    }
+
     public static void _tickGoalSelectorComponent(global::Hosihikari.Bindings.Bedrock.Interop.ActorOwnerComponent actorOwnerComponent)
     {
         NativeMethods.TablePtr->C1.hs_method_e394cbae((void*)actorOwnerComponent.Handle);

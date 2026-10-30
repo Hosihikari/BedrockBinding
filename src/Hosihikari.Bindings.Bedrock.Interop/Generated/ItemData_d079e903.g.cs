@@ -38,6 +38,17 @@ public sealed unsafe partial class ItemData : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ItemData Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_0deb7afd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemData((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'ItemData' is not supported.", false)]
     public static nint fromItemRegistry(nint itemRegistry) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'ItemData' is not supported.");

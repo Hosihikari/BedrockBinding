@@ -65,6 +65,17 @@ public sealed unsafe partial class MetaData : global::System.IDisposable
         return new MetaData((nint)handle);
     }
 
+    public static MetaData Create(global::Hosihikari.Bindings.Bedrock.Interop.IInPackagePacks_Nested.MetaData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d205a332((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MetaData((nint)handle);
+    }
+
     public int mFileSystem
     {
         get => NativeMethods.TablePtr->C1.hs_get_9de0d9c3((void*)__hosihikari_shim_handle);

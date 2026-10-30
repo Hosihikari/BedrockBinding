@@ -38,16 +38,27 @@ public sealed unsafe partial class SpawningArea : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static SpawningArea Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk_Nested.SpawningArea arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_c82cea55((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SpawningArea((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint aabb_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_a7cf1da3((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a7cf1da3((void*)__hosihikari_shim_handle);
     }
 
     public byte type
     {
-        get => NativeMethods.TablePtr->C1.hs_get_6d11f681((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_6d11f681((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_6d11f681((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_6d11f681((void*)__hosihikari_shim_handle, value);
     }
 
 
@@ -57,7 +68,7 @@ public sealed unsafe partial class SpawningArea : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_ce172de4((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_ce172de4((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

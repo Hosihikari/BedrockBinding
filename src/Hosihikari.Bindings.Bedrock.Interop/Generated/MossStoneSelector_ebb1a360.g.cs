@@ -43,6 +43,17 @@ public sealed unsafe partial class MossStoneSelector : global::System.IDisposabl
         return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->C2.hs_method_d8c7102a((void*)__hosihikari_shim_handle, (void*)random.Handle, arg1, arg2, arg3, arg4), false);
     }
 
+    public static MossStoneSelector Create(global::Hosihikari.Bindings.Bedrock.Interop.MossStoneSelector arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_fb4a4d0a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MossStoneSelector((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mLocalRegistry_Address
     {

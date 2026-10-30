@@ -63,6 +63,17 @@ public sealed unsafe partial class Test : global::System.IDisposable
         return new Test((nint)handle);
     }
 
+    public static Test Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.processors.BlockRules.Test arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_07f4c2cc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Test((nint)handle);
+    }
+
     public void appendMetadataKey(global::Hosihikari.Bindings.Bedrock.Interop.Util.XXHash hash)
     {
         NativeMethods.TablePtr->C4.hs_method_2df9507b((void*)__hosihikari_shim_handle, (void*)hash.Handle);

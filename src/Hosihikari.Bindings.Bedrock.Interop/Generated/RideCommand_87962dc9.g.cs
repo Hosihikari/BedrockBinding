@@ -72,6 +72,17 @@ public sealed unsafe partial class RideCommand : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_374af4ba((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static RideCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.RideCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_1d5d021b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RideCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C3.hs_method_7e5c9432((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

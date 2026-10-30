@@ -58,6 +58,17 @@ public sealed unsafe partial class SpawnAoECloudSubcomponent : global::System.ID
         NativeMethods.TablePtr->C3.hs_method_8705f8f3((void*)__hosihikari_shim_handle, (void*)component.Handle);
     }
 
+    public static SpawnAoECloudSubcomponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SpawnAoECloudSubcomponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_0ec2a9ed((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SpawnAoECloudSubcomponent((nint)handle);
+    }
+
     public void doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent arg1)
     {
         NativeMethods.TablePtr->C3.hs_method_536aa8e7((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)arg1.Handle);

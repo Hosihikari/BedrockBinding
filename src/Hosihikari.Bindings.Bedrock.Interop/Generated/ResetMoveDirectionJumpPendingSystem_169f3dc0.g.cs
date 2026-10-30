@@ -44,7 +44,7 @@ public sealed unsafe partial class ResetMoveDirectionJumpPendingSystem : global:
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_169f3dc0((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_169f3dc0((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

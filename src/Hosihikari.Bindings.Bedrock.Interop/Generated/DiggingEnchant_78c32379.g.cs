@@ -58,6 +58,17 @@ public sealed unsafe partial class DiggingEnchant : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_a16b7c7d((void*)__hosihikari_shim_handle, level);
     }
 
+    public static DiggingEnchant Create(global::Hosihikari.Bindings.Bedrock.Interop.DiggingEnchant arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d627f233((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DiggingEnchant((nint)handle);
+    }
+
     public static nint VALID_ENCHANTMENTS()
     {
         return (nint)NativeMethods.TablePtr->C1.hs_method_6767f818();

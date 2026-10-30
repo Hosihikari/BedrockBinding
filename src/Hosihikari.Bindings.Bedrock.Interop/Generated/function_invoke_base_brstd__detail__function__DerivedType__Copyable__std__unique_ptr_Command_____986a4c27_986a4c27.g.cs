@@ -40,6 +40,10 @@ public sealed partial class function_invoke_base_brstd__detail__function__Derive
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
+    public static function_invoke_base_brstd__detail__function__DerivedType__Copyable__std__unique_ptr_Command_____986a4c27 Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
     public nint operator_call() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
 

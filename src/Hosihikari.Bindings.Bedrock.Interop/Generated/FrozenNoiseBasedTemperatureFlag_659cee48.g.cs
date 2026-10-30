@@ -38,6 +38,17 @@ public sealed unsafe partial class FrozenNoiseBasedTemperatureFlag : global::Sys
         return __hs_handle;
     }
 
+    public static FrozenNoiseBasedTemperatureFlag Create(global::Hosihikari.Bindings.Bedrock.Interop.FrozenNoiseBasedTemperatureFlag arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_592b9c05((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FrozenNoiseBasedTemperatureFlag((nint)handle);
+    }
+
 
     public void Dispose()
     {

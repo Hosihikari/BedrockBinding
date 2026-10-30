@@ -43,6 +43,17 @@ public sealed unsafe partial class AgentCommandSystem : global::System.IDisposab
         NativeMethods.TablePtr->C0.hs_method_f01404ec((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static AgentCommandSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.AgentCommandSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_b5836df1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AgentCommandSystem((nint)handle);
+    }
+
     public static void cleanUp(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext agent, float waitingPeriod)
     {
         NativeMethods.TablePtr->C0.hs_method_6eef24bc((void*)agent.Handle, waitingPeriod);

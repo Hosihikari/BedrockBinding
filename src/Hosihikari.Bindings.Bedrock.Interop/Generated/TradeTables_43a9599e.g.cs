@@ -38,6 +38,17 @@ public sealed unsafe partial class TradeTables : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static TradeTables Create(global::Hosihikari.Bindings.Bedrock.Interop.TradeTables arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_fef2ecba((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TradeTables((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LinkedAssetValidator>' is not a known bindable declaration.", false)]
     public nint _parseAndStoreTradeTable(nint level, nint resourceLoader, nint tradeTablePath, bool usingUpcomingCreatorFeaturesExperiment, nint validator) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LinkedAssetValidator>' is not a known bindable declaration.");
@@ -57,7 +68,7 @@ public sealed unsafe partial class TradeTables : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(path, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->C3.hs_method_b130e733((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->C4.hs_method_b130e733((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.TradeTable((nint)__hs_handle, false) : null;
         }
     }
@@ -65,12 +76,12 @@ public sealed unsafe partial class TradeTables : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mTradeTables_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_85ef6b64((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_85ef6b64((void*)__hosihikari_shim_handle);
     }
 
     public void reload(global::Hosihikari.Bindings.Bedrock.Interop.Level level, bool usingUpcomingCreatorFeaturesExperiment, global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing eventing)
     {
-        NativeMethods.TablePtr->C3.hs_method_4094a254((void*)__hosihikari_shim_handle, (void*)level.Handle, usingUpcomingCreatorFeaturesExperiment, (void*)eventing.Handle);
+        NativeMethods.TablePtr->C4.hs_method_4094a254((void*)__hosihikari_shim_handle, (void*)level.Handle, usingUpcomingCreatorFeaturesExperiment, (void*)eventing.Handle);
     }
 
 
@@ -80,7 +91,7 @@ public sealed unsafe partial class TradeTables : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_43a9599e((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_43a9599e((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

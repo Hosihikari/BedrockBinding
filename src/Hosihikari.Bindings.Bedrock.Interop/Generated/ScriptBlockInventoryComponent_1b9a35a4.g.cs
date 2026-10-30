@@ -61,6 +61,17 @@ public sealed unsafe partial class ScriptBlockInventoryComponent : global::Syste
         get => (nint)NativeMethods.TablePtr->C3.hs_get_e32c8439((void*)__hosihikari_shim_handle);
     }
 
+    public static ScriptBlockInventoryComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBlockInventoryComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_7144e521((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptBlockInventoryComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mScriptContainer_Address
     {

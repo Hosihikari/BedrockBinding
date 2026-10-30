@@ -65,6 +65,17 @@ public sealed unsafe partial class SystemParams : global::System.IDisposable
         return new SystemParams((nint)handle);
     }
 
+    public static SystemParams Create(global::Hosihikari.Bindings.Bedrock.Interop.UpdateBoundingBox.SystemParams arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_26a14084((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SystemParams((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mAabbRelativeView_Address
     {

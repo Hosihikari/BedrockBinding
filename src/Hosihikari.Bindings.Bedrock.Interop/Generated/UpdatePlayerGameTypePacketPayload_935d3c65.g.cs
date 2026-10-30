@@ -38,6 +38,17 @@ public sealed unsafe partial class UpdatePlayerGameTypePacketPayload : global::S
         return __hs_handle;
     }
 
+    public static UpdatePlayerGameTypePacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.UpdatePlayerGameTypePacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_1cb29739((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UpdatePlayerGameTypePacketPayload((nint)handle);
+    }
+
     public int mPlayerGameType
     {
         get => NativeMethods.TablePtr->C4.hs_get_be6e27b3((void*)__hosihikari_shim_handle);

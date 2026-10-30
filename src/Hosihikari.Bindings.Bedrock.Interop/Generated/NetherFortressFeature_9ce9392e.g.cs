@@ -76,6 +76,17 @@ public sealed unsafe partial class NetherFortressFeature : global::System.IDispo
         return new NetherFortressFeature((nint)handle);
     }
 
+    public static NetherFortressFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.NetherFortressFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_a4de15e1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NetherFortressFeature((nint)handle);
+    }
+
     public static NetherFortressFeature Create(nint seed, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion)
     {
         var handle = NativeMethods.TablePtr->C2.hs_create_6b5a6d4b((void*)seed, (void*)baseGameVersion.Handle);

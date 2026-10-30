@@ -40,20 +40,20 @@ public sealed unsafe partial class RaidUpdate : global::System.IDisposable
 
     public int mCurrentWave
     {
-        get => NativeMethods.TablePtr->C1.hs_get_c22d89f4((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_c22d89f4((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_c22d89f4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_c22d89f4((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mSuccess
     {
-        get => NativeMethods.TablePtr->C1.hs_get_02c41184((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_02c41184((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_02c41184((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_02c41184((void*)__hosihikari_shim_handle, value);
     }
 
     public int mTotalWaves
     {
-        get => NativeMethods.TablePtr->C1.hs_get_f4d7d191((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_f4d7d191((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_f4d7d191((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_f4d7d191((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -62,7 +62,7 @@ public sealed unsafe partial class RaidUpdate : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_532b7f2c((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_532b7f2c((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

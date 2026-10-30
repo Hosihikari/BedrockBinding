@@ -43,6 +43,17 @@ public sealed unsafe partial class BurstReactionComponent : global::System.IDisp
         NativeMethods.TablePtr->C0.hs_method_25b9e6d6((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)region.Handle);
     }
 
+    public static BurstReactionComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.BurstReactionComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_78e21476((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BurstReactionComponent((nint)handle);
+    }
+
     public void _onEnd(global::Hosihikari.Bindings.Bedrock.Interop.LabTableReaction owner, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
     {
         NativeMethods.TablePtr->C0.hs_method_29608f46((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)region.Handle);

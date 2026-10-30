@@ -57,6 +57,17 @@ public sealed unsafe partial class ConstantInt : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ConstantInt Create(global::Hosihikari.Bindings.Bedrock.Interop.ConstantInt arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_e2386588((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ConstantInt((nint)handle);
+    }
+
     public int mConstant
     {
         get => NativeMethods.TablePtr->C0.hs_get_6b6ba1cb((void*)__hosihikari_shim_handle);

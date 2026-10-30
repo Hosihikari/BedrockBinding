@@ -120,6 +120,17 @@ public sealed unsafe partial class ComplexAliasDescriptor : global::System.IDisp
         return new ComplexAliasDescriptor((nint)handle);
     }
 
+    public static ComplexAliasDescriptor Create(global::Hosihikari.Bindings.Bedrock.Interop.ComplexAliasDescriptor arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_3c313c99((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ComplexAliasDescriptor((nint)handle);
+    }
+
     public static ComplexAliasDescriptor Create(string fullName)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(fullName);

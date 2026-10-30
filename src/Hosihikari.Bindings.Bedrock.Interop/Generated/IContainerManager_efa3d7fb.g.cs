@@ -38,6 +38,17 @@ public sealed unsafe partial class IContainerManager : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static IContainerManager Create(global::Hosihikari.Bindings.Bedrock.Interop.IContainerManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_962d1dd9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IContainerManager((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void broadcastChanges() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

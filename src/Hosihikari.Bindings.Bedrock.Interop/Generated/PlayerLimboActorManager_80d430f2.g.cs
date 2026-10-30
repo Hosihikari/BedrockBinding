@@ -58,6 +58,17 @@ public sealed unsafe partial class PlayerLimboActorManager : global::System.IDis
         return new PlayerLimboActorManager((nint)handle);
     }
 
+    public static PlayerLimboActorManager Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerLimboActorManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_9d3dae7e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerLimboActorManager((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<LevelStorage>>' is not a known bindable declaration.", false)]
     public static PlayerLimboActorManager Create(nint levelStorage, nint actorManager, nint actorFactory) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<LevelStorage>>' is not a known bindable declaration.");

@@ -38,6 +38,17 @@ public sealed unsafe partial class DwellerTestVillageInfo : global::System.IDisp
         return __hs_handle;
     }
 
+    public static DwellerTestVillageInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.VillageManager_Nested.DwellerTestVillageInfo arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_284a388a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DwellerTestVillageInfo((nint)handle);
+    }
+
     public int bedAvailability
     {
         get => NativeMethods.TablePtr->C4.hs_get_e18e7de0((void*)__hosihikari_shim_handle);

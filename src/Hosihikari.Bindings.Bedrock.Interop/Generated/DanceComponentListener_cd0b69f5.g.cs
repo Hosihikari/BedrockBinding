@@ -43,6 +43,17 @@ public sealed unsafe partial class DanceComponentListener : global::System.IDisp
         NativeMethods.TablePtr->C1.hs_method_e8d1bb3a((void*)__hosihikari_shim_handle);
     }
 
+    public static DanceComponentListener Create(global::Hosihikari.Bindings.Bedrock.Interop.DanceComponentListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_1e52b167((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DanceComponentListener((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mActiveRecordHandle_Address
     {

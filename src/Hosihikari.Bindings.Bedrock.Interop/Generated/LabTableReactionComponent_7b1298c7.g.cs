@@ -48,6 +48,17 @@ public sealed unsafe partial class LabTableReactionComponent : global::System.ID
         NativeMethods.TablePtr->C1.hs_method_8e9c3c29((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
+    public static LabTableReactionComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.LabTableReactionComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d6b7d166((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LabTableReactionComponent((nint)handle);
+    }
+
     public void _onEnd(global::Hosihikari.Bindings.Bedrock.Interop.LabTableReaction owner, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
     {
         NativeMethods.TablePtr->C1.hs_method_e04876b7((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)region.Handle);

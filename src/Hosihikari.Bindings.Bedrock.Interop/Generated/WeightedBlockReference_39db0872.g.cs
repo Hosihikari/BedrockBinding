@@ -38,6 +38,17 @@ public sealed unsafe partial class WeightedBlockReference : global::System.IDisp
         return __hs_handle;
     }
 
+    public static WeightedBlockReference Create(global::Hosihikari.Bindings.Bedrock.Interop.MangroveTreeCanopy_Nested.WeightedBlockReference arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_4684fb53((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WeightedBlockReference((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockDescriptor_Address
     {

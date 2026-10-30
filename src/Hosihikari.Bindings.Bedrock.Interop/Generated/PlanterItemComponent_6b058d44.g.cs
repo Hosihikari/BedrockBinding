@@ -53,9 +53,10 @@ public sealed unsafe partial class PlanterItemComponent : global::System.IDispos
     public nint _buildNetworkTag(nint ctx) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint component) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_0.PlanterItemComponent component)
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_d3d81c6d((void*)__hosihikari_shim_handle, (void*)component.Handle);
+    }
 
     public void _handleVersionBasedInitialization(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion originalJsonVersion)
     {
@@ -82,9 +83,27 @@ public sealed unsafe partial class PlanterItemComponent : global::System.IDispos
         return new PlanterItemComponent((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static PlanterItemComponent Create(nint component) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static PlanterItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_0.PlanterItemComponent component)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_a1cf8ff1((void*)component.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlanterItemComponent((nint)handle);
+    }
+
+    public static PlanterItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.PlanterItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_a7d95955((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlanterItemComponent((nint)handle);
+    }
 
     public void _initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {

@@ -43,6 +43,17 @@ public sealed unsafe partial class DryingOutTimerSystem : global::System.IDispos
         NativeMethods.TablePtr->C1.hs_method_f19488e9((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static DryingOutTimerSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.DryingOutTimerSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_86cdbd9c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DryingOutTimerSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C1.hs_method_4c43bdf9((void*)__hosihikari_shim_handle, (void*)registry.Handle);

@@ -38,6 +38,17 @@ public sealed unsafe partial class IScriptItemCustomComponentRegistry : global::
         return __hs_handle;
     }
 
+    public static IScriptItemCustomComponentRegistry Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.IScriptItemCustomComponentRegistry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_be47d7a4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IScriptItemCustomComponentRegistry((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getEventListener() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

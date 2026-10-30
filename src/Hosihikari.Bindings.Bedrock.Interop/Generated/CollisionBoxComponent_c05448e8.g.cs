@@ -38,6 +38,17 @@ public sealed unsafe partial class CollisionBoxComponent : global::System.IDispo
         return __hs_handle;
     }
 
+    public static CollisionBoxComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.CollisionBoxComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_c1c6e14d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CollisionBoxComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBBDim_Address
     {

@@ -58,6 +58,17 @@ public sealed unsafe partial class ArrowEffectSubcomponent : global::System.IDis
         NativeMethods.TablePtr->C0.hs_method_5bbc8bde((void*)__hosihikari_shim_handle, (void*)component.Handle);
     }
 
+    public static ArrowEffectSubcomponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ArrowEffectSubcomponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_8397b002((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ArrowEffectSubcomponent((nint)handle);
+    }
+
     public void doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent component)
     {
         NativeMethods.TablePtr->C0.hs_method_71ae5cb4((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)component.Handle);

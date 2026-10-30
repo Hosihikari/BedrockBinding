@@ -72,6 +72,17 @@ public sealed unsafe partial class FogCommand : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_2a222c04((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static FogCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.FogCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_0db06009((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FogCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C1.hs_method_823c89d9((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

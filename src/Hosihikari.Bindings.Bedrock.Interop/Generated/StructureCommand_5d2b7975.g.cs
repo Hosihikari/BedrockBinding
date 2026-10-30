@@ -72,6 +72,17 @@ public sealed unsafe partial class StructureCommand : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_a711b64f((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static StructureCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.StructureCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_ad6382d9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureCommand((nint)handle);
+    }
+
     public void _editorLoad(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output, global::Hosihikari.Bindings.Bedrock.Interop.Level level, string fullName, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos loadPosition, global::Hosihikari.Bindings.Bedrock.Interop.StructureEditorData settings)
     {
         var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(fullName);

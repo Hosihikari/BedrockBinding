@@ -38,6 +38,17 @@ public sealed unsafe partial class LecternUpdatePacketPayload : global::System.I
         return __hs_handle;
     }
 
+    public static LecternUpdatePacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.LecternUpdatePacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_65534989((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LecternUpdatePacketPayload((nint)handle);
+    }
+
     public int mPage
     {
         get => NativeMethods.TablePtr->C1.hs_get_a5931e86((void*)__hosihikari_shim_handle);

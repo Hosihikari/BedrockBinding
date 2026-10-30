@@ -38,16 +38,27 @@ public sealed unsafe partial class LevelAddedActorEvent : global::System.IDispos
         return __hs_handle;
     }
 
+    public static LevelAddedActorEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelAddedActorEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_fe6ced4f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelAddedActorEvent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mActor_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_6502600e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6502600e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLevel_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_4b84bafc((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4b84bafc((void*)__hosihikari_shim_handle);
     }
 
 
@@ -57,7 +68,7 @@ public sealed unsafe partial class LevelAddedActorEvent : global::System.IDispos
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_6a4c0202((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_6a4c0202((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

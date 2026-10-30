@@ -38,6 +38,17 @@ public sealed unsafe partial class CompoundTagUpdater : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static CompoundTagUpdater Create(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdater arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f2cc2bd1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CompoundTagUpdater((nint)handle);
+    }
+
     public bool _update(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdater_Nested.Node node, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
         return NativeMethods.TablePtr->C0.hs_method_2a21a572((void*)__hosihikari_shim_handle, (void*)node.Handle, (void*)tag.Handle) != 0;

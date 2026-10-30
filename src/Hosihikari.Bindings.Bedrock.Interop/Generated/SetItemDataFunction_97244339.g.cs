@@ -54,6 +54,17 @@ public sealed unsafe partial class SetItemDataFunction : global::System.IDisposa
         return NativeMethods.TablePtr->C3.hs_method_40a7f821((void*)__hosihikari_shim_handle);
     }
 
+    public static SetItemDataFunction Create(global::Hosihikari.Bindings.Bedrock.Interop.SetItemDataFunction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_31438c10((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SetItemDataFunction((nint)handle);
+    }
+
     public void applyPreVersion(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext context)
     {
         NativeMethods.TablePtr->C3.hs_method_ebc8a388((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)random.Handle, (void*)context.Handle);

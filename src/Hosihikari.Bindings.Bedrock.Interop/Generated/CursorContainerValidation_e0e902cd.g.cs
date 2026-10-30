@@ -48,6 +48,17 @@ public sealed unsafe partial class CursorContainerValidation : global::System.ID
         return NativeMethods.TablePtr->C1.hs_method_8a1bd590((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);
     }
 
+    public static CursorContainerValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.CursorContainerValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_976fd81a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CursorContainerValidation((nint)handle);
+    }
+
     public bool canItemMoveToContainer(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item)
     {
         return NativeMethods.TablePtr->C1.hs_method_d5d86fb4((void*)__hosihikari_shim_handle, (void*)item.Handle) != 0;

@@ -38,6 +38,17 @@ public sealed unsafe partial class PrintStream : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static PrintStream Create(global::Hosihikari.Bindings.Bedrock.Interop.PrintStream arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_a99259a5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PrintStream((nint)handle);
+    }
+
     public void print(string s)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(s);

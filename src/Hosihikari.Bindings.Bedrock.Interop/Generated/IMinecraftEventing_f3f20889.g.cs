@@ -49,6 +49,17 @@ public sealed unsafe partial class IMinecraftEventing : global::System.IDisposab
         NativeMethods.TablePtr->C1.hs_method_93dddff3((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), isUnderground);
     }
 
+    public static IMinecraftEventing Create(global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_2628559f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IMinecraftEventing((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void addListener(nint listener) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

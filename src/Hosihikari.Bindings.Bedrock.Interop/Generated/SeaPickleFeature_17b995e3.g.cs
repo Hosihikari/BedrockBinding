@@ -67,6 +67,17 @@ public sealed unsafe partial class SeaPickleFeature : global::System.IDisposable
         return NativeMethods.TablePtr->C3.hs_method_7234f469((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
     }
 
+    public static SeaPickleFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.SeaPickleFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_9ee7f923((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SeaPickleFeature((nint)handle);
+    }
+
     public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         return NativeMethods.TablePtr->C3.hs_method_6cf1a68d((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;

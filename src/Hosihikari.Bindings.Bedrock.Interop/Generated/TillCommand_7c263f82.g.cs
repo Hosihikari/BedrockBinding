@@ -78,6 +78,17 @@ public sealed unsafe partial class TillCommand : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_82786554((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static TillCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.AgentCommands.TillCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_d0630f22((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TillCommand((nint)handle);
+    }
+
     public void execute()
     {
         NativeMethods.TablePtr->C0.hs_method_1f466dc1((void*)__hosihikari_shim_handle);

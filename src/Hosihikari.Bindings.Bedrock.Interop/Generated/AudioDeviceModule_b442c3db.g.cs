@@ -42,6 +42,17 @@ public sealed unsafe partial class AudioDeviceModule : global::System.IDisposabl
     public int ActiveAudioLayer(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static AudioDeviceModule Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.AudioDeviceModule arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_663f5cb2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AudioDeviceModule((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool BuiltInAECIsAvailable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

@@ -109,6 +109,17 @@ public sealed unsafe partial class AutomationPlayerCommandOrigin : global::Syste
         return new AutomationPlayerCommandOrigin((nint)handle);
     }
 
+    public static AutomationPlayerCommandOrigin Create(global::Hosihikari.Bindings.Bedrock.Interop.AutomationPlayerCommandOrigin arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_92e08f3c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AutomationPlayerCommandOrigin((nint)handle);
+    }
+
     public static AutomationPlayerCommandOrigin Create(string requestId, global::Hosihikari.Bindings.Bedrock.Interop.Player origin)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(requestId);

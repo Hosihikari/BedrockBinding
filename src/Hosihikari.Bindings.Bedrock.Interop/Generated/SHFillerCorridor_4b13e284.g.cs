@@ -48,6 +48,17 @@ public sealed unsafe partial class SHFillerCorridor : global::System.IDisposable
         return NativeMethods.TablePtr->C3.hs_method_d4d2d333((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)arg1.Handle, (void*)chunkBB.Handle) != 0;
     }
 
+    public static SHFillerCorridor Create(global::Hosihikari.Bindings.Bedrock.Interop.SHFillerCorridor arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_84f1dd25((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SHFillerCorridor((nint)handle);
+    }
+
     public int getType()
     {
         return NativeMethods.TablePtr->C3.hs_method_28e3c926((void*)__hosihikari_shim_handle);

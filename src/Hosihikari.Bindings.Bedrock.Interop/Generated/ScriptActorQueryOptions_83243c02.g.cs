@@ -146,6 +146,17 @@ public sealed unsafe partial class ScriptActorQueryOptions : global::System.IDis
         get => (nint)NativeMethods.TablePtr->C3.hs_get_ad75b2b1((void*)__hosihikari_shim_handle);
     }
 
+    public static ScriptActorQueryOptions Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptActorQueryOptions arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_62112de9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptActorQueryOptions((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bindV010()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_9af026e2());

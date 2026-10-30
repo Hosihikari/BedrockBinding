@@ -43,6 +43,17 @@ public sealed unsafe partial class CooldownItemComponent : global::System.IDispo
         NativeMethods.TablePtr->C3.hs_method_9925e778((void*)__hosihikari_shim_handle);
     }
 
+    public static CooldownItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50.CooldownItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_977c764d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CooldownItemComponent((nint)handle);
+    }
+
     public static string DEFAULT_CATEGORY()
     {
         var __hs_view = NativeMethods.TablePtr->C3.hs_method_53bcfc14();

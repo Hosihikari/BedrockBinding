@@ -42,9 +42,10 @@ public sealed unsafe partial class ScriptContainerSlot : global::System.IDisposa
     public nint _ctor(nint itemContext, nint scriptContainerHandle, nint scope) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptContainerWrapper>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint itemContext, nint scope) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ItemContext itemContext, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_7824b9d7((void*)__hosihikari_shim_handle, (void*)itemContext.Handle, (void*)scope.Handle);
+    }
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptContainerSlot arg0)
     {
@@ -71,9 +72,16 @@ public sealed unsafe partial class ScriptContainerSlot : global::System.IDisposa
     public static ScriptContainerSlot Create(nint itemContext, nint scriptContainerHandle, nint scope) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptContainerWrapper>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static ScriptContainerSlot Create(nint itemContext, nint scope) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static ScriptContainerSlot Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemContext itemContext, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_8790423b((void*)itemContext.Handle, (void*)scope.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptContainerSlot((nint)handle);
+    }
 
     public static ScriptContainerSlot Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptContainerSlot arg0)
     {

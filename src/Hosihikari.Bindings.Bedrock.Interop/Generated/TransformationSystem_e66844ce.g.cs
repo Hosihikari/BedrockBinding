@@ -40,12 +40,23 @@ public sealed unsafe partial class TransformationSystem : global::System.IDispos
 
     public void _tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
-        NativeMethods.TablePtr->C3.hs_method_66c3b0c3((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+        NativeMethods.TablePtr->C4.hs_method_66c3b0c3((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+    }
+
+    public static TransformationSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.TransformationSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_7bdbc040((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TransformationSystem((nint)handle);
     }
 
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
-        NativeMethods.TablePtr->C3.hs_method_afe99c85((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+        NativeMethods.TablePtr->C4.hs_method_afe99c85((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
 
@@ -55,7 +66,7 @@ public sealed unsafe partial class TransformationSystem : global::System.IDispos
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_e66844ce((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_e66844ce((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

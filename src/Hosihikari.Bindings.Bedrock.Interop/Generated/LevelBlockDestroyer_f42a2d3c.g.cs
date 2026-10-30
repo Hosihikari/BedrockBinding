@@ -40,7 +40,18 @@ public sealed unsafe partial class LevelBlockDestroyer : global::System.IDisposa
 
     public static LevelBlockDestroyer Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_f5b09f6f();
+        var handle = NativeMethods.TablePtr->C2.hs_create_f5b09f6f();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelBlockDestroyer((nint)handle);
+    }
+
+    public static LevelBlockDestroyer Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelBlockDestroyer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_6d2f58df((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -52,13 +63,13 @@ public sealed unsafe partial class LevelBlockDestroyer : global::System.IDisposa
     // The native field type is not projected; this is the address of the field storage.
     public nint mLevelBlockDestroyerProxy_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_131f143a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_131f143a((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLevelEventManager_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_1317fd0b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1317fd0b((void*)__hosihikari_shim_handle);
     }
 
 
@@ -68,7 +79,7 @@ public sealed unsafe partial class LevelBlockDestroyer : global::System.IDisposa
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_f42a2d3c((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_f42a2d3c((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

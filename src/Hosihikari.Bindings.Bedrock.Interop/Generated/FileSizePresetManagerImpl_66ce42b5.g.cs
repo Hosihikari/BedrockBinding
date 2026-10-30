@@ -41,7 +41,7 @@ public sealed unsafe partial class FileSizePresetManagerImpl : global::System.ID
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_d3d2d936((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d3d2d936((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
@@ -62,7 +62,7 @@ public sealed unsafe partial class FileSizePresetManagerImpl : global::System.ID
 
     public static FileSizePresetManagerImpl Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_d31e52f5();
+        var handle = NativeMethods.TablePtr->C1.hs_create_d31e52f5();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -73,7 +73,7 @@ public sealed unsafe partial class FileSizePresetManagerImpl : global::System.ID
 
     public static FileSizePresetManagerImpl Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSizePresetManagerImpl arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_6295124d((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_6295124d((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -89,18 +89,18 @@ public sealed unsafe partial class FileSizePresetManagerImpl : global::System.ID
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkbcb807_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_103b8cf5((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_103b8cf5((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkea1e36_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_a3e091ff((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a3e091ff((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSizePresetManagerImpl operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSizePresetManagerImpl arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSizePresetManagerImpl((nint)NativeMethods.TablePtr->C0.hs_method_bd241dd4((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSizePresetManagerImpl((nint)NativeMethods.TablePtr->C1.hs_method_bd241dd4((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Core::FileSizePresetToken' has no accessible destructor.", false)]
@@ -114,7 +114,7 @@ public sealed unsafe partial class FileSizePresetManagerImpl : global::System.ID
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_66ce42b5((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_66ce42b5((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -73,6 +73,17 @@ public sealed unsafe partial class LevelChunkEventManagerProxy : global::System.
         NativeMethods.TablePtr->C2.hs_method_d6e61c40((void*)__hosihikari_shim_handle, (void*)chunkSource.Handle, (void*)levelChunk.Handle);
     }
 
+    public static LevelChunkEventManagerProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkEventManagerProxy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_424bb490((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelChunkEventManagerProxy((nint)handle);
+    }
+
     public int getClosestPlayerDistanceSquared(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
         return NativeMethods.TablePtr->C2.hs_method_5e9babe8((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);

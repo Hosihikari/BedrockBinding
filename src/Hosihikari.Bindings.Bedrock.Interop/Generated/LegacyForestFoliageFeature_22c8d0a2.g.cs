@@ -98,6 +98,17 @@ public sealed unsafe partial class LegacyForestFoliageFeature : global::System.I
         return new LegacyForestFoliageFeature((nint)handle);
     }
 
+    public static LegacyForestFoliageFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyForestFoliageFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_5141661a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacyForestFoliageFeature((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mDoublePlantFeature_Address
     {

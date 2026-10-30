@@ -88,6 +88,17 @@ public sealed unsafe partial class BlockEventListener : global::System.IDisposab
         return NativeMethods.TablePtr->C0.hs_method_131c714b((void*)__hosihikari_shim_handle, (void*)level.Handle, (void*)blockId.Handle, data);
     }
 
+    public static BlockEventListener Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockEventListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_504f887e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockEventListener((nint)handle);
+    }
+
     public int onBlockDestroyedByPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Block destroyedBlock, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase currentItem, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase itemBeforeBlockBreak)
     {
         return NativeMethods.TablePtr->C0.hs_method_0a3f81c9((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)destroyedBlock.Handle, (void*)pos.Handle, (void*)currentItem.Handle, (void*)itemBeforeBlockBreak.Handle);

@@ -54,6 +54,17 @@ public sealed unsafe partial class MobEffectInstance : global::System.IDisposabl
         return new MobEffectInstance((nint)handle);
     }
 
+    public static MobEffectInstance Create(global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_d75a45eb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MobEffectInstance((nint)handle);
+    }
+
     public static MobEffectInstance Create(uint id, global::Hosihikari.Bindings.Bedrock.Interop.EffectDuration duration)
     {
         var handle = NativeMethods.TablePtr->C2.hs_create_443f34ef(id, (void*)duration.Handle);

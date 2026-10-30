@@ -49,6 +49,17 @@ public sealed unsafe partial class ILevel : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->C1.hs_method_ac7fdc43((void*)__hosihikari_shim_handle);
     }
 
+    public static ILevel Create(global::Hosihikari.Bindings.Bedrock.Interop.ILevel arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_356eb67d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ILevel((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint _cerealContext() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

@@ -65,6 +65,17 @@ public sealed unsafe partial class ScriptItemCustomComponentReloadVersionError :
         return new ScriptItemCustomComponentReloadVersionError((nint)handle);
     }
 
+    public static ScriptItemCustomComponentReloadVersionError Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemCustomComponentReloadVersionError arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_52e8f19f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptItemCustomComponentReloadVersionError((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ErrorBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ErrorBinding((nint)NativeMethods.TablePtr->C3.hs_method_c345eb91());

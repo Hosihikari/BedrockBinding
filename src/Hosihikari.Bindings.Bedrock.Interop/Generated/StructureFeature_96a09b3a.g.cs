@@ -38,9 +38,10 @@ public sealed unsafe partial class StructureFeature : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(uint seed, nint structureFeatureType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(uint seed, global::Hosihikari.Bindings.Bedrock.Interop.HashedString structureFeatureType)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_aa28492b((void*)__hosihikari_shim_handle, seed, (void*)structureFeatureType.Handle);
+    }
 
     public void _dtor()
     {
@@ -86,9 +87,27 @@ public sealed unsafe partial class StructureFeature : global::System.IDisposable
         return new StructureFeature((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static StructureFeature Create(uint seed, nint structureFeatureType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static StructureFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.StructureFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_9f38461a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureFeature((nint)handle);
+    }
+
+    public static StructureFeature Create(uint seed, global::Hosihikari.Bindings.Bedrock.Interop.HashedString structureFeatureType)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_deb6ec7c(seed, (void*)structureFeatureType.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureFeature((nint)handle);
+    }
 
     public void createBlueprints(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos cp, global::Hosihikari.Bindings.Bedrock.Interop.BiomeSource biomeSource, global::Hosihikari.Bindings.Bedrock.Interop.IPreliminarySurfaceProvider preliminarySurfaceLevel)
     {

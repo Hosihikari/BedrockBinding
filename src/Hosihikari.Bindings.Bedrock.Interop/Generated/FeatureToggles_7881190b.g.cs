@@ -80,6 +80,17 @@ public sealed unsafe partial class FeatureToggles : global::System.IDisposable
         return new FeatureToggles((nint)handle);
     }
 
+    public static FeatureToggles Create(global::Hosihikari.Bindings.Bedrock.Interop.FeatureToggles arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_2980d7eb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FeatureToggles((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.", false)]
     public nint _getLockIfInGameOrOptionExpectationsNotMetLockCallback(nint expectedDisabledOptions, nint expectedEnabledOptions) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.");

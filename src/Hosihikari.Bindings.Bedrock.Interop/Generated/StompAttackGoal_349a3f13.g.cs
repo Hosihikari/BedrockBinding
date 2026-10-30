@@ -205,6 +205,17 @@ public sealed unsafe partial class StompAttackGoal : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_da513e71((void*)__hosihikari_shim_handle);
     }
 
+    public static StompAttackGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.StompAttackGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_9ef63ad6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StompAttackGoal((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public void appendDebugInfo(nint str) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");

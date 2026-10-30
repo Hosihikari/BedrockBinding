@@ -43,6 +43,17 @@ public sealed unsafe partial class StructureBlockPalette : global::System.IDispo
         NativeMethods.TablePtr->C3.hs_method_f6800bcd((void*)__hosihikari_shim_handle);
     }
 
+    public static StructureBlockPalette Create(global::Hosihikari.Bindings.Bedrock.Interop.StructureBlockPalette arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_3567ad66((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureBlockPalette((nint)handle);
+    }
+
     public int _parseBlockPalette(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
         return NativeMethods.TablePtr->C3.hs_method_bca27e24((void*)__hosihikari_shim_handle, (void*)tag.Handle);
@@ -63,9 +74,10 @@ public sealed unsafe partial class StructureBlockPalette : global::System.IDispo
         NativeMethods.TablePtr->C3.hs_method_ac989103((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void addBlockPositionData(ulong id, nint blockPositionData) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void addBlockPositionData(ulong id, global::Hosihikari.Bindings.Bedrock.Interop.StructureBlockPalette_Nested.BlockPositionData blockPositionData)
+    {
+        NativeMethods.TablePtr->C3.hs_method_14ae33a7((void*)__hosihikari_shim_handle, id, (void*)blockPositionData.Handle);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.StructureBlockPalette clone()
     {

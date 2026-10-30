@@ -67,6 +67,17 @@ public sealed unsafe partial class VinesFeature : global::System.IDisposable
         return NativeMethods.TablePtr->C4.hs_method_e5d8d934((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
     }
 
+    public static VinesFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.VinesFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_d5e19000((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VinesFeature((nint)handle);
+    }
+
     public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         return NativeMethods.TablePtr->C4.hs_method_2a358518((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;

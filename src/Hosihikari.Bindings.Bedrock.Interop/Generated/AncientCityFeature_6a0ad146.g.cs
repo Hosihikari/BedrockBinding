@@ -75,6 +75,17 @@ public sealed unsafe partial class AncientCityFeature : global::System.IDisposab
         return new AncientCityFeature((nint)handle);
     }
 
+    public static AncientCityFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.AncientCityFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_d2a7324c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AncientCityFeature((nint)handle);
+    }
+
     public static AncientCityFeature Create(uint seed, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion arg1)
     {
         var handle = NativeMethods.TablePtr->C0.hs_create_b59b5673(seed, (void*)arg1.Handle);

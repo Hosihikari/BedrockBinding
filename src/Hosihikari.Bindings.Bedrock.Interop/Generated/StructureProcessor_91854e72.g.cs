@@ -76,6 +76,17 @@ public sealed unsafe partial class StructureProcessor : global::System.IDisposab
     public static nint Rule(nint rules) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::not_null<std::shared_ptr<br::worldgen::StructureProcessor>>' requires --link-carrier or --virtual-dispatch.");
 
+    public static StructureProcessor Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructureProcessor arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_4ddfb8af((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureProcessor((nint)handle);
+    }
+
     public void appendMetadataKey(global::Hosihikari.Bindings.Bedrock.Interop.Util.XXHash hash)
     {
         NativeMethods.TablePtr->C4.hs_method_99de623c((void*)__hosihikari_shim_handle, (void*)hash.Handle);

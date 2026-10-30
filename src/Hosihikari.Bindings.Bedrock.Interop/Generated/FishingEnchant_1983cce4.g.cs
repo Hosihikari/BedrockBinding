@@ -107,6 +107,17 @@ public sealed unsafe partial class FishingEnchant : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_66696579((void*)__hosihikari_shim_handle, level);
     }
 
+    public static FishingEnchant Create(global::Hosihikari.Bindings.Bedrock.Interop.FishingEnchant arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_69d79f4b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FishingEnchant((nint)handle);
+    }
+
     public int getMaxCost(int level)
     {
         return NativeMethods.TablePtr->C1.hs_method_f59cdd1a((void*)__hosihikari_shim_handle, level);

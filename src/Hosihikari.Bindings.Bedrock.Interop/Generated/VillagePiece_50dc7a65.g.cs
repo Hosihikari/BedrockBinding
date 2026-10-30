@@ -153,6 +153,17 @@ public sealed unsafe partial class VillagePiece : global::System.IDisposable
         return NativeMethods.TablePtr->C4.hs_method_26470877((void*)__hosihikari_shim_handle);
     }
 
+    public static VillagePiece Create(global::Hosihikari.Bindings.Bedrock.Interop.VillagePiece arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_e00a13a3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VillagePiece((nint)handle);
+    }
+
     public bool _needsPostProcessing(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
     {
         return NativeMethods.TablePtr->C4.hs_method_63c742d7((void*)__hosihikari_shim_handle, (void*)region.Handle) != 0;

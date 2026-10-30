@@ -42,6 +42,17 @@ public sealed unsafe partial class IFileChunkUploader : global::System.IDisposab
     public void _uploadStream(nint file, ulong streamSize, nint boundary, nint onCompleteCallback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
+    public static IFileChunkUploader Create(global::Hosihikari.Bindings.Bedrock.Interop.IFileChunkUploader arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_9c6f7eb6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IFileChunkUploader((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool canCancelUpload(nint file) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

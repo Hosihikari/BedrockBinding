@@ -283,6 +283,17 @@ public sealed unsafe partial class RakPeerInterface : global::System.IDisposable
     public void PushBackPacket(nint packet, bool pushAtHead) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static RakPeerInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakPeerInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_af03105b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RakPeerInterface((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint Receive() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

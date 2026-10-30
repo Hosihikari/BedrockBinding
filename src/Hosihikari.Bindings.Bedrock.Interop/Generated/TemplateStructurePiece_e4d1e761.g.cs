@@ -97,6 +97,17 @@ public sealed unsafe partial class TemplateStructurePiece : global::System.IDisp
         return new TemplateStructurePiece((nint)handle);
     }
 
+    public static TemplateStructurePiece Create(global::Hosihikari.Bindings.Bedrock.Interop.TemplateStructurePiece arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_49aad12b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TemplateStructurePiece((nint)handle);
+    }
+
     public static TemplateStructurePiece Create(int depth)
     {
         var handle = NativeMethods.TablePtr->C3.hs_create_b1790337(depth);

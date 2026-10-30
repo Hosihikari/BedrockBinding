@@ -40,32 +40,32 @@ public sealed unsafe partial class Interaction : global::System.IDisposable
 
     public byte mInteractedEntityColor
     {
-        get => NativeMethods.TablePtr->C1.hs_get_a68bb0e4((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_a68bb0e4((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_a68bb0e4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_a68bb0e4((void*)__hosihikari_shim_handle, value);
     }
 
     public long mInteractedEntityId
     {
-        get => NativeMethods.TablePtr->C1.hs_get_c067c178((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_c067c178((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_c067c178((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_c067c178((void*)__hosihikari_shim_handle, value);
     }
 
     public int mInteractedEntityType
     {
-        get => NativeMethods.TablePtr->C1.hs_get_4a1d3aaf((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_4a1d3aaf((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_4a1d3aaf((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_4a1d3aaf((void*)__hosihikari_shim_handle, value);
     }
 
     public int mInteractedEntityVariant
     {
-        get => NativeMethods.TablePtr->C1.hs_get_0fdfd46b((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_0fdfd46b((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_0fdfd46b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_0fdfd46b((void*)__hosihikari_shim_handle, value);
     }
 
     public byte mInteractionType
     {
-        get => NativeMethods.TablePtr->C1.hs_get_7e439bc7((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_7e439bc7((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_7e439bc7((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_7e439bc7((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -74,7 +74,7 @@ public sealed unsafe partial class Interaction : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_21384de4((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_21384de4((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

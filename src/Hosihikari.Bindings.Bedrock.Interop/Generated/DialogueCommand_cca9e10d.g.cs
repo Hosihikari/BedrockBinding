@@ -72,6 +72,17 @@ public sealed unsafe partial class DialogueCommand : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_385b9ff1((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static DialogueCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.DialogueCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_3ab94114((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DialogueCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C1.hs_method_bf30cdab((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

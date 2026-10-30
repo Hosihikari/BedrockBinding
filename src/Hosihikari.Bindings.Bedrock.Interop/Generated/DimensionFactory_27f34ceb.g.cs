@@ -71,6 +71,17 @@ public sealed unsafe partial class DimensionFactory : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static DimensionFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.DimensionFactory arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_3a303bcf((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DimensionFactory((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.OwnerPtr_Dimension_ create(string dimensionName)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(dimensionName);

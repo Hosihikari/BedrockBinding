@@ -59,6 +59,17 @@ public sealed unsafe partial class ActorAnimationPlayer : global::System.IDispos
     public void _visit(nint dispatcher) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
+    public static ActorAnimationPlayer Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationPlayer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_9ef4ab11((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorAnimationPlayer((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void applyToPose(nint applyContext, nint renderParams, nint destBoneOrientationMap, float blendWeight) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

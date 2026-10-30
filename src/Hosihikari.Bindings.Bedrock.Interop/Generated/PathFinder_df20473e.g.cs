@@ -75,6 +75,17 @@ public sealed unsafe partial class PathFinder : global::System.IDisposable
         return new PathFinder((nint)handle);
     }
 
+    public static PathFinder Create(global::Hosihikari.Bindings.Bedrock.Interop.PathFinder arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_19641432((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PathFinder((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public bool _checkBlockAndNeighborsProperty(nint data, nint pos, nint block, nint testProperty, int radius, nint breakBlocksComponent, nint extraCondition) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");

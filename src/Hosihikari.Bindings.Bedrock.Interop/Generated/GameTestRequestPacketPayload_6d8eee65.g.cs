@@ -43,6 +43,17 @@ public sealed unsafe partial class GameTestRequestPacketPayload : global::System
         NativeMethods.TablePtr->C1.hs_method_f7ba07f3((void*)__hosihikari_shim_handle);
     }
 
+    public static GameTestRequestPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.GameTestRequestPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_9e20bb71((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameTestRequestPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mParams_Address
     {

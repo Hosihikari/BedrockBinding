@@ -72,6 +72,17 @@ public sealed unsafe partial class DecoratedPotRecipe : global::System.IDisposab
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static DecoratedPotRecipe Create(global::Hosihikari.Bindings.Bedrock.Interop.DecoratedPotRecipe arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_5822358f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DecoratedPotRecipe((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID ID()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->C1.hs_method_904c788e(), false);

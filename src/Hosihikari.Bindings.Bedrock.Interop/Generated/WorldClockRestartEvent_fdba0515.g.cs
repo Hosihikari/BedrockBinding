@@ -38,6 +38,17 @@ public sealed unsafe partial class WorldClockRestartEvent : global::System.IDisp
         return __hs_handle;
     }
 
+    public static WorldClockRestartEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.WorldClockRestartEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_e5363927((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WorldClockRestartEvent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mClock_Address
     {

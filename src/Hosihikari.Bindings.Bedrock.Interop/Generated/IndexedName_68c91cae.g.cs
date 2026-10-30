@@ -40,14 +40,14 @@ public sealed unsafe partial class IndexedName : global::System.IDisposable
 
     public ulong mBlockIndex
     {
-        get => NativeMethods.TablePtr->C1.hs_get_21bc4d65((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_21bc4d65((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_21bc4d65((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_21bc4d65((void*)__hosihikari_shim_handle, value);
     }
 
     public ulong mGroupIndex
     {
-        get => NativeMethods.TablePtr->C1.hs_get_3cd5ea1f((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_3cd5ea1f((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_3cd5ea1f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_3cd5ea1f((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -56,7 +56,7 @@ public sealed unsafe partial class IndexedName : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_68c91cae((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_68c91cae((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

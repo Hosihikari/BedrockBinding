@@ -38,6 +38,17 @@ public sealed unsafe partial class ItemMenuCategory : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ItemMenuCategory Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_20.ItemMenuCategory arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_415c6ae4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemMenuCategory((nint)handle);
+    }
+
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C3.hs_method_f2caaf13((void*)ctx.Handle);

@@ -38,6 +38,17 @@ public sealed unsafe partial class DeferredSubscriptionHub : global::System.IDis
         return __hs_handle;
     }
 
+    public static DeferredSubscriptionHub Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PubSub.DeferredSubscriptionHub arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_48902fe4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DeferredSubscriptionHub((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void _enqueue(nint fn, nint at, nint group) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

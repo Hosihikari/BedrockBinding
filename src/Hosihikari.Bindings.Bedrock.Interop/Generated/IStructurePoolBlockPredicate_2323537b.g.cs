@@ -49,6 +49,17 @@ public sealed unsafe partial class IStructurePoolBlockPredicate : global::System
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static IStructurePoolBlockPredicate Create(global::Hosihikari.Bindings.Bedrock.Interop.IStructurePoolBlockPredicate arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_6e777da2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IStructurePoolBlockPredicate((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void appendMetadataKey(nint hash) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

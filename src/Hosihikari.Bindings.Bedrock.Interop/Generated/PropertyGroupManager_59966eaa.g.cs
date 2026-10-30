@@ -43,6 +43,17 @@ public sealed unsafe partial class PropertyGroupManager : global::System.IDispos
         NativeMethods.TablePtr->C2.hs_method_3d5f01b9((void*)__hosihikari_shim_handle);
     }
 
+    public static PropertyGroupManager Create(global::Hosihikari.Bindings.Bedrock.Interop.PropertyGroupManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_78a73df5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PropertyGroupManager((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag getActorPropertyDataTag(global::Hosihikari.Bindings.Bedrock.Interop.HashedString actorCanonicalName)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag((nint)NativeMethods.TablePtr->C2.hs_method_d8837881((void*)__hosihikari_shim_handle, (void*)actorCanonicalName.Handle));

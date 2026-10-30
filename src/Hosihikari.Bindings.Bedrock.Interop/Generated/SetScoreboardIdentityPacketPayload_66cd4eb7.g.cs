@@ -43,6 +43,17 @@ public sealed unsafe partial class SetScoreboardIdentityPacketPayload : global::
         NativeMethods.TablePtr->C3.hs_method_7d64ceb5((void*)__hosihikari_shim_handle);
     }
 
+    public static SetScoreboardIdentityPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.SetScoreboardIdentityPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_65a23ced((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SetScoreboardIdentityPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mIdentityInfo_Address
     {

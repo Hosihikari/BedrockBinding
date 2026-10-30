@@ -44,6 +44,17 @@ public sealed unsafe partial class StorageItemComponent : global::System.IDispos
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static StorageItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_21_60.StorageItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_4b07e830((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StorageItemComponent((nint)handle);
+    }
+
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C3.hs_method_d46853b9((void*)ctx.Handle);

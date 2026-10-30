@@ -43,6 +43,17 @@ public sealed unsafe partial class ScriptPluginStats : global::System.IDisposabl
         NativeMethods.TablePtr->C3.hs_method_4ccd76b9((void*)__hosihikari_shim_handle);
     }
 
+    public static ScriptPluginStats Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleDebugUtilities.ScriptPluginStats arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_635f1f76((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptPluginStats((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding((nint)NativeMethods.TablePtr->C3.hs_method_337b4d99());

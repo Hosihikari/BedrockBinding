@@ -308,6 +308,17 @@ public sealed unsafe partial class StructureBlock : global::System.IDisposable
         return new StructureBlock((nint)handle);
     }
 
+    public static StructureBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.StructureBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a716065e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureBlock((nint)handle);
+    }
+
     public static StructureBlock Create(string nameId, int id)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);

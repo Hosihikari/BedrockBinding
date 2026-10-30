@@ -38,6 +38,17 @@ public sealed unsafe partial class ActorBlockSyncMessage : global::System.IDispo
         return __hs_handle;
     }
 
+    public static ActorBlockSyncMessage Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorBlockSyncMessage arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_93022f32((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorBlockSyncMessage((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mEntityUniqueID_Address
     {

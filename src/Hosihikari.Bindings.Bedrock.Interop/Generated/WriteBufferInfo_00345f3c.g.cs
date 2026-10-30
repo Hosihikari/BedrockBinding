@@ -40,7 +40,7 @@ public sealed unsafe partial class WriteBufferInfo : global::System.IDisposable
 
     public static WriteBufferInfo Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_c3ddc406();
+        var handle = NativeMethods.TablePtr->C1.hs_create_c3ddc406();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class WriteBufferInfo : global::System.IDisposable
 
     public static WriteBufferInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileImpl_Nested.WriteBufferInfo arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_0ef9e3de((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_0ef9e3de((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,18 +63,18 @@ public sealed unsafe partial class WriteBufferInfo : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk52e0bb_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_f4727ffc((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_f4727ffc((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkec2ac3_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_3287acb4((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_3287acb4((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.FileImpl_Nested.WriteBufferInfo operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileImpl_Nested.WriteBufferInfo arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileImpl_Nested.WriteBufferInfo((nint)NativeMethods.TablePtr->C0.hs_method_0b9a4701((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileImpl_Nested.WriteBufferInfo((nint)NativeMethods.TablePtr->C1.hs_method_0b9a4701((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -83,7 +83,7 @@ public sealed unsafe partial class WriteBufferInfo : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_00345f3c((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_00345f3c((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

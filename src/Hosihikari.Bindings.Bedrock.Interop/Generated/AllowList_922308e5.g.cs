@@ -63,6 +63,17 @@ public sealed unsafe partial class AllowList : global::System.IDisposable
         return new AllowList((nint)handle);
     }
 
+    public static AllowList Create(global::Hosihikari.Bindings.Bedrock.Interop.AllowList arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5e91fe9f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AllowList((nint)handle);
+    }
+
     public void deserialize(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value root)
     {
         NativeMethods.TablePtr->C0.hs_method_73932be9((void*)__hosihikari_shim_handle, (void*)root.Handle);

@@ -746,9 +746,10 @@ public sealed unsafe partial class WitherBoss : global::System.IDisposable
         return NativeMethods.TablePtr->C4.hs_method_aa783b94((void*)__hosihikari_shim_handle, (void*)effect.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public float _causeFallDamageToActor(float distance, float multiplier, nint source) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public float _causeFallDamageToActor(float distance, float multiplier, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_7e40cb34((void*)__hosihikari_shim_handle, distance, multiplier, (void*)source.Handle);
+    }
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup? definitions, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier definitionName, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entityContext)
     {
@@ -892,9 +893,10 @@ public sealed unsafe partial class WitherBoss : global::System.IDisposable
         return NativeMethods.TablePtr->C4.hs_method_415ac16e((void*)block.Handle, attackType) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public float causeFallDamageToActor(float distance, float multiplier, nint source) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public float causeFallDamageToActor(float distance, float multiplier, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_1b7552e6((void*)__hosihikari_shim_handle, distance, multiplier, (void*)source.Handle);
+    }
 
     public void die(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source)
     {

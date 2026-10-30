@@ -38,34 +38,45 @@ public sealed unsafe partial class LevelCache : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static LevelCache Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelCache arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_234cb891((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelCache((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint data_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_88e9b15e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_88e9b15e((void*)__hosihikari_shim_handle);
     }
 
     public bool dirtySummary
     {
-        get => NativeMethods.TablePtr->C1.hs_get_681d884d((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_681d884d((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_681d884d((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_681d884d((void*)__hosihikari_shim_handle, value);
     }
 
     public bool isLevelDataInvalid
     {
-        get => NativeMethods.TablePtr->C1.hs_get_8aea64ce((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_8aea64ce((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_8aea64ce((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_8aea64ce((void*)__hosihikari_shim_handle, value);
     }
 
     public bool isPartiallyCopied
     {
-        get => NativeMethods.TablePtr->C1.hs_get_3ba333b8((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_3ba333b8((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_3ba333b8((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_3ba333b8((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint summary_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_0718c64d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0718c64d((void*)__hosihikari_shim_handle);
     }
 
 
@@ -75,7 +86,7 @@ public sealed unsafe partial class LevelCache : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_c2326180((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_c2326180((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

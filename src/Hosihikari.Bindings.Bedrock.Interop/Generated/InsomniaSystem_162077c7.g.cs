@@ -43,6 +43,17 @@ public sealed unsafe partial class InsomniaSystem : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_0a0ce5c6((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static InsomniaSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.InsomniaSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_2a5c9f9e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InsomniaSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C1.hs_method_f1135a53((void*)__hosihikari_shim_handle, (void*)registry.Handle);

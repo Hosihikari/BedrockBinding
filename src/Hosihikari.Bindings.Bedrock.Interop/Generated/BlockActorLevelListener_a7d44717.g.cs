@@ -57,6 +57,17 @@ public sealed unsafe partial class BlockActorLevelListener : global::System.IDis
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static BlockActorLevelListener Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockActorLevelListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_a2e84823((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockActorLevelListener((nint)handle);
+    }
+
     public void onChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource source, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc)
     {
         NativeMethods.TablePtr->C0.hs_method_1850639b((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)lc.Handle);

@@ -43,6 +43,17 @@ public sealed unsafe partial class ExplodeSystem : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_7e916281((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static ExplodeSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.ExplodeSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_1372b4ad((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ExplodeSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C1.hs_method_5560b7ad((void*)__hosihikari_shim_handle, (void*)registry.Handle);

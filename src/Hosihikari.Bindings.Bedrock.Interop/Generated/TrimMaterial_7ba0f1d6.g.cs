@@ -40,17 +40,17 @@ public sealed unsafe partial class TrimMaterial : global::System.IDisposable
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.TrimMaterial arg0)
     {
-        return (nint)NativeMethods.TablePtr->C3.hs_method_ed7786b1((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C4.hs_method_ed7786b1((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C3.hs_method_eae7a70d((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_eae7a70d((void*)__hosihikari_shim_handle);
     }
 
     public static TrimMaterial Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_9a4e817f();
+        var handle = NativeMethods.TablePtr->C4.hs_create_9a4e817f();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -61,7 +61,7 @@ public sealed unsafe partial class TrimMaterial : global::System.IDisposable
 
     public static TrimMaterial Create(global::Hosihikari.Bindings.Bedrock.Interop.TrimMaterial arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_4111da0f((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_4111da0f((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -73,24 +73,24 @@ public sealed unsafe partial class TrimMaterial : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mColor_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_4bbaf926((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_4bbaf926((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mItemName_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_c188d187((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_c188d187((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMaterialId_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_7dc5bc29((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_7dc5bc29((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.TrimMaterial operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.TrimMaterial arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.TrimMaterial((nint)NativeMethods.TablePtr->C3.hs_method_22ac01ee((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TrimMaterial((nint)NativeMethods.TablePtr->C4.hs_method_22ac01ee((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
@@ -100,7 +100,7 @@ public sealed unsafe partial class TrimMaterial : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_7ba0f1d6((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_7ba0f1d6((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

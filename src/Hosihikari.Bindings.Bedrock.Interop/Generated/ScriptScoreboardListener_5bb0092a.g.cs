@@ -62,6 +62,17 @@ public sealed unsafe partial class ScriptScoreboardListener : global::System.IDi
         return NativeMethods.TablePtr->C3.hs_method_0be5c684((void*)__hosihikari_shim_handle, (void*)id.Handle);
     }
 
+    public static ScriptScoreboardListener Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptScoreboardListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_978c63b3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptScoreboardListener((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mScoreboardHandle_Address
     {

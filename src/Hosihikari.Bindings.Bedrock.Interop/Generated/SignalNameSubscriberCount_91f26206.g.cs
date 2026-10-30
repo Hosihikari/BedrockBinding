@@ -38,6 +38,17 @@ public sealed unsafe partial class SignalNameSubscriberCount : global::System.ID
         return __hs_handle;
     }
 
+    public static SignalNameSubscriberCount Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptSystemBeforeEvents_Nested.SignalNameSubscriberCount arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_7a6d2e10((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SignalNameSubscriberCount((nint)handle);
+    }
+
     public ulong count
     {
         get => NativeMethods.TablePtr->C3.hs_get_9129eab2((void*)__hosihikari_shim_handle);

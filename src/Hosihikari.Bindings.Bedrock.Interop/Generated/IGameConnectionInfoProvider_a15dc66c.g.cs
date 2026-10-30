@@ -38,6 +38,17 @@ public sealed unsafe partial class IGameConnectionInfoProvider : global::System.
         return __hs_handle;
     }
 
+    public static IGameConnectionInfoProvider Create(global::Hosihikari.Bindings.Bedrock.Interop.Social.IGameConnectionInfoProvider arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_32f8cb7b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IGameConnectionInfoProvider((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getConnectionInfo() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

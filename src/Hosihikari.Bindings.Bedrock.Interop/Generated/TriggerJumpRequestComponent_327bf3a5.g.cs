@@ -38,10 +38,21 @@ public sealed unsafe partial class TriggerJumpRequestComponent : global::System.
         return __hs_handle;
     }
 
+    public static TriggerJumpRequestComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.TriggerJumpRequestComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_ccfd69b4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TriggerJumpRequestComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mJumpPreventionResult_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_16f60ecf((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_16f60ecf((void*)__hosihikari_shim_handle);
     }
 
 
@@ -51,7 +62,7 @@ public sealed unsafe partial class TriggerJumpRequestComponent : global::System.
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_327bf3a5((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_327bf3a5((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

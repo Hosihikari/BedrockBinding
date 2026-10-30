@@ -53,6 +53,17 @@ public sealed unsafe partial class EnchantWithLevelsFunction : global::System.ID
         return NativeMethods.TablePtr->C1.hs_method_42091546((void*)__hosihikari_shim_handle);
     }
 
+    public static EnchantWithLevelsFunction Create(global::Hosihikari.Bindings.Bedrock.Interop.EnchantWithLevelsFunction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_88fc5c75((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EnchantWithLevelsFunction((nint)handle);
+    }
+
     public int applyPreVersion(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext arg2, global::Hosihikari.Bindings.Bedrock.Interop.Trade trade)
     {
         return NativeMethods.TablePtr->C1.hs_method_393910cc((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)random.Handle, (void*)arg2.Handle, (void*)trade.Handle);

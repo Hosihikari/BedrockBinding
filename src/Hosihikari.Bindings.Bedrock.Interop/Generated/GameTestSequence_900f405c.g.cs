@@ -103,9 +103,10 @@ public sealed unsafe partial class GameTestSequence : global::System.IDisposable
     public nint thenExecuteFor(int tickCount, nint fn) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::optional<gametest::GameTestError>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void thenFail(nint error) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void thenFail(global::Hosihikari.Bindings.Bedrock.Interop.gametest.GameTestError error)
+    {
+        NativeMethods.TablePtr->C4.hs_method_ac421595((void*)__hosihikari_shim_handle, (void*)error.Handle);
+    }
 
     public void thenSucceed()
     {

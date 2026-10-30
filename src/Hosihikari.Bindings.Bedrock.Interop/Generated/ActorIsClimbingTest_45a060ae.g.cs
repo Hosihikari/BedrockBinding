@@ -49,6 +49,17 @@ public sealed unsafe partial class ActorIsClimbingTest : global::System.IDisposa
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static ActorIsClimbingTest Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorIsClimbingTest arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_bbf1d736((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorIsClimbingTest((nint)handle);
+    }
+
     public bool evaluate(nint context)
     {
         return NativeMethods.TablePtr->C0.hs_method_4d03c9a9((void*)__hosihikari_shim_handle, (void*)context) != 0;

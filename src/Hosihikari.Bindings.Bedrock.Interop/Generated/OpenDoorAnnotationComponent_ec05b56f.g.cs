@@ -38,6 +38,17 @@ public sealed unsafe partial class OpenDoorAnnotationComponent : global::System.
         return __hs_handle;
     }
 
+    public static OpenDoorAnnotationComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.OpenDoorAnnotationComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_34279abd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OpenDoorAnnotationComponent((nint)handle);
+    }
+
     public void _cleanUp(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
         NativeMethods.TablePtr->C2.hs_method_338efd59((void*)__hosihikari_shim_handle, (void*)mob.Handle);

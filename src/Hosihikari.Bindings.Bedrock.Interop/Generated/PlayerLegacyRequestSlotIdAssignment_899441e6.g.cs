@@ -38,6 +38,17 @@ public sealed unsafe partial class PlayerLegacyRequestSlotIdAssignment : global:
         return __hs_handle;
     }
 
+    public static PlayerLegacyRequestSlotIdAssignment Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionHandler_Nested.PlayerLegacyRequestSlotIdAssignment arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_bb093de0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerLegacyRequestSlotIdAssignment((nint)handle);
+    }
+
     public byte mContainerName
     {
         get => NativeMethods.TablePtr->C1.hs_get_79ca14eb((void*)__hosihikari_shim_handle);

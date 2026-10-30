@@ -38,6 +38,17 @@ public sealed unsafe partial class StructureInstance : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static StructureInstance Create(global::Hosihikari.Bindings.Bedrock.Interop.StructureMetadata.StructureInstance arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a2364a00((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureInstance((nint)handle);
+    }
+
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C3.hs_method_d1bc9de5((void*)ctx.Handle);

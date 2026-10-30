@@ -38,6 +38,17 @@ public sealed unsafe partial class ILevelChunkSaveManagerProxy : global::System.
         return __hs_handle;
     }
 
+    public static ILevelChunkSaveManagerProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.ILevelChunkSaveManagerProxy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_2c0a43a8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ILevelChunkSaveManagerProxy((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool doesLevelChunkNeedSaving(nint levelChunk, int minTicksBeforeLiveSave, int maxTicksBeforeLiveSave) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

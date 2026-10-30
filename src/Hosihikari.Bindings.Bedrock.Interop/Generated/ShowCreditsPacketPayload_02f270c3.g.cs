@@ -38,6 +38,17 @@ public sealed unsafe partial class ShowCreditsPacketPayload : global::System.IDi
         return __hs_handle;
     }
 
+    public static ShowCreditsPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.ShowCreditsPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_95e24f49((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ShowCreditsPacketPayload((nint)handle);
+    }
+
     public int mCreditsState
     {
         get => NativeMethods.TablePtr->C3.hs_get_a35d88ff((void*)__hosihikari_shim_handle);

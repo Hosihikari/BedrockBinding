@@ -38,6 +38,17 @@ public sealed unsafe partial class ItemDeprecatedComponentData : global::System.
         return __hs_handle;
     }
 
+    public static ItemDeprecatedComponentData Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_30.ItemDeprecatedComponentData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c753f027((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemDeprecatedComponentData((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint legacyOnConsumeTriggerItemComponent_Address
     {

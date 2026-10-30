@@ -73,6 +73,17 @@ public sealed unsafe partial class BlockLightDampeningDescription : global::Syst
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static BlockLightDampeningDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockLightDampeningDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_fb5c6aac((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockLightDampeningDescription((nint)handle);
+    }
+
     public static string NameID()
     {
         var __hs_view = NativeMethods.TablePtr->C0.hs_method_654587e6();

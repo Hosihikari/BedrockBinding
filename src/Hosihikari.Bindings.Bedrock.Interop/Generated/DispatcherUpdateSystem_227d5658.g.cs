@@ -43,6 +43,17 @@ public sealed unsafe partial class DispatcherUpdateSystem : global::System.IDisp
         NativeMethods.TablePtr->C1.hs_method_dd1ea462((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static DispatcherUpdateSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.DispatcherUpdateSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_f496cf6c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DispatcherUpdateSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C1.hs_method_e4748938((void*)__hosihikari_shim_handle, (void*)registry.Handle);

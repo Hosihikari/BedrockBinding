@@ -38,6 +38,17 @@ public sealed unsafe partial class Noises : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Noises Create(global::Hosihikari.Bindings.Bedrock.Interop.OverworldGeneratorMultinoise_Nested.Noises arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_fff452a9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Noises((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mAquiferNoises_Address
     {

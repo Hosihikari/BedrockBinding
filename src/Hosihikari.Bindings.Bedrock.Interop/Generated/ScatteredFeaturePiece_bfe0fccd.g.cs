@@ -54,6 +54,17 @@ public sealed unsafe partial class ScatteredFeaturePiece : global::System.IDispo
         return new ScatteredFeaturePiece((nint)handle);
     }
 
+    public static ScatteredFeaturePiece Create(global::Hosihikari.Bindings.Bedrock.Interop.ScatteredFeaturePiece arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_72f758a4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScatteredFeaturePiece((nint)handle);
+    }
+
     public static ScatteredFeaturePiece Create(int west, int floor, int north, int width, int height, int depth)
     {
         var handle = NativeMethods.TablePtr->C3.hs_create_780d92fc(west, floor, north, width, height, depth);

@@ -168,6 +168,17 @@ public sealed unsafe partial class CraftingContainer : global::System.IDisposabl
         return new CraftingContainer((nint)handle);
     }
 
+    public static CraftingContainer Create(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_69f378e3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CraftingContainer((nint)handle);
+    }
+
     public static CraftingContainer Create(int w, int h)
     {
         var handle = NativeMethods.TablePtr->C1.hs_create_c478fa85(w, h);

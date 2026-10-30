@@ -38,6 +38,17 @@ public sealed unsafe partial class BiomeIdType : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static BiomeIdType Create(global::Hosihikari.Bindings.Bedrock.Interop.BiomeIdType arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_d51cbb44((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BiomeIdType((nint)handle);
+    }
+
     public ushort mValue
     {
         get => NativeMethods.TablePtr->C0.hs_get_a29f27d4((void*)__hosihikari_shim_handle);

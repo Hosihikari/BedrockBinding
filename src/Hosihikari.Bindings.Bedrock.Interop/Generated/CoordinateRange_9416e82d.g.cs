@@ -43,6 +43,17 @@ public sealed unsafe partial class CoordinateRange : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_53cec4e7((void*)__hosihikari_shim_handle);
     }
 
+    public static CoordinateRange Create(global::Hosihikari.Bindings.Bedrock.Interop.ScatterParams_Nested.CoordinateRange arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_9e76804d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CoordinateRange((nint)handle);
+    }
+
     public int _eval(int evaluatedMin, int evaluatedMax, nint stepIndex, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         return NativeMethods.TablePtr->C3.hs_method_235b750c((void*)__hosihikari_shim_handle, evaluatedMin, evaluatedMax, (void*)stepIndex, (void*)random.Handle);

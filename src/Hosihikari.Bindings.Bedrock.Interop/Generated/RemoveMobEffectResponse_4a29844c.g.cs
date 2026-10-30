@@ -40,17 +40,17 @@ public sealed unsafe partial class RemoveMobEffectResponse : global::System.IDis
 
     public void _buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root, global::Hosihikari.Bindings.Bedrock.Interop.Factory_EventResponse_ factory)
     {
-        NativeMethods.TablePtr->C2.hs_method_bee55b7b((void*)__hosihikari_shim_handle, root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)factory.Handle);
+        NativeMethods.TablePtr->C3.hs_method_bee55b7b((void*)__hosihikari_shim_handle, root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)factory.Handle);
     }
 
     public void _executeAction(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams @params)
     {
-        NativeMethods.TablePtr->C2.hs_method_78992538((void*)__hosihikari_shim_handle, (void*)@params.Handle);
+        NativeMethods.TablePtr->C3.hs_method_78992538((void*)__hosihikari_shim_handle, (void*)@params.Handle);
     }
 
     public string _getName()
     {
-        var __hs_view = NativeMethods.TablePtr->C2.hs_method_2dfc3123((void*)__hosihikari_shim_handle);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_2dfc3123((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -60,13 +60,13 @@ public sealed unsafe partial class RemoveMobEffectResponse : global::System.IDis
 
     public static string NameID()
     {
-        var __hs_view = NativeMethods.TablePtr->C2.hs_method_8e66d35f();
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_8e66d35f();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static RemoveMobEffectResponse Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_84420b11();
+        var handle = NativeMethods.TablePtr->C3.hs_create_84420b11();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -77,7 +77,7 @@ public sealed unsafe partial class RemoveMobEffectResponse : global::System.IDis
 
     public static RemoveMobEffectResponse Create(global::Hosihikari.Bindings.Bedrock.Interop.RemoveMobEffectResponse arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_3d1603a6((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_3d1603a6((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -88,35 +88,35 @@ public sealed unsafe partial class RemoveMobEffectResponse : global::System.IDis
 
     public void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root, global::Hosihikari.Bindings.Bedrock.Interop.Factory_EventResponse_ factory)
     {
-        NativeMethods.TablePtr->C2.hs_method_372be16e((void*)__hosihikari_shim_handle, root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)factory.Handle);
+        NativeMethods.TablePtr->C3.hs_method_372be16e((void*)__hosihikari_shim_handle, root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)factory.Handle);
     }
 
     public void executeAction(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams @params)
     {
-        NativeMethods.TablePtr->C2.hs_method_bf4b5957((void*)__hosihikari_shim_handle, (void*)@params.Handle);
+        NativeMethods.TablePtr->C3.hs_method_bf4b5957((void*)__hosihikari_shim_handle, (void*)@params.Handle);
     }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->C2.hs_method_d50bf3fa((void*)__hosihikari_shim_handle);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_d50bf3fa((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk32dc0f_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_ff1149bd((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ff1149bd((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkdc7dd7_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_28a69642((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_28a69642((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.RemoveMobEffectResponse operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RemoveMobEffectResponse arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.RemoveMobEffectResponse((nint)NativeMethods.TablePtr->C2.hs_method_c1556329((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RemoveMobEffectResponse((nint)NativeMethods.TablePtr->C3.hs_method_c1556329((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
@@ -126,7 +126,7 @@ public sealed unsafe partial class RemoveMobEffectResponse : global::System.IDis
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_4a29844c((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_4a29844c((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -60,6 +60,17 @@ public sealed unsafe partial class OnFallOnTrigger : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static OnFallOnTrigger Create(global::Hosihikari.Bindings.Bedrock.Interop.OnFallOnTrigger arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_e47760fb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OnFallOnTrigger((nint)handle);
+    }
+
     public float mMinimumFallDistance
     {
         get => NativeMethods.TablePtr->C2.hs_get_8abfe2af((void*)__hosihikari_shim_handle);

@@ -79,6 +79,17 @@ public sealed unsafe partial class ItemUsedOnEvent : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_47b9ab25((void*)__hosihikari_shim_handle);
     }
 
+    public static ItemUsedOnEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemUsedOnEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d20701e4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemUsedOnEvent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mItemAfterUse_Address
     {

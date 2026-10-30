@@ -265,9 +265,10 @@ public sealed unsafe partial class ShulkerBoxBlock : global::System.IDisposable
         set => NativeMethods.TablePtr->C3.hs_set_958a73e4((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public bool _breaksFallingBlocks(nint block, nint version) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public bool _breaksFallingBlocks(global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion version)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_0727719a((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)version.Handle) != 0;
+    }
 
     public bool _canProvideSupport(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, byte arg1, int arg2)
     {
@@ -339,6 +340,17 @@ public sealed unsafe partial class ShulkerBoxBlock : global::System.IDisposable
         return new ShulkerBoxBlock((nint)handle);
     }
 
+    public static ShulkerBoxBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.ShulkerBoxBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_4f15ffe8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ShulkerBoxBlock((nint)handle);
+    }
+
     public static ShulkerBoxBlock Create(string nameId, int id)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);
@@ -369,9 +381,10 @@ public sealed unsafe partial class ShulkerBoxBlock : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_5ef7f37c((void*)region.Handle, (void*)pos.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public bool breaksFallingBlocks(nint block, nint version) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public bool breaksFallingBlocks(global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion version)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_8f5feac9((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)version.Handle) != 0;
+    }
 
     public bool canProvideSupport(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, byte arg1, int arg2)
     {

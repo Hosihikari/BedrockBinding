@@ -38,6 +38,17 @@ public sealed unsafe partial class AttributeCollection : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static AttributeCollection Create(global::Hosihikari.Bindings.Bedrock.Interop.AttributeCollection arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_73228e9c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AttributeCollection((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.Attribute getAttribute(global::Hosihikari.Bindings.Bedrock.Interop.HashedString name)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Attribute((nint)NativeMethods.TablePtr->C0.hs_method_ad5a04b5((void*)__hosihikari_shim_handle, (void*)name.Handle), false);

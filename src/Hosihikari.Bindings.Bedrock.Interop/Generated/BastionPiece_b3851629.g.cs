@@ -58,6 +58,17 @@ public sealed unsafe partial class BastionPiece : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_fc460c4a((void*)__hosihikari_shim_handle);
     }
 
+    public static BastionPiece Create(global::Hosihikari.Bindings.Bedrock.Interop.BastionPiece arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_6bf1e81b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BastionPiece((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.", false)]
     public static void addPieces(nint position, nint pieces, nint random, nint pools, nint dimension) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.");

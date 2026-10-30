@@ -38,6 +38,17 @@ public sealed unsafe partial class BuoyancyDefinition : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static BuoyancyDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.BuoyancyDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_74a65f1d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BuoyancyDefinition((nint)handle);
+    }
+
     public void _addLiquidBlockDescriptor(global::Hosihikari.Bindings.Bedrock.Interop.BlockDescriptor liquidBlockDescriptor)
     {
         NativeMethods.TablePtr->C0.hs_method_4f7282a6((void*)__hosihikari_shim_handle, (void*)liquidBlockDescriptor.Handle);

@@ -38,6 +38,17 @@ public sealed unsafe partial class MoveControlComponent : global::System.IDispos
         return __hs_handle;
     }
 
+    public static MoveControlComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.MoveControlComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_de881662((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MoveControlComponent((nint)handle);
+    }
+
     public void initMultiTypeMovementComponent(global::Hosihikari.Bindings.Bedrock.Interop.Mob entity, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionDescriptor initDescription)
     {
         NativeMethods.TablePtr->C2.hs_method_31dc49d8((void*)__hosihikari_shim_handle, (void*)entity.Handle, (void*)initDescription.Handle);

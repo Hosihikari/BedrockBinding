@@ -43,6 +43,17 @@ public sealed unsafe partial class NavigationClimbDescription : global::System.I
         return (nint)NativeMethods.TablePtr->C2.hs_method_25d851e4((void*)__hosihikari_shim_handle);
     }
 
+    public static NavigationClimbDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.NavigationClimbDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_7625b45f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NavigationClimbDescription((nint)handle);
+    }
+
     public nint getJsonName()
     {
         return (nint)NativeMethods.TablePtr->C2.hs_method_1f238be6((void*)__hosihikari_shim_handle);

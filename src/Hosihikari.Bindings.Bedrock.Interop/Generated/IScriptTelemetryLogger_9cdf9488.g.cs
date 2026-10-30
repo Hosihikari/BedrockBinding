@@ -38,6 +38,17 @@ public sealed unsafe partial class IScriptTelemetryLogger : global::System.IDisp
         return __hs_handle;
     }
 
+    public static IScriptTelemetryLogger Create(global::Hosihikari.Bindings.Bedrock.Interop.IScriptTelemetryLogger arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_792f569f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IScriptTelemetryLogger((nint)handle);
+    }
+
     public void onDebuggerConnect(bool autoAttach, int retries)
     {
         NativeMethods.TablePtr->C1.hs_method_c3777bca((void*)__hosihikari_shim_handle, autoAttach, retries);

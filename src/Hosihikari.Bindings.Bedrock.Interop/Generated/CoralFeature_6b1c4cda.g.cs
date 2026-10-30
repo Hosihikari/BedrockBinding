@@ -40,7 +40,18 @@ public sealed unsafe partial class CoralFeature : global::System.IDisposable
 
     public bool _place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
-        return NativeMethods.TablePtr->C0.hs_method_19f1e620((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_19f1e620((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
+    }
+
+    public static CoralFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.CoralFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_38a27e44((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CoralFeature((nint)handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::pair<BlockPos, unsigned char>' is not supported.", false)]
@@ -49,12 +60,12 @@ public sealed unsafe partial class CoralFeature : global::System.IDisposable
 
     public static bool _canOverwrite(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, int color)
     {
-        return NativeMethods.TablePtr->C0.hs_method_ca165b4f((void*)region.Handle, (void*)pos.Handle, color) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_ca165b4f((void*)region.Handle, (void*)pos.Handle, color) != 0;
     }
 
     public static int _getColor(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
-        return NativeMethods.TablePtr->C0.hs_method_4d88a5c9((void*)block.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_4d88a5c9((void*)block.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::pair<BlockPos, unsigned char>' is not supported.", false)]
@@ -63,37 +74,37 @@ public sealed unsafe partial class CoralFeature : global::System.IDisposable
 
     public void _starFormation(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block? block, float chance, int iteration, bool negateChance)
     {
-        NativeMethods.TablePtr->C0.hs_method_d8c909a9((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)pos.Handle, (void*)(block?.Handle ?? 0), chance, iteration, negateChance);
+        NativeMethods.TablePtr->C1.hs_method_d8c909a9((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)pos.Handle, (void*)(block?.Handle ?? 0), chance, iteration, negateChance);
     }
 
     public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
-        return NativeMethods.TablePtr->C0.hs_method_bd0a8028((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_bd0a8028((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
     }
 
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPlacerID_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_2b46d1da((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_2b46d1da((void*)__hosihikari_shim_handle);
     }
 
     public nint mTransaction
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_bee6aa6a((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C0.hs_set_bee6aa6a((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_bee6aa6a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_bee6aa6a((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public bool mCanUseInternalFeature
     {
-        get => NativeMethods.TablePtr->C0.hs_get_4457578b((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C0.hs_set_4457578b((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_4457578b((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_4457578b((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mInternal
     {
-        get => NativeMethods.TablePtr->C0.hs_get_0d9d6f36((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C0.hs_set_0d9d6f36((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_0d9d6f36((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_0d9d6f36((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -102,7 +113,7 @@ public sealed unsafe partial class CoralFeature : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_6b1c4cda((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_6b1c4cda((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -40,31 +40,31 @@ public sealed unsafe partial class LegacyTreeFeature : global::System.IDisposabl
 
     public bool mCanUseInternalFeature
     {
-        get => NativeMethods.TablePtr->C1.hs_get_3395cee1((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_3395cee1((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_3395cee1((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_3395cee1((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mInternal
     {
-        get => NativeMethods.TablePtr->C1.hs_get_052ee642((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_052ee642((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_052ee642((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_052ee642((void*)__hosihikari_shim_handle, value);
     }
 
     public nint _ctor(int placementType, global::Hosihikari.Bindings.Bedrock.Interop.FeatureRegistry registry, bool shouldPlaceLeafLitter)
     {
-        return (nint)NativeMethods.TablePtr->C1.hs_method_acad9315((void*)__hosihikari_shim_handle, placementType, (void*)registry.Handle, shouldPlaceLeafLitter);
+        return (nint)NativeMethods.TablePtr->C2.hs_method_acad9315((void*)__hosihikari_shim_handle, placementType, (void*)registry.Handle, shouldPlaceLeafLitter);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? _place(global::Hosihikari.Bindings.Bedrock.Interop.IFeature_Nested.PlacementContext context)
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_b49b15e1((void*)__hosihikari_shim_handle, (void*)context.Handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_b49b15e1((void*)__hosihikari_shim_handle, (void*)context.Handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
     public static LegacyTreeFeature Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_4fb37bd0();
+        var handle = NativeMethods.TablePtr->C2.hs_create_4fb37bd0();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -75,7 +75,18 @@ public sealed unsafe partial class LegacyTreeFeature : global::System.IDisposabl
 
     public static LegacyTreeFeature Create(int placementType, global::Hosihikari.Bindings.Bedrock.Interop.FeatureRegistry registry, bool shouldPlaceLeafLitter)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_c48daebd(placementType, (void*)registry.Handle, shouldPlaceLeafLitter);
+        var handle = NativeMethods.TablePtr->C2.hs_create_c48daebd(placementType, (void*)registry.Handle, shouldPlaceLeafLitter);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacyTreeFeature((nint)handle);
+    }
+
+    public static LegacyTreeFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyTreeFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_5447dd12((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -87,37 +98,37 @@ public sealed unsafe partial class LegacyTreeFeature : global::System.IDisposabl
     // The native field type is not projected; this is the address of the field storage.
     public nint mBiomeInfoNoise_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_9e9f7de7((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9e9f7de7((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFeatureRefs_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_f72c679c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f72c679c((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mGetTreeFeature_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_d59c7751((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d59c7751((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTallGrassFeature_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_22acf97b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_22acf97b((void*)__hosihikari_shim_handle);
     }
 
     public float mTreeChance
     {
-        get => NativeMethods.TablePtr->C1.hs_get_ef9705bd((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_ef9705bd((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_ef9705bd((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_ef9705bd((void*)__hosihikari_shim_handle, value);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? place(global::Hosihikari.Bindings.Bedrock.Interop.IFeature_Nested.PlacementContext context)
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_6de407c4((void*)__hosihikari_shim_handle, (void*)context.Handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_6de407c4((void*)__hosihikari_shim_handle, (void*)context.Handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
@@ -128,7 +139,7 @@ public sealed unsafe partial class LegacyTreeFeature : global::System.IDisposabl
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_9a89a93e((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_9a89a93e((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

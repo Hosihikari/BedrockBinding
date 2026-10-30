@@ -48,6 +48,17 @@ public sealed unsafe partial class AgentLookControl : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_fb38523e((void*)__hosihikari_shim_handle, (void*)mob.Handle);
     }
 
+    public static AgentLookControl Create(global::Hosihikari.Bindings.Bedrock.Interop.AgentLookControl arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_b7ac6061((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AgentLookControl((nint)handle);
+    }
+
     public void initializeInternal(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
         NativeMethods.TablePtr->C0.hs_method_356f94a3((void*)__hosihikari_shim_handle, (void*)mob.Handle);

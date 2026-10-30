@@ -53,6 +53,17 @@ public sealed unsafe partial class HotbarContainerValidation : global::System.ID
         return NativeMethods.TablePtr->C1.hs_method_7e91583d((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, (void*)item.Handle) != 0;
     }
 
+    public static HotbarContainerValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.HotbarContainerValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_6454b03c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HotbarContainerValidation((nint)handle);
+    }
+
     public bool canItemMoveToContainer(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item)
     {
         return NativeMethods.TablePtr->C1.hs_method_3b32b635((void*)__hosihikari_shim_handle, (void*)item.Handle) != 0;

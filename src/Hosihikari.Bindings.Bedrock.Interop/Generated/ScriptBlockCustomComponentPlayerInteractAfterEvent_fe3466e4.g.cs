@@ -54,6 +54,17 @@ public sealed unsafe partial class ScriptBlockCustomComponentPlayerInteractAfter
         return new ScriptBlockCustomComponentPlayerInteractAfterEvent((nint)handle);
     }
 
+    public static ScriptBlockCustomComponentPlayerInteractAfterEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBlockCustomComponentPlayerInteractAfterEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_57d7b932((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptBlockCustomComponentPlayerInteractAfterEvent((nint)handle);
+    }
+
     public static ScriptBlockCustomComponentPlayerInteractAfterEvent Create(nint eventData, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope)
     {
         var handle = NativeMethods.TablePtr->C3.hs_create_c7cbb893((void*)eventData, (void*)scope.Handle);

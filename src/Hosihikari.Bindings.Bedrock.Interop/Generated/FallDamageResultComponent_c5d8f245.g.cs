@@ -38,6 +38,17 @@ public sealed unsafe partial class FallDamageResultComponent : global::System.ID
         return __hs_handle;
     }
 
+    public static FallDamageResultComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.FallDamageResultComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_04cb5026((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FallDamageResultComponent((nint)handle);
+    }
+
     public float mFallDistance
     {
         get => NativeMethods.TablePtr->C1.hs_get_f15f923e((void*)__hosihikari_shim_handle);

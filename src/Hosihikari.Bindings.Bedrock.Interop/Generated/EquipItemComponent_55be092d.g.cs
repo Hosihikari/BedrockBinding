@@ -38,6 +38,17 @@ public sealed unsafe partial class EquipItemComponent : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static EquipItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.EquipItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_352ed539((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EquipItemComponent((nint)handle);
+    }
+
     public int mCountToPickup
     {
         get => NativeMethods.TablePtr->C1.hs_get_6a5afa94((void*)__hosihikari_shim_handle);
@@ -56,9 +67,10 @@ public sealed unsafe partial class EquipItemComponent : global::System.IDisposab
         get => (nint)NativeMethods.TablePtr->C1.hs_get_41fb72b8((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void onEquipItemPickedUp(nint item, int countToPickup) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void onEquipItemPickedUp(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item, int countToPickup)
+    {
+        NativeMethods.TablePtr->C1.hs_method_bd5aef16((void*)__hosihikari_shim_handle, (void*)item.Handle, countToPickup);
+    }
 
 
     public void Dispose()

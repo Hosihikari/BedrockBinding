@@ -50,6 +50,17 @@ public sealed unsafe partial class DragonBaseGoalDefinition : global::System.IDi
         set => NativeMethods.TablePtr->C3.hs_set_3929c2f1((void*)__hosihikari_shim_handle, value);
     }
 
+    public static DragonBaseGoalDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_0.DragonBaseGoalDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_656d92fa((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DragonBaseGoalDefinition((nint)handle);
+    }
+
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C3.hs_method_7c5f62d1((void*)ctx.Handle);

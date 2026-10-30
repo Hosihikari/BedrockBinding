@@ -38,6 +38,17 @@ public sealed unsafe partial class ModifierType : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ModifierType Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.processors.BlockEntity.ModifierType arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_62fd9ef7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ModifierType((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void appendMetadataKey(nint hash) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

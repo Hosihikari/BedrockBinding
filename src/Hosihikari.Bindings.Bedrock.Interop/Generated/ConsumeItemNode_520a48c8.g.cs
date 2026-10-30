@@ -82,6 +82,17 @@ public sealed unsafe partial class ConsumeItemNode : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ConsumeItemNode Create(global::Hosihikari.Bindings.Bedrock.Interop.ConsumeItemNode arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_46945a1b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ConsumeItemNode((nint)handle);
+    }
+
     public int mDelayCounter
     {
         get => NativeMethods.TablePtr->C0.hs_get_609ceb7f((void*)__hosihikari_shim_handle);

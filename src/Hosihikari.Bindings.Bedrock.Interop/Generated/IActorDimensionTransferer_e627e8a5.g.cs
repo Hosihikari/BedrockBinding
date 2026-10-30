@@ -38,6 +38,17 @@ public sealed unsafe partial class IActorDimensionTransferer : global::System.ID
         return __hs_handle;
     }
 
+    public static IActorDimensionTransferer Create(global::Hosihikari.Bindings.Bedrock.Interop.IActorDimensionTransferer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_edf9b0c2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IActorDimensionTransferer((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint findTargetPositionAndSetPosition(nint actor, nint actorDimensionTransferRequest, nint toDimension, nint portalForcer) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

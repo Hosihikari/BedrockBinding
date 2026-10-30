@@ -395,6 +395,17 @@ public sealed unsafe partial class WellKnownBiomeTags : global::System.IDisposab
         return new WellKnownBiomeTags((nint)handle);
     }
 
+    public static WellKnownBiomeTags Create(global::Hosihikari.Bindings.Bedrock.Interop.WellKnownBiomeTags arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_ad347694((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WellKnownBiomeTags((nint)handle);
+    }
+
 
     public void Dispose()
     {

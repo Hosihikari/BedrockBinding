@@ -65,6 +65,17 @@ public sealed unsafe partial class CommandSelectorBase : global::System.IDisposa
         return new CommandSelectorBase((nint)handle);
     }
 
+    public static CommandSelectorBase Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandSelectorBase arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_fe1fbf34((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandSelectorBase((nint)handle);
+    }
+
     public void addFamilyFilter(global::Hosihikari.Bindings.Bedrock.Interop.InvertableFilter_std__basic_string_char__ filter)
     {
         NativeMethods.TablePtr->C0.hs_method_b50f6e14((void*)__hosihikari_shim_handle, (void*)filter.Handle);

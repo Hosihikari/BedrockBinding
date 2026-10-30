@@ -93,6 +93,17 @@ public sealed unsafe partial class PeerConnectionInternal : global::System.IDisp
         NativeMethods.TablePtr->C4.hs_method_ed1f31aa((void*)__hosihikari_shim_handle, channel_id, state);
     }
 
+    public static PeerConnectionInternal Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.PeerConnectionInternal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_a490f8b6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PeerConnectionInternal((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool initial_offerer() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

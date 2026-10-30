@@ -43,6 +43,17 @@ public sealed unsafe partial class OperationNodeBase : global::System.IDisposabl
         NativeMethods.TablePtr->C2.hs_method_f97ba5a2((void*)__hosihikari_shim_handle, seed);
     }
 
+    public static OperationNodeBase Create(global::Hosihikari.Bindings.Bedrock.Interop.OperationNodeDetails.OperationNodeBase arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_4cd0c32b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OperationNodeBase((nint)handle);
+    }
+
     public void init(long seed)
     {
         NativeMethods.TablePtr->C2.hs_method_851900ab((void*)__hosihikari_shim_handle, seed);

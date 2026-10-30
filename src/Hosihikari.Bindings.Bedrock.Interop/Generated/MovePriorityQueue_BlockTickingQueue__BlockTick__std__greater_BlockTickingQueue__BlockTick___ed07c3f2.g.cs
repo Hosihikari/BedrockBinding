@@ -40,6 +40,10 @@ public sealed partial class MovePriorityQueue_BlockTickingQueue__BlockTick__std_
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
+    public static MovePriorityQueue_BlockTickingQueue__BlockTick__std__greater_BlockTickingQueue__BlockTick__ Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
     public nint begin_9eab32b1() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
 

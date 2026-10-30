@@ -58,6 +58,17 @@ public sealed unsafe partial class ActorDefinitionEventSubcomponent : global::Sy
         NativeMethods.TablePtr->C0.hs_method_aec7f4dc((void*)__hosihikari_shim_handle, (void*)component.Handle);
     }
 
+    public static ActorDefinitionEventSubcomponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionEventSubcomponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5d426bc1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorDefinitionEventSubcomponent((nint)handle);
+    }
+
     public void doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent arg1)
     {
         NativeMethods.TablePtr->C0.hs_method_2377541b((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)arg1.Handle);

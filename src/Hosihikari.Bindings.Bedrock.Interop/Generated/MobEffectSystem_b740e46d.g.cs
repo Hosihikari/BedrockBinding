@@ -43,6 +43,17 @@ public sealed unsafe partial class MobEffectSystem : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_747a9734((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static MobEffectSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.MobEffectSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_98bd37af((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MobEffectSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C2.hs_method_5cb49055((void*)__hosihikari_shim_handle, (void*)registry.Handle);

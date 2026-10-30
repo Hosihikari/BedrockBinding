@@ -73,6 +73,17 @@ public sealed unsafe partial class StyledStreamWriter : global::System.IDisposab
         return new StyledStreamWriter((nint)handle);
     }
 
+    public static StyledStreamWriter Create(global::Hosihikari.Bindings.Bedrock.Interop.Json.StyledStreamWriter arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_072b5665((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StyledStreamWriter((nint)handle);
+    }
+
     public static StyledStreamWriter Create(string indentation)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(indentation);

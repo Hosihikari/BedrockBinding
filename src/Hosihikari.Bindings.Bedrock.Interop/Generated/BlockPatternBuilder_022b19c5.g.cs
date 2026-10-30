@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockPatternBuilder : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static BlockPatternBuilder Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPatternBuilder arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5491ea86((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockPatternBuilder((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
     public nint aisle(nint patterns) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");

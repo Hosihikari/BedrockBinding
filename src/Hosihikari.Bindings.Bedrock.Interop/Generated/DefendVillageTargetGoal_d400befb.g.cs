@@ -134,6 +134,17 @@ public sealed unsafe partial class DefendVillageTargetGoal : global::System.IDis
         }
     }
 
+    public static DefendVillageTargetGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.DefendVillageTargetGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_36baebeb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DefendVillageTargetGoal((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public void appendDebugInfo(nint str) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");

@@ -38,6 +38,17 @@ public sealed unsafe partial class PoolAliasBinding : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static PoolAliasBinding Create(global::Hosihikari.Bindings.Bedrock.Interop.PoolAliasBinding arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_dc03474c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PoolAliasBinding((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void appendResolvedAliases(nint random, nint inOutResolvedAliases) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

@@ -315,6 +315,17 @@ public sealed unsafe partial class ShovelItem : global::System.IDisposable
         return new ShovelItem((nint)handle);
     }
 
+    public static ShovelItem Create(global::Hosihikari.Bindings.Bedrock.Interop.ShovelItem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_e99f365f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ShovelItem((nint)handle);
+    }
+
     public static ShovelItem Create(string name, int id, nint tier)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);

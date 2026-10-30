@@ -58,6 +58,17 @@ public sealed unsafe partial class DensityEnchant : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_1bda6cd5((void*)__hosihikari_shim_handle, level);
     }
 
+    public static DensityEnchant Create(global::Hosihikari.Bindings.Bedrock.Interop.DensityEnchant arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_5af6954b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DensityEnchant((nint)handle);
+    }
+
     public float getDamageBonus(int level, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, global::Hosihikari.Bindings.Bedrock.Interop.Actor attacker)
     {
         return NativeMethods.TablePtr->C1.hs_method_01211cce((void*)__hosihikari_shim_handle, level, (void*)arg1.Handle, (void*)attacker.Handle);

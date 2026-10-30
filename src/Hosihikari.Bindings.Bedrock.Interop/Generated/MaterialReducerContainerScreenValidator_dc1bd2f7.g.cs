@@ -48,6 +48,17 @@ public sealed unsafe partial class MaterialReducerContainerScreenValidator : glo
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static MaterialReducerContainerScreenValidator Create(global::Hosihikari.Bindings.Bedrock.Interop.MaterialReducerContainerScreenValidator arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_fb980173((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MaterialReducerContainerScreenValidator((nint)handle);
+    }
+
 
     public void Dispose()
     {

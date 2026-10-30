@@ -49,6 +49,17 @@ public sealed unsafe partial class ActorIsPersistentTest : global::System.IDispo
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static ActorIsPersistentTest Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorIsPersistentTest arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_2073ab96((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorIsPersistentTest((nint)handle);
+    }
+
     public bool evaluate(nint context)
     {
         return NativeMethods.TablePtr->C0.hs_method_aafbd226((void*)__hosihikari_shim_handle, (void*)context) != 0;

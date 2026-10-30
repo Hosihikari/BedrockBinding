@@ -43,13 +43,41 @@ public sealed unsafe partial class DynamicPropertiesDefinition : global::System.
         NativeMethods.TablePtr->C1.hs_method_cf33313c((void*)__hosihikari_shim_handle);
     }
 
+    public static DynamicPropertiesDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.DynamicPropertiesDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_60d3db39((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DynamicPropertiesDefinition((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public bool _canMergeDefinitions(nint other, nint identifier, ulong sizeLimit, nint error) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint defineProperty(nint identifier, nint definition) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public int? defineProperty(string identifier, global::Hosihikari.Bindings.Bedrock.Interop.DynamicPropertyDefinition definition)
+    {
+        var __hs_hasValue = false;
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(identifier);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(identifier, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_value = NativeMethods.TablePtr->C1.hs_method_554b3412((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)definition.Handle, &__hs_hasValue);
+            return __hs_hasValue ? __hs_value : (int?)null;
+        }
+    }
 
     public ulong mCost
     {

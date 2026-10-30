@@ -87,6 +87,17 @@ public sealed unsafe partial class FlyNode : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static FlyNode Create(global::Hosihikari.Bindings.Bedrock.Interop.FlyNode arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_2ce1e17b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FlyNode((nint)handle);
+    }
+
     public void initializeFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
         NativeMethods.TablePtr->C1.hs_method_1e03a52b((void*)__hosihikari_shim_handle, (void*)owner.Handle);

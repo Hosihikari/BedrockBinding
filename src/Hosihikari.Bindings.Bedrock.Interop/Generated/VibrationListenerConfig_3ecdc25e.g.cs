@@ -53,6 +53,17 @@ public sealed unsafe partial class VibrationListenerConfig : global::System.IDis
         NativeMethods.TablePtr->C4.hs_method_7502d7d5((void*)__hosihikari_shim_handle, (void*)region.Handle);
     }
 
+    public static VibrationListenerConfig Create(global::Hosihikari.Bindings.Bedrock.Interop.VibrationListenerConfig arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_5240a094((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VibrationListenerConfig((nint)handle);
+    }
+
     public bool canReceiveOnlyIfAdjacentChunksAreTicking()
     {
         return NativeMethods.TablePtr->C4.hs_method_dfbb04ad((void*)__hosihikari_shim_handle) != 0;

@@ -48,6 +48,17 @@ public sealed unsafe partial class CrafterContainerValidation : global::System.I
         return NativeMethods.TablePtr->C1.hs_method_188febaf((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, slot, (void*)arg2.Handle, arg3, arg4) != 0;
     }
 
+    public static CrafterContainerValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.CrafterContainerValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_695769d9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CrafterContainerValidation((nint)handle);
+    }
+
     public int getContainerSize(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext, global::Hosihikari.Bindings.Bedrock.Interop.Container container)
     {
         return NativeMethods.TablePtr->C1.hs_method_5728bbef((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, (void*)container.Handle);

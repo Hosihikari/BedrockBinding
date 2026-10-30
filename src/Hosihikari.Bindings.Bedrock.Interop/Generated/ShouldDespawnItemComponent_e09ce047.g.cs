@@ -53,6 +53,17 @@ public sealed unsafe partial class ShouldDespawnItemComponent : global::System.I
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ShouldDespawnItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ShouldDespawnItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_842e30c3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ShouldDespawnItemComponent((nint)handle);
+    }
+
     public void _initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {
         NativeMethods.TablePtr->C3.hs_method_b4e9a1db((void*)__hosihikari_shim_handle, (void*)owner.Handle);

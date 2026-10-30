@@ -38,6 +38,17 @@ public sealed unsafe partial class ActorFetcher : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ActorFetcher Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorFetcher arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_803d39ef((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorFetcher((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.Actor? fetchActorAllDimensions(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID actorId, bool getRemoved)
     {
         var __hs_handle = NativeMethods.TablePtr->C0.hs_method_df615183((void*)__hosihikari_shim_handle, (void*)actorId.Handle, getRemoved);

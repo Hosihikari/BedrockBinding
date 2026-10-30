@@ -347,6 +347,17 @@ public sealed unsafe partial class SculkSensorBlock : global::System.IDisposable
         return new SculkSensorBlock((nint)handle);
     }
 
+    public static SculkSensorBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.SculkSensorBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_927c45e3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SculkSensorBlock((nint)handle);
+    }
+
     public static SculkSensorBlock Create(string nameId, int id, byte type, int activeTicks)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);

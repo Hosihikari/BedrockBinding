@@ -44,6 +44,17 @@ public sealed unsafe partial class GeneticsComponent : global::System.IDisposabl
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static GeneticsComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.GeneticsComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_96cfaeaf((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GeneticsComponent((nint)handle);
+    }
+
     public static string HIDDEN_ALLELE()
     {
         var __hs_view = NativeMethods.TablePtr->C1.hs_method_b9301ffe();

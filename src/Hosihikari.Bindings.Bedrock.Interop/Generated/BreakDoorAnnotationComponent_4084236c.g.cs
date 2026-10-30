@@ -38,6 +38,17 @@ public sealed unsafe partial class BreakDoorAnnotationComponent : global::System
         return __hs_handle;
     }
 
+    public static BreakDoorAnnotationComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.BreakDoorAnnotationComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f8598355((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BreakDoorAnnotationComponent((nint)handle);
+    }
+
     public void _cleanUp(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
         NativeMethods.TablePtr->C0.hs_method_01e98d01((void*)__hosihikari_shim_handle, (void*)mob.Handle);

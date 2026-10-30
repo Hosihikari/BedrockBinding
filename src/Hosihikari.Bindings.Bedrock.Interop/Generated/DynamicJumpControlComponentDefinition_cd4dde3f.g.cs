@@ -38,6 +38,17 @@ public sealed unsafe partial class DynamicJumpControlComponentDefinition : globa
         return __hs_handle;
     }
 
+    public static DynamicJumpControlComponentDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_40.DynamicJumpControlComponentDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_2b003bc5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DynamicJumpControlComponentDefinition((nint)handle);
+    }
+
     public static string NAME()
     {
         var __hs_view = NativeMethods.TablePtr->C3.hs_method_b81c43a4();

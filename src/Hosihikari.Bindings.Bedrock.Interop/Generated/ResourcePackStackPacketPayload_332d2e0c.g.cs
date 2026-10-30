@@ -58,6 +58,17 @@ public sealed unsafe partial class ResourcePackStackPacketPayload : global::Syst
         return new ResourcePackStackPacketPayload((nint)handle);
     }
 
+    public static ResourcePackStackPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackStackPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_afc8deeb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ResourcePackStackPacketPayload((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
     public static ResourcePackStackPacketPayload Create(nint texturePackIdsAndVersions, nint baseGameVersion, bool texturePackRequired, nint experiments, bool includeEditorPacks) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");

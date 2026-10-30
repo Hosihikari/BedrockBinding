@@ -38,28 +38,39 @@ public sealed unsafe partial class ResetEventObj : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ResetEventObj Create(global::Hosihikari.Bindings.Bedrock.Interop.ResetEventObj arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_18fb4fa3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ResetEventObj((nint)handle);
+    }
+
     public bool mAutoReset
     {
-        get => NativeMethods.TablePtr->C2.hs_get_a2192921((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_a2192921((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_a2192921((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_a2192921((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCondition_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_2d326d4e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2d326d4e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMutex_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_c7bbabbf((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c7bbabbf((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSet_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_db7e8042((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_db7e8042((void*)__hosihikari_shim_handle);
     }
 
 
@@ -69,7 +80,7 @@ public sealed unsafe partial class ResetEventObj : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_3ef08b35((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_3ef08b35((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

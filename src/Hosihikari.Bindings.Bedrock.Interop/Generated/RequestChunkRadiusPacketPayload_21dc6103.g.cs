@@ -40,14 +40,14 @@ public sealed unsafe partial class RequestChunkRadiusPacketPayload : global::Sys
 
     public int mChunkRadius
     {
-        get => NativeMethods.TablePtr->C2.hs_get_23fa70b5((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_23fa70b5((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_23fa70b5((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_23fa70b5((void*)__hosihikari_shim_handle, value);
     }
 
     public byte mMaxChunkRadius
     {
-        get => NativeMethods.TablePtr->C2.hs_get_1145e632((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_1145e632((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_1145e632((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_1145e632((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -56,7 +56,7 @@ public sealed unsafe partial class RequestChunkRadiusPacketPayload : global::Sys
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_21dc6103((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_21dc6103((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

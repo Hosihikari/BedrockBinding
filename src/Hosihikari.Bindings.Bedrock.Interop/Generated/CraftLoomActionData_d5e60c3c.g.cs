@@ -38,6 +38,17 @@ public sealed unsafe partial class CraftLoomActionData : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static CraftLoomActionData Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestCereal.CraftLoomActionData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_005f4fc7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CraftLoomActionData((nint)handle);
+    }
+
     public byte mNumCrafts
     {
         get => NativeMethods.TablePtr->C1.hs_get_49e5f744((void*)__hosihikari_shim_handle);

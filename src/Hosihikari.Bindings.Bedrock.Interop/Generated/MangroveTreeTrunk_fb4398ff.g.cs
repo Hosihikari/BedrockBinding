@@ -50,6 +50,17 @@ public sealed unsafe partial class MangroveTreeTrunk : global::System.IDisposabl
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
+    public static MangroveTreeTrunk Create(global::Hosihikari.Bindings.Bedrock.Interop.MangroveTreeTrunk arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_fb4d038f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MangroveTreeTrunk((nint)handle);
+    }
+
     public int getTreeHeight(global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         return NativeMethods.TablePtr->C2.hs_method_5f8506ac((void*)__hosihikari_shim_handle, (void*)random.Handle);

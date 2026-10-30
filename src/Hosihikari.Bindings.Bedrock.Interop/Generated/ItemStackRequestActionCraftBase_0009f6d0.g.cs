@@ -55,6 +55,17 @@ public sealed unsafe partial class ItemStackRequestActionCraftBase : global::Sys
         NativeMethods.TablePtr->C1.hs_method_afd51b70((void*)__hosihikari_shim_handle, (void*)blockPalette.Handle, isClientSide);
     }
 
+    public static ItemStackRequestActionCraftBase Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionCraftBase arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_c1887cdb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemStackRequestActionCraftBase((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint _read(nint stream) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

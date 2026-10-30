@@ -38,6 +38,17 @@ public sealed unsafe partial class NoiseCellInterpolator : global::System.IDispo
         return __hs_handle;
     }
 
+    public static NoiseCellInterpolator Create(global::Hosihikari.Bindings.Bedrock.Interop.NoiseCellInterpolator arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_783c90d3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NoiseCellInterpolator((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mInputValues_Address
     {

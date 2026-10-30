@@ -62,6 +62,17 @@ public sealed unsafe partial class StructurePoolBlockPredicateAxisAlignedPositio
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static StructurePoolBlockPredicateAxisAlignedPosition Create(global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolBlockPredicateAxisAlignedPosition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_8e1d9213((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructurePoolBlockPredicateAxisAlignedPosition((nint)handle);
+    }
+
     public void appendMetadataKey(global::Hosihikari.Bindings.Bedrock.Interop.Util.XXHash hash)
     {
         NativeMethods.TablePtr->C3.hs_method_57bcdb73((void*)__hosihikari_shim_handle, (void*)hash.Handle);

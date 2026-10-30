@@ -48,6 +48,17 @@ public sealed unsafe partial class JunglePyramidPiece : global::System.IDisposab
         return NativeMethods.TablePtr->C1.hs_method_27e604cd((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle) != 0;
     }
 
+    public static JunglePyramidPiece Create(global::Hosihikari.Bindings.Bedrock.Interop.JunglePyramidPiece arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_e7c8b5e2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new JunglePyramidPiece((nint)handle);
+    }
+
     public int getType()
     {
         return NativeMethods.TablePtr->C1.hs_method_37e3e3be((void*)__hosihikari_shim_handle);

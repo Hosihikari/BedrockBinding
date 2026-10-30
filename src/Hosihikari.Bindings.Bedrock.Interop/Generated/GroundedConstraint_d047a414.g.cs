@@ -70,6 +70,17 @@ public sealed unsafe partial class GroundedConstraint : global::System.IDisposab
         return new GroundedConstraint((nint)handle);
     }
 
+    public static GroundedConstraint Create(global::Hosihikari.Bindings.Bedrock.Interop.GroundedConstraint arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_f9c74337((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GroundedConstraint((nint)handle);
+    }
+
     public bool isSatisfied(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos structurePos, nint structureRot, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos centeringOffset)
     {
         return NativeMethods.TablePtr->C1.hs_method_3eae097e((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)structurePos.Handle, (void*)structureRot, (void*)centeringOffset.Handle) != 0;

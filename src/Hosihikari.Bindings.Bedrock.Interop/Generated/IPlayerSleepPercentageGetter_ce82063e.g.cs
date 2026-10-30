@@ -38,6 +38,17 @@ public sealed unsafe partial class IPlayerSleepPercentageGetter : global::System
         return __hs_handle;
     }
 
+    public static IPlayerSleepPercentageGetter Create(global::Hosihikari.Bindings.Bedrock.Interop.IPlayerSleepPercentageGetter arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_c2644598((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IPlayerSleepPercentageGetter((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public float getPlayerSleepPercentageGoal() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

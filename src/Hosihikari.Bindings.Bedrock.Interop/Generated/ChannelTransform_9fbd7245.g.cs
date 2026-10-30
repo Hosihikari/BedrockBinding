@@ -54,6 +54,17 @@ public sealed unsafe partial class ChannelTransform : global::System.IDisposable
         return new ChannelTransform((nint)handle);
     }
 
+    public static ChannelTransform Create(global::Hosihikari.Bindings.Bedrock.Interop.ChannelTransform arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_49e5683f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChannelTransform((nint)handle);
+    }
+
     public static ChannelTransform Create(global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode expression, int axisIndex)
     {
         var handle = NativeMethods.TablePtr->C0.hs_create_1b99c5b9((void*)expression.Handle, axisIndex);

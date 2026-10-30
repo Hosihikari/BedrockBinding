@@ -47,6 +47,17 @@ public sealed unsafe partial class BonusChestFeature : global::System.IDisposabl
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static BonusChestFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.BonusChestFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_c335456b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BonusChestFeature((nint)handle);
+    }
+
     public bool _place_72843177(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         return NativeMethods.TablePtr->C0.hs_method_72843177((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;

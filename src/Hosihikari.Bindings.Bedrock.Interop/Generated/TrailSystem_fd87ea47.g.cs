@@ -40,17 +40,28 @@ public sealed unsafe partial class TrailSystem : global::System.IDisposable
 
     public void _tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
-        NativeMethods.TablePtr->C3.hs_method_23fc674c((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+        NativeMethods.TablePtr->C4.hs_method_23fc674c((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+    }
+
+    public static TrailSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.TrailSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_5d5d5fbd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TrailSystem((nint)handle);
     }
 
     public static void _tickComponent(global::Hosihikari.Bindings.Bedrock.Interop.ActorOwnerComponent actorOwnerComponent, global::Hosihikari.Bindings.Bedrock.Interop.TrailComponent trailComponent)
     {
-        NativeMethods.TablePtr->C3.hs_method_2bfad3d3((void*)actorOwnerComponent.Handle, (void*)trailComponent.Handle);
+        NativeMethods.TablePtr->C4.hs_method_2bfad3d3((void*)actorOwnerComponent.Handle, (void*)trailComponent.Handle);
     }
 
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
-        NativeMethods.TablePtr->C3.hs_method_d4647224((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+        NativeMethods.TablePtr->C4.hs_method_d4647224((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
 
@@ -60,7 +71,7 @@ public sealed unsafe partial class TrailSystem : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_fd87ea47((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_fd87ea47((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

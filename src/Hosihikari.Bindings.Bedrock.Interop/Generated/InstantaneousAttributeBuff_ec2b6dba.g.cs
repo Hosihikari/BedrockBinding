@@ -117,6 +117,17 @@ public sealed unsafe partial class InstantaneousAttributeBuff : global::System.I
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static InstantaneousAttributeBuff Create(global::Hosihikari.Bindings.Bedrock.Interop.InstantaneousAttributeBuff arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_5dffb294((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InstantaneousAttributeBuff((nint)handle);
+    }
+
     public bool isInstantaneous()
     {
         return NativeMethods.TablePtr->C1.hs_method_2ec9350b((void*)__hosihikari_shim_handle) != 0;

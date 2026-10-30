@@ -47,6 +47,17 @@ public sealed unsafe partial class BlockComponentFactory : global::System.IDispo
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static BlockComponentFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockComponentFactory arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_ccd6f834((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockComponentFactory((nint)handle);
+    }
+
     public void _buildBlockComponentsSchema()
     {
         NativeMethods.TablePtr->C0.hs_method_96fe87aa((void*)__hosihikari_shim_handle);

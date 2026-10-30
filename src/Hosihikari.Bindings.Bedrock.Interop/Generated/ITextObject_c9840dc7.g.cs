@@ -38,6 +38,17 @@ public sealed unsafe partial class ITextObject : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ITextObject Create(global::Hosihikari.Bindings.Bedrock.Interop.ITextObject arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_2b613306((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ITextObject((nint)handle);
+    }
+
     public static string RAW_TEXT_OBJECT_KEY()
     {
         var __hs_view = NativeMethods.TablePtr->C1.hs_method_c0bc0bb4();

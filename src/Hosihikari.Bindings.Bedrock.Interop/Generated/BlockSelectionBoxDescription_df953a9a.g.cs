@@ -78,6 +78,17 @@ public sealed unsafe partial class BlockSelectionBoxDescription : global::System
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static BlockSelectionBoxDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockSelectionBoxDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_a44a4f5a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockSelectionBoxDescription((nint)handle);
+    }
+
     public static string NameID()
     {
         var __hs_view = NativeMethods.TablePtr->C0.hs_method_d64260a4();

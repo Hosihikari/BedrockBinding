@@ -46,9 +46,10 @@ public sealed unsafe partial class CreativeContentPacket : global::System.IDispo
     public nint __read(nint stream, nint reflectionCtx) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.CreativeContentPacketPayload payload)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_83493ca8((void*)__hosihikari_shim_handle, (void*)payload.Handle);
+    }
 
     public bool _disallowBatching()
     {
@@ -126,9 +127,27 @@ public sealed unsafe partial class CreativeContentPacket : global::System.IDispo
         return new CreativeContentPacket((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static CreativeContentPacket Create(nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static CreativeContentPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.CreativeContentPacketPayload payload)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_5e3876f0((void*)payload.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CreativeContentPacket((nint)handle);
+    }
+
+    public static CreativeContentPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.CreativeContentPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_7b076194((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CreativeContentPacket((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>

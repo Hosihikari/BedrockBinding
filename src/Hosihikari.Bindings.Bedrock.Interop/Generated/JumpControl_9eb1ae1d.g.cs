@@ -81,6 +81,17 @@ public sealed unsafe partial class JumpControl : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static JumpControl Create(global::Hosihikari.Bindings.Bedrock.Interop.JumpControl arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_8f89ae38((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new JumpControl((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'JumpControl' has no accessible destructor.", false)]
     public nint clone() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'JumpControl' has no accessible destructor.");

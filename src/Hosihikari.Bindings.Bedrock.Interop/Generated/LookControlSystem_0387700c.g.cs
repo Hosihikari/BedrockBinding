@@ -43,6 +43,17 @@ public sealed unsafe partial class LookControlSystem : global::System.IDisposabl
         NativeMethods.TablePtr->C2.hs_method_4a798850((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static LookControlSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.LookControlSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_95387f6e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LookControlSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C2.hs_method_48725264((void*)__hosihikari_shim_handle, (void*)registry.Handle);

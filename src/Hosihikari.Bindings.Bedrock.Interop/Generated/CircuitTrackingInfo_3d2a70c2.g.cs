@@ -38,6 +38,17 @@ public sealed unsafe partial class CircuitTrackingInfo : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static CircuitTrackingInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.CircuitTrackingInfo arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_4c61bea7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CircuitTrackingInfo((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint m2ndNearest_Address
     {

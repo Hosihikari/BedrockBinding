@@ -62,6 +62,17 @@ public sealed unsafe partial class InventoryContentPacketPayload : global::Syste
     public static InventoryContentPacketPayload Create(nint id, nint items, nint fullContainerName, nint storageItem) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
+    public static InventoryContentPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.InventoryContentPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_c7ada27f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InventoryContentPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mFullContainerName_Address
     {

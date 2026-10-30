@@ -53,6 +53,17 @@ public sealed unsafe partial class LegacyBlockInfo : global::System.IDisposable
         return new LegacyBlockInfo((nint)handle);
     }
 
+    public static LegacyBlockInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.FlatteningUtils.LegacyBlockInfo arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_830c97b4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacyBlockInfo((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'FlatteningUtils::BlockNameRefAuxVariant' is not supported.", false)]
     public static LegacyBlockInfo Create(int legacyId_, nint legacyFullName_, nint legacyRawName_, byte maxAuxValue_, nint newBlockNameAuxVariants_, int startVariant) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'FlatteningUtils::BlockNameRefAuxVariant' is not supported.");

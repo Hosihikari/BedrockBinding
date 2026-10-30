@@ -67,6 +67,17 @@ public sealed unsafe partial class FilterTestDaytime : global::System.IDisposabl
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static FilterTestDaytime Create(global::Hosihikari.Bindings.Bedrock.Interop.FilterTestDaytime arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_6fbd6ed4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FilterTestDaytime((nint)handle);
+    }
+
     public bool evaluate(nint context)
     {
         return NativeMethods.TablePtr->C1.hs_method_e3ac4f36((void*)__hosihikari_shim_handle, (void*)context) != 0;

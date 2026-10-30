@@ -40,13 +40,13 @@ public sealed unsafe partial class LegacyOnUseTriggerItemComponent : global::Sys
 
     public nint mOwner
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_8349c6ed((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_8349c6ed((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8349c6ed((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_8349c6ed((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public void __initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {
-        NativeMethods.TablePtr->C1.hs_method_1b72f387((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+        NativeMethods.TablePtr->C2.hs_method_1b72f387((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
@@ -59,7 +59,7 @@ public sealed unsafe partial class LegacyOnUseTriggerItemComponent : global::Sys
 
     public static LegacyOnUseTriggerItemComponent Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_719a799c();
+        var handle = NativeMethods.TablePtr->C2.hs_create_719a799c();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -72,28 +72,39 @@ public sealed unsafe partial class LegacyOnUseTriggerItemComponent : global::Sys
     public static LegacyOnUseTriggerItemComponent Create(nint data) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
+    public static LegacyOnUseTriggerItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyOnUseTriggerItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_c7604f8e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacyOnUseTriggerItemComponent((nint)handle);
+    }
+
     public void _initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {
-        NativeMethods.TablePtr->C1.hs_method_35117de9((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+        NativeMethods.TablePtr->C2.hs_method_35117de9((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnUseSubscription_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_874f5387((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_874f5387((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnUseTrigger_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_55a1c4ef((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_55a1c4ef((void*)__hosihikari_shim_handle);
     }
 
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnTriggerPublisher_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_a33fd2ed((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a33fd2ed((void*)__hosihikari_shim_handle);
     }
 
     public void Dispose()
@@ -102,7 +113,7 @@ public sealed unsafe partial class LegacyOnUseTriggerItemComponent : global::Sys
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_8f3ed320((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_8f3ed320((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

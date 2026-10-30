@@ -38,6 +38,17 @@ public sealed unsafe partial class OpenSignPacketPayload : global::System.IDispo
         return __hs_handle;
     }
 
+    public static OpenSignPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.OpenSignPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_4a685e58((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OpenSignPacketPayload((nint)handle);
+    }
+
     public bool mIsFrontSide
     {
         get => NativeMethods.TablePtr->C2.hs_get_803ba6ed((void*)__hosihikari_shim_handle) != 0;

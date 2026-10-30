@@ -53,6 +53,17 @@ public sealed unsafe partial class MaterialReducerOutputValidation : global::Sys
         return NativeMethods.TablePtr->C2.hs_method_8edd488f((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, (void*)container.Handle);
     }
 
+    public static MaterialReducerOutputValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.MaterialReducerOutputValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_686a02b3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MaterialReducerOutputValidation((nint)handle);
+    }
+
     public bool canDestroy(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
     {
         return NativeMethods.TablePtr->C2.hs_method_a7769d99((void*)__hosihikari_shim_handle, (void*)screenContext.Handle) != 0;

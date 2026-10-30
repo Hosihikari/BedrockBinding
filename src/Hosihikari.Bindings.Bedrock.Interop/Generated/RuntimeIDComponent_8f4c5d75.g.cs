@@ -38,6 +38,17 @@ public sealed unsafe partial class RuntimeIDComponent : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static RuntimeIDComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.RuntimeIDComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_081681e4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RuntimeIDComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mRuntimeID_Address
     {

@@ -57,6 +57,17 @@ public sealed unsafe partial class LazyTemplate : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static LazyTemplate Create(global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolElement_Nested.LazyTemplate arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_03bc9756((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LazyTemplate((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'JigsawBlockInfo' is not supported.", false)]
     public static nint _findJigsawBlocks(nint jigsawMarkers, nint blockTagRules) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'JigsawBlockInfo' is not supported.");

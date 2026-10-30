@@ -55,6 +55,17 @@ public sealed unsafe partial class FossilFeature : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_43b2c047((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)origin.Handle, (void*)random.Handle) != 0;
     }
 
+    public static FossilFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.FossilFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_9ffdb8ca((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FossilFeature((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: return type 'const std::basic_string<char> (&)[8]' is not supported.", false)]
     public static nint STRUCTURE_LOCATION_FOSSIL() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'const std::basic_string<char> (&)[8]' is not supported.");

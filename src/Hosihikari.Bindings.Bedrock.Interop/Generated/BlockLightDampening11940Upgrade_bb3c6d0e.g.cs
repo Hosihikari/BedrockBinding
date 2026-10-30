@@ -48,6 +48,17 @@ public sealed unsafe partial class BlockLightDampening11940Upgrade : global::Sys
         NativeMethods.TablePtr->C0.hs_method_b5aaaa18((void*)__hosihikari_shim_handle, (void*)document, (void*)arg1.Handle);
     }
 
+    public static BlockLightDampening11940Upgrade Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockLightDampeningVersioning.BlockLightDampening11940Upgrade arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_98102cf4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockLightDampening11940Upgrade((nint)handle);
+    }
+
     public bool previousSchema(nint component)
     {
         return NativeMethods.TablePtr->C0.hs_method_9c0e0ed8((void*)__hosihikari_shim_handle, (void*)component) != 0;

@@ -38,6 +38,17 @@ public sealed unsafe partial class ItemStopUseOnEvent : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static ItemStopUseOnEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStopUseOnEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_42bc0d28((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemStopUseOnEvent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mActor_Address
     {

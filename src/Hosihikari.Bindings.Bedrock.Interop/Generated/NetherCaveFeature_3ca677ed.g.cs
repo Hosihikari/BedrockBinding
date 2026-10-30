@@ -202,6 +202,17 @@ public sealed unsafe partial class NetherCaveFeature : global::System.IDisposabl
         get => NativeMethods.TablePtr->C2.hs_get_2b9e2409((void*)__hosihikari_shim_handle);
     }
 
+    public static NetherCaveFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.NetherCaveFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_0bdb3c2c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NetherCaveFeature((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public void addFeature(nint blocks, nint chunkPos, nint random, nint startChunk, nint renderParams, nint carveParamsOperations) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");

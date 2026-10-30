@@ -38,6 +38,17 @@ public sealed unsafe partial class DynamicPropertiesComponent : global::System.I
         return __hs_handle;
     }
 
+    public static DynamicPropertiesComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.DynamicPropertiesComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_535e1bde((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DynamicPropertiesComponent((nint)handle);
+    }
+
     public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.ILevel level)
     {
         NativeMethods.TablePtr->C1.hs_method_1d084df2((void*)__hosihikari_shim_handle, (void*)tag.Handle, (void*)level.Handle);

@@ -67,6 +67,17 @@ public sealed unsafe partial class ScriptIsTamedComponent : global::System.IDisp
         return NativeMethods.TablePtr->C3.hs_method_18d992b0((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static ScriptIsTamedComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptIsTamedComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_600cc350((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptIsTamedComponent((nint)handle);
+    }
+
     public bool _isValid()
     {
         return NativeMethods.TablePtr->C3.hs_method_0767409e((void*)__hosihikari_shim_handle) != 0;

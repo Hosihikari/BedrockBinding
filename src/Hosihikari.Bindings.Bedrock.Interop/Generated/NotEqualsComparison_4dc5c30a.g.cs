@@ -38,6 +38,17 @@ public sealed unsafe partial class NotEqualsComparison : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static NotEqualsComparison Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.NotEqualsComparison arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a1724ba1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NotEqualsComparison((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding((nint)NativeMethods.TablePtr->C3.hs_method_80fe2584());

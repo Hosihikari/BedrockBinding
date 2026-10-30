@@ -86,6 +86,17 @@ public sealed unsafe partial class MolangDescriptor : global::System.IDisposable
     public nint _toMap() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::map<std::basic_string<char>, std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.");
 
+    public static MolangDescriptor Create(global::Hosihikari.Bindings.Bedrock.Interop.MolangDescriptor arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_c2a7c98e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangDescriptor((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'ItemDescriptor::BaseDescriptor' has no accessible destructor.", false)]
     public nint clone() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'ItemDescriptor::BaseDescriptor' has no accessible destructor.");

@@ -47,6 +47,17 @@ public sealed unsafe partial class CartographyContainerScreenValidator : global:
         return NativeMethods.TablePtr->C0.hs_method_0c5d1f70((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static CartographyContainerScreenValidator Create(global::Hosihikari.Bindings.Bedrock.Interop.CartographyContainerScreenValidator arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_76875d78((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CartographyContainerScreenValidator((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public nint getCraftResult(nint screenContext, nint screenValidation, nint craftInputs, nint numCrafts) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");

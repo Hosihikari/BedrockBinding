@@ -44,6 +44,17 @@ public sealed unsafe partial class IVillageManager : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C1.hs_get_f6cd5cdc((void*)__hosihikari_shim_handle);
     }
 
+    public static IVillageManager Create(global::Hosihikari.Bindings.Bedrock.Interop.IVillageManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_206b49f8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IVillageManager((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint fetchClosestVillage(nint position, int maxDistFromVillageBounds, uint searchRadius) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

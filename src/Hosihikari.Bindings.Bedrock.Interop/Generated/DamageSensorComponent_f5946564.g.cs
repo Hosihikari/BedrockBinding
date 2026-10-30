@@ -38,6 +38,17 @@ public sealed unsafe partial class DamageSensorComponent : global::System.IDispo
         return __hs_handle;
     }
 
+    public static DamageSensorComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.DamageSensorComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_1f89d7b0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DamageSensorComponent((nint)handle);
+    }
+
     public static void _fillParameters(global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList inOutParameters, global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Actor? sender, global::Hosihikari.Bindings.Bedrock.Interop.Actor? damager)
     {
         NativeMethods.TablePtr->C1.hs_method_92407566((void*)inOutParameters.Handle, (void*)owner.Handle, (void*)(sender?.Handle ?? 0), (void*)(damager?.Handle ?? 0));

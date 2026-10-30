@@ -49,6 +49,17 @@ public sealed unsafe partial class OceanMonumentStart : global::System.IDisposab
         return NativeMethods.TablePtr->C2.hs_method_4f2b1af6((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle) != 0;
     }
 
+    public static OceanMonumentStart Create(global::Hosihikari.Bindings.Bedrock.Interop.OceanMonumentStart arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_36670864((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OceanMonumentStart((nint)handle);
+    }
+
     public void createMonument(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dim, global::Hosihikari.Bindings.Bedrock.Interop.Random random, int x, int z)
     {
         NativeMethods.TablePtr->C2.hs_method_ebc1f67b((void*)__hosihikari_shim_handle, (void*)dim.Handle, (void*)random.Handle, x, z);

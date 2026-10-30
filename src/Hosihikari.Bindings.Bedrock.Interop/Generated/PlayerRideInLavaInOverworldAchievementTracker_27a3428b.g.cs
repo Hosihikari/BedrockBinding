@@ -38,6 +38,17 @@ public sealed unsafe partial class PlayerRideInLavaInOverworldAchievementTracker
         return __hs_handle;
     }
 
+    public static PlayerRideInLavaInOverworldAchievementTracker Create(global::Hosihikari.Bindings.Bedrock.Interop.Strider_Nested.PlayerRideInLavaInOverworldAchievementTracker arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c0831454((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerRideInLavaInOverworldAchievementTracker((nint)handle);
+    }
+
     public bool mHasSentAchievement
     {
         get => NativeMethods.TablePtr->C3.hs_get_e0f60d37((void*)__hosihikari_shim_handle) != 0;

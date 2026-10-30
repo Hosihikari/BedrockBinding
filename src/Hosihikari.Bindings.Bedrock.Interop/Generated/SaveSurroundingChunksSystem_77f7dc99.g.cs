@@ -43,6 +43,17 @@ public sealed unsafe partial class SaveSurroundingChunksSystem : global::System.
         NativeMethods.TablePtr->C3.hs_method_b6fccaed((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static SaveSurroundingChunksSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.SaveSurroundingChunksSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_0b0b386e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SaveSurroundingChunksSystem((nint)handle);
+    }
+
     public static void _tickSaveSurroundingChunks(global::Hosihikari.Bindings.Bedrock.Interop.ActorOwnerComponent actorOwnerComponent)
     {
         NativeMethods.TablePtr->C3.hs_method_c653de1a((void*)actorOwnerComponent.Handle);

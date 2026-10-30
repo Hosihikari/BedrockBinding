@@ -169,6 +169,17 @@ public sealed unsafe partial class NavigationFlyDescription : global::System.IDi
         return (nint)NativeMethods.TablePtr->C2.hs_method_c314bd31((void*)__hosihikari_shim_handle);
     }
 
+    public static NavigationFlyDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.NavigationFlyDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_0741462b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NavigationFlyDescription((nint)handle);
+    }
+
     public nint getJsonName()
     {
         return (nint)NativeMethods.TablePtr->C2.hs_method_791eef2f((void*)__hosihikari_shim_handle);

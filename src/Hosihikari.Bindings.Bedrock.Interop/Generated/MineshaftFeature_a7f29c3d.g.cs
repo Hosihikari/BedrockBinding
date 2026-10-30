@@ -52,6 +52,17 @@ public sealed unsafe partial class MineshaftFeature : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_8549dbc6((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static MineshaftFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.MineshaftFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_7868809d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MineshaftFeature((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'StructureStart' has no accessible destructor.", false)]
     public nint createStructureStart(nint generator, nint biomeSource, nint random, nint lc, nint preliminarySurfaceLevel) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'StructureStart' has no accessible destructor.");

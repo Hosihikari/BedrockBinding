@@ -98,6 +98,17 @@ public sealed unsafe partial class ServerInstanceEventListener : global::System.
         return NativeMethods.TablePtr->C3.hs_method_9d3353c9((void*)__hosihikari_shim_handle, (void*)instance.Handle);
     }
 
+    public static ServerInstanceEventListener Create(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstanceEventListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_98d71836((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ServerInstanceEventListener((nint)handle);
+    }
+
     public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstanceNotificationEvent @event)
     {
         return NativeMethods.TablePtr->C3.hs_method_1d16f920((void*)__hosihikari_shim_handle, (void*)@event.Handle);

@@ -43,6 +43,17 @@ public sealed unsafe partial class PlayerTellRawCommandEvent : global::System.ID
         NativeMethods.TablePtr->C2.hs_method_c82f6cb3((void*)__hosihikari_shim_handle);
     }
 
+    public static PlayerTellRawCommandEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerTellRawCommandEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_11cfb6b8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerTellRawCommandEvent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mMessage_Address
     {

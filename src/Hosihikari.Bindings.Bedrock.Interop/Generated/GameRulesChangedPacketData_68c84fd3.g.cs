@@ -43,6 +43,17 @@ public sealed unsafe partial class GameRulesChangedPacketData : global::System.I
         NativeMethods.TablePtr->C1.hs_method_8834b2e8((void*)__hosihikari_shim_handle);
     }
 
+    public static GameRulesChangedPacketData Create(global::Hosihikari.Bindings.Bedrock.Interop.GameRulesChangedPacketData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_fe7e0beb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameRulesChangedPacketData((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mRules_Address
     {

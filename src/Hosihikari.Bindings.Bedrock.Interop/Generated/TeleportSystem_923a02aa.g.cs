@@ -43,6 +43,17 @@ public sealed unsafe partial class TeleportSystem : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_6e0969b5((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static TeleportSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.TeleportSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_0637c82a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TeleportSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C3.hs_method_d5dd1bde((void*)__hosihikari_shim_handle, (void*)registry.Handle);

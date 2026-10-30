@@ -73,15 +73,41 @@ public sealed unsafe partial class BlockCustomComponentsComponentDescription : g
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static BlockCustomComponentsComponentDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockCustomComponentsComponentDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_b467a5a5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockCustomComponentsComponentDescription((nint)handle);
+    }
+
     public static string NameID()
     {
         var __hs_view = NativeMethods.TablePtr->C0.hs_method_96bc729d();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void addCustomComponent(nint compName, nint compData, bool overridePlayerInteract, bool overridePlayerPlacing) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void addCustomComponent(string compName, global::Hosihikari.Bindings.Bedrock.Interop.cereal.DynamicValue compData, bool overridePlayerInteract, bool overridePlayerPlacing)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(compName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(compName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C0.hs_method_a9ea83e7((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)compData.Handle, overridePlayerInteract, overridePlayerPlacing);
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.", false)]
     public nint buildNetworkTag(nint ctx) =>

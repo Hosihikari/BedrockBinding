@@ -89,6 +89,17 @@ public sealed unsafe partial class ScriptServerStateMonitor : global::System.IDi
         return new ScriptServerStateMonitor((nint)handle);
     }
 
+    public static ScriptServerStateMonitor Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptServerStateMonitor arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_d54124d8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptServerStateMonitor((nint)handle);
+    }
+
     public void _onReload()
     {
         NativeMethods.TablePtr->C3.hs_method_6d27d5c7((void*)__hosihikari_shim_handle);

@@ -38,6 +38,17 @@ public sealed unsafe partial class ContainerValidationCommitObject : global::Sys
         return __hs_handle;
     }
 
+    public static ContainerValidationCommitObject Create(global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationCommitObject arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d37ddbcd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ContainerValidationCommitObject((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool append(nint other) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
@@ -56,8 +67,8 @@ public sealed unsafe partial class ContainerValidationCommitObject : global::Sys
 
     public int mType
     {
-        get => NativeMethods.TablePtr->C0.hs_get_d9b47fc6((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C0.hs_set_d9b47fc6((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_d9b47fc6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_d9b47fc6((void*)__hosihikari_shim_handle, value);
     }
 
 
@@ -67,7 +78,7 @@ public sealed unsafe partial class ContainerValidationCommitObject : global::Sys
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_56ec1dbf((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_56ec1dbf((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

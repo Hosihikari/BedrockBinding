@@ -38,6 +38,17 @@ public sealed unsafe partial class ContainerOpenPacketPayload : global::System.I
         return __hs_handle;
     }
 
+    public static ContainerOpenPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.ContainerOpenPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_2447c0ab((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ContainerOpenPacketPayload((nint)handle);
+    }
+
     public sbyte mContainerId
     {
         get => NativeMethods.TablePtr->C0.hs_get_29eb81e8((void*)__hosihikari_shim_handle);

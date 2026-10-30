@@ -38,6 +38,17 @@ public sealed unsafe partial class FixedSpawnPositionData : global::System.IDisp
         return __hs_handle;
     }
 
+    public static FixedSpawnPositionData Create(global::Hosihikari.Bindings.Bedrock.Interop.Player_Nested.FixedSpawnPositionData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_2c398cd0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FixedSpawnPositionData((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mPosition_Address
     {

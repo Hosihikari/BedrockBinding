@@ -38,6 +38,17 @@ public sealed unsafe partial class RespawnPacketPayload : global::System.IDispos
         return __hs_handle;
     }
 
+    public static RespawnPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.RespawnPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_aaaa69d3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RespawnPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mPos_Address
     {

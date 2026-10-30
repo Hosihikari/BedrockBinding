@@ -59,6 +59,17 @@ public sealed unsafe partial class NonStrictJsonLoader : global::System.IDisposa
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static NonStrictJsonLoader Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.NonStrictJsonLoader arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_392052e3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NonStrictJsonLoader((nint)handle);
+    }
+
 
     public void Dispose()
     {

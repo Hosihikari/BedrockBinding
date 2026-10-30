@@ -46,9 +46,10 @@ public sealed unsafe partial class AvailableActorIdentifiersPacket : global::Sys
     public nint __read(nint stream, nint reflectionCtx) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.AvailableActorIdentifiersPacketPayload payload)
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_1f205c23((void*)__hosihikari_shim_handle, (void*)payload.Handle);
+    }
 
     public bool _disallowBatching()
     {
@@ -126,9 +127,27 @@ public sealed unsafe partial class AvailableActorIdentifiersPacket : global::Sys
         return new AvailableActorIdentifiersPacket((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static AvailableActorIdentifiersPacket Create(nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static AvailableActorIdentifiersPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.AvailableActorIdentifiersPacketPayload payload)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_1ac65ba9((void*)payload.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AvailableActorIdentifiersPacket((nint)handle);
+    }
+
+    public static AvailableActorIdentifiersPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.AvailableActorIdentifiersPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_770d944a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AvailableActorIdentifiersPacket((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>

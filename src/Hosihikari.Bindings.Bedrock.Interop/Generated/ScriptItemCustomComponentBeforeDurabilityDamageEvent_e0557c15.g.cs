@@ -48,6 +48,17 @@ public sealed unsafe partial class ScriptItemCustomComponentBeforeDurabilityDama
         NativeMethods.TablePtr->C3.hs_method_d35d0093((void*)__hosihikari_shim_handle, (void*)durabilityDamage, (void*)item.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
     }
 
+    public static ScriptItemCustomComponentBeforeDurabilityDamageEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemCustomComponentBeforeDurabilityDamageEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_6782f677((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptItemCustomComponentBeforeDurabilityDamageEvent((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_e6bf2500());

@@ -100,6 +100,17 @@ public sealed unsafe partial class IPrinter : global::System.IDisposable
         return NativeMethods.TablePtr->C3.hs_method_933bb319((void*)__hosihikari_shim_handle, (void*)contextId.Handle, (void*)error.Handle, (void*)errorAny) != 0;
     }
 
+    public static IPrinter Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.IPrinter arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_2d60fb56((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IPrinter((nint)handle);
+    }
+
     public void onError(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId contextId, string message)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);

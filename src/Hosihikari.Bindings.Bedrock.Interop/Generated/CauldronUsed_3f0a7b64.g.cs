@@ -40,20 +40,20 @@ public sealed unsafe partial class CauldronUsed : global::System.IDisposable
 
     public uint mContentsColor
     {
-        get => NativeMethods.TablePtr->C1.hs_get_78c826a9((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_78c826a9((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_78c826a9((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_78c826a9((void*)__hosihikari_shim_handle, value);
     }
 
     public short mContentsType
     {
-        get => NativeMethods.TablePtr->C1.hs_get_401c23d5((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_401c23d5((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_401c23d5((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_401c23d5((void*)__hosihikari_shim_handle, value);
     }
 
     public short mFillLevel
     {
-        get => NativeMethods.TablePtr->C1.hs_get_76a7974e((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_76a7974e((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_76a7974e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_76a7974e((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -62,7 +62,7 @@ public sealed unsafe partial class CauldronUsed : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_3f0a7b64((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_3f0a7b64((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

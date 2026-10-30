@@ -399,6 +399,17 @@ public sealed unsafe partial class I18nImpl : global::System.IDisposable
         return new I18nImpl((nint)handle);
     }
 
+    public static I18nImpl Create(global::Hosihikari.Bindings.Bedrock.Interop.I18nImpl arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_77360427((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new I18nImpl((nint)handle);
+    }
+
     public void _chooseLanguage(global::Hosihikari.Bindings.Abi.SharedHandle? chosen, byte notify)
     {
         NativeMethods.TablePtr->C1.hs_method_cc8e4486((void*)__hosihikari_shim_handle, chosen?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), notify);

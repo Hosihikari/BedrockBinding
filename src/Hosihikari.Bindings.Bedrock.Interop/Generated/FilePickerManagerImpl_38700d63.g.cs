@@ -53,6 +53,17 @@ public sealed unsafe partial class FilePickerManagerImpl : global::System.IDispo
     public nint _pickDirectory(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<Bedrock::FilePickerManager::DirectoryPickerResult>' requires --link-carrier or --virtual-dispatch.");
 
+    public static FilePickerManagerImpl Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.FilePickerManagerImpl arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_178a65ce((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FilePickerManagerImpl((nint)handle);
+    }
+
     public bool directoryPickingEnabledForPlatform()
     {
         return NativeMethods.TablePtr->C0.hs_method_c114fa0b((void*)__hosihikari_shim_handle) != 0;

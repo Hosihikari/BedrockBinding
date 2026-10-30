@@ -54,6 +54,17 @@ public sealed unsafe partial class SetDataFromColorIndexFunction : global::Syste
         return NativeMethods.TablePtr->C3.hs_method_57de0299((void*)__hosihikari_shim_handle);
     }
 
+    public static SetDataFromColorIndexFunction Create(global::Hosihikari.Bindings.Bedrock.Interop.SetDataFromColorIndexFunction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a6793f06((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SetDataFromColorIndexFunction((nint)handle);
+    }
+
     public void applyPreVersion(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext context)
     {
         NativeMethods.TablePtr->C3.hs_method_66fa4502((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)arg1.Handle, (void*)context.Handle);

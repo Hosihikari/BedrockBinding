@@ -40,7 +40,7 @@ public sealed unsafe partial class SlashCommand : global::System.IDisposable
 
     public static SlashCommand Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_937f9eb8();
+        var handle = NativeMethods.TablePtr->C2.hs_create_937f9eb8();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class SlashCommand : global::System.IDisposable
 
     public static SlashCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyTelemetryEventPacketPayload_Nested.SlashCommand arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_da38f723((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_da38f723((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,25 +63,25 @@ public sealed unsafe partial class SlashCommand : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mCommandName_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_37aaaaec((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_37aaaaec((void*)__hosihikari_shim_handle);
     }
 
     public int mErrorCount
     {
-        get => NativeMethods.TablePtr->C1.hs_get_68d009aa((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_68d009aa((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_68d009aa((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_68d009aa((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mErrorList_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_8ead968c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8ead968c((void*)__hosihikari_shim_handle);
     }
 
     public int mSuccessCount
     {
-        get => NativeMethods.TablePtr->C1.hs_get_35dad4ce((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_35dad4ce((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_35dad4ce((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_35dad4ce((void*)__hosihikari_shim_handle, value);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
@@ -90,7 +90,7 @@ public sealed unsafe partial class SlashCommand : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LegacyTelemetryEventPacketPayload_Nested.SlashCommand operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LegacyTelemetryEventPacketPayload_Nested.SlashCommand arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LegacyTelemetryEventPacketPayload_Nested.SlashCommand((nint)NativeMethods.TablePtr->C1.hs_method_2b9eedbb((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LegacyTelemetryEventPacketPayload_Nested.SlashCommand((nint)NativeMethods.TablePtr->C2.hs_method_2b9eedbb((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
@@ -100,7 +100,7 @@ public sealed unsafe partial class SlashCommand : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_02b9ae10((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_02b9ae10((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

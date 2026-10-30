@@ -43,6 +43,17 @@ public sealed unsafe partial class SmoothStoneSelector : global::System.IDisposa
         return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->C3.hs_method_b593efe5((void*)__hosihikari_shim_handle, (void*)random.Handle, arg1, arg2, arg3, isEdge), false);
     }
 
+    public static SmoothStoneSelector Create(global::Hosihikari.Bindings.Bedrock.Interop.SmoothStoneSelector arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_cb8437ac((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SmoothStoneSelector((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mLocalRegistry_Address
     {

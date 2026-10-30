@@ -67,6 +67,17 @@ public sealed unsafe partial class SculkShriekerVibrationConfig : global::System
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static SculkShriekerVibrationConfig Create(global::Hosihikari.Bindings.Bedrock.Interop.SculkShriekerVibrationConfig arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_2421d1f0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SculkShriekerVibrationConfig((nint)handle);
+    }
+
     public bool canReceiveOnlyIfAdjacentChunksAreTicking()
     {
         return NativeMethods.TablePtr->C3.hs_method_30c417e6((void*)__hosihikari_shim_handle) != 0;

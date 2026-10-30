@@ -82,6 +82,17 @@ public sealed unsafe partial class ScriptItemEnchantmentLevelOutOfBoundsError : 
         return new ScriptItemEnchantmentLevelOutOfBoundsError((nint)handle);
     }
 
+    public static ScriptItemEnchantmentLevelOutOfBoundsError Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemEnchantmentLevelOutOfBoundsError arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_7bbb655a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptItemEnchantmentLevelOutOfBoundsError((nint)handle);
+    }
+
     public static ScriptItemEnchantmentLevelOutOfBoundsError Create(string details, string typeName, int level, int maxLevel)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(details);

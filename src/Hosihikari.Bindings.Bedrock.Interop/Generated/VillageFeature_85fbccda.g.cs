@@ -146,6 +146,17 @@ public sealed unsafe partial class VillageFeature : global::System.IDisposable
         return new VillageFeature((nint)handle);
     }
 
+    public static VillageFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.VillageFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_792fb022((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VillageFeature((nint)handle);
+    }
+
     public static VillageFeature Create(uint seed, int townSpacing, int minTownSeparation, global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry biomeRegistry)
     {
         var handle = NativeMethods.TablePtr->C4.hs_create_2a5c9148(seed, townSpacing, minTownSeparation, (void*)biomeRegistry.Handle);

@@ -49,6 +49,17 @@ public sealed unsafe partial class IPacketObserver : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_66523a46((void*)__hosihikari_shim_handle);
     }
 
+    public static IPacketObserver Create(global::Hosihikari.Bindings.Bedrock.Interop.IPacketObserver arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_2fd3c62f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IPacketObserver((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void dataReceivedFrom(nint source, nint data) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

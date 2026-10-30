@@ -46,9 +46,10 @@ public sealed unsafe partial class LevelChunkPacket : global::System.IDisposable
     public nint __read(nint stream, nint reflectionCtx) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkPacketPayload payload)
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_1f136eec((void*)__hosihikari_shim_handle, (void*)payload.Handle);
+    }
 
     public bool _disallowBatching()
     {
@@ -122,9 +123,27 @@ public sealed unsafe partial class LevelChunkPacket : global::System.IDisposable
         return new LevelChunkPacket((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static LevelChunkPacket Create(nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static LevelChunkPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkPacketPayload payload)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_75d3f45f((void*)payload.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelChunkPacket((nint)handle);
+    }
+
+    public static LevelChunkPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_0b1e7001((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelChunkPacket((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>

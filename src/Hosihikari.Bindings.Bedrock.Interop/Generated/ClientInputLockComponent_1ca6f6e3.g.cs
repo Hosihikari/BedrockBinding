@@ -38,6 +38,17 @@ public sealed unsafe partial class ClientInputLockComponent : global::System.IDi
         return __hs_handle;
     }
 
+    public static ClientInputLockComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ClientInputLockComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_38e0e4d7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ClientInputLockComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mActiveCategories_Address
     {

@@ -49,6 +49,17 @@ public sealed unsafe partial class ActorIsSittingTest : global::System.IDisposab
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static ActorIsSittingTest Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorIsSittingTest arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f737f241((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorIsSittingTest((nint)handle);
+    }
+
     public bool evaluate(nint context)
     {
         return NativeMethods.TablePtr->C0.hs_method_2158a188((void*)__hosihikari_shim_handle, (void*)context) != 0;

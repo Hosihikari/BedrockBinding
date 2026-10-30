@@ -237,6 +237,17 @@ public sealed unsafe partial class StrollTowardsVillageGoal : global::System.IDi
         }
     }
 
+    public static StrollTowardsVillageGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.StrollTowardsVillageGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_b872c5bb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StrollTowardsVillageGoal((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos _selectRandomPosInVillage()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C3.hs_method_c2ac9561((void*)__hosihikari_shim_handle));

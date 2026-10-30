@@ -54,6 +54,17 @@ public sealed unsafe partial class StringRequestBody : global::System.IDisposabl
     public nint _getLoggableData() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'const unsigned char' is not supported.");
 
+    public static StringRequestBody Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.StringRequestBody arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5b4bb3a1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StringRequestBody((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Abi.SharedHandle? create(string data)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(data);

@@ -43,6 +43,17 @@ public sealed unsafe partial class AppPlatformNetworkSettings : global::System.I
         return NativeMethods.TablePtr->C0.hs_method_dd877d54((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static AppPlatformNetworkSettings Create(global::Hosihikari.Bindings.Bedrock.Interop.AppPlatformNetworkSettings arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_772e0010((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AppPlatformNetworkSettings((nint)handle);
+    }
+
     public bool requiresNetworkOutageMessaging()
     {
         return NativeMethods.TablePtr->C0.hs_method_f9e31214((void*)__hosihikari_shim_handle) != 0;

@@ -49,6 +49,17 @@ public sealed unsafe partial class MoveControlSkipDescription : global::System.I
         return (nint)NativeMethods.TablePtr->C2.hs_method_82d4a0ea((void*)__hosihikari_shim_handle);
     }
 
+    public static MoveControlSkipDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.MoveControlSkipDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_8943bcda((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MoveControlSkipDescription((nint)handle);
+    }
+
     public nint getJsonName()
     {
         return (nint)NativeMethods.TablePtr->C2.hs_method_d82cf0f3((void*)__hosihikari_shim_handle);

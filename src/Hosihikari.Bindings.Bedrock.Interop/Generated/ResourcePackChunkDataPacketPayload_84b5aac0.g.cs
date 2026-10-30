@@ -53,6 +53,17 @@ public sealed unsafe partial class ResourcePackChunkDataPacketPayload : global::
         return new ResourcePackChunkDataPacketPayload((nint)handle);
     }
 
+    public static ResourcePackChunkDataPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackChunkDataPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_f986b1c3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ResourcePackChunkDataPacketPayload((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
     public static ResourcePackChunkDataPacketPayload Create(nint name, int chunkID, ulong byteOffset, nint data) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");

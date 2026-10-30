@@ -53,6 +53,17 @@ public sealed unsafe partial class CompoundCreatorInputValidation : global::Syst
         return NativeMethods.TablePtr->C0.hs_method_a3adfb54((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, slot, (void*)item.Handle, amount, arg4) != 0;
     }
 
+    public static CompoundCreatorInputValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.CompoundCreatorInputValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_7bb65f7a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CompoundCreatorInputValidation((nint)handle);
+    }
+
     public int getContainerOffset(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
     {
         return NativeMethods.TablePtr->C0.hs_method_55fb588c((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);

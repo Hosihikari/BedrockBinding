@@ -67,6 +67,17 @@ public sealed unsafe partial class FilterTestBiomeHumid : global::System.IDispos
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static FilterTestBiomeHumid Create(global::Hosihikari.Bindings.Bedrock.Interop.FilterTestBiomeHumid arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_6b63b28c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FilterTestBiomeHumid((nint)handle);
+    }
+
     public bool evaluate(nint context)
     {
         return NativeMethods.TablePtr->C1.hs_method_b411e611((void*)__hosihikari_shim_handle, (void*)context) != 0;

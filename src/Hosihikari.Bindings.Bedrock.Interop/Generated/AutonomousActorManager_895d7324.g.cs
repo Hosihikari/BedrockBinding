@@ -58,6 +58,17 @@ public sealed unsafe partial class AutonomousActorManager : global::System.IDisp
         return new AutonomousActorManager((nint)handle);
     }
 
+    public static AutonomousActorManager Create(global::Hosihikari.Bindings.Bedrock.Interop.AutonomousActorManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5d4fb1b3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AutonomousActorManager((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ActorManager>>' is not a known bindable declaration.", false)]
     public static AutonomousActorManager Create(nint entityRegistry, nint actorManager) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ActorManager>>' is not a known bindable declaration.");

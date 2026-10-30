@@ -38,6 +38,17 @@ public sealed unsafe partial class TransformationProxy : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static TransformationProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockTransformationSerializer.TransformationProxy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_cae93aaf((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TransformationProxy((nint)handle);
+    }
+
     public static void bindTypes(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C0.hs_method_c99e71ee((void*)ctx.Handle);

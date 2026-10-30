@@ -38,9 +38,10 @@ public sealed unsafe partial class ArmorTrim : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint patternId, nint materialId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.HashedString patternId, global::Hosihikari.Bindings.Bedrock.Interop.HashedString materialId)
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_c20af3da((void*)__hosihikari_shim_handle, (void*)patternId.Handle, (void*)materialId.Handle);
+    }
 
     public void _dtor()
     {
@@ -58,9 +59,27 @@ public sealed unsafe partial class ArmorTrim : global::System.IDisposable
         return new ArmorTrim((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static ArmorTrim Create(nint patternId, nint materialId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static ArmorTrim Create(global::Hosihikari.Bindings.Bedrock.Interop.HashedString patternId, global::Hosihikari.Bindings.Bedrock.Interop.HashedString materialId)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_c7d16257((void*)patternId.Handle, (void*)materialId.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ArmorTrim((nint)handle);
+    }
+
+    public static ArmorTrim Create(global::Hosihikari.Bindings.Bedrock.Interop.ArmorTrim arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_11b0410d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ArmorTrim((nint)handle);
+    }
 
     public static string TAG_TRIM()
     {
@@ -107,9 +126,10 @@ public sealed unsafe partial class ArmorTrim : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C0.hs_get_b0811a84((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static void setTrim(nint instance, nint trim) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static void setTrim(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase instance, global::Hosihikari.Bindings.Bedrock.Interop.ArmorTrim trim)
+    {
+        NativeMethods.TablePtr->C0.hs_method_a4ec13b5((void*)instance.Handle, (void*)trim.Handle);
+    }
 
 
     public void Dispose()

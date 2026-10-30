@@ -43,6 +43,17 @@ public sealed unsafe partial class Compound : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_5d606d04((void*)__hosihikari_shim_handle);
     }
 
+    public static Compound Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy.BlockDescriptor_Nested.Compound arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c7444ef4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Compound((nint)handle);
+    }
+
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C3.hs_method_62077c63((void*)ctx.Handle);

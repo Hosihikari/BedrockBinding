@@ -135,6 +135,17 @@ public sealed unsafe partial class BaseMoveToBlockGoal : global::System.IDisposa
         }
     }
 
+    public static BaseMoveToBlockGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.BaseMoveToBlockGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_ddaa8bfd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BaseMoveToBlockGoal((nint)handle);
+    }
+
     public void _moveToBlock()
     {
         NativeMethods.TablePtr->C0.hs_method_dd0663cc((void*)__hosihikari_shim_handle);

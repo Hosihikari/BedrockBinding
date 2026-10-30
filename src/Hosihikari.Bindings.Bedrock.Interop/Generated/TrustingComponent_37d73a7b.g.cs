@@ -38,26 +38,37 @@ public sealed unsafe partial class TrustingComponent : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static TrustingComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.TrustingComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_8ed83264((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TrustingComponent((nint)handle);
+    }
+
     public bool _canTrust(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack instance)
     {
-        return NativeMethods.TablePtr->C3.hs_method_64c9a0f9((void*)__hosihikari_shim_handle, (void*)instance.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_64c9a0f9((void*)__hosihikari_shim_handle, (void*)instance.Handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Interaction getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Interaction((nint)NativeMethods.TablePtr->C3.hs_method_2d762f51((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)player.Handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Interaction((nint)NativeMethods.TablePtr->C4.hs_method_2d762f51((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)player.Handle));
     }
 
     public float mChance
     {
-        get => NativeMethods.TablePtr->C3.hs_get_6448929b((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_6448929b((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_6448929b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_6448929b((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTrustItems_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_ce9e82ca((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_ce9e82ca((void*)__hosihikari_shim_handle);
     }
 
 
@@ -67,7 +78,7 @@ public sealed unsafe partial class TrustingComponent : global::System.IDisposabl
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_37d73a7b((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_37d73a7b((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

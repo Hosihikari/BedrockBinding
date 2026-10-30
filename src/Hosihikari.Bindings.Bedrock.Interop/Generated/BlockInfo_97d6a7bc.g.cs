@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockInfo : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static BlockInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50.DiggerItemComponent_Nested.BlockInfo arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_98792a00((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockInfo((nint)handle);
+    }
+
     public int destroySpeed
     {
         get => NativeMethods.TablePtr->C3.hs_get_d31aaabb((void*)__hosihikari_shim_handle);

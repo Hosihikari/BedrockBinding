@@ -43,6 +43,17 @@ public sealed unsafe partial class ActorMotionSyncSystem : global::System.IDispo
         NativeMethods.TablePtr->C0.hs_method_9dc0e18b((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static ActorMotionSyncSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorMotionSyncSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5658b954((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorMotionSyncSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C0.hs_method_6113b292((void*)__hosihikari_shim_handle, (void*)registry.Handle);

@@ -43,6 +43,17 @@ public sealed unsafe partial class HttpInterfaceInternal : global::System.IDispo
         NativeMethods.TablePtr->C0.hs_method_bba07641((void*)__hosihikari_shim_handle, (void*)arg0, (void*)(arg1?.Handle ?? 0), (void*)(arg2?.Handle ?? 0));
     }
 
+    public static HttpInterfaceInternal Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.HttpInterfaceInternal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_13a4a205((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HttpInterfaceInternal((nint)handle);
+    }
+
     public void send(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.XAsyncBlock? arg1, global::Hosihikari.Bindings.Bedrock.Interop.HC_PERFORM_ENV? arg2)
     {
         NativeMethods.TablePtr->C0.hs_method_91ba202c((void*)__hosihikari_shim_handle, (void*)arg0, (void*)(arg1?.Handle ?? 0), (void*)(arg2?.Handle ?? 0));

@@ -38,6 +38,17 @@ public sealed unsafe partial class PendingWriteResult : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static PendingWriteResult Create(global::Hosihikari.Bindings.Bedrock.Interop.DBStorage_Nested.PendingWriteResult arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_88d29d20((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PendingWriteResult((nint)handle);
+    }
+
     public bool mIsDeleted
     {
         get => NativeMethods.TablePtr->C1.hs_get_8fa12df4((void*)__hosihikari_shim_handle) != 0;

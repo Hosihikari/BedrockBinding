@@ -58,6 +58,17 @@ public sealed unsafe partial class Impl : global::System.IDisposable
         return new Impl((nint)handle);
     }
 
+    public static Impl Create(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContext_Nested.Impl arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d42fa36e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Impl((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ILevel>>' is not a known bindable declaration.", false)]
     public static Impl Create(nint level) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ILevel>>' is not a known bindable declaration.");

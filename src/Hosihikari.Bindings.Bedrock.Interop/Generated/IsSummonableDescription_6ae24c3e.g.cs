@@ -43,6 +43,17 @@ public sealed unsafe partial class IsSummonableDescription : global::System.IDis
         return (nint)NativeMethods.TablePtr->C1.hs_method_ef1602ca((void*)__hosihikari_shim_handle);
     }
 
+    public static IsSummonableDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.IsSummonableDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b37bf6a4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IsSummonableDescription((nint)handle);
+    }
+
     public nint getJsonName()
     {
         return (nint)NativeMethods.TablePtr->C1.hs_method_c0c0e999((void*)__hosihikari_shim_handle);

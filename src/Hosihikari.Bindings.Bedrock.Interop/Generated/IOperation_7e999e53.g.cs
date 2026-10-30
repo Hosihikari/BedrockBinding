@@ -47,6 +47,17 @@ public sealed unsafe partial class IOperation : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_1a1d0c6b((void*)__hosihikari_shim_handle);
     }
 
+    public static IOperation Create(global::Hosihikari.Bindings.Bedrock.Interop.Editor.Transactions.IOperation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_023e3fa9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IOperation((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _clearActiveProcess() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<void>' requires --link-carrier or --virtual-dispatch.");

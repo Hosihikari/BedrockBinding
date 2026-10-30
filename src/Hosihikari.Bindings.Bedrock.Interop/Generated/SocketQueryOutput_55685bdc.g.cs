@@ -38,6 +38,17 @@ public sealed unsafe partial class SocketQueryOutput : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static SocketQueryOutput Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakPeer_Nested.SocketQueryOutput arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_e40540fb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SocketQueryOutput((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint sockets_Address
     {

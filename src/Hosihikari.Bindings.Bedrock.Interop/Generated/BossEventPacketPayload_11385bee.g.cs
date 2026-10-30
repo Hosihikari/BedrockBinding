@@ -54,6 +54,17 @@ public sealed unsafe partial class BossEventPacketPayload : global::System.IDisp
         return new BossEventPacketPayload((nint)handle);
     }
 
+    public static BossEventPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.BossEventPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_e0a2a8b0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BossEventPacketPayload((nint)handle);
+    }
+
     public string getRedactedName()
     {
         var __hs_view = NativeMethods.TablePtr->C0.hs_method_1c2d8646((void*)__hosihikari_shim_handle);

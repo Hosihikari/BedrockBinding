@@ -43,6 +43,17 @@ public sealed unsafe partial class FlockingSystem : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_1238764e((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static FlockingSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.FlockingSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_5103fb1f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FlockingSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C1.hs_method_3f81129f((void*)__hosihikari_shim_handle, (void*)registry.Handle);

@@ -38,6 +38,17 @@ public sealed unsafe partial class NetEaseBlockComponentStorage : global::System
         return __hs_handle;
     }
 
+    public static NetEaseBlockComponentStorage Create(global::Hosihikari.Bindings.Bedrock.Interop.NetEaseBlockComponentStorage arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_01a8f74d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NetEaseBlockComponentStorage((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mStorage_Address
     {

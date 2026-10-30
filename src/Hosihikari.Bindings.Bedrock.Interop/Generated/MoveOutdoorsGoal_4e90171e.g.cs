@@ -253,6 +253,17 @@ public sealed unsafe partial class MoveOutdoorsGoal : global::System.IDisposable
         }
     }
 
+    public static MoveOutdoorsGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.MoveOutdoorsGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_eadf7f1a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MoveOutdoorsGoal((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public void appendDebugInfo(nint str) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");

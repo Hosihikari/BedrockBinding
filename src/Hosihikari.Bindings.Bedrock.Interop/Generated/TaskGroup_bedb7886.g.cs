@@ -136,9 +136,21 @@ public sealed unsafe partial class TaskGroup : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void _doWorkUntil(nint task, nint workStarted) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static TaskGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.TaskGroup arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_e7ab74b8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TaskGroup((nint)handle);
+    }
+
+    public void _doWorkUntil(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.SharedAsync_void_ task, nint workStarted)
+    {
+        NativeMethods.TablePtr->C3.hs_method_bad86ec3((void*)__hosihikari_shim_handle, (void*)task.Handle, (void*)workStarted);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void _forAllTasks(nint @lock, nint callback) =>

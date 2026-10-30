@@ -40,37 +40,37 @@ public sealed unsafe partial class DirectionMask
 
     public bool mDown
     {
-        get => NativeMethods.TablePtr->C3.hs_get_48553f30((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_48553f30((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_48553f30((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_48553f30((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mEast
     {
-        get => NativeMethods.TablePtr->C3.hs_get_95bf62d7((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_95bf62d7((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_95bf62d7((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_95bf62d7((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mNorth
     {
-        get => NativeMethods.TablePtr->C3.hs_get_133caf23((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_133caf23((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_133caf23((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_133caf23((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mSouth
     {
-        get => NativeMethods.TablePtr->C3.hs_get_84a3e30e((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_84a3e30e((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_84a3e30e((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_84a3e30e((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mUp
     {
-        get => NativeMethods.TablePtr->C3.hs_get_79bf82d4((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_79bf82d4((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_79bf82d4((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_79bf82d4((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mWest
     {
-        get => NativeMethods.TablePtr->C3.hs_get_f66ecd0c((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_f66ecd0c((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_f66ecd0c((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_f66ecd0c((void*)__hosihikari_shim_handle, value);
     }
 }

@@ -131,6 +131,17 @@ public sealed unsafe partial class PackSourceFactory : global::System.IDisposabl
         return new PackSourceFactory((nint)handle);
     }
 
+    public static PackSourceFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.PackSourceFactory arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_1424db79((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PackSourceFactory((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<const std::shared_ptr<IInPackagePacks>>' is not a known bindable declaration.", false)]
     public static PackSourceFactory Create(nint inPackagePacks, nint io, nint commands) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<const std::shared_ptr<IInPackagePacks>>' is not a known bindable declaration.");

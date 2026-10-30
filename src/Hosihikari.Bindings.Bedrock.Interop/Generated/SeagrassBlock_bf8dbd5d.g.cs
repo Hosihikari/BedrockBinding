@@ -339,6 +339,17 @@ public sealed unsafe partial class SeagrassBlock : global::System.IDisposable
         return new SeagrassBlock((nint)handle);
     }
 
+    public static SeagrassBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.SeagrassBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_cc6e599c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SeagrassBlock((nint)handle);
+    }
+
     public static SeagrassBlock Create(string nameId, int id)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);

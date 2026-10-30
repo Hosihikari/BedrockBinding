@@ -43,6 +43,17 @@ public sealed unsafe partial class SummonSpellStage : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_8c3e1a23((void*)__hosihikari_shim_handle);
     }
 
+    public static SummonSpellStage Create(global::Hosihikari.Bindings.Bedrock.Interop.SummonSpellStage arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_31d73c96((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SummonSpellStage((nint)handle);
+    }
+
     public int baseDelay
     {
         get => NativeMethods.TablePtr->C3.hs_get_57c0095a((void*)__hosihikari_shim_handle);

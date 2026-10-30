@@ -62,6 +62,17 @@ public sealed unsafe partial class OceanMixerOperationNode : global::System.IDis
         return new OceanMixerOperationNode((nint)handle);
     }
 
+    public static OceanMixerOperationNode Create(global::Hosihikari.Bindings.Bedrock.Interop.OceanMixerOperationNode arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_261d3e21((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OceanMixerOperationNode((nint)handle);
+    }
+
     public static OceanMixerOperationNode Create(uint seedMixup, global::Hosihikari.Bindings.Abi.SharedHandle? biomeLayer, global::Hosihikari.Bindings.Abi.SharedHandle? oceanLayer, global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry registry, global::Hosihikari.Bindings.Bedrock.Interop.Biome genericShallowOcean, global::Hosihikari.Bindings.Bedrock.Interop.Biome genericDeepOcean)
     {
         var handle = NativeMethods.TablePtr->C2.hs_create_02aa9a99(seedMixup, biomeLayer?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), oceanLayer?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)registry.Handle, (void*)genericShallowOcean.Handle, (void*)genericDeepOcean.Handle);

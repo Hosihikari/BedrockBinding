@@ -58,6 +58,17 @@ public sealed unsafe partial class DieEventResponse : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static DieEventResponse Create(global::Hosihikari.Bindings.Bedrock.Interop.DieEventResponse arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_09d250c7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DieEventResponse((nint)handle);
+    }
+
     public static string NameID()
     {
         var __hs_view = NativeMethods.TablePtr->C1.hs_method_5ff307f5();

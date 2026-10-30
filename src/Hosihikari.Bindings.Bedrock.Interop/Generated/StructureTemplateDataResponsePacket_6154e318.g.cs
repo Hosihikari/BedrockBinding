@@ -152,6 +152,17 @@ public sealed unsafe partial class StructureTemplateDataResponsePacket : global:
         NativeMethods.TablePtr->C3.hs_method_476fc2d2((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+    public static StructureTemplateDataResponsePacket Create(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplateDataResponsePacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_6b51084c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureTemplateDataResponsePacket((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");

@@ -51,9 +51,10 @@ public sealed unsafe partial class AddVolumeEntityPacket : global::System.IDispo
         return (nint)NativeMethods.TablePtr->C0.hs_method_1296e1bc((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.AddVolumeEntityPacketPayload payload)
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_f83360c4((void*)__hosihikari_shim_handle, (void*)payload.Handle);
+    }
 
     public bool _disallowBatching()
     {
@@ -131,9 +132,27 @@ public sealed unsafe partial class AddVolumeEntityPacket : global::System.IDispo
         return new AddVolumeEntityPacket((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static AddVolumeEntityPacket Create(nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static AddVolumeEntityPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.AddVolumeEntityPacketPayload payload)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_70799a1a((void*)payload.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AddVolumeEntityPacket((nint)handle);
+    }
+
+    public static AddVolumeEntityPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.AddVolumeEntityPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_590c4c0c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AddVolumeEntityPacket((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>

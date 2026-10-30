@@ -40,17 +40,17 @@ public sealed unsafe partial class LegacyItemTriggerHandlerConfig : global::Syst
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.LegacyItemTriggerHandlerConfig arg0)
     {
-        return (nint)NativeMethods.TablePtr->C1.hs_method_f6c85937((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C2.hs_method_f6c85937((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C1.hs_method_78cd07e1((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_78cd07e1((void*)__hosihikari_shim_handle);
     }
 
     public static LegacyItemTriggerHandlerConfig Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_ecd779e5();
+        var handle = NativeMethods.TablePtr->C2.hs_create_ecd779e5();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -61,7 +61,7 @@ public sealed unsafe partial class LegacyItemTriggerHandlerConfig : global::Syst
 
     public static LegacyItemTriggerHandlerConfig Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyItemTriggerHandlerConfig arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_3fb0d82c((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_3fb0d82c((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -73,36 +73,36 @@ public sealed unsafe partial class LegacyItemTriggerHandlerConfig : global::Syst
     // The native field type is not projected; this is the address of the field storage.
     public nint mActorTriggerHandler_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_6b0fc532((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6b0fc532((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockEventHandler_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_e710d8af((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e710d8af((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockTriggerHandler_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_08e324a2((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_08e324a2((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mEventResponseHandler_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_5d24cce7((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5d24cce7((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mItemStackEventHandler_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_3ae642d0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3ae642d0((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LegacyItemTriggerHandlerConfig operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LegacyItemTriggerHandlerConfig arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LegacyItemTriggerHandlerConfig((nint)NativeMethods.TablePtr->C1.hs_method_6a05ba98((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LegacyItemTriggerHandlerConfig((nint)NativeMethods.TablePtr->C2.hs_method_6a05ba98((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
@@ -112,7 +112,7 @@ public sealed unsafe partial class LegacyItemTriggerHandlerConfig : global::Syst
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_2903d44d((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_2903d44d((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

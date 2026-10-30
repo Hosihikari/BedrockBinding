@@ -38,6 +38,17 @@ public sealed unsafe partial class Schema : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Schema Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.Schema arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_84a05671((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Schema((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'entt::meta_handle' is not a known bindable declaration.", false)]
     public bool load(nint reader, nint data, nint loadContext, nint config) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'entt::meta_handle' is not a known bindable declaration.");

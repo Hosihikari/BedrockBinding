@@ -81,6 +81,17 @@ public sealed unsafe partial class MultifaceSpreader : global::System.IDisposabl
         return new MultifaceSpreader((nint)handle);
     }
 
+    public static MultifaceSpreader Create(global::Hosihikari.Bindings.Bedrock.Interop.MultifaceSpreader arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_41704016((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MultifaceSpreader((nint)handle);
+    }
+
     public static MultifaceSpreader Create(byte[] spreadTypes)
     {
         fixed (byte* __hs_vectorData0 = spreadTypes)

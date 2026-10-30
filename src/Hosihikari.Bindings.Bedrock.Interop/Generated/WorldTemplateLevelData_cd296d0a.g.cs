@@ -54,6 +54,17 @@ public sealed unsafe partial class WorldTemplateLevelData : global::System.IDisp
         return new WorldTemplateLevelData((nint)handle);
     }
 
+    public static WorldTemplateLevelData Create(global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplateLevelData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_09bcdcd1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WorldTemplateLevelData((nint)handle);
+    }
+
     public void _getTagData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
         NativeMethods.TablePtr->C4.hs_method_80353741((void*)__hosihikari_shim_handle, (void*)tag.Handle);

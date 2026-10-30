@@ -62,6 +62,17 @@ public sealed unsafe partial class OnFriendlyAngerDefinition : global::System.ID
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static OnFriendlyAngerDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_40.OnFriendlyAngerDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_1f51316f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OnFriendlyAngerDefinition((nint)handle);
+    }
+
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C3.hs_method_f382f94b((void*)ctx.Handle);

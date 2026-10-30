@@ -38,6 +38,17 @@ public sealed unsafe partial class ActorAnimationChangedEvent : global::System.I
         return __hs_handle;
     }
 
+    public static ActorAnimationChangedEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationChangedEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_cd5e88d8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorAnimationChangedEvent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mEntity_Address
     {

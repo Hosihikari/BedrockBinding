@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockSet : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static BlockSet Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_50.PreferredPathComponentDefinition_Nested.BlockSet arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a7da0edc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockSet((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockDescriptors_Address
     {

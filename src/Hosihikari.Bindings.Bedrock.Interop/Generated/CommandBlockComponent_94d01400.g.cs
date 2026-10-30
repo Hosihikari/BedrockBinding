@@ -38,6 +38,17 @@ public sealed unsafe partial class CommandBlockComponent : global::System.IDispo
         return __hs_handle;
     }
 
+    public static CommandBlockComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandBlockComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_d8df094d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandBlockComponent((nint)handle);
+    }
+
     public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag entityTag)
     {
         NativeMethods.TablePtr->C0.hs_method_d75cc92d((void*)__hosihikari_shim_handle, (void*)entityTag.Handle);

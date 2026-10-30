@@ -64,6 +64,17 @@ public sealed unsafe partial class BlastFurnaceBlockActor : global::System.IDisp
     public static nint _vftableForIVanillaTickBlockActorComponent() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static BlastFurnaceBlockActor Create(global::Hosihikari.Bindings.Bedrock.Interop.BlastFurnaceBlockActor arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5e68d60c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlastFurnaceBlockActor((nint)handle);
+    }
+
     public string getName()
     {
         var __hs_view = NativeMethods.TablePtr->C0.hs_method_b2df3563((void*)__hosihikari_shim_handle);

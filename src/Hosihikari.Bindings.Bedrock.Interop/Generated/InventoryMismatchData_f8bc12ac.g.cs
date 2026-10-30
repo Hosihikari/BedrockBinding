@@ -38,6 +38,17 @@ public sealed unsafe partial class InventoryMismatchData : global::System.IDispo
         return __hs_handle;
     }
 
+    public static InventoryMismatchData Create(global::Hosihikari.Bindings.Bedrock.Interop.InventoryMismatchData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_f07bbf21((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InventoryMismatchData((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mTransaction_Address
     {

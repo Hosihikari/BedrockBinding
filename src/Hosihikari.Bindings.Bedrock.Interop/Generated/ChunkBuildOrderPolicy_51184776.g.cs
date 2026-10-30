@@ -68,6 +68,17 @@ public sealed unsafe partial class ChunkBuildOrderPolicy : global::System.IDispo
         NativeMethods.TablePtr->C0.hs_method_c2aba90a((void*)__hosihikari_shim_handle);
     }
 
+    public static ChunkBuildOrderPolicy Create(global::Hosihikari.Bindings.Bedrock.Interop.ChunkBuildOrderPolicy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_1286fc39((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChunkBuildOrderPolicy((nint)handle);
+    }
+
     public int getChunkRebuildPriority(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos cp)
     {
         return NativeMethods.TablePtr->C0.hs_method_6f830d54((void*)__hosihikari_shim_handle, (void*)cp.Handle);

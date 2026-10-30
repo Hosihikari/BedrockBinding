@@ -68,6 +68,17 @@ public sealed unsafe partial class ActorAnimationEvent : global::System.IDisposa
         return new ActorAnimationEvent((nint)handle);
     }
 
+    public static ActorAnimationEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_7281d6e2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorAnimationEvent((nint)handle);
+    }
+
     public static ActorAnimationEvent Create(float time, string @event, int commandVersion, short molangVersion)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(@event);

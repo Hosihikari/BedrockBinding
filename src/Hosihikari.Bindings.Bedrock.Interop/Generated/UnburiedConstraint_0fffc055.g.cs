@@ -70,6 +70,17 @@ public sealed unsafe partial class UnburiedConstraint : global::System.IDisposab
         return new UnburiedConstraint((nint)handle);
     }
 
+    public static UnburiedConstraint Create(global::Hosihikari.Bindings.Bedrock.Interop.UnburiedConstraint arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_db584fc4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UnburiedConstraint((nint)handle);
+    }
+
     public bool isSatisfied(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos structurePos, nint structureRot, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos centeringOffset)
     {
         return NativeMethods.TablePtr->C4.hs_method_531e4989((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)structurePos.Handle, (void*)structureRot, (void*)centeringOffset.Handle) != 0;

@@ -57,6 +57,17 @@ public sealed unsafe partial class RearrangedStateCollection : global::System.ID
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)__hs_handle, false) : null;
     }
 
+    public static RearrangedStateCollection Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockType_Nested.RearrangedStateCollection arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_4cc9ac40((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RearrangedStateCollection((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::optional<int>' is not supported.", false)]
     public static void add(nint blockType, nint stateRef, nint getter, nint setter, nint removedSupportVersion) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::optional<int>' is not supported.");

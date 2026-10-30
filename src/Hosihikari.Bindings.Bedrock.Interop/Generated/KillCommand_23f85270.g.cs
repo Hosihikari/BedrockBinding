@@ -72,6 +72,17 @@ public sealed unsafe partial class KillCommand : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_2afc8dae((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static KillCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.KillCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_df6bbd43((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new KillCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C1.hs_method_8376c560((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

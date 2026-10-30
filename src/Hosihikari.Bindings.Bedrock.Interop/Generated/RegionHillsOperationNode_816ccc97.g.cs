@@ -40,7 +40,7 @@ public sealed unsafe partial class RegionHillsOperationNode : global::System.IDi
 
     public void __fillArea(nint operationNodeData, global::Hosihikari.Bindings.Bedrock.Interop.Pos2d origin, global::Hosihikari.Bindings.Bedrock.Interop.Pos2d size, int pw)
     {
-        NativeMethods.TablePtr->C2.hs_method_b8312d9f((void*)__hosihikari_shim_handle, (void*)operationNodeData, (void*)origin.Handle, (void*)size.Handle, pw);
+        NativeMethods.TablePtr->C3.hs_method_b8312d9f((void*)__hosihikari_shim_handle, (void*)operationNodeData, (void*)origin.Handle, (void*)size.Handle, pw);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::tuple<Pos2d, Pos2d>' requires --link-carrier or --virtual-dispatch.", false)]
@@ -53,7 +53,7 @@ public sealed unsafe partial class RegionHillsOperationNode : global::System.IDi
 
     public static RegionHillsOperationNode Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_fc0f6fc7();
+        var handle = NativeMethods.TablePtr->C3.hs_create_fc0f6fc7();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -64,7 +64,7 @@ public sealed unsafe partial class RegionHillsOperationNode : global::System.IDi
 
     public static RegionHillsOperationNode Create(global::Hosihikari.Bindings.Bedrock.Interop.RegionHillsOperationNode arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_3eedf613((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_3eedf613((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -75,7 +75,7 @@ public sealed unsafe partial class RegionHillsOperationNode : global::System.IDi
 
     public void _fillArea(nint operationNodeData, global::Hosihikari.Bindings.Bedrock.Interop.Pos2d origin, global::Hosihikari.Bindings.Bedrock.Interop.Pos2d size, int pw)
     {
-        NativeMethods.TablePtr->C2.hs_method_8499989d((void*)__hosihikari_shim_handle, (void*)operationNodeData, (void*)origin.Handle, (void*)size.Handle, pw);
+        NativeMethods.TablePtr->C3.hs_method_8499989d((void*)__hosihikari_shim_handle, (void*)operationNodeData, (void*)origin.Handle, (void*)size.Handle, pw);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::tuple<Pos2d, Pos2d>' requires --link-carrier or --virtual-dispatch.", false)]
@@ -85,18 +85,18 @@ public sealed unsafe partial class RegionHillsOperationNode : global::System.IDi
     // The native field type is not projected; this is the address of the field storage.
     public nint mBiomeRegistry_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_6e418a2b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6e418a2b((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRiverOperationNode_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_c6221f24((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c6221f24((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.RegionHillsOperationNode operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RegionHillsOperationNode arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.RegionHillsOperationNode((nint)NativeMethods.TablePtr->C2.hs_method_4ad2e350((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RegionHillsOperationNode((nint)NativeMethods.TablePtr->C3.hs_method_4ad2e350((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
@@ -106,7 +106,7 @@ public sealed unsafe partial class RegionHillsOperationNode : global::System.IDi
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_816ccc97((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_816ccc97((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

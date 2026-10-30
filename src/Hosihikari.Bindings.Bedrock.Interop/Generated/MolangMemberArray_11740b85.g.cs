@@ -225,6 +225,17 @@ public sealed unsafe partial class MolangMemberArray : global::System.IDisposabl
         return new MolangMemberArray((nint)handle);
     }
 
+    public static MolangMemberArray Create(global::Hosihikari.Bindings.Bedrock.Interop.MolangMemberArray arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_5dc4d7c9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangMemberArray((nint)handle);
+    }
+
     public void add(global::Hosihikari.Bindings.Bedrock.Interop.HashedString name, global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg value)
     {
         NativeMethods.TablePtr->C2.hs_method_c77023ac((void*)__hosihikari_shim_handle, (void*)name.Handle, (void*)value.Handle);

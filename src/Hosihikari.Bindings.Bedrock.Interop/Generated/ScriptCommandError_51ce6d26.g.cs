@@ -87,6 +87,17 @@ public sealed unsafe partial class ScriptCommandError : global::System.IDisposab
         return new ScriptCommandError((nint)handle);
     }
 
+    public static ScriptCommandError Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptCommandError arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_cb6425df((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptCommandError((nint)handle);
+    }
+
     public static ScriptCommandError Create(string message, int type)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(message);

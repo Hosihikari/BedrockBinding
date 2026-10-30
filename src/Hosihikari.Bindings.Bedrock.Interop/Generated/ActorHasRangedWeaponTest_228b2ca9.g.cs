@@ -49,6 +49,17 @@ public sealed unsafe partial class ActorHasRangedWeaponTest : global::System.IDi
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static ActorHasRangedWeaponTest Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorHasRangedWeaponTest arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_19ca827c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorHasRangedWeaponTest((nint)handle);
+    }
+
     public bool evaluate(nint context)
     {
         return NativeMethods.TablePtr->C0.hs_method_f246e6e1((void*)__hosihikari_shim_handle, (void*)context) != 0;

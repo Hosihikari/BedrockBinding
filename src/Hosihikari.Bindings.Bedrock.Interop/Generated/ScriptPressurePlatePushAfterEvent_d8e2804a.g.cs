@@ -66,6 +66,17 @@ public sealed unsafe partial class ScriptPressurePlatePushAfterEvent : global::S
         return new ScriptPressurePlatePushAfterEvent((nint)handle);
     }
 
+    public static ScriptPressurePlatePushAfterEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptPressurePlatePushAfterEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_4fdf3367((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptPressurePlatePushAfterEvent((nint)handle);
+    }
+
     public static ScriptPressurePlatePushAfterEvent Create(global::Hosihikari.Bindings.Abi.SharedHandle? eventData, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope)
     {
         var handle = NativeMethods.TablePtr->C3.hs_create_14ead6d1(eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)scope.Handle);

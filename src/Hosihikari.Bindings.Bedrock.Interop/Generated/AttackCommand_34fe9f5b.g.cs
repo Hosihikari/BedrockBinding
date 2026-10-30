@@ -48,6 +48,17 @@ public sealed unsafe partial class AttackCommand : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_c211a6cc((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static AttackCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.AgentCommands.AttackCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_9fa20d53((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AttackCommand((nint)handle);
+    }
+
     public void execute()
     {
         NativeMethods.TablePtr->C0.hs_method_b457dd4e((void*)__hosihikari_shim_handle);

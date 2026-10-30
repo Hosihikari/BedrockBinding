@@ -63,6 +63,17 @@ public sealed unsafe partial class BreachEnchant : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_51490264((void*)__hosihikari_shim_handle, level);
     }
 
+    public static BreachEnchant Create(global::Hosihikari.Bindings.Bedrock.Interop.BreachEnchant arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f94857c1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BreachEnchant((nint)handle);
+    }
+
     public float getAfterBreachArmorFraction(int level, float armorFraction)
     {
         return NativeMethods.TablePtr->C0.hs_method_1b060048((void*)__hosihikari_shim_handle, level, armorFraction);

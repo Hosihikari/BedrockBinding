@@ -38,6 +38,17 @@ public sealed unsafe partial class OnCompleteTriggerItemComponent : global::Syst
         return __hs_handle;
     }
 
+    public static OnCompleteTriggerItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy.OnCompleteTriggerItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_cd2ab28f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OnCompleteTriggerItemComponent((nint)handle);
+    }
+
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C3.hs_method_df108feb((void*)ctx.Handle);

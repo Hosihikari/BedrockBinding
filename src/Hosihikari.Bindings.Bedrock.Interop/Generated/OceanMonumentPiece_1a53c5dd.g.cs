@@ -74,6 +74,17 @@ public sealed unsafe partial class OceanMonumentPiece : global::System.IDisposab
         return new OceanMonumentPiece((nint)handle);
     }
 
+    public static OceanMonumentPiece Create(global::Hosihikari.Bindings.Bedrock.Interop.OceanMonumentPiece arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_d818901d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OceanMonumentPiece((nint)handle);
+    }
+
     public static OceanMonumentPiece Create(int genDepth, nint orientation, global::Hosihikari.Bindings.Abi.SharedHandle? roomDefinition, int roomWidth, int roomHeight, int roomDepth)
     {
         var handle = NativeMethods.TablePtr->C2.hs_create_eaa896f4(genDepth, (void*)orientation, roomDefinition?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), roomWidth, roomHeight, roomDepth);

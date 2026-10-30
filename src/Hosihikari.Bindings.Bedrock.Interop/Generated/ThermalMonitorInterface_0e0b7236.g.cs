@@ -38,6 +38,17 @@ public sealed unsafe partial class ThermalMonitorInterface : global::System.IDis
         return __hs_handle;
     }
 
+    public static ThermalMonitorInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.ThermalMonitorInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_d92ac067((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ThermalMonitorInterface((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getThermalState() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
@@ -57,7 +68,7 @@ public sealed unsafe partial class ThermalMonitorInterface : global::System.IDis
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_0e0b7236((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_0e0b7236((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

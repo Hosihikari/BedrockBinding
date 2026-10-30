@@ -93,6 +93,17 @@ public sealed unsafe partial class ItemStackRequestActionCraftLoom : global::Sys
         return new ItemStackRequestActionCraftLoom((nint)handle);
     }
 
+    public static ItemStackRequestActionCraftLoom Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionCraftLoom arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b891daba((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemStackRequestActionCraftLoom((nint)handle);
+    }
+
     public static ItemStackRequestActionCraftLoom Create(string patternNameId, byte numCrafts)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(patternNameId);

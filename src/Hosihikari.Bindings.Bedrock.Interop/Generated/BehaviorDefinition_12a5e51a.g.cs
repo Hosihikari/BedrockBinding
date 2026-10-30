@@ -42,21 +42,34 @@ public sealed unsafe partial class BehaviorDefinition : global::System.IDisposab
     public nint _createNode(nint owner, nint factory, nint parent, nint data) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'BehaviorNode' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void _load(nint value, nint factory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void _load(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value value, global::Hosihikari.Bindings.Bedrock.Interop.BehaviorFactory factory)
+    {
+        NativeMethods.TablePtr->C0.hs_method_463be8a6((void*)__hosihikari_shim_handle, (void*)value.Handle, (void*)factory.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static BehaviorDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.BehaviorDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_7d644439((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BehaviorDefinition((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'BehaviorNode' has no accessible destructor.", false)]
     public nint createNode(nint owner, nint factory, nint parent, nint data) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'BehaviorNode' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void load(nint value, nint factory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void load(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value value, global::Hosihikari.Bindings.Bedrock.Interop.BehaviorFactory factory)
+    {
+        NativeMethods.TablePtr->C0.hs_method_130e7595((void*)__hosihikari_shim_handle, (void*)value.Handle, (void*)factory.Handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mName_Address

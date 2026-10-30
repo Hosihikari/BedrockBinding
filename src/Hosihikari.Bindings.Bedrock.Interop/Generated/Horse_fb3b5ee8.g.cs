@@ -588,9 +588,10 @@ public sealed unsafe partial class Horse : global::System.IDisposable
     public nint __hurt(nint source, float damage, nint hurtParameters) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public float _causeFallDamageToActor(float fallDistance, float multiplier, nint source) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public float _causeFallDamageToActor(float fallDistance, float multiplier, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_1b870dbc((void*)__hosihikari_shim_handle, fallDistance, multiplier, (void*)source.Handle);
+    }
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup? definitions, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier definitionName, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entityContext)
     {
@@ -713,9 +714,10 @@ public sealed unsafe partial class Horse : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_b4305180((void*)__hosihikari_shim_handle, flag, shouldAddFlag);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public float causeFallDamageToActor(float fallDistance, float multiplier, nint source) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public float causeFallDamageToActor(float fallDistance, float multiplier, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_0cbda4d0((void*)__hosihikari_shim_handle, fallDistance, multiplier, (void*)source.Handle);
+    }
 
     public void die(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource damagesource)
     {

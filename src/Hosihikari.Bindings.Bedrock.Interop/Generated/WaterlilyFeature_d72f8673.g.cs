@@ -67,6 +67,17 @@ public sealed unsafe partial class WaterlilyFeature : global::System.IDisposable
         return NativeMethods.TablePtr->C4.hs_method_fe08f61c((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)arg2.Handle) != 0;
     }
 
+    public static WaterlilyFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.WaterlilyFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_26cdeac6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WaterlilyFeature((nint)handle);
+    }
+
     public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random arg2)
     {
         return NativeMethods.TablePtr->C4.hs_method_927d1160((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)arg2.Handle) != 0;

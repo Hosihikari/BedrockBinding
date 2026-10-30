@@ -38,28 +38,39 @@ public sealed unsafe partial class CollatedLogEntry : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static CollatedLogEntry Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkAndSubChunkLoggingData_Nested.CollatedLogEntry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_1d93fde7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CollatedLogEntry((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mClientOrServer_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_84ab1d50((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_84ab1d50((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mElapsedTime_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_2d0e3cb8((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2d0e3cb8((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMessage_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_6c115a86((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6c115a86((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mType_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_339e526b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_339e526b((void*)__hosihikari_shim_handle);
     }
 
 
@@ -69,7 +80,7 @@ public sealed unsafe partial class CollatedLogEntry : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_91db2166((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_91db2166((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

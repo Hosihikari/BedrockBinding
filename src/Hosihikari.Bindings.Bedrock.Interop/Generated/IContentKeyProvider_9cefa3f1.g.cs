@@ -55,6 +55,17 @@ public sealed unsafe partial class IContentKeyProvider : global::System.IDisposa
         return NativeMethods.TablePtr->C1.hs_method_2cd77764((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static IContentKeyProvider Create(global::Hosihikari.Bindings.Bedrock.Interop.IContentKeyProvider arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_74655fdb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IContentKeyProvider((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void clearTempContentKeys() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

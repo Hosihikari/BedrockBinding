@@ -50,6 +50,17 @@ public sealed unsafe partial class EducationMetadataError : global::System.IDisp
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static EducationMetadataError Create(global::Hosihikari.Bindings.Bedrock.Interop.EducationMetadataError arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_71e48b57((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EducationMetadataError((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
     public nint getEventErrorMessageMap() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");

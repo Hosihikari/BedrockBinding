@@ -38,6 +38,17 @@ public sealed unsafe partial class CommonResourceDefinitionMap : global::System.
         return __hs_handle;
     }
 
+    public static CommonResourceDefinitionMap Create(global::Hosihikari.Bindings.Bedrock.Interop.CommonResourceDefinitionMap arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_0f3273b5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommonResourceDefinitionMap((nint)handle);
+    }
+
     public nint getAnimateScriptArray()
     {
         return (nint)NativeMethods.TablePtr->C0.hs_method_58c02c4b((void*)__hosihikari_shim_handle);
@@ -77,13 +88,15 @@ public sealed unsafe partial class CommonResourceDefinitionMap : global::System.
     public void mergeActorAnimateScriptArray(nint actorAnimateScriptArray) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void mergeAnimation(nint name, nint animationPtr) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void mergeAnimation(global::Hosihikari.Bindings.Bedrock.Interop.HashedString name, global::Hosihikari.Bindings.Bedrock.Interop.ActorSkeletalAnimationPtr animationPtr)
+    {
+        NativeMethods.TablePtr->C0.hs_method_22872e16((void*)__hosihikari_shim_handle, (void*)name.Handle, (void*)animationPtr.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void mergeAnimationController(nint name, nint animationControllerPtr) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void mergeAnimationController(global::Hosihikari.Bindings.Bedrock.Interop.HashedString name, global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationControllerPtr animationControllerPtr)
+    {
+        NativeMethods.TablePtr->C0.hs_method_9a91c312((void*)__hosihikari_shim_handle, (void*)name.Handle, (void*)animationControllerPtr.Handle);
+    }
 
 
     public void Dispose()

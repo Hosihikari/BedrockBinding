@@ -51,6 +51,17 @@ public sealed unsafe partial class RefCountInterface : global::System.IDisposabl
     public void AddRef() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static RefCountInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RefCountInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_f286a2c4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RefCountInterface((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint Release() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

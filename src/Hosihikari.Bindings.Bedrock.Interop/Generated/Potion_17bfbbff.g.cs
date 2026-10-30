@@ -139,6 +139,17 @@ public sealed unsafe partial class Potion : global::System.IDisposable
         return new Potion((nint)handle);
     }
 
+    public static Potion Create(global::Hosihikari.Bindings.Bedrock.Interop.Potion arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_c3755163((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Potion((nint)handle);
+    }
+
     public static Potion Create(string nameId, string prefix)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);

@@ -43,9 +43,10 @@ public sealed unsafe partial class DefinitionEventLoader : global::System.IDispo
         NativeMethods.TablePtr->C1.hs_method_23399680((void*)defEvent.Handle, (void*)collection.Handle, (void*)minEngineVersion.Handle, eventCaller, (void*)(responseFactory?.Handle ?? 0));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static nint loadEvent(nint root, nint minEngineVersion, nint eventCaller, nint responseFactory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.DefinitionEvent loadEvent(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value root, global::Hosihikari.Bindings.Bedrock.Interop.MinEngineVersion minEngineVersion, int eventCaller, global::Hosihikari.Bindings.Bedrock.Interop.EventResponseFactory? responseFactory)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DefinitionEvent((nint)NativeMethods.TablePtr->C1.hs_method_d1c69995((void*)root.Handle, (void*)minEngineVersion.Handle, eventCaller, (void*)(responseFactory?.Handle ?? 0)));
+    }
 
     public void Dispose()
     {

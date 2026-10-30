@@ -186,6 +186,17 @@ public sealed unsafe partial class ContainerModel : global::System.IDisposable
         return new ContainerModel((nint)handle);
     }
 
+    public static ContainerModel Create(global::Hosihikari.Bindings.Bedrock.Interop.ContainerModel arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_377d6520((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ContainerModel((nint)handle);
+    }
+
     public static ContainerModel Create(global::Hosihikari.Bindings.Bedrock.Interop.FullContainerName fullContainerName, int containerSize, int containerCategory, bool isClientSide)
     {
         var handle = NativeMethods.TablePtr->C0.hs_create_eb633de3((void*)fullContainerName.Handle, containerSize, containerCategory, isClientSide);

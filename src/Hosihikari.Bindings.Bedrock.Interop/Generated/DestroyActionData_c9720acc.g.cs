@@ -38,6 +38,17 @@ public sealed unsafe partial class DestroyActionData : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static DestroyActionData Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestCereal.DestroyActionData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_e30f0480((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DestroyActionData((nint)handle);
+    }
+
     public byte mAmount
     {
         get => NativeMethods.TablePtr->C1.hs_get_3e086831((void*)__hosihikari_shim_handle);

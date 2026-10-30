@@ -57,9 +57,21 @@ public sealed unsafe partial class LootItemFunction : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public int apply(nint arguments) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static LootItemFunction Create(global::Hosihikari.Bindings.Bedrock.Interop.LootItemFunction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_31bdeea1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LootItemFunction((nint)handle);
+    }
+
+    public int apply(global::Hosihikari.Bindings.Bedrock.Interop.LootItemFunction_Nested.ApplyArguments arguments)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_b7f418d3((void*)__hosihikari_shim_handle, (void*)arguments.Handle);
+    }
 
     public int apply26U5(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext context, global::Hosihikari.Bindings.Bedrock.Interop.Trade trade)
     {

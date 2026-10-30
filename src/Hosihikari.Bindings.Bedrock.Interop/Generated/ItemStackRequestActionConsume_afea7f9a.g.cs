@@ -59,6 +59,17 @@ public sealed unsafe partial class ItemStackRequestActionConsume : global::Syste
         return new ItemStackRequestActionConsume((nint)handle);
     }
 
+    public static ItemStackRequestActionConsume Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionConsume arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_be0649e4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemStackRequestActionConsume((nint)handle);
+    }
+
 
     public byte mAmount
     {

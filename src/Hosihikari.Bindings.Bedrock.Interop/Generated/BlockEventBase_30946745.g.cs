@@ -54,6 +54,17 @@ public sealed unsafe partial class BlockEventBase : global::System.IDisposable
         return new BlockEventBase((nint)handle);
     }
 
+    public static BlockEventBase Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockEvents.BlockEventBase arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_c16ef101((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockEventBase((nint)handle);
+    }
+
     public static BlockEventBase Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
     {
         var handle = NativeMethods.TablePtr->C0.hs_create_fae21f05((void*)pos.Handle);

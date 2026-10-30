@@ -48,6 +48,17 @@ public sealed unsafe partial class ElementConstructorContainerScreenValidator : 
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ElementConstructorContainerScreenValidator Create(global::Hosihikari.Bindings.Bedrock.Interop.ElementConstructorContainerScreenValidator arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_f38846ea((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ElementConstructorContainerScreenValidator((nint)handle);
+    }
+
 
     public void Dispose()
     {

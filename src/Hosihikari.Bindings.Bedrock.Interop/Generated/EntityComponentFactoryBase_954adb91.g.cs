@@ -44,6 +44,17 @@ public sealed unsafe partial class EntityComponentFactoryBase : global::System.I
         get => (nint)NativeMethods.TablePtr->C1.hs_get_40087df8((void*)__hosihikari_shim_handle);
     }
 
+    public static EntityComponentFactoryBase Create(global::Hosihikari.Bindings.Bedrock.Interop.EntityComponentFactoryBase arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b8ec4e38((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EntityComponentFactoryBase((nint)handle);
+    }
+
 
     public void Dispose()
     {

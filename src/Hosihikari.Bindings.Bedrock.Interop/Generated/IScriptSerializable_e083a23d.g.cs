@@ -38,6 +38,17 @@ public sealed unsafe partial class IScriptSerializable : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static IScriptSerializable Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.IScriptSerializable arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_79c57185((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IScriptSerializable((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_455dcd6c());

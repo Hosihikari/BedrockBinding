@@ -76,6 +76,17 @@ public sealed unsafe partial class EndTag : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_aeafd01c((void*)__hosihikari_shim_handle, (void*)dos.Handle);
     }
 
+    public static EndTag Create(global::Hosihikari.Bindings.Bedrock.Interop.EndTag arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_35245926((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EndTag((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Tag' has no accessible destructor.", false)]
     public nint copy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Tag' has no accessible destructor.");

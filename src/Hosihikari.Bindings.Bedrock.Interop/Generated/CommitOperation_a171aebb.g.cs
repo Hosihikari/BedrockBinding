@@ -38,6 +38,17 @@ public sealed unsafe partial class CommitOperation : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static CommitOperation Create(global::Hosihikari.Bindings.Bedrock.Interop.DBStorage_Nested.CommitOperation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_dba2c703((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommitOperation((nint)handle);
+    }
+
     public uint mCategory
     {
         get => NativeMethods.TablePtr->C1.hs_get_d87ab860((void*)__hosihikari_shim_handle);

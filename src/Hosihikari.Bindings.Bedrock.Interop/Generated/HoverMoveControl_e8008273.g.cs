@@ -47,6 +47,17 @@ public sealed unsafe partial class HoverMoveControl : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static HoverMoveControl Create(global::Hosihikari.Bindings.Bedrock.Interop.HoverMoveControl arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_da873667((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HoverMoveControl((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.MoveControlComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
         NativeMethods.TablePtr->C1.hs_method_803ceaa2((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle);

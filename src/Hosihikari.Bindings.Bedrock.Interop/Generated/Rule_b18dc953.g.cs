@@ -56,6 +56,17 @@ public sealed unsafe partial class Rule : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static Rule Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.processors.Rule arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_483ab0ef((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Rule((nint)handle);
+    }
+
     public void appendMetadataKey(global::Hosihikari.Bindings.Bedrock.Interop.Util.XXHash hash)
     {
         NativeMethods.TablePtr->C4.hs_method_b5da90e7((void*)__hosihikari_shim_handle, (void*)hash.Handle);

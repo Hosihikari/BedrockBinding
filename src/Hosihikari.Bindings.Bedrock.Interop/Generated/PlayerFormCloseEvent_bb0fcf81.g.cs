@@ -38,6 +38,17 @@ public sealed unsafe partial class PlayerFormCloseEvent : global::System.IDispos
         return __hs_handle;
     }
 
+    public static PlayerFormCloseEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerFormCloseEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_9371f5aa((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerFormCloseEvent((nint)handle);
+    }
+
     public int mFormCloseReason
     {
         get => NativeMethods.TablePtr->C2.hs_get_3e770e29((void*)__hosihikari_shim_handle);

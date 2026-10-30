@@ -38,6 +38,17 @@ public sealed unsafe partial class Options : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Options Create(global::Hosihikari.Bindings.Bedrock.Interop.DBStorage_Nested.Options arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_6789be5a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Options((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint options_Address
     {

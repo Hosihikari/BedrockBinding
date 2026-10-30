@@ -146,6 +146,17 @@ public sealed unsafe partial class DispenserContainerManagerModel : global::Syst
         return new DispenserContainerManagerModel((nint)handle);
     }
 
+    public static DispenserContainerManagerModel Create(global::Hosihikari.Bindings.Bedrock.Interop.DispenserContainerManagerModel arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_23a57120((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DispenserContainerManagerModel((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext _postInit()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext((nint)NativeMethods.TablePtr->C1.hs_method_aebd1664((void*)__hosihikari_shim_handle));

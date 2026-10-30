@@ -38,6 +38,17 @@ public sealed unsafe partial class StackResultStorageFeature : global::System.ID
         return __hs_handle;
     }
 
+    public static StackResultStorageFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.StackResultStorageFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_48a3f365((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StackResultStorageFeature((nint)handle);
+    }
+
     public ulong mIndex
     {
         get => NativeMethods.TablePtr->C3.hs_get_043d5874((void*)__hosihikari_shim_handle);

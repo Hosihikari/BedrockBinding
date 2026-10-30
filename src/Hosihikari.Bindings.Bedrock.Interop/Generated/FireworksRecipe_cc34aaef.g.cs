@@ -77,6 +77,17 @@ public sealed unsafe partial class FireworksRecipe : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static FireworksRecipe Create(global::Hosihikari.Bindings.Bedrock.Interop.FireworksRecipe arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_e47bda00((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FireworksRecipe((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID ID()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->C1.hs_method_f483d2f3(), false);

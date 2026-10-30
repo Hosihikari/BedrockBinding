@@ -69,6 +69,17 @@ public sealed unsafe partial class FloatNavigation : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static FloatNavigation Create(global::Hosihikari.Bindings.Bedrock.Interop.FloatNavigation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_01c6384d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FloatNavigation((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Path' has no accessible destructor.", false)]
     public nint createPath_5fbf6d07(nint parent, nint mob, nint target) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Path' has no accessible destructor.");

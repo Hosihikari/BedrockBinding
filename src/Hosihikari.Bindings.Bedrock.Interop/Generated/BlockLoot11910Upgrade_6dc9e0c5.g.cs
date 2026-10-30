@@ -48,6 +48,17 @@ public sealed unsafe partial class BlockLoot11910Upgrade : global::System.IDispo
         NativeMethods.TablePtr->C0.hs_method_859cd966((void*)__hosihikari_shim_handle, (void*)document, (void*)arg1.Handle);
     }
 
+    public static BlockLoot11910Upgrade Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockLootVersioning.BlockLoot11910Upgrade arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_8047e673((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockLoot11910Upgrade((nint)handle);
+    }
+
     public bool previousSchema(nint component)
     {
         return NativeMethods.TablePtr->C0.hs_method_daa8e6b2((void*)__hosihikari_shim_handle, (void*)component) != 0;

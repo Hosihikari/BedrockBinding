@@ -62,6 +62,17 @@ public sealed unsafe partial class OnStartTakeoffDefinition : global::System.IDi
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static OnStartTakeoffDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_40.OnStartTakeoffDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_43c35a97((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OnStartTakeoffDefinition((nint)handle);
+    }
+
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C3.hs_method_213dd57f((void*)ctx.Handle);

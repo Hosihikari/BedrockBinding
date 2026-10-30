@@ -40,7 +40,7 @@ public sealed unsafe partial class TrustingDefinition : global::System.IDisposab
 
     public static TrustingDefinition Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_cfce722d();
+        var handle = NativeMethods.TablePtr->C4.hs_create_cfce722d();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class TrustingDefinition : global::System.IDisposab
 
     public static TrustingDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.TrustingDefinition arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_163d974e((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_163d974e((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -75,36 +75,36 @@ public sealed unsafe partial class TrustingDefinition : global::System.IDisposab
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C3.hs_method_abf1650a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C4.hs_method_abf1650a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
-        NativeMethods.TablePtr->C3.hs_method_6f2b82f5(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C4.hs_method_6f2b82f5(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk295c75_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_fd5207b9((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_fd5207b9((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk8b60f5_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_e399a4ea((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_e399a4ea((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk907038_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_f7d80ed0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f7d80ed0((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.TrustingDefinition operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.TrustingDefinition arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.TrustingDefinition((nint)NativeMethods.TablePtr->C3.hs_method_3cc22f40((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TrustingDefinition((nint)NativeMethods.TablePtr->C4.hs_method_3cc22f40((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -113,7 +113,7 @@ public sealed unsafe partial class TrustingDefinition : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_86c76f3f((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_86c76f3f((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

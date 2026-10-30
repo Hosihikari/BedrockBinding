@@ -44,6 +44,17 @@ public sealed unsafe partial class IStructureTemplateManager : global::System.ID
         get => (nint)NativeMethods.TablePtr->C1.hs_get_425092e0((void*)__hosihikari_shim_handle);
     }
 
+    public static IStructureTemplateManager Create(global::Hosihikari.Bindings.Bedrock.Interop.IStructureTemplateManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_f3dbaa7b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IStructureTemplateManager((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getOrCreate(nint structureName) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

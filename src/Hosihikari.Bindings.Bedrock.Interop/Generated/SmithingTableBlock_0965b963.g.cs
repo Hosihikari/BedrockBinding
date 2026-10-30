@@ -273,6 +273,17 @@ public sealed unsafe partial class SmithingTableBlock : global::System.IDisposab
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static SmithingTableBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.SmithingTableBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_6b7accb0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SmithingTableBlock((nint)handle);
+    }
+
     public bool isCraftingBlock()
     {
         return NativeMethods.TablePtr->C3.hs_method_ab5c5c0e((void*)__hosihikari_shim_handle) != 0;

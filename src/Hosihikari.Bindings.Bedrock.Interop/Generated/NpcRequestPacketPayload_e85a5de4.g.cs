@@ -49,6 +49,17 @@ public sealed unsafe partial class NpcRequestPacketPayload : global::System.IDis
         return new NpcRequestPacketPayload((nint)handle);
     }
 
+    public static NpcRequestPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.NpcRequestPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_40a025a1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NpcRequestPacketPayload((nint)handle);
+    }
+
     public byte mActionIndex
     {
         get => NativeMethods.TablePtr->C2.hs_get_9f2890d3((void*)__hosihikari_shim_handle);

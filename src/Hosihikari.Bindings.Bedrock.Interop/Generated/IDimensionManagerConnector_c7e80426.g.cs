@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class IDimensionManagerConnector
+public sealed unsafe partial class IDimensionManagerConnector : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -39,6 +38,17 @@ public sealed partial class IDimensionManagerConnector
         return __hs_handle;
     }
 
+    public static IDimensionManagerConnector Create(global::Hosihikari.Bindings.Bedrock.Interop.IDimensionManagerConnector arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b160576f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IDimensionManagerConnector((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getOnNewDimensionCreatedConnector() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
@@ -46,4 +56,17 @@ public sealed partial class IDimensionManagerConnector
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getOnReadyForCustomDimensionRegistrationConnector() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_c7e80426((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

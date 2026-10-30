@@ -62,6 +62,17 @@ public sealed unsafe partial class BlockBreathabilityDescription : global::Syste
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static BlockBreathabilityDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockBreathabilityDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_b4c01737((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockBreathabilityDescription((nint)handle);
+    }
+
     public static string NameID()
     {
         var __hs_view = NativeMethods.TablePtr->C0.hs_method_609ae07d();

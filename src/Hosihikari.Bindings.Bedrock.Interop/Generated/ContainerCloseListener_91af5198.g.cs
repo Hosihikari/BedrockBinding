@@ -38,6 +38,17 @@ public sealed unsafe partial class ContainerCloseListener : global::System.IDisp
         return __hs_handle;
     }
 
+    public static ContainerCloseListener Create(global::Hosihikari.Bindings.Bedrock.Interop.ContainerCloseListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_95666d5e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ContainerCloseListener((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void containerClosed(nint actor) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

@@ -111,6 +111,17 @@ public sealed unsafe partial class ClientToServerHandshakePacket : global::Syste
         NativeMethods.TablePtr->C0.hs_method_8928d0ad((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+    public static ClientToServerHandshakePacket Create(global::Hosihikari.Bindings.Bedrock.Interop.ClientToServerHandshakePacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_eea8cc01((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ClientToServerHandshakePacket((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");

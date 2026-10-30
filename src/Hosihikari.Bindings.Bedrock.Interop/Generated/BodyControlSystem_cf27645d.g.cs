@@ -43,6 +43,17 @@ public sealed unsafe partial class BodyControlSystem : global::System.IDisposabl
         NativeMethods.TablePtr->C0.hs_method_40ebf1b9((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static BodyControlSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.BodyControlSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_a7bd28f9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BodyControlSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C0.hs_method_26f9db23((void*)__hosihikari_shim_handle, (void*)registry.Handle);

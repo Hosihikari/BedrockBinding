@@ -43,6 +43,17 @@ public sealed unsafe partial class GameCallbacks : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_11fce027((void*)__hosihikari_shim_handle);
     }
 
+    public static GameCallbacks Create(global::Hosihikari.Bindings.Bedrock.Interop.GameCallbacks arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_478cf077((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameCallbacks((nint)handle);
+    }
+
     public void onBeforeSimTick()
     {
         NativeMethods.TablePtr->C1.hs_method_17f65e06((void*)__hosihikari_shim_handle);

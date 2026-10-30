@@ -38,6 +38,17 @@ public sealed unsafe partial class DeferredCommandBase : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static DeferredCommandBase Create(global::Hosihikari.Bindings.Bedrock.Interop.DeferredCommandBase arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_e059bdc9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DeferredCommandBase((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void execute(nint commands) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

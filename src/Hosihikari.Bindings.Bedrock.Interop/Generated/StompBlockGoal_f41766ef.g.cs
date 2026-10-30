@@ -298,6 +298,17 @@ public sealed unsafe partial class StompBlockGoal : global::System.IDisposable
         }
     }
 
+    public static StompBlockGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.StompBlockGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_cf30146b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StompBlockGoal((nint)handle);
+    }
+
     public bool _canReach(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
     {
         return NativeMethods.TablePtr->C3.hs_method_b6a11f03((void*)__hosihikari_shim_handle, (void*)pos.Handle) != 0;

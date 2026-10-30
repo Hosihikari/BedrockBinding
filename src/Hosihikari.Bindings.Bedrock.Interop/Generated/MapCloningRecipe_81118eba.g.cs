@@ -112,6 +112,17 @@ public sealed unsafe partial class MapCloningRecipe : global::System.IDisposable
         return new MapCloningRecipe((nint)handle);
     }
 
+    public static MapCloningRecipe Create(global::Hosihikari.Bindings.Bedrock.Interop.MapCloningRecipe arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_a02da9da((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MapCloningRecipe((nint)handle);
+    }
+
     public static MapCloningRecipe Create(string recipeId, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID uuid)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(recipeId);

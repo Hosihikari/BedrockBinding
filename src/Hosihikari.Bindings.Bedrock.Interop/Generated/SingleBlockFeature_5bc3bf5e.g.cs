@@ -57,6 +57,17 @@ public sealed unsafe partial class SingleBlockFeature : global::System.IDisposab
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
+    public static SingleBlockFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.SingleBlockFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_05afa2c6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SingleBlockFeature((nint)handle);
+    }
+
     public bool mAutoRotate
     {
         get => NativeMethods.TablePtr->C3.hs_get_12b889bf((void*)__hosihikari_shim_handle) != 0;

@@ -86,6 +86,17 @@ public sealed unsafe partial class WorldGenRandom : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static WorldGenRandom Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenRandom arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_a73d925d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WorldGenRandom((nint)handle);
+    }
+
     public void consumeCount(uint count)
     {
         NativeMethods.TablePtr->C4.hs_method_ac9185ac((void*)__hosihikari_shim_handle, count);

@@ -59,6 +59,17 @@ public sealed unsafe partial class LockGuard : global::System.IDisposable
         return new LockGuard((nint)handle);
     }
 
+    public static LockGuard Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistryRef_Nested.LockGuard arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_8e360b17((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LockGuard((nint)handle);
+    }
+
     public static LockGuard Create(global::Hosihikari.Bindings.Abi.SharedHandle? mutex)
     {
         var handle = NativeMethods.TablePtr->C1.hs_create_a50631b9(mutex?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));

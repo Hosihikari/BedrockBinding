@@ -38,6 +38,17 @@ public sealed unsafe partial class FileSizePresetToken : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static FileSizePresetToken Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSizePresetToken arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_4447bfd9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FileSizePresetToken((nint)handle);
+    }
+
 
     public void Dispose()
     {
@@ -45,7 +56,7 @@ public sealed unsafe partial class FileSizePresetToken : global::System.IDisposa
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_c9c82907((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_c9c82907((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

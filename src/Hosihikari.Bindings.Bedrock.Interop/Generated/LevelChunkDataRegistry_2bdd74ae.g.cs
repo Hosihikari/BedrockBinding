@@ -54,6 +54,17 @@ public sealed unsafe partial class LevelChunkDataRegistry : global::System.IDisp
         return new LevelChunkDataRegistry((nint)handle);
     }
 
+    public static LevelChunkDataRegistry Create(global::Hosihikari.Bindings.Bedrock.Interop.br.LevelChunkDataRegistry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_b9b63992((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelChunkDataRegistry((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mData_Address
     {

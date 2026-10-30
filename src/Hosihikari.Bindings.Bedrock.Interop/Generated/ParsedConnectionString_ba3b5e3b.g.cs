@@ -43,6 +43,17 @@ public sealed unsafe partial class ParsedConnectionString : global::System.IDisp
         NativeMethods.TablePtr->C0.hs_method_2d29ce76((void*)__hosihikari_shim_handle);
     }
 
+    public static ParsedConnectionString Create(global::Hosihikari.Bindings.Bedrock.Interop.BaseConnectionRequest_Nested.ParsedConnectionString arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_123d56f5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ParsedConnectionString((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint authData_Address
     {

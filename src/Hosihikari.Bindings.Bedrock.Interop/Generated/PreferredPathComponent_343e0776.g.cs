@@ -38,6 +38,17 @@ public sealed unsafe partial class PreferredPathComponent : global::System.IDisp
         return __hs_handle;
     }
 
+    public static PreferredPathComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.PreferredPathComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_6447b3ef((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PreferredPathComponent((nint)handle);
+    }
+
     public void initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
         NativeMethods.TablePtr->C2.hs_method_450595f7((void*)__hosihikari_shim_handle, (void*)owner.Handle);

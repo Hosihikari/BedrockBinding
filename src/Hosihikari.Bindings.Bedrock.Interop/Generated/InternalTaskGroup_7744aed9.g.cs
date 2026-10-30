@@ -71,6 +71,17 @@ public sealed unsafe partial class InternalTaskGroup : global::System.IDisposabl
         NativeMethods.TablePtr->C1.hs_method_fdede225((void*)__hosihikari_shim_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
+    public static InternalTaskGroup Create(global::Hosihikari.Bindings.Bedrock.Interop.InternalTaskGroup arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_2b9ee290((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InternalTaskGroup((nint)handle);
+    }
+
     public int getState()
     {
         return NativeMethods.TablePtr->C1.hs_method_f462f084((void*)__hosihikari_shim_handle);

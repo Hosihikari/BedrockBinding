@@ -38,13 +38,13 @@ public sealed unsafe partial class ReplaceRule : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
     public nint _ctor(nint block, nint mayReplace) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
     public static ReplaceRule Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_162c76f4();
+        var handle = NativeMethods.TablePtr->C3.hs_create_162c76f4();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -53,20 +53,31 @@ public sealed unsafe partial class ReplaceRule : global::System.IDisposable
         return new ReplaceRule((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
     public static ReplaceRule Create(nint block, nint mayReplace) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
+
+    public static ReplaceRule Create(global::Hosihikari.Bindings.Bedrock.Interop.ReplaceRule arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_02aa0756((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ReplaceRule((nint)handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_43f61659((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_43f61659((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMayReplace_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_45143750((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_45143750((void*)__hosihikari_shim_handle);
     }
 
 
@@ -76,7 +87,7 @@ public sealed unsafe partial class ReplaceRule : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_a1df8454((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_a1df8454((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -38,6 +38,17 @@ public sealed unsafe partial class Node : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Node Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.JSONObject.Node arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_dee2fdae((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Node((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public void toJSONString(nint dest) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");

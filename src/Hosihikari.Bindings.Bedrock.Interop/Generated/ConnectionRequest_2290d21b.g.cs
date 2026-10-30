@@ -85,6 +85,17 @@ public sealed unsafe partial class ConnectionRequest : global::System.IDisposabl
         return new ConnectionRequest((nint)handle);
     }
 
+    public static ConnectionRequest Create(global::Hosihikari.Bindings.Bedrock.Interop.ConnectionRequest arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_b25d6221((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ConnectionRequest((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static ConnectionRequest Create(nint rawToken, nint authentication) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");

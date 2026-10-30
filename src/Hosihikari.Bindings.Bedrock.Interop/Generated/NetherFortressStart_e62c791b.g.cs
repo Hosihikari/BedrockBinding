@@ -49,6 +49,17 @@ public sealed unsafe partial class NetherFortressStart : global::System.IDisposa
         return NativeMethods.TablePtr->C2.hs_method_5cabcf4c((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static NetherFortressStart Create(global::Hosihikari.Bindings.Bedrock.Interop.NetherFortressStart arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_7fc69435((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NetherFortressStart((nint)handle);
+    }
+
     public string getStructureName()
     {
         var __hs_view = NativeMethods.TablePtr->C2.hs_method_7d8fa1a4((void*)__hosihikari_shim_handle);

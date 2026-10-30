@@ -72,6 +72,17 @@ public sealed unsafe partial class FoodItem118Upgrade : global::System.IDisposab
         NativeMethods.TablePtr->C1.hs_method_a96c26aa((void*)__hosihikari_shim_handle, (void*)document, (void*)arg1.Handle);
     }
 
+    public static FoodItem118Upgrade Create(global::Hosihikari.Bindings.Bedrock.Interop.FoodItemVersioning.FoodItem118Upgrade arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b2f738b9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FoodItem118Upgrade((nint)handle);
+    }
+
     public bool previousSchema(nint component)
     {
         return NativeMethods.TablePtr->C1.hs_method_5d188149((void*)__hosihikari_shim_handle, (void*)component) != 0;

@@ -48,6 +48,17 @@ public sealed unsafe partial class BlockFriction11910Upgrade : global::System.ID
         NativeMethods.TablePtr->C0.hs_method_f5002a6c((void*)__hosihikari_shim_handle, (void*)document, (void*)arg1.Handle);
     }
 
+    public static BlockFriction11910Upgrade Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockFrictionVersioning.BlockFriction11910Upgrade arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_37dd7640((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockFriction11910Upgrade((nint)handle);
+    }
+
     public bool previousSchema(nint component)
     {
         return NativeMethods.TablePtr->C0.hs_method_414e3e2b((void*)__hosihikari_shim_handle, (void*)component) != 0;

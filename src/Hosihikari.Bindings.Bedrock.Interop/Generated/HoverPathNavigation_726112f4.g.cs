@@ -80,6 +80,17 @@ public sealed unsafe partial class HoverPathNavigation : global::System.IDisposa
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static HoverPathNavigation Create(global::Hosihikari.Bindings.Bedrock.Interop.HoverPathNavigation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_793546e8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HoverPathNavigation((nint)handle);
+    }
+
     public bool canUpdatePath(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
         return NativeMethods.TablePtr->C1.hs_method_c5ce4e2c((void*)__hosihikari_shim_handle, (void*)mob.Handle) != 0;

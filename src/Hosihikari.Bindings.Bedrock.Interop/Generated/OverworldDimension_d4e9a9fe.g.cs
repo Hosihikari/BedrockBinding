@@ -459,6 +459,17 @@ public sealed unsafe partial class OverworldDimension : global::System.IDisposab
     public static OverworldDimension Create(nint args) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
+    public static OverworldDimension Create(global::Hosihikari.Bindings.Bedrock.Interop.OverworldDimension arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_ef96dae5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OverworldDimension((nint)handle);
+    }
+
     public void _upgradeOldLimboEntity(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, sbyte vers)
     {
         NativeMethods.TablePtr->C2.hs_method_b65ded1d((void*)__hosihikari_shim_handle, (void*)tag.Handle, vers);

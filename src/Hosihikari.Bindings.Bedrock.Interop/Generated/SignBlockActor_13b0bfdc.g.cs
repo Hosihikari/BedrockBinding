@@ -363,9 +363,10 @@ public sealed unsafe partial class SignBlockActor : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_ab10298b((void*)__hosihikari_shim_handle, (void*)region.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void requestToSendOpenSignPacket(nint entityRef, nint position, bool isFrontSide) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void requestToSendOpenSignPacket(global::Hosihikari.Bindings.Bedrock.Interop.WeakRef_EntityContext_ entityRef, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos position, bool isFrontSide)
+    {
+        NativeMethods.TablePtr->C3.hs_method_5ff62ddf((void*)__hosihikari_shim_handle, (void*)entityRef.Handle, (void*)position.Handle, isFrontSide);
+    }
 
     public bool save(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, nint saveContext)
     {
@@ -398,9 +399,24 @@ public sealed unsafe partial class SignBlockActor : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void setMessageForServerScripingOnly(nint side, nint message, nint ownerID) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void setMessageForServerScripingOnly(int side, global::Hosihikari.Bindings.Bedrock.Interop.TextObjectRoot message, string ownerID)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(ownerID);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(ownerID, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            NativeMethods.TablePtr->C3.hs_method_071c9e44((void*)__hosihikari_shim_handle, side, (void*)message.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2);
+        }
+    }
 
     public void setMessageForServerScripingOnly(int side, string message, string ownerID)
     {

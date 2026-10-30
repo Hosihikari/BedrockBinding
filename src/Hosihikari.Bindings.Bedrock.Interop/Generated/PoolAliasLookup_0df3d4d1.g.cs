@@ -43,6 +43,17 @@ public sealed unsafe partial class PoolAliasLookup : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_c9f125c3((void*)__hosihikari_shim_handle);
     }
 
+    public static PoolAliasLookup Create(global::Hosihikari.Bindings.Bedrock.Interop.PoolAliasBinding_Nested.PoolAliasLookup arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_68616ce0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PoolAliasLookup((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mLookupTable_Address
     {

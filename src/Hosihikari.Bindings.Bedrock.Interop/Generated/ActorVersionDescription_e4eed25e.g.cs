@@ -43,6 +43,17 @@ public sealed unsafe partial class ActorVersionDescription : global::System.IDis
         return (nint)NativeMethods.TablePtr->C0.hs_method_8587ba4a((void*)__hosihikari_shim_handle);
     }
 
+    public static ActorVersionDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorVersionDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5f99c578((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorVersionDescription((nint)handle);
+    }
+
     public nint getJsonName()
     {
         return (nint)NativeMethods.TablePtr->C0.hs_method_2ef882cb((void*)__hosihikari_shim_handle);

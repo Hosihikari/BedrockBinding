@@ -116,6 +116,17 @@ public sealed unsafe partial class LookAtEntityGoal : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C2.hs_get_b9e5bb8e((void*)__hosihikari_shim_handle);
     }
 
+    public static LookAtEntityGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.LookAtEntityGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_f72dcba4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LookAtEntityGoal((nint)handle);
+    }
+
 
     public void Dispose()
     {

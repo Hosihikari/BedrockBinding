@@ -65,6 +65,17 @@ public sealed unsafe partial class ScriptComponentTypeEnumBuilder : global::Syst
         return new ScriptComponentTypeEnumBuilder((nint)handle);
     }
 
+    public static ScriptComponentTypeEnumBuilder Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptComponentTypeEnumBuilder arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_1b8e8ae3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptComponentTypeEnumBuilder((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public nint bind(nint releaseVersion) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");

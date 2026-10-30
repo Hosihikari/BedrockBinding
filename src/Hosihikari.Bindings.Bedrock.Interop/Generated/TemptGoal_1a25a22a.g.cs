@@ -238,6 +238,17 @@ public sealed unsafe partial class TemptGoal : global::System.IDisposable
     public static TemptGoal Create(nint mob, nint name, nint goalId, float speed, nint itemList, nint sound, nint soundIntervalRange, bool canGetScared, float temptDistance, float stopDistance, bool canTemptVertically, bool canTemptWhileRidden, nint onStartEvent, nint onEndEvent) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
+    public static TemptGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.TemptGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_f428295e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TemptGoal((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public void appendDebugInfo(nint str) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");

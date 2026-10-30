@@ -75,6 +75,17 @@ public sealed unsafe partial class SerializedAbilitiesData : global::System.IDis
         return new SerializedAbilitiesData((nint)handle);
     }
 
+    public static SerializedAbilitiesData Create(global::Hosihikari.Bindings.Bedrock.Interop.SerializedAbilitiesData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_ccbba311((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SerializedAbilitiesData((nint)handle);
+    }
+
     public byte mCommandPermissions
     {
         get => NativeMethods.TablePtr->C3.hs_get_f8c562dd((void*)__hosihikari_shim_handle);

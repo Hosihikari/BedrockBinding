@@ -51,6 +51,17 @@ public sealed unsafe partial class DtmfProviderInterface : global::System.IDispo
     public bool CanInsertDtmf() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static DtmfProviderInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.DtmfProviderInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_1110fb3d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DtmfProviderInterface((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool InsertDtmf(int code, int duration) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

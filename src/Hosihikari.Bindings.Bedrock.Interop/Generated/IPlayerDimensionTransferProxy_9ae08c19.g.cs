@@ -38,6 +38,17 @@ public sealed unsafe partial class IPlayerDimensionTransferProxy : global::Syste
         return __hs_handle;
     }
 
+    public static IPlayerDimensionTransferProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.IPlayerDimensionTransferProxy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b763f844((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IPlayerDimensionTransferProxy((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint calculateAgentSpawnPosition(nint player) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

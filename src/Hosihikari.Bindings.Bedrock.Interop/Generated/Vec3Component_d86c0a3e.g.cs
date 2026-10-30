@@ -38,6 +38,17 @@ public sealed unsafe partial class Vec3Component : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Vec3Component Create(global::Hosihikari.Bindings.Bedrock.Interop.Vec3Component arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_9cf945c4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Vec3Component((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mValue_Address
     {

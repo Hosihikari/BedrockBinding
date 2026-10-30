@@ -38,6 +38,17 @@ public sealed unsafe partial class IPuvLoadEventing : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static IPuvLoadEventing Create(global::Hosihikari.Bindings.Bedrock.Interop.IPuvLoadEventing arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_ed030745((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IPuvLoadEventing((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void fireEventPUVLoad(nint resourceCategory, nint loadData) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

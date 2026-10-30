@@ -38,6 +38,17 @@ public sealed unsafe partial class PressurePlatePushEvent : global::System.IDisp
         return __hs_handle;
     }
 
+    public static PressurePlatePushEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.PressurePlatePushEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_40c062d8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PressurePlatePushEvent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockSourceHandle_Address
     {

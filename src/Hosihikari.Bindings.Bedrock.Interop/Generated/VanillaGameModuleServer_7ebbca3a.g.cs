@@ -44,9 +44,10 @@ public sealed unsafe partial class VanillaGameModuleServer : global::System.IDis
         get => (nint)NativeMethods.TablePtr->C4.hs_get_ff1836b9((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void _configureDocumentation(nint moduleDocumentation, nint docItemRegistry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void _configureDocumentation(nint moduleDocumentation, global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistryRef docItemRegistry)
+    {
+        NativeMethods.TablePtr->C4.hs_method_61fa8366((void*)__hosihikari_shim_handle, (void*)moduleDocumentation, (void*)docItemRegistry.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'std::reference_wrapper<std::unordered_map<std::basic_string<char>, std::unique_ptr<BiomeJsonDocumentGlueResolvedBiomeData>>>' is abstract or not copy-constructible.", false)]
     public void _configureLevel(nint level, nint experiments, nint resourcePackManager, nint baseGameVersion, nint scriptManager, nint biomeIdToResolvedData) =>
@@ -121,9 +122,10 @@ public sealed unsafe partial class VanillaGameModuleServer : global::System.IDis
         return new VanillaGameModuleServer((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void configureDocumentation(nint moduleDocumentation, nint docItemRegistry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void configureDocumentation(nint moduleDocumentation, global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistryRef docItemRegistry)
+    {
+        NativeMethods.TablePtr->C4.hs_method_dded2f86((void*)__hosihikari_shim_handle, (void*)moduleDocumentation, (void*)docItemRegistry.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'std::reference_wrapper<std::unordered_map<std::basic_string<char>, std::unique_ptr<BiomeJsonDocumentGlueResolvedBiomeData>>>' is abstract or not copy-constructible.", false)]
     public void configureLevel(nint level, nint experiments, nint resourcePackManager, nint baseGameVersion, nint scriptManager, nint biomeIdToResolvedData) =>

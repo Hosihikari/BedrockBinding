@@ -67,6 +67,17 @@ public sealed unsafe partial class BossEventSubscriptionManagerImpl : global::Sy
     public nint _subscribeToBossEvent_7a691454(nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
+    public static BossEventSubscriptionManagerImpl Create(global::Hosihikari.Bindings.Bedrock.Interop.BossEventSubscriptionManagerImpl arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_e2720675((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BossEventSubscriptionManagerImpl((nint)handle);
+    }
+
     public bool areBossEventSubscribersReady()
     {
         return NativeMethods.TablePtr->C0.hs_method_0cb1b0ef((void*)__hosihikari_shim_handle) != 0;

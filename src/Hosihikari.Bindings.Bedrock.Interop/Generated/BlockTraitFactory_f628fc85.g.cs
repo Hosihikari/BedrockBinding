@@ -43,6 +43,17 @@ public sealed unsafe partial class BlockTraitFactory : global::System.IDisposabl
         NativeMethods.TablePtr->C0.hs_method_8c517ecd((void*)__hosihikari_shim_handle);
     }
 
+    public static BlockTraitFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockTraitFactory arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_fd906d0f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockTraitFactory((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'BlockTrait::ITrait' has no accessible destructor.", false)]
     public nint createTrait(nint name, nint ctx) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'BlockTrait::ITrait' has no accessible destructor.");

@@ -38,6 +38,17 @@ public sealed unsafe partial class MediaSourceInterface : global::System.IDispos
         return __hs_handle;
     }
 
+    public static MediaSourceInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.MediaSourceInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_584ecd9a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MediaSourceInterface((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool remote() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

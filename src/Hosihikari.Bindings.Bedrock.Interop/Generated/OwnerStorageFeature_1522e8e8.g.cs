@@ -38,6 +38,17 @@ public sealed unsafe partial class OwnerStorageFeature : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static OwnerStorageFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.OwnerStorageFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_111ce55b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OwnerStorageFeature((nint)handle);
+    }
+
     public ulong mIndex
     {
         get => NativeMethods.TablePtr->C2.hs_get_b1233ba0((void*)__hosihikari_shim_handle);

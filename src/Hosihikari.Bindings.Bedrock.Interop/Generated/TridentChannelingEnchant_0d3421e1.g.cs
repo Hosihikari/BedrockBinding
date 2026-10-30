@@ -40,96 +40,107 @@ public sealed unsafe partial class TridentChannelingEnchant : global::System.IDi
 
     public int mCompatibility
     {
-        get => NativeMethods.TablePtr->C3.hs_get_5148e250((void*)__hosihikari_shim_handle);
+        get => NativeMethods.TablePtr->C4.hs_get_5148e250((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDescription_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_dfe1d883((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_dfe1d883((void*)__hosihikari_shim_handle);
     }
 
     public byte mEnchantType
     {
-        get => NativeMethods.TablePtr->C3.hs_get_08ff440c((void*)__hosihikari_shim_handle);
+        get => NativeMethods.TablePtr->C4.hs_get_08ff440c((void*)__hosihikari_shim_handle);
     }
 
     public int mFrequency
     {
-        get => NativeMethods.TablePtr->C3.hs_get_1aa1fc23((void*)__hosihikari_shim_handle);
+        get => NativeMethods.TablePtr->C4.hs_get_1aa1fc23((void*)__hosihikari_shim_handle);
     }
 
     public bool mIsAvailableInVillagerTrading
     {
-        get => NativeMethods.TablePtr->C3.hs_get_5d8254ed((void*)__hosihikari_shim_handle) != 0;
+        get => NativeMethods.TablePtr->C4.hs_get_5d8254ed((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool mIsDisabled
     {
-        get => NativeMethods.TablePtr->C3.hs_get_232196da((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_232196da((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_232196da((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_232196da((void*)__hosihikari_shim_handle, value);
     }
 
     public int mPrimarySlots
     {
-        get => NativeMethods.TablePtr->C3.hs_get_a103317a((void*)__hosihikari_shim_handle);
+        get => NativeMethods.TablePtr->C4.hs_get_a103317a((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mScriptStringId_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_552585e4((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_552585e4((void*)__hosihikari_shim_handle);
     }
 
     public int mSecondarySlots
     {
-        get => NativeMethods.TablePtr->C3.hs_get_d593b1b7((void*)__hosihikari_shim_handle);
+        get => NativeMethods.TablePtr->C4.hs_get_d593b1b7((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mStringId_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_837d1086((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_837d1086((void*)__hosihikari_shim_handle);
     }
 
     public int _getMaxCost(int level)
     {
-        return NativeMethods.TablePtr->C3.hs_method_3396d19c((void*)__hosihikari_shim_handle, level);
+        return NativeMethods.TablePtr->C4.hs_method_3396d19c((void*)__hosihikari_shim_handle, level);
     }
 
     public int _getMaxLevel()
     {
-        return NativeMethods.TablePtr->C3.hs_method_3c8625e1((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C4.hs_method_3c8625e1((void*)__hosihikari_shim_handle);
     }
 
     public int _getMinCost(int level)
     {
-        return NativeMethods.TablePtr->C3.hs_method_142146e2((void*)__hosihikari_shim_handle, level);
+        return NativeMethods.TablePtr->C4.hs_method_142146e2((void*)__hosihikari_shim_handle, level);
     }
 
     public bool _isCompatibleWith(byte type)
     {
-        return NativeMethods.TablePtr->C3.hs_method_7af78716((void*)__hosihikari_shim_handle, type) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_7af78716((void*)__hosihikari_shim_handle, type) != 0;
+    }
+
+    public static TridentChannelingEnchant Create(global::Hosihikari.Bindings.Bedrock.Interop.TridentChannelingEnchant arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_49f2c4a1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TridentChannelingEnchant((nint)handle);
     }
 
     public int getMaxCost(int level)
     {
-        return NativeMethods.TablePtr->C3.hs_method_f4380324((void*)__hosihikari_shim_handle, level);
+        return NativeMethods.TablePtr->C4.hs_method_f4380324((void*)__hosihikari_shim_handle, level);
     }
 
     public int getMaxLevel()
     {
-        return NativeMethods.TablePtr->C3.hs_method_d21f6780((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C4.hs_method_d21f6780((void*)__hosihikari_shim_handle);
     }
 
     public int getMinCost(int level)
     {
-        return NativeMethods.TablePtr->C3.hs_method_a7a9f18a((void*)__hosihikari_shim_handle, level);
+        return NativeMethods.TablePtr->C4.hs_method_a7a9f18a((void*)__hosihikari_shim_handle, level);
     }
 
     public bool isCompatibleWith(byte type)
     {
-        return NativeMethods.TablePtr->C3.hs_method_3419f773((void*)__hosihikari_shim_handle, type) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_3419f773((void*)__hosihikari_shim_handle, type) != 0;
     }
 
 
@@ -139,7 +150,7 @@ public sealed unsafe partial class TridentChannelingEnchant : global::System.IDi
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_0d3421e1((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_0d3421e1((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

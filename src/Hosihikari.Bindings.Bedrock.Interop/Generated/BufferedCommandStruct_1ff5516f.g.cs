@@ -38,6 +38,17 @@ public sealed unsafe partial class BufferedCommandStruct : global::System.IDispo
         return __hs_handle;
     }
 
+    public static BufferedCommandStruct Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakPeer_Nested.BufferedCommandStruct arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_3b62c9e7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BufferedCommandStruct((nint)handle);
+    }
+
     public bool blockingCommand
     {
         get => NativeMethods.TablePtr->C2.hs_get_13ed4885((void*)__hosihikari_shim_handle) != 0;

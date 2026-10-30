@@ -141,6 +141,17 @@ public sealed unsafe partial class ListBlockVolume : global::System.IDisposable
         return new ListBlockVolume((nint)handle);
     }
 
+    public static ListBlockVolume Create(global::Hosihikari.Bindings.Bedrock.Interop.ListBlockVolume arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_c209183f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ListBlockVolume((nint)handle);
+    }
+
     public static ListBlockVolume Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos[] blockPositions)
     {
         var __hs_vectorItems0 = blockPositions;

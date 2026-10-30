@@ -38,6 +38,17 @@ public sealed unsafe partial class TakeActionData : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static TakeActionData Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestCereal.TakeActionData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_78ecf5a6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TakeActionData((nint)handle);
+    }
+
     public byte mAmount
     {
         get => NativeMethods.TablePtr->C1.hs_get_84fa94ad((void*)__hosihikari_shim_handle);

@@ -59,6 +59,17 @@ public sealed unsafe partial class MovePlayerPacketPayload : global::System.IDis
         return new MovePlayerPacketPayload((nint)handle);
     }
 
+    public static MovePlayerPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.MovePlayerPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_30f8f574((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MovePlayerPacketPayload((nint)handle);
+    }
+
     public static MovePlayerPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.Player player, byte resetPosition, int cause, int sourceEntityType)
     {
         var handle = NativeMethods.TablePtr->C2.hs_create_3770b943((void*)player.Handle, resetPosition, cause, sourceEntityType);

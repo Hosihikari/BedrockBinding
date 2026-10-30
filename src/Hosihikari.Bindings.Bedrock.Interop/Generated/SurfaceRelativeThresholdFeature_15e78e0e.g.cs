@@ -61,6 +61,17 @@ public sealed unsafe partial class SurfaceRelativeThresholdFeature : global::Sys
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static SurfaceRelativeThresholdFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.SurfaceRelativeThresholdFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_510d0b3b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SurfaceRelativeThresholdFeature((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mFeatureToPlace_Address
     {

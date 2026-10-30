@@ -101,6 +101,17 @@ public sealed unsafe partial class BaseScriptGameTestFunction : global::System.I
         }
     }
 
+    public static BaseScriptGameTestFunction Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest.BaseScriptGameTestFunction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_f0edee1b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BaseScriptGameTestFunction((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'gametest::IGameTestFunctionContext' has no accessible destructor.", false)]
     public nint createContext(nint helper) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'gametest::IGameTestFunctionContext' has no accessible destructor.");

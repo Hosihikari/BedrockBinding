@@ -40,13 +40,13 @@ public sealed unsafe partial class LegacyOnCompleteTriggerItemComponent : global
 
     public nint mOwner
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_f5306e2f((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_f5306e2f((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f5306e2f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_f5306e2f((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public void __initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {
-        NativeMethods.TablePtr->C1.hs_method_4913fcdc((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+        NativeMethods.TablePtr->C2.hs_method_4913fcdc((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
@@ -59,7 +59,7 @@ public sealed unsafe partial class LegacyOnCompleteTriggerItemComponent : global
 
     public static LegacyOnCompleteTriggerItemComponent Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_9b3539e8();
+        var handle = NativeMethods.TablePtr->C2.hs_create_9b3539e8();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -72,28 +72,39 @@ public sealed unsafe partial class LegacyOnCompleteTriggerItemComponent : global
     public static LegacyOnCompleteTriggerItemComponent Create(nint componentData) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
+    public static LegacyOnCompleteTriggerItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyOnCompleteTriggerItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_c3dddf90((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacyOnCompleteTriggerItemComponent((nint)handle);
+    }
+
     public void _initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {
-        NativeMethods.TablePtr->C1.hs_method_87f67065((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+        NativeMethods.TablePtr->C2.hs_method_87f67065((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnComplete_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_55f790ff((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_55f790ff((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnUseTimeDepletedSubscription_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_a74765ed((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a74765ed((void*)__hosihikari_shim_handle);
     }
 
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnTriggerPublisher_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_e07777e5((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e07777e5((void*)__hosihikari_shim_handle);
     }
 
     public void Dispose()
@@ -102,7 +113,7 @@ public sealed unsafe partial class LegacyOnCompleteTriggerItemComponent : global
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_b7f53d7a((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_b7f53d7a((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

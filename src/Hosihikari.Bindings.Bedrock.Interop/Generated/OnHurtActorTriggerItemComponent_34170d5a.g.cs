@@ -38,6 +38,17 @@ public sealed unsafe partial class OnHurtActorTriggerItemComponent : global::Sys
         return __hs_handle;
     }
 
+    public static OnHurtActorTriggerItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy.OnHurtActorTriggerItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_45d5f441((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OnHurtActorTriggerItemComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnHurtActor_Address
     {

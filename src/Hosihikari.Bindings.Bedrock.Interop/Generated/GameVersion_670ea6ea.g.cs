@@ -64,6 +64,17 @@ public sealed unsafe partial class GameVersion : global::System.IDisposable
         return new GameVersion((nint)handle);
     }
 
+    public static GameVersion Create(global::Hosihikari.Bindings.Bedrock.Interop.GameVersion arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_c358354f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameVersion((nint)handle);
+    }
+
     public static GameVersion Create(global::Hosihikari.Bindings.Bedrock.Interop.ListTag tag)
     {
         var handle = NativeMethods.TablePtr->C1.hs_create_4b37fc5b((void*)tag.Handle);

@@ -42,6 +42,17 @@ public sealed unsafe partial class CodeScreenCapabilities : global::System.IDisp
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static CodeScreenCapabilities Create(global::Hosihikari.Bindings.Bedrock.Interop.CodeScreenCapabilities arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_efbc38d2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CodeScreenCapabilities((nint)handle);
+    }
+
 
     public void Dispose()
     {

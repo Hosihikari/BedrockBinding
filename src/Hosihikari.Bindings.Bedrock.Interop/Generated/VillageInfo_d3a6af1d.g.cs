@@ -38,6 +38,17 @@ public sealed unsafe partial class VillageInfo : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static VillageInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.VillageManager_Nested.VillageInfo arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_f8b0ee8e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VillageInfo((nint)handle);
+    }
+
     public float distanceToClosestEdgeOfVillage
     {
         get => NativeMethods.TablePtr->C4.hs_get_a47d0a76((void*)__hosihikari_shim_handle);

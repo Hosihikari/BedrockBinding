@@ -38,32 +38,43 @@ public sealed unsafe partial class ContentIdentity : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ContentIdentity Create(global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_e7e3b85b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ContentIdentity((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity EMPTY()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity((nint)NativeMethods.TablePtr->C0.hs_method_e5219f97(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity((nint)NativeMethods.TablePtr->C1.hs_method_e5219f97(), false);
     }
 
     public string asString()
     {
-        var __hs_view = NativeMethods.TablePtr->C0.hs_method_8e5eb816((void*)__hosihikari_shim_handle);
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_8e5eb816((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUUID_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_ae2ac84a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_ae2ac84a((void*)__hosihikari_shim_handle);
     }
 
     public bool mValid
     {
-        get => NativeMethods.TablePtr->C0.hs_get_86b8d2a8((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C0.hs_set_86b8d2a8((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_86b8d2a8((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_86b8d2a8((void*)__hosihikari_shim_handle, value);
     }
 
     public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity rhs)
     {
-        return NativeMethods.TablePtr->C0.hs_method_7cbe4457((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_7cbe4457((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;
     }
 
 
@@ -73,7 +84,7 @@ public sealed unsafe partial class ContentIdentity : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_16e850eb((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_16e850eb((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

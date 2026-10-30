@@ -38,6 +38,17 @@ public sealed unsafe partial class InsideGenericBlockComponent : global::System.
         return __hs_handle;
     }
 
+    public static InsideGenericBlockComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.InsideGenericBlockComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b05e182c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InsideGenericBlockComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mData_Address
     {

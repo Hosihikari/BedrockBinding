@@ -38,6 +38,17 @@ public sealed unsafe partial class RelightingChunkElement : global::System.IDisp
         return __hs_handle;
     }
 
+    public static RelightingChunkElement Create(global::Hosihikari.Bindings.Bedrock.Interop.RuntimeLightingManager_Nested.RelightingChunkElement arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_62cb4a4c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RelightingChunkElement((nint)handle);
+    }
+
     public nint mAlteredBlockList
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_32735feb((void*)__hosihikari_shim_handle);

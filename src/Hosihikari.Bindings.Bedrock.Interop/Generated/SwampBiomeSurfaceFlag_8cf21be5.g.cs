@@ -42,6 +42,17 @@ public sealed unsafe partial class SwampBiomeSurfaceFlag : global::System.IDispo
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static SwampBiomeSurfaceFlag Create(global::Hosihikari.Bindings.Bedrock.Interop.SwampBiomeSurfaceFlag arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_35ae341e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SwampBiomeSurfaceFlag((nint)handle);
+    }
+
     public int mMaxPuddleDepthBelowSeaLevel
     {
         get => NativeMethods.TablePtr->C3.hs_get_e46746ef((void*)__hosihikari_shim_handle);

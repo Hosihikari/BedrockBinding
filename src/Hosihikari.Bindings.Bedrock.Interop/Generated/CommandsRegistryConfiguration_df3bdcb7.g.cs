@@ -48,6 +48,17 @@ public sealed unsafe partial class CommandsRegistryConfiguration : global::Syste
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static CommandsRegistryConfiguration Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandsRegistryConfiguration arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_efcbb2a0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandsRegistryConfiguration((nint)handle);
+    }
+
     public byte? getCommandPermissionLevel(string command)
     {
         var __hs_hasValue = false;

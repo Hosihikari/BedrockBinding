@@ -53,6 +53,17 @@ public sealed unsafe partial class Igloo : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_2c48e477((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle);
     }
 
+    public static Igloo Create(global::Hosihikari.Bindings.Bedrock.Interop.Igloo arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_668c9006((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Igloo((nint)handle);
+    }
+
     public static string STRUCTURE_LOCATION_IGLOO_NO_TRAPDOOR()
     {
         var __hs_view = NativeMethods.TablePtr->C1.hs_method_c04795db();

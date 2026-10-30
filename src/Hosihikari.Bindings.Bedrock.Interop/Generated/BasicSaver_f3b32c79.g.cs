@@ -52,6 +52,17 @@ public sealed unsafe partial class BasicSaver : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static BasicSaver Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.BasicSaver arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_f901b999((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BasicSaver((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mConfig_Address
     {

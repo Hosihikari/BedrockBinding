@@ -44,6 +44,17 @@ public sealed unsafe partial class BuriedTreasureStart : global::System.IDisposa
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static BuriedTreasureStart Create(global::Hosihikari.Bindings.Bedrock.Interop.BuriedTreasureStart arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_0b80e4f5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BuriedTreasureStart((nint)handle);
+    }
+
     public string getStructureName()
     {
         var __hs_view = NativeMethods.TablePtr->C0.hs_method_b6c679d4((void*)__hosihikari_shim_handle);

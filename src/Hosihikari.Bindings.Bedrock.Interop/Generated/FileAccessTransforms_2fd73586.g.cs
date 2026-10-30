@@ -58,6 +58,17 @@ public sealed unsafe partial class FileAccessTransforms : global::System.IDispos
         }
     }
 
+    public static FileAccessTransforms Create(global::Hosihikari.Bindings.Bedrock.Interop.FileAccessTransforms arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_37c09416((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FileAccessTransforms((nint)handle);
+    }
+
     public bool readTransform(byte[] stream)
     {
         fixed (byte* __hs_vectorData0 = stream)

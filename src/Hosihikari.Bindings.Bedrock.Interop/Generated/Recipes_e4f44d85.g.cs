@@ -40,17 +40,17 @@ public sealed unsafe partial class Recipes : global::System.IDisposable
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ILevel? level)
     {
-        return (nint)NativeMethods.TablePtr->C2.hs_method_7f132e68((void*)__hosihikari_shim_handle, (void*)(level?.Handle ?? 0));
+        return (nint)NativeMethods.TablePtr->C3.hs_method_7f132e68((void*)__hosihikari_shim_handle, (void*)(level?.Handle ?? 0));
     }
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C2.hs_method_74144e5f((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_74144e5f((void*)__hosihikari_shim_handle);
     }
 
     public static Recipes Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_0b258725();
+        var handle = NativeMethods.TablePtr->C3.hs_create_0b258725();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -61,7 +61,18 @@ public sealed unsafe partial class Recipes : global::System.IDisposable
 
     public static Recipes Create(global::Hosihikari.Bindings.Bedrock.Interop.ILevel? level)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_1584e61c((void*)(level?.Handle ?? 0));
+        var handle = NativeMethods.TablePtr->C3.hs_create_1584e61c((void*)(level?.Handle ?? 0));
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Recipes((nint)handle);
+    }
+
+    public static Recipes Create(global::Hosihikari.Bindings.Bedrock.Interop.Recipes arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_7bc6b3c9((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -72,17 +83,17 @@ public sealed unsafe partial class Recipes : global::System.IDisposable
 
     public void _loadHardcodedRecipes(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg1)
     {
-        NativeMethods.TablePtr->C2.hs_method_a1983f68((void*)__hosihikari_shim_handle, (void*)baseGameVersion.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C3.hs_method_a1983f68((void*)__hosihikari_shim_handle, (void*)baseGameVersion.Handle, (void*)arg1.Handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient _loadIngredientFromJson(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value obj, short molangVersion, bool allowItemCount, bool allowItemGroup)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient((nint)NativeMethods.TablePtr->C2.hs_method_bb17cb1c((void*)__hosihikari_shim_handle, (void*)obj.Handle, molangVersion, allowItemCount, allowItemGroup));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient((nint)NativeMethods.TablePtr->C3.hs_method_bb17cb1c((void*)__hosihikari_shim_handle, (void*)obj.Handle, molangVersion, allowItemCount, allowItemGroup));
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient _loadInputIngredientFromJson(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value obj, global::Hosihikari.Bindings.Bedrock.Interop.MinEngineVersion minEngineVersion)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient((nint)NativeMethods.TablePtr->C2.hs_method_20b5744d((void*)__hosihikari_shim_handle, (void*)obj.Handle, (void*)minEngineVersion.Handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient((nint)NativeMethods.TablePtr->C3.hs_method_20b5744d((void*)__hosihikari_shim_handle, (void*)obj.Handle, (void*)minEngineVersion.Handle));
     }
 
     public bool _loadRecipe(string recipeId, byte type, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value objData, global::Hosihikari.Bindings.Bedrock.Interop.MinEngineVersion minEngineVersion, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion formatVersion, bool isBaseGamePack, global::Hosihikari.Bindings.Bedrock.Interop.Recipes_Nested.Buffers buffers)
@@ -100,7 +111,7 @@ public sealed unsafe partial class Recipes : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(recipeId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->C2.hs_method_0540fecb((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, type, (void*)objData.Handle, (void*)minEngineVersion.Handle, (void*)formatVersion.Handle, isBaseGamePack, (void*)buffers.Handle) != 0;
+            return NativeMethods.TablePtr->C3.hs_method_0540fecb((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, type, (void*)objData.Handle, (void*)minEngineVersion.Handle, (void*)formatVersion.Handle, isBaseGamePack, (void*)buffers.Handle) != 0;
         }
     }
 
@@ -108,9 +119,24 @@ public sealed unsafe partial class Recipes : global::System.IDisposable
     public nint _loadUnlockingRequirementFromJson(nint obj, nint molangVersion, nint recipeId) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'RecipeUnlockingRequirement' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void addDyedItemRecipe(nint recipeId, nint result, nint itemToDye, nint dye, nint unlockingReq, nint priority, nint formatVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void addDyedItemRecipe(string recipeId, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance result, global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient itemToDye, global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient dye, global::Hosihikari.Bindings.Bedrock.Interop.RecipeUnlockingRequirement unlockingReq, int priority, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion formatVersion)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(recipeId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(recipeId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C3.hs_method_d112a40f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)result.Handle, (void*)itemToDye.Handle, (void*)dye.Handle, (void*)unlockingReq.Handle, priority, (void*)formatVersion.Handle);
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe>' is not supported.", false)]
     public void addShapedRecipe(nint recipeId, nint result, nint r0, nint r1, nint r2, nint types, nint tags, int priority, nint constructor, nint unlockingReq, nint formatVersion, bool assumeSymmetry) =>
@@ -142,7 +168,7 @@ public sealed unsafe partial class Recipes : global::System.IDisposable
 
     public void clearRecipes()
     {
-        NativeMethods.TablePtr->C2.hs_method_920be209((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_920be209((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -151,96 +177,96 @@ public sealed unsafe partial class Recipes : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance getFurnaceRecipeResult(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, global::Hosihikari.Bindings.Bedrock.Interop.HashedString tag)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->C2.hs_method_9cdc66df((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)tag.Handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->C3.hs_method_9cdc66df((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)tag.Handle));
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Recipe? getRecipeByNetId(nint netId)
     {
-        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_f2fede14((void*)__hosihikari_shim_handle, (void*)netId);
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_f2fede14((void*)__hosihikari_shim_handle, (void*)netId);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Recipe((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Recipe? getRecipeFor(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance result, global::Hosihikari.Bindings.Bedrock.Interop.HashedString tag)
     {
-        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_e008a1cc((void*)__hosihikari_shim_handle, (void*)result.Handle, (void*)tag.Handle);
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_e008a1cc((void*)__hosihikari_shim_handle, (void*)result.Handle, (void*)tag.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Recipe((nint)__hs_handle, false) : null;
     }
 
     public void init(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager resourcePackManager, global::Hosihikari.Bindings.Bedrock.Interop.ExternalRecipeStore recipeStorage, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion, global::Hosihikari.Bindings.Bedrock.Interop.Experiments experiments)
     {
-        NativeMethods.TablePtr->C2.hs_method_d9d035c2((void*)__hosihikari_shim_handle, (void*)resourcePackManager.Handle, (void*)recipeStorage.Handle, (void*)baseGameVersion.Handle, (void*)experiments.Handle);
+        NativeMethods.TablePtr->C3.hs_method_d9d035c2((void*)__hosihikari_shim_handle, (void*)resourcePackManager.Handle, (void*)recipeStorage.Handle, (void*)baseGameVersion.Handle, (void*)experiments.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mExternalRecipeStore_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_c266daa2((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c266daa2((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFurnaceResults_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_4d426ccf((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_4d426ccf((void*)__hosihikari_shim_handle);
     }
 
     public bool mInitializing
     {
-        get => NativeMethods.TablePtr->C2.hs_get_e69e4a2f((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_e69e4a2f((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_e69e4a2f((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_e69e4a2f((void*)__hosihikari_shim_handle, value);
     }
 
     public nint mLevel
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_69156518((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_69156518((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_69156518((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_69156518((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mListeners_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_da55a72a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_da55a72a((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRecipes_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_a7837941((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a7837941((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRecipesByInput_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_d5ae7b32((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d5ae7b32((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRecipesByNetId_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_16161612((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_16161612((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRecipesByOutput_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_209e6bea((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_209e6bea((void*)__hosihikari_shim_handle);
     }
 
     public nint mResourcePackManager
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_f44886a3((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_f44886a3((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f44886a3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_f44886a3((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUniqueUnlockableRecipeIds_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_8b9e405e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8b9e405e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnlockableRecipes_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_20579c3b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_20579c3b((void*)__hosihikari_shim_handle);
     }
 
 
@@ -250,7 +276,7 @@ public sealed unsafe partial class Recipes : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_e4f44d85((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_e4f44d85((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

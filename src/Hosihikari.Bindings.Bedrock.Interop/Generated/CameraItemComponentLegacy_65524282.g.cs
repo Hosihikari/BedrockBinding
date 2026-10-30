@@ -102,6 +102,17 @@ public sealed unsafe partial class CameraItemComponentLegacy : global::System.ID
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static CameraItemComponentLegacy Create(global::Hosihikari.Bindings.Bedrock.Interop.CameraItemComponentLegacy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_462f003e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CameraItemComponentLegacy((nint)handle);
+    }
+
     public static byte _tryPlace(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack instance, global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos blockPos, byte face, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 spawnPos)
     {
         return NativeMethods.TablePtr->C0.hs_method_9e78a227((void*)instance.Handle, (void*)actor.Handle, (void*)blockPos.Handle, face, (void*)spawnPos.Handle);

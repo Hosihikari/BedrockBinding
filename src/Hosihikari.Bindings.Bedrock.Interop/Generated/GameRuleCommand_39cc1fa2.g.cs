@@ -72,6 +72,17 @@ public sealed unsafe partial class GameRuleCommand : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_d7bf0287((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static GameRuleCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.GameRuleCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_e42fe715((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameRuleCommand((nint)handle);
+    }
+
     public static void createJsonIndex(string ruleName, global::Hosihikari.Bindings.Bedrock.Interop.GameRule rule, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value json, nint value)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(ruleName);

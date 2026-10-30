@@ -40,6 +40,10 @@ public sealed partial class _unnamed_struct_at_C__Users_root_source_repos_hosihi
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the native name is not a valid C++ qualified name.", false)]
+    public static _unnamed_struct_at_C__Users_root_source_repos_hosihikari_Projection_Third_LeviLamina_ee049f1_src_7447be2a Create(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the native name is not a valid C++ qualified name.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: the native name is not a valid C++ qualified name.", false)]
     public bool mAllowLayingFromBelow
     {
         get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the native name is not a valid C++ qualified name.");

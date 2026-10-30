@@ -54,6 +54,17 @@ public sealed unsafe partial class ScriptInvalidContainerSlotError : global::Sys
         return new ScriptInvalidContainerSlotError((nint)handle);
     }
 
+    public static ScriptInvalidContainerSlotError Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptInvalidContainerSlotError arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_5e224b73((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptInvalidContainerSlotError((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ErrorBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ErrorBinding((nint)NativeMethods.TablePtr->C3.hs_method_42349ec5());

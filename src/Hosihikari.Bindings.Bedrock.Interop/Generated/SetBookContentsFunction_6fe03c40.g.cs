@@ -54,6 +54,17 @@ public sealed unsafe partial class SetBookContentsFunction : global::System.IDis
         return NativeMethods.TablePtr->C3.hs_method_9eae40e7((void*)__hosihikari_shim_handle);
     }
 
+    public static SetBookContentsFunction Create(global::Hosihikari.Bindings.Bedrock.Interop.SetBookContentsFunction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_7b36f535((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SetBookContentsFunction((nint)handle);
+    }
+
     public void applyPreVersion(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext arg2)
     {
         NativeMethods.TablePtr->C3.hs_method_9d0fb76a((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)arg1.Handle, (void*)arg2.Handle);

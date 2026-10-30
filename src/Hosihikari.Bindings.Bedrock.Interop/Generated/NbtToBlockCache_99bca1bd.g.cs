@@ -38,6 +38,17 @@ public sealed unsafe partial class NbtToBlockCache : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static NbtToBlockCache Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockSerializationUtils.NbtToBlockCache arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_c0445b17((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NbtToBlockCache((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mCache_Address
     {

@@ -55,6 +55,17 @@ public sealed unsafe partial class GlowStoneFeature : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_0261dfb9((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
     }
 
+    public static GlowStoneFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.GlowStoneFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_89593c56((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GlowStoneFeature((nint)handle);
+    }
+
     public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         return NativeMethods.TablePtr->C1.hs_method_5b8e6a14((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;

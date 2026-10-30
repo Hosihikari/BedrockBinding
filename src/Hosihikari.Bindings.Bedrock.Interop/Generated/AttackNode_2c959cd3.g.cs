@@ -52,6 +52,17 @@ public sealed unsafe partial class AttackNode : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static AttackNode Create(global::Hosihikari.Bindings.Bedrock.Interop.AttackNode arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_cc5a1650((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AttackNode((nint)handle);
+    }
+
     public void initializeFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
         NativeMethods.TablePtr->C0.hs_method_63507e3d((void*)__hosihikari_shim_handle, (void*)owner.Handle);

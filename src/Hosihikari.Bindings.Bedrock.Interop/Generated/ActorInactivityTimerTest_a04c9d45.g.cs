@@ -49,6 +49,17 @@ public sealed unsafe partial class ActorInactivityTimerTest : global::System.IDi
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static ActorInactivityTimerTest Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorInactivityTimerTest arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_8ba7eac6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorInactivityTimerTest((nint)handle);
+    }
+
     public bool evaluate(nint context)
     {
         return NativeMethods.TablePtr->C0.hs_method_1e976e63((void*)__hosihikari_shim_handle, (void*)context) != 0;

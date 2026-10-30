@@ -43,6 +43,17 @@ public sealed unsafe partial class CountTracker : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_31ea7be2((void*)__hosihikari_shim_handle);
     }
 
+    public static CountTracker Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.CountTracker arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f41681e7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CountTracker((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mCountReference_Address
     {

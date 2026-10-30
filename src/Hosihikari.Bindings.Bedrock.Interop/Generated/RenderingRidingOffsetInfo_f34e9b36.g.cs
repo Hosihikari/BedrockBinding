@@ -40,7 +40,7 @@ public sealed unsafe partial class RenderingRidingOffsetInfo : global::System.ID
 
     public static RenderingRidingOffsetInfo Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_b4589465();
+        var handle = NativeMethods.TablePtr->C3.hs_create_b4589465();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class RenderingRidingOffsetInfo : global::System.ID
 
     public static RenderingRidingOffsetInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.RenderingRidingOffsetInfo arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_86abe1c8((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_86abe1c8((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,30 +63,30 @@ public sealed unsafe partial class RenderingRidingOffsetInfo : global::System.ID
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk6782f5_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_45713117((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_45713117((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk81f77f_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_7b900f82((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7b900f82((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk95c72e_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_e7a0214c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e7a0214c((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkab7ce9_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_1ba19b94((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1ba19b94((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.RenderingRidingOffsetInfo operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RenderingRidingOffsetInfo arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.RenderingRidingOffsetInfo((nint)NativeMethods.TablePtr->C2.hs_method_99c565c7((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RenderingRidingOffsetInfo((nint)NativeMethods.TablePtr->C3.hs_method_99c565c7((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -95,7 +95,7 @@ public sealed unsafe partial class RenderingRidingOffsetInfo : global::System.ID
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_f34e9b36((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_f34e9b36((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

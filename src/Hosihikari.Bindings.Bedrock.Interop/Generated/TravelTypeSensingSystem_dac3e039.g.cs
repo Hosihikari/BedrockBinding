@@ -44,7 +44,7 @@ public sealed unsafe partial class TravelTypeSensingSystem : global::System.IDis
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_dac3e039((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_dac3e039((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

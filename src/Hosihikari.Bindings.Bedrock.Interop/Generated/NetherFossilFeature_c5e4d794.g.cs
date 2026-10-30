@@ -71,6 +71,17 @@ public sealed unsafe partial class NetherFossilFeature : global::System.IDisposa
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static NetherFossilFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.NetherFossilFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_fe763f47((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NetherFossilFeature((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: return type 'const std::basic_string<char> (&)[14]' is not supported.", false)]
     public static nint STRUCTURE_LOCATION_FOSSIL() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'const std::basic_string<char> (&)[14]' is not supported.");

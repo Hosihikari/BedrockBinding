@@ -54,6 +54,17 @@ public sealed unsafe partial class ActorCommandResponse : global::System.IDispos
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static ActorCommandResponse Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorCommandResponse arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_902e20b3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorCommandResponse((nint)handle);
+    }
+
     public void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root, global::Hosihikari.Bindings.Bedrock.Interop.Factory_ActorEventResponse_ factory)
     {
         NativeMethods.TablePtr->C0.hs_method_da21cfa4((void*)__hosihikari_shim_handle, root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)factory.Handle);

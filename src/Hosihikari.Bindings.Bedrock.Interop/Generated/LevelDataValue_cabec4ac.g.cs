@@ -43,6 +43,17 @@ public sealed unsafe partial class LevelDataValue : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_f4ba3768((void*)__hosihikari_shim_handle);
     }
 
+    public static LevelDataValue Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelDataValue arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_c7ac357c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelDataValue((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mValue_Address
     {

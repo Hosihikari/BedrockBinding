@@ -43,6 +43,17 @@ public sealed unsafe partial class ValidationSystem : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_2fed4266((void*)__hosihikari_shim_handle, (void*)context);
     }
 
+    public static ValidationSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerValidation.ValidationSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_c1cc3b66((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ValidationSystem((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: rvalue string references are not supported by symbol dispatch.", false)]
     public static nint createSystem(nint message) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: rvalue string references are not supported by symbol dispatch.");

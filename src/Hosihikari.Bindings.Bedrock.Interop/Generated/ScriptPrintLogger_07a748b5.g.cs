@@ -110,6 +110,17 @@ public sealed unsafe partial class ScriptPrintLogger : global::System.IDisposabl
         return NativeMethods.TablePtr->C3.hs_method_7147ec3a((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)errorAny) != 0;
     }
 
+    public static ScriptPrintLogger Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptPrintLogger arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_f70aadd8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptPrintLogger((nint)handle);
+    }
+
     public void onError(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId arg0, string message)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);

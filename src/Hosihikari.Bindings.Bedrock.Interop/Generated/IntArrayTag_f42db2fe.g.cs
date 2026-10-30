@@ -87,6 +87,17 @@ public sealed unsafe partial class IntArrayTag : global::System.IDisposable
         return new IntArrayTag((nint)handle);
     }
 
+    public static IntArrayTag Create(global::Hosihikari.Bindings.Bedrock.Interop.IntArrayTag arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_4080241d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IntArrayTag((nint)handle);
+    }
+
     public static IntArrayTag Create(int[] val)
     {
         fixed (int* __hs_vectorData0 = val)

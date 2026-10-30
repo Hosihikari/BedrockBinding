@@ -158,6 +158,17 @@ public sealed unsafe partial class ClientAutomationCommandOrigin : global::Syste
         return new ClientAutomationCommandOrigin((nint)handle);
     }
 
+    public static ClientAutomationCommandOrigin Create(global::Hosihikari.Bindings.Bedrock.Interop.ClientAutomationCommandOrigin arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_d20877f7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ClientAutomationCommandOrigin((nint)handle);
+    }
+
     public static ClientAutomationCommandOrigin Create(string requestId)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(requestId);

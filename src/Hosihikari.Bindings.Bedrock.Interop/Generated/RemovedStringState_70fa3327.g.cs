@@ -59,6 +59,17 @@ public sealed unsafe partial class RemovedStringState : global::System.IDisposab
         return NativeMethods.TablePtr->C1.hs_method_4a970833((void*)__hosihikari_shim_handle);
     }
 
+    public static RemovedStringState Create(global::Hosihikari.Bindings.Bedrock.Interop.FlatteningUtils.RemovedStringState arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_6474200e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RemovedStringState((nint)handle);
+    }
+
     public void addValue(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
         NativeMethods.TablePtr->C1.hs_method_8117877c((void*)__hosihikari_shim_handle, (void*)tag.Handle);

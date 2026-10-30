@@ -38,6 +38,17 @@ public sealed unsafe partial class GetCollisionShapeInterface : global::System.I
         return __hs_handle;
     }
 
+    public static GetCollisionShapeInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_29f0535d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GetCollisionShapeInterface((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool canDescendThroughBlock() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

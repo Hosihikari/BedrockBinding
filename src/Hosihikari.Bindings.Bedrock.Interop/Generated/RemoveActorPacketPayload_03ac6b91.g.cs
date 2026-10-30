@@ -38,10 +38,21 @@ public sealed unsafe partial class RemoveActorPacketPayload : global::System.IDi
         return __hs_handle;
     }
 
+    public static RemoveActorPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.RemoveActorPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_8a4553d8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RemoveActorPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mEntityId_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_def0f394((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_def0f394((void*)__hosihikari_shim_handle);
     }
 
 
@@ -51,7 +62,7 @@ public sealed unsafe partial class RemoveActorPacketPayload : global::System.IDi
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_03ac6b91((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_03ac6b91((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

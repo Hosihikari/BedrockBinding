@@ -43,6 +43,17 @@ public sealed unsafe partial class ComponentStorage : global::System.IDisposable
         NativeMethods.TablePtr->C4.hs_method_a8b0cc81((void*)__hosihikari_shim_handle);
     }
 
+    public static ComponentStorage Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ComponentStorage arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_c339be32((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ComponentStorage((nint)handle);
+    }
+
     public bool eraseComponent(string name)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);

@@ -90,6 +90,17 @@ public sealed unsafe partial class UpdateAttributesPacketPayload : global::Syste
         }
     }
 
+    public static UpdateAttributesPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.UpdateAttributesPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_f59a7c14((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UpdateAttributesPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mAttributeData_Address
     {

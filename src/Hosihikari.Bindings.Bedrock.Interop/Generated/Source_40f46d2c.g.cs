@@ -46,6 +46,17 @@ public sealed unsafe partial class Source : global::System.IDisposable
     public int PreferredSampleRate() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static Source Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.AudioMixer_Nested.Source arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_178bdd88((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Source((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public int Ssrc() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

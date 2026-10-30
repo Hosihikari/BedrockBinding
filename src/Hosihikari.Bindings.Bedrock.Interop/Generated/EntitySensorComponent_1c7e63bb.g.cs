@@ -38,6 +38,17 @@ public sealed unsafe partial class EntitySensorComponent : global::System.IDispo
         return __hs_handle;
     }
 
+    public static EntitySensorComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.EntitySensorComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_60b2fa5b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EntitySensorComponent((nint)handle);
+    }
+
     public bool mCanFireEventWithNoEntities
     {
         get => NativeMethods.TablePtr->C1.hs_get_4e499366((void*)__hosihikari_shim_handle) != 0;

@@ -72,6 +72,17 @@ public sealed unsafe partial class WSServerCommand : global::System.IDisposable
         NativeMethods.TablePtr->C4.hs_method_f5f61644((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static WSServerCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.WSServerCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_de17d818((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WSServerCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C4.hs_method_033f3a6e((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

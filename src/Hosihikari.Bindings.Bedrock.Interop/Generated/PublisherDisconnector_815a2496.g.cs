@@ -38,6 +38,17 @@ public sealed unsafe partial class PublisherDisconnector : global::System.IDispo
         return __hs_handle;
     }
 
+    public static PublisherDisconnector Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PubSub.Detail.PublisherDisconnector arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_2df9f2af((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PublisherDisconnector((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void _disconnect(nint body) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

@@ -63,6 +63,17 @@ public sealed unsafe partial class ServerNetworkEventListener : global::System.I
         return NativeMethods.TablePtr->C3.hs_method_9bbe7d57((void*)__hosihikari_shim_handle, (void*)@event);
     }
 
+    public static ServerNetworkEventListener Create(global::Hosihikari.Bindings.Bedrock.Interop.ServerNetworkEventListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_3451a1e7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ServerNetworkEventListener((nint)handle);
+    }
+
     public int onDiagnostics(nint diagnosticsEvent)
     {
         return NativeMethods.TablePtr->C3.hs_method_4e9ef21c((void*)__hosihikari_shim_handle, (void*)diagnosticsEvent);

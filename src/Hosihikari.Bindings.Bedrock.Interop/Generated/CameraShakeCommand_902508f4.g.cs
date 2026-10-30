@@ -43,6 +43,17 @@ public sealed unsafe partial class CameraShakeCommand : global::System.IDisposab
         NativeMethods.TablePtr->C0.hs_method_21337bcc((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static CameraShakeCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.CameraShakeCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_54dcb0e8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CameraShakeCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C0.hs_method_17336980((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

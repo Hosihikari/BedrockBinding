@@ -38,6 +38,17 @@ public sealed unsafe partial class MonumentRoomFitter : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static MonumentRoomFitter Create(global::Hosihikari.Bindings.Bedrock.Interop.MonumentRoomFitter arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_d4cc86e6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MonumentRoomFitter((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint create(nint orientation, nint definition, nint random) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

@@ -72,6 +72,17 @@ public sealed unsafe partial class TestForBlocksCommand : global::System.IDispos
         NativeMethods.TablePtr->C3.hs_method_472e975b((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static TestForBlocksCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.TestForBlocksCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_e065ce91((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TestForBlocksCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C3.hs_method_30d68e06((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

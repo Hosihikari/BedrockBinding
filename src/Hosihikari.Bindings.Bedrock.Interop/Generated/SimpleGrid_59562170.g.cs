@@ -38,6 +38,17 @@ public sealed unsafe partial class SimpleGrid : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static SimpleGrid Create(global::Hosihikari.Bindings.Bedrock.Interop.WoodlandMansionPieces_Nested.SimpleGrid arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_464b8ccc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SimpleGrid((nint)handle);
+    }
+
     public bool edgesTo(int x, int y, int ifValue)
     {
         return NativeMethods.TablePtr->C4.hs_method_3f170511((void*)__hosihikari_shim_handle, x, y, ifValue) != 0;

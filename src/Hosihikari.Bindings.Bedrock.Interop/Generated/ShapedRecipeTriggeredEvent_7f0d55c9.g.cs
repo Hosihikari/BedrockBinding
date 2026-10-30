@@ -38,6 +38,17 @@ public sealed unsafe partial class ShapedRecipeTriggeredEvent : global::System.I
         return __hs_handle;
     }
 
+    public static ShapedRecipeTriggeredEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ShapedRecipeTriggeredEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_47963eee((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ShapedRecipeTriggeredEvent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mCraftingRecipe_Address
     {

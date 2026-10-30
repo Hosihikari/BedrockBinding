@@ -38,6 +38,17 @@ public sealed unsafe partial class PlayerClosedContainerEvent : global::System.I
         return __hs_handle;
     }
 
+    public static PlayerClosedContainerEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerClosedContainerEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_7d69dd60((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerClosedContainerEvent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mPlayer_Address
     {

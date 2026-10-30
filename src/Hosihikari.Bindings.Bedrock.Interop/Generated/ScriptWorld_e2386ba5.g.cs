@@ -42,9 +42,10 @@ public sealed unsafe partial class ScriptWorld : global::System.IDisposable
     public nint _ctor(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint scope, nint level, nint listeners, nint locator, nint config, nint serverModuleVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope, global::Hosihikari.Bindings.Bedrock.Interop.ServerLevel? level, nint listeners, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.DependencyLocator locator, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextConfig config, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.Version serverModuleVersion)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_3b6ee8f0((void*)__hosihikari_shim_handle, (void*)scope.Handle, (void*)(level?.Handle ?? 0), (void*)listeners, (void*)locator.Handle, (void*)config.Handle, (void*)serverModuleVersion.Handle);
+    }
 
     public static ScriptWorld Create()
     {
@@ -72,9 +73,16 @@ public sealed unsafe partial class ScriptWorld : global::System.IDisposable
         return new ScriptWorld((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static ScriptWorld Create(nint scope, nint level, nint listeners, nint locator, nint config, nint serverModuleVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static ScriptWorld Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope, global::Hosihikari.Bindings.Bedrock.Interop.ServerLevel? level, nint listeners, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.DependencyLocator locator, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextConfig config, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.Version serverModuleVersion)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_2a49a32f((void*)scope.Handle, (void*)(level?.Handle ?? 0), (void*)listeners, (void*)locator.Handle, (void*)config.Handle, (void*)serverModuleVersion.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptWorld((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, Scripting::PropertyOutOfBoundsError>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _playOrQueueMusic(nint trackID, nint musicOptions, bool shouldQueue) =>

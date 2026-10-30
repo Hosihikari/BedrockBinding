@@ -65,6 +65,17 @@ public sealed unsafe partial class LegacyBlendedNoise : global::System.IDisposab
         return new LegacyBlendedNoise((nint)handle);
     }
 
+    public static LegacyBlendedNoise Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyBlendedNoise arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_a4b1e3cb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacyBlendedNoise((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mainNoise_Address
     {

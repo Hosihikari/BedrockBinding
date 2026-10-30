@@ -56,6 +56,17 @@ public sealed unsafe partial class SHStairsDown : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static SHStairsDown Create(global::Hosihikari.Bindings.Bedrock.Interop.SHStairsDown arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_7cd18fb1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SHStairsDown((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.", false)]
     public void addChildren(nint startPiece, nint pieces, nint random) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.");

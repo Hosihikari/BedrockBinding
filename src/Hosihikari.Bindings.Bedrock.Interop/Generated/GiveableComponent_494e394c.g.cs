@@ -38,6 +38,17 @@ public sealed unsafe partial class GiveableComponent : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static GiveableComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.GiveableComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_9d0b49f3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GiveableComponent((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.Interaction getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Interaction((nint)NativeMethods.TablePtr->C1.hs_method_0c5f4078((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)player.Handle));

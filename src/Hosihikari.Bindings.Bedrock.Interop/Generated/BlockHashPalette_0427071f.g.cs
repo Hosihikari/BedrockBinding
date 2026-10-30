@@ -89,6 +89,17 @@ public sealed unsafe partial class BlockHashPalette : global::System.IDisposable
         return new BlockHashPalette((nint)handle);
     }
 
+    public static BlockHashPalette Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockHashPalette arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_59b2410a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockHashPalette((nint)handle);
+    }
+
     public void appendBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
         NativeMethods.TablePtr->C0.hs_method_9e00e9f3((void*)__hosihikari_shim_handle, (void*)block.Handle);

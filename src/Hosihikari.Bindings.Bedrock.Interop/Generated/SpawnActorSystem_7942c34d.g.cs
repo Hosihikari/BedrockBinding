@@ -43,6 +43,17 @@ public sealed unsafe partial class SpawnActorSystem : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_6feb945f((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static SpawnActorSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.SpawnActorSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_d4ddf730((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SpawnActorSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C3.hs_method_5ebfcb0f((void*)__hosihikari_shim_handle, (void*)registry.Handle);

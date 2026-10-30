@@ -43,6 +43,17 @@ public sealed unsafe partial class Components : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_be0ead55((void*)__hosihikari_shim_handle);
     }
 
+    public static Components Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockComponentGroupDescription_Nested.Components arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_a9cc40d0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Components((nint)handle);
+    }
+
     public void _setCustomComponent(string compName, global::Hosihikari.Bindings.Abi.SharedHandle? compData, bool overridePlayerInteract, bool overridePlayerPlacing)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(compName);

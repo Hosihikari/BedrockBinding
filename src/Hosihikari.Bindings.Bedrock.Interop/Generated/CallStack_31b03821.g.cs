@@ -57,6 +57,17 @@ public sealed unsafe partial class CallStack : global::System.IDisposable
     public static CallStack Create(nint frame) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
+    public static CallStack Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.CallStack arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_0e70066d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CallStack((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mFrames_Address
     {

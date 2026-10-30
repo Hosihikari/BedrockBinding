@@ -91,9 +91,10 @@ public sealed unsafe partial class ResourcePackStack : global::System.IDisposabl
     public static void _populateDependencies(nint packStack, nint packInstance, nint repo, bool isDependent, nint levelId) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void add(nint packInstance, nint repo, bool isDependent) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void add(global::Hosihikari.Bindings.Bedrock.Interop.PackInstance packInstance, nint repo, bool isDependent)
+    {
+        NativeMethods.TablePtr->C3.hs_method_2b964419((void*)__hosihikari_shim_handle, (void*)packInstance.Handle, (void*)repo, isDependent);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'ResourcePackStack' has no accessible destructor.", false)]
     public static nint deserialize(nint fileData, nint repo, nint levelId) =>

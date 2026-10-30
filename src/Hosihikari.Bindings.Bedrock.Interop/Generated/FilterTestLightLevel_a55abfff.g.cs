@@ -67,6 +67,17 @@ public sealed unsafe partial class FilterTestLightLevel : global::System.IDispos
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static FilterTestLightLevel Create(global::Hosihikari.Bindings.Bedrock.Interop.FilterTestLightLevel arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_6ec87406((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FilterTestLightLevel((nint)handle);
+    }
+
     public bool evaluate(nint context)
     {
         return NativeMethods.TablePtr->C1.hs_method_c83fe4fb((void*)__hosihikari_shim_handle, (void*)context) != 0;

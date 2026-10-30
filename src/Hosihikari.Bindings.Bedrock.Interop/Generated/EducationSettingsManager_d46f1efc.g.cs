@@ -38,6 +38,17 @@ public sealed unsafe partial class EducationSettingsManager : global::System.IDi
         return __hs_handle;
     }
 
+    public static EducationSettingsManager Create(global::Hosihikari.Bindings.Bedrock.Interop.EducationSettingsManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_16d4aed6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EducationSettingsManager((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mEducationLevelSettings_Address
     {

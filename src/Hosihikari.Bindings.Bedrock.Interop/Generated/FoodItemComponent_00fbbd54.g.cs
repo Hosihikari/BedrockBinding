@@ -48,9 +48,10 @@ public sealed unsafe partial class FoodItemComponent : global::System.IDisposabl
         return NativeMethods.TablePtr->C1.hs_method_e66399b2((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint component) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50.FoodItemComponent component)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_6f8780f7((void*)__hosihikari_shim_handle, (void*)component.Handle);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Item? _eatItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack instance, global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.Level level)
     {
@@ -98,9 +99,16 @@ public sealed unsafe partial class FoodItemComponent : global::System.IDisposabl
         return new FoodItemComponent((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static FoodItemComponent Create(nint component) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static FoodItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50.FoodItemComponent component)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_06a161a0((void*)component.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FoodItemComponent((nint)handle);
+    }
 
     public void _initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {

@@ -40,47 +40,58 @@ public sealed unsafe partial class AttachableDecoration : global::System.IDispos
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C3.hs_method_726eb241((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_726eb241((void*)__hosihikari_shim_handle);
+    }
+
+    public static AttachableDecoration Create(global::Hosihikari.Bindings.Bedrock.Interop.TreeHelper.AttachableDecoration arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_40b88758((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AttachableDecoration((nint)handle);
     }
 
     public void _placeMultiDecoration(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, int dir, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos origin)
     {
-        NativeMethods.TablePtr->C3.hs_method_5fea74cf((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)random.Handle, (void*)pos.Handle, dir, (void*)origin.Handle);
+        NativeMethods.TablePtr->C4.hs_method_5fea74cf((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)random.Handle, (void*)pos.Handle, dir, (void*)origin.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDecorationBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_936de6db((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_936de6db((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDecorationChance_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_666ad6d5((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_666ad6d5((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDecorationSequence_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_57cdd3fb((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_57cdd3fb((void*)__hosihikari_shim_handle);
     }
 
     public int mDirection
     {
-        get => NativeMethods.TablePtr->C3.hs_get_eb4e3b88((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_eb4e3b88((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_eb4e3b88((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_eb4e3b88((void*)__hosihikari_shim_handle, value);
     }
 
     public int mNumSteps
     {
-        get => NativeMethods.TablePtr->C3.hs_get_16bfabe2((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_16bfabe2((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_16bfabe2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_16bfabe2((void*)__hosihikari_shim_handle, value);
     }
 
     public void placeDecoration(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.TreeHelper.AttachableDecoration_Nested.DirectionMask mask)
     {
-        NativeMethods.TablePtr->C3.hs_method_60f75b0d((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)pos.Handle, (void*)random.Handle, (void*)mask.Handle);
+        NativeMethods.TablePtr->C4.hs_method_60f75b0d((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)pos.Handle, (void*)random.Handle, (void*)mask.Handle);
     }
 
 
@@ -90,7 +101,7 @@ public sealed unsafe partial class AttachableDecoration : global::System.IDispos
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_6f6e4577((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_6f6e4577((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

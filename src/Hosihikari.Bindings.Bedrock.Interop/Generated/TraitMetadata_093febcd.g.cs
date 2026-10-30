@@ -38,6 +38,17 @@ public sealed unsafe partial class TraitMetadata : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static TraitMetadata Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockTraitFactory_Nested.TraitMetadata arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f045b7ec((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TraitMetadata((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint makeUnique_Address
     {

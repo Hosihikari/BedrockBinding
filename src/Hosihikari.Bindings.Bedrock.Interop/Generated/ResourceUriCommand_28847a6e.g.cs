@@ -72,6 +72,17 @@ public sealed unsafe partial class ResourceUriCommand : global::System.IDisposab
         NativeMethods.TablePtr->C3.hs_method_121bd0e5((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static ResourceUriCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourceUriCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_bd550bc4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ResourceUriCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C3.hs_method_d97ae0d1((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

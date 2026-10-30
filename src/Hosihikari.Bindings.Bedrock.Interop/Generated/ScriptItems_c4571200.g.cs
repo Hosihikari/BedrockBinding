@@ -38,6 +38,17 @@ public sealed unsafe partial class ScriptItems : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ScriptItems Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItems arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_f463f402((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptItems((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemType>' is not supported.", false)]
     public static nint _getOrCreateItemTypeHandle(nint scope, nint lookupName) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemType>' is not supported.");
@@ -56,9 +67,10 @@ public sealed unsafe partial class ScriptItems : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_b63367ac((void*)__hosihikari_shim_handle, (void*)aliasName.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static void bind(nint moduleBuilder, nint itemRegistry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static void bind(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ModuleBindingBuilder moduleBuilder, global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistryRef itemRegistry)
+    {
+        NativeMethods.TablePtr->C3.hs_method_82698d72((void*)moduleBuilder.Handle, (void*)itemRegistry.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
     public static nint generateItemPropertyNameToRawNameMap(nint itemRegistry, bool allowAirBlockItem) =>

@@ -87,6 +87,17 @@ public sealed unsafe partial class Int64Tag : global::System.IDisposable
         return new Int64Tag((nint)handle);
     }
 
+    public static Int64Tag Create(global::Hosihikari.Bindings.Bedrock.Interop.Int64Tag arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_a875bf37((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Int64Tag((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Tag' has no accessible destructor.", false)]
     public nint copy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Tag' has no accessible destructor.");

@@ -38,6 +38,17 @@ public sealed unsafe partial class LevelGameRuleChangeEvent : global::System.IDi
         return __hs_handle;
     }
 
+    public static LevelGameRuleChangeEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelGameRuleChangeEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_16c64f1f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelGameRuleChangeEvent((nint)handle);
+    }
+
     public int mRule
     {
         get => NativeMethods.TablePtr->C2.hs_get_b5a177b3((void*)__hosihikari_shim_handle);

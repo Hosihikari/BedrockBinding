@@ -38,6 +38,17 @@ public sealed unsafe partial class MovementCorrection : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static MovementCorrection Create(global::Hosihikari.Bindings.Bedrock.Interop.MovementCorrection arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_7794df77((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MovementCorrection((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mAcceptPosition_Address
     {

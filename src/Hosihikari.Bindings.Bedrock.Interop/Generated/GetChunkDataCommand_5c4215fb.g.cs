@@ -72,6 +72,17 @@ public sealed unsafe partial class GetChunkDataCommand : global::System.IDisposa
         NativeMethods.TablePtr->C1.hs_method_e26154ca((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static GetChunkDataCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.GetChunkDataCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d7e7b719((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GetChunkDataCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C1.hs_method_c036c0ff((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

@@ -40,32 +40,43 @@ public sealed unsafe partial class TickDeltaTimeManagerProxy : global::System.ID
 
     public double _calculateDeltaTimeAndReset()
     {
-        return NativeMethods.TablePtr->C3.hs_method_a590b7f5((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C4.hs_method_a590b7f5((void*)__hosihikari_shim_handle);
     }
 
     public void _start()
     {
-        NativeMethods.TablePtr->C3.hs_method_e9e7abbb((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_e9e7abbb((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static TickDeltaTimeManagerProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.TickDeltaTimeManagerProxy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_360a1cbe((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TickDeltaTimeManagerProxy((nint)handle);
+    }
+
     public double calculateDeltaTimeAndReset()
     {
-        return NativeMethods.TablePtr->C3.hs_method_b3458832((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C4.hs_method_b3458832((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTickTimer_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_af4c46fd((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_af4c46fd((void*)__hosihikari_shim_handle);
     }
 
     public void start()
     {
-        NativeMethods.TablePtr->C3.hs_method_eca765d5((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_eca765d5((void*)__hosihikari_shim_handle);
     }
 
 
@@ -75,7 +86,7 @@ public sealed unsafe partial class TickDeltaTimeManagerProxy : global::System.ID
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_25e5e491((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_25e5e491((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

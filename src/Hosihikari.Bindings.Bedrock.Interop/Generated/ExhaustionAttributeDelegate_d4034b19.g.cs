@@ -53,6 +53,17 @@ public sealed unsafe partial class ExhaustionAttributeDelegate : global::System.
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ExhaustionAttributeDelegate Create(global::Hosihikari.Bindings.Bedrock.Interop.ExhaustionAttributeDelegate arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_5ad54d93((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ExhaustionAttributeDelegate((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance mutableInstance, nint context)
     {
         NativeMethods.TablePtr->C1.hs_method_e1df7ab1((void*)__hosihikari_shim_handle, (void*)mutableInstance.Handle, (void*)context);

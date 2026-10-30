@@ -247,6 +247,17 @@ public sealed unsafe partial class SurvivalMode : global::System.IDisposable
         return new SurvivalMode((nint)handle);
     }
 
+    public static SurvivalMode Create(global::Hosihikari.Bindings.Bedrock.Interop.SurvivalMode arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_51c50003((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SurvivalMode((nint)handle);
+    }
+
     public void _messagePlayers(string message)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(message);

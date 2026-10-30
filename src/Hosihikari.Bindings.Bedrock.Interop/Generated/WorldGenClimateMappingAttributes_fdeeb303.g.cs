@@ -42,6 +42,17 @@ public sealed unsafe partial class WorldGenClimateMappingAttributes : global::Sy
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static WorldGenClimateMappingAttributes Create(global::Hosihikari.Bindings.Bedrock.Interop.WorldGenClimateMappingAttributes arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_5a200fbd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WorldGenClimateMappingAttributes((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mClimateMappings_Address
     {

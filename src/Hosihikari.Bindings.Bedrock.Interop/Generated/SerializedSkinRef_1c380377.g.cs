@@ -262,9 +262,10 @@ public sealed unsafe partial class SerializedSkinRef : global::System.IDisposabl
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void setGeometryDataMinEngineVersion(nint minEngineVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void setGeometryDataMinEngineVersion(global::Hosihikari.Bindings.Bedrock.Interop.MinEngineVersion minEngineVersion)
+    {
+        NativeMethods.TablePtr->C3.hs_method_05b0a298((void*)__hosihikari_shim_handle, (void*)minEngineVersion.Handle);
+    }
 
     public void setId(string id)
     {

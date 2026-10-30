@@ -62,6 +62,17 @@ public sealed unsafe partial class CustomComponentsItemComponent : global::Syste
         return new CustomComponentsItemComponent((nint)handle);
     }
 
+    public static CustomComponentsItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.CustomComponentsItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_149eb23e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CustomComponentsItemComponent((nint)handle);
+    }
+
     public static CustomComponentsItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_21_60.CustomComponentsItemComponent component)
     {
         var handle = NativeMethods.TablePtr->C1.hs_create_a24f6fec((void*)component.Handle);
@@ -77,9 +88,10 @@ public sealed unsafe partial class CustomComponentsItemComponent : global::Syste
     public static CustomComponentsItemComponent Create(nint customComponentsData) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'entt::iterable_adaptor<cereal::internal::ComponentStorageIterator<brstd::associative_adapter<std::basic_string<char>, entt::meta_any, std::less<void>, std::vector<std::basic_string<char>>, std::vector<entt::meta_any>>::iterator_impl<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<std::basic_string<char>>>>, std::_Vector_iterator<std::_Vector_val<std::_Simple_types<entt::meta_any>>>, std::pair<const std::basic_string<char> &, entt::meta_any &>>, SharedTypes::v1_26_30::ItemCustomComponent>, cereal::ComponentStorageSentinelType>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void _addComponent(nint compName, nint data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void _addComponent(global::Hosihikari.Bindings.Bedrock.Interop.HashedString compName, global::Hosihikari.Bindings.Bedrock.Interop.cereal.DynamicValue data)
+    {
+        NativeMethods.TablePtr->C1.hs_method_8cda393b((void*)__hosihikari_shim_handle, (void*)compName.Handle, (void*)data.Handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mComponents_Address

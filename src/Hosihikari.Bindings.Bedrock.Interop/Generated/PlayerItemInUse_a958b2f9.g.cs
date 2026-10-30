@@ -38,6 +38,17 @@ public sealed unsafe partial class PlayerItemInUse : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static PlayerItemInUse Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerItemInUse arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_8fb68e26((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerItemInUse((nint)handle);
+    }
+
     public int getUsedDuration(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext owner)
     {
         return NativeMethods.TablePtr->C2.hs_method_b7610f8a((void*)__hosihikari_shim_handle, (void*)owner.Handle);

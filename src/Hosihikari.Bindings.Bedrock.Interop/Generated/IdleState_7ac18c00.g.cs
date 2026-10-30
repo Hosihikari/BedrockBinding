@@ -52,6 +52,17 @@ public sealed unsafe partial class IdleState : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static IdleState Create(global::Hosihikari.Bindings.Bedrock.Interop.IdleState arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_6446b4ec((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IdleState((nint)handle);
+    }
+
     public void start()
     {
         NativeMethods.TablePtr->C1.hs_method_c2be3b20((void*)__hosihikari_shim_handle);

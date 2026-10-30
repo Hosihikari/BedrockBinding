@@ -38,9 +38,24 @@ public sealed unsafe partial class NpcSceneDialogueData : global::System.IDispos
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint npc, nint sceneName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef npc, string sceneName)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(sceneName);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(sceneName, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            return (nint)NativeMethods.TablePtr->C2.hs_method_03fbf1f8((void*)__hosihikari_shim_handle, (void*)npc.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.npc.ActionContainer? _getActionsContainer_5a85d4de()
     {
@@ -110,9 +125,41 @@ public sealed unsafe partial class NpcSceneDialogueData : global::System.IDispos
         return new NpcSceneDialogueData((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static NpcSceneDialogueData Create(nint npc, nint sceneName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static NpcSceneDialogueData Create(global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef npc, string sceneName)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(sceneName);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(sceneName, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            var handle = NativeMethods.TablePtr->C2.hs_create_1dd4a4a4((void*)npc.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new NpcSceneDialogueData((nint)handle);
+        }
+    }
+
+    public static NpcSceneDialogueData Create(global::Hosihikari.Bindings.Bedrock.Interop.NpcSceneDialogueData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_5d436f53((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NpcSceneDialogueData((nint)handle);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.npc.ActionContainer? getActionsContainer_c33f58f3()
     {

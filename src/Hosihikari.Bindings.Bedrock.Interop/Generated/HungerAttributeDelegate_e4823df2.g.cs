@@ -58,6 +58,17 @@ public sealed unsafe partial class HungerAttributeDelegate : global::System.IDis
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static HungerAttributeDelegate Create(global::Hosihikari.Bindings.Bedrock.Interop.HungerAttributeDelegate arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b0fea15d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HungerAttributeDelegate((nint)handle);
+    }
+
     public int mActionTickTimer
     {
         get => NativeMethods.TablePtr->C1.hs_get_0bcaab47((void*)__hosihikari_shim_handle);

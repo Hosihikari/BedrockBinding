@@ -38,6 +38,17 @@ public sealed unsafe partial class PlayerBlockActionData : global::System.IDispo
         return __hs_handle;
     }
 
+    public static PlayerBlockActionData Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerBlockActionData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_7a1f490f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerBlockActionData((nint)handle);
+    }
+
     public int mFacing
     {
         get => NativeMethods.TablePtr->C2.hs_get_d9e0d1de((void*)__hosihikari_shim_handle);

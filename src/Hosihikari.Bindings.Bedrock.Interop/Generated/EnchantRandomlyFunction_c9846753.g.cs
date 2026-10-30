@@ -48,6 +48,17 @@ public sealed unsafe partial class EnchantRandomlyFunction : global::System.IDis
         return NativeMethods.TablePtr->C1.hs_method_615878ce((void*)__hosihikari_shim_handle);
     }
 
+    public static EnchantRandomlyFunction Create(global::Hosihikari.Bindings.Bedrock.Interop.EnchantRandomlyFunction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_aed63389((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EnchantRandomlyFunction((nint)handle);
+    }
+
     public void applyPreVersion(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext arg2)
     {
         NativeMethods.TablePtr->C1.hs_method_5e91ce1f((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)random.Handle, (void*)arg2.Handle);

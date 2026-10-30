@@ -40,7 +40,7 @@ public sealed unsafe partial class InventoryChangedData : global::System.IDispos
 
     public static InventoryChangedData Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_9d8a46e3();
+        var handle = NativeMethods.TablePtr->C3.hs_create_9d8a46e3();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class InventoryChangedData : global::System.IDispos
 
     public static InventoryChangedData Create(global::Hosihikari.Bindings.Bedrock.Interop.RecipeUnlockingSystem_Nested.InventoryChangedData arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_22bba67b((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_22bba67b((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,18 +63,18 @@ public sealed unsafe partial class InventoryChangedData : global::System.IDispos
     // The native field type is not projected; this is the address of the field storage.
     public nint allItemSlots_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_6bc5bcc6((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6bc5bcc6((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint changedItemSlotIndices_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_da3381c4((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_da3381c4((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.RecipeUnlockingSystem_Nested.InventoryChangedData operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RecipeUnlockingSystem_Nested.InventoryChangedData arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.RecipeUnlockingSystem_Nested.InventoryChangedData((nint)NativeMethods.TablePtr->C2.hs_method_f0934749((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RecipeUnlockingSystem_Nested.InventoryChangedData((nint)NativeMethods.TablePtr->C3.hs_method_f0934749((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
@@ -84,7 +84,7 @@ public sealed unsafe partial class InventoryChangedData : global::System.IDispos
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_695fb525((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_695fb525((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

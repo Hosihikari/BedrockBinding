@@ -62,6 +62,17 @@ public sealed unsafe partial class ScriptItemCooldownComponent : global::System.
         get => (nint)NativeMethods.TablePtr->C3.hs_get_e440e640((void*)__hosihikari_shim_handle);
     }
 
+    public static ScriptItemCooldownComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemCooldownComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_ecff8f22((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptItemCooldownComponent((nint)handle);
+    }
+
 
     public void Dispose()
     {

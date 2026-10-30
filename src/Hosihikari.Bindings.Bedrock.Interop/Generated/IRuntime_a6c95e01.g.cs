@@ -38,6 +38,17 @@ public sealed unsafe partial class IRuntime : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static IRuntime Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.IRuntime arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_e46df2a1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IRuntime((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint call(nint contextId, nint closureHandle, nint args, uint argc, nint expectedReturnType, nint privilege) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

@@ -38,9 +38,21 @@ public sealed unsafe partial class ParticleEventRequest : global::System.IDispos
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static nint addParticleEffect(nint effect, nint emitterPosition, nint molangVariables) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static ParticleEventRequest Create(global::Hosihikari.Bindings.Bedrock.Interop.ParticleEventRequest arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_709bbcf9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ParticleEventRequest((nint)handle);
+    }
+
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ParticleEventRequest addParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.HashedString effect, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 emitterPosition, global::Hosihikari.Bindings.Bedrock.Interop.MolangVariableMap molangVariables)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ParticleEventRequest((nint)NativeMethods.TablePtr->C2.hs_method_a328a669((void*)effect.Handle, (void*)emitterPosition.Handle, (void*)molangVariables.Handle));
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mData_Address

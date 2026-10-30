@@ -43,6 +43,17 @@ public sealed unsafe partial class IsSpawnableDescription : global::System.IDisp
         return (nint)NativeMethods.TablePtr->C1.hs_method_a57726a1((void*)__hosihikari_shim_handle);
     }
 
+    public static IsSpawnableDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.IsSpawnableDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_68e99943((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IsSpawnableDescription((nint)handle);
+    }
+
     public nint getJsonName()
     {
         return (nint)NativeMethods.TablePtr->C1.hs_method_c60d1e7f((void*)__hosihikari_shim_handle);

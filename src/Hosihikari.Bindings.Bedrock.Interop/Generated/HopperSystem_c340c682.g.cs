@@ -43,6 +43,17 @@ public sealed unsafe partial class HopperSystem : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_f89bc551((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static HopperSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.HopperSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_7c0adebd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HopperSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C1.hs_method_43aa5ee3((void*)__hosihikari_shim_handle, (void*)registry.Handle);

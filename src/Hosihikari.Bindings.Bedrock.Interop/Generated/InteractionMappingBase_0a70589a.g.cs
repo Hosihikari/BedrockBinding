@@ -38,6 +38,17 @@ public sealed unsafe partial class InteractionMappingBase : global::System.IDisp
         return __hs_handle;
     }
 
+    public static InteractionMappingBase Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerInteractionSystem_Nested.InteractionMappingBase arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_10ceefac((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InteractionMappingBase((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getInteraction(nint actor, nint player) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

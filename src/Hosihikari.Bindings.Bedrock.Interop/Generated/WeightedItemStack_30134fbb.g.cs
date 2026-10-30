@@ -38,10 +38,21 @@ public sealed unsafe partial class WeightedItemStack : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static WeightedItemStack Create(global::Hosihikari.Bindings.Bedrock.Interop.TrialSpawner_Nested.WeightedItemStack arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_b0829864((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WeightedItemStack((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint itemStack_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_aa6bcd70((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_aa6bcd70((void*)__hosihikari_shim_handle);
     }
 
 
@@ -51,7 +62,7 @@ public sealed unsafe partial class WeightedItemStack : global::System.IDisposabl
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_30134fbb((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_30134fbb((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

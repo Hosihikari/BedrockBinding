@@ -59,6 +59,17 @@ public sealed unsafe partial class HugeMushroomFeature : global::System.IDisposa
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static HugeMushroomFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.HugeMushroomFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_a5082468((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HugeMushroomFeature((nint)handle);
+    }
+
     public static bool _canSurvive(global::Hosihikari.Bindings.Bedrock.Interop.Block belowBlock)
     {
         return NativeMethods.TablePtr->C1.hs_method_33b6d582((void*)belowBlock.Handle) != 0;

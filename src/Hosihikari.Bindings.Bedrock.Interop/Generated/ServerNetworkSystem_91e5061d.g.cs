@@ -237,6 +237,17 @@ public sealed unsafe partial class ServerNetworkSystem : global::System.IDisposa
     public static ServerNetworkSystem Create(nint receiveThread, nint overrideBroadcastAddresses, nint networkToggles, nint networkDebugManager, nint appPlatform, nint networkSessionOwner, nint networkSettingOption, nint portConfig, nint defaultLogSeverity, nint networkId, nint signalingService, nint packetGroupBuilder, nint packetController) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<NetworkDebugManager>' is not a known bindable declaration.");
 
+    public static ServerNetworkSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.ServerNetworkSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_7fd65ad3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ServerNetworkSystem((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier getLocalNetworkId()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier((nint)NativeMethods.TablePtr->C3.hs_method_7fa27eec((void*)__hosihikari_shim_handle));

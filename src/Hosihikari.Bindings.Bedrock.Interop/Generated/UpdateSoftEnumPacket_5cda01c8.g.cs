@@ -87,9 +87,10 @@ public sealed unsafe partial class UpdateSoftEnumPacket : global::System.IDispos
     public nint __read(nint stream, nint reflectionCtx) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.UpdateSoftEnumPacketPayload payload)
+    {
+        return (nint)NativeMethods.TablePtr->C4.hs_method_a50a1121((void*)__hosihikari_shim_handle, (void*)payload.Handle);
+    }
 
     public bool _disallowBatching()
     {
@@ -172,9 +173,27 @@ public sealed unsafe partial class UpdateSoftEnumPacket : global::System.IDispos
         return new UpdateSoftEnumPacket((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static UpdateSoftEnumPacket Create(nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static UpdateSoftEnumPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.UpdateSoftEnumPacketPayload payload)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_f5f52cf0((void*)payload.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UpdateSoftEnumPacket((nint)handle);
+    }
+
+    public static UpdateSoftEnumPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.UpdateSoftEnumPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_6d4a3360((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UpdateSoftEnumPacket((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>

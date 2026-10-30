@@ -89,6 +89,17 @@ public sealed unsafe partial class StructurePoolBlockPredicateBlockMatch : globa
         return new StructurePoolBlockPredicateBlockMatch((nint)handle);
     }
 
+    public static StructurePoolBlockPredicateBlockMatch Create(global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolBlockPredicateBlockMatch arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_6b959547((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructurePoolBlockPredicateBlockMatch((nint)handle);
+    }
+
     public void appendMetadataKey(global::Hosihikari.Bindings.Bedrock.Interop.Util.XXHash hash)
     {
         NativeMethods.TablePtr->C3.hs_method_9c479b73((void*)__hosihikari_shim_handle, (void*)hash.Handle);

@@ -59,6 +59,17 @@ public sealed unsafe partial class LevelChunkBuilderData : global::System.IDispo
         return new LevelChunkBuilderData((nint)handle);
     }
 
+    public static LevelChunkBuilderData Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkBuilderData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_c70d83d2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelChunkBuilderData((nint)handle);
+    }
+
     public void enqueueChunkForProcessing(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos pos, byte state)
     {
         NativeMethods.TablePtr->C2.hs_method_a139f246((void*)__hosihikari_shim_handle, (void*)pos.Handle, state);

@@ -67,6 +67,17 @@ public sealed unsafe partial class FilterTestClock : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static FilterTestClock Create(global::Hosihikari.Bindings.Bedrock.Interop.FilterTestClock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_f1f2ed36((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FilterTestClock((nint)handle);
+    }
+
     public bool evaluate(nint context)
     {
         return NativeMethods.TablePtr->C1.hs_method_f35c7e2e((void*)__hosihikari_shim_handle, (void*)context) != 0;

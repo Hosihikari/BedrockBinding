@@ -43,6 +43,17 @@ public sealed unsafe partial class HeartbeatServerSystem : global::System.IDispo
         NativeMethods.TablePtr->C1.hs_method_4cfb443b((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static HeartbeatServerSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.HeartbeatServerSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_bcf08040((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HeartbeatServerSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C1.hs_method_8cfc3886((void*)__hosihikari_shim_handle, (void*)registry.Handle);

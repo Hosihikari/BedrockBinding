@@ -104,13 +104,15 @@ public sealed unsafe partial class RuleSet : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.processors.RuleSet((nint)NativeMethods.TablePtr->C4.hs_method_b5a0e3cb((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint withModifier(nint modifier) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.processors.RuleSet withModifier(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.processors.BlockEntity.Modifier modifier)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.processors.RuleSet((nint)NativeMethods.TablePtr->C4.hs_method_934de7e5((void*)__hosihikari_shim_handle, (void*)modifier.Handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint withPos(nint pos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.processors.RuleSet withPos(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.processors.PosRules.Test pos)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.processors.RuleSet((nint)NativeMethods.TablePtr->C4.hs_method_43aedfa4((void*)__hosihikari_shim_handle, (void*)pos.Handle));
+    }
 
 
     public void Dispose()

@@ -44,6 +44,17 @@ public sealed unsafe partial class ISignalingServiceConfigProvider : global::Sys
         get => (nint)NativeMethods.TablePtr->C1.hs_get_b834d873((void*)__hosihikari_shim_handle);
     }
 
+    public static ISignalingServiceConfigProvider Create(global::Hosihikari.Bindings.Bedrock.Interop.ISignalingServiceConfigProvider arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_51b24aaf((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ISignalingServiceConfigProvider((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getAuthToken() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

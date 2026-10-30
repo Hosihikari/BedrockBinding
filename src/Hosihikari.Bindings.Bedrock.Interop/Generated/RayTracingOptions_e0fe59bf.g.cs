@@ -44,7 +44,7 @@ public sealed unsafe partial class RayTracingOptions : global::System.IDisposabl
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_e0fe59bf((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_e0fe59bf((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

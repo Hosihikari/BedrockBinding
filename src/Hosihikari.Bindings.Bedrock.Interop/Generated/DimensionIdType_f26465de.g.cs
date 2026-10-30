@@ -38,6 +38,17 @@ public sealed unsafe partial class DimensionIdType : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static DimensionIdType Create(global::Hosihikari.Bindings.Bedrock.Interop.DimensionIdType arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_52b793da((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DimensionIdType((nint)handle);
+    }
+
     public ushort mValue
     {
         get => NativeMethods.TablePtr->C1.hs_get_e3930b50((void*)__hosihikari_shim_handle);

@@ -112,6 +112,17 @@ public sealed unsafe partial class SwamplandHut : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_4043867d((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle);
     }
 
+    public static SwamplandHut Create(global::Hosihikari.Bindings.Bedrock.Interop.SwamplandHut arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_2f3dabe9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SwamplandHut((nint)handle);
+    }
+
     public void addHardcodedSpawnAreas(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk chunk)
     {
         NativeMethods.TablePtr->C3.hs_method_29aab839((void*)__hosihikari_shim_handle, (void*)chunk.Handle);

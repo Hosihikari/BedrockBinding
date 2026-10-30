@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockGameplayHandler : global::System.IDispos
         return __hs_handle;
     }
 
+    public static BlockGameplayHandler Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockGameplayHandler arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_ee6d8892((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockGameplayHandler((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint handleEvent_1a38f6b7(nint @event) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

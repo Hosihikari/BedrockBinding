@@ -65,6 +65,17 @@ public sealed unsafe partial class BeardAndShaverFeature : global::System.IDispo
         return new BeardAndShaverFeature((nint)handle);
     }
 
+    public static BeardAndShaverFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.BeardAndShaverFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_96fcb512((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BeardAndShaverFeature((nint)handle);
+    }
+
     public float mBeardRaggednessMax
     {
         get => NativeMethods.TablePtr->C0.hs_get_6ef94a5a((void*)__hosihikari_shim_handle);

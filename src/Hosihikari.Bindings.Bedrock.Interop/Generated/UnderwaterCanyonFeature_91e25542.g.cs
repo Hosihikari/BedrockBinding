@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class UnderwaterCanyonFeature
+public sealed unsafe partial class UnderwaterCanyonFeature : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -66,6 +66,17 @@ public sealed unsafe partial class UnderwaterCanyonFeature
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static UnderwaterCanyonFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.UnderwaterCanyonFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_7f091972((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UnderwaterCanyonFeature((nint)handle);
+    }
+
     public bool _carve(global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume blocks, global::Hosihikari.Bindings.Bedrock.Interop.BiomeSource localBiomeSource, nint arg2, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 startPos, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 originalStartPos, int x0, int x1, int y0, int y1, int z0, int z1, float horizontalRadius, float verticalRadius, float[] widthRandomization, global::Hosihikari.Bindings.Bedrock.Interop.WorldGenContext arg16, global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry biomeRegistry)
     {
         fixed (float* __hs_vectorData15 = widthRandomization)
@@ -77,5 +88,18 @@ public sealed unsafe partial class UnderwaterCanyonFeature
     public bool _isDiggable(global::Hosihikari.Bindings.Bedrock.Interop.BlockType block)
     {
         return NativeMethods.TablePtr->C4.hs_method_1cbcf1dc((void*)__hosihikari_shim_handle, (void*)block.Handle) != 0;
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_91e25542((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -6,8 +6,9 @@ using Hosihikari;
 using Hosihikari.Bindings.Bedrock.Interop;
 
 // Loads the generated BindingShim inside a real BDS process and exercises the
-// name-resolved surface: static constants, a constructed RNG, a constructed packet, and a
-// shim-owned string whose destructor is resolved by name.
+// name-resolved surface: static constants, a constructed RNG, a constructed packet, a
+// shim-owned string whose destructor is resolved by name, and a by-value record parameter
+// whose copy constructor is resolved by name.
 public sealed class BedrockSmokePlugin : IPlugin
 {
     private IPluginContext _context = null!;
@@ -58,6 +59,23 @@ public sealed class BedrockSmokePlugin : IPlugin
                 {
                     throw new InvalidOperationException("the constructed packet is not valid.");
                 }
+            }
+
+            // HashedString is 48 bytes with non-trivial copy and destructor symbols. Copying it
+            // through Create(HashedString) resolves the copy constructor by name; passing it by
+            // value to ExpressionNode::unregisterQueryFunction copies it into the hidden
+            // reference, and the callee destroys that copy.
+            using (var hashed = HashedString.Create_0d67d647("projection-smoke"))
+            using (var copy = HashedString.Create(hashed))
+            {
+                log.AppendLine($"hashedstring.copy={(copy.Handle != 0 ? "ok" : "failed")}");
+                if (copy.Handle == 0)
+                {
+                    throw new InvalidOperationException("the by-value record copy constructor did not run.");
+                }
+
+                ExpressionNode.unregisterQueryFunction("projection-smoke", hashed);
+                log.AppendLine("expression.unregister=ok");
             }
 
             log.AppendLine("result=OK");

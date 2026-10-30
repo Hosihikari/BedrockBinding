@@ -97,9 +97,10 @@ public sealed unsafe partial class LoadResultAny : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C2.hs_get_8aa74453((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static nint makeError(nint log) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Puv.LoadResultAny makeError(global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger log)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Puv.LoadResultAny((nint)NativeMethods.TablePtr->C2.hs_method_a88fa280((void*)log.Handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Puv.LoadResultAny operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Puv.LoadResultAny arg0)
     {

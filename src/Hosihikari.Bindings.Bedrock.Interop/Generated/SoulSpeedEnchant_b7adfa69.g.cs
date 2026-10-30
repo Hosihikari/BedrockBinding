@@ -122,6 +122,17 @@ public sealed unsafe partial class SoulSpeedEnchant : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->C3.hs_method_213595bc(), false);
     }
 
+    public static SoulSpeedEnchant Create(global::Hosihikari.Bindings.Bedrock.Interop.SoulSpeedEnchant arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_12afe593((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SoulSpeedEnchant((nint)handle);
+    }
+
     public static int getLevel(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity)
     {
         return NativeMethods.TablePtr->C3.hs_method_1af03b54((void*)entity.Handle);

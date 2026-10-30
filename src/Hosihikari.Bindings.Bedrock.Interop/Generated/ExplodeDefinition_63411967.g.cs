@@ -38,6 +38,17 @@ public sealed unsafe partial class ExplodeDefinition : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static ExplodeDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.ExplodeDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d432d720((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ExplodeDefinition((nint)handle);
+    }
+
     public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
         NativeMethods.TablePtr->C1.hs_method_69403ce6(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));

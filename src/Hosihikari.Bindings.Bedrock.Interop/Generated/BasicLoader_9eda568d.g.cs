@@ -52,6 +52,17 @@ public sealed unsafe partial class BasicLoader : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static BasicLoader Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.BasicLoader arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_3e883dad((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BasicLoader((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'entt::meta_handle' is not a known bindable declaration.", false)]
     public bool loadImpl(nint reader, nint handle, nint loadContext, nint fallback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'entt::meta_handle' is not a known bindable declaration.");

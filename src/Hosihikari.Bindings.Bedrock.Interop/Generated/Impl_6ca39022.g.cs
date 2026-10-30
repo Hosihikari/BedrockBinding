@@ -151,9 +151,10 @@ public sealed unsafe partial class Impl : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.DataStore_Nested.Impl((nint)NativeMethods.TablePtr->C0.hs_method_057e9b5d((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void setCustomFileHandlers(nint handlers) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void setCustomFileHandlers(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.DataStore_Nested.CustomFileHandlers handlers)
+    {
+        NativeMethods.TablePtr->C0.hs_method_fa85b731((void*)__hosihikari_shim_handle, (void*)handlers.Handle);
+    }
 
 
     public void Dispose()

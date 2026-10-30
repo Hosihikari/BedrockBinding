@@ -38,6 +38,17 @@ public sealed unsafe partial class ChunkTickRangeManager : global::System.IDispo
         return __hs_handle;
     }
 
+    public static ChunkTickRangeManager Create(global::Hosihikari.Bindings.Bedrock.Interop.ChunkTickRangeManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_9051a0ca((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChunkTickRangeManager((nint)handle);
+    }
+
     public void _onChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk, int closestPlayerDistanceSquared)
     {
         NativeMethods.TablePtr->C0.hs_method_72d1698e((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)levelChunk.Handle, closestPlayerDistanceSquared);

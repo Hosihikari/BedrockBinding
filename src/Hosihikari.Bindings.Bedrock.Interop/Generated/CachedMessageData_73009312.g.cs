@@ -38,6 +38,17 @@ public sealed unsafe partial class CachedMessageData : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static CachedMessageData Create(global::Hosihikari.Bindings.Bedrock.Interop.ChalkboardBlockActor_Nested.CachedMessageData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_d0cf2f6b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CachedMessageData((nint)handle);
+    }
+
     public nint cachedFontCompare
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_c3a2df08((void*)__hosihikari_shim_handle);

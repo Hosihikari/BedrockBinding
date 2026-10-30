@@ -54,6 +54,17 @@ public sealed unsafe partial class InterventionPublishers : global::System.IDisp
         return new InterventionPublishers((nint)handle);
     }
 
+    public static InterventionPublishers Create(global::Hosihikari.Bindings.Bedrock.Interop.FileArchiver_Nested.InterventionPublishers arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_a5368235((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InterventionPublishers((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBegin_Address
     {

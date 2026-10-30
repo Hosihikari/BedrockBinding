@@ -15,8 +15,8 @@ This branch targets **BDS 1.26.51.1** through the headers of LeviLamina `ee049f1
 ## Current state
 
 - Interop: 9,110 generated C# files under `src/Hosihikari.Bindings.Bedrock.Interop/Generated/`.
-- Binding Shim: 128,068 functions in `native/BindingShim/generated/win-x64-server/bedrock/`.
-- Coverage: 12,043 declarations and 92,708 members bound for `win-x64-server`.
+- Binding Shim: 135,927 functions in `native/BindingShim/generated/win-x64-server/bedrock/`.
+- Coverage: 12,043 declarations and 100,896 members bound for `win-x64-server`.
 - `scripts/headers-26.51.txt` lists the 5,192 headers parsed for the surface. Every declaration reachable from them is emitted; layouts and field offsets come from the frontend's AST record layout, so a record keeps its fields as long as the headers prove them.
 
 The shim is emitted in `--symbol-dispatch --resolve-by-name` mode. Supported ABI:
@@ -24,7 +24,7 @@ The shim is emitted in `--symbol-dispatch --resolve-by-name` mode. Supported ABI
 - scalars and enum underlying types;
 - `std::string` / `std::string_view` values and const references;
 - single-level `T*` / `T&` as `void*`;
-- by-value records: small `triviallyCopyable` records travel in integer registers, larger records use a stack temporary and the hidden return buffer, and records that are only trivially destructible are copied as bytes but always use the hidden-reference convention because a user-provided copy constructor makes them non-trivial for calls;
+- by-value records: small `triviallyCopyable` records travel in integer registers, larger records use a stack temporary; a record that is not trivially copyable is built through its copy constructor (resolved by name) and released by the callee when its destructor is non-trivial, and a trivially destructible record without a recorded copy constructor is copied as bytes while still using the hidden-reference convention;
 - fields whose type is not projected expose the address of the field storage as a read-only `nint` named `<field>_Address`;
 - `optional_ref<T>` parameters and results with the presence flag;
 - `std::vector<T>` parameters and by-value results whose element is a scalar/enum, a string, a single-level pointer (surfacing as `nint[]`), or a trivially destructible record with a recorded layout; reference and pointer vector results remain borrowed handles;
@@ -55,7 +55,7 @@ The generated shim directories contain `hosihikari_abi.h` from `BindingAbi`, so 
 
 ## Runtime smoke
 
-`tests/runtime-smoke/` is a plugin script that loads the shim inside a real server, checks two static accessors, and constructs a `HashedString`, a `Core::Random`, and a `TextPacket` before calling instance methods. `scripts/run-runtime-smoke.ps1 -ServerRoot <dir>` builds everything, deploys the plugin, starts the server, and requires `result=OK`.
+`tests/runtime-smoke/` is a plugin script that loads the shim inside a real server, checks two static accessors, constructs a `HashedString`, a `Core::Random`, and a `TextPacket` before calling instance methods, and copies a `HashedString` through its copy constructor before passing it by value to `ExpressionNode::unregisterQueryFunction`. `scripts/run-runtime-smoke.ps1 -ServerRoot <dir>` builds everything, deploys the plugin, starts the server, and requires `result=OK`.
 
 ## Distribution
 

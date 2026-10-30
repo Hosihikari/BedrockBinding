@@ -38,6 +38,17 @@ public sealed unsafe partial class PlayerOpenedContainerEvent : global::System.I
         return __hs_handle;
     }
 
+    public static PlayerOpenedContainerEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerOpenedContainerEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_6509aabc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerOpenedContainerEvent((nint)handle);
+    }
+
     public sbyte mContainerType
     {
         get => NativeMethods.TablePtr->C2.hs_get_d07d780e((void*)__hosihikari_shim_handle);

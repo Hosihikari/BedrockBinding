@@ -173,6 +173,17 @@ public sealed unsafe partial class PoweredBlockComponent : global::System.IDispo
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static PoweredBlockComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.PoweredBlockComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_ad5f13d9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PoweredBlockComponent((nint)handle);
+    }
+
     public bool addSource(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph graph, global::Hosihikari.Bindings.Bedrock.Interop.CircuitTrackingInfo info, nint dampening, nint bDirectlyPowered)
     {
         return NativeMethods.TablePtr->C2.hs_method_de97df91((void*)__hosihikari_shim_handle, (void*)graph.Handle, (void*)info.Handle, (void*)dampening, (void*)bDirectlyPowered) != 0;

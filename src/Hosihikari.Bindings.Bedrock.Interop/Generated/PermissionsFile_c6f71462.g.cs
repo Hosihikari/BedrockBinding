@@ -38,6 +38,17 @@ public sealed unsafe partial class PermissionsFile : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static PermissionsFile Create(global::Hosihikari.Bindings.Bedrock.Interop.PermissionsFile arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_edbe3d55((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PermissionsFile((nint)handle);
+    }
+
     public static string _getPermissionIdForPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
         var __hs_view = NativeMethods.TablePtr->C2.hs_method_af73ac96((void*)player.Handle);

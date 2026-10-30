@@ -65,6 +65,17 @@ public sealed unsafe partial class OceanMonumentWingRoom : global::System.IDispo
         NativeMethods.TablePtr->C2.hs_method_6c2d46f9((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle);
     }
 
+    public static OceanMonumentWingRoom Create(global::Hosihikari.Bindings.Bedrock.Interop.OceanMonumentWingRoom arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_4e680479((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OceanMonumentWingRoom((nint)handle);
+    }
+
     public int getType()
     {
         return NativeMethods.TablePtr->C2.hs_method_273a2d21((void*)__hosihikari_shim_handle);

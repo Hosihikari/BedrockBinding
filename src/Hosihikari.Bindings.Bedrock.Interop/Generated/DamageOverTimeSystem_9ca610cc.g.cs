@@ -43,6 +43,17 @@ public sealed unsafe partial class DamageOverTimeSystem : global::System.IDispos
         NativeMethods.TablePtr->C1.hs_method_ec6871dc((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static DamageOverTimeSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.DamageOverTimeSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_25bcd843((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DamageOverTimeSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C1.hs_method_d20f695a((void*)__hosihikari_shim_handle, (void*)registry.Handle);

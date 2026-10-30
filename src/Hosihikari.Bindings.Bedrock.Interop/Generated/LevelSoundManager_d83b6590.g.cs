@@ -79,6 +79,17 @@ public sealed unsafe partial class LevelSoundManager : global::System.IDisposabl
         return new LevelSoundManager((nint)handle);
     }
 
+    public static LevelSoundManager Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelSoundManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_44268fbc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelSoundManager((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<SoundPlayerInterface>>' is not a known bindable declaration.", false)]
     public static LevelSoundManager Create(nint soundPlayer, bool isClientSide, nint levelEventCoordinator, nint packetSender, bool isServerAuthSoundEnabled) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<SoundPlayerInterface>>' is not a known bindable declaration.");

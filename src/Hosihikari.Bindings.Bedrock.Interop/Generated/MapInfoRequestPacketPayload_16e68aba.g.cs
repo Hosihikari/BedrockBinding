@@ -65,6 +65,17 @@ public sealed unsafe partial class MapInfoRequestPacketPayload : global::System.
         return new MapInfoRequestPacketPayload((nint)handle);
     }
 
+    public static MapInfoRequestPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.MapInfoRequestPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_7d60ebfa((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MapInfoRequestPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mClientPixels_Address
     {

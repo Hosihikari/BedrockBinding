@@ -484,6 +484,17 @@ public sealed unsafe partial class NetherDimension : global::System.IDisposable
     public static NetherDimension Create(nint args) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
+    public static NetherDimension Create(global::Hosihikari.Bindings.Bedrock.Interop.NetherDimension arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_81796f7e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NetherDimension((nint)handle);
+    }
+
     public void _upgradeOldLimboEntity(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, sbyte vers)
     {
         NativeMethods.TablePtr->C2.hs_method_0ca391bc((void*)__hosihikari_shim_handle, (void*)tag.Handle, vers);

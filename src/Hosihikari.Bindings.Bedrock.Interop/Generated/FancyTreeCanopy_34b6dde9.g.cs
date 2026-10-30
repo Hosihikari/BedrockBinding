@@ -65,6 +65,17 @@ public sealed unsafe partial class FancyTreeCanopy : global::System.IDisposable
         }
     }
 
+    public static FancyTreeCanopy Create(global::Hosihikari.Bindings.Bedrock.Interop.FancyTreeCanopy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_55ee88da((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FancyTreeCanopy((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? _fillLayer(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block leavesBlock, int radius, global::Hosihikari.Bindings.Bedrock.Interop.TreeHelper.TreeParams treeParams)
     {
         var __hs_hasValue = false;

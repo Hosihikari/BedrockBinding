@@ -119,6 +119,17 @@ public sealed unsafe partial class DragonChargePlayerGoal : global::System.IDisp
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static DragonChargePlayerGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.DragonChargePlayerGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_411a0f3f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DragonChargePlayerGoal((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public void appendDebugInfo(nint str) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");

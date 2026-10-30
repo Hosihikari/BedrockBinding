@@ -73,6 +73,17 @@ public sealed unsafe partial class AgentActionEventPacketPayload : global::Syste
         return new AgentActionEventPacketPayload((nint)handle);
     }
 
+    public static AgentActionEventPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.AgentActionEventPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_55ff09f9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AgentActionEventPacketPayload((nint)handle);
+    }
+
     public static AgentActionEventPacketPayload Create(string requestId, int action, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value response)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(requestId);

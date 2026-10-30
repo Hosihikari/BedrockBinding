@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockVolume : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static BlockVolume Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockVolume arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_bb11ffa6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockVolume((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'std::vector<short>' is not a known bindable declaration.", false)]
     public nint computeHeightMap() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'std::vector<short>' is not a known bindable declaration.");

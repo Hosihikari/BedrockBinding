@@ -38,6 +38,17 @@ public sealed unsafe partial class Effect : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Effect Create(global::Hosihikari.Bindings.Bedrock.Interop.FoodItemComponentLegacy_Nested.Effect arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_655167af((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Effect((nint)handle);
+    }
+
     public int amplifier
     {
         get => NativeMethods.TablePtr->C1.hs_get_1f39571b((void*)__hosihikari_shim_handle);

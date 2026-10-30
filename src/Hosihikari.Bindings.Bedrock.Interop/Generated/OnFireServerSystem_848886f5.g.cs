@@ -43,6 +43,17 @@ public sealed unsafe partial class OnFireServerSystem : global::System.IDisposab
         NativeMethods.TablePtr->C2.hs_method_26a7c259((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static OnFireServerSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.OnFireServerSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_e432a18e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OnFireServerSystem((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Optional<const AbilitiesComponent>' is not a known bindable declaration.", false)]
     public static void _tickServer(nint entity, nint actorOwnerComponent, nint onFireComponent, nint abilities) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Optional<const AbilitiesComponent>' is not a known bindable declaration.");

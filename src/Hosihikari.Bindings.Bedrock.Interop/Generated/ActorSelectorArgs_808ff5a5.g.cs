@@ -43,6 +43,17 @@ public sealed unsafe partial class ActorSelectorArgs : global::System.IDisposabl
         NativeMethods.TablePtr->C0.hs_method_894bb94a((void*)__hosihikari_shim_handle);
     }
 
+    public static ActorSelectorArgs Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorSelectorArgs arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_49e75a84((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorSelectorArgs((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mCodeBuilderFilters_Address
     {

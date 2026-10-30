@@ -67,6 +67,17 @@ public sealed unsafe partial class FilterTestHasTradeSupply : global::System.IDi
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static FilterTestHasTradeSupply Create(global::Hosihikari.Bindings.Bedrock.Interop.FilterTestHasTradeSupply arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_90f3d5f4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FilterTestHasTradeSupply((nint)handle);
+    }
+
     public bool evaluate(nint context)
     {
         return NativeMethods.TablePtr->C1.hs_method_a87af5ac((void*)__hosihikari_shim_handle, (void*)context) != 0;

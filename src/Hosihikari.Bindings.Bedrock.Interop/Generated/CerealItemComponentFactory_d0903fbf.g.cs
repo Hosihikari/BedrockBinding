@@ -38,6 +38,17 @@ public sealed unsafe partial class CerealItemComponentFactory : global::System.I
         return __hs_handle;
     }
 
+    public static CerealItemComponentFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.CerealItemComponentFactory arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_02f2d809((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CerealItemComponentFactory((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public static void addComponentMetadata(nint ctx, nint componentName, nint metadata, nint releasedMinFormatVersion) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
@@ -62,9 +73,24 @@ public sealed unsafe partial class CerealItemComponentFactory : global::System.I
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static void deprecateComponentStartingFromVersion(nint name, nint deprecatedVersion, nint ctx) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static void deprecateComponentStartingFromVersion(string name, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion deprecatedVersion, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C0.hs_method_b8ad031c(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)deprecatedVersion.Handle, (void*)ctx.Handle);
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'SemVersion' is not supported.", false)]
     public static nint getReleasedMinFormatVersionForAnyComponent(nint ctx) =>
@@ -87,9 +113,10 @@ public sealed unsafe partial class CerealItemComponentFactory : global::System.I
         return new global::Hosihikari.Bindings.Bedrock.Interop.CerealItemComponentFactory((nint)NativeMethods.TablePtr->C0.hs_method_2ef56e69((void*)ctx.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static void updateReleasedMinFormatVersionForAnyComponentIfLower(nint instance, nint version) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static void updateReleasedMinFormatVersionForAnyComponentIfLower(global::Hosihikari.Bindings.Bedrock.Interop.CerealItemComponentFactory instance, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion version)
+    {
+        NativeMethods.TablePtr->C0.hs_method_5eebe5ec((void*)instance.Handle, (void*)version.Handle);
+    }
 
 
     public void Dispose()

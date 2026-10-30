@@ -83,6 +83,17 @@ public sealed unsafe partial class TurnCommand : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_ae93fff3((void*)__hosihikari_shim_handle);
     }
 
+    public static TurnCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.AgentCommands.TurnCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_ec4039d6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TurnCommand((nint)handle);
+    }
+
     public void execute()
     {
         NativeMethods.TablePtr->C0.hs_method_cd5d66ba((void*)__hosihikari_shim_handle);

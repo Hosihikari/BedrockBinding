@@ -44,6 +44,17 @@ public sealed unsafe partial class IAppPlatform : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C1.hs_get_af0e09a7((void*)__hosihikari_shim_handle);
     }
 
+    public static IAppPlatform Create(global::Hosihikari.Bindings.Bedrock.Interop.IAppPlatform arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d9386417((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IAppPlatform((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint areTreatmentPacksThrottled() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

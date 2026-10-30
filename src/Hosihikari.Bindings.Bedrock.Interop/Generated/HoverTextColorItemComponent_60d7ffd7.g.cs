@@ -43,6 +43,17 @@ public sealed unsafe partial class HoverTextColorItemComponent : global::System.
         NativeMethods.TablePtr->C3.hs_method_7defc9bc((void*)__hosihikari_shim_handle);
     }
 
+    public static HoverTextColorItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50.HoverTextColorItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_9dd75b77((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HoverTextColorItemComponent((nint)handle);
+    }
+
     public static string NAME()
     {
         var __hs_view = NativeMethods.TablePtr->C3.hs_method_4edce84b();

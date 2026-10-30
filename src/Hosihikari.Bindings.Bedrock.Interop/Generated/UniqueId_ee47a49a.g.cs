@@ -38,6 +38,17 @@ public sealed unsafe partial class UniqueId : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static UniqueId Create(global::Hosihikari.Bindings.Bedrock.Interop.MapItemTrackedActor_Nested.UniqueId arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_5812aa19((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UniqueId((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint keyBlockPos_Address
     {

@@ -123,6 +123,17 @@ public sealed unsafe partial class ShapedChemistryRecipe : global::System.IDispo
         return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->C3.hs_method_974d2198(), false);
     }
 
+    public static ShapedChemistryRecipe Create(global::Hosihikari.Bindings.Bedrock.Interop.ShapedChemistryRecipe arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_3628de13((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ShapedChemistryRecipe((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID getId()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->C3.hs_method_e6a23b42((void*)__hosihikari_shim_handle), false);

@@ -46,9 +46,10 @@ public sealed unsafe partial class MobEquipmentPacket : global::System.IDisposab
     public nint __read(nint stream, nint reflectionCtx) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.MobEquipmentPacketPayload payload)
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_fd182d8f((void*)__hosihikari_shim_handle, (void*)payload.Handle);
+    }
 
     public bool _disallowBatching()
     {
@@ -131,9 +132,27 @@ public sealed unsafe partial class MobEquipmentPacket : global::System.IDisposab
         return new MobEquipmentPacket((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static MobEquipmentPacket Create(nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static MobEquipmentPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.MobEquipmentPacketPayload payload)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_cbe99c2c((void*)payload.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MobEquipmentPacket((nint)handle);
+    }
+
+    public static MobEquipmentPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.MobEquipmentPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_de093750((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MobEquipmentPacket((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>

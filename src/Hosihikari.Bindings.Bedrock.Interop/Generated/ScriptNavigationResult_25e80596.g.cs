@@ -43,6 +43,17 @@ public sealed unsafe partial class ScriptNavigationResult : global::System.IDisp
         NativeMethods.TablePtr->C3.hs_method_ff34a33b((void*)__hosihikari_shim_handle);
     }
 
+    public static ScriptNavigationResult Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest.ScriptNavigationResult arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_7d2a208f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptNavigationResult((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_581ed4ef());

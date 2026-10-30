@@ -170,6 +170,17 @@ public sealed unsafe partial class HudContainerManagerModel : global::System.IDi
         return new HudContainerManagerModel((nint)handle);
     }
 
+    public static HudContainerManagerModel Create(global::Hosihikari.Bindings.Bedrock.Interop.HudContainerManagerModel arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_e45b2f0d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HudContainerManagerModel((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext _postInit()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext((nint)NativeMethods.TablePtr->C1.hs_method_bec04938((void*)__hosihikari_shim_handle));

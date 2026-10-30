@@ -43,6 +43,17 @@ public sealed unsafe partial class FromRequest : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_b5ca2250((void*)__hosihikari_shim_handle);
     }
 
+    public static FromRequest Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptFormPromiseTracker_Nested.FromRequest arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_7e7e664a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FromRequest((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mClientNetworkIdentifier_Address
     {

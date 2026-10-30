@@ -49,6 +49,17 @@ public sealed unsafe partial class ActorRandomChanceTest : global::System.IDispo
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static ActorRandomChanceTest Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorRandomChanceTest arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_3e69e2a3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorRandomChanceTest((nint)handle);
+    }
+
     public bool evaluate(nint context)
     {
         return NativeMethods.TablePtr->C0.hs_method_2f84c89b((void*)__hosihikari_shim_handle, (void*)context) != 0;

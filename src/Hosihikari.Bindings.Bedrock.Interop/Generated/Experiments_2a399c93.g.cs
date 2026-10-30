@@ -56,6 +56,17 @@ public sealed unsafe partial class Experiments : global::System.IDisposable
         set => NativeMethods.TablePtr->C1.hs_set_1cd70959((void*)__hosihikari_shim_handle, value);
     }
 
+    public static Experiments Create(global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_49750156((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Experiments((nint)handle);
+    }
+
     public string getExperimentsActiveAsJSONList()
     {
         var __hs_view = NativeMethods.TablePtr->C1.hs_method_d97d690a((void*)__hosihikari_shim_handle);

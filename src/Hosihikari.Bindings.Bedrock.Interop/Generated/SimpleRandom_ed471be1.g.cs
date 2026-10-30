@@ -86,6 +86,17 @@ public sealed unsafe partial class SimpleRandom : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static SimpleRandom Create(global::Hosihikari.Bindings.Bedrock.Interop.SimpleRandom arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_07184d8d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SimpleRandom((nint)handle);
+    }
+
     public void consumeCount(uint count)
     {
         NativeMethods.TablePtr->C3.hs_method_c6646ffc((void*)__hosihikari_shim_handle, count);

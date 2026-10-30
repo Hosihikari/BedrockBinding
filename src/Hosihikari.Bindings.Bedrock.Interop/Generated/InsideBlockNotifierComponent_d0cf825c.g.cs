@@ -38,6 +38,17 @@ public sealed unsafe partial class InsideBlockNotifierComponent : global::System
         return __hs_handle;
     }
 
+    public static InsideBlockNotifierComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.InsideBlockNotifierComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_2d849832((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InsideBlockNotifierComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockList_Address
     {

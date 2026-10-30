@@ -198,6 +198,17 @@ public sealed unsafe partial class MinecartBlockCommandOrigin : global::System.I
         }
     }
 
+    public static MinecartBlockCommandOrigin Create(global::Hosihikari.Bindings.Bedrock.Interop.MinecartBlockCommandOrigin arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_f47c962d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MinecartBlockCommandOrigin((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.BaseCommandBlock? _getBaseCommandBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
     {
         var __hs_handle = NativeMethods.TablePtr->C2.hs_method_53bb52f2((void*)__hosihikari_shim_handle, (void*)region.Handle);

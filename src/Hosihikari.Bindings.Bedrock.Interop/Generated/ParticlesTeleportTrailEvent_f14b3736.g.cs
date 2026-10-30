@@ -38,6 +38,17 @@ public sealed unsafe partial class ParticlesTeleportTrailEvent : global::System.
         return __hs_handle;
     }
 
+    public static ParticlesTeleportTrailEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ParticlesTeleportTrailEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_6b8d3df2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ParticlesTeleportTrailEvent((nint)handle);
+    }
+
     public int mCount
     {
         get => NativeMethods.TablePtr->C2.hs_get_dde70ccb((void*)__hosihikari_shim_handle);

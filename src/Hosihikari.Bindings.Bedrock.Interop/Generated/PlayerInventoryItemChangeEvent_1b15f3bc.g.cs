@@ -43,6 +43,17 @@ public sealed unsafe partial class PlayerInventoryItemChangeEvent : global::Syst
         NativeMethods.TablePtr->C2.hs_method_00936519((void*)__hosihikari_shim_handle);
     }
 
+    public static PlayerInventoryItemChangeEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerInventoryItemChangeEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_12bf245a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerInventoryItemChangeEvent((nint)handle);
+    }
+
     public bool mIsQuantityChangedOnly
     {
         get => NativeMethods.TablePtr->C2.hs_get_f6af5e02((void*)__hosihikari_shim_handle) != 0;

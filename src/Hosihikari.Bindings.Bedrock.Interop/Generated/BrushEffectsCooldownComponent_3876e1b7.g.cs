@@ -38,6 +38,17 @@ public sealed unsafe partial class BrushEffectsCooldownComponent : global::Syste
         return __hs_handle;
     }
 
+    public static BrushEffectsCooldownComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.BrushEffectsCooldownComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_4e868914((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BrushEffectsCooldownComponent((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.ExpiringTick EXPIRED_TICK()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ExpiringTick((nint)NativeMethods.TablePtr->C0.hs_method_4285a8ff(), false);

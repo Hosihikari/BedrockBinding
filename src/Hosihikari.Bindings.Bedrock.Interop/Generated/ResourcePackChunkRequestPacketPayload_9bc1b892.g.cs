@@ -49,6 +49,17 @@ public sealed unsafe partial class ResourcePackChunkRequestPacketPayload : globa
         return new ResourcePackChunkRequestPacketPayload((nint)handle);
     }
 
+    public static ResourcePackChunkRequestPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackChunkRequestPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_9eb461be((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ResourcePackChunkRequestPacketPayload((nint)handle);
+    }
+
     public int mChunk
     {
         get => NativeMethods.TablePtr->C3.hs_get_d7037cfc((void*)__hosihikari_shim_handle);

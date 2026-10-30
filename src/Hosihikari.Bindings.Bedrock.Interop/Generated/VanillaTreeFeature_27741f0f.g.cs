@@ -81,6 +81,17 @@ public sealed unsafe partial class VanillaTreeFeature : global::System.IDisposab
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
+    public static VanillaTreeFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.VanillaTreeFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_dcf70dbf((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VanillaTreeFeature((nint)handle);
+    }
+
     public static void _buildSchema(nint schemaNode)
     {
         NativeMethods.TablePtr->C4.hs_method_1cd65587((void*)schemaNode);

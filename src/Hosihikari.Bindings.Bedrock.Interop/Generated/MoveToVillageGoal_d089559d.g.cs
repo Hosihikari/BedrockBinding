@@ -250,6 +250,17 @@ public sealed unsafe partial class MoveToVillageGoal : global::System.IDisposabl
         }
     }
 
+    public static MoveToVillageGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.MoveToVillageGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_dc23c109((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MoveToVillageGoal((nint)handle);
+    }
+
     public void _moveToBlock()
     {
         NativeMethods.TablePtr->C2.hs_method_1514ce31((void*)__hosihikari_shim_handle);

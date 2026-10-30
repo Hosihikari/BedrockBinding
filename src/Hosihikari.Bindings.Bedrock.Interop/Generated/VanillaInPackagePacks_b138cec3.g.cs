@@ -42,6 +42,17 @@ public sealed unsafe partial class VanillaInPackagePacks : global::System.IDispo
     public nint _getPacks(nint packType) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'IInPackagePacks::MetaData' is not supported.");
 
+    public static VanillaInPackagePacks Create(global::Hosihikari.Bindings.Bedrock.Interop.VanillaInPackagePacks arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_8fd4dd4b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VanillaInPackagePacks((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'IInPackagePacks::MetaData' is not supported.", false)]
     public nint getPacks(nint packType) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'IInPackagePacks::MetaData' is not supported.");

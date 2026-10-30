@@ -38,6 +38,17 @@ public sealed unsafe partial class Node : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Node Create(global::Hosihikari.Bindings.Bedrock.Interop.Path_Nested.Node arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_c4323d0f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Node((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint pos_Address
     {

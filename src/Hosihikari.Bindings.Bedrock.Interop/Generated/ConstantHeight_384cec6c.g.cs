@@ -47,6 +47,17 @@ public sealed unsafe partial class ConstantHeight : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ConstantHeight Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.ConstantHeight arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_10cfcb55((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ConstantHeight((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mAnchor_Address
     {

@@ -69,6 +69,17 @@ public sealed unsafe partial class StyledWriter : global::System.IDisposable
         return new StyledWriter((nint)handle);
     }
 
+    public static StyledWriter Create(global::Hosihikari.Bindings.Bedrock.Interop.Json.StyledWriter arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_bd6dbeda((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StyledWriter((nint)handle);
+    }
+
     public bool addChildValues_
     {
         get => NativeMethods.TablePtr->C1.hs_get_94c64552((void*)__hosihikari_shim_handle) != 0;

@@ -43,6 +43,17 @@ public sealed unsafe partial class TestParameters : global::System.IDisposable
         NativeMethods.TablePtr->C4.hs_method_29ef90d6((void*)__hosihikari_shim_handle);
     }
 
+    public static TestParameters Create(global::Hosihikari.Bindings.Bedrock.Interop.gametest.TestParameters arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_dd3d33a1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TestParameters((nint)handle);
+    }
+
     public int mMaxTestsPerBatch
     {
         get => NativeMethods.TablePtr->C4.hs_get_988bc274((void*)__hosihikari_shim_handle);

@@ -122,6 +122,17 @@ public sealed unsafe partial class CommandBlockUpdatePacket : global::System.IDi
         return new CommandBlockUpdatePacket((nint)handle);
     }
 
+    public static CommandBlockUpdatePacket Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandBlockUpdatePacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_98d33b3a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandBlockUpdatePacket((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");

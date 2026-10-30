@@ -43,6 +43,17 @@ public sealed unsafe partial class CommandAction : global::System.IDisposable
         NativeMethods.TablePtr->C4.hs_method_8a186418((void*)__hosihikari_shim_handle);
     }
 
+    public static CommandAction Create(global::Hosihikari.Bindings.Bedrock.Interop.npc.CommandAction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_98e83be3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandAction((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint action_Address
     {

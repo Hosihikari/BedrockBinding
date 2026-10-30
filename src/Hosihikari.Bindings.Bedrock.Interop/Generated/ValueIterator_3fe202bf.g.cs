@@ -65,6 +65,17 @@ public sealed unsafe partial class ValueIterator : global::System.IDisposable
         return new ValueIterator((nint)handle);
     }
 
+    public static ValueIterator Create(global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueIterator arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_32579752((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ValueIterator((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueIterator operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueIterator arg0)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueIterator((nint)NativeMethods.TablePtr->C1.hs_method_a84ae80a((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);

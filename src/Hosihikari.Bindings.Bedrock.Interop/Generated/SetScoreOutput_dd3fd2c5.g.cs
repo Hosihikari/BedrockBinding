@@ -38,6 +38,17 @@ public sealed unsafe partial class SetScoreOutput : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static SetScoreOutput Create(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardCommand_Nested.SetScoreOutput arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_20da68f1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SetScoreOutput((nint)handle);
+    }
+
     public int mFirstNewScore
     {
         get => NativeMethods.TablePtr->C3.hs_get_9784dc9e((void*)__hosihikari_shim_handle);

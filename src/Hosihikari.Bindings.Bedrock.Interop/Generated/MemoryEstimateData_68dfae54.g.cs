@@ -40,26 +40,26 @@ public sealed unsafe partial class MemoryEstimateData : global::System.IDisposab
 
     public double mAverageBiomePaletteSize
     {
-        get => NativeMethods.TablePtr->C1.hs_get_d1f3012a((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_d1f3012a((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_d1f3012a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_d1f3012a((void*)__hosihikari_shim_handle, value);
     }
 
     public ulong mBiomeData3DSize
     {
-        get => NativeMethods.TablePtr->C1.hs_get_aef57184((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_aef57184((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_aef57184((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_aef57184((void*)__hosihikari_shim_handle, value);
     }
 
     public ulong mMaxBiomePaletteSize
     {
-        get => NativeMethods.TablePtr->C1.hs_get_f0c6d5fa((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_f0c6d5fa((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_f0c6d5fa((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_f0c6d5fa((void*)__hosihikari_shim_handle, value);
     }
 
     public ulong mMinBiomePaletteSize
     {
-        get => NativeMethods.TablePtr->C1.hs_get_8dcc6369((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_8dcc6369((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_8dcc6369((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_8dcc6369((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -68,7 +68,7 @@ public sealed unsafe partial class MemoryEstimateData : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_68dfae54((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_68dfae54((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

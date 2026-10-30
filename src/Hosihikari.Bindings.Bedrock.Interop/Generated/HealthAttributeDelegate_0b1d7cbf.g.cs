@@ -70,6 +70,17 @@ public sealed unsafe partial class HealthAttributeDelegate : global::System.IDis
         return NativeMethods.TablePtr->C1.hs_method_feacb8d8((void*)__hosihikari_shim_handle, oldValue, newValue, (void*)buff.Handle) != 0;
     }
 
+    public static HealthAttributeDelegate Create(global::Hosihikari.Bindings.Bedrock.Interop.HealthAttributeDelegate arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_8c3b06df((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HealthAttributeDelegate((nint)handle);
+    }
+
     public float? change(float oldValue, float newValue, global::Hosihikari.Bindings.Bedrock.Interop.AttributeBuff buff)
     {
         var __hs_hasValue = false;

@@ -38,6 +38,17 @@ public sealed unsafe partial class BuoyancyComponent : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static BuoyancyComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.BuoyancyComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_c44fe16b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BuoyancyComponent((nint)handle);
+    }
+
     public bool canFloat(global::Hosihikari.Bindings.Bedrock.Interop.StateVectorComponent stateVectorComponent, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource region)
     {
         return NativeMethods.TablePtr->C0.hs_method_a22bdf7f((void*)__hosihikari_shim_handle, (void*)stateVectorComponent.Handle, (void*)region.Handle) != 0;

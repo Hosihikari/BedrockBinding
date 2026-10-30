@@ -63,6 +63,17 @@ public sealed unsafe partial class ScriptPlayerInteractWithBlockEvent : global::
     public static ScriptPlayerInteractWithBlockEvent Create(nint player, nint block, nint blockFace, nint faceLocation, bool isFirstEvent) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlock>' is not a known bindable declaration.");
 
+    public static ScriptPlayerInteractWithBlockEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptPlayerInteractWithBlockEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_76a0c4d1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptPlayerInteractWithBlockEvent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlock_Address
     {

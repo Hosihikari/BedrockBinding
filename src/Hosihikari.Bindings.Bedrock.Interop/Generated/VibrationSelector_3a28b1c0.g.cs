@@ -38,6 +38,17 @@ public sealed unsafe partial class VibrationSelector : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static VibrationSelector Create(global::Hosihikari.Bindings.Bedrock.Interop.VibrationSelector arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_eefec8bc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VibrationSelector((nint)handle);
+    }
+
     public void addCandidate(global::Hosihikari.Bindings.Bedrock.Interop.Tick currentTick, global::Hosihikari.Bindings.Bedrock.Interop.GameEvent gameEvent, nint gameEventContext, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos destinationPos)
     {
         NativeMethods.TablePtr->C4.hs_method_4d5a4436((void*)__hosihikari_shim_handle, (void*)currentTick.Handle, (void*)gameEvent.Handle, (void*)gameEventContext, (void*)destinationPos.Handle);

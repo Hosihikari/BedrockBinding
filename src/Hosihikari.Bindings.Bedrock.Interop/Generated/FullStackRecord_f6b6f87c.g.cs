@@ -38,6 +38,17 @@ public sealed unsafe partial class FullStackRecord : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static FullStackRecord Create(global::Hosihikari.Bindings.Bedrock.Interop.ImguiProfiler_Nested.RecordGroup_Nested.FullStackRecord arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d93352ae((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FullStackRecord((nint)handle);
+    }
+
     public bool bUseAverageTracker
     {
         get => NativeMethods.TablePtr->C1.hs_get_018dcd91((void*)__hosihikari_shim_handle) != 0;

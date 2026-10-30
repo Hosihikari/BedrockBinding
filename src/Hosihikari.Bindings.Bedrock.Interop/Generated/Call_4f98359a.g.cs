@@ -42,6 +42,17 @@ public sealed unsafe partial class Call : global::System.IDisposable
     public void AddAdaptationResource(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static Call Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.Call arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_9683f489((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Call((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint CreateAudioReceiveStream(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

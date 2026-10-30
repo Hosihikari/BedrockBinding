@@ -38,6 +38,17 @@ public sealed unsafe partial class ScriptBlockCustomComponentsFinalizer : global
         return __hs_handle;
     }
 
+    public static ScriptBlockCustomComponentsFinalizer Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptBlockCustomComponentsFinalizer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_18e432e3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptBlockCustomComponentsFinalizer((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'gsl::not_null<BlockCustomComponentsComponent *>' is not supported.", false)]
     public void finalizeBlock(nint block, nint customComps) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'gsl::not_null<BlockCustomComponentsComponent *>' is not supported.");

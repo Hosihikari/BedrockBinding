@@ -47,6 +47,17 @@ public sealed unsafe partial class FitDoubleYZRoom : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_afeab1a0((void*)__hosihikari_shim_handle, (void*)definition.Handle) != 0;
     }
 
+    public static FitDoubleYZRoom Create(global::Hosihikari.Bindings.Bedrock.Interop.FitDoubleYZRoom arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_427844e1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FitDoubleYZRoom((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'OceanMonumentPiece' has no accessible destructor.", false)]
     public nint create(nint orientation, nint definition, nint random) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'OceanMonumentPiece' has no accessible destructor.");

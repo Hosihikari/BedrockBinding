@@ -38,6 +38,17 @@ public sealed unsafe partial class HeightProvider : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static HeightProvider Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.HeightProvider arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_d38803a5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HeightProvider((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public int sample(nint randomSource, nint heightAccessor) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

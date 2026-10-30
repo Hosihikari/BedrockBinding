@@ -65,6 +65,17 @@ public sealed unsafe partial class WallClimberPathNavigation : global::System.ID
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static WallClimberPathNavigation Create(global::Hosihikari.Bindings.Bedrock.Interop.WallClimberPathNavigation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_27a31c1a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WallClimberPathNavigation((nint)handle);
+    }
+
     public bool _isInsideBorderBlock(global::Hosihikari.Bindings.Bedrock.Interop.AABB aabb, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, float grow)
     {
         return NativeMethods.TablePtr->C4.hs_method_b5f137dd((void*)__hosihikari_shim_handle, (void*)aabb.Handle, (void*)region.Handle, grow) != 0;

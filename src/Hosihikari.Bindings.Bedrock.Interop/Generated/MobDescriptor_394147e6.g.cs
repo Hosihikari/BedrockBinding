@@ -38,6 +38,17 @@ public sealed unsafe partial class MobDescriptor : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static MobDescriptor Create(global::Hosihikari.Bindings.Bedrock.Interop.Legacy.MobDescriptor arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_25fdd421((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MobDescriptor((nint)handle);
+    }
+
     public bool mCheckIfOutnumbered
     {
         get => NativeMethods.TablePtr->C1.hs_get_34ea71f6((void*)__hosihikari_shim_handle) != 0;

@@ -57,6 +57,17 @@ public sealed unsafe partial class VinesSingleFaceFeature : global::System.IDisp
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
+    public static VinesSingleFaceFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.VinesSingleFaceFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_ec9b7595((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VinesSingleFaceFeature((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? place(global::Hosihikari.Bindings.Bedrock.Interop.IFeature_Nested.PlacementContext context)
     {
         var __hs_hasValue = false;

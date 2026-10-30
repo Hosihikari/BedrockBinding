@@ -44,6 +44,17 @@ public sealed unsafe partial class BlockEventDispatcher : global::System.IDispos
         get => (nint)NativeMethods.TablePtr->C0.hs_get_ee5f1be0((void*)__hosihikari_shim_handle);
     }
 
+    public static BlockEventDispatcher Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockEventDispatcher arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_94942dfd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockEventDispatcher((nint)handle);
+    }
+
     public void dispatchEvent(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, uint layer, global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.Block oldBlock, global::Hosihikari.Bindings.Bedrock.Interop.Actor? source)
     {
         NativeMethods.TablePtr->C0.hs_method_14552069((void*)__hosihikari_shim_handle, (void*)pos.Handle, layer, (void*)block.Handle, (void*)oldBlock.Handle, (void*)(source?.Handle ?? 0));

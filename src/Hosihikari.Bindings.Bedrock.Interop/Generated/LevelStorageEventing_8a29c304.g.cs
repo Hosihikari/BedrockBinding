@@ -88,6 +88,17 @@ public sealed unsafe partial class LevelStorageEventing : global::System.IDispos
         return new LevelStorageEventing((nint)handle);
     }
 
+    public static LevelStorageEventing Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageEventing arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_c585c0ee((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelStorageEventing((nint)handle);
+    }
+
     public static LevelStorageEventing Create(string creationReason, global::Hosihikari.Bindings.Bedrock.Interop.LevelData levelData, string levelId)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(creationReason);

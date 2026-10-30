@@ -46,9 +46,10 @@ public sealed unsafe partial class CreatePhotoPacket : global::System.IDisposabl
     public nint __read(nint stream, nint reflectionCtx) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.CreatePhotoPacketPayload payload)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_6d9104ef((void*)__hosihikari_shim_handle, (void*)payload.Handle);
+    }
 
     public bool _disallowBatching()
     {
@@ -126,9 +127,27 @@ public sealed unsafe partial class CreatePhotoPacket : global::System.IDisposabl
         return new CreatePhotoPacket((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static CreatePhotoPacket Create(nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static CreatePhotoPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.CreatePhotoPacketPayload payload)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_f284bc3b((void*)payload.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CreatePhotoPacket((nint)handle);
+    }
+
+    public static CreatePhotoPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.CreatePhotoPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_ae2d0282((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CreatePhotoPacket((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>

@@ -67,6 +67,17 @@ public sealed unsafe partial class Tag : global::System.IDisposable
         }
     }
 
+    public static Tag Create(global::Hosihikari.Bindings.Bedrock.Interop.Tag arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_fdd696ab((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Tag((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint copy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

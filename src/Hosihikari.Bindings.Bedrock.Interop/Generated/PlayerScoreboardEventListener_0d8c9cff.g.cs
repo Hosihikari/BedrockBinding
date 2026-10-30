@@ -57,6 +57,17 @@ public sealed unsafe partial class PlayerScoreboardEventListener : global::Syste
         }
     }
 
+    public static PlayerScoreboardEventListener Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerScoreboardEventListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_dbc9918e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerScoreboardEventListener((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.SubscribedObjectives getPlayerSubscriptions(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId id, global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.SubscribedObjectives((nint)NativeMethods.TablePtr->C2.hs_method_f2333362((void*)__hosihikari_shim_handle, (void*)id.Handle, (void*)player.Handle), false);

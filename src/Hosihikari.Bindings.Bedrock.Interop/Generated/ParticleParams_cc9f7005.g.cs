@@ -38,6 +38,17 @@ public sealed unsafe partial class ParticleParams : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ParticleParams Create(global::Hosihikari.Bindings.Bedrock.Interop.LeavesBlock_Nested.ParticleParams arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_c223207c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ParticleParams((nint)handle);
+    }
+
     public int mOneOutOfChance
     {
         get => NativeMethods.TablePtr->C1.hs_get_8b10b3be((void*)__hosihikari_shim_handle);

@@ -134,6 +134,17 @@ public sealed unsafe partial class WoodlandMansionPiece : global::System.IDispos
         return new WoodlandMansionPiece((nint)handle);
     }
 
+    public static WoodlandMansionPiece Create(global::Hosihikari.Bindings.Bedrock.Interop.WoodlandMansionPieces_Nested.WoodlandMansionPiece arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_2bf1e549((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WoodlandMansionPiece((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' is not a known bindable declaration.", false)]
     public static WoodlandMansionPiece Create(nint structureManager, nint templateName, nint origin, nint rotation) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' is not a known bindable declaration.");

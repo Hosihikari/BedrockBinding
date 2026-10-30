@@ -40,19 +40,30 @@ public sealed unsafe partial class TrimDataPacketPayload : global::System.IDispo
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C3.hs_method_e9cdbebd((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_e9cdbebd((void*)__hosihikari_shim_handle);
+    }
+
+    public static TrimDataPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.TrimDataPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_5674c7f9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TrimDataPacketPayload((nint)handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTrimMaterials_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_f5895694((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f5895694((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTrimPatterns_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_8e7d6b23((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_8e7d6b23((void*)__hosihikari_shim_handle);
     }
 
 
@@ -62,7 +73,7 @@ public sealed unsafe partial class TrimDataPacketPayload : global::System.IDispo
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_49ee9b13((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_49ee9b13((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

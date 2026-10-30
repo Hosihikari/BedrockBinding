@@ -58,6 +58,17 @@ public sealed unsafe partial class StructurePoolBlockTagRule : global::System.ID
         return new StructurePoolBlockTagRule((nint)handle);
     }
 
+    public static StructurePoolBlockTagRule Create(global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolBlockTagRule arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_0efb5281((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructurePoolBlockTagRule((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static StructurePoolBlockTagRule Create(nint sourceBlockTagPredicate, nint resultKey, nint resultValue) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");

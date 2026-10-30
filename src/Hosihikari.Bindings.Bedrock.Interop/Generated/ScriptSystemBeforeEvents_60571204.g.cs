@@ -59,6 +59,17 @@ public sealed unsafe partial class ScriptSystemBeforeEvents : global::System.IDi
         return new ScriptSystemBeforeEvents((nint)handle);
     }
 
+    public static ScriptSystemBeforeEvents Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptSystemBeforeEvents arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_d74ca182((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptSystemBeforeEvents((nint)handle);
+    }
+
     public static ScriptSystemBeforeEvents Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope, global::Hosihikari.Bindings.Bedrock.Interop.ServerLevel? level)
     {
         var handle = NativeMethods.TablePtr->C3.hs_create_f62aed60((void*)scope.Handle, (void*)(level?.Handle ?? 0));

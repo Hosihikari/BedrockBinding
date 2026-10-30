@@ -110,6 +110,17 @@ public sealed unsafe partial class POIBlueprint : global::System.IDisposable
         return new POIBlueprint((nint)handle);
     }
 
+    public static POIBlueprint Create(global::Hosihikari.Bindings.Bedrock.Interop.POIBlueprint arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_82613d06((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new POIBlueprint((nint)handle);
+    }
+
     public static POIBlueprint Create(string name, int type, float radius, bool useBoundingBox, ulong capacity, ulong weight, string soundEvent, string initEvent, string endEvent)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);

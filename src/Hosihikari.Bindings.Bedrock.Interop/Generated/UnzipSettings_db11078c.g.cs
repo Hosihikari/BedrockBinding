@@ -43,6 +43,17 @@ public sealed unsafe partial class UnzipSettings : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_5c6401cc((void*)__hosihikari_shim_handle);
     }
 
+    public static UnzipSettings Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.ZipUtils.UnzipSettings arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_c0ddfe3c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UnzipSettings((nint)handle);
+    }
+
     public bool mDeleteZipOnSuccess
     {
         get => NativeMethods.TablePtr->C1.hs_get_4e728a57((void*)__hosihikari_shim_handle) != 0;

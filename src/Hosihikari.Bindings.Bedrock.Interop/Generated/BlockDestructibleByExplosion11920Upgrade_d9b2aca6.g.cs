@@ -48,6 +48,17 @@ public sealed unsafe partial class BlockDestructibleByExplosion11920Upgrade : gl
         NativeMethods.TablePtr->C0.hs_method_4e16c220((void*)__hosihikari_shim_handle, (void*)document, (void*)arg1.Handle);
     }
 
+    public static BlockDestructibleByExplosion11920Upgrade Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockExplosionResistanceVersioning.BlockDestructibleByExplosion11920Upgrade arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_ea52be3e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockDestructibleByExplosion11920Upgrade((nint)handle);
+    }
+
     public bool previousSchema(nint component)
     {
         return NativeMethods.TablePtr->C0.hs_method_8765dea1((void*)__hosihikari_shim_handle, (void*)component) != 0;

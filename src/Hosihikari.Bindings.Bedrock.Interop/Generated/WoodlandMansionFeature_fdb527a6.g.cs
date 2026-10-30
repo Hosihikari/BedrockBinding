@@ -146,6 +146,17 @@ public sealed unsafe partial class WoodlandMansionFeature : global::System.IDisp
         return new WoodlandMansionFeature((nint)handle);
     }
 
+    public static WoodlandMansionFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.WoodlandMansionFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_84b31944((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WoodlandMansionFeature((nint)handle);
+    }
+
     public static WoodlandMansionFeature Create(uint seed)
     {
         var handle = NativeMethods.TablePtr->C4.hs_create_d3934d54(seed);

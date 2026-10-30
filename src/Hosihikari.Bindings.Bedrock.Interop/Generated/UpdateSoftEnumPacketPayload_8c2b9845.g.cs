@@ -38,6 +38,17 @@ public sealed unsafe partial class UpdateSoftEnumPacketPayload : global::System.
         return __hs_handle;
     }
 
+    public static UpdateSoftEnumPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.UpdateSoftEnumPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_776f0138((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UpdateSoftEnumPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mEnumName_Address
     {

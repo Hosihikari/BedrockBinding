@@ -38,6 +38,17 @@ public sealed unsafe partial class ScriptEffects : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ScriptEffects Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptEffects arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c201a874((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptEffects((nint)handle);
+    }
+
     public void _generateAllEffectsHandles(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope)
     {
         NativeMethods.TablePtr->C3.hs_method_64582f3f((void*)__hosihikari_shim_handle, (void*)scope.Handle);

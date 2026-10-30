@@ -38,6 +38,17 @@ public sealed unsafe partial class QueuedSoundBroadcastMultipleUserIdsPacket : g
         return __hs_handle;
     }
 
+    public static QueuedSoundBroadcastMultipleUserIdsPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelSoundManager_Nested.QueuedSoundBroadcastMultipleUserIdsPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_c9a24123((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new QueuedSoundBroadcastMultipleUserIdsPacket((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mNetworkIds_Address
     {

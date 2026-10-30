@@ -112,6 +112,17 @@ public sealed unsafe partial class MendingEnchant : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_7bcd47df((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static MendingEnchant Create(global::Hosihikari.Bindings.Bedrock.Interop.MendingEnchant arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_b5c942f0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MendingEnchant((nint)handle);
+    }
+
     public int getMaxCost(int level)
     {
         return NativeMethods.TablePtr->C2.hs_method_b73ac534((void*)__hosihikari_shim_handle, level);

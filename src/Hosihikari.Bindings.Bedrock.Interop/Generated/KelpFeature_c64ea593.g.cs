@@ -71,6 +71,17 @@ public sealed unsafe partial class KelpFeature : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static KelpFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.KelpFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_74cc6688((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new KelpFeature((nint)handle);
+    }
+
     public int mIterations
     {
         get => NativeMethods.TablePtr->C1.hs_get_70df918d((void*)__hosihikari_shim_handle);

@@ -38,6 +38,17 @@ public sealed unsafe partial class UriListener : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static UriListener Create(global::Hosihikari.Bindings.Bedrock.Interop.UriListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_4fb52312((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UriListener((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void executeStartupUris() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

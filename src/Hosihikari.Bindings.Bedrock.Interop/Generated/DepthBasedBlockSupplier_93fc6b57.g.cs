@@ -38,6 +38,17 @@ public sealed unsafe partial class DepthBasedBlockSupplier : global::System.IDis
         return __hs_handle;
     }
 
+    public static DepthBasedBlockSupplier Create(global::Hosihikari.Bindings.Bedrock.Interop.DepthBasedBlockSupplier arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b360dcdc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DepthBasedBlockSupplier((nint)handle);
+    }
+
     public nint mBlock
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_886a9723((void*)__hosihikari_shim_handle);

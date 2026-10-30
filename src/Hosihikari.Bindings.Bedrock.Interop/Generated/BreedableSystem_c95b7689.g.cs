@@ -43,6 +43,17 @@ public sealed unsafe partial class BreedableSystem : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_c3934cc4((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static BreedableSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.BreedableSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_beff2684((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BreedableSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C0.hs_method_0915020a((void*)__hosihikari_shim_handle, (void*)registry.Handle);

@@ -38,6 +38,17 @@ public sealed unsafe partial class ActorInsideBlockEvent : global::System.IDispo
         return __hs_handle;
     }
 
+    public static ActorInsideBlockEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorInsideBlockEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_cd9cc816((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorInsideBlockEvent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mActor_Address
     {

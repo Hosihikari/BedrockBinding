@@ -48,9 +48,10 @@ public sealed unsafe partial class BiomeSource3d : global::System.IDisposable
     public bool _containsOnly(int xo, int yo, int zo, int r, nint allowed) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'const BiomeIdType' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint biomeProvider, nint dimensionHeight) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.BlendedMultiNoiseBiomeProvider biomeProvider, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange dimensionHeight)
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_9ddb2f70((void*)__hosihikari_shim_handle, (void*)biomeProvider.Handle, (void*)dimensionHeight.Handle);
+    }
 
     public void _fillBiomes(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk, global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalNoiseCache? chunkLocalNoiseCache)
     {
@@ -96,9 +97,27 @@ public sealed unsafe partial class BiomeSource3d : global::System.IDisposable
         return new BiomeSource3d((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static BiomeSource3d Create(nint biomeProvider, nint dimensionHeight) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static BiomeSource3d Create(global::Hosihikari.Bindings.Bedrock.Interop.BlendedMultiNoiseBiomeProvider biomeProvider, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange dimensionHeight)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_52ed19b3((void*)biomeProvider.Handle, (void*)dimensionHeight.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BiomeSource3d((nint)handle);
+    }
+
+    public static BiomeSource3d Create(global::Hosihikari.Bindings.Bedrock.Interop.BiomeSource3d arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_25b35331((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BiomeSource3d((nint)handle);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Biome? _getBiome(nint getBiomeOptions)
     {

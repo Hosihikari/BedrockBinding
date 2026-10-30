@@ -42,6 +42,17 @@ public sealed unsafe partial class Timer : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static Timer Create(global::Hosihikari.Bindings.Bedrock.Interop.ImguiProfiler_Nested.Timer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_18740491((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Timer((nint)handle);
+    }
+
     public nint mGroup
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_1c52a94a((void*)__hosihikari_shim_handle);

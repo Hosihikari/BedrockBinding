@@ -50,6 +50,17 @@ public sealed unsafe partial class FancyTreeTrunk : global::System.IDisposable
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
+    public static FancyTreeTrunk Create(global::Hosihikari.Bindings.Bedrock.Interop.FancyTreeTrunk arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_399f217b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FancyTreeTrunk((nint)handle);
+    }
+
     public int getTreeHeight(global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         return NativeMethods.TablePtr->C1.hs_method_33db4f7d((void*)__hosihikari_shim_handle, (void*)random.Handle);

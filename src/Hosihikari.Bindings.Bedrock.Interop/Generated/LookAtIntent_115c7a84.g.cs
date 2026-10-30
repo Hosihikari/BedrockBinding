@@ -38,6 +38,17 @@ public sealed unsafe partial class LookAtIntent : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static LookAtIntent Create(global::Hosihikari.Bindings.Bedrock.Interop.sim.LookAtIntent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_7b0d42df((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LookAtIntent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mType_Address
     {

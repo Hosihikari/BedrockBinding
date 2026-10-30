@@ -43,6 +43,17 @@ public sealed unsafe partial class AnvilMaterialContainerValidation : global::Sy
         return NativeMethods.TablePtr->C0.hs_method_0585b716((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);
     }
 
+    public static AnvilMaterialContainerValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.AnvilMaterialContainerValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_6e60e395((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AnvilMaterialContainerValidation((nint)handle);
+    }
+
     public int getContainerOffset(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
     {
         return NativeMethods.TablePtr->C0.hs_method_e0aa0eb2((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);

@@ -54,6 +54,17 @@ public sealed unsafe partial class ScriptWeatherChangedAfterEvent : global::Syst
         return new ScriptWeatherChangedAfterEvent((nint)handle);
     }
 
+    public static ScriptWeatherChangedAfterEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptWeatherChangedAfterEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_7f3b4e30((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptWeatherChangedAfterEvent((nint)handle);
+    }
+
     public static ScriptWeatherChangedAfterEvent Create(global::Hosihikari.Bindings.Abi.SharedHandle? eventData, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope arg1)
     {
         var handle = NativeMethods.TablePtr->C3.hs_create_638297bb(eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)arg1.Handle);

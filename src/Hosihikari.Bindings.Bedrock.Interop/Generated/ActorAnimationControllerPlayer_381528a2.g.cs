@@ -96,6 +96,17 @@ public sealed unsafe partial class ActorAnimationControllerPlayer : global::Syst
         return new ActorAnimationControllerPlayer((nint)handle);
     }
 
+    public static ActorAnimationControllerPlayer Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationControllerPlayer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_d9c949b7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorAnimationControllerPlayer((nint)handle);
+    }
+
     public static ActorAnimationControllerPlayer Create(global::Hosihikari.Bindings.Bedrock.Interop.HashedString friendlyName, global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationControllerPtr animationControllerPtr, global::Hosihikari.Bindings.Bedrock.Interop.AnimationComponent animationComponent, global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode blendExpression, nint animationControllerNameStack)
     {
         var handle = NativeMethods.TablePtr->C0.hs_create_3f2cf6e6((void*)friendlyName.Handle, (void*)animationControllerPtr.Handle, (void*)animationComponent.Handle, (void*)blendExpression.Handle, (void*)animationControllerNameStack);

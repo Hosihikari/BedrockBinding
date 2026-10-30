@@ -71,6 +71,17 @@ public sealed unsafe partial class SyncScriptGameTestFunction : global::System.I
     public static SyncScriptGameTestFunction Create(nint scope, nint functionHandle, nint testName) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'Scripting::Closure<void (Scripting::TypedObjectHandle<ScriptModuleGameTest::ScriptGameTestHelper>)>' is not supported.");
 
+    public static SyncScriptGameTestFunction Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest.SyncScriptGameTestFunction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_7e670630((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SyncScriptGameTestFunction((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mFunction_Address
     {

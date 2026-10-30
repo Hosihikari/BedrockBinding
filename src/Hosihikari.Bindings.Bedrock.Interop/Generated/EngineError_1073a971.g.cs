@@ -110,6 +110,17 @@ public sealed unsafe partial class EngineError : global::System.IDisposable
         return new EngineError((nint)handle);
     }
 
+    public static EngineError Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.EngineError arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_3e8e8db1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EngineError((nint)handle);
+    }
+
     public static EngineError Create(string message)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(message);

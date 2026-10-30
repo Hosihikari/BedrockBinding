@@ -38,6 +38,17 @@ public sealed unsafe partial class ITickDelegate : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ITickDelegate Create(global::Hosihikari.Bindings.Bedrock.Interop.ITickDelegate arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_a21858d1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ITickDelegate((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void breakBlock(nint fallingBlock) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

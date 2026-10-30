@@ -38,6 +38,17 @@ public sealed unsafe partial class SwapActionData : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static SwapActionData Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestCereal.SwapActionData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_ce6690e8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SwapActionData((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mDestination_Address
     {

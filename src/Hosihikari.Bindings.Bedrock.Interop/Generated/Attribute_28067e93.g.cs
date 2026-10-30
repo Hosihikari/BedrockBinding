@@ -54,6 +54,17 @@ public sealed unsafe partial class Attribute : global::System.IDisposable
         return new Attribute((nint)handle);
     }
 
+    public static Attribute Create(global::Hosihikari.Bindings.Bedrock.Interop.Attribute arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f810307b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Attribute((nint)handle);
+    }
+
     public static Attribute Create(global::Hosihikari.Bindings.Bedrock.Interop.HashedString name, sbyte redefMode, bool isSyncable)
     {
         var handle = NativeMethods.TablePtr->C0.hs_create_87e5155c((void*)name.Handle, redefMode, isSyncable);

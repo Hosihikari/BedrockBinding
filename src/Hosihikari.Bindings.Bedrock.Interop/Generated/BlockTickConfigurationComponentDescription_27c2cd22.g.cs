@@ -59,6 +59,17 @@ public sealed unsafe partial class BlockTickConfigurationComponentDescription : 
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static BlockTickConfigurationComponentDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockTickConfigurationComponentDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_b1358ddc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockTickConfigurationComponentDescription((nint)handle);
+    }
+
     public static string NameID()
     {
         var __hs_view = NativeMethods.TablePtr->C0.hs_method_476f703c();

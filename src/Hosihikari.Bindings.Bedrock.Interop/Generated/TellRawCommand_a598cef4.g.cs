@@ -84,6 +84,17 @@ public sealed unsafe partial class TellRawCommand : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_6233c00c((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static TellRawCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.TellRawCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_916cac01((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TellRawCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C3.hs_method_f66787a6((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

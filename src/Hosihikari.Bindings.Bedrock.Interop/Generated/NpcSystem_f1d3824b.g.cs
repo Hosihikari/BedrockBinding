@@ -43,6 +43,17 @@ public sealed unsafe partial class NpcSystem : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_20150444((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static NpcSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.NpcSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_f84261bf((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NpcSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C2.hs_method_5a11f7f9((void*)__hosihikari_shim_handle, (void*)registry.Handle);

@@ -65,6 +65,17 @@ public sealed unsafe partial class InteractPacketPayload : global::System.IDispo
         return new InteractPacketPayload((nint)handle);
     }
 
+    public static InteractPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.InteractPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_77e09b36((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InteractPacketPayload((nint)handle);
+    }
+
     public byte mAction
     {
         get => NativeMethods.TablePtr->C1.hs_get_51619d1d((void*)__hosihikari_shim_handle);

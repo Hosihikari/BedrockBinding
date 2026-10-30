@@ -101,6 +101,17 @@ public sealed unsafe partial class PacketObserver : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static PacketObserver Create(global::Hosihikari.Bindings.Bedrock.Interop.PacketObserver arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_94068e9f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PacketObserver((nint)handle);
+    }
+
     public void dataReceivedFrom(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier source, string data)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(data);

@@ -38,6 +38,17 @@ public sealed unsafe partial class AddRiderComponent : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static AddRiderComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.AddRiderComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_0603ce7f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AddRiderComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mPassengersTypes_Address
     {

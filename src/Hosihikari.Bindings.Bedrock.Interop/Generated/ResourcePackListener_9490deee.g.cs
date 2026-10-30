@@ -67,6 +67,17 @@ public sealed unsafe partial class ResourcePackListener : global::System.IDispos
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ResourcePackListener Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_10ed08eb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ResourcePackListener((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void onActiveResourcePacksChanged(nint mgr) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

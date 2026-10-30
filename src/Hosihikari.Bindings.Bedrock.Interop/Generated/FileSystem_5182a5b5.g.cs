@@ -44,6 +44,17 @@ public sealed unsafe partial class FileSystem : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C1.hs_get_d55ae908((void*)__hosihikari_shim_handle);
     }
 
+    public static FileSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_78dbec31((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FileSystem((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint _checkFileInitialSize(nint path) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

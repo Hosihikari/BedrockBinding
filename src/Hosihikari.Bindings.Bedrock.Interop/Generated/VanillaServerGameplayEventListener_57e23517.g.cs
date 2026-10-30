@@ -103,6 +103,17 @@ public sealed unsafe partial class VanillaServerGameplayEventListener : global::
     public static nint _vftableForEventListenerDispatcherPlayerEventListener() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static VanillaServerGameplayEventListener Create(global::Hosihikari.Bindings.Bedrock.Interop.VanillaServerGameplayEventListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_87b84815((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VanillaServerGameplayEventListener((nint)handle);
+    }
+
     public int onActorCreated(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, byte initializationMethod)
     {
         return NativeMethods.TablePtr->C4.hs_method_1f2d4080((void*)__hosihikari_shim_handle, (void*)actor.Handle, initializationMethod);

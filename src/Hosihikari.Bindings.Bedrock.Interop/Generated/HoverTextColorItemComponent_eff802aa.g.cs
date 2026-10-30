@@ -43,9 +43,10 @@ public sealed unsafe partial class HoverTextColorItemComponent : global::System.
         NativeMethods.TablePtr->C1.hs_method_27e865a0((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint component) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50.HoverTextColorItemComponent component)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_b8e0ad17((void*)__hosihikari_shim_handle, (void*)component.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
@@ -62,9 +63,27 @@ public sealed unsafe partial class HoverTextColorItemComponent : global::System.
         return new HoverTextColorItemComponent((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static HoverTextColorItemComponent Create(nint component) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static HoverTextColorItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50.HoverTextColorItemComponent component)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_bbb619a6((void*)component.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HoverTextColorItemComponent((nint)handle);
+    }
+
+    public static HoverTextColorItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.HoverTextColorItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_568b9421((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HoverTextColorItemComponent((nint)handle);
+    }
 
     public void _initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {

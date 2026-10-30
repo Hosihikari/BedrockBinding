@@ -161,6 +161,17 @@ public sealed unsafe partial class RaidOmenMobEffect : global::System.IDisposabl
         NativeMethods.TablePtr->C2.hs_method_ac834973((void*)__hosihikari_shim_handle, (void*)target.Handle);
     }
 
+    public static RaidOmenMobEffect Create(global::Hosihikari.Bindings.Bedrock.Interop.RaidOmenMobEffect arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_6c7c5bd7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RaidOmenMobEffect((nint)handle);
+    }
+
     public void applyEffects(global::Hosihikari.Bindings.Bedrock.Interop.Actor target, global::Hosihikari.Bindings.Bedrock.Interop.EffectDuration durationTicks, int amplification)
     {
         NativeMethods.TablePtr->C2.hs_method_223a912a((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)durationTicks.Handle, amplification);

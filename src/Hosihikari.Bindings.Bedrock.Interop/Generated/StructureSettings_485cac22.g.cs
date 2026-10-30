@@ -53,6 +53,17 @@ public sealed unsafe partial class StructureSettings : global::System.IDisposabl
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C3.hs_method_62233209(), false);
     }
 
+    public static StructureSettings Create(global::Hosihikari.Bindings.Bedrock.Interop.StructureSettings arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_affa798b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureSettings((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox getTransformedBoundBox()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox((nint)NativeMethods.TablePtr->C3.hs_method_6f293486((void*)__hosihikari_shim_handle));

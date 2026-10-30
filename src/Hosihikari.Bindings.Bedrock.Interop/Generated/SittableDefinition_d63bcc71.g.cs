@@ -38,6 +38,17 @@ public sealed unsafe partial class SittableDefinition : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static SittableDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.SittableDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_16703031((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SittableDefinition((nint)handle);
+    }
+
     public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
         NativeMethods.TablePtr->C3.hs_method_4280e7ad(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));

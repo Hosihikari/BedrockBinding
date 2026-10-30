@@ -41,50 +41,61 @@ public sealed unsafe partial class UpgradeTo118 : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk40e0d7_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_0ed1ef06((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_0ed1ef06((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkb0e3c9_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_4d2f1976((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_4d2f1976((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkc96bdc_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_6f2193a8((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6f2193a8((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkd8210b_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_0f428404((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_0f428404((void*)__hosihikari_shim_handle);
     }
 
     public bool _previousSchema(nint component)
     {
-        return NativeMethods.TablePtr->C2.hs_method_d485a993((void*)__hosihikari_shim_handle, (void*)component) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_d485a993((void*)__hosihikari_shim_handle, (void*)component) != 0;
     }
 
     public void _upgradeToNext(nint document, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
     {
-        NativeMethods.TablePtr->C2.hs_method_4eef48bf((void*)__hosihikari_shim_handle, (void*)document, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C3.hs_method_4eef48bf((void*)__hosihikari_shim_handle, (void*)document, (void*)arg1.Handle);
+    }
+
+    public static UpgradeTo118 Create(global::Hosihikari.Bindings.Bedrock.Interop.RepairableItemComponentVersioning.UpgradeTo118 arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_97192bb0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UpgradeTo118((nint)handle);
     }
 
     public static bool checkRepairItemEntrySchema(nint value)
     {
-        return NativeMethods.TablePtr->C2.hs_method_df01f816((void*)value) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_df01f816((void*)value) != 0;
     }
 
     public bool previousSchema(nint component)
     {
-        return NativeMethods.TablePtr->C2.hs_method_c56c35a1((void*)__hosihikari_shim_handle, (void*)component) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_c56c35a1((void*)__hosihikari_shim_handle, (void*)component) != 0;
     }
 
     public void upgradeToNext(nint document, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
     {
-        NativeMethods.TablePtr->C2.hs_method_0377b9b2((void*)__hosihikari_shim_handle, (void*)document, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C3.hs_method_0377b9b2((void*)__hosihikari_shim_handle, (void*)document, (void*)arg1.Handle);
     }
 
 
@@ -94,7 +105,7 @@ public sealed unsafe partial class UpgradeTo118 : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_24ecf2b8((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_24ecf2b8((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -44,6 +44,17 @@ public sealed unsafe partial class ServerTextSettings : global::System.IDisposab
         get => (nint)NativeMethods.TablePtr->C3.hs_get_1ac122aa((void*)__hosihikari_shim_handle);
     }
 
+    public static ServerTextSettings Create(global::Hosihikari.Bindings.Bedrock.Interop.ServerTextSettings arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_1f7d1c5e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ServerTextSettings((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mEnabledTextEvents_Address
     {

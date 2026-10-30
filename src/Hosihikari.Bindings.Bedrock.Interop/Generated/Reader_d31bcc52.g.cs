@@ -75,6 +75,17 @@ public sealed unsafe partial class Reader : global::System.IDisposable
         return new Reader((nint)handle);
     }
 
+    public static Reader Create(global::Hosihikari.Bindings.Bedrock.Interop.Json.Reader arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_5030eddc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Reader((nint)handle);
+    }
+
     public bool addError(string message, global::Hosihikari.Bindings.Bedrock.Interop.Json.Reader_Nested.Token token, nint extra)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(message);

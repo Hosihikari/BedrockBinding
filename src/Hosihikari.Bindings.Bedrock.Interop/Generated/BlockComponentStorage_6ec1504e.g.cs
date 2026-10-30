@@ -43,6 +43,17 @@ public sealed unsafe partial class BlockComponentStorage : global::System.IDispo
         NativeMethods.TablePtr->C0.hs_method_f41e7bcf((void*)__hosihikari_shim_handle);
     }
 
+    public static BlockComponentStorage Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockComponentStorage arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_0cc2da6f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockComponentStorage((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public nint _findComponentBase(nint componentIdToFind) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");

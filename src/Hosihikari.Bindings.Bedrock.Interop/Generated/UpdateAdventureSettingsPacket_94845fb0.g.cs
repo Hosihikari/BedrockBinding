@@ -163,6 +163,17 @@ public sealed unsafe partial class UpdateAdventureSettingsPacket : global::Syste
         return new UpdateAdventureSettingsPacket((nint)handle);
     }
 
+    public static UpdateAdventureSettingsPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.UpdateAdventureSettingsPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_70971377((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UpdateAdventureSettingsPacket((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");

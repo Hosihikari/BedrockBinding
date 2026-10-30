@@ -38,13 +38,26 @@ public sealed unsafe partial class MoveControlDescription : global::System.IDisp
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void _deserializeData(nint deserializeDataParams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void _deserializeData(global::Hosihikari.Bindings.Bedrock.Interop.DeserializeDataParams deserializeDataParams)
+    {
+        NativeMethods.TablePtr->C2.hs_method_b1fa4b6e((void*)__hosihikari_shim_handle, (void*)deserializeDataParams.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void deserializeData(nint deserializeDataParams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static MoveControlDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.MoveControlDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_42e463c0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MoveControlDescription((nint)handle);
+    }
+
+    public void deserializeData(global::Hosihikari.Bindings.Bedrock.Interop.DeserializeDataParams deserializeDataParams)
+    {
+        NativeMethods.TablePtr->C2.hs_method_aeeaf75d((void*)__hosihikari_shim_handle, (void*)deserializeDataParams.Handle);
+    }
 
     public float mMaxTurn
     {

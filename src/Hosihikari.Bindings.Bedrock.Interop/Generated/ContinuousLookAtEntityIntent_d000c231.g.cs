@@ -38,6 +38,17 @@ public sealed unsafe partial class ContinuousLookAtEntityIntent : global::System
         return __hs_handle;
     }
 
+    public static ContinuousLookAtEntityIntent Create(global::Hosihikari.Bindings.Bedrock.Interop.sim.ContinuousLookAtEntityIntent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_e174e8d4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ContinuousLookAtEntityIntent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mEntity_Address
     {

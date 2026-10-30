@@ -108,6 +108,17 @@ public sealed unsafe partial class PlayerUIContainer : global::System.IDisposabl
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static PlayerUIContainer Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerUIContainer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_0d56a260((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerUIContainer((nint)handle);
+    }
+
     public void load(global::Hosihikari.Bindings.Bedrock.Interop.ListTag inventoryList, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion version)
     {
         NativeMethods.TablePtr->C2.hs_method_346c2de0((void*)__hosihikari_shim_handle, (void*)inventoryList.Handle, (void*)version.Handle);

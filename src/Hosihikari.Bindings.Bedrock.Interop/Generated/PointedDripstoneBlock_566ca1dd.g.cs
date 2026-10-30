@@ -283,6 +283,17 @@ public sealed unsafe partial class PointedDripstoneBlock : global::System.IDispo
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static PointedDripstoneBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.PointedDripstoneBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_0cfe0c2c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PointedDripstoneBlock((nint)handle);
+    }
+
     public static bool _canDrip(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
     {
         return NativeMethods.TablePtr->C2.hs_method_5b0b146e((void*)region.Handle, (void*)pos.Handle) != 0;

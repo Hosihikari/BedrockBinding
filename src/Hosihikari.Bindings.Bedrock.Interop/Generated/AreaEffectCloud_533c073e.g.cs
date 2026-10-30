@@ -646,9 +646,10 @@ public sealed unsafe partial class AreaEffectCloud : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_9bf2feec((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void addAreaEffect(nint effect) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void addAreaEffect(global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance effect)
+    {
+        NativeMethods.TablePtr->C0.hs_method_768027d3((void*)__hosihikari_shim_handle, (void*)effect.Handle);
+    }
 
     public void calculateAndSetRadiusPerTick()
     {

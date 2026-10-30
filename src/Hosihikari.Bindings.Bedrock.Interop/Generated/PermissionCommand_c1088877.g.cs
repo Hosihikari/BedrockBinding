@@ -72,6 +72,17 @@ public sealed unsafe partial class PermissionCommand : global::System.IDisposabl
         NativeMethods.TablePtr->C2.hs_method_8df8450d((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static PermissionCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.PermissionCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_882c0ebc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PermissionCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C2.hs_method_7ab6376c((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

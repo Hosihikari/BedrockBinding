@@ -38,6 +38,17 @@ public sealed unsafe partial class StructurePair : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static StructurePair Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructureCache_Nested.StructurePair arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_de66f32d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructurePair((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mInstance_Address
     {

@@ -38,6 +38,17 @@ public sealed unsafe partial class DelayDelegateData : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static DelayDelegateData Create(global::Hosihikari.Bindings.Bedrock.Interop.FallingBlockSystemOnLand.DelayDelegateData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_1a7768f7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DelayDelegateData((nint)handle);
+    }
+
     public nint fallingBlock
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_e4a03117((void*)__hosihikari_shim_handle);

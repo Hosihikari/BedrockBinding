@@ -38,6 +38,17 @@ public sealed unsafe partial class GoalSelectorComponent : global::System.IDispo
         return __hs_handle;
     }
 
+    public static GoalSelectorComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.GoalSelectorComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_48cfcb8f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GoalSelectorComponent((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void addGoal(int priority, nint goal) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");

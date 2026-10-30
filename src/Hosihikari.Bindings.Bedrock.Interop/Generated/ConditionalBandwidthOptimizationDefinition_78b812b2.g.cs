@@ -38,6 +38,17 @@ public sealed unsafe partial class ConditionalBandwidthOptimizationDefinition : 
         return __hs_handle;
     }
 
+    public static ConditionalBandwidthOptimizationDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.ConditionalBandwidthOptimizationDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_0651d799((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ConditionalBandwidthOptimizationDefinition((nint)handle);
+    }
+
     public void addConditionalBandwidthOptimization(global::Hosihikari.Bindings.Bedrock.Interop.ConditionalBandwidthOptimization optimization)
     {
         NativeMethods.TablePtr->C0.hs_method_96a92888((void*)__hosihikari_shim_handle, (void*)optimization.Handle);

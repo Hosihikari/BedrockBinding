@@ -38,6 +38,17 @@ public sealed unsafe partial class PlayerPartyInfo : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static PlayerPartyInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerPartyInfo arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_6839af10((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerPartyInfo((nint)handle);
+    }
+
     public bool isLeader
     {
         get => NativeMethods.TablePtr->C2.hs_get_3da8655f((void*)__hosihikari_shim_handle) != 0;

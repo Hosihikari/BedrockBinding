@@ -82,6 +82,17 @@ public sealed unsafe partial class MobEvent : global::System.IDisposable
         return new MobEvent((nint)handle);
     }
 
+    public static MobEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.MobEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_f3722c55((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MobEvent((nint)handle);
+    }
+
     public static MobEvent Create(string name, string localizableName, bool val)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);

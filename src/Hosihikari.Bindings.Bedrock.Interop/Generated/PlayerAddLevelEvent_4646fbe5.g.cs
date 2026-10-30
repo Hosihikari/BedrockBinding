@@ -38,6 +38,17 @@ public sealed unsafe partial class PlayerAddLevelEvent : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static PlayerAddLevelEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerAddLevelEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_2b714e91((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerAddLevelEvent((nint)handle);
+    }
+
     public int mAddLevel
     {
         get => NativeMethods.TablePtr->C2.hs_get_918b9d5c((void*)__hosihikari_shim_handle);

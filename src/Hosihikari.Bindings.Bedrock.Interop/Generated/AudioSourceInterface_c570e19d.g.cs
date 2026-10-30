@@ -77,6 +77,17 @@ public sealed unsafe partial class AudioSourceInterface : global::System.IDispos
         NativeMethods.TablePtr->C4.hs_method_e43d8f35((void*)__hosihikari_shim_handle, (void*)sink);
     }
 
+    public static AudioSourceInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.AudioSourceInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_c5bf8563((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AudioSourceInterface((nint)handle);
+    }
+
     public void RegisterAudioObserver(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.AudioSourceInterface_Nested.AudioObserver? observer)
     {
         NativeMethods.TablePtr->C4.hs_method_a144fb71((void*)__hosihikari_shim_handle, (void*)(observer?.Handle ?? 0));

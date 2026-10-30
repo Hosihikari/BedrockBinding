@@ -41,19 +41,19 @@ public sealed unsafe partial class ReceiveLoveGoal : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mName_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_ccf556b6((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ccf556b6((void*)__hosihikari_shim_handle);
     }
 
     public int mRequiredControlFlags
     {
-        get => NativeMethods.TablePtr->C2.hs_get_3032e1e1((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_3032e1e1((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_3032e1e1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_3032e1e1((void*)__hosihikari_shim_handle, value);
     }
 
     public ushort mTypeId
     {
-        get => NativeMethods.TablePtr->C2.hs_get_cea243dc((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_cea243dc((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_cea243dc((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_cea243dc((void*)__hosihikari_shim_handle, value);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
@@ -62,22 +62,22 @@ public sealed unsafe partial class ReceiveLoveGoal : global::System.IDisposable
 
     public bool _canContinueToUse()
     {
-        return NativeMethods.TablePtr->C2.hs_method_c90bf833((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_c90bf833((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool _canUse()
     {
-        return NativeMethods.TablePtr->C2.hs_method_d06ec229((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_d06ec229((void*)__hosihikari_shim_handle) != 0;
     }
 
     public void _tick()
     {
-        NativeMethods.TablePtr->C2.hs_method_9095e7d8((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_9095e7d8((void*)__hosihikari_shim_handle);
     }
 
     public static ReceiveLoveGoal Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_a8410962();
+        var handle = NativeMethods.TablePtr->C3.hs_create_a8410962();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -88,7 +88,7 @@ public sealed unsafe partial class ReceiveLoveGoal : global::System.IDisposable
 
     public static ReceiveLoveGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.ReceiveLoveGoal arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_d549f4b0((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_d549f4b0((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -103,28 +103,28 @@ public sealed unsafe partial class ReceiveLoveGoal : global::System.IDisposable
 
     public bool canContinueToUse()
     {
-        return NativeMethods.TablePtr->C2.hs_method_55ae992e((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_55ae992e((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool canUse()
     {
-        return NativeMethods.TablePtr->C2.hs_method_e8cc01b3((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_e8cc01b3((void*)__hosihikari_shim_handle) != 0;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mVillager_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_5327ff53((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5327ff53((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ReceiveLoveGoal operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ReceiveLoveGoal arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ReceiveLoveGoal((nint)NativeMethods.TablePtr->C2.hs_method_b2681d80((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ReceiveLoveGoal((nint)NativeMethods.TablePtr->C3.hs_method_b2681d80((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void tick()
     {
-        NativeMethods.TablePtr->C2.hs_method_7034ec01((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_7034ec01((void*)__hosihikari_shim_handle);
     }
 
 
@@ -134,7 +134,7 @@ public sealed unsafe partial class ReceiveLoveGoal : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_da02306c((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_da02306c((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

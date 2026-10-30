@@ -38,6 +38,17 @@ public sealed unsafe partial class ChildAnimationComponentInfo : global::System.
         return __hs_handle;
     }
 
+    public static ChildAnimationComponentInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.AnimationComponent_Nested.ChildAnimationComponentInfo arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5ec36247((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChildAnimationComponentInfo((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mChildAnimationComponent_Address
     {

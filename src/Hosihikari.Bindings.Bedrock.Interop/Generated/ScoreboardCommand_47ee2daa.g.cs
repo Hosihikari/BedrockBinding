@@ -72,6 +72,17 @@ public sealed unsafe partial class ScoreboardCommand : global::System.IDisposabl
         NativeMethods.TablePtr->C3.hs_method_f3a5053c((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static ScoreboardCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_b1c3f033((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScoreboardCommand((nint)handle);
+    }
+
     public void _generateCumulativeOutput(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardCommand_Nested.SetScoreOutput cumulativeOutput, global::Hosihikari.Bindings.Bedrock.Interop.Objective objective, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C3.hs_method_00a9e93a((void*)__hosihikari_shim_handle, (void*)cumulativeOutput.Handle, (void*)objective.Handle, (void*)output.Handle);

@@ -85,6 +85,17 @@ public sealed unsafe partial class ItemDeprecatedComponentData : global::System.
         NativeMethods.TablePtr->C3.hs_method_c18a83f5((void*)__hosihikari_shim_handle);
     }
 
+    public static ItemDeprecatedComponentData Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50.ItemDeprecatedComponentData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_9b4c6705((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemDeprecatedComponentData((nint)handle);
+    }
+
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C3.hs_method_a259709e((void*)ctx.Handle);

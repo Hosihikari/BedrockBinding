@@ -38,9 +38,10 @@ public sealed unsafe partial class IntRange : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public bool parseJson(nint node, int minDefault, int maxDefault) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public bool parseJson(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value node, int minDefault, int maxDefault)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_0aead5af((void*)__hosihikari_shim_handle, (void*)node.Handle, minDefault, maxDefault) != 0;
+    }
 
     public int rangeMax
     {

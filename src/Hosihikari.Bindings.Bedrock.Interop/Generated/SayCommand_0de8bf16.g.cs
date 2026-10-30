@@ -84,6 +84,17 @@ public sealed unsafe partial class SayCommand : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_3d64e9bf((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static SayCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.SayCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_42be16e1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SayCommand((nint)handle);
+    }
+
     public static bool _sendEvent(global::Hosihikari.Bindings.Bedrock.Interop.Level level, string sender, string message, string? filteredMessage)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(sender);

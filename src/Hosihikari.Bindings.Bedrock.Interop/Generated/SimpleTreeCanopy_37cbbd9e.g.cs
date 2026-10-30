@@ -65,6 +65,17 @@ public sealed unsafe partial class SimpleTreeCanopy : global::System.IDisposable
         }
     }
 
+    public static SimpleTreeCanopy Create(global::Hosihikari.Bindings.Bedrock.Interop.SimpleTreeCanopy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_33b09f9f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SimpleTreeCanopy((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mDecoration_Address
     {

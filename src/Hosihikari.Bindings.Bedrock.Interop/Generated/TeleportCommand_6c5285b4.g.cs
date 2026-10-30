@@ -72,6 +72,17 @@ public sealed unsafe partial class TeleportCommand : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_7993fba2((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static TeleportCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.TeleportCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_0efe1175((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TeleportCommand((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'TeleportTarget' is not copy-constructible.", false)]
     public static void applyTarget(nint victim, nint target, int commandVersion, bool keepVelocity) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'TeleportTarget' is not copy-constructible.");

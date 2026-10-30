@@ -40,12 +40,23 @@ public sealed unsafe partial class TradeableSystem : global::System.IDisposable
 
     public void _tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
-        NativeMethods.TablePtr->C3.hs_method_608ce30b((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+        NativeMethods.TablePtr->C4.hs_method_608ce30b((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+    }
+
+    public static TradeableSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.TradeableSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_9744b28c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TradeableSystem((nint)handle);
     }
 
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
-        NativeMethods.TablePtr->C3.hs_method_51c12846((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+        NativeMethods.TablePtr->C4.hs_method_51c12846((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
 
@@ -55,7 +66,7 @@ public sealed unsafe partial class TradeableSystem : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_fe24c019((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_fe24c019((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

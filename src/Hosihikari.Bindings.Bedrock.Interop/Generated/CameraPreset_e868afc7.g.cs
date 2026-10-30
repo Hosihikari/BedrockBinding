@@ -170,6 +170,17 @@ public sealed unsafe partial class CameraPreset : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C3.hs_get_259eda2a((void*)__hosihikari_shim_handle);
     }
 
+    public static CameraPreset Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_50.CameraPreset arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_5d930ad8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CameraPreset((nint)handle);
+    }
+
     public bool mApplyInheritedStartingRotation
     {
         get => NativeMethods.TablePtr->C3.hs_get_f3f641f7((void*)__hosihikari_shim_handle) != 0;

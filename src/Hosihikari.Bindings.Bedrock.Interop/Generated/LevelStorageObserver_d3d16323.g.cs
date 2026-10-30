@@ -38,6 +38,17 @@ public sealed unsafe partial class LevelStorageObserver : global::System.IDispos
         return __hs_handle;
     }
 
+    public static LevelStorageObserver Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageObserver arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_7f299e1b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelStorageObserver((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnSaveCallback_Address
     {

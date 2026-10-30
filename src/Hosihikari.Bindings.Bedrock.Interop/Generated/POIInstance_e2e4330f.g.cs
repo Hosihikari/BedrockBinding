@@ -177,6 +177,17 @@ public sealed unsafe partial class POIInstance : global::System.IDisposable
         }
     }
 
+    public static POIInstance Create(global::Hosihikari.Bindings.Bedrock.Interop.POIInstance arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_e305f4d1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new POIInstance((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.AABB getSecondBlockFullAABB(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->C2.hs_method_52632665((void*)__hosihikari_shim_handle, (void*)region.Handle));

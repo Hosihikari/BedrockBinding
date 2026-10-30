@@ -38,6 +38,17 @@ public sealed unsafe partial class TickDataSet : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static TickDataSet Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockTickingQueue_Nested.TickDataSet arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_00e7dac3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TickDataSet((nint)handle);
+    }
+
     public void _pruneQueueForMemory()
     {
         NativeMethods.TablePtr->C0.hs_method_75d59937((void*)__hosihikari_shim_handle);

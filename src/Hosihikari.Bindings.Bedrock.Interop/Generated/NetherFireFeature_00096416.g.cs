@@ -67,6 +67,17 @@ public sealed unsafe partial class NetherFireFeature : global::System.IDisposabl
         return NativeMethods.TablePtr->C2.hs_method_2c210b57((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
     }
 
+    public static NetherFireFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.NetherFireFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_8d3fc2ca((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NetherFireFeature((nint)handle);
+    }
+
     public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         return NativeMethods.TablePtr->C2.hs_method_bf2fb9b5((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;

@@ -72,6 +72,17 @@ public sealed unsafe partial class OpCommand : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_b84233bd((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static OpCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.OpCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_300f196f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OpCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C2.hs_method_2916ff10((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

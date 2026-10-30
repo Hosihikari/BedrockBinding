@@ -38,6 +38,17 @@ public sealed unsafe partial class HitResultWrapper : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static HitResultWrapper Create(global::Hosihikari.Bindings.Bedrock.Interop.HitResultWrapper arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_937e8213((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HitResultWrapper((nint)handle);
+    }
+
     public void _onActorRemoved(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
         NativeMethods.TablePtr->C1.hs_method_be56ec9d((void*)__hosihikari_shim_handle, (void*)actor.Handle);

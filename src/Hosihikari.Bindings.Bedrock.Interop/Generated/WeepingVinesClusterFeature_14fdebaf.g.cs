@@ -67,6 +67,17 @@ public sealed unsafe partial class WeepingVinesClusterFeature : global::System.I
         return NativeMethods.TablePtr->C4.hs_method_b58ed8ac((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
     }
 
+    public static WeepingVinesClusterFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.WeepingVinesClusterFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_3cc8994b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WeepingVinesClusterFeature((nint)handle);
+    }
+
     public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         return NativeMethods.TablePtr->C4.hs_method_583e04e4((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;

@@ -124,6 +124,17 @@ public sealed unsafe partial class ActorSkeletalAnimationPlayer : global::System
         return new ActorSkeletalAnimationPlayer((nint)handle);
     }
 
+    public static ActorSkeletalAnimationPlayer Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorSkeletalAnimationPlayer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_95fabea7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorSkeletalAnimationPlayer((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: map value type 'std::vector<BoneOrientation>' is not supported.", false)]
     public void _setDefaultPose(nint renderParams, nint destBoneOrientationMap) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: map value type 'std::vector<BoneOrientation>' is not supported.");

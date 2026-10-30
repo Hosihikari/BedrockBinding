@@ -53,13 +53,24 @@ public sealed unsafe partial class TropicalFishInfo : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes4);
         fixed (byte* __hs_stringData4 = __hs_stringBytes4)
         {
-            return (nint)NativeMethods.TablePtr->C3.hs_method_9a5be6e5((void*)__hosihikari_shim_handle, color, color2, variant, markVariant, __hs_stringData4, (nuint)__hs_stringByteCount4);
+            return (nint)NativeMethods.TablePtr->C4.hs_method_9a5be6e5((void*)__hosihikari_shim_handle, color, color2, variant, markVariant, __hs_stringData4, (nuint)__hs_stringByteCount4);
         }
     }
 
     public static TropicalFishInfo Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_d3e9fc95();
+        var handle = NativeMethods.TablePtr->C4.hs_create_d3e9fc95();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TropicalFishInfo((nint)handle);
+    }
+
+    public static TropicalFishInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.TropicalFishInfo arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_deeb5796((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -83,7 +94,7 @@ public sealed unsafe partial class TropicalFishInfo : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes4);
         fixed (byte* __hs_stringData4 = __hs_stringBytes4)
         {
-            var handle = NativeMethods.TablePtr->C3.hs_create_b5f62752(color, color2, variant, markVariant, __hs_stringData4, (nuint)__hs_stringByteCount4);
+            var handle = NativeMethods.TablePtr->C4.hs_create_b5f62752(color, color2, variant, markVariant, __hs_stringData4, (nuint)__hs_stringByteCount4);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -95,32 +106,32 @@ public sealed unsafe partial class TropicalFishInfo : global::System.IDisposable
 
     public int mColor
     {
-        get => NativeMethods.TablePtr->C3.hs_get_13232aaa((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_13232aaa((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_13232aaa((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_13232aaa((void*)__hosihikari_shim_handle, value);
     }
 
     public int mColor2
     {
-        get => NativeMethods.TablePtr->C3.hs_get_99bfb10c((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_99bfb10c((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_99bfb10c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_99bfb10c((void*)__hosihikari_shim_handle, value);
     }
 
     public int mMarkVariant
     {
-        get => NativeMethods.TablePtr->C3.hs_get_2fc0b4ef((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_2fc0b4ef((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_2fc0b4ef((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_2fc0b4ef((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mName_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_6f54cc32((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_6f54cc32((void*)__hosihikari_shim_handle);
     }
 
     public int mVariant
     {
-        get => NativeMethods.TablePtr->C3.hs_get_51d35eca((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_51d35eca((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_51d35eca((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_51d35eca((void*)__hosihikari_shim_handle, value);
     }
 
 
@@ -130,7 +141,7 @@ public sealed unsafe partial class TropicalFishInfo : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_68d6f2dc((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_68d6f2dc((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -40,7 +40,7 @@ public sealed unsafe partial class TickingAreaListBase : global::System.IDisposa
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C3.hs_method_1bfff542((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_1bfff542((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -50,6 +50,17 @@ public sealed unsafe partial class TickingAreaListBase : global::System.IDisposa
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
+    public static TickingAreaListBase Create(global::Hosihikari.Bindings.Bedrock.Interop.TickingAreaListBase arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_2ec37e42((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TickingAreaListBase((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public nint findStandaloneAreasContaining(nint position) =>
@@ -61,7 +72,7 @@ public sealed unsafe partial class TickingAreaListBase : global::System.IDisposa
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getAreaFor(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID entityId)
     {
-        var __hs_shared = NativeMethods.TablePtr->C3.hs_method_ac883bf2((void*)__hosihikari_shim_handle, (void*)entityId.Handle);
+        var __hs_shared = NativeMethods.TablePtr->C4.hs_method_ac883bf2((void*)__hosihikari_shim_handle, (void*)entityId.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
@@ -72,7 +83,7 @@ public sealed unsafe partial class TickingAreaListBase : global::System.IDisposa
     // The native field type is not projected; this is the address of the field storage.
     public nint mTickingAreas_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_3c73c758((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_3c73c758((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.", false)]
@@ -94,7 +105,7 @@ public sealed unsafe partial class TickingAreaListBase : global::System.IDisposa
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_fabf5b16((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_fabf5b16((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

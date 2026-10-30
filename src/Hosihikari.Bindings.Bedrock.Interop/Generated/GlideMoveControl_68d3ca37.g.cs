@@ -52,6 +52,17 @@ public sealed unsafe partial class GlideMoveControl : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static GlideMoveControl Create(global::Hosihikari.Bindings.Bedrock.Interop.GlideMoveControl arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_18222903((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GlideMoveControl((nint)handle);
+    }
+
     public void initializeInternal(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.MoveControlDescription? description)
     {
         NativeMethods.TablePtr->C1.hs_method_2f83796a((void*)__hosihikari_shim_handle, (void*)mob.Handle, (void*)(description?.Handle ?? 0));

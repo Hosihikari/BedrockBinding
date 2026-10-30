@@ -38,6 +38,17 @@ public sealed unsafe partial class ScratchData : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ScratchData Create(global::Hosihikari.Bindings.Bedrock.Interop.OreFeature_Nested.ScratchData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_fb37d61c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScratchData((nint)handle);
+    }
+
     public uint mActiveSpheres
     {
         get => NativeMethods.TablePtr->C2.hs_get_9b05d30d((void*)__hosihikari_shim_handle);

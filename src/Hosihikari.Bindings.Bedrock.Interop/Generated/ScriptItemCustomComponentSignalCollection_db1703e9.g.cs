@@ -97,6 +97,17 @@ public sealed unsafe partial class ScriptItemCustomComponentSignalCollection : g
         return new ScriptItemCustomComponentSignalCollection((nint)handle);
     }
 
+    public static ScriptItemCustomComponentSignalCollection Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemCustomComponentSignalCollection arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_336ba1b0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptItemCustomComponentSignalCollection((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'const ScriptModuleMinecraft::ScriptCustomComponentEventMetadata<ScriptModuleMinecraft::ScriptItemCustomComponentInterface>' requires --link-carrier or --virtual-dispatch.", false)]
     public static nint _getEventMetadata() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'const ScriptModuleMinecraft::ScriptCustomComponentEventMetadata<ScriptModuleMinecraft::ScriptItemCustomComponentInterface>' requires --link-carrier or --virtual-dispatch.");

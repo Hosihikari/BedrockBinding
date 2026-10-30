@@ -49,6 +49,17 @@ public sealed unsafe partial class IBlockWorldGenAPI : global::System.IDisposabl
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk((nint)__hs_handle, false) : null;
     }
 
+    public static IBlockWorldGenAPI Create(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_34870a0f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IBlockWorldGenAPI((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool apply() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

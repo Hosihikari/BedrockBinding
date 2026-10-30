@@ -43,6 +43,17 @@ public sealed unsafe partial class CDScopedEvent : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_e6a6f06c((void*)__hosihikari_shim_handle);
     }
 
+    public static CDScopedEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.CDScopedEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_d5f7a84e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CDScopedEvent((nint)handle);
+    }
+
     public ushort mTag
     {
         get => NativeMethods.TablePtr->C0.hs_get_b0f6c9f3((void*)__hosihikari_shim_handle);

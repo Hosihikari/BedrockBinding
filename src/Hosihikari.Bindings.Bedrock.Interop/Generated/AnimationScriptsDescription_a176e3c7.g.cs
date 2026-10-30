@@ -38,9 +38,10 @@ public sealed unsafe partial class AnimationScriptsDescription : global::System.
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void _deserializeData(nint nonConstDeserializeDataParams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void _deserializeData(global::Hosihikari.Bindings.Bedrock.Interop.DeserializeDataParams nonConstDeserializeDataParams)
+    {
+        NativeMethods.TablePtr->C0.hs_method_dd0ac50d((void*)__hosihikari_shim_handle, (void*)nonConstDeserializeDataParams.Handle);
+    }
 
     public nint _getJsonName()
     {
@@ -51,9 +52,21 @@ public sealed unsafe partial class AnimationScriptsDescription : global::System.
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void deserializeData(nint nonConstDeserializeDataParams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static AnimationScriptsDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.AnimationScriptsDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_743621e7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AnimationScriptsDescription((nint)handle);
+    }
+
+    public void deserializeData(global::Hosihikari.Bindings.Bedrock.Interop.DeserializeDataParams nonConstDeserializeDataParams)
+    {
+        NativeMethods.TablePtr->C0.hs_method_7fd0f9e1((void*)__hosihikari_shim_handle, (void*)nonConstDeserializeDataParams.Handle);
+    }
 
     public nint getJsonName()
     {

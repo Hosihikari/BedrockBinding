@@ -38,6 +38,17 @@ public sealed unsafe partial class ShooterComponent : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ShooterComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ShooterComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_6ac4b0ad((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ShooterComponent((nint)handle);
+    }
+
     public void _shootProjectile(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier actorDef, int auxVal)
     {
         NativeMethods.TablePtr->C3.hs_method_3c507a3e((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)actorDef.Handle, auxVal);

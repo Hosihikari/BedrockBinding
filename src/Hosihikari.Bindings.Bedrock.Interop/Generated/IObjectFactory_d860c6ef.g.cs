@@ -38,6 +38,17 @@ public sealed unsafe partial class IObjectFactory : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static IObjectFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.IObjectFactory arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_20e764fe((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IObjectFactory((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint makeDataBuffer(nint data, ulong size, nint dataType) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

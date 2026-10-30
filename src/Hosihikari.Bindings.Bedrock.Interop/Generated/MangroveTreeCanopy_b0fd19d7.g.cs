@@ -90,6 +90,17 @@ public sealed unsafe partial class MangroveTreeCanopy : global::System.IDisposab
         return new MangroveTreeCanopy((nint)handle);
     }
 
+    public static MangroveTreeCanopy Create(global::Hosihikari.Bindings.Bedrock.Interop.MangroveTreeCanopy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_34ff9f90((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MangroveTreeCanopy((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mCanopyDecoration_Address
     {

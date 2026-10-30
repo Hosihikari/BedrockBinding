@@ -38,6 +38,17 @@ public sealed unsafe partial class IRealmEventLogger : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static IRealmEventLogger Create(global::Hosihikari.Bindings.Bedrock.Interop.IRealmEventLogger arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_5945d0f4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IRealmEventLogger((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void logEvent(nint message) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

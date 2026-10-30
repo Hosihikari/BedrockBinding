@@ -55,6 +55,17 @@ public sealed unsafe partial class TargetGoalDefinition : global::System.IDispos
         NativeMethods.TablePtr->C3.hs_method_a4317c98((void*)__hosihikari_shim_handle);
     }
 
+    public static TargetGoalDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.TargetGoalDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_bc4d06c7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TargetGoalDefinition((nint)handle);
+    }
+
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C3.hs_method_6675b79e((void*)ctx.Handle);

@@ -259,9 +259,10 @@ public sealed unsafe partial class WallBlock : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C4.hs_get_fff5d1ca((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public bool _breaksFallingBlocks(nint block, nint version) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public bool _breaksFallingBlocks(global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion version)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_6f5d683d((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)version.Handle) != 0;
+    }
 
     public bool _canProvideSupport(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, byte face, int type)
     {
@@ -323,6 +324,17 @@ public sealed unsafe partial class WallBlock : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion((nint)NativeMethods.TablePtr->C4.hs_method_b7b8cf36(), false);
     }
 
+    public static WallBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.WallBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_09cb7c84((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WallBlock((nint)handle);
+    }
+
     public int _desiredConnectionState(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, byte neighbor)
     {
         return NativeMethods.TablePtr->C4.hs_method_a3fa3e42((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, neighbor);
@@ -338,9 +350,10 @@ public sealed unsafe partial class WallBlock : global::System.IDisposable
         return NativeMethods.TablePtr->C4.hs_method_85bd8cbb((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public bool breaksFallingBlocks(nint block, nint version) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public bool breaksFallingBlocks(global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion version)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_14546910((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)version.Handle) != 0;
+    }
 
     public bool canProvideSupport(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, byte face, int type)
     {

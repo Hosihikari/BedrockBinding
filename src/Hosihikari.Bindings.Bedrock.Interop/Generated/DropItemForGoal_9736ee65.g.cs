@@ -268,6 +268,17 @@ public sealed unsafe partial class DropItemForGoal : global::System.IDisposable
         }
     }
 
+    public static DropItemForGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.DropItemForGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_4eec9cd6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DropItemForGoal((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public void appendDebugInfo(nint str) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");

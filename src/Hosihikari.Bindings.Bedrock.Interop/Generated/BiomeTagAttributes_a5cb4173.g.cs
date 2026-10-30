@@ -38,6 +38,17 @@ public sealed unsafe partial class BiomeTagAttributes : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static BiomeTagAttributes Create(global::Hosihikari.Bindings.Bedrock.Interop.BiomeTagAttributes arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_3e25eebc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BiomeTagAttributes((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mTags_Address
     {

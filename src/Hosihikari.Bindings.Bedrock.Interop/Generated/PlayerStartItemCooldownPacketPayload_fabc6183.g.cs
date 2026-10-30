@@ -38,6 +38,17 @@ public sealed unsafe partial class PlayerStartItemCooldownPacketPayload : global
         return __hs_handle;
     }
 
+    public static PlayerStartItemCooldownPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerStartItemCooldownPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_cf5b91e6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerStartItemCooldownPacketPayload((nint)handle);
+    }
+
     public int mDurationTicks
     {
         get => NativeMethods.TablePtr->C2.hs_get_a42867ad((void*)__hosihikari_shim_handle);

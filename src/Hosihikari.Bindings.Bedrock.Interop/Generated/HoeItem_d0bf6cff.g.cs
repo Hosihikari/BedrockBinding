@@ -95,6 +95,17 @@ public sealed unsafe partial class HoeItem : global::System.IDisposable
         return new HoeItem((nint)handle);
     }
 
+    public static HoeItem Create(global::Hosihikari.Bindings.Bedrock.Interop.HoeItem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_a56a1608((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HoeItem((nint)handle);
+    }
+
     public static HoeItem Create(string name, int id, nint tier)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);

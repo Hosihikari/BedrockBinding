@@ -38,6 +38,17 @@ public sealed unsafe partial class ModalFormRequestPacketPayload : global::Syste
         return __hs_handle;
     }
 
+    public static ModalFormRequestPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.ModalFormRequestPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_f53d5ec8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ModalFormRequestPacketPayload((nint)handle);
+    }
+
     public uint mFormId
     {
         get => NativeMethods.TablePtr->C2.hs_get_b9a9b823((void*)__hosihikari_shim_handle);

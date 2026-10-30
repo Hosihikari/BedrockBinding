@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockStateInstance : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static BlockStateInstance Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockStateInstance arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_dc889e2e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockStateInstance((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<Block>' is not supported.", false)]
     public nint _trySet(ushort data, uint value, nint blockPermutations) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<Block>' is not supported.");

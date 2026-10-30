@@ -38,6 +38,17 @@ public sealed unsafe partial class SimplexNoise : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static SimplexNoise Create(global::Hosihikari.Bindings.Bedrock.Interop.SimplexNoise arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_d348de6a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SimplexNoise((nint)handle);
+    }
+
     public float _getValue(global::Hosihikari.Bindings.Bedrock.Interop.Vec2 vin)
     {
         return NativeMethods.TablePtr->C3.hs_method_68debed1((void*)__hosihikari_shim_handle, (void*)vin.Handle);

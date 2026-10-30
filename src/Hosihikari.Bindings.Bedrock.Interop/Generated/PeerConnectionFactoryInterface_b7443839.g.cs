@@ -71,6 +71,17 @@ public sealed unsafe partial class PeerConnectionFactoryInterface : global::Syst
     public nint GetRtpSenderCapabilities(nint kind) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static PeerConnectionFactoryInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.PeerConnectionFactoryInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_de278c41((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PeerConnectionFactoryInterface((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void SetOptions(nint options) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

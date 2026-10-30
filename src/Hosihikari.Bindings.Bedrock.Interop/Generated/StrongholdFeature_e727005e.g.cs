@@ -82,6 +82,17 @@ public sealed unsafe partial class StrongholdFeature : global::System.IDisposabl
         return new StrongholdFeature((nint)handle);
     }
 
+    public static StrongholdFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.StrongholdFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_64a45bed((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StrongholdFeature((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'StructureStart' has no accessible destructor.", false)]
     public nint createStructureStart(nint generator, nint arg1, nint random, nint cp, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'StructureStart' has no accessible destructor.");

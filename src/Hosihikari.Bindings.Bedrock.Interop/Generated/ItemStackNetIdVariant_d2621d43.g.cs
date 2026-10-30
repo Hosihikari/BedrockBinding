@@ -49,6 +49,17 @@ public sealed unsafe partial class ItemStackNetIdVariant : global::System.IDispo
         return new ItemStackNetIdVariant((nint)handle);
     }
 
+    public static ItemStackNetIdVariant Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackNetIdVariant arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_30e63cd3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemStackNetIdVariant((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint deserialize(nint stream) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");

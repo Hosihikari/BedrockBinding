@@ -58,6 +58,17 @@ public sealed unsafe partial class FreezeOnHitSubcomponent : global::System.IDis
         NativeMethods.TablePtr->C1.hs_method_6eef4f62((void*)__hosihikari_shim_handle, (void*)component.Handle);
     }
 
+    public static FreezeOnHitSubcomponent Create(global::Hosihikari.Bindings.Bedrock.Interop.FreezeOnHitSubcomponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b8540b74((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FreezeOnHitSubcomponent((nint)handle);
+    }
+
     public void doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent component)
     {
         NativeMethods.TablePtr->C1.hs_method_8d598dc5((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)component.Handle);

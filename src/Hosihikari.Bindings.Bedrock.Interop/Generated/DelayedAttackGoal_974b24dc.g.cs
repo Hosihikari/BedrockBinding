@@ -149,6 +149,17 @@ public sealed unsafe partial class DelayedAttackGoal : global::System.IDisposabl
         }
     }
 
+    public static DelayedAttackGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.DelayedAttackGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_41e2843a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DelayedAttackGoal((nint)handle);
+    }
+
     public static bool _isTargetInLineOfSightLegacy(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.Actor target)
     {
         return NativeMethods.TablePtr->C1.hs_method_fc1650d1((void*)mob.Handle, (void*)target.Handle) != 0;

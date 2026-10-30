@@ -38,6 +38,17 @@ public sealed unsafe partial class IFileStorageAreaFetcher : global::System.IDis
         return __hs_handle;
     }
 
+    public static IFileStorageAreaFetcher Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.IFileStorageAreaFetcher arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_80e3b55c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IFileStorageAreaFetcher((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getStorageAreaForPath(nint fileStorageArea, nint path) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

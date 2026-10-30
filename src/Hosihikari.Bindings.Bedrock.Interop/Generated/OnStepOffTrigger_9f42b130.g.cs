@@ -60,6 +60,17 @@ public sealed unsafe partial class OnStepOffTrigger : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static OnStepOffTrigger Create(global::Hosihikari.Bindings.Bedrock.Interop.OnStepOffTrigger arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_10568ca3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OnStepOffTrigger((nint)handle);
+    }
+
     public void onEvent(nint eventData)
     {
         NativeMethods.TablePtr->C2.hs_method_e2e1a044((void*)__hosihikari_shim_handle, (void*)eventData);

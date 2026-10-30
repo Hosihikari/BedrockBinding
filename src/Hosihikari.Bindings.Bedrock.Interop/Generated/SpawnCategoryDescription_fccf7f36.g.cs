@@ -43,6 +43,17 @@ public sealed unsafe partial class SpawnCategoryDescription : global::System.IDi
         return (nint)NativeMethods.TablePtr->C3.hs_method_bcbe6486((void*)__hosihikari_shim_handle);
     }
 
+    public static SpawnCategoryDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.SpawnCategoryDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_bd04d071((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SpawnCategoryDescription((nint)handle);
+    }
+
     public nint getJsonName()
     {
         return (nint)NativeMethods.TablePtr->C3.hs_method_b8c3c888((void*)__hosihikari_shim_handle);

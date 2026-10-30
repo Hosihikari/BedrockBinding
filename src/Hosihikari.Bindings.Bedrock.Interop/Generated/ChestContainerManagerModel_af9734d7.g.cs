@@ -95,6 +95,17 @@ public sealed unsafe partial class ChestContainerManagerModel : global::System.I
         return new ChestContainerManagerModel((nint)handle);
     }
 
+    public static ChestContainerManagerModel Create(global::Hosihikari.Bindings.Bedrock.Interop.ChestContainerManagerModel arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_2d738491((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChestContainerManagerModel((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext _postInit()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext((nint)NativeMethods.TablePtr->C0.hs_method_1e135e03((void*)__hosihikari_shim_handle));

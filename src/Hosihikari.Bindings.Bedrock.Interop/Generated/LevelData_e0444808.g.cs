@@ -847,9 +847,10 @@ public sealed unsafe partial class LevelData : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_81ef81a4((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void setWorldClockRegistry(nint registry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void setWorldClockRegistry(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.NonOwnerPointer_const_WorldClockRegistry_ registry)
+    {
+        NativeMethods.TablePtr->C2.hs_method_3c257d31((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+    }
 
     public void setWorldTemplateOptionLocked(bool isLocked)
     {

@@ -54,6 +54,17 @@ public sealed unsafe partial class SleepState : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_3b1e88c1((void*)__hosihikari_shim_handle);
     }
 
+    public static SleepState Create(global::Hosihikari.Bindings.Bedrock.Interop.SleepState arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_ced092d0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SleepState((nint)handle);
+    }
+
     public void stop()
     {
         NativeMethods.TablePtr->C3.hs_method_f6091f28((void*)__hosihikari_shim_handle);

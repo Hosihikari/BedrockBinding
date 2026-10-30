@@ -40,7 +40,7 @@ public sealed unsafe partial class WriteBudgetHistoryEntry : global::System.IDis
 
     public static WriteBudgetHistoryEntry Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_f92f9ccb();
+        var handle = NativeMethods.TablePtr->C1.hs_create_f92f9ccb();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class WriteBudgetHistoryEntry : global::System.IDis
 
     public static WriteBudgetHistoryEntry Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.DiskAccessDiagnostics_Nested.WriteBudgetHistoryEntry arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_f0a63007((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_f0a63007((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,18 +63,18 @@ public sealed unsafe partial class WriteBudgetHistoryEntry : global::System.IDis
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk5ccd86_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_716445a0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_716445a0((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk9efbce_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_cf0bc7ab((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_cf0bc7ab((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.DiskAccessDiagnostics_Nested.WriteBudgetHistoryEntry operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.DiskAccessDiagnostics_Nested.WriteBudgetHistoryEntry arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.DiskAccessDiagnostics_Nested.WriteBudgetHistoryEntry((nint)NativeMethods.TablePtr->C0.hs_method_4eec5bf3((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.DiskAccessDiagnostics_Nested.WriteBudgetHistoryEntry((nint)NativeMethods.TablePtr->C1.hs_method_4eec5bf3((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -83,7 +83,7 @@ public sealed unsafe partial class WriteBudgetHistoryEntry : global::System.IDis
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_8dd824f1((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_8dd824f1((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

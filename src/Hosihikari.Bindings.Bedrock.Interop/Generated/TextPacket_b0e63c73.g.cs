@@ -92,9 +92,10 @@ public sealed unsafe partial class TextPacket : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->C3.hs_method_4d463951((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.TextPacketPayload payload)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_9f925d34((void*)__hosihikari_shim_handle, (void*)payload.Handle);
+    }
 
     public bool _disallowBatching()
     {
@@ -172,9 +173,16 @@ public sealed unsafe partial class TextPacket : global::System.IDisposable
         return new TextPacket((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static TextPacket Create(nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static TextPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.TextPacketPayload payload)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_e521bec5((void*)payload.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TextPacket((nint)handle);
+    }
 
     public static TextPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.TextPacket arg0)
     {

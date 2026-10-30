@@ -74,6 +74,17 @@ public sealed unsafe partial class MerchantRecipeList : global::System.IDisposab
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static MerchantRecipeList Create(global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipeList arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_5e072348((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MerchantRecipeList((nint)handle);
+    }
+
     public void addIfNewOrBetter(global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe? toMatch)
     {
         NativeMethods.TablePtr->C2.hs_method_9b9ecf7d((void*)__hosihikari_shim_handle, (void*)(toMatch?.Handle ?? 0));

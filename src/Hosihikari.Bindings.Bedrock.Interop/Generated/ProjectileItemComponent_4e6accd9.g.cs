@@ -49,9 +49,10 @@ public sealed unsafe partial class ProjectileItemComponent : global::System.IDis
         return (nint)NativeMethods.TablePtr->C2.hs_method_f5f5b3f9((void*)__hosihikari_shim_handle, actorType, minCriticalPower);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint component) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50.ProjectileItemComponent component)
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_4c961d8a((void*)__hosihikari_shim_handle, (void*)component.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
@@ -79,9 +80,27 @@ public sealed unsafe partial class ProjectileItemComponent : global::System.IDis
         return new ProjectileItemComponent((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static ProjectileItemComponent Create(nint component) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static ProjectileItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50.ProjectileItemComponent component)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_67c17210((void*)component.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ProjectileItemComponent((nint)handle);
+    }
+
+    public static ProjectileItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ProjectileItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_fac933f4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ProjectileItemComponent((nint)handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static void bindType(nint ctx, nint requiredToggles, nint releasedMinFormatVersion) =>

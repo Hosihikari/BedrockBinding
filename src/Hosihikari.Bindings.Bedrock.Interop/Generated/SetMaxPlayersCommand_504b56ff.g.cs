@@ -72,6 +72,17 @@ public sealed unsafe partial class SetMaxPlayersCommand : global::System.IDispos
         NativeMethods.TablePtr->C3.hs_method_414b7e5c((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static SetMaxPlayersCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.SetMaxPlayersCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_7b78ef62((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SetMaxPlayersCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C3.hs_method_282cea89((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

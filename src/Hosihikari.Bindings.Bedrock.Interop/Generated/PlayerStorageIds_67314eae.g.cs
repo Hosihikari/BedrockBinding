@@ -73,6 +73,17 @@ public sealed unsafe partial class PlayerStorageIds : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C2.hs_get_1de0439c((void*)__hosihikari_shim_handle);
     }
 
+    public static PlayerStorageIds Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerStorageIds arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_08fbef0d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerStorageIds((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint RandomClientId_Address
     {

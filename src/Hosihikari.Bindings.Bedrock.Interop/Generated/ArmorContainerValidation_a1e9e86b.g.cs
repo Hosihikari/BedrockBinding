@@ -72,6 +72,17 @@ public sealed unsafe partial class ArmorContainerValidation : global::System.IDi
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ArmorContainerValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.ArmorContainerValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_59077aac((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ArmorContainerValidation((nint)handle);
+    }
+
     public bool canItemMoveToContainer(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item)
     {
         return NativeMethods.TablePtr->C0.hs_method_c198640c((void*)__hosihikari_shim_handle, (void*)item.Handle) != 0;

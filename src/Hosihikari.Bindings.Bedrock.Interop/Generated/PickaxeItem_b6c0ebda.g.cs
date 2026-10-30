@@ -329,6 +329,17 @@ public sealed unsafe partial class PickaxeItem : global::System.IDisposable
         return new PickaxeItem((nint)handle);
     }
 
+    public static PickaxeItem Create(global::Hosihikari.Bindings.Bedrock.Interop.PickaxeItem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_f25f62d3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PickaxeItem((nint)handle);
+    }
+
     public static PickaxeItem Create(string name, int id, nint tier)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);

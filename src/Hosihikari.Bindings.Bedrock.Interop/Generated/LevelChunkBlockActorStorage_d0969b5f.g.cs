@@ -40,12 +40,12 @@ public sealed unsafe partial class LevelChunkBlockActorStorage : global::System.
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C1.hs_method_be6a2e9c((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_be6a2e9c((void*)__hosihikari_shim_handle);
     }
 
     public static LevelChunkBlockActorStorage Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_f244d3f9();
+        var handle = NativeMethods.TablePtr->C2.hs_create_f244d3f9();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,7 +56,7 @@ public sealed unsafe partial class LevelChunkBlockActorStorage : global::System.
 
     public static LevelChunkBlockActorStorage Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkBlockActorStorage arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_583977b6((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_583977b6((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -75,36 +75,36 @@ public sealed unsafe partial class LevelChunkBlockActorStorage : global::System.
 
     public ulong erase(global::Hosihikari.Bindings.Bedrock.Interop.ChunkBlockPos pos)
     {
-        return NativeMethods.TablePtr->C1.hs_method_8f3386e9((void*)__hosihikari_shim_handle, (void*)pos.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_8f3386e9((void*)__hosihikari_shim_handle, (void*)pos.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMap_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_9c533b01((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9c533b01((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPermanentRenderingLocations_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_a33383d9((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a33383d9((void*)__hosihikari_shim_handle);
     }
 
     public bool mTrackPermanentlyRendered
     {
-        get => NativeMethods.TablePtr->C1.hs_get_d93c0247((void*)__hosihikari_shim_handle) != 0;
+        get => NativeMethods.TablePtr->C2.hs_get_d93c0247((void*)__hosihikari_shim_handle) != 0;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mVanillaRenderBlockActorComponents_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_8a964810((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8a964810((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mVanillaTickBlockActorComponents_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_97fef331((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_97fef331((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
@@ -113,7 +113,7 @@ public sealed unsafe partial class LevelChunkBlockActorStorage : global::System.
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkBlockActorStorage operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkBlockActorStorage arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkBlockActorStorage((nint)NativeMethods.TablePtr->C1.hs_method_2d37c2eb((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkBlockActorStorage((nint)NativeMethods.TablePtr->C2.hs_method_2d37c2eb((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
@@ -123,7 +123,7 @@ public sealed unsafe partial class LevelChunkBlockActorStorage : global::System.
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_d0969b5f((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_d0969b5f((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

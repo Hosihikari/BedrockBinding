@@ -40,7 +40,18 @@ public sealed unsafe partial class ResourceDrops : global::System.IDisposable
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C2.hs_method_ab99f556((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_ab99f556((void*)__hosihikari_shim_handle);
+    }
+
+    public static ResourceDrops Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourceDrops arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a25bab3a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ResourceDrops((nint)handle);
     }
 
     public int mExperienceCount
@@ -62,7 +73,7 @@ public sealed unsafe partial class ResourceDrops : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_046133e6((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_046133e6((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

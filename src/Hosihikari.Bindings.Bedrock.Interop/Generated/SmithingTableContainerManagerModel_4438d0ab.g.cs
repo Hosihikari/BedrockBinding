@@ -148,6 +148,17 @@ public sealed unsafe partial class SmithingTableContainerManagerModel : global::
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static SmithingTableContainerManagerModel Create(global::Hosihikari.Bindings.Bedrock.Interop.SmithingTableContainerManagerModel arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_317fc44f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SmithingTableContainerManagerModel((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext _postInit()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext((nint)NativeMethods.TablePtr->C3.hs_method_1270bcde((void*)__hosihikari_shim_handle));

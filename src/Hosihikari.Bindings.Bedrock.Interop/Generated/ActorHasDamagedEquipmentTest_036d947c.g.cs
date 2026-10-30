@@ -54,6 +54,17 @@ public sealed unsafe partial class ActorHasDamagedEquipmentTest : global::System
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static ActorHasDamagedEquipmentTest Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorHasDamagedEquipmentTest arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_bae9b8ef((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorHasDamagedEquipmentTest((nint)handle);
+    }
+
     public bool _isExpectedItem(nint[] itemList)
     {
         var __hs_vectorItems0 = itemList ?? global::System.Array.Empty<nint>();

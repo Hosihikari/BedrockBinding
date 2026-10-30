@@ -38,6 +38,17 @@ public sealed unsafe partial class PlaySoundPacketPayload : global::System.IDisp
         return __hs_handle;
     }
 
+    public static PlaySoundPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.PlaySoundPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_c7e0126c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlaySoundPacketPayload((nint)handle);
+    }
+
     public bool mBypassListenerRangeCheck
     {
         get => NativeMethods.TablePtr->C2.hs_get_55efb251((void*)__hosihikari_shim_handle) != 0;

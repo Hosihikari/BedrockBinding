@@ -38,6 +38,17 @@ public sealed unsafe partial class IWorldConverter : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static IWorldConverter Create(global::Hosihikari.Bindings.Bedrock.Interop.FileArchiver_Nested.IWorldConverter arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_a04609de((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IWorldConverter((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void enqueueConvertExportingWorldTasks(nint exportData, nint progress, nint prevTaskHandle, nint interventionPublishers, nint exportSetting) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

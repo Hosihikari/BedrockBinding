@@ -38,25 +38,39 @@ public sealed unsafe partial class Description : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void _deserializeData(nint deserializeDataParams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void _deserializeData(global::Hosihikari.Bindings.Bedrock.Interop.DeserializeDataParams deserializeDataParams)
+    {
+        NativeMethods.TablePtr->C1.hs_method_69c75a1d((void*)__hosihikari_shim_handle, (void*)deserializeDataParams.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void deserializeData(nint deserializeDataParams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static Description Create(global::Hosihikari.Bindings.Bedrock.Interop.Description arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_947b30b4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Description((nint)handle);
+    }
+
+    public void deserializeData(global::Hosihikari.Bindings.Bedrock.Interop.DeserializeDataParams deserializeDataParams)
+    {
+        NativeMethods.TablePtr->C1.hs_method_811a616b((void*)__hosihikari_shim_handle, (void*)deserializeDataParams.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getJsonName() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ActorDocumentDataParams' is not a known bindable declaration.", false)]
-    public bool parseDescription_35008189(nint actorDocumentDataParams) =>
+    public bool parseDescription(nint actorDocumentDataParams) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'ActorDocumentDataParams' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public bool parseDescription_9b94a5e8(nint deserializeDataParams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public bool parseDescription(global::Hosihikari.Bindings.Bedrock.Interop.DeserializeDataParams deserializeDataParams)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_9b94a5e8((void*)__hosihikari_shim_handle, (void*)deserializeDataParams.Handle) != 0;
+    }
 
 
     public void Dispose()

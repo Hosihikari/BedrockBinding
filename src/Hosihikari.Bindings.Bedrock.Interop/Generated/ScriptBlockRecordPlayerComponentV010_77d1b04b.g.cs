@@ -61,6 +61,17 @@ public sealed unsafe partial class ScriptBlockRecordPlayerComponentV010 : global
         get => (nint)NativeMethods.TablePtr->C3.hs_get_a0b2751d((void*)__hosihikari_shim_handle);
     }
 
+    public static ScriptBlockRecordPlayerComponentV010 Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBlockRecordPlayerComponentV010 arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_50dd0cf4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptBlockRecordPlayerComponentV010((nint)handle);
+    }
+
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mId_Address

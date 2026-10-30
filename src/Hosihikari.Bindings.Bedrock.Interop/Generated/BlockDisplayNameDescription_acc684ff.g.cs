@@ -73,6 +73,17 @@ public sealed unsafe partial class BlockDisplayNameDescription : global::System.
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static BlockDisplayNameDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockDisplayNameDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_c40de543((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockDisplayNameDescription((nint)handle);
+    }
+
     public static string NameID()
     {
         var __hs_view = NativeMethods.TablePtr->C0.hs_method_49f97c28();

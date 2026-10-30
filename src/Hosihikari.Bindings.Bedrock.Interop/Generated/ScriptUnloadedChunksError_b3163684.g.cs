@@ -54,6 +54,17 @@ public sealed unsafe partial class ScriptUnloadedChunksError : global::System.ID
         return new ScriptUnloadedChunksError((nint)handle);
     }
 
+    public static ScriptUnloadedChunksError Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptUnloadedChunksError arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_b6c310f5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptUnloadedChunksError((nint)handle);
+    }
+
     public static ScriptUnloadedChunksError Create(ulong unloadedChunks, ulong totalChunks)
     {
         var handle = NativeMethods.TablePtr->C3.hs_create_e115a10d(unloadedChunks, totalChunks);

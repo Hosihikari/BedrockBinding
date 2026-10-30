@@ -38,6 +38,17 @@ public sealed unsafe partial class WorldGenMultiNoiseClimateAttributes : global:
         return __hs_handle;
     }
 
+    public static WorldGenMultiNoiseClimateAttributes Create(global::Hosihikari.Bindings.Bedrock.Interop.WorldGenMultiNoiseClimateAttributes arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_832929c7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WorldGenMultiNoiseClimateAttributes((nint)handle);
+    }
+
     public float mAltitude
     {
         get => NativeMethods.TablePtr->C4.hs_get_a0f83696((void*)__hosihikari_shim_handle);

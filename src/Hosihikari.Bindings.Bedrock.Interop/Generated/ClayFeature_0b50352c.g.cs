@@ -47,6 +47,17 @@ public sealed unsafe partial class ClayFeature : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ClayFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.ClayFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_96de0588((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ClayFeature((nint)handle);
+    }
+
     public int mRadius
     {
         get => NativeMethods.TablePtr->C0.hs_get_fabe059e((void*)__hosihikari_shim_handle);

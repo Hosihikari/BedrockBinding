@@ -52,6 +52,17 @@ public sealed unsafe partial class MineshaftCrossing : global::System.IDisposabl
         return NativeMethods.TablePtr->C2.hs_method_a6d0627e((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)arg1.Handle, (void*)chunkBB.Handle) != 0;
     }
 
+    public static MineshaftCrossing Create(global::Hosihikari.Bindings.Bedrock.Interop.MineshaftCrossing arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_0cb8fc85((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MineshaftCrossing((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.", false)]
     public void addChildren(nint startPiece, nint pieces, nint random) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.");

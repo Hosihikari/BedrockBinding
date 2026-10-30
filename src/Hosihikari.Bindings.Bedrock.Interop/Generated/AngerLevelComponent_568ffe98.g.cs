@@ -43,6 +43,17 @@ public sealed unsafe partial class AngerLevelComponent : global::System.IDisposa
         NativeMethods.TablePtr->C0.hs_method_4f49baf9((void*)__hosihikari_shim_handle);
     }
 
+    public static AngerLevelComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.AngerLevelComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_52eb86a0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AngerLevelComponent((nint)handle);
+    }
+
     public void _decrementAnger(global::Hosihikari.Bindings.Bedrock.Interop.Actor? owner, global::Hosihikari.Bindings.Bedrock.Interop.ILevel level)
     {
         NativeMethods.TablePtr->C0.hs_method_4952035e((void*)__hosihikari_shim_handle, (void*)(owner?.Handle ?? 0), (void*)level.Handle);

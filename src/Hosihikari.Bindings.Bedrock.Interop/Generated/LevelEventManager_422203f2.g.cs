@@ -69,6 +69,17 @@ public sealed unsafe partial class LevelEventManager : global::System.IDisposabl
     public static LevelEventManager Create(bool isClientSide, nint levelEventCoordinator) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<LevelEventCoordinator>>' is not a known bindable declaration.");
 
+    public static LevelEventManager Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelEventManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_0e5f0f9c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelEventManager((nint)handle);
+    }
+
     public void broadcastLevelEvent(short type, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.UserEntityIdentifierComponent? userIdentifierToExclude)
     {
         NativeMethods.TablePtr->C2.hs_method_112b8397((void*)__hosihikari_shim_handle, type, (void*)tag.Handle, (void*)(userIdentifierToExclude?.Handle ?? 0));

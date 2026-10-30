@@ -57,9 +57,10 @@ public sealed unsafe partial class Client : global::System.IDisposable
     public static Client Create(nint primaryRequest, nint primaryPlayerInfo) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void addSubClientPlayerInfo(nint subClientId, nint playerInfo) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void addSubClientPlayerInfo(byte subClientId, global::Hosihikari.Bindings.Bedrock.Interop.PlayerAuthenticationInfo playerInfo)
+    {
+        NativeMethods.TablePtr->C3.hs_method_14d3a7cb((void*)__hosihikari_shim_handle, subClientId, (void*)playerInfo.Handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mClientInfoPartyId_Address

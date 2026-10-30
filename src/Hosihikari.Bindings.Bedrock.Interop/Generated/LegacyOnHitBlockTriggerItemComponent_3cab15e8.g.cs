@@ -40,13 +40,13 @@ public sealed unsafe partial class LegacyOnHitBlockTriggerItemComponent : global
 
     public nint mOwner
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_6f32d2cf((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_6f32d2cf((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6f32d2cf((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_6f32d2cf((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public void __initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {
-        NativeMethods.TablePtr->C1.hs_method_b3e80dc0((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+        NativeMethods.TablePtr->C2.hs_method_b3e80dc0((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
@@ -59,7 +59,7 @@ public sealed unsafe partial class LegacyOnHitBlockTriggerItemComponent : global
 
     public static LegacyOnHitBlockTriggerItemComponent Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_1d3daada();
+        var handle = NativeMethods.TablePtr->C2.hs_create_1d3daada();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -72,28 +72,39 @@ public sealed unsafe partial class LegacyOnHitBlockTriggerItemComponent : global
     public static LegacyOnHitBlockTriggerItemComponent Create(nint componentData) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
+    public static LegacyOnHitBlockTriggerItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyOnHitBlockTriggerItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_0089af43((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacyOnHitBlockTriggerItemComponent((nint)handle);
+    }
+
     public void _initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {
-        NativeMethods.TablePtr->C1.hs_method_0cc3a5a9((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+        NativeMethods.TablePtr->C2.hs_method_0cc3a5a9((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnHitBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_5092de72((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5092de72((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnHitBlockSubscription_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_51ad1e6b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_51ad1e6b((void*)__hosihikari_shim_handle);
     }
 
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnTriggerPublisher_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_2d50963e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2d50963e((void*)__hosihikari_shim_handle);
     }
 
     public void Dispose()
@@ -102,7 +113,7 @@ public sealed unsafe partial class LegacyOnHitBlockTriggerItemComponent : global
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_3cab15e8((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_3cab15e8((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -43,6 +43,17 @@ public sealed unsafe partial class SpawnSettings : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_f2e552c5((void*)__hosihikari_shim_handle);
     }
 
+    public static SpawnSettings Create(global::Hosihikari.Bindings.Bedrock.Interop.SpawnSettings arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_df77c774((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SpawnSettings((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint dimension_Address
     {

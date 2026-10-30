@@ -43,6 +43,17 @@ public sealed unsafe partial class BlockBreakSensorSystem : global::System.IDisp
         NativeMethods.TablePtr->C0.hs_method_9ea7679e((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static BlockBreakSensorSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockBreakSensorSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_514a2d2b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockBreakSensorSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C0.hs_method_72cc5d43((void*)__hosihikari_shim_handle, (void*)registry.Handle);

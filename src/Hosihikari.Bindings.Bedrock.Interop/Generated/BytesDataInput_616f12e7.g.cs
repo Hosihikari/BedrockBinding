@@ -70,6 +70,17 @@ public sealed unsafe partial class BytesDataInput : global::System.IDisposable
     public nint _readStringResult() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.");
 
+    public static BytesDataInput Create(global::Hosihikari.Bindings.Bedrock.Interop.BytesDataInput arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_c9ee374d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BytesDataInput((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned char>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint readByteResult() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<unsigned char>' requires --link-carrier or --virtual-dispatch.");

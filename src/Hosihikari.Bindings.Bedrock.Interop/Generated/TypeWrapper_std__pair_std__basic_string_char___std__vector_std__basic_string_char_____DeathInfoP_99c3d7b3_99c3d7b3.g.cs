@@ -44,7 +44,11 @@ public sealed partial class TypeWrapper_std__pair_std__basic_string_char___std__
         throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public static TypeWrapper_std__pair_std__basic_string_char___std__vector_std__basic_string_char_____DeathInfoP_99c3d7b3 Create(nint other) =>
+    public static TypeWrapper_std__pair_std__basic_string_char___std__vector_std__basic_string_char_____DeathInfoP_99c3d7b3 Create_ac3aee18(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
+    public static TypeWrapper_std__pair_std__basic_string_char___std__vector_std__basic_string_char_____DeathInfoP_99c3d7b3 Create_41d640b9(nint other) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]

@@ -212,6 +212,17 @@ public sealed unsafe partial class Scoreboard : global::System.IDisposable
         return new Scoreboard((nint)handle);
     }
 
+    public static Scoreboard Create(global::Hosihikari.Bindings.Bedrock.Interop.Scoreboard arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c108aceb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Scoreboard((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.Objective? addObjective(string name, string displayName, global::Hosihikari.Bindings.Bedrock.Interop.ObjectiveCriteria criteria)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);

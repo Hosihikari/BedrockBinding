@@ -43,6 +43,17 @@ public sealed unsafe partial class PermissionsHandler : global::System.IDisposab
         NativeMethods.TablePtr->C2.hs_method_106370e9((void*)__hosihikari_shim_handle);
     }
 
+    public static PermissionsHandler Create(global::Hosihikari.Bindings.Bedrock.Interop.PermissionsHandler arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_5234245f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PermissionsHandler((nint)handle);
+    }
+
     public void addSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
         NativeMethods.TablePtr->C2.hs_method_a615bd79((void*)__hosihikari_shim_handle, (void*)tag.Handle);

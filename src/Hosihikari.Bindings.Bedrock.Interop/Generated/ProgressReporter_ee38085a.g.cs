@@ -67,6 +67,17 @@ public sealed unsafe partial class ProgressReporter : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_04a04ef6((void*)__hosihikari_shim_handle);
     }
 
+    public static ProgressReporter Create(global::Hosihikari.Bindings.Bedrock.Interop.FileArchiver_Nested.ProgressReporter arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_eb1664f5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ProgressReporter((nint)handle);
+    }
+
     public void clear()
     {
         NativeMethods.TablePtr->C1.hs_method_ab8407b2((void*)__hosihikari_shim_handle);

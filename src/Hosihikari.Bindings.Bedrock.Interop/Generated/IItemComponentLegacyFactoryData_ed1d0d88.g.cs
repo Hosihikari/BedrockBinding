@@ -38,6 +38,17 @@ public sealed unsafe partial class IItemComponentLegacyFactoryData : global::Sys
         return __hs_handle;
     }
 
+    public static IItemComponentLegacyFactoryData Create(global::Hosihikari.Bindings.Bedrock.Interop.IItemComponentLegacyFactoryData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_50e4cc81((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IItemComponentLegacyFactoryData((nint)handle);
+    }
+
 
     public void Dispose()
     {

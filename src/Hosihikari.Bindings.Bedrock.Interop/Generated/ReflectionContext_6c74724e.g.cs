@@ -43,6 +43,17 @@ public sealed unsafe partial class ReflectionContext : global::System.IDisposabl
         NativeMethods.TablePtr->C4.hs_method_80130b6f((void*)__hosihikari_shim_handle);
     }
 
+    public static ReflectionContext Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.ReflectionContext arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_9154c1e3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ReflectionContext((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mForcedJSONSchemaOutput_Address
     {

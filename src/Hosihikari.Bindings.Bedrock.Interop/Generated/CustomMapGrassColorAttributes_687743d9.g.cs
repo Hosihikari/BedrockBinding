@@ -38,6 +38,17 @@ public sealed unsafe partial class CustomMapGrassColorAttributes : global::Syste
         return __hs_handle;
     }
 
+    public static CustomMapGrassColorAttributes Create(global::Hosihikari.Bindings.Bedrock.Interop.CustomMapGrassColorAttributes arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_1a303cdc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CustomMapGrassColorAttributes((nint)handle);
+    }
+
     public int mMapGrassColor
     {
         get => NativeMethods.TablePtr->C1.hs_get_172c9c0a((void*)__hosihikari_shim_handle);

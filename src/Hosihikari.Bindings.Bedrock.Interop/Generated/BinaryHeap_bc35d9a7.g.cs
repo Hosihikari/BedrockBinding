@@ -43,6 +43,17 @@ public sealed unsafe partial class BinaryHeap : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_ff6b031a((void*)__hosihikari_shim_handle);
     }
 
+    public static BinaryHeap Create(global::Hosihikari.Bindings.Bedrock.Interop.BinaryHeap arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_1a59e88c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BinaryHeap((nint)handle);
+    }
+
     public void changeCost(global::Hosihikari.Bindings.Bedrock.Interop.PathfinderNode? node, float newCost)
     {
         NativeMethods.TablePtr->C0.hs_method_a1aa80fe((void*)__hosihikari_shim_handle, (void*)(node?.Handle ?? 0), newCost);

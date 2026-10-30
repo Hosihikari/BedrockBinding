@@ -38,6 +38,17 @@ public sealed unsafe partial class AudioReceiveStreamInterface : global::System.
         return __hs_handle;
     }
 
+    public static AudioReceiveStreamInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.AudioReceiveStreamInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_3a37dba2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AudioReceiveStreamInterface((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public int GetBaseMinimumPlayoutDelayMs() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

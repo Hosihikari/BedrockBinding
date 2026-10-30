@@ -38,6 +38,17 @@ public sealed unsafe partial class OptionalParameterChain : global::System.IDisp
         return __hs_handle;
     }
 
+    public static OptionalParameterChain Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry_Nested.OptionalParameterChain arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_ff2b8c91((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OptionalParameterChain((nint)handle);
+    }
+
     public int followingRuleIndex
     {
         get => NativeMethods.TablePtr->C0.hs_get_c0c99a2e((void*)__hosihikari_shim_handle);

@@ -51,13 +51,25 @@ public sealed unsafe partial class ScriptSimulatedPlayer : global::System.IDispo
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static ScriptSimulatedPlayer Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest.ScriptSimulatedPlayer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_d792f7ca((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptSimulatedPlayer((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
     public static nint _toWorld(nint player, nint blockPos, nint face, nint pos) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static nint _worldToLocalNavigationResult(nint player, nint navigationResult) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest.ScriptNavigationResult _worldToLocalNavigationResult(global::Hosihikari.Bindings.Bedrock.Interop.SimulatedPlayer player, global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest.ScriptNavigationResult navigationResult)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest.ScriptNavigationResult((nint)NativeMethods.TablePtr->C3.hs_method_66adeeb5((void*)player.Handle, (void*)navigationResult.Handle));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<bool>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint attack(nint self) =>

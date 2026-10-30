@@ -43,6 +43,17 @@ public sealed unsafe partial class HasPropertyFilter : global::System.IDisposabl
         NativeMethods.TablePtr->C1.hs_method_ce9a8093((void*)__hosihikari_shim_handle);
     }
 
+    public static HasPropertyFilter Create(global::Hosihikari.Bindings.Bedrock.Interop.HasPropertyFilter arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_7413ea3e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HasPropertyFilter((nint)handle);
+    }
+
     public bool mInverted
     {
         get => NativeMethods.TablePtr->C1.hs_get_77366bfe((void*)__hosihikari_shim_handle) != 0;

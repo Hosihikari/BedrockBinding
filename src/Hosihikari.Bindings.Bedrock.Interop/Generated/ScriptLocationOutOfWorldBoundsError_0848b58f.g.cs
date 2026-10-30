@@ -73,6 +73,17 @@ public sealed unsafe partial class ScriptLocationOutOfWorldBoundsError : global:
         return new ScriptLocationOutOfWorldBoundsError((nint)handle);
     }
 
+    public static ScriptLocationOutOfWorldBoundsError Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptLocationOutOfWorldBoundsError arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_0acbc095((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptLocationOutOfWorldBoundsError((nint)handle);
+    }
+
     public static ScriptLocationOutOfWorldBoundsError Create(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos)
     {
         var handle = NativeMethods.TablePtr->C3.hs_create_67875524((void*)pos.Handle);

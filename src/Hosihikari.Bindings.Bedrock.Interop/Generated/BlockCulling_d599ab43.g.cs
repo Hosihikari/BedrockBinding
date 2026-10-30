@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockCulling : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static BlockCulling Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_60.BlockCulling arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_0731e557((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockCulling((nint)handle);
+    }
+
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C3.hs_method_70501c59((void*)ctx.Handle);

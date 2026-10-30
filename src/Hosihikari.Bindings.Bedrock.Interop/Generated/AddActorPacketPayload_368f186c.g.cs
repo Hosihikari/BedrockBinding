@@ -70,6 +70,17 @@ public sealed unsafe partial class AddActorPacketPayload : global::System.IDispo
         return new AddActorPacketPayload((nint)handle);
     }
 
+    public static AddActorPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.AddActorPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_909c1612((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AddActorPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mActorType_Address
     {

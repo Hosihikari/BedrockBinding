@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockQueuedTickingComponent : global::System.
         return __hs_handle;
     }
 
+    public static BlockQueuedTickingComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockQueuedTickingComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_4a10a84a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockQueuedTickingComponent((nint)handle);
+    }
+
     public uint mDelayIntervalMaxTicks
     {
         get => NativeMethods.TablePtr->C0.hs_get_770e8453((void*)__hosihikari_shim_handle);

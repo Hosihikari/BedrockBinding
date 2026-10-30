@@ -40,14 +40,14 @@ public sealed unsafe partial class PiglinBarter : global::System.IDisposable
 
     public int mItemId
     {
-        get => NativeMethods.TablePtr->C1.hs_get_246c74f6((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_246c74f6((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_246c74f6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_246c74f6((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mWasTargetingBarteringPlayer
     {
-        get => NativeMethods.TablePtr->C1.hs_get_e6c753ab((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_e6c753ab((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_e6c753ab((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_e6c753ab((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -56,7 +56,7 @@ public sealed unsafe partial class PiglinBarter : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_99ab5dc0((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_99ab5dc0((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

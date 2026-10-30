@@ -58,6 +58,17 @@ public sealed unsafe partial class MobEffectResponse : global::System.IDisposabl
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static MobEffectResponse Create(global::Hosihikari.Bindings.Bedrock.Interop.MobEffectResponse arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_61ebea7c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MobEffectResponse((nint)handle);
+    }
+
     public static string NameID()
     {
         var __hs_view = NativeMethods.TablePtr->C2.hs_method_648e2ac4();

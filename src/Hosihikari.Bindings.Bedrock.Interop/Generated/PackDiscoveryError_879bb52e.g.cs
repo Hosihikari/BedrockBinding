@@ -119,6 +119,17 @@ public sealed unsafe partial class PackDiscoveryError : global::System.IDisposab
         }
     }
 
+    public static PackDiscoveryError Create(global::Hosihikari.Bindings.Bedrock.Interop.PackDiscoveryError arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_9938c291((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PackDiscoveryError((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
     public nint getEventErrorMessageMap() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");

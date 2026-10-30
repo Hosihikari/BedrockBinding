@@ -38,9 +38,10 @@ public sealed unsafe partial class FeaturePlacementFailureLogProxy : global::Sys
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void logFailure(nint source, nint message) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void logFailure(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.StaticOptimizedString source, global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.StaticOptimizedString message)
+    {
+        NativeMethods.TablePtr->C1.hs_method_e8c54daf((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)message.Handle);
+    }
 
     public nint mLogger
     {

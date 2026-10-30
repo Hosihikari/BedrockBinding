@@ -53,6 +53,17 @@ public sealed unsafe partial class ConsoleGameTestListener : global::System.IDis
         NativeMethods.TablePtr->C0.hs_method_8b0f224a((void*)__hosihikari_shim_handle, (void*)test.Handle);
     }
 
+    public static ConsoleGameTestListener Create(global::Hosihikari.Bindings.Bedrock.Interop.ConsoleGameTestListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_e478c164((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ConsoleGameTestListener((nint)handle);
+    }
+
     public void onTestFailed(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance test)
     {
         NativeMethods.TablePtr->C0.hs_method_04e2cac4((void*)__hosihikari_shim_handle, (void*)test.Handle);

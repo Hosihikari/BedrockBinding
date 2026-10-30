@@ -38,6 +38,17 @@ public sealed unsafe partial class AbilitiesRequestComponent : global::System.ID
         return __hs_handle;
     }
 
+    public static AbilitiesRequestComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.AbilitiesRequestComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_b3e5262e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AbilitiesRequestComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mRequests_Address
     {

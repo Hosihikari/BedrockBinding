@@ -70,6 +70,17 @@ public sealed unsafe partial class ActorAnimationControllerPtr : global::System.
         return new ActorAnimationControllerPtr((nint)handle);
     }
 
+    public static ActorAnimationControllerPtr Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationControllerPtr arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_01fcb97d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorAnimationControllerPtr((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationControllerPtr NONE()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ActorAnimationControllerPtr((nint)NativeMethods.TablePtr->C0.hs_method_915c814c(), false);

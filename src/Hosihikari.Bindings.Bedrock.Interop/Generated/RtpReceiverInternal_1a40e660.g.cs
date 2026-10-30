@@ -60,6 +60,17 @@ public sealed unsafe partial class RtpReceiverInternal : global::System.IDisposa
     public void NotifyFirstPacketReceived() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static RtpReceiverInternal Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RtpReceiverInternal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_41d27a31((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RtpReceiverInternal((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void SetMediaChannel(nint media_channel) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

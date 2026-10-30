@@ -44,6 +44,17 @@ public sealed unsafe partial class BossEventSubscriptionManager : global::System
         get => (nint)NativeMethods.TablePtr->C0.hs_get_84c60fc2((void*)__hosihikari_shim_handle);
     }
 
+    public static BossEventSubscriptionManager Create(global::Hosihikari.Bindings.Bedrock.Interop.BossEventSubscriptionManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_2e446964((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BossEventSubscriptionManager((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool areBossEventSubscribersReady() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

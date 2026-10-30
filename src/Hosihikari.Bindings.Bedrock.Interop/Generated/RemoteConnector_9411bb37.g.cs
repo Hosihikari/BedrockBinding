@@ -41,30 +41,41 @@ public sealed unsafe partial class RemoteConnector : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_87bb6eeb((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_87bb6eeb((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCallbacks_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_89cb2ac2((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_89cb2ac2((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk1d223d_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_338f703c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_338f703c((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkaf3b65_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_9b25ec9a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_9b25ec9a((void*)__hosihikari_shim_handle);
     }
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C2.hs_method_c2176d76((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_c2176d76((void*)__hosihikari_shim_handle);
+    }
+
+    public static RemoteConnector Create(global::Hosihikari.Bindings.Bedrock.Interop.RemoteConnector arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_93c376ed((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RemoteConnector((nint)handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
@@ -114,7 +125,7 @@ public sealed unsafe partial class RemoteConnector : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_9411bb37((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_9411bb37((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

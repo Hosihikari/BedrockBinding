@@ -38,6 +38,17 @@ public sealed unsafe partial class MolangActorIdArrayPtr : global::System.IDispo
         return __hs_handle;
     }
 
+    public static MolangActorIdArrayPtr Create(global::Hosihikari.Bindings.Bedrock.Interop.MolangActorIdArrayPtr arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_e0e37768((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MolangActorIdArrayPtr((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mActorIds_Address
     {

@@ -61,6 +61,17 @@ public sealed unsafe partial class SnapToSurfaceFeature : global::System.IDispos
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static SnapToSurfaceFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.SnapToSurfaceFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_b1f75758((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SnapToSurfaceFeature((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? _findSnapPosInDirection(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, byte direction)
     {
         var __hs_hasValue = false;

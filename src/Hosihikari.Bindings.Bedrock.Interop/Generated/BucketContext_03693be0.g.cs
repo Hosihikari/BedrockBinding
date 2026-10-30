@@ -38,6 +38,17 @@ public sealed unsafe partial class BucketContext : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static BucketContext Create(global::Hosihikari.Bindings.Bedrock.Interop.ChunkRecyclerTelemetryData_Nested.BucketContext arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_1698917e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BucketContext((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint isInRangeInclusive_Address
     {

@@ -54,6 +54,17 @@ public sealed unsafe partial class ActorInfo : global::System.IDisposable
         return new ActorInfo((nint)handle);
     }
 
+    public static ActorInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorInfo arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_3df06ad3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorInfo((nint)handle);
+    }
+
     public void load(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? tag)
     {
         NativeMethods.TablePtr->C0.hs_method_570c1360((void*)__hosihikari_shim_handle, (void*)(tag?.Handle ?? 0));

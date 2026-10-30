@@ -111,6 +111,17 @@ public sealed unsafe partial class ContainerOpenPacket : global::System.IDisposa
         NativeMethods.TablePtr->C0.hs_method_ad18cd53((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+    public static ContainerOpenPacket Create(global::Hosihikari.Bindings.Bedrock.Interop.ContainerOpenPacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_088edea4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ContainerOpenPacket((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");

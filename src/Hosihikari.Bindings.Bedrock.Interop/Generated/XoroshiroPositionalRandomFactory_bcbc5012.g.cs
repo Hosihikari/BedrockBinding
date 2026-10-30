@@ -50,6 +50,17 @@ public sealed unsafe partial class XoroshiroPositionalRandomFactory : global::Sy
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static XoroshiroPositionalRandomFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.XoroshiroPositionalRandomFactory arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_d14d7e0e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new XoroshiroPositionalRandomFactory((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'IRandom' has no accessible destructor.", false)]
     public nint forBlockPos(nint blockPos) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'IRandom' has no accessible destructor.");

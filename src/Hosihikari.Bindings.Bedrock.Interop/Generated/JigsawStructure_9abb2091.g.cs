@@ -51,6 +51,17 @@ public sealed unsafe partial class JigsawStructure : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static JigsawStructure Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.JigsawStructure arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_9327f571((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new JigsawStructure((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'br::worldgen::GenerationStub' is not supported.", false)]
     public nint findValidGenerationPoint(nint context) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'br::worldgen::GenerationStub' is not supported.");

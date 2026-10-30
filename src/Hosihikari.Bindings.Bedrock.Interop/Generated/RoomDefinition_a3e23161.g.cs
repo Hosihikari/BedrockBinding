@@ -38,6 +38,17 @@ public sealed unsafe partial class RoomDefinition : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static RoomDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.RoomDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_83577731((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RoomDefinition((nint)handle);
+    }
+
     public bool findSource(int scanIndex)
     {
         return NativeMethods.TablePtr->C3.hs_method_bc7a82d5((void*)__hosihikari_shim_handle, scanIndex) != 0;

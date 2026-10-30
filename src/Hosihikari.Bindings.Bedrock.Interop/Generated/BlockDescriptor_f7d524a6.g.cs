@@ -39,12 +39,13 @@ public sealed unsafe partial class BlockDescriptor : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public nint _ctor_8a719833(nint rhs) =>
+    public nint _ctor(nint rhs) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor_e88b6b58(nint desc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy.BlockDescriptor desc)
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_e88b6b58((void*)__hosihikari_shim_handle, (void*)desc.Handle);
+    }
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.BlockDescriptor rhs)
     {
@@ -77,12 +78,19 @@ public sealed unsafe partial class BlockDescriptor : global::System.IDisposable
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
-    public static BlockDescriptor Create_63fc2e9e(nint rhs) =>
+    public static BlockDescriptor Create(nint rhs) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static BlockDescriptor Create_324d67a0(nint desc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static BlockDescriptor Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy.BlockDescriptor desc)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_324d67a0((void*)desc.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockDescriptor((nint)handle);
+    }
 
     public static BlockDescriptor Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockDescriptor rhs)
     {

@@ -38,9 +38,10 @@ public sealed unsafe partial class BlendedMultiNoiseBiomeProvider : global::Syst
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint overworldNoises, nint parameterList, nint attenuatorFactory, nint biomeRegistry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.OverworldNoises3d overworldNoises, global::Hosihikari.Bindings.Bedrock.Interop.ParameterList parameterList, global::Hosihikari.Bindings.Bedrock.Interop.ChunkBlenderFactory attenuatorFactory, global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry biomeRegistry)
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_9656d784((void*)__hosihikari_shim_handle, (void*)overworldNoises.Handle, (void*)parameterList.Handle, (void*)attenuatorFactory.Handle, (void*)biomeRegistry.Handle);
+    }
 
     public static BlendedMultiNoiseBiomeProvider Create()
     {
@@ -64,9 +65,16 @@ public sealed unsafe partial class BlendedMultiNoiseBiomeProvider : global::Syst
         return new BlendedMultiNoiseBiomeProvider((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static BlendedMultiNoiseBiomeProvider Create(nint overworldNoises, nint parameterList, nint attenuatorFactory, nint biomeRegistry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static BlendedMultiNoiseBiomeProvider Create(global::Hosihikari.Bindings.Bedrock.Interop.OverworldNoises3d overworldNoises, global::Hosihikari.Bindings.Bedrock.Interop.ParameterList parameterList, global::Hosihikari.Bindings.Bedrock.Interop.ChunkBlenderFactory attenuatorFactory, global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry biomeRegistry)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5600c936((void*)overworldNoises.Handle, (void*)parameterList.Handle, (void*)attenuatorFactory.Handle, (void*)biomeRegistry.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlendedMultiNoiseBiomeProvider((nint)handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mAttenuationFactory_Address

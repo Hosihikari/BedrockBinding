@@ -47,9 +47,10 @@ public sealed unsafe partial class Modifier : global::System.IDisposable
     public nint _apply(nint random, nint existingTag) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint match) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.processors.BlockEntity.AppendLoot match)
+    {
+        return (nint)NativeMethods.TablePtr->C4.hs_method_8f3e1622((void*)__hosihikari_shim_handle, (void*)match.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
@@ -66,9 +67,27 @@ public sealed unsafe partial class Modifier : global::System.IDisposable
         return new Modifier((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static Modifier Create(nint match) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static Modifier Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.processors.BlockEntity.AppendLoot match)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_2e89a455((void*)match.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Modifier((nint)handle);
+    }
+
+    public static Modifier Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.processors.BlockEntity.Modifier arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_6be6b0f5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Modifier((nint)handle);
+    }
 
     public void appendMetadataKey(global::Hosihikari.Bindings.Bedrock.Interop.Util.XXHash hash)
     {

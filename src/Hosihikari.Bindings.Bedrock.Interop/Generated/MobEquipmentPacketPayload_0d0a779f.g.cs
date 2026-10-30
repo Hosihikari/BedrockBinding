@@ -65,6 +65,17 @@ public sealed unsafe partial class MobEquipmentPacketPayload : global::System.ID
         return new MobEquipmentPacketPayload((nint)handle);
     }
 
+    public static MobEquipmentPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.MobEquipmentPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_f865855d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MobEquipmentPacketPayload((nint)handle);
+    }
+
     public sbyte mContainerId
     {
         get => NativeMethods.TablePtr->C2.hs_get_da5da1df((void*)__hosihikari_shim_handle);

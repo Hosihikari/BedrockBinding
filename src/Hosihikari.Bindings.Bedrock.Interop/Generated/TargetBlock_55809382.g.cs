@@ -283,6 +283,17 @@ public sealed unsafe partial class TargetBlock : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static TargetBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.TargetBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_13778c5d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TargetBlock((nint)handle);
+    }
+
     public void _processHitByProjectileAtPos(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 hitPos, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos blockPos, global::Hosihikari.Bindings.Bedrock.Interop.Actor projectile)
     {
         NativeMethods.TablePtr->C3.hs_method_9469855f((void*)__hosihikari_shim_handle, (void*)hitPos.Handle, (void*)region.Handle, (void*)blockPos.Handle, (void*)projectile.Handle);

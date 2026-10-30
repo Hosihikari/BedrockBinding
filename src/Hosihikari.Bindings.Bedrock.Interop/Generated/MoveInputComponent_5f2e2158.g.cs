@@ -38,6 +38,17 @@ public sealed unsafe partial class MoveInputComponent : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static MoveInputComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.MoveInputComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_ef05f24d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MoveInputComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mCameraOrientation_Address
     {

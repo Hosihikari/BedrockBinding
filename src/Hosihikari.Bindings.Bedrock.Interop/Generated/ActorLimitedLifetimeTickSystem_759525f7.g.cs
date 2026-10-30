@@ -43,6 +43,17 @@ public sealed unsafe partial class ActorLimitedLifetimeTickSystem : global::Syst
         NativeMethods.TablePtr->C0.hs_method_ce236b3e((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static ActorLimitedLifetimeTickSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorLimitedLifetimeTickSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_80de2d18((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorLimitedLifetimeTickSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C0.hs_method_41651244((void*)__hosihikari_shim_handle, (void*)registry.Handle);

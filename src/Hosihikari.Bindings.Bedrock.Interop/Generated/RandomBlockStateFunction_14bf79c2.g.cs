@@ -41,39 +41,50 @@ public sealed unsafe partial class RandomBlockStateFunction : global::System.IDi
     // The native field type is not projected; this is the address of the field storage.
     public nint mPredicates_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_e792a760((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e792a760((void*)__hosihikari_shim_handle);
     }
 
     public void _applyPreVersion(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext context)
     {
-        NativeMethods.TablePtr->C2.hs_method_2a56c441((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)random.Handle, (void*)context.Handle);
+        NativeMethods.TablePtr->C3.hs_method_2a56c441((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)random.Handle, (void*)context.Handle);
     }
 
     public int _getFunctionType()
     {
-        return NativeMethods.TablePtr->C2.hs_method_ca6ccd40((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C3.hs_method_ca6ccd40((void*)__hosihikari_shim_handle);
+    }
+
+    public static RandomBlockStateFunction Create(global::Hosihikari.Bindings.Bedrock.Interop.RandomBlockStateFunction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_27568101((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RandomBlockStateFunction((nint)handle);
     }
 
     public void applyPreVersion(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext context)
     {
-        NativeMethods.TablePtr->C2.hs_method_dc90291b((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)random.Handle, (void*)context.Handle);
+        NativeMethods.TablePtr->C3.hs_method_dc90291b((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)random.Handle, (void*)context.Handle);
     }
 
     public int getFunctionType()
     {
-        return NativeMethods.TablePtr->C2.hs_method_d72ab1fe((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C3.hs_method_d72ab1fe((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockStateName_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_af030380((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_af030380((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mValues_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_58b15146((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_58b15146((void*)__hosihikari_shim_handle);
     }
 
 
@@ -83,7 +94,7 @@ public sealed unsafe partial class RandomBlockStateFunction : global::System.IDi
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_14bf79c2((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_14bf79c2((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

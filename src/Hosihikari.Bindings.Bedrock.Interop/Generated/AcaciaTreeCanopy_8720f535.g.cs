@@ -65,6 +65,17 @@ public sealed unsafe partial class AcaciaTreeCanopy : global::System.IDisposable
         }
     }
 
+    public static AcaciaTreeCanopy Create(global::Hosihikari.Bindings.Bedrock.Interop.AcaciaTreeCanopy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_b4a23771((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AcaciaTreeCanopy((nint)handle);
+    }
+
     public int mCanopySize
     {
         get => NativeMethods.TablePtr->C0.hs_get_72e7219e((void*)__hosihikari_shim_handle);

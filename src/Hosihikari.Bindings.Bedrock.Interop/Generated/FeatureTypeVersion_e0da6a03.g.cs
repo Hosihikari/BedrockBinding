@@ -65,6 +65,17 @@ public sealed unsafe partial class FeatureTypeVersion : global::System.IDisposab
         return new FeatureTypeVersion((nint)handle);
     }
 
+    public static FeatureTypeVersion Create(global::Hosihikari.Bindings.Bedrock.Interop.FeatureTypeVersion arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_006e5d03((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FeatureTypeVersion((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mFormatVersion_Address
     {

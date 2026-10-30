@@ -107,6 +107,17 @@ public sealed unsafe partial class LoopbackPacketSender : global::System.IDispos
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static LoopbackPacketSender Create(global::Hosihikari.Bindings.Bedrock.Interop.LoopbackPacketSender arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_bc3d01dc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LoopbackPacketSender((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void flush(nint id, nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");

@@ -40,7 +40,7 @@ public sealed unsafe partial class ResetJumpRidingScaleSystem : global::System.I
 
     public static void _doResetJumpRidingScaleSystem(global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.JumpRidingScaleComponent jumpRidingScaleComponent, global::Hosihikari.Bindings.Bedrock.Interop.VanillaClientGameplayComponent vanillaClientGameplayComponent)
     {
-        NativeMethods.TablePtr->C2.hs_method_f53b6a57((void*)arg0.Handle, (void*)jumpRidingScaleComponent.Handle, (void*)vanillaClientGameplayComponent.Handle);
+        NativeMethods.TablePtr->C3.hs_method_f53b6a57((void*)arg0.Handle, (void*)jumpRidingScaleComponent.Handle, (void*)vanillaClientGameplayComponent.Handle);
     }
 
     public void Dispose()
@@ -49,7 +49,7 @@ public sealed unsafe partial class ResetJumpRidingScaleSystem : global::System.I
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_ee17fc02((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_ee17fc02((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

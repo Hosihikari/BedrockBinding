@@ -38,6 +38,17 @@ public sealed unsafe partial class StructurePlacement : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static StructurePlacement Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructurePlacement arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_484e4486((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructurePlacement((nint)handle);
+    }
+
     public float mFrequency
     {
         get => NativeMethods.TablePtr->C4.hs_get_bb307153((void*)__hosihikari_shim_handle);

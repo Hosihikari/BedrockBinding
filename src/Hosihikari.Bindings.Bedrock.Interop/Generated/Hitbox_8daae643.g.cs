@@ -38,6 +38,17 @@ public sealed unsafe partial class Hitbox : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Hitbox Create(global::Hosihikari.Bindings.Bedrock.Interop.Hitbox arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_1d346656((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Hitbox((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mAabb_Address
     {

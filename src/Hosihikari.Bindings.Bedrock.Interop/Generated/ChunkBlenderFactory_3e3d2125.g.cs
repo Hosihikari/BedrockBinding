@@ -38,6 +38,17 @@ public sealed unsafe partial class ChunkBlenderFactory : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static ChunkBlenderFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.ChunkBlenderFactory arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_ca6a9d31((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChunkBlenderFactory((nint)handle);
+    }
+
     public void freeChunkBlenderCache()
     {
         NativeMethods.TablePtr->C0.hs_method_81c49f8e((void*)__hosihikari_shim_handle);

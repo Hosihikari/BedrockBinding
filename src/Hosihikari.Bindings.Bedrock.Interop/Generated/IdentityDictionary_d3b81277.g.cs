@@ -38,6 +38,17 @@ public sealed unsafe partial class IdentityDictionary : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static IdentityDictionary Create(global::Hosihikari.Bindings.Bedrock.Interop.IdentityDictionary arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_c4ab9c2c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IdentityDictionary((nint)handle);
+    }
+
     public bool clearIdentity(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardId scoreboardId)
     {
         return NativeMethods.TablePtr->C1.hs_method_c00b1b7b((void*)__hosihikari_shim_handle, (void*)scoreboardId.Handle) != 0;

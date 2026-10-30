@@ -176,6 +176,17 @@ public sealed unsafe partial class MoveToWaterGoal : global::System.IDisposable
         set => NativeMethods.TablePtr->C2.hs_set_69a88f9f((void*)__hosihikari_shim_handle, value);
     }
 
+    public static MoveToWaterGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.MoveToWaterGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_d033eb6a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MoveToWaterGoal((nint)handle);
+    }
+
 
     public void Dispose()
     {

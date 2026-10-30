@@ -62,6 +62,17 @@ public sealed unsafe partial class DimensionDataPacketPayload : global::System.I
     public static DimensionDataPacketPayload Create(nint dimensionDefinitionGroup) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
+    public static DimensionDataPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.DimensionDataPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_ffc2f4e2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DimensionDataPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mDimensionDefinitionGroup_Address
     {

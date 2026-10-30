@@ -40,19 +40,19 @@ public sealed unsafe partial class State
 
     public bool mChanged
     {
-        get => NativeMethods.TablePtr->C2.hs_get_41d2213f((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_41d2213f((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_41d2213f((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_41d2213f((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mHalfFrame
     {
-        get => NativeMethods.TablePtr->C2.hs_get_076903d9((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_076903d9((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_076903d9((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_076903d9((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mOn
     {
-        get => NativeMethods.TablePtr->C2.hs_get_8c08f460((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_8c08f460((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_8c08f460((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_8c08f460((void*)__hosihikari_shim_handle, value);
     }
 }

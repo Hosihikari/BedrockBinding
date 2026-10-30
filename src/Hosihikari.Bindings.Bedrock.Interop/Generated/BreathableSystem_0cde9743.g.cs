@@ -43,6 +43,17 @@ public sealed unsafe partial class BreathableSystem : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_009e9820((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static BreathableSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.BreathableSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_6effd9e1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BreathableSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C0.hs_method_f3b9d060((void*)__hosihikari_shim_handle, (void*)registry.Handle);

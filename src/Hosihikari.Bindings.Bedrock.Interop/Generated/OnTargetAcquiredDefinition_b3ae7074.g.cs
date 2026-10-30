@@ -62,6 +62,17 @@ public sealed unsafe partial class OnTargetAcquiredDefinition : global::System.I
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static OnTargetAcquiredDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_40.OnTargetAcquiredDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_aab4843f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OnTargetAcquiredDefinition((nint)handle);
+    }
+
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C3.hs_method_b7144d0d((void*)ctx.Handle);

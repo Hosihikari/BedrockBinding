@@ -61,6 +61,17 @@ public sealed unsafe partial class ScriptBlockSignComponent : global::System.IDi
         get => (nint)NativeMethods.TablePtr->C3.hs_get_ac4b7e2d((void*)__hosihikari_shim_handle);
     }
 
+    public static ScriptBlockSignComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBlockSignComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_3ad037ce((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptBlockSignComponent((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_124d60dd());

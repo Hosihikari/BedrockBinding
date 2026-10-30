@@ -38,6 +38,17 @@ public sealed unsafe partial class NpcDefinition : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static NpcDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.NpcDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_01666db3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NpcDefinition((nint)handle);
+    }
+
     public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
         NativeMethods.TablePtr->C2.hs_method_537abf85(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));

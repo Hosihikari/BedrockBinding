@@ -38,27 +38,38 @@ public sealed unsafe partial class Type : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Type Create(global::Hosihikari.Bindings.Bedrock.Interop.Recipes_Nested.Type arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a4a57201((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Type((nint)handle);
+    }
+
     public nint mBlock
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_e10f599f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e10f599f((void*)__hosihikari_shim_handle);
     }
 
     public sbyte mC
     {
-        get => NativeMethods.TablePtr->C2.hs_get_5bdc775b((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_5bdc775b((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_5bdc775b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_5bdc775b((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mIngredient_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_bb0ad3f5((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_bb0ad3f5((void*)__hosihikari_shim_handle);
     }
 
     public nint mItem
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_6ce47a9c((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_6ce47a9c((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6ce47a9c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_6ce47a9c((void*)__hosihikari_shim_handle, (void*)value);
     }
 
 
@@ -68,7 +79,7 @@ public sealed unsafe partial class Type : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_5cdf3564((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_5cdf3564((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

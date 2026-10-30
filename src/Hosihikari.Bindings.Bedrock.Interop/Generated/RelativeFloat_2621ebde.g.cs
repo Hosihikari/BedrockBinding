@@ -40,14 +40,14 @@ public sealed unsafe partial class RelativeFloat : global::System.IDisposable
 
     public float mOffset
     {
-        get => NativeMethods.TablePtr->C2.hs_get_3d615477((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_3d615477((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_3d615477((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_3d615477((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mRelative
     {
-        get => NativeMethods.TablePtr->C2.hs_get_07aa4e39((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_07aa4e39((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_07aa4e39((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_07aa4e39((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -56,7 +56,7 @@ public sealed unsafe partial class RelativeFloat : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_2621ebde((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_2621ebde((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

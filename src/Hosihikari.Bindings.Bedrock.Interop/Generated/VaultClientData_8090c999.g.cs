@@ -38,6 +38,17 @@ public sealed unsafe partial class VaultClientData : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static VaultClientData Create(global::Hosihikari.Bindings.Bedrock.Interop.VaultBlockActor_Nested.VaultClientData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_e06fa404((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new VaultClientData((nint)handle);
+    }
+
     public float currentSpin
     {
         get => NativeMethods.TablePtr->C4.hs_get_c2cef35e((void*)__hosihikari_shim_handle);

@@ -40,13 +40,24 @@ public sealed unsafe partial class LegacyStructureBlockPalette : global::System.
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C1.hs_method_78b604ac((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_78b604ac((void*)__hosihikari_shim_handle);
+    }
+
+    public static LegacyStructureBlockPalette Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureBlockPalette arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_27a3741f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacyStructureBlockPalette((nint)handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMapper_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_fb203ed8((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_fb203ed8((void*)__hosihikari_shim_handle);
     }
 
 
@@ -56,7 +67,7 @@ public sealed unsafe partial class LegacyStructureBlockPalette : global::System.
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_1224a55b((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_1224a55b((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

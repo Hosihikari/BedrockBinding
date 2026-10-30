@@ -132,6 +132,17 @@ public sealed unsafe partial class LevelEventListener : global::System.IDisposab
     public nint _onWorldClockTimeModified(nint clock) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<WorldClock>>' is not a known bindable declaration.");
 
+    public static LevelEventListener Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelEventListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_42a32849((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelEventListener((nint)handle);
+    }
+
     public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.LevelNotificationEvent @event)
     {
         return NativeMethods.TablePtr->C2.hs_method_c9f94791((void*)__hosihikari_shim_handle, (void*)@event.Handle);

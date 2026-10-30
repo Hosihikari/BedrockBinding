@@ -38,6 +38,17 @@ public sealed unsafe partial class CircuitSystem : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static CircuitSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_d41e11e8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CircuitSystem((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public nint createComponent(nint pos, byte direction, nint newComponent) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");

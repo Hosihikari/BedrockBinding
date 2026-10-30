@@ -38,6 +38,17 @@ public sealed unsafe partial class IModuleBindingFactory : global::System.IDispo
         return __hs_handle;
     }
 
+    public static IModuleBindingFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.IModuleBindingFactory arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_0d2351c8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IModuleBindingFactory((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint createModuleBinding(nint version, nint config, bool requireDynamicImport) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

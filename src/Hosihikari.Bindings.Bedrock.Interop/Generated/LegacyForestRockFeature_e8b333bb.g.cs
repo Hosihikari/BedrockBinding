@@ -98,6 +98,17 @@ public sealed unsafe partial class LegacyForestRockFeature : global::System.IDis
         return new LegacyForestRockFeature((nint)handle);
     }
 
+    public static LegacyForestRockFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyForestRockFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b3a07fe3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacyForestRockFeature((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mForestRockFeature_Address
     {

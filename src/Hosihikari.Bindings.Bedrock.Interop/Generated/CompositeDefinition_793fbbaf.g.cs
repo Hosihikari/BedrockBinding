@@ -50,6 +50,17 @@ public sealed unsafe partial class CompositeDefinition : global::System.IDisposa
         get => (nint)NativeMethods.TablePtr->C0.hs_get_df4e471d((void*)__hosihikari_shim_handle);
     }
 
+    public static CompositeDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.CompositeDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_cf34422b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CompositeDefinition((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<BehaviorDefinition>' is not supported.", false)]
     public static void _compositeLoadChildrenBehaviors(nint value, nint childList, nint factory, nint ptr) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<BehaviorDefinition>' is not supported.");

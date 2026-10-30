@@ -38,6 +38,17 @@ public sealed unsafe partial class ScriptSculkSpreader : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static ScriptSculkSpreader Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest.ScriptSculkSpreader arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_02567205((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptSculkSpreader((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_729e13b3());

@@ -38,6 +38,17 @@ public sealed unsafe partial class DebuggerStatEvent : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static DebuggerStatEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.DebuggerStatEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_0449c907((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DebuggerStatEvent((nint)handle);
+    }
+
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C1.hs_method_c944c2e5((void*)ctx.Handle);

@@ -62,6 +62,17 @@ public sealed unsafe partial class OffhandContainerValidation : global::System.I
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static OffhandContainerValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.OffhandContainerValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_cf8e295a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OffhandContainerValidation((nint)handle);
+    }
+
     public bool canItemMoveToContainer(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item)
     {
         return NativeMethods.TablePtr->C2.hs_method_05272b56((void*)__hosihikari_shim_handle, (void*)item.Handle) != 0;

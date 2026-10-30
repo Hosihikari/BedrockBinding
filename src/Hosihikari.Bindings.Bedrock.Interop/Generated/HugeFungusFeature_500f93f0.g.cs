@@ -59,6 +59,17 @@ public sealed unsafe partial class HugeFungusFeature : global::System.IDisposabl
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static HugeFungusFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.HugeFungusFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b1e64ecd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HugeFungusFeature((nint)handle);
+    }
+
     public bool mAllowedToPlaceVines
     {
         get => NativeMethods.TablePtr->C1.hs_get_c41d5f63((void*)__hosihikari_shim_handle) != 0;

@@ -38,28 +38,39 @@ public sealed unsafe partial class LegacyTelemetryEventPacketPayload : global::S
         return __hs_handle;
     }
 
+    public static LegacyTelemetryEventPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyTelemetryEventPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_3b19c965((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacyTelemetryEventPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mEventData_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_b921ece1((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b921ece1((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPlayerUniqueId_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_fb01b7b5((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_fb01b7b5((void*)__hosihikari_shim_handle);
     }
 
     public int mType
     {
-        get => NativeMethods.TablePtr->C1.hs_get_e07fd5ff((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_e07fd5ff((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_e07fd5ff((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_e07fd5ff((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mUsePlayerID
     {
-        get => NativeMethods.TablePtr->C1.hs_get_4f96c66b((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_4f96c66b((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_4f96c66b((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_4f96c66b((void*)__hosihikari_shim_handle, value);
     }
 
 
@@ -69,7 +80,7 @@ public sealed unsafe partial class LegacyTelemetryEventPacketPayload : global::S
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_eb1a307b((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_eb1a307b((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

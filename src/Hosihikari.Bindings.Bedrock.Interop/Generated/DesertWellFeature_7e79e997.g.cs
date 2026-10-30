@@ -43,6 +43,17 @@ public sealed unsafe partial class DesertWellFeature : global::System.IDisposabl
         return NativeMethods.TablePtr->C1.hs_method_c5776ad2((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
     }
 
+    public static DesertWellFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.DesertWellFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_9b7cd16e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DesertWellFeature((nint)handle);
+    }
+
     public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         return NativeMethods.TablePtr->C1.hs_method_853a1cbd((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;

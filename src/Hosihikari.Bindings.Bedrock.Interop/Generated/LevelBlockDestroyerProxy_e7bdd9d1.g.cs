@@ -40,22 +40,33 @@ public sealed unsafe partial class LevelBlockDestroyerProxy : global::System.IDi
 
     public void _dropResources(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.Actor? actorContext)
     {
-        NativeMethods.TablePtr->C1.hs_method_bd0b02e7((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)block.Handle, (void*)(actorContext?.Handle ?? 0));
+        NativeMethods.TablePtr->C2.hs_method_bd0b02e7((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)block.Handle, (void*)(actorContext?.Handle ?? 0));
     }
 
     public void _sendEvents(global::Hosihikari.Bindings.Bedrock.Interop.LevelEventManager levelEventManager, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
-        NativeMethods.TablePtr->C1.hs_method_b7051aca((void*)__hosihikari_shim_handle, (void*)levelEventManager.Handle, (void*)region.Handle, (void*)pos.Handle, (void*)block.Handle);
+        NativeMethods.TablePtr->C2.hs_method_b7051aca((void*)__hosihikari_shim_handle, (void*)levelEventManager.Handle, (void*)region.Handle, (void*)pos.Handle, (void*)block.Handle);
+    }
+
+    public static LevelBlockDestroyerProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelBlockDestroyerProxy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_0be301ea((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelBlockDestroyerProxy((nint)handle);
     }
 
     public void dropResources(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.Actor? actorContext)
     {
-        NativeMethods.TablePtr->C1.hs_method_0fda8eb8((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)block.Handle, (void*)(actorContext?.Handle ?? 0));
+        NativeMethods.TablePtr->C2.hs_method_0fda8eb8((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)block.Handle, (void*)(actorContext?.Handle ?? 0));
     }
 
     public void sendEvents(global::Hosihikari.Bindings.Bedrock.Interop.LevelEventManager levelEventManager, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
-        NativeMethods.TablePtr->C1.hs_method_cee317c9((void*)__hosihikari_shim_handle, (void*)levelEventManager.Handle, (void*)region.Handle, (void*)pos.Handle, (void*)block.Handle);
+        NativeMethods.TablePtr->C2.hs_method_cee317c9((void*)__hosihikari_shim_handle, (void*)levelEventManager.Handle, (void*)region.Handle, (void*)pos.Handle, (void*)block.Handle);
     }
 
 
@@ -65,7 +76,7 @@ public sealed unsafe partial class LevelBlockDestroyerProxy : global::System.IDi
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_e7bdd9d1((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_e7bdd9d1((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

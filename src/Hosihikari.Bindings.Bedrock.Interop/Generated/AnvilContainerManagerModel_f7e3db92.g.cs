@@ -76,6 +76,17 @@ public sealed unsafe partial class AnvilContainerManagerModel : global::System.I
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static AnvilContainerManagerModel Create(global::Hosihikari.Bindings.Bedrock.Interop.AnvilContainerManagerModel arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_c966ae07((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AnvilContainerManagerModel((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext _postInit()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext((nint)NativeMethods.TablePtr->C0.hs_method_b828c748((void*)__hosihikari_shim_handle));

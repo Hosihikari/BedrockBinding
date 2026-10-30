@@ -263,6 +263,17 @@ public sealed unsafe partial class FertilizeFarmBlockGoal : global::System.IDisp
         }
     }
 
+    public static FertilizeFarmBlockGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.FertilizeFarmBlockGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_daabc9b5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FertilizeFarmBlockGoal((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public void appendDebugInfo(nint str) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");

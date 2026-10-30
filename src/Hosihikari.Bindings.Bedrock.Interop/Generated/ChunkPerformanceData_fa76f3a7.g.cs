@@ -53,6 +53,17 @@ public sealed unsafe partial class ChunkPerformanceData : global::System.IDispos
     public void _visit(nint visitor) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
+    public static ChunkPerformanceData Create(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPerformanceData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_40348d56((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChunkPerformanceData((nint)handle);
+    }
+
     public void _onChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk, int arg2)
     {
         NativeMethods.TablePtr->C0.hs_method_e53e51a4((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)levelChunk.Handle, arg2);

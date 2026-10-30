@@ -38,6 +38,17 @@ public sealed unsafe partial class DefinitionModifier : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static DefinitionModifier Create(global::Hosihikari.Bindings.Bedrock.Interop.DefinitionModifier arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_476d635d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DefinitionModifier((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mResponses_Address
     {

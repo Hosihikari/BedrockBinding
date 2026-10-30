@@ -47,9 +47,9 @@ public sealed unsafe partial class StartGamePacketPayload : global::System.IDisp
     public nint _ctor(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public nint _ctor(nint settings, nint entityId, nint runtimeId, nint entityGameType, bool enableItemStackNetManager, nint pos, nint rot, nint levelId, nint levelName, nint premiumTemplateContentIdentity, nint multiplayerCorrelationId, nint blockDefinitionGroup, bool isTrial, nint playerPropertyData, nint movementSettings, nint serverVersion, nint worldTemplateId, nint serverJoinInfo, nint serverTelemetryData, ulong levelCurrentTime, int enchantmentSeed, ulong blockTypeRegistryChecksum) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public void _dtor()
     {
@@ -71,9 +71,9 @@ public sealed unsafe partial class StartGamePacketPayload : global::System.IDisp
     public static StartGamePacketPayload Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static StartGamePacketPayload Create(nint settings, nint entityId, nint runtimeId, nint entityGameType, bool enableItemStackNetManager, nint pos, nint rot, nint levelId, nint levelName, nint premiumTemplateContentIdentity, nint multiplayerCorrelationId, nint blockDefinitionGroup, bool isTrial, nint playerPropertyData, nint movementSettings, nint serverVersion, nint worldTemplateId, nint serverJoinInfo, nint serverTelemetryData, ulong levelCurrentTime, int enchantmentSeed, ulong blockTypeRegistryChecksum) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public static StartGamePacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.StartGamePacketPayload arg0)
     {

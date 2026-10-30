@@ -38,6 +38,17 @@ public sealed unsafe partial class ChunkData : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ChunkData Create(global::Hosihikari.Bindings.Bedrock.Interop.ChunkRecyclerTelemetryData_Nested.ChunkData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_509edff1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChunkData((nint)handle);
+    }
+
     public long mSequence
     {
         get => NativeMethods.TablePtr->C0.hs_get_ee35db9d((void*)__hosihikari_shim_handle);

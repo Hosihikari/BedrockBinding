@@ -70,6 +70,17 @@ public sealed unsafe partial class SculkSpreader : global::System.IDisposable
         return new SculkSpreader((nint)handle);
     }
 
+    public static SculkSpreader Create(global::Hosihikari.Bindings.Bedrock.Interop.SculkSpreader arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c9debf80((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SculkSpreader((nint)handle);
+    }
+
     public void load(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
         NativeMethods.TablePtr->C3.hs_method_a6796d98((void*)__hosihikari_shim_handle, (void*)tag.Handle);

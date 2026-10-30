@@ -53,6 +53,17 @@ public sealed unsafe partial class Motif : global::System.IDisposable
         return new Motif((nint)handle);
     }
 
+    public static Motif Create(global::Hosihikari.Bindings.Bedrock.Interop.Motif arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_c4dcebbb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Motif((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'glm::vec<4, float>' is not a known bindable declaration.", false)]
     public static Motif Create(nint name, int w, int h, nint UVs, bool isPublic, bool isSplitMeshPainting) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'glm::vec<4, float>' is not a known bindable declaration.");

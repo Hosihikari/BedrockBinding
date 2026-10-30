@@ -99,6 +99,17 @@ public sealed unsafe partial class PathNavigation : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static PathNavigation Create(global::Hosihikari.Bindings.Bedrock.Interop.PathNavigation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_e896e06d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PathNavigation((nint)handle);
+    }
+
     public static float _getHighestBlockHeight(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, global::Hosihikari.Bindings.Bedrock.Interop.Vec2 aabb)
     {
         return NativeMethods.TablePtr->C2.hs_method_60ce4027((void*)region.Handle, (void*)mob.Handle, (void*)pos.Handle, (void*)aabb.Handle);

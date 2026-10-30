@@ -44,6 +44,17 @@ public sealed unsafe partial class SoundPlayerInterface : global::System.IDispos
         get => (nint)NativeMethods.TablePtr->C3.hs_get_b04bf39b((void*)__hosihikari_shim_handle);
     }
 
+    public static SoundPlayerInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.SoundPlayerInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_f8cdb7c3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SoundPlayerInterface((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void fade(nint serverSoundHandle, float duration, float targetVolume) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

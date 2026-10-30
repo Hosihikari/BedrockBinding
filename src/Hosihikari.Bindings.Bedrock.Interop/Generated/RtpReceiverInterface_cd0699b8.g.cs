@@ -59,6 +59,17 @@ public sealed unsafe partial class RtpReceiverInterface : global::System.IDispos
     public nint GetSources() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'webrtc::RtpSource' is not supported.");
 
+    public static RtpReceiverInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RtpReceiverInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_6741c8e5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RtpReceiverInterface((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::scoped_refptr<webrtc::FrameTransformerInterface>' is not a known bindable declaration.", false)]
     public void SetDepacketizerToDecoderFrameTransformer(nint frame_transformer) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::scoped_refptr<webrtc::FrameTransformerInterface>' is not a known bindable declaration.");

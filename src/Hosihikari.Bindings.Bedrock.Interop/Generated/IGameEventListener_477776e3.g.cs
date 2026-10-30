@@ -43,6 +43,17 @@ public sealed unsafe partial class IGameEventListener : global::System.IDisposab
         return NativeMethods.TablePtr->C1.hs_method_983ee78e((void*)__hosihikari_shim_handle);
     }
 
+    public static IGameEventListener Create(global::Hosihikari.Bindings.Bedrock.Interop.IGameEventListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_7159d0ca((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IGameEventListener((nint)handle);
+    }
+
     public int getDeliveryMode()
     {
         return NativeMethods.TablePtr->C1.hs_method_f844bdd5((void*)__hosihikari_shim_handle);

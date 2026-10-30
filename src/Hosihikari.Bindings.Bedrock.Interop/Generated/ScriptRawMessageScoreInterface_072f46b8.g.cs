@@ -43,6 +43,17 @@ public sealed unsafe partial class ScriptRawMessageScoreInterface : global::Syst
         NativeMethods.TablePtr->C3.hs_method_7de30444((void*)__hosihikari_shim_handle);
     }
 
+    public static ScriptRawMessageScoreInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptRawMessageScoreInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_82b800ac((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptRawMessageScoreInterface((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding((nint)NativeMethods.TablePtr->C3.hs_method_c6373e5b());

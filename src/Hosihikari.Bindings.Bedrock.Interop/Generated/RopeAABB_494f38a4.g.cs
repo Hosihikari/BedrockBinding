@@ -38,6 +38,17 @@ public sealed unsafe partial class RopeAABB : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static RopeAABB Create(global::Hosihikari.Bindings.Bedrock.Interop.RopeAABB arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_3f9b120e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RopeAABB((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBB_Address
     {

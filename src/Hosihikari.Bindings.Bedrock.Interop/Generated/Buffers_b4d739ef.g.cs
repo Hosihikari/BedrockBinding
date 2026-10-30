@@ -38,34 +38,45 @@ public sealed unsafe partial class Buffers : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Buffers Create(global::Hosihikari.Bindings.Bedrock.Interop.Recipes_Nested.Buffers arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_f9236b72((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Buffers((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mInputList_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_1eff2a07((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1eff2a07((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOutputInstances_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_501492cc((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_501492cc((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mResultList_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_5327aaeb((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5327aaeb((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mShapeList_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_1d7be8e5((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1d7be8e5((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTags_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_e78f7a7e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e78f7a7e((void*)__hosihikari_shim_handle);
     }
 
 
@@ -75,7 +86,7 @@ public sealed unsafe partial class Buffers : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_b4d739ef((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_b4d739ef((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -67,6 +67,17 @@ public sealed unsafe partial class FilterTestAltitude : global::System.IDisposab
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static FilterTestAltitude Create(global::Hosihikari.Bindings.Bedrock.Interop.FilterTestAltitude arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_457baa70((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FilterTestAltitude((nint)handle);
+    }
+
     public bool evaluate(nint context)
     {
         return NativeMethods.TablePtr->C1.hs_method_ab0d4ea5((void*)__hosihikari_shim_handle, (void*)context) != 0;

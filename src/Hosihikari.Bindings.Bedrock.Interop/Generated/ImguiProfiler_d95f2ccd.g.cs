@@ -64,6 +64,17 @@ public sealed unsafe partial class ImguiProfiler : global::System.IDisposable
         return new ImguiProfiler((nint)handle);
     }
 
+    public static ImguiProfiler Create(global::Hosihikari.Bindings.Bedrock.Interop.ImguiProfiler arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_efdd3588((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ImguiProfiler((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public static void addRecord(nint record) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");

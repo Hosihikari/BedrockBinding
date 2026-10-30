@@ -43,6 +43,17 @@ public sealed unsafe partial class PlayerInteractEvent : global::System.IDisposa
         NativeMethods.TablePtr->C2.hs_method_b3550318((void*)__hosihikari_shim_handle);
     }
 
+    public static PlayerInteractEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerInteractEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_116c4ce9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerInteractEvent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mItem_Address
     {

@@ -38,6 +38,17 @@ public sealed unsafe partial class ActorRemovedEvent : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static ActorRemovedEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorRemovedEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_cf0ed6b7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorRemovedEvent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mEntity_Address
     {

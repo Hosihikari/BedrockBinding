@@ -43,6 +43,17 @@ public sealed unsafe partial class SchedulerSystem : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_12a2283a((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static SchedulerSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.SchedulerSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_2143043d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SchedulerSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C3.hs_method_f60c42e5((void*)__hosihikari_shim_handle, (void*)registry.Handle);

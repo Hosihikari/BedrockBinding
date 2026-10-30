@@ -38,6 +38,17 @@ public sealed unsafe partial class ActorSpawnConditionData : global::System.IDis
         return __hs_handle;
     }
 
+    public static ActorSpawnConditionData Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorSpawnConditionData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_0b06d03e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorSpawnConditionData((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBiomeFilter_Address
     {

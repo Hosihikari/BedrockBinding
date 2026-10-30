@@ -38,6 +38,17 @@ public sealed unsafe partial class ScriptMusicOptions : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static ScriptMusicOptions Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptMusicOptions arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_1b4dbe6f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptMusicOptions((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bindV010()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_c5b5152a());

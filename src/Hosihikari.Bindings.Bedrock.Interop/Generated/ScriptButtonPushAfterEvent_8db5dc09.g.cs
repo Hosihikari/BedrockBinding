@@ -66,6 +66,17 @@ public sealed unsafe partial class ScriptButtonPushAfterEvent : global::System.I
         return new ScriptButtonPushAfterEvent((nint)handle);
     }
 
+    public static ScriptButtonPushAfterEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptButtonPushAfterEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_ebe43ff0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptButtonPushAfterEvent((nint)handle);
+    }
+
     public static ScriptButtonPushAfterEvent Create(global::Hosihikari.Bindings.Abi.SharedHandle? eventData, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope)
     {
         var handle = NativeMethods.TablePtr->C3.hs_create_20113c0f(eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)scope.Handle);

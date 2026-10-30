@@ -298,6 +298,17 @@ public sealed unsafe partial class DropperBlock : global::System.IDisposable
         return new DropperBlock((nint)handle);
     }
 
+    public static DropperBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.DropperBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_878b9dd8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DropperBlock((nint)handle);
+    }
+
     public static DropperBlock Create(string nameId, int id)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);

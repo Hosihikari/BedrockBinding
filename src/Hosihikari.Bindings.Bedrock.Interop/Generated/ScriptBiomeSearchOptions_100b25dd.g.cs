@@ -38,6 +38,17 @@ public sealed unsafe partial class ScriptBiomeSearchOptions : global::System.IDi
         return __hs_handle;
     }
 
+    public static ScriptBiomeSearchOptions Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBiomeSearchOptions arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_bd76473b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptBiomeSearchOptions((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding((nint)NativeMethods.TablePtr->C3.hs_method_bdd3ce34());

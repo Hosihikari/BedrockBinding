@@ -89,6 +89,17 @@ public sealed unsafe partial class HorseEquipContainerValidation : global::Syste
         return new HorseEquipContainerValidation((nint)handle);
     }
 
+    public static HorseEquipContainerValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.HorseEquipContainerValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_92eaf64e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HorseEquipContainerValidation((nint)handle);
+    }
+
     public int getAllowedAddCount(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg1)
     {
         return NativeMethods.TablePtr->C1.hs_method_4010a39b((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle);

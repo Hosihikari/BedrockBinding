@@ -44,7 +44,11 @@ public sealed partial class NonOwnerPointer_PackCommand__IPackCommandPipeline_
         throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public static NonOwnerPointer_PackCommand__IPackCommandPipeline_ Create(nint arg0) =>
+    public static NonOwnerPointer_PackCommand__IPackCommandPipeline_ Create_1169747b(nint arg0) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
+    public static NonOwnerPointer_PackCommand__IPackCommandPipeline_ Create_046336a1(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]

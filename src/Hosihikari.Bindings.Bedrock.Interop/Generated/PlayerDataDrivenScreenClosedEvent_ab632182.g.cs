@@ -38,6 +38,17 @@ public sealed unsafe partial class PlayerDataDrivenScreenClosedEvent : global::S
         return __hs_handle;
     }
 
+    public static PlayerDataDrivenScreenClosedEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerDataDrivenScreenClosedEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_77efaeb1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerDataDrivenScreenClosedEvent((nint)handle);
+    }
+
     public byte mCloseReason
     {
         get => NativeMethods.TablePtr->C2.hs_get_ae24a751((void*)__hosihikari_shim_handle);

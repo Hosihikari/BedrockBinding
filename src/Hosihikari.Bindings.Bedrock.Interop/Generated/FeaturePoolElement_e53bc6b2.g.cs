@@ -100,6 +100,17 @@ public sealed unsafe partial class FeaturePoolElement : global::System.IDisposab
     public static FeaturePoolElement Create(nint featureRegistry, nint structureManager, nint name) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<IStructureTemplateManager>>' is not a known bindable declaration.");
 
+    public static FeaturePoolElement Create(global::Hosihikari.Bindings.Bedrock.Interop.FeaturePoolElement arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_82551d35((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FeaturePoolElement((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Abi.SharedHandle? createMetadata()
     {
         var __hs_shared = NativeMethods.TablePtr->C1.hs_method_6afad414((void*)__hosihikari_shim_handle);

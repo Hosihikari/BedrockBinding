@@ -38,6 +38,17 @@ public sealed unsafe partial class ActorDefinitionFeedItem : global::System.IDis
         return __hs_handle;
     }
 
+    public static ActorDefinitionFeedItem Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionFeedItem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_bd83de5f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorDefinitionFeedItem((nint)handle);
+    }
+
     public float mGrowth
     {
         get => NativeMethods.TablePtr->C0.hs_get_67c9b7c5((void*)__hosihikari_shim_handle);

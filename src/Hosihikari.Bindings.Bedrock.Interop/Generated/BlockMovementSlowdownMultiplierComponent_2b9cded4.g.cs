@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockMovementSlowdownMultiplierComponent : gl
         return __hs_handle;
     }
 
+    public static BlockMovementSlowdownMultiplierComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockMovementSlowdownMultiplierComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f48f9dc9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockMovementSlowdownMultiplierComponent((nint)handle);
+    }
+
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mValue_Address

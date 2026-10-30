@@ -49,6 +49,17 @@ public sealed unsafe partial class StoredCommand : global::System.IDisposable
         return new StoredCommand((nint)handle);
     }
 
+    public static StoredCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.npc.StoredCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_ff540b57((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StoredCommand((nint)handle);
+    }
+
     public nint command
     {
         get => (nint)NativeMethods.TablePtr->C4.hs_get_e4b6c6e1((void*)__hosihikari_shim_handle);

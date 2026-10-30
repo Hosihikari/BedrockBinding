@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockPosIterator : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static BlockPosIterator Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPosIterator arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_9bd7ba74((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockPosIterator((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mCurrentPos_Address
     {

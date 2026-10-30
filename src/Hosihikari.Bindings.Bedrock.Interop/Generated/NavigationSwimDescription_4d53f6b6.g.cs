@@ -169,6 +169,17 @@ public sealed unsafe partial class NavigationSwimDescription : global::System.ID
         return (nint)NativeMethods.TablePtr->C2.hs_method_8c3223ba((void*)__hosihikari_shim_handle);
     }
 
+    public static NavigationSwimDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.NavigationSwimDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_15de13c0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NavigationSwimDescription((nint)handle);
+    }
+
     public nint getJsonName()
     {
         return (nint)NativeMethods.TablePtr->C2.hs_method_66013590((void*)__hosihikari_shim_handle);

@@ -48,6 +48,17 @@ public sealed unsafe partial class FillContainerFunction : global::System.IDispo
         return NativeMethods.TablePtr->C1.hs_method_d78f2e74((void*)__hosihikari_shim_handle);
     }
 
+    public static FillContainerFunction Create(global::Hosihikari.Bindings.Bedrock.Interop.FillContainerFunction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_345d3862((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FillContainerFunction((nint)handle);
+    }
+
     public void applyPreVersion(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext context)
     {
         NativeMethods.TablePtr->C1.hs_method_430e4008((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)random.Handle, (void*)context.Handle);

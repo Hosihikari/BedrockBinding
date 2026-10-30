@@ -43,6 +43,17 @@ public sealed unsafe partial class DanceSystem : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_d70dfb23((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static DanceSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.DanceSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_75293d90((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DanceSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C1.hs_method_e73936df((void*)__hosihikari_shim_handle, (void*)registry.Handle);

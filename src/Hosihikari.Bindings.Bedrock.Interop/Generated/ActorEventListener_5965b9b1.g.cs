@@ -131,6 +131,17 @@ public sealed unsafe partial class ActorEventListener : global::System.IDisposab
         return NativeMethods.TablePtr->C0.hs_method_08f7275b((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
+    public static ActorEventListener Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorEventListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_37a5ee9a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorEventListener((nint)handle);
+    }
+
     public int onActorAttackedActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.Actor target)
     {
         return NativeMethods.TablePtr->C0.hs_method_b67036bc((void*)__hosihikari_shim_handle, (void*)actor.Handle, (void*)target.Handle);

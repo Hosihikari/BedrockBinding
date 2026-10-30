@@ -38,6 +38,17 @@ public sealed unsafe partial class IGameTestRuleHelper : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static IGameTestRuleHelper Create(global::Hosihikari.Bindings.Bedrock.Interop.gametest.IGameTestRuleHelper arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_92082adc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IGameTestRuleHelper((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void addRuleToClear(int ruleID) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

@@ -47,6 +47,17 @@ public sealed unsafe partial class HandEquippedItemComponent : global::System.ID
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static HandEquippedItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.HandEquippedItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_19e580c9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HandEquippedItemComponent((nint)handle);
+    }
+
     public void _initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {
         NativeMethods.TablePtr->C1.hs_method_81fa789a((void*)__hosihikari_shim_handle, (void*)owner.Handle);

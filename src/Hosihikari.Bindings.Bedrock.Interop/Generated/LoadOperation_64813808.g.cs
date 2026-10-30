@@ -65,6 +65,17 @@ public sealed unsafe partial class LoadOperation : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->C2.hs_method_8472c35b((void*)__hosihikari_shim_handle);
     }
 
+    public static LoadOperation Create(global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.LoadOperation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_787072bd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LoadOperation((nint)handle);
+    }
+
     public bool _init(global::Hosihikari.Bindings.Abi.SharedHandle? databasePtr, global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.TrackingRecord record)
     {
         return NativeMethods.TablePtr->C2.hs_method_69751f39((void*)__hosihikari_shim_handle, databasePtr?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)record.Handle) != 0;

@@ -49,6 +49,17 @@ public sealed unsafe partial class ScreenHandlerHUD : global::System.IDisposable
         return NativeMethods.TablePtr->C3.hs_method_ed2e5862((void*)__hosihikari_shim_handle, (void*)requestAction.Handle);
     }
 
+    public static ScreenHandlerHUD Create(global::Hosihikari.Bindings.Bedrock.Interop.ScreenHandlerHUD arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_cfa7ab09((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScreenHandlerHUD((nint)handle);
+    }
+
     public byte handleAction(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestAction requestAction)
     {
         return NativeMethods.TablePtr->C3.hs_method_acb9bda9((void*)__hosihikari_shim_handle, (void*)requestAction.Handle);

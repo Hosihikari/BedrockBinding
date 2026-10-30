@@ -48,6 +48,17 @@ public sealed unsafe partial class BuriedTreasurePiece : global::System.IDisposa
         return NativeMethods.TablePtr->C0.hs_method_60792e89((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle) != 0;
     }
 
+    public static BuriedTreasurePiece Create(global::Hosihikari.Bindings.Bedrock.Interop.BuriedTreasurePiece arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_b28e82cf((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BuriedTreasurePiece((nint)handle);
+    }
+
     public int getType()
     {
         return NativeMethods.TablePtr->C0.hs_method_f0b4e98d((void*)__hosihikari_shim_handle);

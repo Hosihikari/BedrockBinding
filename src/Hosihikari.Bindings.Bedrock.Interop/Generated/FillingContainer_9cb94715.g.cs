@@ -196,6 +196,17 @@ public sealed unsafe partial class FillingContainer : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static FillingContainer Create(global::Hosihikari.Bindings.Bedrock.Interop.FillingContainer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_7cdb5ab2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FillingContainer((nint)handle);
+    }
+
     public int _addResource(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
     {
         return NativeMethods.TablePtr->C1.hs_method_63f0545c((void*)__hosihikari_shim_handle, (void*)item.Handle);

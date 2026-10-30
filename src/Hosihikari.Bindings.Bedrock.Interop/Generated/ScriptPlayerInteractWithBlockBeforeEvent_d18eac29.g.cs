@@ -71,6 +71,17 @@ public sealed unsafe partial class ScriptPlayerInteractWithBlockBeforeEvent : gl
         return new ScriptPlayerInteractWithBlockBeforeEvent((nint)handle);
     }
 
+    public static ScriptPlayerInteractWithBlockBeforeEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptPlayerInteractWithBlockBeforeEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_bde5250d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptPlayerInteractWithBlockBeforeEvent((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_90ae8824());

@@ -72,6 +72,17 @@ public sealed unsafe partial class GameTestCommand : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_089e817f((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static GameTestCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.GameTestCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_bfed50e8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GameTestCommand((nint)handle);
+    }
+
     public void _handleRunSet(global::Hosihikari.Bindings.Bedrock.Interop.MinecraftGameTest gameTest, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output, bool stopOtherTestsOnFailure)
     {
         NativeMethods.TablePtr->C1.hs_method_357bd54e((void*)__hosihikari_shim_handle, (void*)gameTest.Handle, (void*)region.Handle, (void*)origin.Handle, (void*)output.Handle, stopOtherTestsOnFailure);

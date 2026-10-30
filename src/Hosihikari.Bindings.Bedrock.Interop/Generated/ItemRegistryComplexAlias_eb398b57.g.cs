@@ -43,6 +43,17 @@ public sealed unsafe partial class ItemRegistryComplexAlias : global::System.IDi
         NativeMethods.TablePtr->C1.hs_method_3de171b1((void*)__hosihikari_shim_handle);
     }
 
+    public static ItemRegistryComplexAlias Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistryComplexAlias arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_423f2b61((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ItemRegistryComplexAlias((nint)handle);
+    }
+
     public bool allowCommands
     {
         get => NativeMethods.TablePtr->C1.hs_get_48195419((void*)__hosihikari_shim_handle) != 0;

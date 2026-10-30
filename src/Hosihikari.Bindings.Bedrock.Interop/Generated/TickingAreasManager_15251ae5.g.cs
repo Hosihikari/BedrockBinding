@@ -44,7 +44,7 @@ public sealed unsafe partial class TickingAreasManager : global::System.IDisposa
 
     public static TickingAreasManager Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_b046fd48();
+        var handle = NativeMethods.TablePtr->C4.hs_create_b046fd48();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,6 +56,17 @@ public sealed unsafe partial class TickingAreasManager : global::System.IDisposa
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LevelStorage>' is not a known bindable declaration.", false)]
     public static TickingAreasManager Create(nint levelStorage) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LevelStorage>' is not a known bindable declaration.");
+
+    public static TickingAreasManager Create(global::Hosihikari.Bindings.Bedrock.Interop.TickingAreasManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_3a4f4000((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TickingAreasManager((nint)handle);
+    }
 
     public int _addArea(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionId, string name, global::Hosihikari.Bindings.Bedrock.Interop.Bounds bounds, bool isCircle, int limitCheck, bool isPersistent, byte loadMode, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage)
     {
@@ -72,13 +83,13 @@ public sealed unsafe partial class TickingAreasManager : global::System.IDisposa
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return NativeMethods.TablePtr->C3.hs_method_a76cd1a4((void*)__hosihikari_shim_handle, (void*)dimensionId.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)bounds.Handle, isCircle, limitCheck, isPersistent, loadMode, (void*)levelStorage.Handle);
+            return NativeMethods.TablePtr->C4.hs_method_a76cd1a4((void*)__hosihikari_shim_handle, (void*)dimensionId.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)bounds.Handle, isCircle, limitCheck, isPersistent, loadMode, (void*)levelStorage.Handle);
         }
     }
 
     public static void _deletePendingArea(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage, global::Hosihikari.Bindings.Bedrock.Interop.PendingArea pendingArea)
     {
-        NativeMethods.TablePtr->C3.hs_method_64d5dab6((void*)levelStorage.Handle, (void*)pendingArea.Handle);
+        NativeMethods.TablePtr->C4.hs_method_64d5dab6((void*)levelStorage.Handle, (void*)pendingArea.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.", false)]
@@ -87,26 +98,27 @@ public sealed unsafe partial class TickingAreasManager : global::System.IDisposa
 
     public void _postReloadActorAdded(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
-        NativeMethods.TablePtr->C3.hs_method_f5dd6a66((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+        NativeMethods.TablePtr->C4.hs_method_f5dd6a66((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
     public static void _savePendingArea(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionId, global::Hosihikari.Bindings.Bedrock.Interop.PendingArea pendingArea)
     {
-        NativeMethods.TablePtr->C3.hs_method_dc96d06f((void*)levelStorage.Handle, (void*)dimensionId.Handle, (void*)pendingArea.Handle);
+        NativeMethods.TablePtr->C4.hs_method_dc96d06f((void*)levelStorage.Handle, (void*)dimensionId.Handle, (void*)pendingArea.Handle);
     }
 
     public void addEntityArea(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionId, global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage)
     {
-        NativeMethods.TablePtr->C3.hs_method_d045e89a((void*)__hosihikari_shim_handle, (void*)dimensionId.Handle, (void*)actor.Handle, (void*)levelStorage.Handle);
+        NativeMethods.TablePtr->C4.hs_method_d045e89a((void*)__hosihikari_shim_handle, (void*)dimensionId.Handle, (void*)actor.Handle, (void*)levelStorage.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void addEntityArea(nint dimensionId, nint entityId, nint bounds, bool alwaysActive, float maxDistToPlayers, nint levelStorage) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void addEntityArea(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionId, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID entityId, global::Hosihikari.Bindings.Bedrock.Interop.Bounds bounds, bool alwaysActive, float maxDistToPlayers, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage)
+    {
+        NativeMethods.TablePtr->C4.hs_method_1f995821((void*)__hosihikari_shim_handle, (void*)dimensionId.Handle, (void*)entityId.Handle, (void*)bounds.Handle, alwaysActive, maxDistToPlayers, (void*)levelStorage.Handle);
+    }
 
     public void addTickingAreaListForDimension(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionId, global::Hosihikari.Bindings.Abi.SharedHandle? tickingAreaList)
     {
-        NativeMethods.TablePtr->C3.hs_method_84c06b29((void*)__hosihikari_shim_handle, (void*)dimensionId.Handle, tickingAreaList?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C4.hs_method_84c06b29((void*)__hosihikari_shim_handle, (void*)dimensionId.Handle, tickingAreaList?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.TickingAreasManager_Nested.ScopedContext addTransientScopedArea(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionId, string name, ulong scopeKey, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID uuid, global::Hosihikari.Bindings.Bedrock.Interop.Bounds bounds)
@@ -124,64 +136,64 @@ public sealed unsafe partial class TickingAreasManager : global::System.IDisposa
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.TickingAreasManager_Nested.ScopedContext((nint)NativeMethods.TablePtr->C3.hs_method_7eeaefa3((void*)__hosihikari_shim_handle, (void*)dimensionId.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, scopeKey, (void*)uuid.Handle, (void*)bounds.Handle));
+            return new global::Hosihikari.Bindings.Bedrock.Interop.TickingAreasManager_Nested.ScopedContext((nint)NativeMethods.TablePtr->C4.hs_method_7eeaefa3((void*)__hosihikari_shim_handle, (void*)dimensionId.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, scopeKey, (void*)uuid.Handle, (void*)bounds.Handle));
         }
     }
 
     public uint countStandaloneTickingAreas()
     {
-        return NativeMethods.TablePtr->C3.hs_method_2303fa4d((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C4.hs_method_2303fa4d((void*)__hosihikari_shim_handle);
     }
 
     public static int getLimitCheck(global::Hosihikari.Bindings.Bedrock.Interop.Level level, bool enforce)
     {
-        return NativeMethods.TablePtr->C3.hs_method_34fe5d18((void*)level.Handle, enforce);
+        return NativeMethods.TablePtr->C4.hs_method_34fe5d18((void*)level.Handle, enforce);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mActiveAreas_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_47662e39((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_47662e39((void*)__hosihikari_shim_handle);
     }
 
     public bool mIsPreloadDone
     {
-        get => NativeMethods.TablePtr->C3.hs_get_ff57ee69((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_ff57ee69((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_ff57ee69((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_ff57ee69((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLevelStorage_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_4f2b020b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_4f2b020b((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnCanStartGameSaveTimerCheckSubscription_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_394bd464((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_394bd464((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPendingAreas_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_13507cdb((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_13507cdb((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPostReloadActorAdded_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_09372256((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_09372256((void*)__hosihikari_shim_handle);
     }
 
     public void registerForActorManagerEvents(global::Hosihikari.Bindings.Bedrock.Interop.IActorManagerConnector actorManagerConnector)
     {
-        NativeMethods.TablePtr->C3.hs_method_b2a9e5d2((void*)__hosihikari_shim_handle, (void*)actorManagerConnector.Handle);
+        NativeMethods.TablePtr->C4.hs_method_b2a9e5d2((void*)__hosihikari_shim_handle, (void*)actorManagerConnector.Handle);
     }
 
     public void registerForLevelStorageManagerEvents(global::Hosihikari.Bindings.Bedrock.Interop.ILevelStorageManagerConnector levelStorageManagerConnector)
     {
-        NativeMethods.TablePtr->C3.hs_method_d7c92f88((void*)__hosihikari_shim_handle, (void*)levelStorageManagerConnector.Handle);
+        NativeMethods.TablePtr->C4.hs_method_d7c92f88((void*)__hosihikari_shim_handle, (void*)levelStorageManagerConnector.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'TickingAreaDescription' is not supported.", false)]
@@ -203,7 +215,7 @@ public sealed unsafe partial class TickingAreasManager : global::System.IDisposa
         fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
         {
             var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
-            NativeMethods.TablePtr->C3.hs_method_62f0813e((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(uuids?.Length ?? 0));
+            NativeMethods.TablePtr->C4.hs_method_62f0813e((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(uuids?.Length ?? 0));
         }
     }
 
@@ -217,7 +229,7 @@ public sealed unsafe partial class TickingAreasManager : global::System.IDisposa
 
     public void update(global::Hosihikari.Bindings.Bedrock.Interop.Level level, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage levelStorage)
     {
-        NativeMethods.TablePtr->C3.hs_method_aa9bcdd7((void*)__hosihikari_shim_handle, (void*)level.Handle, (void*)levelStorage.Handle);
+        NativeMethods.TablePtr->C4.hs_method_aa9bcdd7((void*)__hosihikari_shim_handle, (void*)level.Handle, (void*)levelStorage.Handle);
     }
 
 
@@ -227,7 +239,7 @@ public sealed unsafe partial class TickingAreasManager : global::System.IDisposa
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_15251ae5((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_15251ae5((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

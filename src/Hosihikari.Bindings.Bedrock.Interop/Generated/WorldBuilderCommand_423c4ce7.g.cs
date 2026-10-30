@@ -72,6 +72,17 @@ public sealed unsafe partial class WorldBuilderCommand : global::System.IDisposa
         NativeMethods.TablePtr->C4.hs_method_8a65a134((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static WorldBuilderCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.WorldBuilderCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_5f0fc8c1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WorldBuilderCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C4.hs_method_ad90c4a5((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

@@ -58,6 +58,17 @@ public sealed unsafe partial class HurtOwnerSubcomponent : global::System.IDispo
         NativeMethods.TablePtr->C1.hs_method_a8353f43((void*)__hosihikari_shim_handle, (void*)component.Handle);
     }
 
+    public static HurtOwnerSubcomponent Create(global::Hosihikari.Bindings.Bedrock.Interop.HurtOwnerSubcomponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_f49b0db4((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new HurtOwnerSubcomponent((nint)handle);
+    }
+
     public void doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent arg1)
     {
         NativeMethods.TablePtr->C1.hs_method_797266e9((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)arg1.Handle);

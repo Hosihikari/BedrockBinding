@@ -72,6 +72,17 @@ public sealed unsafe partial class LootCommand : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_fffbd0bb((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static LootCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.LootCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_a5fba00f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LootCommand((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Util::ReplacementResults' is not a known bindable declaration.", false)]
     public void _outputError(nint output, nint errorDetails, nint entity) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Util::ReplacementResults' is not a known bindable declaration.");
@@ -176,9 +187,10 @@ public sealed unsafe partial class LootCommand : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C2.hs_get_57c6e871((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static void setup(nint registry, nint itemRegistry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static void setup(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry registry, global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistryRef itemRegistry)
+    {
+        NativeMethods.TablePtr->C2.hs_method_ba069ebf((void*)registry.Handle, (void*)itemRegistry.Handle);
+    }
 
 
     public void Dispose()

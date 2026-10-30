@@ -65,6 +65,17 @@ public sealed unsafe partial class ClimateParameters : global::System.IDisposabl
         return new ClimateParameters((nint)handle);
     }
 
+    public static ClimateParameters Create(global::Hosihikari.Bindings.Bedrock.Interop.ClimateParameters arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f3de6dde((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ClimateParameters((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mContinentalness_Address
     {

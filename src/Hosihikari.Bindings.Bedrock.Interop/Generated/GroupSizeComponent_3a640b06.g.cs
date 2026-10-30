@@ -38,6 +38,17 @@ public sealed unsafe partial class GroupSizeComponent : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static GroupSizeComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.GroupSizeComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_f67f7279((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GroupSizeComponent((nint)handle);
+    }
+
     public int mCount
     {
         get => NativeMethods.TablePtr->C1.hs_get_7f609cf1((void*)__hosihikari_shim_handle);

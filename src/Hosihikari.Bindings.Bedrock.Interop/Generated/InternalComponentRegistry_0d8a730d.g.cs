@@ -49,6 +49,17 @@ public sealed unsafe partial class InternalComponentRegistry : global::System.ID
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static InternalComponentRegistry Create(global::Hosihikari.Bindings.Bedrock.Interop.InternalComponentRegistry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_31bafc7d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InternalComponentRegistry((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag _getOrCreateComponentScope(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, string componentName)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(componentName);

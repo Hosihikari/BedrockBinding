@@ -38,6 +38,17 @@ public sealed unsafe partial class WebSocketInterface : global::System.IDisposab
         return __hs_handle;
     }
 
+    public static WebSocketInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.WebSocketInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_48377474((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WebSocketInterface((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint connect(nint arg0, nint arg1, nint arg2, nint arg3, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

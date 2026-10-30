@@ -64,6 +64,17 @@ public sealed unsafe partial class SctpTransportInternal : global::System.IDispo
     public bool ResetStream(int sid) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static SctpTransportInternal Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.SctpTransportInternal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_0ff79170((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SctpTransportInternal((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint SendData(int sid, nint @params, nint payload) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

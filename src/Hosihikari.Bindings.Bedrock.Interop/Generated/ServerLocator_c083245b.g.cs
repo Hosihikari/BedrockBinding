@@ -60,6 +60,17 @@ public sealed unsafe partial class ServerLocator : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_7b5e3fa5((void*)__hosihikari_shim_handle);
     }
 
+    public static ServerLocator Create(global::Hosihikari.Bindings.Bedrock.Interop.ServerLocator arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_9cbcec0d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ServerLocator((nint)handle);
+    }
+
     public void _onDisable()
     {
         NativeMethods.TablePtr->C3.hs_method_e7158f16((void*)__hosihikari_shim_handle);

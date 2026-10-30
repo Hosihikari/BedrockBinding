@@ -161,6 +161,17 @@ public sealed unsafe partial class PeerConnectionInterface : global::System.IDis
     public nint LookupDtlsTransportByMid(nint a1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static PeerConnectionInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.PeerConnectionInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_60a39bf5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PeerConnectionInterface((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void ReconfigureBandwidthEstimation(nint a1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

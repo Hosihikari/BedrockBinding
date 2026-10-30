@@ -67,6 +67,17 @@ public sealed unsafe partial class FilterTestTemperatureValue : global::System.I
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static FilterTestTemperatureValue Create(global::Hosihikari.Bindings.Bedrock.Interop.FilterTestTemperatureValue arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_aa59e084((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FilterTestTemperatureValue((nint)handle);
+    }
+
     public bool evaluate(nint context)
     {
         return NativeMethods.TablePtr->C1.hs_method_2b384c28((void*)__hosihikari_shim_handle, (void*)context) != 0;

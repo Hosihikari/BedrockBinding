@@ -50,6 +50,17 @@ public sealed unsafe partial class BlockCreativeGroupDescription : global::Syste
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static BlockCreativeGroupDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockCreativeGroupDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_e9d94f6a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockCreativeGroupDescription((nint)handle);
+    }
+
     public static string NameID()
     {
         var __hs_view = NativeMethods.TablePtr->C0.hs_method_848935d9();

@@ -38,6 +38,17 @@ public sealed unsafe partial class ScriptCameraSetFacingOptions : global::System
         return __hs_handle;
     }
 
+    public static ScriptCameraSetFacingOptions Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptCameraSetFacingOptions arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_cd6a3112((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptCameraSetFacingOptions((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InterfaceBinding((nint)NativeMethods.TablePtr->C3.hs_method_0126847a());

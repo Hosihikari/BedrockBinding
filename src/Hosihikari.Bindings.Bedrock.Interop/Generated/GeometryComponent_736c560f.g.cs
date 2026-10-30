@@ -79,6 +79,17 @@ public sealed unsafe partial class GeometryComponent : global::System.IDisposabl
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static GeometryComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_20.BlockDefinition.GeometryComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_9944c761((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GeometryComponent((nint)handle);
+    }
+
     public static string IdentifierId()
     {
         var __hs_view = NativeMethods.TablePtr->C3.hs_method_7acd9794();

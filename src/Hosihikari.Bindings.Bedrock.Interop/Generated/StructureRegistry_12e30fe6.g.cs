@@ -38,6 +38,17 @@ public sealed unsafe partial class StructureRegistry : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static StructureRegistry Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructureRegistry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_abcf3876((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureRegistry((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Abi.SharedHandle? get(string key)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(key);

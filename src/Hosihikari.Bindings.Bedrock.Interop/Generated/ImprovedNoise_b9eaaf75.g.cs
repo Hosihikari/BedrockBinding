@@ -38,6 +38,17 @@ public sealed unsafe partial class ImprovedNoise : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ImprovedNoise Create(global::Hosihikari.Bindings.Bedrock.Interop.ImprovedNoise arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_d289fb9f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ImprovedNoise((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mNoiseMap_Address
     {

@@ -43,6 +43,17 @@ public sealed unsafe partial class ActorItemEventAfterDroppedItem : global::Syst
         NativeMethods.TablePtr->C0.hs_method_55d57a0e((void*)__hosihikari_shim_handle);
     }
 
+    public static ActorItemEventAfterDroppedItem Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorItemEventAfterDroppedItem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_0280df89((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorItemEventAfterDroppedItem((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mActor_Address
     {

@@ -123,9 +123,9 @@ public sealed unsafe partial class WorldGenerator : global::System.IDisposable
         NativeMethods.TablePtr->C4.hs_method_5a01b4d3((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public bool _findNearestStructureFeature(nint feature, nint origin, nint pos, bool mustBeInNewChunks, nint biomeTag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.HashedString _findStructureFeatureTypeAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
     {
@@ -140,13 +140,16 @@ public sealed unsafe partial class WorldGenerator : global::System.IDisposable
     public nint _getPreliminarySurfaceLevel(nint worldQuartPos) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DividedPos2d<4>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _getStructureFeatureOfType(nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.StructureFeature? _getStructureFeatureOfType(global::Hosihikari.Bindings.Bedrock.Interop.HashedString type)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C4.hs_method_f2d5d8c3((void*)__hosihikari_shim_handle, (void*)type.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.StructureFeature((nint)__hs_handle, false) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public bool _isStructureFeatureTypeAt(nint pos, nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public bool _isStructureFeatureTypeAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.HashedString type)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_554e0f2e((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)type.Handle) != 0;
+    }
 
     public void _postProcessMobsAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox chunkBB)
     {
@@ -237,9 +240,9 @@ public sealed unsafe partial class WorldGenerator : global::System.IDisposable
     public void decorateWorldGenPostProcess(nint biome, nint lc, nint source, nint random) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public bool findNearestStructureFeature(nint feature, nint origin, nint pos, bool mustBeInNewChunks, nint biomeTag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint findSpawnPosition() =>
@@ -270,13 +273,16 @@ public sealed unsafe partial class WorldGenerator : global::System.IDisposable
     public nint getPreliminarySurfaceLevel(nint worldQuartPos) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DividedPos2d<4>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint getStructureFeatureOfType(nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.StructureFeature? getStructureFeatureOfType(global::Hosihikari.Bindings.Bedrock.Interop.HashedString type)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C4.hs_method_434e6e7b((void*)__hosihikari_shim_handle, (void*)type.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.StructureFeature((nint)__hs_handle, false) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public bool isStructureFeatureTypeAt(nint pos, nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public bool isStructureFeatureTypeAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.HashedString type)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_2758d3dc((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)type.Handle) != 0;
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mActiveStructureInstanceCreateCount_Address

@@ -43,6 +43,17 @@ public sealed unsafe partial class FurnaceResultContainerValidation : global::Sy
         return NativeMethods.TablePtr->C1.hs_method_1860a81f((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);
     }
 
+    public static FurnaceResultContainerValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.FurnaceResultContainerValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_435018a7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FurnaceResultContainerValidation((nint)handle);
+    }
+
     public int getContainerOffset(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
     {
         return NativeMethods.TablePtr->C1.hs_method_1ffb7637((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);

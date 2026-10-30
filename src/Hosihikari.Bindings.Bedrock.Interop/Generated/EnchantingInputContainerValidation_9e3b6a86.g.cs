@@ -58,6 +58,17 @@ public sealed unsafe partial class EnchantingInputContainerValidation : global::
         return NativeMethods.TablePtr->C1.hs_method_f1a3fd94((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, slot, (void*)item.Handle, amount, arg4) != 0;
     }
 
+    public static EnchantingInputContainerValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.EnchantingInputContainerValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_3f6a0f87((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EnchantingInputContainerValidation((nint)handle);
+    }
+
     public int getAllowedAddCount(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg1)
     {
         return NativeMethods.TablePtr->C1.hs_method_9a4ae174((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle);

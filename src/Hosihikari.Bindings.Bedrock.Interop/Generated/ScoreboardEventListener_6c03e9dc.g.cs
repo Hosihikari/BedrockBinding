@@ -100,6 +100,17 @@ public sealed unsafe partial class ScoreboardEventListener : global::System.IDis
         return NativeMethods.TablePtr->C3.hs_method_b710deda((void*)__hosihikari_shim_handle, (void*)id.Handle);
     }
 
+    public static ScoreboardEventListener Create(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardEventListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_fe76edd7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScoreboardEventListener((nint)handle);
+    }
+
     public int onObjectiveAdded(string arg0)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);

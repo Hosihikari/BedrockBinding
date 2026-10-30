@@ -43,6 +43,17 @@ public sealed unsafe partial class InsideBlockNotifierSystem : global::System.ID
         NativeMethods.TablePtr->C1.hs_method_c818bc06((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static InsideBlockNotifierSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.InsideBlockNotifierSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_e8b064b5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InsideBlockNotifierSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C1.hs_method_729afdaf((void*)__hosihikari_shim_handle, (void*)registry.Handle);

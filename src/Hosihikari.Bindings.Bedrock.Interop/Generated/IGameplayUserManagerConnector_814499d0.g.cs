@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class IGameplayUserManagerConnector
+public sealed unsafe partial class IGameplayUserManagerConnector : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -39,6 +38,17 @@ public sealed partial class IGameplayUserManagerConnector
         return __hs_handle;
     }
 
+    public static IGameplayUserManagerConnector Create(global::Hosihikari.Bindings.Bedrock.Interop.IGameplayUserManagerConnector arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_ff697be9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IGameplayUserManagerConnector((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getAnyGameplayUsersRemovedConnector() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
@@ -62,4 +72,17 @@ public sealed partial class IGameplayUserManagerConnector
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getPlayerRenamedConnector() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_814499d0((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

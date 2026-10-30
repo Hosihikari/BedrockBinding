@@ -38,6 +38,17 @@ public sealed unsafe partial class MobEffectImmunityDefinition : global::System.
         return __hs_handle;
     }
 
+    public static MobEffectImmunityDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.MobEffectImmunityDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_b6a17943((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MobEffectImmunityDefinition((nint)handle);
+    }
+
     public void addEffectByName(string name)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);

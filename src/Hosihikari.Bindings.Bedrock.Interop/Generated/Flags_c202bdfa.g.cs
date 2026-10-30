@@ -40,8 +40,8 @@ public sealed unsafe partial class Flags : global::System.IDisposable
 
     public uint mIsChild
     {
-        get => NativeMethods.TablePtr->C2.hs_get_1035ea0a((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_1035ea0a((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_1035ea0a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_1035ea0a((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -50,7 +50,7 @@ public sealed unsafe partial class Flags : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_c202bdfa((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_c202bdfa((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

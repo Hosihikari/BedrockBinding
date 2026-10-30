@@ -40,7 +40,7 @@ public sealed unsafe partial class LoopCount : global::System.IDisposable
 
     public static LoopCount Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_e98cf19c();
+        var handle = NativeMethods.TablePtr->C2.hs_create_e98cf19c();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class LoopCount : global::System.IDisposable
 
     public static LoopCount Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelAnimateTickHelper_Nested.LoopCount arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_e9e0b216((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_e9e0b216((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,18 +63,18 @@ public sealed unsafe partial class LoopCount : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk5d0383_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_394d3629((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_394d3629((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk6eea10_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_eb75d943((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_eb75d943((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelAnimateTickHelper_Nested.LoopCount operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LevelAnimateTickHelper_Nested.LoopCount arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelAnimateTickHelper_Nested.LoopCount((nint)NativeMethods.TablePtr->C1.hs_method_b4139910((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelAnimateTickHelper_Nested.LoopCount((nint)NativeMethods.TablePtr->C2.hs_method_b4139910((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -83,7 +83,7 @@ public sealed unsafe partial class LoopCount : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_358c61c4((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_358c61c4((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

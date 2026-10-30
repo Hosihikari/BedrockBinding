@@ -67,6 +67,17 @@ public sealed unsafe partial class TwistingVinesClusterFeature : global::System.
         return NativeMethods.TablePtr->C4.hs_method_b155f838((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
     }
 
+    public static TwistingVinesClusterFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.TwistingVinesClusterFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_2ffb5ccb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TwistingVinesClusterFeature((nint)handle);
+    }
+
     public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         return NativeMethods.TablePtr->C4.hs_method_d0cc8a1a((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;

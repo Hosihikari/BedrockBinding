@@ -38,6 +38,17 @@ public sealed unsafe partial class CraftRecipeOptionalActionData : global::Syste
         return __hs_handle;
     }
 
+    public static CraftRecipeOptionalActionData Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestCereal.CraftRecipeOptionalActionData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_2a627ff9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CraftRecipeOptionalActionData((nint)handle);
+    }
+
     public int mFilteredStringIndex
     {
         get => NativeMethods.TablePtr->C1.hs_get_2862c6c8((void*)__hosihikari_shim_handle);

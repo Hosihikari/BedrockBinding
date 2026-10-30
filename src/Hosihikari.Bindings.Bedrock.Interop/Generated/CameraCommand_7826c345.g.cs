@@ -43,6 +43,17 @@ public sealed unsafe partial class CameraCommand : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_92d3b5a0((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static CameraCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.CameraCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_5d6aaf23((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CameraCommand((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion REMOVE_IGNORE_STARTING_VALUE_COMPONENT_VERSION()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion((nint)NativeMethods.TablePtr->C0.hs_method_34002b5b(), false);

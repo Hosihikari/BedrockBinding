@@ -175,6 +175,17 @@ public sealed unsafe partial class EnchantingContainerManagerModel : global::Sys
         return new EnchantingContainerManagerModel((nint)handle);
     }
 
+    public static EnchantingContainerManagerModel Create(global::Hosihikari.Bindings.Bedrock.Interop.EnchantingContainerManagerModel arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_1a4834b5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EnchantingContainerManagerModel((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext _postInit()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext((nint)NativeMethods.TablePtr->C1.hs_method_f40a4413((void*)__hosihikari_shim_handle));

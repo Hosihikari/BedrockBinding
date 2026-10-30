@@ -61,6 +61,17 @@ public sealed unsafe partial class MultifaceFeature : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static MultifaceFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.MultifaceFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_6cadb1df((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MultifaceFeature((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::span<const unsigned char>' is not a known bindable declaration.", false)]
     public nint _placeBlockIfPossible(nint region, nint pos, nint random, nint placementDirections) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::span<const unsigned char>' is not a known bindable declaration.");

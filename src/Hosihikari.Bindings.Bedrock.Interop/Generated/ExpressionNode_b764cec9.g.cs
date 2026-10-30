@@ -234,9 +234,24 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_09ea9eae((void*)experiments.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static void unregisterQueryFunction(nint queryFunctionName, nint querySetIdentifier) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static void unregisterQueryFunction(string queryFunctionName, global::Hosihikari.Bindings.Bedrock.Interop.HashedString querySetIdentifier)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(queryFunctionName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(queryFunctionName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C1.hs_method_8810018a(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)querySetIdentifier.Handle);
+        }
+    }
 
 
     public void Dispose()

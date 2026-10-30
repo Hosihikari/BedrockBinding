@@ -137,6 +137,17 @@ public sealed unsafe partial class BaseRailBlock : global::System.IDisposable
         return new BaseRailBlock((nint)handle);
     }
 
+    public static BaseRailBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.BaseRailBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_958247cc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BaseRailBlock((nint)handle);
+    }
+
     public static BaseRailBlock Create(string nameId, int id, bool usesDataBit)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);

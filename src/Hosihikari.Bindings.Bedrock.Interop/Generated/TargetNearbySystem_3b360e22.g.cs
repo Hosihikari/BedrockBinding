@@ -43,6 +43,17 @@ public sealed unsafe partial class TargetNearbySystem : global::System.IDisposab
         NativeMethods.TablePtr->C3.hs_method_2c578e66((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static TargetNearbySystem Create(global::Hosihikari.Bindings.Bedrock.Interop.TargetNearbySystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c9854bb6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TargetNearbySystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C3.hs_method_bf6cbb83((void*)__hosihikari_shim_handle, (void*)registry.Handle);

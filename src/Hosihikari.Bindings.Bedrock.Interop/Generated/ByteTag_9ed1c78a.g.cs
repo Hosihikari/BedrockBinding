@@ -87,6 +87,17 @@ public sealed unsafe partial class ByteTag : global::System.IDisposable
         return new ByteTag((nint)handle);
     }
 
+    public static ByteTag Create(global::Hosihikari.Bindings.Bedrock.Interop.ByteTag arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_067b26fe((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ByteTag((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::byte' is not a known bindable declaration.", false)]
     public static ByteTag Create(nint b) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::byte' is not a known bindable declaration.");

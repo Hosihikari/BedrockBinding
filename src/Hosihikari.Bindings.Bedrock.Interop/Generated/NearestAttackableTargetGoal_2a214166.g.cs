@@ -138,6 +138,17 @@ public sealed unsafe partial class NearestAttackableTargetGoal : global::System.
         }
     }
 
+    public static NearestAttackableTargetGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.NearestAttackableTargetGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_5ccda13a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NearestAttackableTargetGoal((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public nint _findTarget(nint outMobDescriptor) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");

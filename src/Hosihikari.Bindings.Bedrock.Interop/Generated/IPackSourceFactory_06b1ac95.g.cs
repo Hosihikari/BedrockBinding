@@ -44,6 +44,17 @@ public sealed unsafe partial class IPackSourceFactory : global::System.IDisposab
         get => (nint)NativeMethods.TablePtr->C1.hs_get_bf8c5e18((void*)__hosihikari_shim_handle);
     }
 
+    public static IPackSourceFactory Create(global::Hosihikari.Bindings.Bedrock.Interop.IPackSourceFactory arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_23676a74((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IPackSourceFactory((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint createCompositePackSource(nint sources) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

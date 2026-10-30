@@ -43,6 +43,17 @@ public sealed unsafe partial class FeedItem : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_811873d6((void*)__hosihikari_shim_handle);
     }
 
+    public static FeedItem Create(global::Hosihikari.Bindings.Bedrock.Interop.FeedItem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_0ecb08c2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FeedItem((nint)handle);
+    }
+
     public void addEffect(global::Hosihikari.Bindings.Bedrock.Interop.FeedItem_Nested.Effect effect)
     {
         NativeMethods.TablePtr->C1.hs_method_f67fc07f((void*)__hosihikari_shim_handle, (void*)effect.Handle);

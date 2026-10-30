@@ -54,6 +54,17 @@ public sealed unsafe partial class BossComponent : global::System.IDisposable
         return new BossComponent((nint)handle);
     }
 
+    public static BossComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.BossComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_e47bd425((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BossComponent((nint)handle);
+    }
+
     public void _sendBossEvent(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, byte type, global::Hosihikari.Bindings.Bedrock.Interop.Player? player)
     {
         NativeMethods.TablePtr->C0.hs_method_ca1b882e((void*)__hosihikari_shim_handle, (void*)owner.Handle, type, (void*)(player?.Handle ?? 0));

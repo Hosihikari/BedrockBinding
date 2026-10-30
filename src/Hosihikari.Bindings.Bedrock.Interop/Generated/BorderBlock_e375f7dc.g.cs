@@ -329,6 +329,17 @@ public sealed unsafe partial class BorderBlock : global::System.IDisposable
         return new BorderBlock((nint)handle);
     }
 
+    public static BorderBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.BorderBlock arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_e2502388((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BorderBlock((nint)handle);
+    }
+
     public static BorderBlock Create(string nameId, int id)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(nameId);

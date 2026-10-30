@@ -67,6 +67,17 @@ public sealed unsafe partial class IsWaterLoggedTest : global::System.IDisposabl
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static IsWaterLoggedTest Create(global::Hosihikari.Bindings.Bedrock.Interop.IsWaterLoggedTest arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_283586a0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IsWaterLoggedTest((nint)handle);
+    }
+
     public bool evaluate(nint context)
     {
         return NativeMethods.TablePtr->C1.hs_method_07d24421((void*)__hosihikari_shim_handle, (void*)context) != 0;

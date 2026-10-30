@@ -68,6 +68,17 @@ public sealed unsafe partial class IGameTestListener : global::System.IDisposabl
         NativeMethods.TablePtr->C4.hs_method_f18bdbd2((void*)__hosihikari_shim_handle, (void*)test.Handle);
     }
 
+    public static IGameTestListener Create(global::Hosihikari.Bindings.Bedrock.Interop.gametest.IGameTestListener arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_876ba4d7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IGameTestListener((nint)handle);
+    }
+
     public void onTestFailed(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance testInstance)
     {
         NativeMethods.TablePtr->C4.hs_method_7c9f4d78((void*)__hosihikari_shim_handle, (void*)testInstance.Handle);

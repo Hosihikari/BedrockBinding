@@ -343,9 +343,24 @@ public sealed unsafe partial class ActorDefinitionIdentifier : global::System.ID
         return NativeMethods.TablePtr->C0.hs_method_5411ef18((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void setter(nint str, nint context, nint serializerContext) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void setter(string str, global::Hosihikari.Bindings.Bedrock.Interop.BedrockLoadContext context, global::Hosihikari.Bindings.Bedrock.Interop.cereal.SerializerContext serializerContext)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(str);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(str, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C0.hs_method_8035c369((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)context.Handle, (void*)serializerContext.Handle);
+        }
+    }
 
 
     public void Dispose()

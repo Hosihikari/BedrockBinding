@@ -69,6 +69,17 @@ public sealed unsafe partial class ReflectionCtx : global::System.IDisposable
         return new ReflectionCtx((nint)handle);
     }
 
+    public static ReflectionCtx Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_6392cd7a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ReflectionCtx((nint)handle);
+    }
+
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mForcedJSONSchemaOutput_Address

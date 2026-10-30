@@ -40,7 +40,7 @@ public sealed unsafe partial class LegacyRaidTriggerSystem : global::System.IDis
 
     public static void _doRaidTriggerSystem(global::Hosihikari.Bindings.Bedrock.Interop.DimensionTypeComponent dimensionTypeComponent, global::Hosihikari.Bindings.Bedrock.Interop.StateVectorComponent stateVectorComponent, global::Hosihikari.Bindings.Bedrock.Interop.ActorOwnerComponent actorOwnerComponent, global::Hosihikari.Bindings.Bedrock.Interop.VillageManagerComponent villageManagerComponent)
     {
-        NativeMethods.TablePtr->C1.hs_method_5cbe83a1((void*)dimensionTypeComponent.Handle, (void*)stateVectorComponent.Handle, (void*)actorOwnerComponent.Handle, (void*)villageManagerComponent.Handle);
+        NativeMethods.TablePtr->C2.hs_method_5cbe83a1((void*)dimensionTypeComponent.Handle, (void*)stateVectorComponent.Handle, (void*)actorOwnerComponent.Handle, (void*)villageManagerComponent.Handle);
     }
 
     public void Dispose()
@@ -49,7 +49,7 @@ public sealed unsafe partial class LegacyRaidTriggerSystem : global::System.IDis
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_ea46c028((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_ea46c028((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

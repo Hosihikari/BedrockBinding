@@ -43,6 +43,17 @@ public sealed unsafe partial class DoublePlantFeature : global::System.IDisposab
         return NativeMethods.TablePtr->C1.hs_method_699922c7((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
     }
 
+    public static DoublePlantFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.DoublePlantFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_0a0bbfd5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DoublePlantFeature((nint)handle);
+    }
+
     public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         return NativeMethods.TablePtr->C1.hs_method_7082aa34((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;

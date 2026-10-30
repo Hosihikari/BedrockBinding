@@ -38,22 +38,33 @@ public sealed unsafe partial class ScopeData : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ScopeData Create(global::Hosihikari.Bindings.Bedrock.Interop.ContentLog_Nested.ThreadSpecificData_Nested.ScopeData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_48581090((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScopeData((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mContentLogScope_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_791a24d2((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_791a24d2((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMessageRef_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_9e8cee4d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_9e8cee4d((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMessageStr_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_6cef21cb((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_6cef21cb((void*)__hosihikari_shim_handle);
     }
 
 
@@ -63,7 +74,7 @@ public sealed unsafe partial class ScopeData : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_d70fb2da((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_d70fb2da((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

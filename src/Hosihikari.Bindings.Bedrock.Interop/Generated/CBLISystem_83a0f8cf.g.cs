@@ -40,12 +40,12 @@ public sealed unsafe partial class CBLISystem
 
     public void _singleTick(nint strictContext, global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext entity)
     {
-        NativeMethods.TablePtr->C0.hs_method_5380a808((void*)__hosihikari_shim_handle, (void*)strictContext, (void*)entity.Handle);
+        NativeMethods.TablePtr->C1.hs_method_5380a808((void*)__hosihikari_shim_handle, (void*)strictContext, (void*)entity.Handle);
     }
 
     public void _tick(nint strictContext)
     {
-        NativeMethods.TablePtr->C0.hs_method_2f7aede2((void*)__hosihikari_shim_handle, (void*)strictContext);
+        NativeMethods.TablePtr->C1.hs_method_2f7aede2((void*)__hosihikari_shim_handle, (void*)strictContext);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -55,34 +55,34 @@ public sealed unsafe partial class CBLISystem
     // The native field type is not projected; this is the address of the field storage.
     public nint mSetCBLI_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_25478c39((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_25478c39((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSetVehicleCBLI_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_c87de61c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_c87de61c((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSingleTick_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_4bb7a7ef((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_4bb7a7ef((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTick_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_219e61fd((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_219e61fd((void*)__hosihikari_shim_handle);
     }
 
     public void singleTick(nint strictContext, global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext entity)
     {
-        NativeMethods.TablePtr->C0.hs_method_f7462e89((void*)__hosihikari_shim_handle, (void*)strictContext, (void*)entity.Handle);
+        NativeMethods.TablePtr->C1.hs_method_f7462e89((void*)__hosihikari_shim_handle, (void*)strictContext, (void*)entity.Handle);
     }
 
     public void tick(nint strictContext)
     {
-        NativeMethods.TablePtr->C0.hs_method_65fba01b((void*)__hosihikari_shim_handle, (void*)strictContext);
+        NativeMethods.TablePtr->C1.hs_method_65fba01b((void*)__hosihikari_shim_handle, (void*)strictContext);
     }
 }

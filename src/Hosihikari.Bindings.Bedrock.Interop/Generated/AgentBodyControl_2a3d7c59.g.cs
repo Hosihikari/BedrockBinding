@@ -43,6 +43,17 @@ public sealed unsafe partial class AgentBodyControl : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_9e544d25((void*)__hosihikari_shim_handle, (void*)mob.Handle);
     }
 
+    public static AgentBodyControl Create(global::Hosihikari.Bindings.Bedrock.Interop.AgentBodyControl arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_e198b3fb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AgentBodyControl((nint)handle);
+    }
+
     public void clientTick(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
         NativeMethods.TablePtr->C0.hs_method_86ee6352((void*)__hosihikari_shim_handle, (void*)mob.Handle);

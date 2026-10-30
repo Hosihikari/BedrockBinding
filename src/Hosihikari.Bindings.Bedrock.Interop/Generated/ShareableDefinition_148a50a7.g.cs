@@ -38,6 +38,17 @@ public sealed unsafe partial class ShareableDefinition : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static ShareableDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.ShareableDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_964bea56((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ShareableDefinition((nint)handle);
+    }
+
     public void addShareable(global::Hosihikari.Bindings.Bedrock.Interop.Shareable shareable)
     {
         NativeMethods.TablePtr->C3.hs_method_3ad3eb05((void*)__hosihikari_shim_handle, (void*)shareable.Handle);

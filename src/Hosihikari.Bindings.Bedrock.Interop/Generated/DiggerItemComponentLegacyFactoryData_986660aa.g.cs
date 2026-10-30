@@ -38,6 +38,17 @@ public sealed unsafe partial class DiggerItemComponentLegacyFactoryData : global
         return __hs_handle;
     }
 
+    public static DiggerItemComponentLegacyFactoryData Create(global::Hosihikari.Bindings.Bedrock.Interop.DiggerItemComponentLegacyFactoryData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_40684b65((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DiggerItemComponentLegacyFactoryData((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mDestroySpeeds_Address
     {

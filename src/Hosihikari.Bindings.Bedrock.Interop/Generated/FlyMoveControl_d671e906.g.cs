@@ -47,6 +47,17 @@ public sealed unsafe partial class FlyMoveControl : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static FlyMoveControl Create(global::Hosihikari.Bindings.Bedrock.Interop.FlyMoveControl arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_6fa41140((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FlyMoveControl((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.MoveControlComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
         NativeMethods.TablePtr->C1.hs_method_e32600e7((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle);

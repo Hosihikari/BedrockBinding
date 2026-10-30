@@ -40,7 +40,7 @@ public sealed unsafe partial class RegistryKey : global::System.IDisposable
 
     public static RegistryKey Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_720f3933();
+        var handle = NativeMethods.TablePtr->C3.hs_create_720f3933();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class RegistryKey : global::System.IDisposable
 
     public static RegistryKey Create(global::Hosihikari.Bindings.Bedrock.Interop.RegistryKey arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_a8dafd35((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_a8dafd35((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,18 +63,18 @@ public sealed unsafe partial class RegistryKey : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkab2c17_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_b681eb09((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b681eb09((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkf04e63_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_4cf6c6c4((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_4cf6c6c4((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.RegistryKey operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RegistryKey arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.RegistryKey((nint)NativeMethods.TablePtr->C2.hs_method_1cb11ac2((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RegistryKey((nint)NativeMethods.TablePtr->C3.hs_method_1cb11ac2((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -83,7 +83,7 @@ public sealed unsafe partial class RegistryKey : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_b7c450a1((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_b7c450a1((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

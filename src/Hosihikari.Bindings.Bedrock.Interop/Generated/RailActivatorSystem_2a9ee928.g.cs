@@ -43,6 +43,17 @@ public sealed unsafe partial class RailActivatorSystem : global::System.IDisposa
         NativeMethods.TablePtr->C2.hs_method_50ad8681((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static RailActivatorSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.RailActivatorSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_b7856e59((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RailActivatorSystem((nint)handle);
+    }
+
     public static void _tickComponent(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity, global::Hosihikari.Bindings.Bedrock.Interop.ActorOwnerComponent actorOwnerComponent, global::Hosihikari.Bindings.Bedrock.Interop.RailActivatorComponent railActivatorComponent)
     {
         NativeMethods.TablePtr->C2.hs_method_c5077c6f((void*)entity.Handle, (void*)actorOwnerComponent.Handle, (void*)railActivatorComponent.Handle);

@@ -44,6 +44,17 @@ public sealed unsafe partial class FilePickerManager : global::System.IDisposabl
         get => (nint)NativeMethods.TablePtr->C0.hs_get_f3750865((void*)__hosihikari_shim_handle);
     }
 
+    public static FilePickerManager Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.FilePickerManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_086fb63a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FilePickerManager((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public bool directoryPickingEnabledForPlatform() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

@@ -54,6 +54,17 @@ public sealed unsafe partial class LootingEnchantFunction : global::System.IDisp
         return NativeMethods.TablePtr->C2.hs_method_c4cda8be((void*)__hosihikari_shim_handle);
     }
 
+    public static LootingEnchantFunction Create(global::Hosihikari.Bindings.Bedrock.Interop.LootingEnchantFunction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_644244e5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LootingEnchantFunction((nint)handle);
+    }
+
     public void applyPreVersion(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext context)
     {
         NativeMethods.TablePtr->C2.hs_method_f12de4c1((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)random.Handle, (void*)context.Handle);

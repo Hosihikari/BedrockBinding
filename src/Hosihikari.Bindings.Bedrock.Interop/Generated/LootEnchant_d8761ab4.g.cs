@@ -107,6 +107,17 @@ public sealed unsafe partial class LootEnchant : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_2776d395((void*)__hosihikari_shim_handle, level);
     }
 
+    public static LootEnchant Create(global::Hosihikari.Bindings.Bedrock.Interop.LootEnchant arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_1f5ca46f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LootEnchant((nint)handle);
+    }
+
     public int getMaxCost(int level)
     {
         return NativeMethods.TablePtr->C2.hs_method_d765a4f9((void*)__hosihikari_shim_handle, level);

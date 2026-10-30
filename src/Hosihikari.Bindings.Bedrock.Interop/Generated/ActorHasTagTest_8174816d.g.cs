@@ -49,6 +49,17 @@ public sealed unsafe partial class ActorHasTagTest : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static ActorHasTagTest Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorHasTagTest arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_b99e4f39((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorHasTagTest((nint)handle);
+    }
+
     public bool evaluate(nint context)
     {
         return NativeMethods.TablePtr->C0.hs_method_c66fa081((void*)__hosihikari_shim_handle, (void*)context) != 0;

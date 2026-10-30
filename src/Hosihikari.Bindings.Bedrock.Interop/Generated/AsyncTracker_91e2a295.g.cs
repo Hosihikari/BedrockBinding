@@ -38,6 +38,17 @@ public sealed unsafe partial class AsyncTracker : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static AsyncTracker Create(global::Hosihikari.Bindings.Bedrock.Interop.AsyncTracker arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_ad794eea((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AsyncTracker((nint)handle);
+    }
+
     public bool isCurrentWaitingOnCall
     {
         get => NativeMethods.TablePtr->C0.hs_get_b5549202((void*)__hosihikari_shim_handle) != 0;

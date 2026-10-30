@@ -38,6 +38,17 @@ public sealed unsafe partial class PlayerToggleCrafterSlotRequestPacketPayload :
         return __hs_handle;
     }
 
+    public static PlayerToggleCrafterSlotRequestPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerToggleCrafterSlotRequestPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_b593e8cd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerToggleCrafterSlotRequestPacketPayload((nint)handle);
+    }
+
     public bool mIsDisabled
     {
         get => NativeMethods.TablePtr->C2.hs_get_676bbe3b((void*)__hosihikari_shim_handle) != 0;

@@ -63,6 +63,17 @@ public sealed unsafe partial class BeaconPaymentContainerValidation : global::Sy
         return NativeMethods.TablePtr->C0.hs_method_6e9ba8f1((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, slot, (void*)item.Handle, amount, arg4) != 0;
     }
 
+    public static BeaconPaymentContainerValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.BeaconPaymentContainerValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_adf0c7a9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BeaconPaymentContainerValidation((nint)handle);
+    }
+
     public bool canDestroy(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
     {
         return NativeMethods.TablePtr->C0.hs_method_22f363d5((void*)__hosihikari_shim_handle, (void*)screenContext.Handle) != 0;

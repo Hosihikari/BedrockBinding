@@ -93,6 +93,17 @@ public sealed unsafe partial class Biome : global::System.IDisposable
         }
     }
 
+    public static Biome Create(global::Hosihikari.Bindings.Bedrock.Interop.Biome arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_50a61096((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Biome((nint)handle);
+    }
+
     public static void buildCachedTemperatureNoise(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk chunk)
     {
         NativeMethods.TablePtr->C0.hs_method_e1917290((void*)chunk.Handle);

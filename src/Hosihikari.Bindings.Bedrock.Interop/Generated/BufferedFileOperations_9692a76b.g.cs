@@ -60,7 +60,7 @@ public sealed unsafe partial class BufferedFileOperations : global::System.IDisp
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_9692a76b((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_9692a76b((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -38,6 +38,17 @@ public sealed unsafe partial class BeardingDescriptionCache : global::System.IDi
         return __hs_handle;
     }
 
+    public static BeardingDescriptionCache Create(global::Hosihikari.Bindings.Bedrock.Interop.BeardingDescriptionCache arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_24464b3e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BeardingDescriptionCache((nint)handle);
+    }
+
     public float mMaxRadius
     {
         get => NativeMethods.TablePtr->C0.hs_get_05c6f675((void*)__hosihikari_shim_handle);

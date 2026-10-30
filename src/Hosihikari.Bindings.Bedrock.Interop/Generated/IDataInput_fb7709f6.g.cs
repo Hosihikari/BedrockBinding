@@ -38,6 +38,17 @@ public sealed unsafe partial class IDataInput : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static IDataInput Create(global::Hosihikari.Bindings.Bedrock.Interop.IDataInput arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_18c50e4b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IDataInput((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public ulong numBytesLeft() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

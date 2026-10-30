@@ -38,6 +38,17 @@ public sealed unsafe partial class Token : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Token Create(global::Hosihikari.Bindings.Bedrock.Interop.ISignalingServiceConfigProvider_Nested.Token arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_e214e2c7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Token((nint)handle);
+    }
+
 
     public void Dispose()
     {

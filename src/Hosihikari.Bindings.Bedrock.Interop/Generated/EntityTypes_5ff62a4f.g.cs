@@ -43,6 +43,17 @@ public sealed unsafe partial class EntityTypes : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_97e670bb((void*)__hosihikari_shim_handle);
     }
 
+    public static EntityTypes Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_21_120.EntityTypes arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a52c7bc1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EntityTypes((nint)handle);
+    }
+
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C3.hs_method_29e9d812((void*)ctx.Handle);

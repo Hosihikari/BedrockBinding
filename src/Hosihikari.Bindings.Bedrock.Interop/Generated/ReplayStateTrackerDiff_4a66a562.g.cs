@@ -40,7 +40,7 @@ public sealed unsafe partial class ReplayStateTrackerDiff : global::System.IDisp
 
     public static ReplayStateTrackerDiff Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_f554fbc7();
+        var handle = NativeMethods.TablePtr->C3.hs_create_f554fbc7();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class ReplayStateTrackerDiff : global::System.IDisp
 
     public static ReplayStateTrackerDiff Create(global::Hosihikari.Bindings.Bedrock.Interop.ReplayStateTrackerDiff arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_e0e400e0((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_e0e400e0((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,42 +63,42 @@ public sealed unsafe partial class ReplayStateTrackerDiff : global::System.IDisp
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk395446_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_17a335ea((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_17a335ea((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk49779f_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_71011814((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_71011814((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk58f400_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_21f9ae03((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_21f9ae03((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk5c9bba_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_6e7ef6dd((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6e7ef6dd((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk9e9943_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_c590bce5((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c590bce5((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnke8275a_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_52175bda((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_52175bda((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ReplayStateTrackerDiff operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ReplayStateTrackerDiff arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ReplayStateTrackerDiff((nint)NativeMethods.TablePtr->C2.hs_method_c82d8565((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ReplayStateTrackerDiff((nint)NativeMethods.TablePtr->C3.hs_method_c82d8565((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -107,7 +107,7 @@ public sealed unsafe partial class ReplayStateTrackerDiff : global::System.IDisp
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_4a66a562((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_4a66a562((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

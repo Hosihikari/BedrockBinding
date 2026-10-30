@@ -38,6 +38,17 @@ public sealed unsafe partial class Raid : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Raid Create(global::Hosihikari.Bindings.Bedrock.Interop.Raid arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_256b3ee5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Raid((nint)handle);
+    }
+
     public void addPlayerToHeroList(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
         NativeMethods.TablePtr->C2.hs_method_35e7fb44((void*)__hosihikari_shim_handle, (void*)actor.Handle);

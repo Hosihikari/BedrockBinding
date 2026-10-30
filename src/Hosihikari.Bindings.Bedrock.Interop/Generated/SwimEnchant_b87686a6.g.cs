@@ -112,6 +112,17 @@ public sealed unsafe partial class SwimEnchant : global::System.IDisposable
         return NativeMethods.TablePtr->C3.hs_method_fa33a3fe((void*)__hosihikari_shim_handle, level);
     }
 
+    public static SwimEnchant Create(global::Hosihikari.Bindings.Bedrock.Interop.SwimEnchant arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_0c2213bc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SwimEnchant((nint)handle);
+    }
+
     public static nint VALID_ENCHANTMENTS()
     {
         return (nint)NativeMethods.TablePtr->C3.hs_method_e66416c6();

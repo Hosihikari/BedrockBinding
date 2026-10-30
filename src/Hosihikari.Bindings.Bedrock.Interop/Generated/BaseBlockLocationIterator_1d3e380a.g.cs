@@ -48,6 +48,17 @@ public sealed unsafe partial class BaseBlockLocationIterator : global::System.ID
         NativeMethods.TablePtr->C0.hs_method_216c43de((void*)__hosihikari_shim_handle);
     }
 
+    public static BaseBlockLocationIterator Create(global::Hosihikari.Bindings.Bedrock.Interop.BaseBlockLocationIterator arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_cb2611af((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BaseBlockLocationIterator((nint)handle);
+    }
+
     public void _begin()
     {
         NativeMethods.TablePtr->C0.hs_method_2797c283((void*)__hosihikari_shim_handle);

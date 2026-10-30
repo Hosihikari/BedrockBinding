@@ -63,6 +63,17 @@ public sealed unsafe partial class LevelStorageSource : global::System.IDisposab
         }
     }
 
+    public static LevelStorageSource Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageSource arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_21a8408e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LevelStorageSource((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
     public static nint WORLD_SAVE_FLUSH_INTERVAL() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");

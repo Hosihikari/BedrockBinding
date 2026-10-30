@@ -38,6 +38,17 @@ public sealed unsafe partial class CommandData : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static CommandData Create(global::Hosihikari.Bindings.Bedrock.Interop.MusicCommand_Nested.CommandData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_a57484f5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandData((nint)handle);
+    }
+
     public byte mAction
     {
         get => NativeMethods.TablePtr->C2.hs_get_50c55951((void*)__hosihikari_shim_handle);

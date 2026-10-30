@@ -47,6 +47,17 @@ public sealed unsafe partial class MemoryMappedFileReadAccess : global::System.I
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static MemoryMappedFileReadAccess Create(global::Hosihikari.Bindings.Bedrock.Interop.MemoryMappedFileAccess_Nested.MemoryMappedFileReadAccess arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_5da5e8b7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MemoryMappedFileReadAccess((nint)handle);
+    }
+
     public ulong fread(nint buffer, ulong arg1, ulong count, nint file)
     {
         return NativeMethods.TablePtr->C2.hs_method_b850c992((void*)__hosihikari_shim_handle, (void*)buffer, arg1, count, (void*)file);

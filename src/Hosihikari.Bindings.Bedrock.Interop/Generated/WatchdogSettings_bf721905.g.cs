@@ -38,6 +38,17 @@ public sealed unsafe partial class WatchdogSettings : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static WatchdogSettings Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WatchdogSettings arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_3e4fd647((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WatchdogSettings((nint)handle);
+    }
+
     public bool mEnableExceptionHandling
     {
         get => NativeMethods.TablePtr->C3.hs_get_0821f3c6((void*)__hosihikari_shim_handle) != 0;

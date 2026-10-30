@@ -50,13 +50,26 @@ public sealed unsafe partial class SubtreeDefinition : global::System.IDisposabl
         get => (nint)NativeMethods.TablePtr->C3.hs_get_e2b90ba2((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void _load(nint node, nint factory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void _load(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value node, global::Hosihikari.Bindings.Bedrock.Interop.BehaviorFactory factory)
+    {
+        NativeMethods.TablePtr->C3.hs_method_5c270f1e((void*)__hosihikari_shim_handle, (void*)node.Handle, (void*)factory.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void load(nint node, nint factory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static SubtreeDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.SubtreeDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_9551be21((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SubtreeDefinition((nint)handle);
+    }
+
+    public void load(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value node, global::Hosihikari.Bindings.Bedrock.Interop.BehaviorFactory factory)
+    {
+        NativeMethods.TablePtr->C3.hs_method_aa017cfa((void*)__hosihikari_shim_handle, (void*)node.Handle, (void*)factory.Handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBehaviorDataItems_Address

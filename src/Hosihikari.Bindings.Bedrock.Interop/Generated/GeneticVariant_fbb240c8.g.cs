@@ -38,6 +38,17 @@ public sealed unsafe partial class GeneticVariant : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static GeneticVariant Create(global::Hosihikari.Bindings.Bedrock.Interop.GeneticVariant arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b6170442((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GeneticVariant((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint bothAllele_Address
     {

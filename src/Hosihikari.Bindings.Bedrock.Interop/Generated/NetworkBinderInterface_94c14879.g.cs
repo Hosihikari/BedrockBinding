@@ -51,6 +51,17 @@ public sealed unsafe partial class NetworkBinderInterface : global::System.IDisp
     public nint BindSocketToNetwork(int socket_fd, nint address) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static NetworkBinderInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.NetworkBinderInterface arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_74fe12ae((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NetworkBinderInterface((nint)handle);
+    }
+
 
     public void Dispose()
     {

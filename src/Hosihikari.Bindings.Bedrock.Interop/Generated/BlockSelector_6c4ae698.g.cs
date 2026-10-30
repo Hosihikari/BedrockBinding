@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockSelector : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static BlockSelector Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockSelector arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_1aa18662((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockSelector((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint next(nint arg0, int arg1, int arg2, int arg3, bool arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

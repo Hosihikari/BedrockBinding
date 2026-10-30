@@ -62,6 +62,17 @@ public sealed unsafe partial class PackInstance : global::System.IDisposable
         return new PackInstance((nint)handle);
     }
 
+    public static PackInstance Create(global::Hosihikari.Bindings.Bedrock.Interop.PackInstance arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_5c393eae((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PackInstance((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<std::shared_ptr<ResourcePack>>' is not a known bindable declaration.", false)]
     public static PackInstance Create(nint pack, nint subpackName, bool isDependent, nint packSettings) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<std::shared_ptr<ResourcePack>>' is not a known bindable declaration.");

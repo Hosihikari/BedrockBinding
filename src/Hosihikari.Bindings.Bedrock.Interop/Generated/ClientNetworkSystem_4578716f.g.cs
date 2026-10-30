@@ -55,6 +55,17 @@ public sealed unsafe partial class ClientNetworkSystem : global::System.IDisposa
         return new ClientNetworkSystem((nint)handle);
     }
 
+    public static ClientNetworkSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.ClientNetworkSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_16dcad57((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ClientNetworkSystem((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo getConnectionInfo()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo((nint)NativeMethods.TablePtr->C0.hs_method_d3c43046((void*)__hosihikari_shim_handle), false);

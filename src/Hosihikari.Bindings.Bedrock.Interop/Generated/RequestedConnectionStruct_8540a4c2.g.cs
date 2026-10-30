@@ -38,6 +38,17 @@ public sealed unsafe partial class RequestedConnectionStruct : global::System.ID
         return __hs_handle;
     }
 
+    public static RequestedConnectionStruct Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RakPeer_Nested.RequestedConnectionStruct arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_dbfb37e3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RequestedConnectionStruct((nint)handle);
+    }
+
     public int actionToTake
     {
         get => NativeMethods.TablePtr->C2.hs_get_60f62255((void*)__hosihikari_shim_handle);

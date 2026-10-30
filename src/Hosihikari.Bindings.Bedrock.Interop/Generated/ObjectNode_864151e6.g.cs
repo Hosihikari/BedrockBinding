@@ -62,6 +62,17 @@ public sealed unsafe partial class ObjectNode : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C0.hs_get_92de4703((void*)__hosihikari_shim_handle);
     }
 
+    public static ObjectNode Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.JSONObject.ObjectNode arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_9fe572a5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ObjectNode((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::JSONObject::ObjectNode::iterator_base<1>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint begin() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::JSONObject::ObjectNode::iterator_base<1>' requires --link-carrier or --virtual-dispatch.");

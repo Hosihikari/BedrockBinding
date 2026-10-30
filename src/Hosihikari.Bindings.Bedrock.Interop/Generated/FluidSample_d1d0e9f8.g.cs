@@ -38,6 +38,17 @@ public sealed unsafe partial class FluidSample : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static FluidSample Create(global::Hosihikari.Bindings.Bedrock.Interop.Aquifer_Nested.FluidSample arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_bf11eeb2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FluidSample((nint)handle);
+    }
+
     public int blockLevel
     {
         get => NativeMethods.TablePtr->C0.hs_get_72abbdaa((void*)__hosihikari_shim_handle);

@@ -40,7 +40,7 @@ public sealed unsafe partial class ResolvedTextObject : global::System.IDisposab
 
     public static ResolvedTextObject Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_0aff0593();
+        var handle = NativeMethods.TablePtr->C3.hs_create_0aff0593();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class ResolvedTextObject : global::System.IDisposab
 
     public static ResolvedTextObject Create(global::Hosihikari.Bindings.Bedrock.Interop.ResolvedTextObject arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_15d20d19((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_15d20d19((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -62,19 +62,19 @@ public sealed unsafe partial class ResolvedTextObject : global::System.IDisposab
 
     public string getAsJsonString()
     {
-        var __hs_view = NativeMethods.TablePtr->C2.hs_method_19c89f35((void*)__hosihikari_shim_handle);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_19c89f35((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkadb123_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_97c54705((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_97c54705((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ResolvedTextObject operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ResolvedTextObject arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ResolvedTextObject((nint)NativeMethods.TablePtr->C2.hs_method_135d9cd3((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ResolvedTextObject((nint)NativeMethods.TablePtr->C3.hs_method_135d9cd3((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -83,7 +83,7 @@ public sealed unsafe partial class ResolvedTextObject : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_89bbae56((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_89bbae56((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

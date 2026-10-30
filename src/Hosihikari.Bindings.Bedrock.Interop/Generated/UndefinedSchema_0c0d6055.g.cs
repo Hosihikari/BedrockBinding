@@ -56,6 +56,17 @@ public sealed unsafe partial class UndefinedSchema : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static UndefinedSchema Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.UndefinedSchema arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_4914515c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UndefinedSchema((nint)handle);
+    }
+
     public void doLoad(global::Hosihikari.Bindings.Bedrock.Interop.cereal.SchemaReader arg0, nint arg1, nint arg2, nint state)
     {
         NativeMethods.TablePtr->C4.hs_method_356fc0fe((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1, (void*)arg2, (void*)state);

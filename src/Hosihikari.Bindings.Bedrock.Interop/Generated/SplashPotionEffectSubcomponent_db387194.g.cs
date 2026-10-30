@@ -38,6 +38,17 @@ public sealed unsafe partial class SplashPotionEffectSubcomponent : global::Syst
         return __hs_handle;
     }
 
+    public static SplashPotionEffectSubcomponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SplashPotionEffectSubcomponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_2384505a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SplashPotionEffectSubcomponent((nint)handle);
+    }
+
     public void doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent component)
     {
         NativeMethods.TablePtr->C3.hs_method_e1d9a341((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)component.Handle);

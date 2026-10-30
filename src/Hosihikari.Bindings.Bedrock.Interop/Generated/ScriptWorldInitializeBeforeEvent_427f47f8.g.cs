@@ -54,6 +54,17 @@ public sealed unsafe partial class ScriptWorldInitializeBeforeEvent : global::Sy
         return new ScriptWorldInitializeBeforeEvent((nint)handle);
     }
 
+    public static ScriptWorldInitializeBeforeEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptWorldInitializeBeforeEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c67ec6e6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptWorldInitializeBeforeEvent((nint)handle);
+    }
+
     public static ScriptWorldInitializeBeforeEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptingWorldInitializeEvent eventData, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope)
     {
         var handle = NativeMethods.TablePtr->C3.hs_create_439cc243((void*)eventData.Handle, (void*)scope.Handle);

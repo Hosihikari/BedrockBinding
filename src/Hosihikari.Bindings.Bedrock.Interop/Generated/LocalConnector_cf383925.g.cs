@@ -94,6 +94,17 @@ public sealed unsafe partial class LocalConnector : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static LocalConnector Create(global::Hosihikari.Bindings.Bedrock.Interop.LocalConnector arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_adffa9ab((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LocalConnector((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo getConnectedGameInfo()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo((nint)NativeMethods.TablePtr->C2.hs_method_d20f64f8((void*)__hosihikari_shim_handle), false);

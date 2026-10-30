@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockDestructibleByMiningComponent : global::
         return __hs_handle;
     }
 
+    public static BlockDestructibleByMiningComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockDestructibleByMiningComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_a40e08cb((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockDestructibleByMiningComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mItemSpecificSpeeds_Address
     {

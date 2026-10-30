@@ -38,16 +38,27 @@ public sealed unsafe partial class ScopeHandler : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static ScopeHandler Create(global::Hosihikari.Bindings.Bedrock.Interop.ContentLog_Nested.ScopeHandler arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_a2aec1fc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScopeHandler((nint)handle);
+    }
+
     public string getScope()
     {
-        var __hs_view = NativeMethods.TablePtr->C0.hs_method_76ee6ff7((void*)__hosihikari_shim_handle);
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_76ee6ff7((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mThreadSpecificData_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_b4c4283b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b4c4283b((void*)__hosihikari_shim_handle);
     }
 
 
@@ -57,7 +68,7 @@ public sealed unsafe partial class ScopeHandler : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_d14c8858((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_d14c8858((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

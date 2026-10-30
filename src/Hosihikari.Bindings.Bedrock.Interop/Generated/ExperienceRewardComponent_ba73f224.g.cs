@@ -43,6 +43,17 @@ public sealed unsafe partial class ExperienceRewardComponent : global::System.ID
         NativeMethods.TablePtr->C1.hs_method_303f4c48((void*)__hosihikari_shim_handle);
     }
 
+    public static ExperienceRewardComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ExperienceRewardComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_5c278efd((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ExperienceRewardComponent((nint)handle);
+    }
+
     public int getOnBredExperience(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
         return NativeMethods.TablePtr->C1.hs_method_a2e12337((void*)__hosihikari_shim_handle, (void*)owner.Handle);

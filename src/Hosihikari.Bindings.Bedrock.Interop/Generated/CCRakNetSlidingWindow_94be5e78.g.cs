@@ -38,6 +38,17 @@ public sealed unsafe partial class CCRakNetSlidingWindow : global::System.IDispo
         return __hs_handle;
     }
 
+    public static CCRakNetSlidingWindow Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.CCRakNetSlidingWindow arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_178cba2a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CCRakNetSlidingWindow((nint)handle);
+    }
+
     public uint MAXIMUM_MTU_INCLUDING_UDP_HEADER
     {
         get => NativeMethods.TablePtr->C2.hs_get_f8f0705f((void*)__hosihikari_shim_handle);

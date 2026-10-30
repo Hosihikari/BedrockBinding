@@ -159,6 +159,17 @@ public sealed unsafe partial class DirectionalProducerComponent : global::System
         return new DirectionalProducerComponent((nint)handle);
     }
 
+    public static DirectionalProducerComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.DirectionalProducerComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_6e0bd911((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DirectionalProducerComponent((nint)handle);
+    }
+
     public bool allowConnection(global::Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph graph, global::Hosihikari.Bindings.Bedrock.Interop.CircuitTrackingInfo info, nint bDirectlyPowered)
     {
         return NativeMethods.TablePtr->C1.hs_method_dd0dae41((void*)__hosihikari_shim_handle, (void*)graph.Handle, (void*)info.Handle, (void*)bDirectlyPowered) != 0;

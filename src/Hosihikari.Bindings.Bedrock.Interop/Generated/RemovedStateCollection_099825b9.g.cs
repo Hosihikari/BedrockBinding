@@ -57,6 +57,17 @@ public sealed unsafe partial class RemovedStateCollection : global::System.IDisp
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)__hs_handle, false) : null;
     }
 
+    public static RemovedStateCollection Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockType_Nested.RemovedStateCollection arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_905e7bd0((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new RemovedStateCollection((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public static void add(nint stateRef, nint splitBlocks, nint removedSupportVersion) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");

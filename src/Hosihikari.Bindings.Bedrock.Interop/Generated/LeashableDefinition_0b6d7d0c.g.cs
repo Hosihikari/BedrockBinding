@@ -38,6 +38,17 @@ public sealed unsafe partial class LeashableDefinition : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static LeashableDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.LeashableDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_2daa6578((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LeashableDefinition((nint)handle);
+    }
+
     public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
         NativeMethods.TablePtr->C1.hs_method_08745b34(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));

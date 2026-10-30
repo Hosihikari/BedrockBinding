@@ -82,6 +82,17 @@ public sealed unsafe partial class ResourcePackDataInfoPacketPayload : global::S
         return new ResourcePackDataInfoPacketPayload((nint)handle);
     }
 
+    public static ResourcePackDataInfoPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackDataInfoPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c6a1171d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ResourcePackDataInfoPacketPayload((nint)handle);
+    }
+
     public static ResourcePackDataInfoPacketPayload Create(string name, uint chunkSize, int nbChunk, ulong fileSize, string fileHash, bool isPremium, sbyte packType)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);

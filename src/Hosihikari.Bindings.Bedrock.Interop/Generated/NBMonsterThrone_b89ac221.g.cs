@@ -48,6 +48,17 @@ public sealed unsafe partial class NBMonsterThrone : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_b4ef046e((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle) != 0;
     }
 
+    public static NBMonsterThrone Create(global::Hosihikari.Bindings.Bedrock.Interop.NBMonsterThrone arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_71588e3c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NBMonsterThrone((nint)handle);
+    }
+
     public int getType()
     {
         return NativeMethods.TablePtr->C2.hs_method_f122db59((void*)__hosihikari_shim_handle);

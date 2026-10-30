@@ -62,6 +62,17 @@ public sealed unsafe partial class IFeature : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_677a147a((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
+    public static IFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.IFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_9e44c522((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IFeature((nint)handle);
+    }
+
     public static bool isExposedTo(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos candidatePos, global::Hosihikari.Bindings.Bedrock.Interop.BlockDescriptor exposedTo)
     {
         return NativeMethods.TablePtr->C1.hs_method_e69ae355((void*)target.Handle, (void*)candidatePos.Handle, (void*)exposedTo.Handle) != 0;

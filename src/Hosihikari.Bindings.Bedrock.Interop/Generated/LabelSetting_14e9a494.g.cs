@@ -38,6 +38,17 @@ public sealed unsafe partial class LabelSetting : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static LabelSetting Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v3_0_0.PackManifestDefinition.LabelSetting arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_1943f15f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LabelSetting((nint)handle);
+    }
+
     public static string TYPE_NAME()
     {
         var __hs_view = NativeMethods.TablePtr->C3.hs_method_296a19a0();

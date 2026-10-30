@@ -169,6 +169,17 @@ public sealed unsafe partial class NavigationHoverDescription : global::System.I
         return (nint)NativeMethods.TablePtr->C2.hs_method_0fd0b733((void*)__hosihikari_shim_handle);
     }
 
+    public static NavigationHoverDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.NavigationHoverDescription arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_ef8ea96f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NavigationHoverDescription((nint)handle);
+    }
+
     public nint getJsonName()
     {
         return (nint)NativeMethods.TablePtr->C2.hs_method_8167e840((void*)__hosihikari_shim_handle);

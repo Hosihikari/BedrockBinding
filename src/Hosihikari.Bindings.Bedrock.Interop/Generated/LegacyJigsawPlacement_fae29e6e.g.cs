@@ -44,7 +44,18 @@ public sealed unsafe partial class LegacyJigsawPlacement : global::System.IDispo
 
     public static LegacyJigsawPlacement Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_b41efae7();
+        var handle = NativeMethods.TablePtr->C2.hs_create_b41efae7();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacyJigsawPlacement((nint)handle);
+    }
+
+    public static LegacyJigsawPlacement Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyJigsawPlacement arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_48f9ffec((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -72,18 +83,18 @@ public sealed unsafe partial class LegacyJigsawPlacement : global::System.IDispo
     // The native field type is not projected; this is the address of the field storage.
     public nint mChunkHeightCache_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_54f21766((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_54f21766((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFactory_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_c7973672((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c7973672((void*)__hosihikari_shim_handle);
     }
 
     public int mMaxDepth
     {
-        get => NativeMethods.TablePtr->C1.hs_get_5b4bfdef((void*)__hosihikari_shim_handle);
+        get => NativeMethods.TablePtr->C2.hs_get_5b4bfdef((void*)__hosihikari_shim_handle);
     }
 
 
@@ -93,7 +104,7 @@ public sealed unsafe partial class LegacyJigsawPlacement : global::System.IDispo
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_fae29e6e((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_fae29e6e((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

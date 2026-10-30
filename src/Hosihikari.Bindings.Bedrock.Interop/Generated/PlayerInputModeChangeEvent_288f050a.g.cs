@@ -38,6 +38,17 @@ public sealed unsafe partial class PlayerInputModeChangeEvent : global::System.I
         return __hs_handle;
     }
 
+    public static PlayerInputModeChangeEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerInputModeChangeEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_ca633d63((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerInputModeChangeEvent((nint)handle);
+    }
+
     public uint mNewInputModeUsed
     {
         get => NativeMethods.TablePtr->C2.hs_get_c2e89b78((void*)__hosihikari_shim_handle);

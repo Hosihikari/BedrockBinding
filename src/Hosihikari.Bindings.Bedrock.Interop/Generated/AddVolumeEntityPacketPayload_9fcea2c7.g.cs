@@ -43,9 +43,10 @@ public sealed unsafe partial class AddVolumeEntityPacketPayload : global::System
         return (nint)NativeMethods.TablePtr->C0.hs_method_055d8680((void*)__hosihikari_shim_handle, (void*)other.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint entity, nint components, nint minEngineVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag components, global::Hosihikari.Bindings.Bedrock.Interop.MinEngineVersion minEngineVersion)
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_87870a0d((void*)__hosihikari_shim_handle, (void*)entity.Handle, (void*)components.Handle, (void*)minEngineVersion.Handle);
+    }
 
     public void _dtor()
     {
@@ -74,9 +75,16 @@ public sealed unsafe partial class AddVolumeEntityPacketPayload : global::System
         return new AddVolumeEntityPacketPayload((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static AddVolumeEntityPacketPayload Create(nint entity, nint components, nint minEngineVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static AddVolumeEntityPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag components, global::Hosihikari.Bindings.Bedrock.Interop.MinEngineVersion minEngineVersion)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_be123230((void*)entity.Handle, (void*)components.Handle, (void*)minEngineVersion.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AddVolumeEntityPacketPayload((nint)handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mComponents_Address

@@ -38,6 +38,17 @@ public sealed unsafe partial class FloorRoomCollection : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static FloorRoomCollection Create(global::Hosihikari.Bindings.Bedrock.Interop.WoodlandMansionPieces_Nested.FloorRoomCollection arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_ae2e668c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FloorRoomCollection((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint get1x1(nint random) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

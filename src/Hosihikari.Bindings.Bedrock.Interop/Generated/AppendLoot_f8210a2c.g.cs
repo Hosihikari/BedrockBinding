@@ -56,6 +56,17 @@ public sealed unsafe partial class AppendLoot : global::System.IDisposable
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static AppendLoot Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.processors.BlockEntity.AppendLoot arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_1be40a83((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AppendLoot((nint)handle);
+    }
+
     public void appendMetadataKey(global::Hosihikari.Bindings.Bedrock.Interop.Util.XXHash hash)
     {
         NativeMethods.TablePtr->C4.hs_method_f64d74a3((void*)__hosihikari_shim_handle, (void*)hash.Handle);

@@ -43,6 +43,17 @@ public sealed unsafe partial class ProjectileSystem : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_c215af59((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static ProjectileSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.ProjectileSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_0e018992((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ProjectileSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C2.hs_method_00d870c4((void*)__hosihikari_shim_handle, (void*)registry.Handle);

@@ -43,6 +43,17 @@ public sealed unsafe partial class MissingBlobData : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_d2629820((void*)__hosihikari_shim_handle);
     }
 
+    public static MissingBlobData Create(global::Hosihikari.Bindings.Bedrock.Interop.MissingBlobData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_74770e4c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MissingBlobData((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlobData_Address
     {

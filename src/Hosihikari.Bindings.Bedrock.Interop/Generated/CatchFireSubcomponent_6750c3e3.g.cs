@@ -58,6 +58,17 @@ public sealed unsafe partial class CatchFireSubcomponent : global::System.IDispo
         NativeMethods.TablePtr->C0.hs_method_d8868560((void*)__hosihikari_shim_handle, (void*)component.Handle);
     }
 
+    public static CatchFireSubcomponent Create(global::Hosihikari.Bindings.Bedrock.Interop.CatchFireSubcomponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_9d4af597((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CatchFireSubcomponent((nint)handle);
+    }
+
     public void doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent component)
     {
         NativeMethods.TablePtr->C0.hs_method_c9bf06bf((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)component.Handle);

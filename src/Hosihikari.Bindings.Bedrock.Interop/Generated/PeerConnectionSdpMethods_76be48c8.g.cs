@@ -87,6 +87,17 @@ public sealed unsafe partial class PeerConnectionSdpMethods : global::System.IDi
     public void NoteUsageEvent(nint @event) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+    public static PeerConnectionSdpMethods Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.PeerConnectionSdpMethods arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_3da4fe10((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PeerConnectionSdpMethods((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void ReportSdpBundleUsage(nint remote_description) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

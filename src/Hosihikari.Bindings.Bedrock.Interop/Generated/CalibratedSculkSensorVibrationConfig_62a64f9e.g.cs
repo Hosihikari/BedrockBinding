@@ -47,6 +47,17 @@ public sealed unsafe partial class CalibratedSculkSensorVibrationConfig : global
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static CalibratedSculkSensorVibrationConfig Create(global::Hosihikari.Bindings.Bedrock.Interop.CalibratedSculkSensorVibrationConfig arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_4d732f3a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CalibratedSculkSensorVibrationConfig((nint)handle);
+    }
+
     public bool shouldListen(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.GameEvent gameEvent, nint gameEventContext)
     {
         return NativeMethods.TablePtr->C0.hs_method_5a5ae655((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)gameEvent.Handle, (void*)gameEventContext) != 0;

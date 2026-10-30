@@ -78,6 +78,17 @@ public sealed unsafe partial class TransferToCommand : global::System.IDisposabl
         return NativeMethods.TablePtr->C0.hs_method_9e3f3c5f((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static TransferToCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.AgentCommands.TransferToCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f4967278((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TransferToCommand((nint)handle);
+    }
+
     public void execute()
     {
         NativeMethods.TablePtr->C0.hs_method_00da996a((void*)__hosihikari_shim_handle);

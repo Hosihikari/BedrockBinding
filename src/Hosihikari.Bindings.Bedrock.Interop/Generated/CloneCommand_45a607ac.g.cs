@@ -43,6 +43,17 @@ public sealed unsafe partial class CloneCommand : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_d4558b5a((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static CloneCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.CloneCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_e894f79e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CloneCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C0.hs_method_7d8b4407((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

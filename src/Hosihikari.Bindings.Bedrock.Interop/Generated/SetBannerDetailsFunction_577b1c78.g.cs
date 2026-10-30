@@ -54,6 +54,17 @@ public sealed unsafe partial class SetBannerDetailsFunction : global::System.IDi
         return NativeMethods.TablePtr->C3.hs_method_5ed64955((void*)__hosihikari_shim_handle);
     }
 
+    public static SetBannerDetailsFunction Create(global::Hosihikari.Bindings.Bedrock.Interop.SetBannerDetailsFunction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_982d5f70((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SetBannerDetailsFunction((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public static void _parseBannerPattern(nint patternVec, nint @object) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");

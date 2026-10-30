@@ -70,6 +70,17 @@ public sealed unsafe partial class CommandRequestPacketPayload : global::System.
         return new CommandRequestPacketPayload((nint)handle);
     }
 
+    public static CommandRequestPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.CommandRequestPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_54713c75((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CommandRequestPacketPayload((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CommandContext' has no accessible destructor.", false)]
     public nint createCommandContext(nint source, nint level, nint senderSubId) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CommandContext' has no accessible destructor.");

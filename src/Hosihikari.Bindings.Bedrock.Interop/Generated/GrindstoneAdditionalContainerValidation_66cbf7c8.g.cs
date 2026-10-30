@@ -48,6 +48,17 @@ public sealed unsafe partial class GrindstoneAdditionalContainerValidation : glo
         return NativeMethods.TablePtr->C1.hs_method_bc007aa0((void*)__hosihikari_shim_handle, (void*)arg0.Handle, arg1, (void*)item.Handle, arg3, arg4) != 0;
     }
 
+    public static GrindstoneAdditionalContainerValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.GrindstoneAdditionalContainerValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_aafa5d0b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GrindstoneAdditionalContainerValidation((nint)handle);
+    }
+
     public int getContainerOffset(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
     {
         return NativeMethods.TablePtr->C1.hs_method_45cc525a((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);

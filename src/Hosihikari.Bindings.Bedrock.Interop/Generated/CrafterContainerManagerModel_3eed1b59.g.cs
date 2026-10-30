@@ -124,6 +124,17 @@ public sealed unsafe partial class CrafterContainerManagerModel : global::System
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static CrafterContainerManagerModel Create(global::Hosihikari.Bindings.Bedrock.Interop.CrafterContainerManagerModel arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b289f1b5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CrafterContainerManagerModel((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext _postInit()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext((nint)NativeMethods.TablePtr->C1.hs_method_ce8813e6((void*)__hosihikari_shim_handle));

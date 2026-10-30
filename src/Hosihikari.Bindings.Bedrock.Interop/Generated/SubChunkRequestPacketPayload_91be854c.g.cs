@@ -49,6 +49,17 @@ public sealed unsafe partial class SubChunkRequestPacketPayload : global::System
         return new SubChunkRequestPacketPayload((nint)handle);
     }
 
+    public static SubChunkRequestPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.SubChunkRequestPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_36593eef((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SubChunkRequestPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mCenterPos_Address
     {

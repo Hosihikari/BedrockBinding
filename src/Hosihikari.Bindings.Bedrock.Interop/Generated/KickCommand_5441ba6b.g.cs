@@ -72,6 +72,17 @@ public sealed unsafe partial class KickCommand : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_7fd7ec12((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static KickCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.KickCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_2ddb3171((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new KickCommand((nint)handle);
+    }
+
     public bool _canKickPlayerOrGenerateFailureOutput(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output, global::Hosihikari.Bindings.Bedrock.Interop.Level? level)
     {
         return NativeMethods.TablePtr->C1.hs_method_69c3c0df((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)output.Handle, (void*)(level?.Handle ?? 0)) != 0;

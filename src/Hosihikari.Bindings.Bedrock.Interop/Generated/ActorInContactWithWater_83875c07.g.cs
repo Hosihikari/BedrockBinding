@@ -49,6 +49,17 @@ public sealed unsafe partial class ActorInContactWithWater : global::System.IDis
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static ActorInContactWithWater Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorInContactWithWater arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_00c95121((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorInContactWithWater((nint)handle);
+    }
+
     public bool evaluate(nint context)
     {
         return NativeMethods.TablePtr->C0.hs_method_92585e22((void*)__hosihikari_shim_handle, (void*)context) != 0;

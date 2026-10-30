@@ -38,6 +38,17 @@ public sealed unsafe partial class Builder : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Builder Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Resources.Archive.Builder arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_2cd54e85((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Builder((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint addEntry(nint name, nint data) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

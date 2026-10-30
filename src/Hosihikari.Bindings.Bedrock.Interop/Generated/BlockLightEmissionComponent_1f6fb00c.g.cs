@@ -38,6 +38,17 @@ public sealed unsafe partial class BlockLightEmissionComponent : global::System.
         return __hs_handle;
     }
 
+    public static BlockLightEmissionComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockLightEmissionComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_4bd7bd4c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockLightEmissionComponent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mLightEmission_Address
     {

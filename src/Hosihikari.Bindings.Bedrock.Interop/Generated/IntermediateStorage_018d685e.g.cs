@@ -38,6 +38,17 @@ public sealed unsafe partial class IntermediateStorage : global::System.IDisposa
         return __hs_handle;
     }
 
+    public static IntermediateStorage Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemCustomComponentCompleteUseEvent_Nested.IntermediateStorage arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_bb888faa((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IntermediateStorage((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mItemStack_Address
     {

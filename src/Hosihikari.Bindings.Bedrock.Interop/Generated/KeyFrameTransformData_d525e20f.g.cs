@@ -38,6 +38,17 @@ public sealed unsafe partial class KeyFrameTransformData : global::System.IDispo
         return __hs_handle;
     }
 
+    public static KeyFrameTransformData Create(global::Hosihikari.Bindings.Bedrock.Interop.KeyFrameTransformData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_81f03cc3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new KeyFrameTransformData((nint)handle);
+    }
+
     public void addChannelTransform(global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode expression, int axisIndex)
     {
         NativeMethods.TablePtr->C1.hs_method_de794c8b((void*)__hosihikari_shim_handle, (void*)expression.Handle, axisIndex);

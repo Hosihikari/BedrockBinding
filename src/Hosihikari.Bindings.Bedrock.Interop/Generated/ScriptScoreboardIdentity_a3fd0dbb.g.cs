@@ -38,6 +38,17 @@ public sealed unsafe partial class ScriptScoreboardIdentity : global::System.IDi
         return __hs_handle;
     }
 
+    public static ScriptScoreboardIdentity Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptScoreboardIdentity arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c617e319((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptScoreboardIdentity((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_9f8e3aef());

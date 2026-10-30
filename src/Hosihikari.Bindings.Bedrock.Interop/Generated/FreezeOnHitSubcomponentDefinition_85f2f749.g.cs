@@ -48,6 +48,17 @@ public sealed unsafe partial class FreezeOnHitSubcomponentDefinition : global::S
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static FreezeOnHitSubcomponentDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_50.FreezeOnHitSubcomponentDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_24c76aa5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FreezeOnHitSubcomponentDefinition((nint)handle);
+    }
+
     public static string NAME()
     {
         var __hs_view = NativeMethods.TablePtr->C3.hs_method_7e4b00ac();

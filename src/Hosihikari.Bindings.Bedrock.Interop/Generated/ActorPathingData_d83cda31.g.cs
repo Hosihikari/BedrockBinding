@@ -43,6 +43,17 @@ public sealed unsafe partial class ActorPathingData : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_cb893d57((void*)__hosihikari_shim_handle);
     }
 
+    public static ActorPathingData Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorPathingData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_3f4f2c51((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorPathingData((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mAABB_Address
     {

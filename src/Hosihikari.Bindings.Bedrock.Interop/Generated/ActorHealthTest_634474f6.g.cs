@@ -49,6 +49,17 @@ public sealed unsafe partial class ActorHealthTest : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static ActorHealthTest Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorHealthTest arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_34806e0b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorHealthTest((nint)handle);
+    }
+
     public bool evaluate(nint context)
     {
         return NativeMethods.TablePtr->C0.hs_method_c9dfe045((void*)__hosihikari_shim_handle, (void*)context) != 0;

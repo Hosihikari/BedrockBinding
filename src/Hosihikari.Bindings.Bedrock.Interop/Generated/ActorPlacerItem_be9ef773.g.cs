@@ -118,9 +118,9 @@ public sealed unsafe partial class ActorPlacerItem : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_7c7f2d7a((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)container.Handle, slot, (void*)pos.Handle, face) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static void forEachCustomEgg(nint itemRegistry, nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier getActorIdentifier(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
     {
@@ -172,9 +172,10 @@ public sealed unsafe partial class ActorPlacerItem : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->C0.hs_method_79a5ffae();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static void registerCustomEggs(nint itemRegistry, nint registry, nint experiments) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static void registerCustomEggs(global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistryRef itemRegistry, global::Hosihikari.Bindings.Bedrock.Interop.ActorInfoRegistry registry, global::Hosihikari.Bindings.Bedrock.Interop.Experiments experiments)
+    {
+        NativeMethods.TablePtr->C0.hs_method_077dd3f2((void*)itemRegistry.Handle, (void*)registry.Handle, (void*)experiments.Handle);
+    }
 
     public bool shouldInteractionWithBlockBypassLiquid(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {

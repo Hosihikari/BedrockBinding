@@ -38,6 +38,17 @@ public sealed unsafe partial class IPreliminarySurfaceProvider : global::System.
         return __hs_handle;
     }
 
+    public static IPreliminarySurfaceProvider Create(global::Hosihikari.Bindings.Bedrock.Interop.IPreliminarySurfaceProvider arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_1e455e44((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new IPreliminarySurfaceProvider((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getPreliminarySurfaceLevel(nint worldQuartPos) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");

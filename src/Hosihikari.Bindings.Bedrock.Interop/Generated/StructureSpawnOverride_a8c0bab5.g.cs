@@ -38,6 +38,17 @@ public sealed unsafe partial class StructureSpawnOverride : global::System.IDisp
         return __hs_handle;
     }
 
+    public static StructureSpawnOverride Create(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructureSpawnOverride arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_59ca62f5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureSpawnOverride((nint)handle);
+    }
+
     public byte mBoundingBox
     {
         get => NativeMethods.TablePtr->C4.hs_get_8a5ec433((void*)__hosihikari_shim_handle);

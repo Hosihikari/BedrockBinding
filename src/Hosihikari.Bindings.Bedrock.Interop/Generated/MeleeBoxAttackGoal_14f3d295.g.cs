@@ -226,6 +226,17 @@ public sealed unsafe partial class MeleeBoxAttackGoal : global::System.IDisposab
         }
     }
 
+    public static MeleeBoxAttackGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.MeleeBoxAttackGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_a5dbfd2f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MeleeBoxAttackGoal((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public void appendDebugInfo(nint str) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");

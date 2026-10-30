@@ -53,6 +53,17 @@ public sealed unsafe partial class LabTableInputValidation : global::System.IDis
         return NativeMethods.TablePtr->C1.hs_method_91494bfe((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, slot, (void*)item.Handle, amount, arg4) != 0;
     }
 
+    public static LabTableInputValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.LabTableInputValidation arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_6a07c552((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LabTableInputValidation((nint)handle);
+    }
+
     public bool canDestroy(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
     {
         return NativeMethods.TablePtr->C1.hs_method_fb0006f1((void*)__hosihikari_shim_handle, (void*)screenContext.Handle) != 0;

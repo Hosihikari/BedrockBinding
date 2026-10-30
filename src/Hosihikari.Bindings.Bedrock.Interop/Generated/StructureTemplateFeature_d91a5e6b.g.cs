@@ -57,6 +57,17 @@ public sealed unsafe partial class StructureTemplateFeature : global::System.IDi
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
+    public static StructureTemplateFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplateFeature arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_804483b1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new StructureTemplateFeature((nint)handle);
+    }
+
     public int mAdjustmentRadius
     {
         get => NativeMethods.TablePtr->C3.hs_get_68f42fec((void*)__hosihikari_shim_handle);

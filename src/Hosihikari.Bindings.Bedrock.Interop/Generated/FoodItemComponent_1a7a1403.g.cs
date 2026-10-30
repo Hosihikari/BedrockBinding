@@ -43,6 +43,17 @@ public sealed unsafe partial class FoodItemComponent : global::System.IDisposabl
         NativeMethods.TablePtr->C3.hs_method_fa9eaba1((void*)__hosihikari_shim_handle);
     }
 
+    public static FoodItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50.FoodItemComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_c8042c53((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FoodItemComponent((nint)handle);
+    }
+
     public static string NAME()
     {
         var __hs_view = NativeMethods.TablePtr->C3.hs_method_68bb2e68();

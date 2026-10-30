@@ -38,6 +38,17 @@ public sealed unsafe partial class DebugMarkerData : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static DebugMarkerData Create(global::Hosihikari.Bindings.Bedrock.Interop.ClientboundDebugRendererPacketPayload_Nested.DebugMarkerData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_34e1698c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DebugMarkerData((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint color_Address
     {

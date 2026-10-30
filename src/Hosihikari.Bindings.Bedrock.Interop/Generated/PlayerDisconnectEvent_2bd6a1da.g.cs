@@ -38,6 +38,17 @@ public sealed unsafe partial class PlayerDisconnectEvent : global::System.IDispo
         return __hs_handle;
     }
 
+    public static PlayerDisconnectEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerDisconnectEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_3575dce6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerDisconnectEvent((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mPlayer_Address
     {

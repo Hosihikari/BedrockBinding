@@ -83,6 +83,17 @@ public sealed unsafe partial class InspectDataCommand : global::System.IDisposab
         return NativeMethods.TablePtr->C0.hs_method_63cfcc0a((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static InspectDataCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.AgentCommands.InspectDataCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_ee182eb5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InspectDataCommand((nint)handle);
+    }
+
     public void execute()
     {
         NativeMethods.TablePtr->C0.hs_method_1643f5fc((void*)__hosihikari_shim_handle);

@@ -38,6 +38,17 @@ public sealed unsafe partial class JigsawStructureBlockRulesRegistry : global::S
         return __hs_handle;
     }
 
+    public static JigsawStructureBlockRulesRegistry Create(global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureBlockRulesRegistry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_465ed03f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new JigsawStructureBlockRulesRegistry((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gsl::not_null<std::shared_ptr<const std::vector<gsl::not_null<std::shared_ptr<const br::worldgen::StructureProcessor>>>>>' is not supported.", false)]
     public nint get(nint key) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gsl::not_null<std::shared_ptr<const std::vector<gsl::not_null<std::shared_ptr<const br::worldgen::StructureProcessor>>>>>' is not supported.");

@@ -305,6 +305,17 @@ public sealed unsafe partial class NullSoundPlayer : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_94c5ca7e((void*)__hosihikari_shim_handle, arg0, arg1);
     }
 
+    public static NullSoundPlayer Create(global::Hosihikari.Bindings.Bedrock.Interop.NullSoundPlayer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_8a098ba3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NullSoundPlayer((nint)handle);
+    }
+
     public void fade(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle arg0, float arg1, float arg2)
     {
         NativeMethods.TablePtr->C2.hs_method_65047672((void*)__hosihikari_shim_handle, (void*)arg0.Handle, arg1, arg2);

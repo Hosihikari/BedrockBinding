@@ -152,6 +152,17 @@ public sealed unsafe partial class ServerSettingsResponsePacket : global::System
         NativeMethods.TablePtr->C3.hs_method_5fff4bb1((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+    public static ServerSettingsResponsePacket Create(global::Hosihikari.Bindings.Bedrock.Interop.ServerSettingsResponsePacket arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_765901d6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ServerSettingsResponsePacket((nint)handle);
+    }
+
     public static ServerSettingsResponsePacket Create(uint formId, string formJSON)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(formJSON);

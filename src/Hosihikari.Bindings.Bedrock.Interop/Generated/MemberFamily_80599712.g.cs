@@ -38,6 +38,17 @@ public sealed unsafe partial class MemberFamily : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static MemberFamily Create(global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.BasicSchema_Nested.MemberFamily arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_14b46948((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MemberFamily((nint)handle);
+    }
+
     public uint mMemberId
     {
         get => NativeMethods.TablePtr->C4.hs_get_a746761d((void*)__hosihikari_shim_handle);

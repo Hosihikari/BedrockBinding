@@ -127,6 +127,17 @@ public sealed unsafe partial class MeleeWeaponEnchant : global::System.IDisposab
         return NativeMethods.TablePtr->C2.hs_method_686e3765((void*)__hosihikari_shim_handle) != 0;
     }
 
+    public static MeleeWeaponEnchant Create(global::Hosihikari.Bindings.Bedrock.Interop.MeleeWeaponEnchant arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_28a77018((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MeleeWeaponEnchant((nint)handle);
+    }
+
     public static nint VALID_ENCHANTMENTS()
     {
         return (nint)NativeMethods.TablePtr->C2.hs_method_ea596de7();

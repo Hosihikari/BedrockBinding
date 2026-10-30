@@ -62,6 +62,17 @@ public sealed unsafe partial class SystemFilePicker : global::System.IDisposable
         }
     }
 
+    public static SystemFilePicker Create(global::Hosihikari.Bindings.Bedrock.Interop.SystemFilePicker arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_8b7f34e7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SystemFilePicker((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void initFilePick(nint filePath, nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");

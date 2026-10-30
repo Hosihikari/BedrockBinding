@@ -43,6 +43,17 @@ public sealed unsafe partial class AbilityCommand : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_2bc84231((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static AbilityCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.AbilityCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_f2cebe4a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AbilityCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C0.hs_method_4412c8c5((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

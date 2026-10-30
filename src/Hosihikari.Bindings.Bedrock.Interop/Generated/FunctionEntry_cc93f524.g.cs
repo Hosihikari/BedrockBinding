@@ -43,6 +43,17 @@ public sealed unsafe partial class FunctionEntry : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_948e1f85((void*)__hosihikari_shim_handle, (void*)functionManager.Handle, (void*)origin.Handle, order);
     }
 
+    public static FunctionEntry Create(global::Hosihikari.Bindings.Bedrock.Interop.FunctionEntry arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_eccf99fc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FunctionEntry((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.FunctionManager functionManager, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, byte order)
     {
         NativeMethods.TablePtr->C1.hs_method_1e1ef361((void*)__hosihikari_shim_handle, (void*)functionManager.Handle, (void*)origin.Handle, order);

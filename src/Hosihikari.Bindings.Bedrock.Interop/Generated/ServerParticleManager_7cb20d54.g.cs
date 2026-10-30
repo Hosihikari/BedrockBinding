@@ -38,6 +38,17 @@ public sealed unsafe partial class ServerParticleManager : global::System.IDispo
         return __hs_handle;
     }
 
+    public static ServerParticleManager Create(global::Hosihikari.Bindings.Bedrock.Interop.ServerParticleManager arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_36cf63d9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ServerParticleManager((nint)handle);
+    }
+
     public bool mIsClientSide
     {
         get => NativeMethods.TablePtr->C3.hs_get_60f4168a((void*)__hosihikari_shim_handle) != 0;

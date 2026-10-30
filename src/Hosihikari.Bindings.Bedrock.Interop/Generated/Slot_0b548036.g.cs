@@ -43,6 +43,17 @@ public sealed unsafe partial class Slot : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_89dbf4aa((void*)__hosihikari_shim_handle);
     }
 
+    public static Slot Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptTickSignal_Nested.Slot arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_a8ee1014((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Slot((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint closure_Address
     {

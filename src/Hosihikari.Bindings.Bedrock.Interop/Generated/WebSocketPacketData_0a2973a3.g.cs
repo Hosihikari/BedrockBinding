@@ -68,6 +68,17 @@ public sealed unsafe partial class WebSocketPacketData : global::System.IDisposa
         return new WebSocketPacketData((nint)handle);
     }
 
+    public static WebSocketPacketData Create(global::Hosihikari.Bindings.Bedrock.Interop.WebSocketPacketData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_3d2852a3((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WebSocketPacketData((nint)handle);
+    }
+
     public static WebSocketPacketData Create(string ip)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(ip);

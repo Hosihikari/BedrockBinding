@@ -38,6 +38,17 @@ public sealed unsafe partial class FeatureRegistryPacketPayload : global::System
         return __hs_handle;
     }
 
+    public static FeatureRegistryPacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.FeatureRegistryPacketPayload arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_b5330a95((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FeatureRegistryPacketPayload((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mFeaturesData_Address
     {

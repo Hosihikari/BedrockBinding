@@ -67,6 +67,17 @@ public sealed unsafe partial class UpgradeTo12020 : global::System.IDisposable
         return NativeMethods.TablePtr->C4.hs_method_4d26b9d0((void*)__hosihikari_shim_handle, (void*)component) != 0;
     }
 
+    public static UpgradeTo12020 Create(global::Hosihikari.Bindings.Bedrock.Interop.WearableItemComponentVersioning.UpgradeTo12020 arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_f8f7189f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new UpgradeTo12020((nint)handle);
+    }
+
     public bool previousSchema(nint component)
     {
         return NativeMethods.TablePtr->C4.hs_method_fe724eb7((void*)__hosihikari_shim_handle, (void*)component) != 0;

@@ -445,9 +445,10 @@ public sealed unsafe partial class CompoundTagVariant : global::System.IDisposab
     public static nint parse(nint snbt, nint parsedLength) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: expected value type 'CompoundTagVariant': by-value return type 'CompoundTagVariant' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void push_back(nint val) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void push_back(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagVariant val)
+    {
+        NativeMethods.TablePtr->C0.hs_method_5e80ba2a((void*)__hosihikari_shim_handle, (void*)val.Handle);
+    }
 
     public ulong size()
     {

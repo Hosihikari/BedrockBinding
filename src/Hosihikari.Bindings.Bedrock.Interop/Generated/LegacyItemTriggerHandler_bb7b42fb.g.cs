@@ -46,6 +46,17 @@ public sealed unsafe partial class LegacyItemTriggerHandler : global::System.IDi
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+    public static LegacyItemTriggerHandler Create(global::Hosihikari.Bindings.Bedrock.Interop.LegacyItemTriggerHandler arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_5bd93417((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LegacyItemTriggerHandler((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: map value type 'DefinitionEvent' is not supported.", false)]
     public void _executeEvent(nint eventHandlers, nint item, nint name, nint eventStack, nint @params) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: map value type 'DefinitionEvent' is not supported.");
@@ -57,7 +68,7 @@ public sealed unsafe partial class LegacyItemTriggerHandler : global::System.IDi
     // The native field type is not projected; this is the address of the field storage.
     public nint mConfig_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_2350ec57((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2350ec57((void*)__hosihikari_shim_handle);
     }
 
 
@@ -67,7 +78,7 @@ public sealed unsafe partial class LegacyItemTriggerHandler : global::System.IDi
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_bb7b42fb((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_bb7b42fb((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

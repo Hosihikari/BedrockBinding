@@ -40,20 +40,20 @@ public sealed unsafe partial class BossKilled : global::System.IDisposable
 
     public int mBossType
     {
-        get => NativeMethods.TablePtr->C1.hs_get_5532041e((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_5532041e((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_5532041e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_5532041e((void*)__hosihikari_shim_handle, value);
     }
 
     public long mBossUniqueId
     {
-        get => NativeMethods.TablePtr->C1.hs_get_91d64062((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_91d64062((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_91d64062((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_91d64062((void*)__hosihikari_shim_handle, value);
     }
 
     public int mPartySize
     {
-        get => NativeMethods.TablePtr->C1.hs_get_9fe0f632((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_9fe0f632((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_9fe0f632((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_9fe0f632((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -62,7 +62,7 @@ public sealed unsafe partial class BossKilled : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_7f06fc01((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_7f06fc01((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

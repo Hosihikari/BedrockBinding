@@ -43,6 +43,17 @@ public sealed unsafe partial class GeneticsDefinition : global::System.IDisposab
         return (nint)NativeMethods.TablePtr->C1.hs_method_c3f18aff();
     }
 
+    public static GeneticsDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.GeneticsDefinition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_e7f7d8a6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new GeneticsDefinition((nint)handle);
+    }
+
     public void addGeneDefinition(global::Hosihikari.Bindings.Bedrock.Interop.GeneDefinition geneDefinition)
     {
         NativeMethods.TablePtr->C1.hs_method_7b83126a((void*)__hosihikari_shim_handle, (void*)geneDefinition.Handle);

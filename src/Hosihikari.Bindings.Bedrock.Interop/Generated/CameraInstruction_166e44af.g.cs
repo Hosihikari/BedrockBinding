@@ -38,6 +38,17 @@ public sealed unsafe partial class CameraInstruction : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static CameraInstruction Create(global::Hosihikari.Bindings.Bedrock.Interop.CameraInstruction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_94e4589b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new CameraInstruction((nint)handle);
+    }
+
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C0.hs_method_f64f1313((void*)ctx.Handle);

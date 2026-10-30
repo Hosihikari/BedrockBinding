@@ -38,9 +38,10 @@ public sealed unsafe partial class ChatEvent : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public nint _ctor(nint sender, nint packet) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.WeakRef_EntityContext_ sender, global::Hosihikari.Bindings.Bedrock.Interop.TextPacket packet)
+    {
+        return (nint)NativeMethods.TablePtr->C0.hs_method_bb499c98((void*)__hosihikari_shim_handle, (void*)sender.Handle, (void*)packet.Handle);
+    }
 
     public void _dtor()
     {
@@ -58,9 +59,27 @@ public sealed unsafe partial class ChatEvent : global::System.IDisposable
         return new ChatEvent((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public static ChatEvent Create(nint sender, nint packet) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public static ChatEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.WeakRef_EntityContext_ sender, global::Hosihikari.Bindings.Bedrock.Interop.TextPacket packet)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_fe87014f((void*)sender.Handle, (void*)packet.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChatEvent((nint)handle);
+    }
+
+    public static ChatEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ChatEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_d7f0e846((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChatEvent((nint)handle);
+    }
 
     public bool mAllowFiltering
     {

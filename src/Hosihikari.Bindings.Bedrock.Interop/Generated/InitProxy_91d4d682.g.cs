@@ -38,16 +38,27 @@ public sealed unsafe partial class InitProxy : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static InitProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.TimeCommand_Nested.InitProxy arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_92194182((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new InitProxy((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mExperiments_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_d407825e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_d407825e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mWorldClockRegistry_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_6fcee4e9((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_6fcee4e9((void*)__hosihikari_shim_handle);
     }
 
 
@@ -57,7 +68,7 @@ public sealed unsafe partial class InitProxy : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_91d4d682((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_91d4d682((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

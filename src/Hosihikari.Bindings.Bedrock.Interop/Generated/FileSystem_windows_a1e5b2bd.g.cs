@@ -181,6 +181,17 @@ public sealed unsafe partial class FileSystem_windows : global::System.IDisposab
         return new FileSystem_windows((nint)handle);
     }
 
+    public static FileSystem_windows Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSystem_windows arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_e5dc853c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FileSystem_windows((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _copyTimeAndAccessRights(nint sourceEntryPath, nint targetEntryPath) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");

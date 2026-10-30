@@ -43,6 +43,17 @@ public sealed unsafe partial class AgentAnimationSystem : global::System.IDispos
         NativeMethods.TablePtr->C0.hs_method_f504d140((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
+    public static AgentAnimationSystem Create(global::Hosihikari.Bindings.Bedrock.Interop.AgentAnimationSystem arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_394cfa72((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AgentAnimationSystem((nint)handle);
+    }
+
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C0.hs_method_c9fa62a2((void*)__hosihikari_shim_handle, (void*)registry.Handle);

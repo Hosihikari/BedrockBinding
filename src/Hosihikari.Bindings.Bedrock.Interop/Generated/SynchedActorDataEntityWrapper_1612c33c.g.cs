@@ -65,6 +65,17 @@ public sealed unsafe partial class SynchedActorDataEntityWrapper : global::Syste
         return new SynchedActorDataEntityWrapper((nint)handle);
     }
 
+    public static SynchedActorDataEntityWrapper Create(global::Hosihikari.Bindings.Bedrock.Interop.SynchedActorDataEntityWrapper arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_8168b069((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SynchedActorDataEntityWrapper((nint)handle);
+    }
+
     public float getFloat(ushort id)
     {
         return NativeMethods.TablePtr->C3.hs_method_bbbbf0cf((void*)__hosihikari_shim_handle, id);

@@ -50,6 +50,17 @@ public sealed unsafe partial class AcaciaTreeTrunk : global::System.IDisposable
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
+    public static AcaciaTreeTrunk Create(global::Hosihikari.Bindings.Bedrock.Interop.AcaciaTreeTrunk arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_c29c8592((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AcaciaTreeTrunk((nint)handle);
+    }
+
     public int getTreeHeight(global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         return NativeMethods.TablePtr->C0.hs_method_9b4f3fda((void*)__hosihikari_shim_handle, (void*)random.Handle);

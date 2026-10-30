@@ -72,6 +72,17 @@ public sealed unsafe partial class MeCommand : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_3ad44573((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static MeCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.MeCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_2acdfdf2((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MeCommand((nint)handle);
+    }
+
     public static bool _sendEvent(global::Hosihikari.Bindings.Bedrock.Interop.Level level, string sender, string message, string? filteredMessage)
     {
         var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(sender);

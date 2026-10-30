@@ -54,6 +54,17 @@ public sealed unsafe partial class TargetPoint : global::System.IDisposable
         return new TargetPoint((nint)handle);
     }
 
+    public static TargetPoint Create(global::Hosihikari.Bindings.Bedrock.Interop.TargetPoint arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_e9a1972c((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TargetPoint((nint)handle);
+    }
+
     public static TargetPoint Create(float temperature, float humidity, float continentalness, float erosion, float depth, float weirdness)
     {
         var handle = NativeMethods.TablePtr->C3.hs_create_068674dd(temperature, humidity, continentalness, erosion, depth, weirdness);

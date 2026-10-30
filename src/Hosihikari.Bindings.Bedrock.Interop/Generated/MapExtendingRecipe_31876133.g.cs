@@ -112,6 +112,17 @@ public sealed unsafe partial class MapExtendingRecipe : global::System.IDisposab
         return new MapExtendingRecipe((nint)handle);
     }
 
+    public static MapExtendingRecipe Create(global::Hosihikari.Bindings.Bedrock.Interop.MapExtendingRecipe arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_8e200df8((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MapExtendingRecipe((nint)handle);
+    }
+
     public static MapExtendingRecipe Create(string recipeId, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID id)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(recipeId);

@@ -54,6 +54,17 @@ public sealed unsafe partial class MinEngineVersion : global::System.IDisposable
         return new MinEngineVersion((nint)handle);
     }
 
+    public static MinEngineVersion Create(global::Hosihikari.Bindings.Bedrock.Interop.MinEngineVersion arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_a29ca85d((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MinEngineVersion((nint)handle);
+    }
+
     public static MinEngineVersion Create(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion version)
     {
         var handle = NativeMethods.TablePtr->C2.hs_create_fe492013((void*)version.Handle);

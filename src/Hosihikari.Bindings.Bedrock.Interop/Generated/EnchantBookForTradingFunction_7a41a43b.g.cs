@@ -53,6 +53,17 @@ public sealed unsafe partial class EnchantBookForTradingFunction : global::Syste
         return NativeMethods.TablePtr->C1.hs_method_fcecaf32((void*)__hosihikari_shim_handle);
     }
 
+    public static EnchantBookForTradingFunction Create(global::Hosihikari.Bindings.Bedrock.Interop.EnchantBookForTradingFunction arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_e8d11813((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new EnchantBookForTradingFunction((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.EnchantmentInstance? _trySelectEnchantmentFromOptions(global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         var __hs_hasValue = false;

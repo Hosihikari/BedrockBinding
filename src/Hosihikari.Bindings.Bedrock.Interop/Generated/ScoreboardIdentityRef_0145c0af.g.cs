@@ -38,6 +38,17 @@ public sealed unsafe partial class ScoreboardIdentityRef : global::System.IDispo
         return __hs_handle;
     }
 
+    public static ScoreboardIdentityRef Create(global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_780c79d7((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScoreboardIdentityRef((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef Undefined()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScoreboardIdentityRef((nint)NativeMethods.TablePtr->C3.hs_method_2b41a95c(), false);

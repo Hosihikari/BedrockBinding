@@ -43,6 +43,17 @@ public sealed unsafe partial class FilterGroupDataMap : global::System.IDisposab
         NativeMethods.TablePtr->C3.hs_method_a87b77b6((void*)__hosihikari_shim_handle);
     }
 
+    public static FilterGroupDataMap Create(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_21_20.FilterGroupDataMap arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_dc11f9f5((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new FilterGroupDataMap((nint)handle);
+    }
+
     public static void bindType(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {
         NativeMethods.TablePtr->C3.hs_method_f4af3206((void*)ctx.Handle);

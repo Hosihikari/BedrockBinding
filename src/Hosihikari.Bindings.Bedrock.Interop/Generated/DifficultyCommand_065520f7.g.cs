@@ -72,6 +72,17 @@ public sealed unsafe partial class DifficultyCommand : global::System.IDisposabl
         NativeMethods.TablePtr->C1.hs_method_8f88531c((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
+    public static DifficultyCommand Create(global::Hosihikari.Bindings.Bedrock.Interop.DifficultyCommand arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_32e5f329((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DifficultyCommand((nint)handle);
+    }
+
     public void execute(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.CommandOutput output)
     {
         NativeMethods.TablePtr->C1.hs_method_2c965362((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);

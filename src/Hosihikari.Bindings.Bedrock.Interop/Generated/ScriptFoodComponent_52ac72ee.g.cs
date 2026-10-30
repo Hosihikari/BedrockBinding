@@ -81,6 +81,17 @@ public sealed unsafe partial class ScriptFoodComponent : global::System.IDisposa
         return new ScriptFoodComponent((nint)handle);
     }
 
+    public static ScriptFoodComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptFoodComponent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_3a1a95da((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptFoodComponent((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_cc872ff1());

@@ -43,6 +43,17 @@ public sealed unsafe partial class BehaviorData : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_996cefe2((void*)__hosihikari_shim_handle);
     }
 
+    public static BehaviorData Create(global::Hosihikari.Bindings.Bedrock.Interop.BehaviorData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_beb6a8b6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BehaviorData((nint)handle);
+    }
+
     public void copyData(string from, string to, global::Hosihikari.Bindings.Bedrock.Interop.BehaviorData other)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(from);

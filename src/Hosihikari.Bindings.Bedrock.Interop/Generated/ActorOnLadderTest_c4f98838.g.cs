@@ -49,6 +49,17 @@ public sealed unsafe partial class ActorOnLadderTest : global::System.IDisposabl
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public static ActorOnLadderTest Create(global::Hosihikari.Bindings.Bedrock.Interop.ActorOnLadderTest arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_d5645ada((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorOnLadderTest((nint)handle);
+    }
+
     public bool evaluate(nint context)
     {
         return NativeMethods.TablePtr->C0.hs_method_e13182f2((void*)__hosihikari_shim_handle, (void*)context) != 0;

@@ -53,6 +53,17 @@ public sealed unsafe partial class BasicTimer : global::System.IDisposable
         return new BasicTimer((nint)handle);
     }
 
+    public static BasicTimer Create(global::Hosihikari.Bindings.Bedrock.Interop.BasicTimer arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_9d0d8006((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BasicTimer((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static BasicTimer Create(double timeDelay, nint getTimeCallback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");

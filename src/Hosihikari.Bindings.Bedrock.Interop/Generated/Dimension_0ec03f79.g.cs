@@ -988,9 +988,10 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_b499f2d7((void*)__hosihikari_shim_handle, (void*)loadPos.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
-    public void unregisterDisplayEntity(nint entityRef) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+    public void unregisterDisplayEntity(global::Hosihikari.Bindings.Bedrock.Interop.WeakRef_EntityContext_ entityRef)
+    {
+        NativeMethods.TablePtr->C1.hs_method_137d1255((void*)__hosihikari_shim_handle, (void*)entityRef.Handle);
+    }
 
     public void updatePoiBlockStateChange(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block removed, global::Hosihikari.Bindings.Bedrock.Interop.Block placed)
     {

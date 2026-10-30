@@ -54,6 +54,17 @@ public sealed unsafe partial class PlayerShootArrowEvent : global::System.IDispo
         return new PlayerShootArrowEvent((nint)handle);
     }
 
+    public static PlayerShootArrowEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.PlayerShootArrowEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_11fdd7fc((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerShootArrowEvent((nint)handle);
+    }
+
     public static PlayerShootArrowEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.WeakRef_EntityContext_ player, global::Hosihikari.Bindings.Bedrock.Interop.WeakRef_EntityContext_ arrow, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack weaponItem, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arrowItem)
     {
         var handle = NativeMethods.TablePtr->C2.hs_create_fe43131b((void*)player.Handle, (void*)arrow.Handle, (void*)weaponItem.Handle, (void*)arrowItem.Handle);

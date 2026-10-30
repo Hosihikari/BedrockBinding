@@ -38,6 +38,17 @@ public sealed unsafe partial class WebSocketInterface_windows : global::System.I
         return __hs_handle;
     }
 
+    public static WebSocketInterface_windows Create(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http.WebSocketInterface_windows arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_06ec7599((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WebSocketInterface_windows((nint)handle);
+    }
+
 
     public void Dispose()
     {

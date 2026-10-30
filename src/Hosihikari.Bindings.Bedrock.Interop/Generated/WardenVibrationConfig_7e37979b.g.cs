@@ -84,6 +84,17 @@ public sealed unsafe partial class WardenVibrationConfig : global::System.IDispo
         return new WardenVibrationConfig((nint)handle);
     }
 
+    public static WardenVibrationConfig Create(global::Hosihikari.Bindings.Bedrock.Interop.WardenVibrationConfig arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_31e3714a((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WardenVibrationConfig((nint)handle);
+    }
+
     public bool isValidVibration(global::Hosihikari.Bindings.Bedrock.Interop.GameEvent gameEvent)
     {
         return NativeMethods.TablePtr->C4.hs_method_e0e62c6f((void*)__hosihikari_shim_handle, (void*)gameEvent.Handle) != 0;

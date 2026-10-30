@@ -65,6 +65,17 @@ public sealed unsafe partial class SkinData : global::System.IDisposable
         return new SkinData((nint)handle);
     }
 
+    public static SkinData Create(global::Hosihikari.Bindings.Bedrock.Interop.SkinData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_cff2023b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new SkinData((nint)handle);
+    }
+
     public void applyToActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
         NativeMethods.TablePtr->C3.hs_method_7a700b5a((void*)__hosihikari_shim_handle, (void*)actor.Handle);

@@ -38,6 +38,17 @@ public sealed unsafe partial class ScriptExplosionOptions : global::System.IDisp
         return __hs_handle;
     }
 
+    public static ScriptExplosionOptions Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptExplosionOptions arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_37350bc6((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptExplosionOptions((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bindV010()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_4823f106());

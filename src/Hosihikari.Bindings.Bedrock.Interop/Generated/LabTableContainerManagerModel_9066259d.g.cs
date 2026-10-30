@@ -175,6 +175,17 @@ public sealed unsafe partial class LabTableContainerManagerModel : global::Syste
         return new LabTableContainerManagerModel((nint)handle);
     }
 
+    public static LabTableContainerManagerModel Create(global::Hosihikari.Bindings.Bedrock.Interop.LabTableContainerManagerModel arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_afc22d66((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LabTableContainerManagerModel((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext _postInit()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext((nint)NativeMethods.TablePtr->C1.hs_method_90ef82f4((void*)__hosihikari_shim_handle));

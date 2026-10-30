@@ -129,6 +129,17 @@ public sealed unsafe partial class DefendTrustedTargetGoal : global::System.IDis
         }
     }
 
+    public static DefendTrustedTargetGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.DefendTrustedTargetGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_fa65992e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new DefendTrustedTargetGoal((nint)handle);
+    }
+
     public global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID _findTrustedTarget(global::Hosihikari.Bindings.Bedrock.Interop.TrustComponent trust)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->C1.hs_method_d67af08e((void*)__hosihikari_shim_handle, (void*)trust.Handle));

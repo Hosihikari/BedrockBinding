@@ -58,6 +58,17 @@ public sealed unsafe partial class AncientCityPiece : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_0a8eb5f7((void*)__hosihikari_shim_handle);
     }
 
+    public static AncientCityPiece Create(global::Hosihikari.Bindings.Bedrock.Interop.AncientCityPiece arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_07dbc5f1((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new AncientCityPiece((nint)handle);
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.", false)]
     public static void addPieces(nint position, nint pieces, nint random, nint pools, nint dimension) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.");

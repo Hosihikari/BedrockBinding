@@ -209,6 +209,17 @@ public sealed unsafe partial class LayEggGoal : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_ccf60458((void*)__hosihikari_shim_handle);
     }
 
+    public static LayEggGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.LayEggGoal arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_3a513472((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new LayEggGoal((nint)handle);
+    }
+
     public void _moveToBlock()
     {
         NativeMethods.TablePtr->C1.hs_method_24aa7918((void*)__hosihikari_shim_handle);

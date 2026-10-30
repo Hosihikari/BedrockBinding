@@ -94,6 +94,17 @@ public sealed unsafe partial class BlockPalette : global::System.IDisposable
         return new BlockPalette((nint)handle);
     }
 
+    public static BlockPalette Create(global::Hosihikari.Bindings.Bedrock.Interop.BlockPalette arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_e5414e4b((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockPalette((nint)handle);
+    }
+
     public void appendBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block blockState)
     {
         NativeMethods.TablePtr->C0.hs_method_5996e734((void*)__hosihikari_shim_handle, (void*)blockState.Handle);

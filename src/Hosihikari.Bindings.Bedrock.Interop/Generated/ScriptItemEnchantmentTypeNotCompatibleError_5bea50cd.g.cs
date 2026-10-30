@@ -38,6 +38,17 @@ public sealed unsafe partial class ScriptItemEnchantmentTypeNotCompatibleError :
         return __hs_handle;
     }
 
+    public static ScriptItemEnchantmentTypeNotCompatibleError Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemEnchantmentTypeNotCompatibleError arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_81b98f6e((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptItemEnchantmentTypeNotCompatibleError((nint)handle);
+    }
+
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ErrorBinding bind()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ErrorBinding((nint)NativeMethods.TablePtr->C3.hs_method_90dd09cd());

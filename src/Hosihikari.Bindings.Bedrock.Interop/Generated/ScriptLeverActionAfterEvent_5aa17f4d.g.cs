@@ -66,6 +66,17 @@ public sealed unsafe partial class ScriptLeverActionAfterEvent : global::System.
         return new ScriptLeverActionAfterEvent((nint)handle);
     }
 
+    public static ScriptLeverActionAfterEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptLeverActionAfterEvent arg0)
+    {
+        var handle = NativeMethods.TablePtr->C3.hs_create_981a600f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ScriptLeverActionAfterEvent((nint)handle);
+    }
+
     public static ScriptLeverActionAfterEvent Create(global::Hosihikari.Bindings.Abi.SharedHandle? eventData, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope)
     {
         var handle = NativeMethods.TablePtr->C3.hs_create_9e6e0778(eventData?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)scope.Handle);

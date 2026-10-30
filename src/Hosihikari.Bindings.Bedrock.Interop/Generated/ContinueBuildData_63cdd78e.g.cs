@@ -38,6 +38,17 @@ public sealed unsafe partial class ContinueBuildData : global::System.IDisposabl
         return __hs_handle;
     }
 
+    public static ContinueBuildData Create(global::Hosihikari.Bindings.Bedrock.Interop.GameMode_Nested.ContinueBuildData arg0)
+    {
+        var handle = NativeMethods.TablePtr->C1.hs_create_0d2bf65f((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ContinueBuildData((nint)handle);
+    }
+
     public byte mFacing
     {
         get => NativeMethods.TablePtr->C1.hs_get_c6c61859((void*)__hosihikari_shim_handle);

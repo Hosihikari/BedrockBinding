@@ -38,6 +38,17 @@ public sealed unsafe partial class Color2Definition : global::System.IDisposable
         return __hs_handle;
     }
 
+    public static Color2Definition Create(global::Hosihikari.Bindings.Bedrock.Interop.Color2Definition arg0)
+    {
+        var handle = NativeMethods.TablePtr->C0.hs_create_315ffada((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Color2Definition((nint)handle);
+    }
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkb1b293_Address
     {
